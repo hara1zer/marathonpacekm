@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Marathon Pace Chart (Min/Mile) | Finish Times → Pace per Mile + Conversions</title>
+  <meta name="description" content="Marathon pace chart in min per mile. Convert finish times into pace per mile (and per km), plus a simple calculator and key checkpoints." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://marathonpacekm.com/marathon-pace-chart-min-per-mile/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Marathon Pace Chart (Min/Mile)" />
+  <meta property="og:description" content="Convert finish times into pace per mile (and per km)." />
+  <meta property="og:url" content="https://marathonpacekm.com/marathon-pace-chart-min-per-mile/" />
+  <meta property="og:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Marathon pace chart per mile" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Marathon Pace Chart (Min/Mile)" />
+  <meta name="twitter:description" content="Convert finish times into pace per mile (and per km)." />
+  <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
+
+  <link rel="preload" href="/assets/style.css" as="style" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    #quick, #calc, #faq { scroll-margin-top: 16px; }
+    .splits-table{ width:100%; border-collapse: collapse; margin-top: 10px; overflow:hidden; border-radius: 12px; border: 1px solid rgba(0,0,0,.10); background: rgba(255,255,255,.6); }
+    .splits-table th, .splits-table td{ text-align:left; padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
+    .splits-table tr:last-child td{ border-bottom: 0; }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
+      {"@type":"ListItem","position":2,"name":"Marathon Pace Chart (Min/Mile)","item":"https://marathonpacekm.com/marathon-pace-chart-min-per-mile/"}
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+</head>
+
+<body>
+  <header class="wrap" style="padding-top:28px">
+    <a class="btn secondary" href="/">← Back to pace chart hub</a>
+    <h1 style="margin-top:14px">Marathon Pace Chart (Min/Mile)</h1>
+    <p class="sub">A mile-first pace chart for runners who think in <strong>min/mi</strong>. We also show the <strong>min/km</strong> equivalent.</p>
+
+    <div class="toc" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+      <a class="btn" href="#quick">Quick chart</a>
+      <a class="btn secondary" href="#calc">Calculator</a>
+      <a class="btn secondary" href="/marathon-pace-calculator/">Full calculator</a>
+      <a class="btn secondary" href="#faq">FAQ</a>
+    </div>
+  </header>
+
+  <main class="wrap" id="content">
+    <section id="quick" class="card">
+      <h2>Quick marathon pace chart (min/mi)</h2>
+      <p class="muted">Common marathon finish times mapped to average pace per mile. Use the calculator below for any custom time.</p>
+
+      <table class="splits-table">
+        <thead><tr><th>Finish time</th><th>Avg pace (min/mi)</th><th>Avg pace (min/km)</th></tr></thead>
+        <tbody>
+          <tr><td>3:00:00</td><td>6:52</td><td>4:16</td></tr>
+          <tr><td>3:15:00</td><td>7:26</td><td>4:37</td></tr>
+          <tr><td>3:30:00</td><td>8:01</td><td>4:59</td></tr>
+          <tr><td>3:45:00</td><td>8:35</td><td>5:20</td></tr>
+          <tr><td>4:00:00</td><td>9:09</td><td>5:41</td></tr>
+          <tr><td>4:30:00</td><td>10:18</td><td>6:24</td></tr>
+          <tr><td>5:00:00</td><td>11:27</td><td>7:07</td></tr>
+        </tbody>
+      </table>
+
+      <p class="tiny muted note">Tip: pace per mile = pace per km × 1.609344 (in seconds).</p>
+    </section>
+
+    <section id="calc" class="card">
+      <h2>Min/mile calculator</h2>
+      <p class="muted">Enter a goal marathon time to compute average pace per mile (and per km).</p>
+
+      <div class="grid">
+        <div>
+          <label>Goal marathon time</label>
+          <div class="row">
+            <input id="h" type="number" min="0" value="4" /> <span>h</span>
+            <input id="m" type="number" min="0" max="59" value="0" /> <span>m</span>
+            <input id="s" type="number" min="0" max="59" value="0" /> <span>s</span>
+          </div>
+        </div>
+        <div>
+          <label>Distance</label>
+          <select id="dist">
+            <option value="42.195" selected>Marathon (42.195 km)</option>
+            <option value="21.0975">Half Marathon (21.0975 km)</option>
+            <option value="10">10 km</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row actions" style="margin-top:10px;gap:10px">
+        <button class="btn" id="calcBtn">Calculate</button>
+        <button class="btn secondary" id="resetBtn">Reset</button>
+      </div>
+
+      <div id="results" class="results" aria-live="polite"></div>
+    </section>
+
+    <section id="faq" class="card">
+      <h2>Min/mile FAQ</h2>
+      <h3>Is min/mile or min/km more accurate?</h3>
+      <p>They’re the same pace expressed in different units. Use whichever matches your watch and your race signage.</p>
+
+      <h3>Why do my mile splits look uneven on a km-paced plan?</h3>
+      <p>Because 1 mile isn’t an even number of kilometres. Use average effort and lap splits rather than chasing perfection.</p>
+
+      <h3>Should I use a pace band in miles?</h3>
+      <p>If your race markers are miles (common in the US), a mile-based band can make pacing simpler. Otherwise km works well.</p>
+    </section>
+  </main>
+<script>
+(function(){
+  var elH=document.getElementById('h');
+  var elM=document.getElementById('m');
+  var elS=document.getElementById('s');
+  var elDist=document.getElementById('dist');
+  var elResults=document.getElementById('results');
+  var calcBtn=document.getElementById('calcBtn');
+  var resetBtn=document.getElementById('resetBtn');
+
+  var DEFAULT={h:4,m:0,s:0,dist:42.195};
+
+  function clampInt(v,min,max){
+    var n=parseInt(v,10);
+    if(isNaN(n)) return min;
+    if(n<min) return min;
+    if(n>max) return max;
+    return n;
+  }
+  function toSeconds(h,m,s){ return h*3600 + m*60 + s; }
+  function fmtPace(secPerUnit){
+    var sec=Math.max(0, Math.round(secPerUnit));
+    var m=Math.floor(sec/60);
+    var s=sec%60;
+    return m+":"+String(s).padStart(2,'0');
+  }
+  function fmtTime(total){
+    var sec=Math.max(0, Math.round(total));
+    var h=Math.floor(sec/3600);
+    var m=Math.floor((sec%3600)/60);
+    var s=sec%60;
+    return h+":"+String(m).padStart(2,'0')+":"+String(s).padStart(2,'0');
+  }
+
+  function compute(){
+    var h=clampInt(elH.value,0,99);
+    var m=clampInt(elM.value,0,59);
+    var s=clampInt(elS.value,0,59);
+    elH.value=h; elM.value=m; elS.value=s;
+
+    var dist=parseFloat(elDist.value);
+    var goalSec=toSeconds(h,m,s);
+    if(!dist || dist<=0 || goalSec<=0){
+      elResults.innerHTML='<div class="tiny muted2">Enter a valid time and distance.</div>';
+      return;
+    }
+
+    var secPerKm = goalSec / dist;
+    var secPerMile = secPerKm * 1.609344;
+
+    elResults.innerHTML = ''
+      + '<div class="kpi">'
+      +   '<div class="fact"><div class="tiny muted2">Pace per mile</div><strong>'+fmtPace(secPerMile)+'</strong></div>'
+      +   '<div class="fact"><div class="tiny muted2">Pace per km</div><strong>'+fmtPace(secPerKm)+'</strong></div>'
+      +   '<div class="fact"><div class="tiny muted2">Finish time</div><strong>'+fmtTime(goalSec)+'</strong></div>'
+      + '</div>';
+  }
+
+  function reset(){
+    elH.value=DEFAULT.h; elM.value=DEFAULT.m; elS.value=DEFAULT.s;
+    elDist.value=String(DEFAULT.dist);
+    elResults.innerHTML='';
+  }
+
+  calcBtn.addEventListener('click', compute);
+  resetBtn.addEventListener('click', reset);
+
+  compute();
+})();
+</script>
+
+
+<footer class="wrap" style="padding:24px 16px 40px">
+  <div class="card" style="padding:16px">
+    <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
+      <a href="/">Pace chart hub</a>
+      <a href="/marathon-pace-calculator/">Calculator</a>
+      <a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
+      <a href="/monthly-training-plan/">Monthly plan</a>
+      <a href="/how-to-use-marathon-pace-chart/">How to use</a>
+      <a href="/even-vs-negative-splits/">Even vs negative splits</a>
+      <a href="/sitemap/">HTML sitemap</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/disclaimer/">Disclaimer</a>
+    </div>
+    <p class="tiny muted" style="margin-top:12px">Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,1998 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Marathon Training Planner | Marathon Pace KM</title>
+  <meta name="description" content="Generate a personalised 4-week training plan using your recent running, goal date, availability and injury status. Includes pace guidance, exact workouts, share link and calendar export." />
+  <link rel="canonical" href="https://marathonpacekm.com/monthly-training-plan/" />
+
+  <!-- Use your site styles if present -->
+  <link rel="preload" href="/assets/style.css" as="style" />
+  <link rel="stylesheet" href="/assets/style.css" />
+  <style>
+    :root{
+      --bg:#fff;
+      --ink:#111;
+      --muted: rgba(0,0,0,.62);
+      --line: rgba(0,0,0,.10);
+      --line2: rgba(0,0,0,.07);
+      --soft: rgba(0,0,0,.04);
+      --good: rgba(0,128,0,.12);
+      --warn: rgba(255,165,0,.14);
+      --bad: rgba(220,20,60,.12);
+      --radius: 16px;
+    }
+
+    .wrap{ max-width: 1100px; margin: 0 auto; padding: 18px; }
+    .card{ background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: 0 1px 0 rgba(0,0,0,.03); }
+    .grid{ display:grid; gap: 14px; grid-template-columns: 1fr; }
+    @media (min-width: 980px){ .grid{ grid-template-columns: 420px 1fr; align-items:start; } }
+
+    h1{ margin:0; font-size: 28px; letter-spacing: -0.02em; }
+    h2{ margin:0 0 10px; font-size: 18px; letter-spacing: -0.01em; }
+    p{ margin: 8px 0; }
+    .sub{ color: var(--muted); margin-top: 8px; line-height: 1.45; }
+    .tiny{ font-size: 12px; color: var(--muted); }
+    .mono{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace; }
+
+    label{ display:block; font-weight: 900; font-size: 13px; margin: 10px 0 6px; }
+    input, select, textarea{
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      background: #fff;
+      color: var(--ink);
+      outline: none;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    textarea{ min-height: 72px; resize: vertical; }
+    input:focus, select:focus, textarea:focus{ border-color: rgba(0,0,0,.28); box-shadow: 0 0 0 3px rgba(0,0,0,.06); }
+
+    .row{ display:flex; gap: 10px; flex-wrap:wrap; align-items: center; }
+    .row > *{ flex: 1 1 160px; }
+    .row.tight > *{ flex: 1 1 130px; }
+
+    .btn{
+      appearance:none; border: 1px solid rgba(0,0,0,.12);
+      border-radius: 12px; padding: 10px 12px;
+      background:#111; color:#fff; cursor:pointer; font-weight: 950;
+      text-decoration:none; display:inline-flex; align-items:center; justify-content:center;
+      gap: 8px;
+    }
+    .btn.secondary{ background:#f3f3f3; color:#111; border-color: rgba(0,0,0,.12); font-weight: 950; }
+    .btn.ghost{ background: transparent; color:#111; border-color: rgba(0,0,0,.14); font-weight: 950; }
+    .btn:disabled{ opacity: .55; cursor:not-allowed; }
+
+    .actions{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 12px; }
+
+    .pill{
+      display:inline-flex; align-items:center; gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: rgba(0,0,0,.72);
+      background: rgba(255,255,255,.7);
+      white-space: nowrap;
+    }
+    .pill strong{ color: #111; }
+    .pill.good{ background: var(--good); border-color: rgba(0,128,0,.24); }
+    .pill.warn{ background: var(--warn); border-color: rgba(255,165,0,.32); }
+    .pill.bad{ background: var(--bad); border-color: rgba(220,20,60,.32); }
+
+    .stepper{ display:flex; gap: 10px; flex-wrap:wrap; margin-top: 12px; }
+    .step{
+      padding: 8px 10px; border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(0,0,0,.02);
+      font-size: 12px; cursor:pointer;
+      user-select:none;
+    }
+    .step[aria-current="true"]{ background:#111; color:#fff; border-color:#111; }
+
+    .section{ display:none; }
+    .section.active{ display:block; }
+
+    .help{
+      border: 1px solid var(--line2);
+      background: var(--soft);
+      border-radius: 14px;
+      padding: 12px;
+      margin-top: 10px;
+    }
+
+    .chips{ display:flex; gap: 8px; flex-wrap:wrap; margin-top: 8px; }
+    .chip{
+      padding: 8px 10px; border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.14);
+      background: #f4f4f4; cursor: pointer;
+      font-size: 13px; font-weight: 950;
+    }
+    .chip[aria-pressed="true"]{ background:#111; color:#fff; border-color:#111; }
+
+    .twoCol{ display:grid; gap: 10px; grid-template-columns: 1fr; }
+    @media(min-width: 720px){ .twoCol{ grid-template-columns: 1fr 1fr; } }
+
+    .hr{ height:1px; background: var(--line2); margin: 14px 0; }
+
+    .kpis{ display:grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px; }
+    @media(min-width: 720px){ .kpis{ grid-template-columns: repeat(3, 1fr); } }
+    .kpi{ border:1px solid var(--line2); background: rgba(0,0,0,.02); border-radius: 14px; padding: 12px; }
+    .kpi .t{ font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+    .kpi .v{ font-size: 16px; font-weight: 950; letter-spacing:-0.01em; }
+
+    .previewHeader{
+      display:flex; align-items:flex-start; justify-content:space-between; gap: 10px;
+      flex-wrap:wrap;
+    }
+
+    .workouts{ display:grid; gap: 10px; margin-top: 12px; }
+    .wk{
+      border: 1px solid var(--line2);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: rgba(0,0,0,.01);
+    }
+    .wkTop{
+      display:flex; justify-content:space-between; gap: 10px; flex-wrap:wrap;
+      padding: 12px 14px;
+      background: rgba(0,0,0,.03);
+      border-bottom: 1px solid var(--line2);
+    }
+    .wkTop b{ font-size: 14px; }
+    .wkGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      padding: 12px 12px 14px;
+    }
+    @media(min-width: 760px){ .wkGrid{ grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width: 1050px){ .wkGrid{ grid-template-columns: repeat(3, 1fr); } }
+
+    .session{
+      border: 1px solid var(--line2);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: #fff;
+    }
+    .session .title{ display:flex; justify-content:space-between; align-items:baseline; gap: 8px; }
+    .tag{
+      font-size: 11px; font-weight: 950; letter-spacing: .06em;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 8px;
+      background: rgba(0,0,0,.02);
+      color: rgba(0,0,0,.70);
+      white-space:nowrap;
+    }
+    .paceLine{ margin-top: 6px; font-weight: 950; }
+    .details{ margin-top: 6px; color: var(--muted); font-size: 12px; line-height: 1.35; }
+
+    .callout{
+      border-radius: 14px;
+      padding: 12px;
+      border: 1px solid var(--line2);
+      background: rgba(0,0,0,.02);
+      margin-top: 10px;
+    }
+    .callout.good{ background: var(--good); border-color: rgba(0,128,0,.24); }
+    .callout.warn{ background: var(--warn); border-color: rgba(255,165,0,.30); }
+    .callout.bad{ background: var(--bad); border-color: rgba(220,20,60,.26); }
+
+    details{ border: 1px solid var(--line2); border-radius: 14px; padding: 12px 14px; margin-top: 10px; background: rgba(0,0,0,.02); }
+    summary{ cursor:pointer; font-weight: 950; }
+
+    .scroll{ overflow:auto; border-radius: 14px; border: 1px solid var(--line2); }
+    table{ width:100%; border-collapse: collapse; }
+    th, td{ text-align:left; padding: 10px 10px; border-bottom: 1px solid var(--line2); vertical-align: top; }
+    thead th{ font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+    .stickyBar{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line2);
+      padding: 10px 12px;
+      margin: -16px -16px 12px;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+    }
+
+    .meter{ height: 10px; border-radius: 999px; background: rgba(0,0,0,.08); overflow:hidden; }
+    .meter > div{ height: 100%; width: 0%; background: #111; }
+  </style>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},{"@type":"ListItem","position":2,"name":"Monthly training plan","item":"https://marathonpacekm.com/monthly-training-plan/"}]}
+  </script>
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="previewHeader">
+        <div>
+          <h1>Marathon Training Planner</h1>
+          <p class="sub">
+            Generate a personalised 4-week plan from your recent running, goal date, availability, and injury status.
+            The plan automatically chooses the right phase (base → marathon block → taper) and blends training approaches when appropriate.
+          </p>
+          <div class="row" style="margin-top:8px;">
+            <span class="pill"><strong>Auto phase</strong> from date</span>
+            <span class="pill"><strong>Run days</strong> always respected</span>
+            <span class="pill"><strong>Paces</strong> rounded to 5s</span>
+            <span class="pill"><strong>Workouts</strong> are exact</span>
+          </div>
+        </div>
+        <div class="row" style="justify-content:flex-end; min-width: 260px;">
+          <a class="btn secondary" href="/">Home</a>
+          <button class="btn ghost" id="btnLoadDemo" type="button">Load demo</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:14px;">
+      <!-- LEFT: Wizard -->
+      <div class="card">
+        <div class="stickyBar">
+          <div class="row" style="justify-content:space-between;">
+            <div>
+              <div style="font-weight:950;">Setup</div>
+              <div class="tiny" id="autosaveStatus">Autosave: off</div>
+            </div>
+            <div class="row" style="justify-content:flex-end;">
+              <button class="btn secondary" id="btnReset" type="button">Reset</button>
+              <button class="btn" id="btnGenerate" type="button">Generate</button>
+            </div>
+          </div>
+
+          <div class="stepper" id="stepper" aria-label="Plan setup steps">
+            <div class="step" data-step="0" aria-current="true">1) Goal</div>
+            <div class="step" data-step="1">2) Training</div>
+            <div class="step" data-step="2">3) Durability</div>
+            <div class="step" data-step="3">4) Paces</div>
+            <div class="step" data-step="4">5) Availability</div>
+            <div class="step" data-step="5">6) Review</div>
+          </div>
+        </div>
+
+        <!-- STEP 1 -->
+        <div class="section active" data-step="0">
+          <h2>Goal</h2>
+
+          <div class="twoCol">
+            <div>
+              <label for="goalDate">Marathon date (optional)</label>
+              <input id="goalDate" type="date" />
+              <div class="tiny">If blank, planner defaults to “Base build”.</div>
+            </div>
+            <div>
+              <label for="goalTime">Goal time (optional)</label>
+              <input id="goalTime" placeholder="e.g. 3:45:00" />
+              <div class="tiny">Used for MP guidance if no race anchor.</div>
+            </div>
+          </div>
+
+          <details>
+            <summary>Optional: preferred phase override</summary>
+            <label for="phaseOverride">Phase override</label>
+            <select id="phaseOverride">
+              <option value="auto" selected>Auto (recommended)</option>
+              <option value="base">Base build (pre-marathon)</option>
+              <option value="block">Marathon-specific block</option>
+              <option value="taper">Taper</option>
+            </select>
+            <div class="tiny">Leave on Auto unless you know exactly what you’re doing.</div>
+          </details>
+
+          <div class="actions">
+            <button class="btn" type="button" data-next>Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="section" data-step="1">
+          <h2>Recent training</h2>
+
+          <label>Last 4 weeks distance (km)</label>
+          <div class="row tight">
+            <input id="w1" type="number" min="0" step="0.1" placeholder="Week -1" />
+            <input id="w2" type="number" min="0" step="0.1" placeholder="Week -2" />
+            <input id="w3" type="number" min="0" step="0.1" placeholder="Week -3" />
+            <input id="w4" type="number" min="0" step="0.1" placeholder="Week -4" />
+          </div>
+
+          <div class="twoCol">
+            <div>
+              <label for="runsPerWeek">Runs per week currently</label>
+              <input id="runsPerWeek" type="number" min="1" max="7" step="1" placeholder="e.g. 5" />
+            </div>
+            <div>
+              <label for="lr30">Longest run (last 30 days) km</label>
+              <input id="lr30" type="number" min="0" step="0.1" placeholder="e.g. 18" />
+            </div>
+          </div>
+
+          <details>
+            <summary>Optional (improves safety)</summary>
+            <div class="twoCol" style="margin-top:10px;">
+              <div>
+                <label for="maxWeek6m">Biggest week (last 6m) km</label>
+                <input id="maxWeek6m" type="number" min="0" step="0.1" placeholder="e.g. 70" />
+              </div>
+              <div>
+                <label for="lr12">Typical longest run (last 12w) km</label>
+                <input id="lr12" type="number" min="0" step="0.1" placeholder="e.g. 24" />
+              </div>
+            </div>
+          </details>
+
+          <div class="actions">
+            <button class="btn secondary" type="button" data-prev>Back</button>
+            <button class="btn" type="button" data-next>Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="section" data-step="2">
+          <h2>Durability (auto category)</h2>
+
+          <div class="twoCol">
+            <div>
+              <label for="consistencyWeeks">Weeks running consistently</label>
+              <select id="consistencyWeeks">
+                <option value="0-3">0–3 weeks</option>
+                <option value="4-8">4–8 weeks</option>
+                <option value="9-16" selected>9–16 weeks</option>
+                <option value="17+">17+ weeks</option>
+              </select>
+            </div>
+            <div>
+              <label for="injuryStatus">Injury status</label>
+              <select id="injuryStatus">
+                <option value="green" selected>Green — feeling good</option>
+                <option value="yellow">Yellow — niggles / tightness</option>
+                <option value="red">Red — returning / rehab</option>
+              </select>
+            </div>
+          </div>
+
+          <details>
+            <summary>Beginner checks (used only when needed)</summary>
+            <div class="twoCol" style="margin-top:10px;">
+              <div>
+                <label for="canRun5">Can you run 5 minutes continuously?</label>
+                <select id="canRun5">
+                  <option value="yes" selected>Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div>
+                <label for="injuryStop7">Injury in last 6m stopped running ≥7 days?</label>
+                <select id="injuryStop7">
+                  <option value="no" selected>No</option>
+                  <option value="yes">Yes</option>
+                </select>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Intensity tolerance (optional)</summary>
+            <div class="twoCol" style="margin-top:10px;">
+              <div>
+                <label for="tolTempo">Tempo/threshold usually ok?</label>
+                <select id="tolTempo">
+                  <option value="yes" selected>Yes</option>
+                  <option value="unsure">Unsure</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+              <div>
+                <label for="tolSpeed">Fast intervals usually ok?</label>
+                <select id="tolSpeed">
+                  <option value="yes" selected>Yes</option>
+                  <option value="unsure">Unsure</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            </div>
+          </details>
+
+          <div class="actions">
+            <button class="btn secondary" type="button" data-prev>Back</button>
+            <button class="btn" type="button" data-next>Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="section" data-step="3">
+          <h2>Paces (VDOT if available)</h2>
+
+          <label for="anchorType">Pace anchor</label>
+          <select id="anchorType">
+            <option value="race" selected>Recent race / time trial (recommended)</option>
+            <option value="goal">Goal time only</option>
+            <option value="easy">Typical easy pace</option>
+            <option value="none">None (effort-based)</option>
+          </select>
+
+          <div id="raceBlock">
+            <div class="twoCol">
+              <div>
+                <label for="raceDist">Distance</label>
+                <select id="raceDist">
+                  <option value="5">5K</option>
+                  <option value="10" selected>10K</option>
+                  <option value="21.0975">Half</option>
+                  <option value="42.195">Marathon</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </div>
+              <div id="raceDistCustomWrap" style="display:none;">
+                <label for="raceDistCustom">Custom distance (km)</label>
+                <input id="raceDistCustom" type="number" min="1" step="0.1" placeholder="e.g. 7.5" />
+              </div>
+            </div>
+
+            <label for="raceTime">Time</label>
+            <input id="raceTime" placeholder="e.g. 44:30 or 1:32:00" />
+          </div>
+
+          <div id="easyBlock" style="display:none;">
+            <label for="easyPace">Typical easy pace (min/km)</label>
+            <input id="easyPace" placeholder="e.g. 6:10" />
+          </div>
+
+          <div id="noneBlock" style="display:none;">
+            <div class="help">
+              <div style="font-weight:950;">Effort-based mode</div>
+              <div class="tiny">Easy runs will be conversational; quality sessions will be described by effort + structure.</div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn secondary" type="button" data-prev>Back</button>
+            <button class="btn" type="button" data-next>Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 5 -->
+        <div class="section" data-step="4">
+          <h2>Availability</h2>
+
+          <label>Days you can run (we schedule a run on every selected day)</label>
+          <div class="chips" id="daysChips">
+            <div class="chip" data-day="Mon" aria-pressed="true">Mon</div>
+            <div class="chip" data-day="Tue" aria-pressed="true">Tue</div>
+            <div class="chip" data-day="Wed" aria-pressed="true">Wed</div>
+            <div class="chip" data-day="Thu" aria-pressed="true">Thu</div>
+            <div class="chip" data-day="Fri" aria-pressed="false">Fri</div>
+            <div class="chip" data-day="Sat" aria-pressed="true">Sat</div>
+            <div class="chip" data-day="Sun" aria-pressed="false">Sun</div>
+          </div>
+
+          <div class="twoCol">
+            <div>
+              <label for="longRunDay">Preferred long run day</label>
+              <select id="longRunDay">
+                <option>Mon</option><option>Tue</option><option>Wed</option><option>Thu</option><option>Fri</option>
+                <option selected>Sat</option><option>Sun</option>
+              </select>
+            </div>
+            <div>
+              <label for="terrain">Terrain</label>
+              <select id="terrain">
+                <option value="road" selected>Road</option>
+                <option value="trail">Trail</option>
+                <option value="mixed">Mixed</option>
+              </select>
+            </div>
+          </div>
+
+          <details open>
+            <summary>Time caps (recommended)</summary>
+            <div class="twoCol" style="margin-top:10px;">
+              <div>
+                <label for="weekdayCap">Weekday cap (minutes)</label>
+                <input id="weekdayCap" type="number" min="15" max="180" step="5" placeholder="e.g. 60" />
+              </div>
+              <div>
+                <label for="longRunCap">Long run cap (minutes)</label>
+                <input id="longRunCap" type="number" min="30" max="240" step="5" placeholder="e.g. 150" />
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary>Build aggressiveness (optional)</summary>
+            <label for="aggr">Progression</label>
+            <select id="aggr">
+              <option value="conservative">Conservative</option>
+              <option value="normal" selected>Normal</option>
+              <option value="aggressive">Aggressive</option>
+            </select>
+          </details>
+
+          <div class="actions">
+            <button class="btn secondary" type="button" data-prev>Back</button>
+            <button class="btn" type="button" data-next>Next</button>
+          </div>
+        </div>
+
+        <!-- STEP 6 -->
+        <div class="section" data-step="5">
+          <h2>Review & generate</h2>
+          <div class="help">
+            <div style="font-weight:950;">What the planner does</div>
+            <div class="tiny">
+              <ul class="tiny" style="margin:8px 0 0 18px;">
+                <li>Automatically selects phase (Base / Block / Taper) from race date (or uses override).</li>
+                <li>Auto-categorises runners (A/B/C) for safety and progression caps.</li>
+                <li>Blends “schools” when appropriate (Pfitz-style MLR, Hansons-style distribution, Norwegian threshold singles, etc.).</li>
+                <li>Always respects selected run days (no “3 days selected → 2 runs”).</li>
+                <li>Paces are rounded to the nearest 5 seconds and never show invalid times.</li>
+                <li>Quality sessions are exact prescriptions (e.g., 3×8, 2×12, 2×20).</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn secondary" type="button" data-prev>Back</button>
+            <button class="btn" id="btnGenerate2" type="button">Generate plan</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Preview -->
+      <div class="card">
+        <div class="previewHeader">
+          <div>
+            <h2 style="margin-bottom:6px;">Live preview</h2>
+            <div class="tiny" id="previewSubtitle">Fill in your info and click Generate.</div>
+          </div>
+          <div class="row" style="justify-content:flex-end;">
+            <button class="btn secondary" id="btnShare" type="button">Share link</button>
+            <button class="btn secondary" id="btnCopy" type="button">Copy plan</button>
+            <button class="btn secondary" id="btnIcs" type="button">Download .ics</button>
+          </div>
+        </div>
+
+        <div class="kpis" id="kpis"></div>
+
+        <div class="callout" id="summaryBox">
+          <div style="font-weight:950;">Chosen phase & approach</div>
+          <div class="tiny" id="summaryText">Not generated yet.</div>
+          <div class="hr"></div>
+          <div class="tiny">
+            <div style="font-weight:950; margin-bottom:6px;">Confidence</div>
+            <div class="meter"><div id="confBar"></div></div>
+            <div class="tiny" id="confText" style="margin-top:6px;">—</div>
+          </div>
+        </div>
+
+        <div class="callout" id="paceBox">
+          <div style="font-weight:950;">Pace guidance</div>
+          <div class="tiny" id="paceText">Generate your plan to see paces.</div>
+        </div>
+
+        <div class="callout warn" id="warnBox" style="display:none;">
+          <div style="font-weight:950;">Notes</div>
+          <div class="tiny" id="warnText"></div>
+        </div>
+
+        <div class="workouts" id="workouts"></div>
+
+        <details>
+          <summary>Simple table view</summary>
+          <div class="scroll" style="margin-top:10px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Week</th>
+                  <th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+        </details>
+
+        <p class="tiny" style="margin-top:12px;">
+          Disclaimer: educational planning tool. Adjust for fatigue/pain and seek professional advice if symptoms persist.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------------------------
+    // Utilities
+    // ---------------------------
+    const $ = (id) => document.getElementById(id);
+    const dayOrder = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+
+    function clamp(n, lo, hi){ return Math.max(lo, Math.min(hi, n)); }
+    function round1(n){ return Math.round(n*10)/10; }
+    function safeNum(v, fallback=0){ const n = Number(v); return isFinite(n) ? n : fallback; }
+
+    // Round seconds to nearest 5 seconds
+    function roundTo5(sec){
+      if(!isFinite(sec) || sec <= 0) return sec;
+      return 5 * Math.round(sec/5);
+    }
+
+    // Fixed formatting (no 5:60)
+    function paceSecondsToString(secPerKm){
+      if(!isFinite(secPerKm) || secPerKm <= 0) return "—";
+      const sec = Math.max(0, Math.round(secPerKm));
+      let m = Math.floor(sec/60);
+      let s = sec % 60;
+      if(s === 60){ m += 1; s = 0; }
+      return `${m}:${String(s).padStart(2,"0")}`;
+    }
+
+    function parseTimeToSeconds(str){
+      if(!str) return null;
+      const s = String(str).trim();
+      if(!s) return null;
+      const parts = s.split(":").map(p => p.trim());
+      if(parts.length !== 2 && parts.length !== 3) return null;
+      if(parts.some(p => p === "" || isNaN(Number(p)))) return null;
+
+      let h=0,m=0,sec=0;
+      if(parts.length === 3){ h=+parts[0]; m=+parts[1]; sec=+parts[2]; }
+      if(parts.length === 2){ m=+parts[0]; sec=+parts[1]; }
+      if(m>=60 || sec>=60) return null;
+      return h*3600 + m*60 + sec;
+    }
+
+    function addDaysISO(iso, add){
+      const d = new Date(iso + "T00:00:00");
+      d.setDate(d.getDate()+add);
+      return d.toISOString().slice(0,10);
+    }
+
+    function nextMondayISO(){
+      const d = new Date();
+      const day = d.getDay();           // Sun=0..Sat=6
+      const monIndex = (day + 6) % 7;   // Mon=0..Sun=6
+      const add = (7 - monIndex) % 7 || 7;
+      d.setDate(d.getDate() + add);
+      return d.toISOString().slice(0,10);
+    }
+
+    function setStep(n){
+      for(const el of document.querySelectorAll(".section")){
+        el.classList.toggle("active", Number(el.dataset.step) === n);
+      }
+      for(const s of document.querySelectorAll(".step")){
+        s.setAttribute("aria-current", (Number(s.dataset.step) === n) ? "true" : "false");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function readDays(){
+      const selected = [];
+      for(const c of document.querySelectorAll("#daysChips .chip")){
+        if(c.getAttribute("aria-pressed")==="true") selected.push(c.dataset.day);
+      }
+      return selected.length ? selected : ["Mon","Wed","Sat"];
+    }
+
+    // ---------------------------
+    // Inputs
+    // ---------------------------
+    function getInputs(){
+      const last4 = [
+        safeNum($("w1").value, 0),
+        safeNum($("w2").value, 0),
+        safeNum($("w3").value, 0),
+        safeNum($("w4").value, 0),
+      ];
+      const nonzero = last4.filter(x => x > 0);
+      const avg4 = (nonzero.length ? nonzero : last4).reduce((a,b)=>a+b,0) / (nonzero.length || 4);
+
+      const daysAvailable = readDays();
+
+      return {
+        goalDate: $("goalDate").value || "",
+        goalTime: $("goalTime").value.trim(),
+        phaseOverride: $("phaseOverride").value,
+
+        last4, avg4,
+        runsPerWeek: clamp(safeNum($("runsPerWeek").value, daysAvailable.length), 1, 7),
+        lr30: safeNum($("lr30").value, 0),
+        lr12: safeNum($("lr12").value, 0),
+        maxWeek6m: safeNum($("maxWeek6m").value, 0),
+
+        consistencyWeeks: $("consistencyWeeks").value,
+        injuryStatus: $("injuryStatus").value,
+        injuryStop7: $("injuryStop7").value,
+        canRun5: $("canRun5").value,
+
+        tolTempo: $("tolTempo").value,
+        tolSpeed: $("tolSpeed").value,
+
+        anchorType: $("anchorType").value,
+        raceDist: $("raceDist").value,
+        raceDistCustom: safeNum($("raceDistCustom").value, 0),
+        raceTime: $("raceTime").value.trim(),
+        easyPace: ($("easyPace") ? $("easyPace").value.trim() : ""),
+
+        daysAvailable,
+        longRunDay: $("longRunDay").value,
+        terrain: $("terrain").value,
+
+        weekdayCap: safeNum($("weekdayCap").value, 0),
+        longRunCapMin: safeNum($("longRunCap").value, 0),
+        aggr: ($("aggr") ? $("aggr").value : "normal"),
+      };
+    }
+
+    // ---------------------------
+    // Phase selection (AUTO)
+    // ---------------------------
+    function weeksUntil(dateISO){
+      if(!dateISO) return null;
+      const today = new Date();
+      const d = new Date(dateISO + "T00:00:00");
+      const diffDays = (d - today) / (1000*60*60*24);
+      return diffDays / 7;
+    }
+
+    function pickPhase(inputs){
+      if(inputs.phaseOverride && inputs.phaseOverride !== "auto") return inputs.phaseOverride;
+      const w = weeksUntil(inputs.goalDate);
+      if(w === null) return "base";
+      if(w <= 3) return "taper";
+      if(w <= 16) return "block";
+      return "base";
+    }
+
+    function phaseLabel(phase){
+      if(phase==="base") return "Base build (pre-marathon)";
+      if(phase==="block") return "Marathon-specific block";
+      return "Taper";
+    }
+
+    // ---------------------------
+    // A/B/C category + beginner detection
+    // ---------------------------
+    function bandToWeeks(v){
+      if(v==="0-3") return 2;
+      if(v==="4-8") return 6;
+      if(v==="9-16") return 12;
+      return 20;
+    }
+
+    function isBeginner(inputs){
+      const cons = bandToWeeks(inputs.consistencyWeeks);
+      const avg4 = inputs.avg4 || 0;
+      const freq = inputs.runsPerWeek || inputs.daysAvailable.length;
+      const stopped = inputs.injuryStop7 === "yes";
+      const canRun5 = inputs.canRun5 === "yes";
+      const red = inputs.injuryStatus === "red";
+      return (cons < 4) || (avg4 < 15 && freq <= 3) || (!canRun5) || red || (stopped && avg4 < 25);
+    }
+
+    function categoryABC(inputs){
+      if(isBeginner(inputs)) return "A";
+      const avg4 = inputs.avg4 || 0;
+      const freq = inputs.runsPerWeek || inputs.daysAvailable.length;
+      const longBase = Math.max(inputs.lr30 || 0, inputs.lr12 || 0);
+      const cons = bandToWeeks(inputs.consistencyWeeks);
+      const advanced = (avg4 >= 55) && (freq >= 6) && (longBase >= (inputs.lr12 ? 20 : 18)) && (cons >= 9) && (inputs.injuryStatus !== "red");
+      return advanced ? "C" : "B";
+    }
+
+    // ---------------------------
+    // VDOT paces
+    // ---------------------------
+    function vdotFromRace(distanceKm, timeSec){
+      const distanceM = distanceKm * 1000;
+      const tMin = timeSec / 60;
+      if(tMin <= 0) return null;
+      const v = distanceM / tMin; // m/min
+      const vo2 = -4.60 + 0.182258*v + 0.000104*v*v;
+      const pct = 0.8 + 0.1894393*Math.exp(-0.012778*tMin) + 0.2989558*Math.exp(-0.1932605*tMin);
+      const vdot = vo2 / pct;
+      if(!isFinite(vdot) || vdot <= 0) return null;
+      return vdot;
+    }
+
+    function velocityFromVO2(vo2){
+      const a = 0.000104, b = 0.182258, c = -4.60 - vo2;
+      const disc = b*b - 4*a*c;
+      if(disc <= 0) return null;
+      const v1 = (-b + Math.sqrt(disc)) / (2*a);
+      const v2 = (-b - Math.sqrt(disc)) / (2*a);
+      const v = Math.max(v1, v2);
+      return (isFinite(v) && v > 0) ? v : null; // m/min
+    }
+
+    function paceFromVO2(vo2){
+      const v = velocityFromVO2(vo2);
+      if(!v) return null;
+      return roundTo5((1000 / v) * 60);
+    }
+
+    function pacesFromVDOT(vdot){
+      const EASY = paceFromVO2(vdot * 0.70);
+      const STEADY = paceFromVO2(vdot * 0.78);
+      const MARA = paceFromVO2(vdot * 0.83);
+      const THR = paceFromVO2(vdot * 0.88);
+      const INT = paceFromVO2(vdot * 0.98);
+      return { vdot, EASY, STEADY, MARA, THR, INT };
+    }
+
+    function pacesFallback(inputs){
+      // priority: easy pace -> goal time -> generic
+      let EASY = null;
+      if(inputs.anchorType === "easy"){
+        const e = parseTimeToSeconds(inputs.easyPace);
+        if(e) EASY = roundTo5(e);
+      }
+
+      let mp = null;
+      if(inputs.anchorType === "goal" || inputs.anchorType === "easy"){
+        const goalSec = parseTimeToSeconds(inputs.goalTime);
+        if(goalSec) mp = roundTo5(goalSec / 42.195);
+      }
+
+      if(!EASY){
+        EASY = mp ? roundTo5(mp + 75) : 360;
+      }
+      const STEADY = mp ? roundTo5(mp + 25) : roundTo5(EASY - 20);
+      const MARA = mp ? mp : roundTo5(STEADY + 10);
+      const THR = mp ? roundTo5(mp - 12) : roundTo5(EASY - 55);
+      const INT = mp ? roundTo5(mp - 35) : roundTo5(EASY - 85);
+      return { vdot: null, EASY, STEADY, MARA, THR, INT };
+    }
+
+    function formatRange(sec, spread){
+      if(!sec) return "—";
+      const lo = roundTo5(sec - spread);
+      const hi = roundTo5(sec + spread);
+      return `${paceSecondsToString(lo)}–${paceSecondsToString(hi)}/km`;
+    }
+
+    function easyCapSec(paces, inputs, cat){
+      if(!paces.EASY) return null;
+      let extra = 0;
+      if(inputs.injuryStatus==="yellow") extra += 10;
+      if(inputs.injuryStatus==="red") extra += 20;
+      if(cat==="A") extra += 10;
+      if(inputs.terrain==="trail") extra += 10;
+      return roundTo5(paces.EASY + extra);
+    }
+
+    // ---------------------------
+    // Exact workout libraries
+    // ---------------------------
+    function pickThresholdWorkout(cat, phase, deload){
+      if(cat === "A") return null;
+      // taper weeks: shorter doses
+      if(deload || phase === "taper"){
+        return (cat === "C") ? "2×10 min @ T (3 min easy)" : "2×8 min @ T (3 min easy)";
+      }
+      if(cat === "B") return "3×8 min @ T (2 min easy)";
+      return "2×20 min @ T (5 min easy)";
+    }
+
+    function pickMPWorkout(cat, phase, deload){
+      if(phase !== "block") return null;
+      if(cat === "A") return null;
+      if(deload) return "2×10 min @ MP (5 min easy)";
+      if(cat === "B") return "2×20 min @ MP (5 min easy)";
+      return "3×15 min @ MP (5 min easy)";
+    }
+
+    function pickVO2Workout(cat, phase, deload, inputs){
+      if(phase !== "block") return null;
+      if(cat === "A") return null;
+      if(inputs.tolSpeed === "no") return null;
+      // For marathon block keep VO2 minimal; use as optional touch for B/C
+      if(deload) return "6×1 min fast (2 min easy)";
+      if(cat === "C") return "5×3 min @ I (2 min easy)";
+      return "5×2 min @ I (2 min easy)";
+    }
+
+    // ---------------------------
+    // Blended engine (philosophy components) with gating
+    // ---------------------------
+    function chooseBlend(inputs, cat, phase, paces){
+      const avg4 = inputs.avg4 || 0;
+      const freq = inputs.daysAvailable.length;
+      const lrBase = Math.max(inputs.lr30 || 0, inputs.lr12 || 0);
+
+      // Base: blend is mostly structural; Block: full blend; Taper: scaled
+      // We'll output: keyTypes list (T/MP/VO2), includeMLR, hansonsOn, norwegianSingles
+      let quality = 2;
+      if(inputs.injuryStatus === "red") quality = 0;
+      else if(inputs.injuryStatus === "yellow") quality = 1;
+      else if(cat === "A") quality = 0;
+      else if(phase === "base") quality = (cat === "C" && inputs.tolTempo !== "no") ? 1 : 0;
+      else if(phase === "taper") quality = (cat === "A") ? 0 : 1;
+
+      // Hansons-like distribution: good if freq >=6 and LR cap/time cap tight or LR base low ratio
+      const lrRatio = avg4 > 0 ? (lrBase / avg4) : 0;
+      const hansonsOn = (phase === "block") && inputs.injuryStatus==="green" && freq >= 6 && (inputs.longRunCapMin > 0 && inputs.longRunCapMin <= 150 || (lrRatio > 0 && lrRatio < 0.22));
+
+      // Pfitz-like MLR: if freq>=5 and base/block (not taper) and not A
+      const includeMLR = (cat !== "A") && (freq >= 5) && (phase !== "taper") && (inputs.injuryStatus !== "red");
+
+      // Norwegian singles: allow only if green, freq>=6, avg4>=50, and phase=block (or late base)
+      const norwegianSingles = (cat !== "A") && inputs.injuryStatus==="green" && freq >= 6 && avg4 >= 50 && (phase === "block");
+
+      // Key session selection
+      const keys = [];
+      if(quality <= 0) {
+        // none
+      } else {
+        if(phase === "base") {
+          // only controlled threshold if appropriate
+          if(inputs.tolTempo !== "no") keys.push("T");
+        } else if(phase === "block") {
+          if(norwegianSingles && inputs.tolTempo !== "no") {
+            // replace big T workout with controlled T singles; still include MP if marathon
+            keys.push("T_SINGLE");
+            if(quality >= 2) keys.push("MP");
+          } else {
+            if(inputs.tolTempo !== "no") keys.push("T");
+            if(quality >= 2) keys.push("MP");
+            // optional VO2 as 3rd only for C and only if ok
+            if(quality >= 3 && inputs.tolSpeed !== "no") keys.push("VO2");
+          }
+        } else { // taper
+          if(inputs.tolTempo !== "no") keys.push("T_SINGLE");
+        }
+      }
+
+      while(keys.length > quality) keys.pop();
+
+      // Explain blend in human terms
+      const labels = [];
+      if(cat === "A") labels.push("Beginner-safe structure");
+      if(phase === "base") labels.push("Base build focus");
+      if(phase === "block") labels.push("Marathon-specific focus");
+      if(phase === "taper") labels.push("Taper focus");
+
+      if(includeMLR) labels.push("Pfitz-style medium-long run");
+      if(hansonsOn) labels.push("Hansons-style distribution");
+      if(norwegianSingles) labels.push("Norwegian controlled threshold singles");
+
+      // Daniels is your pace framework (VDOT)
+      if(paces && (paces.vdot || inputs.anchorType !== "none")) labels.push("Daniels-style pace guidance");
+
+      // Higdon-style simplicity if low frequency
+      if(freq <= 4) labels.push("Higdon-style simplicity");
+
+      return {
+        quality, keyTypes: keys,
+        includeMLR, hansonsOn, norwegianSingles,
+        blendText: labels.join(" + ")
+      };
+    }
+
+    // ---------------------------
+    // Progression weeks (phase-aware)
+    // ---------------------------
+    function computeWeeks(inputs, cat, phase){
+      const avg4 = inputs.avg4 || 0;
+      const maxWeek6m = inputs.maxWeek6m || 0;
+
+      // If no data, set safe baseline based on category
+      let base = avg4;
+      if(base <= 0){
+        base = (cat === "A") ? 8 : (cat === "B" ? 28 : 55);
+      }
+
+      // Base build: gentle 3 build + 1 deload
+      // Block: moderate build (or hold) depending on category
+      // Taper: reduce volume over 4 weeks
+      let w = [base, base, base, base];
+
+      const ceiling = (maxWeek6m > 0) ? maxWeek6m * 0.95 : Infinity;
+
+      const aggr = inputs.aggr || "normal";
+      const injury = inputs.injuryStatus;
+
+      const rf = (injury==="red") ? 0.70 : (injury==="yellow") ? 0.85 : 1.0;
+
+      if(phase === "taper"){
+        // 4-week taper template (relative to current base)
+        // keep frequency; reduce volume
+        const t1 = 0.85, t2 = 0.72, t3 = 0.58, t4 = 0.45;
+        w = [
+          round1(Math.min(ceiling, base*t1)),
+          round1(Math.min(ceiling, base*t2)),
+          round1(Math.min(ceiling, base*t3)),
+          round1(Math.min(ceiling, base*t4))
+        ];
+        return w;
+      }
+
+      // Base/block progression rates by category
+      let p1=0.04, p2=0.07, p3=0.10; // default base build-ish
+      if(cat==="A"){ p1=0.03; p2=0.05; p3=0.08; }
+      if(cat==="C"){ p1=0.03; p2=0.05; p3=0.07; }
+
+      if(phase === "block"){
+        // block: smaller progression (hold quality)
+        p1 *= 0.8; p2 *= 0.8; p3 *= 0.8;
+        if(cat==="A"){ p1=0.02; p2=0.03; p3=0.05; }
+      }
+
+      if(aggr==="conservative"){ p1*=0.75; p2*=0.75; p3*=0.75; }
+      if(aggr==="aggressive"){ p1*=1.15; p2*=1.15; p3*=1.15; }
+
+      p1*=rf; p2*=rf; p3*=rf;
+
+      const w1 = clamp(base*(1+p1), 6, ceiling);
+      const w2 = clamp(base*(1+p2), w1, ceiling);
+      const w3 = clamp(base*(1+p3), w2, ceiling);
+
+      const deloadPct = (cat==="A") ? 0.20 : (rf < 0.85 ? 0.30 : 0.22);
+      const w4 = w3*(1-deloadPct);
+
+      // 2-week cap for A (and soften if returning)
+      const cap2wk = (cat==="A") ? 1.30 : 1.25;
+      const w2c = Math.min(w2, base*cap2wk);
+      const w3c = Math.min(w3, w2c*(1+0.12));
+      const w4c = Math.min(w4, w3c*(1-0.15));
+
+      return [round1(w1), round1(w2c), round1(w3c), round1(w4c)];
+    }
+
+    // ---------------------------
+    // Long-run caps (share + spike + time)
+    // ---------------------------
+    function longRunShareCap(cat, phase){
+      // In block, LR share can be a bit higher for B/C, but keep safe
+      if(cat==="A") return 0.35;
+      if(phase==="block") return (cat==="C") ? 0.28 : 0.30;
+      return 0.30;
+    }
+
+    function longestRunSpikeCapKm(lr30){
+      if(!lr30 || lr30 <= 0) return Infinity;
+      const bump = (lr30 < 10) ? 1 : 2;
+      return Math.min(lr30*1.10, lr30 + bump);
+    }
+
+    function longRunCapKmByTime(inputs, easySec){
+      if(!inputs.longRunCapMin || inputs.longRunCapMin <= 0) return Infinity;
+      return (inputs.longRunCapMin * 60) / (easySec || 360);
+    }
+
+    function enforceWeekdayCapKm(km, inputs, easySec){
+      if(!inputs.weekdayCap || inputs.weekdayCap <= 0) return km;
+      const capKm = (inputs.weekdayCap * 60) / (easySec || 360);
+      return Math.min(km, capKm);
+    }
+
+    // ---------------------------
+    // Session templates (exact)
+    // ---------------------------
+    function sessionTemplate(type, paces, inputs, cat, phase, extras){
+      extras = extras || {};
+      const cap = easyCapSec(paces, inputs, cat);
+
+      const easyLine = cap ? `Easy: no faster than ${paceSecondsToString(cap)}/km` : "Easy: conversational";
+
+      if(type==="REST"){
+        return { tag:"REST", title:"Rest / mobility", paceLine:"—", details:"Optional mobility + light strength." };
+      }
+
+      if(type==="EASY"){
+        return {
+          tag:"E", title:"Easy run", paceLine: easyLine,
+          details:"Relaxed. If you feel good, add 4–8×15–20s strides (smooth, not all-out)."
+        };
+      }
+
+      if(type==="REC"){
+        return {
+          tag:"REC", title:"Very easy / recovery", paceLine: easyLine,
+          details:"Short and gentle. Swap to walk/cycle if niggles flare."
+        };
+      }
+
+      if(type==="LR"){
+        return {
+          tag:"LR", title:"Long run (easy)", paceLine: easyLine,
+          details: (phase==="block")
+            ? "Mostly easy. If feeling great, finish last 15–25 min steady. Fuel if >90 min."
+            : "Keep it comfortable. Focus on consistency and safe progression."
+        };
+      }
+
+      if(type==="MLR"){
+        return {
+          tag:"MLR", title:"Medium-long run", paceLine: paces.STEADY ? `Steady: ${formatRange(paces.STEADY,10)} (or easier)` : easyLine,
+          details:"Aerobic volume builder. Controlled effort — not a race."
+        };
+      }
+
+      if(type==="T"){
+        const thr = extras.thr || "3×8 min @ T (2 min easy)";
+        return {
+          tag:"T", title:"Threshold session",
+          paceLine: paces.THR ? `T: ${formatRange(paces.THR,8)}` : "T: comfortably hard (controlled)",
+          details:`WU 10 min → ${thr} → CD 10 min. Smooth, not strained.`
+        };
+      }
+
+      if(type==="T_SINGLE"){
+        const thr = extras.thr || "2×8 min @ T (3 min easy)";
+        return {
+          tag:"T", title:"Controlled threshold single",
+          paceLine: paces.THR ? `T: ${formatRange(paces.THR,8)}` : "Controlled tempo effort",
+          details:`WU 10 min → ${thr} → CD 10 min. Keep it controlled.`
+        };
+      }
+
+      if(type==="MP"){
+        const mp = extras.mp || "2×20 min @ MP (5 min easy)";
+        return {
+          tag:"MP", title:"Marathon pace workout",
+          paceLine: paces.MARA ? `MP: ${formatRange(paces.MARA,8)}` : "MP: use goal pace if known",
+          details:`WU 10 min → ${mp} → CD 10 min.`
+        };
+      }
+
+      if(type==="VO2"){
+        const vo2 = extras.vo2 || "5×2 min @ I (2 min easy)";
+        return {
+          tag:"I", title:"VO2 touch",
+          paceLine: paces.INT ? `I: ${formatRange(paces.INT,6)}` : "Hard but repeatable",
+          details:`WU 12 min → ${vo2} → CD 10 min.`
+        };
+      }
+
+      if(type==="RW"){
+        const rw = extras.rw || "6×(2 min run / 2 min walk)";
+        return {
+          tag:"RW", title:"Run-walk",
+          paceLine: easyLine,
+          details:`Total session time-based. Example: ${rw}. Keep run parts easy.`
+        };
+      }
+
+      return { tag:"", title:"Run", paceLine: easyLine, details:"" };
+    }
+
+    // ---------------------------
+    // Build week plan (run-day invariant)
+    // ---------------------------
+    function pickQualityDays(runDays, longRunDay){
+      const lrDay = runDays.includes(longRunDay) ? longRunDay : runDays[runDays.length-1];
+      const preferred = ["Tue","Thu","Wed","Mon","Fri","Sat","Sun"];
+      const q = [];
+      for(const d of preferred){
+        if(runDays.includes(d) && d !== lrDay){
+          q.push(d);
+          if(q.length >= 3) break;
+        }
+      }
+      return { lrDay, qDays: q };
+    }
+
+    function buildWeekPlan(weekKm, inputs, cat, phase, blend, paces, weekIndex){
+      const runDays = inputs.daysAvailable.slice();
+      const { lrDay, qDays } = pickQualityDays(runDays, inputs.longRunDay);
+      const deload = (weekIndex === 3);
+
+      const easySec = paces.EASY || 360;
+
+      // initialize: every selected run day is a run
+      const dayPlan = {};
+      for(const d of dayOrder){
+        dayPlan[d] = { type:"REST", km:0, ...sessionTemplate("REST", paces, inputs, cat, phase) };
+      }
+      for(const d of runDays){
+        dayPlan[d] = { type:"EASY", km:0, ...sessionTemplate("EASY", paces, inputs, cat, phase) };
+      }
+
+      // Beginner: run-walk on first 2 runs + slightly longer RW on LR day
+      if(cat === "A" && (inputs.canRun5 === "no" || inputs.injuryStatus === "red")){
+        const ordered = runDays.slice().sort((a,b)=> dayOrder.indexOf(a)-dayOrder.indexOf(b));
+        const baseRW = ["6×(1 min run / 2 min walk)","6×(2 min run / 2 min walk)","6×(3 min run / 90s walk)","5×(3 min run / 90s walk)"][weekIndex] || "6×(2/2)";
+        const longRW = ["8×(1/2)","8×(2/2)","8×(3/90s)","6×(2/2)"][weekIndex] || "8×(2/2)";
+        // assign LR day to RW long
+        const lr = runDays.includes(lrDay) ? lrDay : ordered[ordered.length-1];
+        dayPlan[lr] = { type:"RW", km:0, ...sessionTemplate("RW", paces, inputs, cat, phase, {rw: longRW}) };
+        dayPlan[lr].tag = "RW+";
+        dayPlan[lr].title = "Longer run-walk";
+
+        const other = ordered.filter(d => d !== lr);
+        for(let i=0;i<other.length;i++){
+          const d = other[i];
+          if(i < 2){
+            dayPlan[d] = { type:"RW", km:0, ...sessionTemplate("RW", paces, inputs, cat, phase, {rw: baseRW}) };
+          } else {
+            dayPlan[d] = { type:"REC", km:0, ...sessionTemplate("REC", paces, inputs, cat, phase) };
+          }
+        }
+      } else {
+        // non-beginner: assign LR
+        dayPlan[lrDay] = { type:"LR", km:0, ...sessionTemplate("LR", paces, inputs, cat, phase) };
+
+        // Assign key workouts to qDays
+        const thr = pickThresholdWorkout(cat, phase, deload);
+        const mp = pickMPWorkout(cat, phase, deload);
+        const vo2 = pickVO2Workout(cat, phase, deload, inputs);
+
+        const keys = blend.keyTypes.slice();
+        const workoutDays = qDays.filter(d => d !== lrDay).slice(0, keys.length);
+
+        for(let i=0;i<workoutDays.length;i++){
+          const d = workoutDays[i];
+          const k = keys[i];
+          if(k==="T"){
+            dayPlan[d] = { type:"T", km:0, ...sessionTemplate("T", paces, inputs, cat, phase, {thr}) };
+          } else if(k==="T_SINGLE"){
+            dayPlan[d] = { type:"T_SINGLE", km:0, ...sessionTemplate("T_SINGLE", paces, inputs, cat, phase, {thr}) };
+          } else if(k==="MP"){
+            dayPlan[d] = { type:"MP", km:0, ...sessionTemplate("MP", paces, inputs, cat, phase, {mp}) };
+          } else if(k==="VO2"){
+            dayPlan[d] = { type:"VO2", km:0, ...sessionTemplate("VO2", paces, inputs, cat, phase, {vo2}) };
+          }
+        }
+
+        // MLR if enabled and there’s a free run day to assign
+        if(blend.includeMLR && !deload){
+          const pref = ["Wed","Thu","Tue","Mon","Fri","Sat","Sun"];
+          let mlrDay = null;
+          for(const d of pref){
+            if(runDays.includes(d) && d !== lrDay && (dayPlan[d].type === "EASY")){
+              mlrDay = d; break;
+            }
+          }
+          if(mlrDay){
+            dayPlan[mlrDay] = { type:"MLR", km:0, ...sessionTemplate("MLR", paces, inputs, cat, phase) };
+          }
+        }
+      }
+
+      // Allocate km safely (no long-run skew, respect caps)
+      // Long run target:
+      let lrKm = 0;
+
+      // If beginner RW, distribute evenly (km is approximate)
+      const runCount = runDays.length;
+      const shareCap = longRunShareCap(cat, phase);
+
+      // Identify LR day (for non-beginner)
+      const lrKey = (cat === "A") ? null : lrDay;
+
+      if(cat !== "A"){
+        lrKm = weekKm * (phase==="block" ? 0.26 : 0.24);
+
+        lrKm = Math.min(lrKm, weekKm * shareCap);
+        lrKm = Math.min(lrKm, longRunCapKmByTime(inputs, easySec));
+        lrKm = Math.min(lrKm, longestRunSpikeCapKm(inputs.lr30 || 0));
+
+        const minLR = (phase==="taper") ? Math.max(10, weekKm*0.18) : (phase==="block" ? Math.max(14, weekKm*0.22) : Math.max(12, weekKm*0.20));
+        lrKm = Math.max(lrKm, minLR);
+        lrKm = round1(lrKm);
+
+        dayPlan[lrKey].km = lrKm;
+      }
+
+      // Allocate km for key days
+      for(const d of runDays){
+        const t = dayPlan[d].type;
+        if(t==="T" || t==="T_SINGLE" || t==="MP" || t==="VO2"){
+          let frac = 0.12;
+          if(inputs.injuryStatus!=="green") frac = 0.10;
+          if(t==="MP") frac = 0.13;
+          if(t==="VO2") frac = 0.11;
+          let km = round1(weekKm * frac);
+          km = round1(enforceWeekdayCapKm(km, inputs, easySec));
+          dayPlan[d].km = Math.max(dayPlan[d].km || 0, km);
+        }
+        if(t==="MLR"){
+          let km = round1(weekKm * 0.18);
+          km = round1(enforceWeekdayCapKm(km, inputs, easySec));
+          dayPlan[d].km = Math.max(dayPlan[d].km || 0, km);
+        }
+      }
+
+      // Fill remaining km across remaining run days
+      let used = dayOrder.reduce((s,d)=> s + (dayPlan[d].km||0), 0);
+      let remaining = Math.max(0, weekKm - used);
+
+      const fillDays = runDays.filter(d => (dayPlan[d].km||0) === 0);
+      const per = fillDays.length ? (remaining / fillDays.length) : 0;
+
+      for(const d of fillDays){
+        let km = round1(per);
+        km = round1(enforceWeekdayCapKm(km, inputs, easySec));
+        if(inputs.injuryStatus !== "green" && km > 8) km = 8;
+        if(km < 3 && weekKm >= 10) km = 3;
+        dayPlan[d].km = km;
+      }
+
+      // Final nudge to hit weekly total
+      used = dayOrder.reduce((s,d)=> s + (dayPlan[d].km||0), 0);
+      const diff = round1(weekKm - used);
+      if(Math.abs(diff) >= 0.2){
+        const candidates = runDays.filter(d => (cat==="A" ? true : d !== lrKey) && dayPlan[d].km > 0);
+        const targetDay = candidates.length ? candidates[candidates.length-1] : runDays[0];
+        dayPlan[targetDay].km = round1(Math.max(0, dayPlan[targetDay].km + diff));
+      }
+
+      // If yellow/red, mark one shortest easy as REC (but keep run count)
+      if(inputs.injuryStatus !== "green"){
+        const easies = runDays
+          .filter(d => dayPlan[d].type==="EASY")
+          .sort((a,b)=> (dayPlan[a].km||0)-(dayPlan[b].km||0));
+        if(easies.length){
+          const d = easies[0];
+          dayPlan[d] = { type:"REC", km: dayPlan[d].km, ...sessionTemplate("REC", paces, inputs, cat, phase) };
+        }
+      }
+
+      return dayPlan;
+    }
+
+    // ---------------------------
+    // Build plan
+    // ---------------------------
+    function computePaces(inputs){
+      // VDOT if race anchor; otherwise fallback
+      if(inputs.anchorType === "race"){
+        const dist = (inputs.raceDist === "custom") ? inputs.raceDistCustom : Number(inputs.raceDist);
+        const t = parseTimeToSeconds(inputs.raceTime);
+        if(dist && t){
+          const vdot = vdotFromRace(dist, t);
+          if(vdot) return pacesFromVDOT(vdot);
+        }
+      }
+      if(inputs.anchorType === "none"){
+        return { vdot:null, EASY:null, STEADY:null, MARA:null, THR:null, INT:null };
+      }
+      return pacesFallback(inputs);
+    }
+
+    function buildPlan(inputs){
+      const startDate = nextMondayISO();
+      const phase = pickPhase(inputs);
+      const cat = categoryABC(inputs);
+
+      // If no training data, set a safe baseline
+      const anyMileage = inputs.last4.some(x => x > 0);
+      if(!anyMileage){
+        const base = (cat==="A") ? 8 : (cat==="B" ? 28 : 55);
+        inputs.last4 = [base,base,base,base];
+        inputs.avg4 = base;
+      }
+
+      const paces = computePaces(inputs);
+
+      // Confidence scoring
+      let confidence = 45;
+      confidence += anyMileage ? 20 : 0;
+      confidence += inputs.lr30 > 0 ? 10 : 0;
+      confidence += (paces && (paces.vdot || paces.EASY)) ? 15 : 0;
+      confidence += inputs.goalDate ? 10 : 0;
+      confidence = clamp(confidence, 35, 95);
+
+      // Blend + weeks
+      const blend = chooseBlend(inputs, cat, phase, paces);
+      const weeks = computeWeeks(inputs, cat, phase);
+
+      // Warnings / notes
+      const warnings = [];
+      warnings.push(`Phase: ${phaseLabel(phase)} (auto${inputs.phaseOverride!=="auto" ? " override applied" : ""}).`);
+      warnings.push(`Category: ${cat} (auto safety category).`);
+      warnings.push(`Run days selected: ${inputs.daysAvailable.join(", ")} — plan schedules every selected day.`);
+      if(cat==="A") warnings.push("Beginner-safe mode: no marathon-specific workouts; focus on consistency and gentle progression.");
+      if(inputs.injuryStatus !== "green") warnings.push(`Injury status ${inputs.injuryStatus.toUpperCase()}: intensity reduced and recovery emphasis increased.`);
+      if(inputs.anchorType === "none") warnings.push("Effort-based pacing: use conversational effort for easy runs, controlled effort for workouts.");
+
+      // Build weeks
+      const planWeeks = [];
+      for(let wi=0; wi<4; wi++){
+        planWeeks.push(buildWeekPlan(weeks[wi], inputs, cat, phase, blend, paces, wi));
+      }
+
+      return { inputs, startDate, phase, cat, paces, blend, weeks, planWeeks, warnings, confidence };
+    }
+
+    // ---------------------------
+    // Render
+    // ---------------------------
+    let CURRENT = null;
+
+    function renderPaces(plan){
+      const p = plan.paces;
+      const cap = easyCapSec(p, plan.inputs, plan.cat);
+
+      const line = (label, val) => `<div class="tiny"><b>${label}</b> <span class="mono">${val}</span></div>`;
+      let html = "";
+      html += line("Easy (cap):", cap ? `no faster than ${paceSecondsToString(cap)}/km` : "conversational effort");
+      html += line("Steady:", p.STEADY ? `${formatRange(p.STEADY,10)} (or easier)` : "—");
+      html += line("Marathon pace:", p.MARA ? `${formatRange(p.MARA,8)}` : "—");
+      html += line("Threshold:", p.THR ? `${formatRange(p.THR,8)}` : "—");
+      html += line("Intervals:", p.INT ? `${formatRange(p.INT,6)}` : "—");
+      html += `<div class="tiny" style="margin-top:10px;">All paces rounded to nearest 5 seconds.</div>`;
+      return html;
+    }
+
+    function renderPlan(plan){
+      const p = plan.paces;
+      const vdotStr = p.vdot ? p.vdot.toFixed(1) : "—";
+      const weeksStr = plan.weeks.map(w => `${w} km`).join(" / ");
+
+      $("kpis").innerHTML = `
+        <div class="kpi"><div class="t">Phase</div><div class="v mono">${plan.phase.toUpperCase()}</div><div class="tiny">${phaseLabel(plan.phase)}</div></div>
+        <div class="kpi"><div class="t">Category</div><div class="v mono">${plan.cat}</div><div class="tiny">A=new/returning • B=intermediate • C=advanced</div></div>
+        <div class="kpi"><div class="t">4-week volume</div><div class="v mono">${weeksStr}</div><div class="tiny">3 build + 1 deload (or taper)</div></div>
+      `;
+
+      $("summaryText").innerHTML = `
+        <div class="tiny"><b>Blend:</b> ${plan.blend.blendText}</div>
+        <div class="tiny" style="margin-top:6px;"><b>VDOT:</b> <span class="mono">${vdotStr}</span></div>
+      `;
+
+      $("confBar").style.width = `${plan.confidence}%`;
+      $("confText").textContent =
+        `${plan.confidence}% confidence. ` +
+        (plan.confidence >= 80 ? "Strong inputs."
+          : plan.confidence >= 55 ? "Good — add a race/time trial for tighter paces."
+          : "Add more inputs for tighter recommendations.");
+
+      $("paceText").innerHTML = renderPaces(plan);
+
+      if(plan.warnings.length){
+        $("warnBox").style.display = "block";
+        $("warnText").innerHTML = `<ul class="tiny" style="margin:6px 0 0 18px;">${plan.warnings.map(w=>`<li>${w}</li>`).join("")}</ul>`;
+      } else {
+        $("warnBox").style.display = "none";
+      }
+
+      const container = $("workouts");
+      container.innerHTML = "";
+      $("tableBody").innerHTML = "";
+
+      for(let wi=0; wi<4; wi++){
+        const wk = document.createElement("div");
+        wk.className = "wk";
+
+        const wkStart = addDaysISO(plan.startDate, wi*7);
+        const wkEnd = addDaysISO(plan.startDate, wi*7 + 6);
+
+        const top = document.createElement("div");
+        top.className = "wkTop";
+        top.innerHTML = `
+          <div>
+            <b>Week ${wi+1}</b>
+            <div class="tiny">${wkStart} → ${wkEnd}</div>
+          </div>
+          <div class="pill"><strong>Target</strong> ${plan.weeks[wi]} km</div>
+        `;
+        wk.appendChild(top);
+
+        const grid = document.createElement("div");
+        grid.className = "wkGrid";
+
+        const dayPlan = plan.planWeeks[wi];
+        for(const d of dayOrder){
+          const s = dayPlan[d];
+          const div = document.createElement("div");
+          div.className = "session";
+
+          const kmLine = (s.km && s.km > 0) ? `${s.km} km` : "";
+          div.innerHTML = `
+            <div class="title">
+              <div><b>${d}</b> • ${s.title}${kmLine ? ` <span class="tiny mono">(${kmLine})</span>` : ""}</div>
+              <span class="tag">${s.tag || s.type}</span>
+            </div>
+            <div class="paceLine">${s.paceLine || "—"}</div>
+            <div class="details">${s.details || ""}</div>
+          `;
+          grid.appendChild(div);
+        }
+
+        wk.appendChild(grid);
+        container.appendChild(wk);
+
+        const tr = document.createElement("tr");
+        const wkCell = document.createElement("td");
+        wkCell.innerHTML = `<b>W${wi+1}</b><div class="tiny mono">${plan.weeks[wi]} km</div>`;
+        tr.appendChild(wkCell);
+
+        for(const d of dayOrder){
+          const s = dayPlan[d];
+          const txt = (s.km && s.km>0) ? `${s.tag}: ${s.km}k` : "REST";
+          const td = document.createElement("td");
+          td.innerHTML = `<div class="tiny">${txt}</div><div class="tiny mono">${(s.paceLine||"").replaceAll("Easy: ","").replaceAll("no faster than ","≤ ")}</div>`;
+          tr.appendChild(td);
+        }
+        $("tableBody").appendChild(tr);
+      }
+
+      $("previewSubtitle").textContent = "Generated. Use Share / Copy / .ics to export.";
+    }
+
+    // ---------------------------
+    // Copy / Share / ICS
+    // ---------------------------
+    function planToText(plan){
+      const lines = [];
+      lines.push(`MARATHON TRAINING PLAN — Start ${plan.startDate}`);
+      lines.push(`Phase: ${phaseLabel(plan.phase)} | Category: ${plan.cat}`);
+      lines.push(`Weeks (km): ${plan.weeks.join(" / ")}`);
+      lines.push(`Run days: ${plan.inputs.daysAvailable.join(", ")}`);
+      lines.push(`Blend: ${plan.blend.blendText}`);
+      lines.push("");
+
+      const p = plan.paces;
+      const cap = easyCapSec(p, plan.inputs, plan.cat);
+      lines.push(`PACES`);
+      lines.push(`- Easy cap: ${cap ? "no faster than "+paceSecondsToString(cap)+"/km" : "conversational effort"}`);
+      if(p.STEADY) lines.push(`- Steady: ${formatRange(p.STEADY,10)}`);
+      if(p.MARA) lines.push(`- MP: ${formatRange(p.MARA,8)}`);
+      if(p.THR) lines.push(`- Threshold: ${formatRange(p.THR,8)}`);
+      if(p.INT) lines.push(`- Intervals: ${formatRange(p.INT,6)}`);
+      lines.push("");
+
+      for(let wi=0; wi<4; wi++){
+        const wkStart = addDaysISO(plan.startDate, wi*7);
+        const wkEnd = addDaysISO(plan.startDate, wi*7+6);
+        lines.push(`Week ${wi+1} (${wkStart} → ${wkEnd}) — Target ${plan.weeks[wi]} km`);
+        const dp = plan.planWeeks[wi];
+        for(const d of dayOrder){
+          const s = dp[d];
+          lines.push(`  ${d}: ${s.title}${s.km>0 ? ` — ${s.km} km` : ""} (${s.tag})`);
+          if(s.paceLine && s.paceLine !== "—") lines.push(`     Pace: ${s.paceLine}`);
+          if(s.details) lines.push(`     ${s.details}`);
+        }
+        lines.push("");
+      }
+      return lines.join("\n");
+    }
+
+    function isoToICSDate(iso){ return iso.replaceAll("-",""); }
+
+    function planToICS(plan){
+      const uidBase = "mpkm-marathonplan-" + Math.random().toString(16).slice(2);
+      const dtstamp = new Date().toISOString().replaceAll(/[-:]/g,"").split(".")[0] + "Z";
+
+      const lines = [];
+      lines.push("BEGIN:VCALENDAR");
+      lines.push("VERSION:2.0");
+      lines.push("PRODID:-//MarathonPaceKM//MarathonPlan//EN");
+      lines.push("CALSCALE:GREGORIAN");
+      lines.push("METHOD:PUBLISH");
+
+      let eventCount = 0;
+      for(let wi=0; wi<4; wi++){
+        const wkStart = addDaysISO(plan.startDate, wi*7);
+        const dp = plan.planWeeks[wi];
+        for(let di=0; di<7; di++){
+          const dayName = dayOrder[di];
+          const iso = addDaysISO(wkStart, di);
+          const s = dp[dayName];
+          if(s.tag === "REST") continue;
+
+          const summary = `${s.title}${s.km ? ` (${s.km} km)` : ""}`;
+          const desc = (s.paceLine ? `Pace: ${s.paceLine}\\n` : "") + (s.details || "");
+          const dt = isoToICSDate(iso);
+
+          lines.push("BEGIN:VEVENT");
+          lines.push(`UID:${uidBase}-${eventCount}@marathonpacekm.com`);
+          lines.push(`DTSTAMP:${dtstamp}`);
+          lines.push(`DTSTART;VALUE=DATE:${dt}`);
+          lines.push(`DTEND;VALUE=DATE:${dt}`);
+          lines.push(`SUMMARY:${summary}`);
+          lines.push(`DESCRIPTION:${desc.replaceAll("\n","\\n")}`);
+          lines.push("END:VEVENT");
+
+          eventCount++;
+        }
+      }
+
+      lines.push("END:VCALENDAR");
+      return lines.join("\r\n");
+    }
+
+    function download(filename, content, mime){
+      const blob = new Blob([content], { type: mime || "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function inputsToParams(inputs){
+      const p = new URLSearchParams();
+      if(inputs.goalDate) p.set("gd", inputs.goalDate);
+      if(inputs.goalTime) p.set("gt", inputs.goalTime);
+      p.set("po", inputs.phaseOverride || "auto");
+
+      p.set("w1", String(inputs.last4[0]||0));
+      p.set("w2", String(inputs.last4[1]||0));
+      p.set("w3", String(inputs.last4[2]||0));
+      p.set("w4", String(inputs.last4[3]||0));
+      p.set("lr30", String(inputs.lr30||0));
+      if(inputs.lr12) p.set("lr12", String(inputs.lr12));
+      if(inputs.maxWeek6m) p.set("mx", String(inputs.maxWeek6m));
+      p.set("rpw", String(inputs.runsPerWeek||0));
+
+      p.set("cw", inputs.consistencyWeeks);
+      p.set("inj", inputs.injuryStatus);
+      p.set("stop", inputs.injuryStop7);
+      p.set("r5", inputs.canRun5);
+
+      p.set("tt", inputs.tolTempo);
+      p.set("ts", inputs.tolSpeed);
+
+      p.set("a", inputs.anchorType);
+      p.set("rd", inputs.raceDist);
+      if(inputs.raceDistCustom) p.set("rc", String(inputs.raceDistCustom));
+      if(inputs.raceTime) p.set("rt", inputs.raceTime);
+      if(inputs.easyPace) p.set("ep", inputs.easyPace);
+
+      p.set("days", inputs.daysAvailable.join(""));
+      p.set("lrd", inputs.longRunDay);
+      p.set("ter", inputs.terrain);
+
+      if(inputs.weekdayCap) p.set("wdc", String(inputs.weekdayCap));
+      if(inputs.longRunCapMin) p.set("lrc", String(inputs.longRunCapMin));
+      p.set("ag", inputs.aggr || "normal");
+
+      return p;
+    }
+
+    function applyParams(){
+      const p = new URLSearchParams(location.search);
+      if([...p.keys()].length === 0) return;
+      const get = (k) => p.get(k) || "";
+
+      if(get("gd")) $("goalDate").value = get("gd");
+      if(get("gt")) $("goalTime").value = get("gt");
+      if(get("po")) $("phaseOverride").value = get("po");
+
+      if(get("w1")) $("w1").value = get("w1");
+      if(get("w2")) $("w2").value = get("w2");
+      if(get("w3")) $("w3").value = get("w3");
+      if(get("w4")) $("w4").value = get("w4");
+      if(get("lr30")) $("lr30").value = get("lr30");
+      if(get("lr12")) $("lr12").value = get("lr12");
+      if(get("mx")) $("maxWeek6m").value = get("mx");
+      if(get("rpw")) $("runsPerWeek").value = get("rpw");
+
+      if(get("cw")) $("consistencyWeeks").value = get("cw");
+      if(get("inj")) $("injuryStatus").value = get("inj");
+      if(get("stop")) $("injuryStop7").value = get("stop");
+      if(get("r5")) $("canRun5").value = get("r5");
+
+      if(get("tt")) $("tolTempo").value = get("tt");
+      if(get("ts")) $("tolSpeed").value = get("ts");
+
+      if(get("a")) $("anchorType").value = get("a");
+      if(get("rd")) $("raceDist").value = get("rd");
+      if(get("rc")) $("raceDistCustom").value = get("rc");
+      if(get("rt")) $("raceTime").value = get("rt");
+      if(get("ep")) $("easyPace").value = get("ep");
+
+      if(get("days")){
+        const s = get("days");
+        for(const chip of document.querySelectorAll("#daysChips .chip")){
+          chip.setAttribute("aria-pressed", s.includes(chip.dataset.day) ? "true" : "false");
+        }
+      }
+      if(get("lrd")) $("longRunDay").value = get("lrd");
+      if(get("ter")) $("terrain").value = get("ter");
+      if(get("wdc")) $("weekdayCap").value = get("wdc");
+      if(get("lrc")) $("longRunCap").value = get("lrc");
+      if(get("ag")) $("aggr").value = get("ag");
+
+      syncAnchorUI();
+    }
+
+    function saveDraft(){
+      try{
+        const inputs = getInputs();
+        localStorage.setItem("mpkm_marathonplanner_v1", JSON.stringify(inputs));
+        $("autosaveStatus").textContent = "Autosave: on";
+      } catch {
+        $("autosaveStatus").textContent = "Autosave: unavailable";
+      }
+    }
+
+    function loadDraft(){
+      try{
+        const raw = localStorage.getItem("mpkm_marathonplanner_v1");
+        if(!raw) return;
+        const inputs = JSON.parse(raw);
+
+        $("goalDate").value = inputs.goalDate || "";
+        $("goalTime").value = inputs.goalTime || "";
+        $("phaseOverride").value = inputs.phaseOverride || "auto";
+
+        $("w1").value = inputs.last4?.[0] ?? "";
+        $("w2").value = inputs.last4?.[1] ?? "";
+        $("w3").value = inputs.last4?.[2] ?? "";
+        $("w4").value = inputs.last4?.[3] ?? "";
+        $("runsPerWeek").value = inputs.runsPerWeek ?? "";
+        $("lr30").value = inputs.lr30 ?? "";
+        $("lr12").value = inputs.lr12 ?? "";
+        $("maxWeek6m").value = inputs.maxWeek6m ?? "";
+
+        $("consistencyWeeks").value = inputs.consistencyWeeks || "9-16";
+        $("injuryStatus").value = inputs.injuryStatus || "green";
+        $("injuryStop7").value = inputs.injuryStop7 || "no";
+        $("canRun5").value = inputs.canRun5 || "yes";
+        $("tolTempo").value = inputs.tolTempo || "yes";
+        $("tolSpeed").value = inputs.tolSpeed || "yes";
+
+        $("anchorType").value = inputs.anchorType || "race";
+        $("raceDist").value = inputs.raceDist || "10";
+        $("raceDistCustom").value = inputs.raceDistCustom || "";
+        $("raceTime").value = inputs.raceTime || "";
+        $("easyPace").value = inputs.easyPace || "";
+
+        const days = inputs.daysAvailable || ["Mon","Tue","Wed","Thu","Sat"];
+        for(const chip of document.querySelectorAll("#daysChips .chip")){
+          chip.setAttribute("aria-pressed", days.includes(chip.dataset.day) ? "true" : "false");
+        }
+        $("longRunDay").value = inputs.longRunDay || "Sat";
+        $("terrain").value = inputs.terrain || "road";
+        $("weekdayCap").value = inputs.weekdayCap || "";
+        $("longRunCap").value = inputs.longRunCapMin || "";
+        $("aggr").value = inputs.aggr || "normal";
+
+        syncAnchorUI();
+        $("autosaveStatus").textContent = "Autosave: on";
+      } catch {}
+    }
+
+    // ---------------------------
+    // UI wiring
+    // ---------------------------
+    function syncAnchorUI(){
+      const a = $("anchorType").value;
+      $("raceBlock").style.display = (a==="race") ? "block" : "none";
+      $("easyBlock").style.display = (a==="easy") ? "block" : "none";
+      $("noneBlock").style.display = (a==="none") ? "block" : "none";
+
+      const isCustom = $("raceDist").value === "custom";
+      $("raceDistCustomWrap").style.display = isCustom ? "block" : "none";
+    }
+
+    function toggleChip(el){
+      const on = el.getAttribute("aria-pressed")==="true";
+      el.setAttribute("aria-pressed", on ? "false" : "true");
+      if(!$("runsPerWeek").value){
+        $("runsPerWeek").value = readDays().length;
+      }
+    }
+
+    function generate(){
+      try{
+        const inputs = getInputs();
+        saveDraft();
+
+        // sensible defaults for caps
+        if(!inputs.weekdayCap) $("weekdayCap").value = 60;
+        if(!inputs.longRunCapMin) $("longRunCap").value = 150;
+
+        const plan = buildPlan(getInputs());
+        CURRENT = plan;
+        renderPlan(plan);
+      } catch(e){
+        $("previewSubtitle").textContent = e?.message ? e.message : "Could not generate — check inputs.";
+        console.error(e);
+      }
+    }
+
+    function share(){
+      const inputs = getInputs();
+      const params = inputsToParams(inputs);
+      const url = location.origin + location.pathname + "?" + params.toString();
+      history.replaceState(null, "", "?" + params.toString());
+      navigator.clipboard.writeText(url).then(
+        ()=> $("previewSubtitle").textContent = "Share link copied to clipboard.",
+        ()=> $("previewSubtitle").textContent = "Could not copy share link."
+      );
+    }
+
+    function copyPlan(){
+      if(!CURRENT){ $("previewSubtitle").textContent = "Generate a plan first."; return; }
+      const txt = planToText(CURRENT);
+      navigator.clipboard.writeText(txt).then(
+        ()=> $("previewSubtitle").textContent = "Plan copied to clipboard.",
+        ()=> $("previewSubtitle").textContent = "Could not copy plan."
+      );
+    }
+
+    function downloadIcs(){
+      if(!CURRENT){ $("previewSubtitle").textContent = "Generate a plan first."; return; }
+      download("marathon-training-plan.ics", planToICS(CURRENT), "text/calendar");
+      $("previewSubtitle").textContent = "Downloaded marathon-training-plan.ics";
+    }
+
+    function resetAll(){
+      $("goalDate").value = "";
+      $("goalTime").value = "";
+      $("phaseOverride").value = "auto";
+
+      $("w1").value = ""; $("w2").value = ""; $("w3").value = ""; $("w4").value = "";
+      $("runsPerWeek").value = "";
+      $("lr30").value = "";
+      $("lr12").value = "";
+      $("maxWeek6m").value = "";
+
+      $("consistencyWeeks").value = "9-16";
+      $("injuryStatus").value = "green";
+      $("injuryStop7").value = "no";
+      $("canRun5").value = "yes";
+      $("tolTempo").value = "yes";
+      $("tolSpeed").value = "yes";
+
+      $("anchorType").value = "race";
+      $("raceDist").value = "10";
+      $("raceDistCustom").value = "";
+      $("raceTime").value = "";
+      $("easyPace").value = "";
+
+      const defaults = ["Mon","Tue","Wed","Thu","Sat"];
+      for(const chip of document.querySelectorAll("#daysChips .chip")){
+        chip.setAttribute("aria-pressed", defaults.includes(chip.dataset.day) ? "true" : "false");
+      }
+      $("longRunDay").value = "Sat";
+      $("terrain").value = "road";
+      $("weekdayCap").value = "";
+      $("longRunCap").value = "";
+      $("aggr").value = "normal";
+
+      syncAnchorUI();
+      CURRENT = null;
+
+      $("kpis").innerHTML = "";
+      $("summaryText").textContent = "Not generated yet.";
+      $("paceText").textContent = "Generate your plan to see paces.";
+      $("workouts").innerHTML = "";
+      $("tableBody").innerHTML = "";
+      $("warnBox").style.display = "none";
+      $("previewSubtitle").textContent = "Reset complete.";
+      $("confBar").style.width = "0%";
+      $("confText").textContent = "—";
+      history.replaceState(null, "", location.pathname);
+      localStorage.removeItem("mpkm_marathonplanner_v1");
+      $("autosaveStatus").textContent = "Autosave: off";
+      setStep(0);
+    }
+
+    function loadDemo(){
+      // A realistic "block" demo: race in 10 weeks, intermediate, 5–6 runs/wk
+      const d = new Date();
+      d.setDate(d.getDate() + 70);
+      $("goalDate").value = d.toISOString().slice(0,10);
+      $("goalTime").value = "3:45:00";
+      $("phaseOverride").value = "auto";
+
+      $("w1").value = 54; $("w2").value = 50; $("w3").value = 56; $("w4").value = 48;
+      $("runsPerWeek").value = 6;
+      $("lr30").value = 22;
+      $("maxWeek6m").value = 70;
+      $("lr12").value = 24;
+
+      $("consistencyWeeks").value = "9-16";
+      $("injuryStatus").value = "green";
+      $("injuryStop7").value = "no";
+      $("canRun5").value = "yes";
+      $("tolTempo").value = "yes";
+      $("tolSpeed").value = "yes";
+
+      $("anchorType").value = "race";
+      $("raceDist").value = "10";
+      $("raceTime").value = "44:30";
+
+      const onDays = ["Mon","Tue","Wed","Thu","Sat","Sun"];
+      for(const chip of document.querySelectorAll("#daysChips .chip")){
+        chip.setAttribute("aria-pressed", onDays.includes(chip.dataset.day) ? "true" : "false");
+      }
+      $("longRunDay").value = "Sun";
+      $("weekdayCap").value = 60;
+      $("longRunCap").value = 150;
+      $("terrain").value = "road";
+      $("aggr").value = "normal";
+
+      syncAnchorUI();
+      generate();
+      $("previewSubtitle").textContent = "Demo loaded.";
+    }
+
+    // stepper nav
+    document.querySelectorAll("[data-next]").forEach(btn => btn.addEventListener("click", () => {
+      const current = Number(document.querySelector(".section.active").dataset.step);
+      setStep(Math.min(5, current+1));
+    }));
+    document.querySelectorAll("[data-prev]").forEach(btn => btn.addEventListener("click", () => {
+      const current = Number(document.querySelector(".section.active").dataset.step);
+      setStep(Math.max(0, current-1));
+    }));
+    document.querySelectorAll(".step").forEach(s => s.addEventListener("click", () => setStep(Number(s.dataset.step))));
+
+    // day chips
+    document.querySelectorAll("#daysChips .chip").forEach(ch => ch.addEventListener("click", () => {
+      toggleChip(ch);
+      saveDraft();
+    }));
+
+    // anchor changes
+    $("anchorType").addEventListener("change", () => { syncAnchorUI(); saveDraft(); });
+    $("raceDist").addEventListener("change", () => { syncAnchorUI(); saveDraft(); });
+
+    // buttons
+    $("btnGenerate").addEventListener("click", generate);
+    $("btnGenerate2").addEventListener("click", generate);
+    $("btnShare").addEventListener("click", share);
+    $("btnCopy").addEventListener("click", copyPlan);
+    $("btnIcs").addEventListener("click", downloadIcs);
+    $("btnReset").addEventListener("click", resetAll);
+    $("btnLoadDemo").addEventListener("click", loadDemo);
+
+    // autosave on input changes
+    const autosaveIds = [
+      "goalDate","goalTime","phaseOverride",
+      "w1","w2","w3","w4","runsPerWeek","lr30","lr12","maxWeek6m",
+      "consistencyWeeks","injuryStatus","injuryStop7","canRun5","tolTempo","tolSpeed",
+      "anchorType","raceDist","raceDistCustom","raceTime","easyPace",
+      "longRunDay","terrain","weekdayCap","longRunCap","aggr"
+    ];
+    autosaveIds.forEach(id => { const el = $(id); if(el) el.addEventListener("input", () => saveDraft()); });
+
+    // init
+    syncAnchorUI();
+    loadDraft();
+    applyParams();
+
+    // auto-generate on share link
+    if(location.search && location.search.length > 3){
+      try { generate(); } catch {}
+    }
+  </script>
+
+<footer class="wrap" style="padding:24px 16px 40px">
+  <div class="card" style="padding:16px">
+    <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
+      <a href="/">Pace chart hub</a>
+      <a href="/marathon-pace-calculator/">Calculator</a>
+      <a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
+      <a href="/monthly-training-plan/">Monthly plan</a>
+      <a href="/how-to-use-marathon-pace-chart/">How to use</a>
+      <a href="/even-vs-negative-splits/">Even vs negative splits</a>
+      <a href="/sitemap/">HTML sitemap</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/disclaimer/">Disclaimer</a>
+    </div>
+    <p class="tiny muted" style="margin-top:12px">Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>

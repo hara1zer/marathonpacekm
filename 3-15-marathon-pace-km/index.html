@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- CTR-focused title + description -->
+  <title>3:15 Marathon Pace Chart (4:37/km, 7:26/mi) | Splits, Pace Band, Calculator</title>
+  <meta name="description" content="3:15 marathon pace is 4:37 per km (≈7:26/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://marathonpacekm.com/3-15-marathon-pace-km/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="3:15 Marathon Pace Chart (4:37/km) – Splits & Printable Pace Band" />
+  <meta property="og:description" content="Key 3:15 split times + full splits calculator (km) and a printable pace band." />
+  <meta property="og:url" content="https://marathonpacekm.com/3-15-marathon-pace-km/" />
+  <meta property="og:image" content="https://marathonpacekm.com/assets/og/3-15.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="3:15 marathon pace: 4:37 per km splits and pace band" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="3:15 Marathon Pace Chart (4:37/km) - Splits & Printable Pace Band" />
+  <meta name="twitter:description" content="Key 3:15 split times + full splits calculator (km) and a printable pace band." />
+  <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/3-15.png" />
+
+  <link rel="preload" href="/assets/style.css" as="style" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    #calculator, #key-splits, #pacing-plan, #fueling, #related-goal-times, #pace-chart, #faq, #who-this-suits, #common-mistakes, #pace-conversions, #race-strategy{ scroll-margin-top: 16px; }
+
+    .toc { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .toc a { text-decoration:none; }
+
+    .facts { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top:12px; }
+    @media (min-width: 720px){ .facts { grid-template-columns: repeat(4, minmax(0,1fr)); } }
+    .fact{
+      padding: 12px;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 12px;
+      background: rgba(255,255,255,.6);
+    }
+
+    .splits-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    @media (min-width: 720px){
+      .splits-grid{ grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    .split-item{
+      padding: 12px;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 12px;
+      background: rgba(255,255,255,.6);
+    }
+    .split-item strong{ display:block; margin-bottom: 4px; }
+
+    .splits-table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      overflow:hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.6);
+    }
+    .splits-table th, .splits-table td{
+      text-align:left;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      vertical-align: top;
+    }
+    .splits-table tr:last-child td{ border-bottom: 0; }
+
+    /* Print pace band: band-only mode */
+    #printBand { display: none; }
+
+    @media print{
+      body.print-band * { visibility: hidden !important; }
+      body.print-band #printBand,
+      body.print-band #printBand * { visibility: visible !important; }
+
+      body.print-band #printBand{
+        display: block !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+
+      body.print-band .wrap{ width: 100% !important; margin: 0 !important; }
+      body.print-band .card{
+        box-shadow:none !important;
+        border:1px solid #ddd !important;
+        background:#fff !important;
+      }
+    }
+  </style>
+
+  <!-- Structured data (FAQ with real key times) -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What pace per km is a 3:15 marathon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 3:15:00 marathon requires about 4:37 per km on average (42.195 km in 3 hours 15 minutes)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What pace per mile is a 3:15 marathon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A 3:15:00 marathon averages about 7:26 per mile."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the key split times for a 3:15 marathon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Key markers for a 3:15 marathon: 5k 0:23:06, 10k 0:46:13, half 1:37:30, 30k 2:18:39, 40k 3:04:51, finish 3:15:00."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many carbs per hour for a 3:15 marathon?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many runners target ~60–90g carbs per hour depending on tolerance; practise in training and start fueling early."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I pace by heart rate or pace?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use pace as the plan, but effort as the governor—especially on hills, in wind, or heat. Avoid big surges early."
+      }
+    }
+  ]
+}
+  </script>
+
+  <script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},{"@type":"ListItem","position":2,"name":"3:15 Marathon Pace Chart (4:37/km)","item":"https://marathonpacekm.com/3-15-marathon-pace-km/"}]}
+  </script>
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+</head>
+
+<body id="top">
+  <header class="wrap">
+    <h1>3:15 Marathon Pace Chart (4:37/km)</h1>
+    <p class="sub">
+      A <strong>3:15:00</strong> marathon is about <strong>4:37 per km</strong> (≈ <strong>7:26 per mile</strong>).
+      Use this page for <strong>key split times</strong>, a <strong>splits calculator</strong>, and a <strong>printable pace band</strong>.
+    </p>
+
+    <div class="toc" aria-label="On-page navigation">
+      <a class="btn" href="#calculator">Calculator</a>
+      <a class="btn secondary" href="#key-splits">Key Splits</a>
+      <a class="btn secondary" href="#pacing-plan">Pace Band</a>
+      <a class="btn secondary" href="#fueling">Fueling</a>
+      
+      <a class="btn secondary" href="#who-this-suits">Who it suits</a>
+      <a class="btn secondary" href="#common-mistakes">Common mistakes</a>
+      
+      <a class="btn secondary" href="#race-strategy">Strategy</a>
+      <a class="btn secondary" href="#faq">FAQ</a>
+    </div>
+
+    <div class="facts" aria-label="Quick facts">
+      <div class="fact"><strong>Pace</strong><br>4:37 / km</div>
+      <div class="fact"><strong>Pace</strong><br>7:26 / mile</div>
+      <div class="fact"><strong>Half</strong><br>1:37:30</div>
+      <div class="fact"><strong>Finish</strong><br>3:15:00</div>
+    </div>
+  </header>
+
+  <main class="wrap" id="content">
+    <!-- Calculator -->
+    <section id="calculator" class="card">
+      <h2>3:15 Marathon Splits Calculator (KM)</h2>
+
+      <div class="grid">
+        <div>
+          <label>Goal finish time</label>
+          <div class="row">
+            <input id="h" type="number" min="0" value="3" /> <span>h</span>
+            <input id="m" type="number" min="0" max="59" value="15" /> <span>m</span>
+            <input id="s" type="number" min="0" max="59" value="0" /> <span>s</span>
+          </div>
+        </div>
+
+        <div>
+          <label>Distance</label>
+          <select id="dist">
+            <option value="42.195" selected>Marathon (42.195 km)</option>
+            <option value="21.0975">Half Marathon (21.0975 km)</option>
+            <option value="10">10 km</option>
+            <option value="5">5 km</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row actions">
+        <button class="btn" id="calcBtn" type="button">Calculate</button>
+        <button class="btn secondary" id="resetBtn" type="button">Reset</button>
+        <button class="btn secondary" id="printBandBtn" type="button">Print pace band</button>
+      </div>
+
+      <div id="results" class="results" aria-live="polite"></div>
+
+      <p class="tiny muted">
+        Tip: aim to stay within <strong>±5–10 sec/km</strong>. If you drift, correct gently over the next 1–2 km (avoid surging).
+      </p>
+    </section>
+
+    <!-- PRINT-ONLY pace band -->
+    <section id="printBand" class="wrap" aria-label="Printable pace band">
+      <div class="card">
+        <h1 style="margin-top:0;">3:15 Marathon Pace Band (4:37/km)</h1>
+        <p class="muted" style="margin-top:6px;">
+          Key checkpoints for an even-paced <strong>3:15:00</strong> marathon (≈ <strong>7:26/mi</strong>).
+        </p>
+
+        <table class="splits-table">
+          <thead><tr><th>Distance</th><th>Cumulative time</th></tr></thead>
+          <tbody>
+            <tr><td>5 km</td><td>0:23:06</td></tr>
+            <tr><td>10 km</td><td>0:46:13</td></tr>
+            <tr><td>15 km</td><td>1:09:19</td></tr>
+            <tr><td>20 km</td><td>1:32:26</td></tr>
+            <tr><td>Half (21.1)</td><td>1:37:30</td></tr>
+            <tr><td>25 km</td><td>1:55:32</td></tr>
+            <tr><td>30 km</td><td>2:18:39</td></tr>
+            <tr><td>35 km</td><td>2:41:45</td></tr>
+            <tr><td>40 km</td><td>3:04:51</td></tr>
+            <tr><td>Finish (42.195)</td><td>3:15:00</td></tr>
+          </tbody>
+        </table>
+
+        <p class="tiny muted" style="margin-top:10px;">
+          Cue: calm early → steady to 30k → protect pace 30–40k → push after 40k.
+        </p>
+      </div>
+    </section>
+
+    <!-- Key Splits -->
+    <section class="card" id="key-splits">
+      <h2>Key Split Times for a 3:15 Marathon</h2>
+      <p class="muted">These are the checkpoints most runners track on race day (cumulative time).</p>
+
+      <div class="splits-grid" aria-label="Key split markers">
+        <div class="split-item"><strong>5 km</strong>0:23:06</div>
+        <div class="split-item"><strong>10 km</strong>0:46:13</div>
+        <div class="split-item"><strong>Half</strong>1:37:30</div>
+        <div class="split-item"><strong>30 km</strong>2:18:39</div>
+        <div class="split-item"><strong>40 km</strong>3:04:51</div>
+        <div class="split-item"><strong>Finish</strong>3:15:00</div>
+      </div>
+    </section>
+
+    <section class="card" id="who-this-suits">
+      <h2>Who 3:15 pace suits</h2>
+      <ul class="muted">
+        <li>Advanced runners who can handle <strong>structured training</strong> and keep easy days truly easy.</li><li>People with enough speed reserve to make <strong>4:37/km</strong> feel “controlled” rather than “hanging on”.</li><li>Anyone ready to nail the details: <strong>carb plan</strong>, pacing discipline, and late-race focus.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="common-mistakes">
+      <h2>Common mistakes at 3:15 pace</h2>
+      <ul class="muted">
+        <li><strong>Under-fueling:</strong> treating it like a shorter race and missing carbs early (performance drops after 30 km).</li><li><strong>Going too hard on the hills:</strong> spiking effort and burning matches—keep effort even, pace will vary.</li><li><strong>Overcooking the taper:</strong> doing too much intensity late and arriving flat.</li><li><strong>Chasing every split:</strong> fighting GPS noise; use lap averages and controlled effort.</li>
+      </ul>
+    </section>
+
+
+    <section class="card" id="pace-conversions">
+      <h2>Pace conversions for 3:15</h2>
+      <p class="muted">Quick reference for track sessions and race-day math.</p>
+      <div class="splits-grid" aria-label="Pace conversions">
+        <div class="split-item"><strong>Per km</strong>4:37</div>
+        <div class="split-item"><strong>Per mile</strong>7:26</div>
+        <div class="split-item"><strong>Per 5 km</strong>0:23:06</div>
+        <div class="split-item"><strong>Per 10 km</strong>0:46:13</div>
+        <div class="split-item"><strong>400 m lap</strong>1:51</div>
+        <div class="split-item"><strong>1 km “buffer”</strong>±5–10s</div>
+      </div>
+      <p class="tiny muted">Note: GPS and course factors can add noise. Use this as a guide, not a guarantee.</p>
+    </section>
+
+
+    <section class="card" id="race-strategy">
+      <h2>3:15 pacing strategy (advanced)</h2>
+      <p class="muted">At this goal, small surges cost big later. Aim for controlled effort early and a calm, repeatable rhythm.</p>
+      <ul class="muted">
+        <li><strong>0–5 km:</strong> cap effort—let pace settle (don’t chase “perfect” splits immediately).</li>
+        <li><strong>5–30 km:</strong> keep surges tiny (hills, crowds, corners). Smooth is fast.</li>
+        <li><strong>30–40 km:</strong> protect pace with cadence + posture cues; stay on your carb schedule.</li>
+        <li><strong>Last 2 km:</strong> increase effort, not stride length—finish tall and quick.</li>
+      </ul>
+      <p class="tiny muted">Consider using lap-average pace (1 km laps) instead of instant pace to reduce GPS noise.</p>
+    </section>
+
+
+
+
+    <!-- Pacing Plan -->
+    <section class="card" id="pacing-plan">
+      <h2>Pacing plan (simple and realistic)</h2>
+      <ul class="muted">
+        <li><strong>0–5 km:</strong> start controlled—avoid going faster than goal pace early.</li>
+        <li><strong>5–30 km:</strong> settle into ~<strong>4:37/km</strong> and stay smooth (minimal surges).</li>
+        <li><strong>30–40 km:</strong> protect pace—focus on cadence and even effort.</li>
+        <li><strong>40–42.2 km:</strong> use the 40 km split as permission to push.</li>
+      </ul>
+    </section>
+
+    <!-- Fueling -->
+    <section class="card" id="fueling">
+      <h2>Fueling (quick template for 3:15)</h2>
+      <p class="muted">
+        Practice this in training. Many runners aim for roughly <strong>50–90g carbs/hour</strong> depending on tolerance.
+      </p>
+      <ul class="muted">
+        <li><strong>Start early:</strong> first gel around 15–25 minutes.</li>
+        <li><strong>Repeat:</strong> every 25–35 minutes with water.</li>
+        <li><strong>After 30 km:</strong> keep fueling even if it feels hard to take in.</li>
+      </ul>
+    </section>
+
+    <!-- Related -->
+    <section class="card" id="related-goal-times">
+      <h2>Related Marathon Goal Times</h2>
+      <p class="muted">Compare nearby targets or return to the main calculator:</p>
+
+      <div class="links" id="relatedLinks">
+        <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>
+        <a href="/3-00-marathon-pace-km/" data-check>3:00</a>
+        <a href="/3-30-marathon-pace-km/" data-check>3:30</a>
+        <a href="/3-45-marathon-pace-km/" data-check>3:45</a>
+      </div>
+
+      <p class="tiny muted">If a page doesn’t exist yet, it will be hidden automatically.</p>
+    </section>
+
+    <!-- Pace chart -->
+    <!-- Training tie-in -->
+    <section class="card" id="training">
+      <h2>Training tie-in (what supports a 3:15:00 marathon)</h2>
+      <p class="muted">These are general training patterns that often support a <strong>3:15:00</strong> goal. Use effort and recovery as the primary guide.</p>
+
+      <h3>Typical weekly structure</h3>
+      <ul class="muted">
+        <li><strong>Volume:</strong> 80–120 km/week (typical) (individual needs vary)</li>
+        <li><strong>Long run:</strong> 2:30–3:10 (cap time-on-feet if needed), often with a steady finish</li>
+        <li><strong>1 quality session:</strong> threshold or hills (keep it controlled)</li>
+        <li><strong>1 marathon-specific session:</strong> marathon-pace / steady segments</li>
+        <li><strong>Easy runs:</strong> often around <strong>5:22–5:52/km</strong> (roughly +45–75 sec/km slower than goal pace)</li>
+      </ul>
+
+      <h3>Example key workout</h3>
+      <p class="muted">One marathon-specific option: <strong>2 × 8 km at ~marathon pace (4:37/km) with 1 km easy jog between</strong>. Keep the first rep smooth, and stop early if form breaks.</p>
+
+      <h3>Simple pacing anchors</h3>
+      <div class="splitGrid">
+        <div class="splitBox"><strong>Goal pace</strong><br><span class="muted">4:37/km</span><div class="tiny muted2">Marathon average</div></div>
+        <div class="splitBox"><strong>Goal pace</strong><br><span class="muted">7:26/mi</span><div class="tiny muted2">If your watch is miles</div></div>
+        <div class="splitBox"><strong>Steady</strong><br><span class="muted">4:57–5:17/km</span><div class="tiny muted2">Comfortably hard</div></div>
+        <div class="splitBox"><strong>Easy</strong><br><span class="muted">5:22–5:52/km</span><div class="tiny muted2">Conversation pace</div></div>
+      </div>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="pace-chart" class="card">
+      <h2>Pace Chart (Per KM)</h2>
+      <p class="muted">Quick reference chart in kilometres. Switch goal times using the calculator above.</p>
+      <div id="chartTable"></div>
+    </section>
+
+    <!-- FAQ -->
+        <section id="faq" class="card">
+      <h2>3:15 Marathon Pacing FAQ</h2>
+
+      <h3>What pace per km is a 3:15 marathon?</h3>
+      <p>A 3:15:00 marathon requires about 4:37 per km on average (42.195 km in 3 hours 15 minutes).</p>
+
+      <h3>What pace per mile is a 3:15 marathon?</h3>
+      <p>A 3:15:00 marathon averages about 7:26 per mile.</p>
+
+      <h3>What are the key split times for a 3:15 marathon?</h3>
+      <p>Key markers for a 3:15 marathon: 5k 0:23:06, 10k 0:46:13, half 1:37:30, 30k 2:18:39, 40k 3:04:51, finish 3:15:00.</p>
+
+      <h3>How many carbs per hour for a 3:15 marathon?</h3>
+      <p>Many runners target ~60–90g carbs per hour depending on tolerance; practise in training and start fueling early.</p>
+
+      <h3>Should I pace by heart rate or pace?</h3>
+      <p>Use pace as the plan, but effort as the governor—especially on hills, in wind, or heat. Avoid big surges early.</p>
+
+      <p class="tiny muted">Note: This is a planning tool only. Official results depend on course and conditions.</p>
+    </section>
+  </main>
+<!-- Print band only -->
+  <script>
+    (function () {
+      const btn = document.getElementById('printBandBtn');
+      if (!btn) return;
+
+      function startPrintBand(){
+        document.body.classList.add('print-band');
+        window.print();
+        setTimeout(() => document.body.classList.remove('print-band'), 900);
+      }
+
+      btn.addEventListener('click', startPrintBand);
+      window.addEventListener('afterprint', () => document.body.classList.remove('print-band'));
+    })();
+  </script>
+
+  <!-- Hide related links that don't exist yet -->
+  <script>
+    (async function () {
+      const candidates = document.querySelectorAll('#relatedLinks a[data-check]');
+      const CACHE_KEY = 'mpkm_linkcheck_v1';
+      const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
+      function loadCache(){
+        try { return JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); }
+        catch { return {}; }
+      }
+      function saveCache(cache){
+        try { localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); } catch {}
+      }
+
+      const cache = loadCache();
+      const now = Date.now();
+
+      for (const a of candidates) {
+        const href = a.getAttribute('href');
+        if (!href || !href.startsWith('/')) continue;
+
+        const cached = cache[href];
+        if (cached && (now - cached.t) < CACHE_TTL_MS) {
+          if (!cached.ok) a.style.display = 'none';
+          continue;
+        }
+
+        try {
+          let res = await fetch(href, { method: 'HEAD', cache: 'no-store' });
+          if (res.status === 405 || res.status === 403) {
+            res = await fetch(href, { method: 'GET', cache: 'no-store' });
+          }
+          const ok = res.ok;
+          cache[href] = { ok, t: now };
+          if (!ok) a.style.display = 'none';
+        } catch {
+          cache[href] = { ok: false, t: now };
+          a.style.display = 'none';
+        }
+      }
+
+      saveCache(cache);
+    })();
+  </script>
+
+  <script>
+    window.GOAL_PAGE = { goalSeconds: 11700, lockDistanceKm: 42.195 }; // 3:15:00
+  </script>
+  <script defer src="/assets/app.js"></script>
+
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+    integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+    data-cf-beacon='{"version":"2024.11.0","token":"2fadcf67bfba4d9691882d6f581d6c6f","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+    crossorigin="anonymous"></script>
+
+<footer class="wrap" style="padding:24px 16px 40px">
+  <div class="card" style="padding:16px">
+    <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
+      <a href="/">Pace chart hub</a>
+      <a href="/marathon-pace-calculator/">Calculator</a>
+      <a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
+      <a href="/monthly-training-plan/">Monthly plan</a>
+      <a href="/how-to-use-marathon-pace-chart/">How to use</a>
+      <a href="/even-vs-negative-splits/">Even vs negative splits</a>
+      <a href="/sitemap/">HTML sitemap</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/disclaimer/">Disclaimer</a>
+    </div>
+    <p class="tiny muted" style="margin-top:12px">Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>

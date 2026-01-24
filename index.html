@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Marathon Pace Chart (KM) + Calculator | Splits, Pace Band &amp; Conversions</title>
+<meta content="Marathon pace chart in kilometres (KM) plus a free calculator for splits and pace per km. Enter a goal time to get average pace, key checkpoints (5k/10k/half/30k/40k) and a pacing reference." name="description"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://marathonpacekm.com/" rel="canonical"/>
+<!-- Open Graph / Social -->
+<meta content="website" property="og:type"/>
+<meta content="Marathon Pace Chart (KM) + Calculator" property="og:title"/>
+<meta content="Marathon pace chart in KM plus a calculator for splits and pace per km. Key checkpoints + pacing reference." property="og:description"/>
+<meta content="https://marathonpacekm.com/" property="og:url"/>
+<meta content="https://marathonpacekm.com/assets/og/pace-chart.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Marathon pace chart (KM) and calculator" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Marathon Pace Chart (KM) + Calculator" name="twitter:title"/>
+<meta content="Marathon pace chart in KM plus a calculator for splits and pace per km." name="twitter:description"/>
+<meta content="https://marathonpacekm.com/assets/og/pace-chart.png" name="twitter:image"/>
+<link as="style" href="/assets/style.css" rel="preload"/>
+<link href="/assets/style.css" rel="stylesheet"/>
+<style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    /* include monthly-plan for correct anchor offset */
+    #quick-chart, #calculator, #monthly-plan, #popular-goal-times, #pace-chart, #how-to-use, #guides, #faq { scroll-margin-top: 16px; }
+
+    .toc { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .toc a { text-decoration:none; }
+
+    .facts { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top:12px; }
+    @media (min-width: 720px){ .facts { grid-template-columns: repeat(4, minmax(0,1fr)); } }
+    .fact{
+      padding: 12px;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 12px;
+      background: rgba(255,255,255,.6);
+    }
+
+    .splits-table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      overflow:hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.6);
+    }
+    .splits-table th, .splits-table td{
+      text-align:left;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      vertical-align: top;
+    }
+    .splits-table tr:last-child td{ border-bottom: 0; }
+
+    .note { margin-top:10px; }
+
+    /* one-line under-H1 link */
+    .newlink { margin: 4px 0 10px; }
+    .newlink a { text-decoration: none; }
+    .newlink a:hover { text-decoration: underline; }
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "Marathon Pace KM",
+      "url": "https://marathonpacekm.com/"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a marathon pace chart (KM)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A marathon pace chart (KM) converts finish times into average pace per kilometre and often includes key split times like 5k, 10k, half marathon, 30k and 40k."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate marathon pace per km?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide your goal finish time by 42.195 km. This calculator does it instantly and shows splits and checkpoints."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my GPS pace differ from the pace chart?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Instant GPS pace can fluctuate due to signal noise, corners, crowds, elevation and aid stations. Use 1 km lap-average pace and effort to stay consistent."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What pace do I need for a sub-4 marathon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A sub-4 marathon averages about 5:41 per km. Use the goal pages or enter 3:59:59 / 4:00:00 to generate splits."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/favicon.ico" rel="alternate icon"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
+</head>
+<body><!-- HOMEPAGE: /index.html (Marathon Pace Chart hub) -->
+
+<header class="wrap">
+<h1>Marathon Pace Chart (KM) + Calculator</h1>
+<!-- NEW: prominent one-line link under H1 -->
+<p class="tiny muted newlink">
+      New: <a href="/monthly-training-plan/"><strong>Monthly training plan builder</strong></a> → generate a 4-week plan from your recent mileage + goal.
+    </p>
+<p class="tiny muted" style="margin:0 0 10px">Prefer a standalone calculator? <a href="/marathon-pace-calculator/"><strong>Marathon pace calculator</strong></a> · Prefer miles? <a href="/marathon-pace-chart-min-per-mile/"><strong>Min/mile pace chart</strong></a></p>
+<p class="sub">
+      Convert marathon finish times into <strong>pace per kilometre</strong>, key checkpoints, and full race splits.
+      This tool is built for runners using <strong>kilometres (KM)</strong>. Use the quick pace chart for fast reference,
+      then enter your goal time to generate detailed splits instantly.
+    </p>
+<div aria-label="On-page navigation" class="toc">
+<a class="btn" href="#quick-chart">Quick pace chart</a>
+<a class="btn secondary" href="#calculator">Calculator</a>
+<!-- NEW: TOC link to the monthly plan tool -->
+<a class="btn secondary" href="/monthly-training-plan/">Monthly plan</a>
+<a class="btn secondary" href="#popular-goal-times">Goal times</a>
+<a class="btn secondary" href="#pace-chart">Full pace chart</a>
+<a class="btn secondary" href="#how-to-use">How to use</a>
+<a class="btn secondary" href="#guides">Guides</a>
+<a class="btn secondary" href="#faq">FAQ</a>
+</div>
+<div aria-label="Quick facts" class="facts">
+<div class="fact"><strong>Marathon</strong><br/>42.195 km</div>
+<div class="fact"><strong>Half</strong><br/>21.0975 km</div>
+<div class="fact"><strong>Pacing tip</strong><br/>Even-ish splits</div>
+<div class="fact"><strong>Buffer</strong><br/>±5–10 sec/km</div>
+</div>
+</header>
+<main class="wrap" id="content">
+<!-- PILLAR: visible chart above the fold -->
+
+<section class="card" id="start-here">
+<h2>Start here</h2>
+<p class="muted">If you want a fast answer, use the calculator. If you’re training, pick a goal-time page and use the pace band on race day.</p>
+<div class="grid">
+<div class="card" style="margin:0">
+<h3 style="margin-top:0">1) Use the calculator</h3>
+<p class="muted">Enter a marathon time to get <strong>min/km</strong>, checkpoints (5k/10k/half/30k/40k) and full splits.</p>
+<p><a class="btn" href="/marathon-pace-calculator/">Open pace calculator</a></p>
+</div>
+<div class="card" style="margin:0">
+<h3 style="margin-top:0">2) Pick your goal time page</h3>
+<p class="muted">Dedicated pages for common goals (3:00 → 5:05) with a printable <strong>pace band</strong>, conversions and FAQs.</p>
+<p><a class="btn" href="#popular-goal-times">Browse goal times</a></p>
+</div>
+<div class="card" style="margin:0">
+<h3 style="margin-top:0">3) Learn to use the chart</h3>
+<p class="muted">A quick guide to choosing a realistic target, focusing on key checkpoints, and avoiding early surges.</p>
+<p><a class="btn" href="/how-to-use-marathon-pace-chart/">How to use the pace chart</a></p>
+</div>
+<div class="card" style="margin:0">
+<h3 style="margin-top:0">4) Choose a pacing strategy</h3>
+<p class="muted">Even splits vs negative splits — what actually works for most runners and how to execute it.</p>
+<p><a class="btn" href="/even-vs-negative-splits/">Even vs negative splits</a></p>
+</div>
+</div>
+<p class="tiny muted" style="margin-top:10px">Prefer miles? Use the <a href="/marathon-pace-chart-min-per-mile/">min/mile pace chart</a>.</p>
+</section>
+<section class="card" id="quick-chart">
+<h2>Quick marathon pace chart (per KM)</h2>
+<p class="muted">Common finish times mapped to average pace. Click a goal time for the dedicated page, or use the calculator for full splits.</p>
+<table class="splits-table">
+<thead>
+<tr>
+<th>Finish time</th>
+<th>Avg pace (min/km)</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><a href="/3-00-marathon-pace-km/">3:00:00</a></td><td>4:16</td></tr>
+<tr><td><a href="/3-15-marathon-pace-km/">3:15:00</a></td><td>4:37</td></tr>
+<tr><td><a href="/3-30-marathon-pace-km/">3:30:00</a></td><td>4:59</td></tr>
+<tr><td><a href="/3-45-marathon-pace-km/">3:45:00</a></td><td>5:20</td></tr>
+<tr><td><a href="/3-50-marathon-pace-km/">3:50:00</a></td><td>5:27</td></tr>
+<tr><td><a href="/sub-4-marathon-pace-km/">3:59:59 (Sub-4)</a></td><td>5:41</td></tr>
+<tr><td><a href="/4-00-marathon-pace-km/">4:00:00</a></td><td>5:41</td></tr>
+<tr><td><a href="/4-30-marathon-pace-km/">4:30:00</a></td><td>6:24</td></tr>
+<tr><td><a href="/4-50-marathon-pace-km/">4:50:00</a></td><td>6:52</td></tr>
+<tr><td><a href="/5-00-marathon-pace-km/">5:00:00</a></td><td>7:07</td></tr>
+</tbody>
+</table>
+<div class="row actions" style="margin-top:12px">
+<a class="btn" href="/marathon-pace-calculator/">Calculate my splits</a>
+<a class="btn secondary" href="#popular-goal-times">All goal-time pages</a>
+<a class="btn secondary" href="#pace-chart">Full pace chart</a>
+</div>
+
+
+<p class="tiny muted note">Note: pace is an average. Wind, heat, hills, crowds and aid stations can change real-world splits.</p>
+</section>
+<!-- Calculator (compatible with /assets/app.js) -->
+<section class="card" id="calculator">
+<h2>Marathon pace calculator (KM)</h2>
+<p class="muted">Enter a goal finish time to calculate pace per km and generate checkpoints and splits.</p>
+<div class="grid">
+<div>
+<label>Goal finish time</label>
+<div class="row">
+<input id="h" min="0" type="number" value="4"/> <span>h</span>
+<input id="m" max="59" min="0" type="number" value="0"/> <span>m</span>
+<input id="s" max="59" min="0" type="number" value="0"/> <span>s</span>
+</div>
+</div>
+<div>
+<label>Distance</label>
+<select id="dist">
+<option selected="" value="42.195">Marathon (42.195 km)</option>
+<option value="21.0975">Half Marathon (21.0975 km)</option>
+<option value="10">10 km</option>
+<option value="5">5 km</option>
+</select>
+</div>
+</div>
+<div class="row actions">
+<button class="btn" id="calcBtn">Calculate</button>
+<button class="btn secondary" id="resetBtn">Reset</button>
+</div>
+<div aria-live="polite" class="results" id="results"></div>
+</section>
+<!-- NEW: Monthly training plan CTA section -->
+<section class="card" id="monthly-plan">
+<h2>Monthly training plan builder (4-week plan)</h2>
+<p class="muted">
+        Generate a personalised month plan from your recent mileage, goal, available run days and injury status.
+        Includes weekly targets, key workouts, training paces, and export tools.
+      </p>
+<div class="row actions">
+<a class="btn" href="/monthly-training-plan/">Build my monthly plan</a>
+<a class="btn secondary" href="/monthly-training-plan/">Open training plan tool</a>
+</div>
+<p class="tiny muted note">Tip: use this alongside the goal time pages to keep pacing realistic as your volume changes.</p>
+</section>
+<section class="card" id="popular-goal-times">
+<h2>Popular marathon goal times (KM)</h2>
+<p class="muted">Jump straight to a dedicated page with key splits, pace band, conversions and FAQs:</p><p class="tiny muted" style="margin-top:8px">Tip: each goal-time page includes checkpoints, conversions, a printable pace band, and FAQs.</p>
+<div class="links">
+<a href="/3-00-marathon-pace-km/">3:00</a>
+<a href="/3-05-marathon-pace-km/">3:05</a>
+<a href="/3-10-marathon-pace-km/">3:10</a>
+<a href="/3-15-marathon-pace-km/">3:15</a>
+<a href="/3-30-marathon-pace-km/">3:30</a>
+<a href="/3-45-marathon-pace-km/">3:45</a>
+<a href="/3-50-marathon-pace-km/">3:50</a>
+<a href="/3-55-marathon-pace-km/">3:55</a>
+<a href="/sub-4-marathon-pace-km/">Sub-4</a>
+<a href="/4-00-marathon-pace-km/">4:00</a>
+<a href="/4-05-marathon-pace-km/">4:05</a>
+<a href="/4-30-marathon-pace-km/">4:30</a>
+<a href="/4-35-marathon-pace-km/">4:35</a>
+<a href="/4-40-marathon-pace-km/">4:40</a>
+<a href="/4-50-marathon-pace-km/">4:50</a>
+<a href="/4-55-marathon-pace-km/">4:55</a>
+<a href="/5-00-marathon-pace-km/">5:00</a>
+<a href="/5-05-marathon-pace-km/">5:05</a>
+</div>
+</section>
+<section class="card" id="pace-chart">
+<h2>Marathon pace chart (generated)</h2>
+<p class="muted">Use the calculator above, then see a fuller pacing table here.</p>
+<p class="tiny muted note">Tip: click a <strong>finish time</strong> in the table to open the matching goal page (when available).</p>
+<div id="chartTable"></div>
+<details class="note" open="">
+<summary><strong>Static pace chart (no-JS fallback)</strong></summary>
+<p class="tiny muted" style="margin:8px 0 0">If JavaScript is blocked, use this static table. It covers 2:30–6:00 (every 5 minutes). Times that have dedicated pages are clickable.</p>
+<div style="overflow:auto;margin-top:10px">
+<table class="splits-table">
+<thead><tr><th>Finish time</th><th>Pace (min/km)</th><th>Pace (min/mi)</th></tr></thead>
+<tbody>
+<tr><td>2:30:00</td><td>3:33</td><td>5:43</td></tr>
+<tr><td>2:35:00</td><td>3:40</td><td>5:55</td></tr>
+<tr><td>2:40:00</td><td>3:48</td><td>6:06</td></tr>
+<tr><td>2:45:00</td><td>3:55</td><td>6:18</td></tr>
+<tr><td>2:50:00</td><td>4:02</td><td>6:29</td></tr>
+<tr><td>2:55:00</td><td>4:09</td><td>6:40</td></tr>
+<tr><td><a href="/3-00-marathon-pace-km/">3:00:00</a></td><td>4:16</td><td>6:52</td></tr>
+<tr><td><a href="/3-05-marathon-pace-km/">3:05:00</a></td><td>4:23</td><td>7:03</td></tr>
+<tr><td><a href="/3-10-marathon-pace-km/">3:10:00</a></td><td>4:30</td><td>7:15</td></tr>
+<tr><td><a href="/3-15-marathon-pace-km/">3:15:00</a></td><td>4:37</td><td>7:26</td></tr>
+<tr><td>3:20:00</td><td>4:44</td><td>7:38</td></tr>
+<tr><td>3:25:00</td><td>4:52</td><td>7:49</td></tr>
+<tr><td><a href="/3-30-marathon-pace-km/">3:30:00</a></td><td>4:59</td><td>8:01</td></tr>
+<tr><td>3:35:00</td><td>5:06</td><td>8:12</td></tr>
+<tr><td>3:40:00</td><td>5:13</td><td>8:23</td></tr>
+<tr><td><a href="/3-45-marathon-pace-km/">3:45:00</a></td><td>5:20</td><td>8:35</td></tr>
+<tr><td><a href="/3-50-marathon-pace-km/">3:50:00</a></td><td>5:27</td><td>8:46</td></tr>
+<tr><td><a href="/3-55-marathon-pace-km/">3:55:00</a></td><td>5:34</td><td>8:58</td></tr>
+<tr><td><a href="/4-00-marathon-pace-km/">4:00:00</a></td><td>5:41</td><td>9:09</td></tr>
+<tr><td><a href="/4-05-marathon-pace-km/">4:05:00</a></td><td>5:48</td><td>9:21</td></tr>
+<tr><td>4:10:00</td><td>5:55</td><td>9:32</td></tr>
+<tr><td>4:15:00</td><td>6:03</td><td>9:44</td></tr>
+<tr><td>4:20:00</td><td>6:10</td><td>9:55</td></tr>
+<tr><td>4:25:00</td><td>6:17</td><td>10:06</td></tr>
+<tr><td><a href="/4-30-marathon-pace-km/">4:30:00</a></td><td>6:24</td><td>10:18</td></tr>
+<tr><td><a href="/4-35-marathon-pace-km/">4:35:00</a></td><td>6:31</td><td>10:29</td></tr>
+<tr><td><a href="/4-40-marathon-pace-km/">4:40:00</a></td><td>6:38</td><td>10:41</td></tr>
+<tr><td>4:45:00</td><td>6:45</td><td>10:52</td></tr>
+<tr><td><a href="/4-50-marathon-pace-km/">4:50:00</a></td><td>6:52</td><td>11:04</td></tr>
+<tr><td><a href="/4-55-marathon-pace-km/">4:55:00</a></td><td>6:59</td><td>11:15</td></tr>
+<tr><td><a href="/5-00-marathon-pace-km/">5:00:00</a></td><td>7:07</td><td>11:27</td></tr>
+<tr><td><a href="/5-05-marathon-pace-km/">5:05:00</a></td><td>7:14</td><td>11:38</td></tr>
+<tr><td>5:10:00</td><td>7:21</td><td>11:49</td></tr>
+<tr><td>5:15:00</td><td>7:28</td><td>12:01</td></tr>
+<tr><td>5:20:00</td><td>7:35</td><td>12:12</td></tr>
+<tr><td>5:25:00</td><td>7:42</td><td>12:24</td></tr>
+<tr><td>5:30:00</td><td>7:49</td><td>12:35</td></tr>
+<tr><td>5:35:00</td><td>7:56</td><td>12:47</td></tr>
+<tr><td>5:40:00</td><td>8:03</td><td>12:58</td></tr>
+<tr><td>5:45:00</td><td>8:11</td><td>13:10</td></tr>
+<tr><td>5:50:00</td><td>8:18</td><td>13:21</td></tr>
+<tr><td>5:55:00</td><td>8:25</td><td>13:32</td></tr>
+<tr><td>6:00:00</td><td>8:32</td><td>13:44</td></tr>
+</tbody>
+</table>
+</div>
+</details>
+<details class="note">
+<summary><strong>All goal time pages</strong></summary>
+<div class="links" style="margin-top:10px">
+<a href="/3-00-marathon-pace-km/">3:00</a>
+<a href="/3-05-marathon-pace-km/">3:05</a>
+<a href="/3-10-marathon-pace-km/">3:10</a>
+<a href="/3-15-marathon-pace-km/">3:15</a>
+<a href="/3-30-marathon-pace-km/">3:30</a>
+<a href="/3-45-marathon-pace-km/">3:45</a>
+<a href="/3-50-marathon-pace-km/">3:50</a>
+<a href="/3-55-marathon-pace-km/">3:55</a>
+<a href="/sub-4-marathon-pace-km/">Sub-4</a>
+<a href="/4-00-marathon-pace-km/">4:00</a>
+<a href="/4-05-marathon-pace-km/">4:05</a>
+<a href="/4-30-marathon-pace-km/">4:30</a>
+<a href="/4-35-marathon-pace-km/">4:35</a>
+<a href="/4-40-marathon-pace-km/">4:40</a>
+<a href="/4-50-marathon-pace-km/">4:50</a>
+<a href="/4-55-marathon-pace-km/">4:55</a>
+<a href="/5-00-marathon-pace-km/">5:00</a>
+<a href="/5-05-marathon-pace-km/">5:05</a>
+</div>
+</details>
+</section>
+<section class="card" id="how-to-use">
+<h2>How to use the pace chart (KM)</h2>
+<ol class="muted">
+<li><strong>Pick a goal time</strong> (or choose a goal page).</li>
+<li><strong>Generate splits</strong> and focus on key checkpoints: 10k, half, 30k, 40k.</li>
+<li><strong>Avoid early surges</strong> — “banking time” often becomes a late slowdown.</li>
+<li><strong>Fuel early</strong> (small, regular carbs) and keep effort steady in heat/hills/wind.</li>
+</ol>
+<p class="tiny muted">Tip: use 1 km lap-average pace instead of instant GPS pace to avoid noise.</p>
+</section>
+<section class="card" id="guides">
+<h2>Guides (quick reads)</h2>
+<p class="muted">Use these to turn the numbers into a race-day plan — then choose a goal-time page for your printable pace band.</p>
+<div class="grid">
+<div class="card" style="margin:0">
+<h3 style="margin-top:0"><a href="/how-to-use-marathon-pace-chart/">How to use a marathon pace chart (KM)</a></h3>
+<p class="muted">Set a realistic target, focus on key checkpoints, and use lap-average pace to stay smooth.</p>
+<p class="tiny muted">Best for: first marathoners and anyone making their first pacing plan.</p>
+</div>
+<div class="card" style="margin:0">
+<h3 style="margin-top:0"><a href="/even-vs-negative-splits/">Even splits vs negative splits</a></h3>
+<p class="muted">When to aim for even splits, when a negative split is realistic, and how to avoid “banking time”.</p>
+<p class="tiny muted">Best for: runners chasing a PB or trying to finish strong.</p>
+</div>
+</div>
+<div class="row actions" style="margin-top:12px">
+<a class="btn" href="/monthly-training-plan/">Build a monthly training plan</a>
+<a class="btn secondary" href="/marathon-pace-calculator/">Open pace calculator</a>
+</div>
+</section>
+<section class="card" id="faq">
+<h2>Marathon pace chart (KM) FAQ</h2>
+<h3>What is a marathon pace chart (KM)?</h3>
+<p>A marathon pace chart converts finish times into <strong>average pace per kilometre</strong> and key split checkpoints (like 5k, 10k, half, 30k and 40k).</p>
+<h3>How do I calculate marathon pace per kilometre?</h3>
+<p>Divide your finish time by <strong>42.195 km</strong>. This calculator does it instantly and generates splits.</p>
+<h3>Why does my watch pace differ from the pace chart?</h3>
+<p>Instant GPS pace can fluctuate. Use lap-average pace (1 km) and pace by effort in wind, heat and hills.</p>
+<h3>What pace do I need for a sub-4 marathon?</h3>
+<p>Sub-4 pace averages about <strong>5:41 per km</strong>. Use the Sub-4 page or enter 3:59:59 / 4:00:00 to generate full splits.</p>
+<p class="tiny muted">Note: This is a planning tool only. Official results depend on course and conditions.</p>
+</section>
+</main>
+<script defer="" src="/assets/app.js"></script>
+<script>
+    (function(){
+      var TIME_TO_URL = {
+        "3:00:00": "/3-00-marathon-pace-km/",
+        "3:05:00": "/3-05-marathon-pace-km/",
+        "3:10:00": "/3-10-marathon-pace-km/",
+        "3:15:00": "/3-15-marathon-pace-km/",
+        "3:30:00": "/3-30-marathon-pace-km/",
+        "3:45:00": "/3-45-marathon-pace-km/",
+        "3:50:00": "/3-50-marathon-pace-km/",
+        "3:55:00": "/3-55-marathon-pace-km/",
+        "3:59:59": "/sub-4-marathon-pace-km/",
+        "4:00:00": "/4-00-marathon-pace-km/",
+        "4:05:00": "/4-05-marathon-pace-km/",
+        "4:30:00": "/4-30-marathon-pace-km/",
+        "4:35:00": "/4-35-marathon-pace-km/",
+        "4:40:00": "/4-40-marathon-pace-km/",
+        "4:50:00": "/4-50-marathon-pace-km/",
+        "4:55:00": "/4-55-marathon-pace-km/",
+        "5:00:00": "/5-00-marathon-pace-km/",
+        "5:05:00": "/5-05-marathon-pace-km/"
+      };
+
+      function normalize(s){
+        return (s || "").replace(/ /g, " ").trim();
+      }
+
+      function linkifyChartOnce(){
+        var container = document.getElementById('chartTable');
+        if(!container) return;
+        var tables = container.querySelectorAll('table');
+        if(!tables || !tables.length) return;
+
+        tables.forEach(function(tbl){
+          var rows = tbl.querySelectorAll('tbody tr');
+          if(!rows || !rows.length) return;
+          rows.forEach(function(row){
+            var first = row.children && row.children[0];
+            if(!first) return;
+            if(first.querySelector('a')) return;
+
+            var txt = normalize(first.textContent);
+            // Prefer full HH:MM:SS if present
+            var m = txt.match(/\b(\d{1,2}:\d{2}:\d{2})\b/);
+            var key = m ? m[1] : null;
+            var url = key ? TIME_TO_URL[key] : null;
+            if(!url) return;
+
+            var a = document.createElement('a');
+            a.href = url;
+            a.textContent = txt;
+            a.style.textDecoration = 'none';
+            a.addEventListener('mouseover', function(){ a.style.textDecoration = 'underline'; });
+            a.addEventListener('mouseout', function(){ a.style.textDecoration = 'none'; });
+
+            first.textContent = '';
+            first.appendChild(a);
+          });
+        });
+      }
+
+      var container = document.getElementById('chartTable');
+      if(!container) return;
+
+      // Observe for when /assets/app.js injects the generated table
+      var obs = new MutationObserver(function(){
+        linkifyChartOnce();
+      });
+      obs.observe(container, { childList: true, subtree: true });
+
+      // Also try after full load
+      window.addEventListener('load', function(){
+        setTimeout(linkifyChartOnce, 150);
+      });
+    })();
+  </script>
+<footer class="wrap" style="padding:24px 16px 40px">
+<div class="card" style="padding:16px">
+<div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
+<a href="/">Pace chart hub</a>
+<a href="/marathon-pace-calculator/">Calculator</a>
+<a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
+<a href="/monthly-training-plan/">Monthly plan</a>
+<a href="/how-to-use-marathon-pace-chart/">How to use</a>
+<a href="/even-vs-negative-splits/">Even vs negative splits</a>
+<a href="/sitemap/">HTML sitemap</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/privacy/">Privacy</a>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
+<p class="tiny muted" style="margin-top:12px">Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.</p>
+</div>
+</footer>
+</body>
+</html>

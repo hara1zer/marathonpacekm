@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Marathon Pace Calculator (KM & Miles) | Splits, Checkpoints, Pace Band</title>
+  <meta name="description" content="Free marathon pace calculator (KM & miles). Enter a goal time to get pace per km/mi, key checkpoints (5k/10k/half/30k/40k) and a printable pace band." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://marathonpacekm.com/marathon-pace-calculator/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Marathon Pace Calculator (KM & Miles)" />
+  <meta property="og:description" content="Enter a goal time to calculate pace per km/mi, checkpoints and a printable pace band." />
+  <meta property="og:url" content="https://marathonpacekm.com/marathon-pace-calculator/" />
+  <meta property="og:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Marathon pace calculator" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Marathon Pace Calculator (KM & Miles)" />
+  <meta name="twitter:description" content="Calculate pace per km/mi, checkpoints and a printable pace band." />
+  <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
+
+  <link rel="preload" href="/assets/style.css" as="style" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    #calculator, #checkpoints, #pace-band, #full-splits, #goal-times, #faq { scroll-margin-top: 16px; }
+    .splits-table{ width:100%; border-collapse: collapse; margin-top: 10px; overflow:hidden; border-radius: 12px; border: 1px solid rgba(0,0,0,.10); background: rgba(255,255,255,.6); }
+    .splits-table th, .splits-table td{ text-align:left; padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
+    .splits-table tr:last-child td{ border-bottom: 0; }
+    #printBand { display:none; }
+    @media print{
+      header, .toc, #calculator .actions, #fullSplitsDetails, footer, .backtop { display:none !important; }
+      #printBand { display:block !important; }
+      body { background:#fff !important; }
+      .card { box-shadow:none !important; background:#fff !important; }
+      a { text-decoration:none !important; color:#000 !important; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
+      {"@type":"ListItem","position":2,"name":"Marathon Pace Calculator","item":"https://marathonpacekm.com/marathon-pace-calculator/"}
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I calculate marathon pace per km?",
+        "acceptedAnswer": {"@type":"Answer","text":"Divide your goal finish time by 42.195 km. This calculator does it instantly and shows checkpoints and splits."}
+      },
+      {
+        "@type": "Question",
+        "name": "What pace do I need for a sub-4 marathon?",
+        "acceptedAnswer": {"@type":"Answer","text":"Sub-4 marathon pace is about 5:41 per km (9:09 per mile). Enter 3:59:59 to generate your full checkpoint splits."}
+      },
+      {
+        "@type": "Question",
+        "name": "Why does my watch pace not match the chart?",
+        "acceptedAnswer": {"@type":"Answer","text":"Instant GPS pace can fluctuate due to signal noise, corners, crowds, elevation and aid stations. Use lap pace (1 km or 1 mile) and effort to stay consistent."}
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+</head>
+
+<body>
+  <header class="wrap" style="padding-top:28px">
+    <a class="btn secondary" href="/">← Back to pace chart hub</a>
+    <h1 style="margin-top:14px">Marathon Pace Calculator (KM & Miles)</h1>
+    <p class="sub">Enter a goal finish time to calculate <strong>pace per km</strong> and <strong>pace per mile</strong>, plus key checkpoints and a printable pace band.</p>
+
+    <div class="toc" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+      <a class="btn" href="#calculator">Calculator</a>
+      <a class="btn secondary" href="#checkpoints">Checkpoints</a>
+      <a class="btn secondary" href="#pace-band">Printable pace band</a>
+      <a class="btn secondary" href="#goal-times">Goal times</a>
+      <a class="btn secondary" href="#faq">FAQ</a>
+    </div>
+  </header>
+
+  <main class="wrap" id="content">
+    <section id="calculator" class="card">
+      <h2>Calculator</h2>
+      <p class="muted">Pick a distance and enter a goal time. We’ll compute pace per km and per mile.</p>
+
+      <div class="grid">
+        <div>
+          <label>Goal finish time</label>
+          <div class="row">
+            <input id="h" type="number" min="0" value="4" /> <span>h</span>
+            <input id="m" type="number" min="0" max="59" value="0" /> <span>m</span>
+            <input id="s" type="number" min="0" max="59" value="0" /> <span>s</span>
+          </div>
+        </div>
+
+        <div>
+          <label>Distance</label>
+          <select id="dist">
+            <option value="42.195" selected>Marathon (42.195 km)</option>
+            <option value="21.0975">Half Marathon (21.0975 km)</option>
+            <option value="10">10 km</option>
+            <option value="5">5 km</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row actions" style="margin-top:10px;gap:10px">
+        <button class="btn" id="calcBtn">Calculate</button>
+        <button class="btn secondary" id="resetBtn">Reset</button>
+        <button class="btn secondary" id="printBtn" type="button">Print pace band</button>
+      </div>
+
+      <div id="results" class="results" aria-live="polite"></div>
+    </section>
+
+    <section id="checkpoints" class="card">
+      <h2>Key checkpoints (marathon)</h2>
+      <p class="muted">When distance is set to marathon, we show common markers: 5k, 10k, half, 30k, 40k and finish.</p>
+      <div id="checkpointTable"></div>
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="pace-band" class="card">
+      <h2>Printable pace band</h2>
+      <p class="muted">This prints a compact checkpoint band (ideal to fold or tape). Use the print button in the calculator.</p>
+      <div id="printBand" class="results"></div>
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="full-splits" class="card">
+      <h2>Full 1 km splits (optional)</h2>
+      <p class="muted">If you want a detailed table, open this. It can be long for a marathon.</p>
+      <details id="fullSplitsDetails">
+        <summary><strong>Show full 1 km table</strong></summary>
+        <div id="fullSplitsTable"></div>
+      </details>
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="goal-times" class="card">
+      <h2>Popular goal-time pages</h2>
+      <p class="muted">Prefer a dedicated page with pacing tips, conversions, and related goal times?</p>
+      <div class="links">
+        <a href="/3-00-marathon-pace-km/">3:00</a>
+        <a href="/3-15-marathon-pace-km/">3:15</a>
+        <a href="/3-30-marathon-pace-km/">3:30</a>
+        <a href="/3-45-marathon-pace-km/">3:45</a>
+        <a href="/sub-4-marathon-pace-km/">Sub-4</a>
+        <a href="/4-00-marathon-pace-km/">4:00</a>
+        <a href="/4-30-marathon-pace-km/">4:30</a>
+        <a href="/4-50-marathon-pace-km/">4:50</a>
+        <a href="/5-00-marathon-pace-km/">5:00</a>
+      </div>
+      <p class="tiny muted2">Tip: if your goal time isn’t listed, the calculator still works—goal pages are just shortcuts for common targets.</p>
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="faq" class="card">
+      <h2>Marathon pace calculator FAQ</h2>
+      <h3>How do I calculate pace per mile from pace per km?</h3>
+      <p>Multiply pace-per-km seconds by 1.609344 to get pace per mile (or use this calculator).</p>
+
+      <h3>Should I aim for even splits?</h3>
+      <p>Most runners do best with steady pacing and a controlled first half. Small negative splits can happen naturally if you stay calm early.</p>
+
+      <h3>What should I do if conditions are hot or hilly?</h3>
+      <p>Use effort as the guide. Expect slower splits in heat or hills and focus on consistency rather than forcing exact numbers.</p>
+    </section>
+
+  </main>
+<script>
+(function(){
+  var elH=document.getElementById('h');
+  var elM=document.getElementById('m');
+  var elS=document.getElementById('s');
+  var elDist=document.getElementById('dist');
+  var elResults=document.getElementById('results');
+  var elCheckpoint=document.getElementById('checkpointTable');
+  var elPrintBand=document.getElementById('printBand');
+  var elFull=document.getElementById('fullSplitsTable');
+  var fullDetails=document.getElementById('fullSplitsDetails');
+
+  var calcBtn=document.getElementById('calcBtn');
+  var resetBtn=document.getElementById('resetBtn');
+  var printBtn=document.getElementById('printBtn');
+
+  var DEFAULT={h:4,m:0,s:0,dist:42.195};
+
+  function clampInt(v,min,max){
+    var n=parseInt(v,10);
+    if(isNaN(n)) return min;
+    if(n<min) return min;
+    if(n>max) return max;
+    return n;
+  }
+  function toSeconds(h,m,s){ return h*3600 + m*60 + s; }
+  function fmtTime(total){
+    var sec=Math.max(0, Math.round(total));
+    var h=Math.floor(sec/3600);
+    var m=Math.floor((sec%3600)/60);
+    var s=sec%60;
+    return h+":"+String(m).padStart(2,'0')+":"+String(s).padStart(2,'0');
+  }
+  function fmtPace(secPerUnit){
+    var sec=Math.max(0, Math.round(secPerUnit));
+    var m=Math.floor(sec/60);
+    var s=sec%60;
+    return m+":"+String(s).padStart(2,'0');
+  }
+
+  function buildCheckpointTable(rows){
+    var html='';
+    html += '<table class="splits-table"><thead><tr><th>Checkpoint</th><th>Time</th></tr></thead><tbody>';
+    for(var i=0;i<rows.length;i++){
+      html += '<tr><td>'+rows[i].label+'</td><td>'+rows[i].time+'</td></tr>';
+    }
+    html += '</tbody></table>';
+    return html;
+  }
+
+  function compute(){
+    var h=clampInt(elH.value,0,99);
+    var m=clampInt(elM.value,0,59);
+    var s=clampInt(elS.value,0,59);
+    elH.value=h; elM.value=m; elS.value=s;
+
+    var dist=parseFloat(elDist.value);
+    var goalSec=toSeconds(h,m,s);
+
+    if(!dist || dist<=0 || goalSec<=0){
+      elResults.innerHTML='<div class="tiny muted2">Enter a valid time and distance.</div>';
+      elCheckpoint.innerHTML='';
+      elPrintBand.innerHTML='';
+      elFull.innerHTML='';
+      return;
+    }
+
+    var secPerKm = goalSec / dist;
+    var secPerMile = secPerKm * 1.609344;
+
+    // KPIs
+    var halfTime = fmtTime(secPerKm * Math.min(21.0975, dist));
+
+    elResults.innerHTML = ''
+      + '<div class="kpi">'
+      +   '<div class="fact"><div class="tiny muted2">Pace per km</div><strong>'+fmtPace(secPerKm)+'</strong></div>'
+      +   '<div class="fact"><div class="tiny muted2">Pace per mile</div><strong>'+fmtPace(secPerMile)+'</strong></div>'
+      +   '<div class="fact"><div class="tiny muted2">Finish time</div><strong>'+fmtTime(goalSec)+'</strong></div>'
+      +   '<div class="fact"><div class="tiny muted2">Halfway time*</div><strong>'+halfTime+'</strong></div>'
+      + '</div>'
+      + '<p class="tiny muted2" style="margin-top:10px">*Halfway shown is for the selected distance (or half marathon if shorter).</p>';
+
+    // Checkpoints for marathon only
+    if(Math.abs(dist-42.195) < 1e-6){
+      var cps=[
+        {label:'5 km', km:5},
+        {label:'10 km', km:10},
+        {label:'Half (21.0975)', km:21.0975},
+        {label:'30 km', km:30},
+        {label:'40 km', km:40},
+        {label:'Finish', km:42.195}
+      ];
+      var rows=[];
+      for(var i=0;i<cps.length;i++){
+        rows.push({label:cps[i].label, time:fmtTime(secPerKm*cps[i].km)});
+      }
+      elCheckpoint.innerHTML = buildCheckpointTable(rows);
+
+      // Printable band (same checkpoints, compact)
+      elPrintBand.innerHTML = '<h3 style="margin:0 0 8px">Printable pace band</h3>' + buildCheckpointTable(rows);
+
+      // Full 1 km splits (lazy)
+      elFull.innerHTML='';
+      fullDetails.addEventListener('toggle', function(){
+        if(!fullDetails.open) return;
+        if(elFull.dataset.built === '1') return;
+        var out='';
+        out += '<table class="splits-table"><thead><tr><th>KM</th><th>Cumulative</th></tr></thead><tbody>';
+        for(var km=1; km<=42; km++){
+          out += '<tr><td>'+km+'</td><td>'+fmtTime(secPerKm*km)+'</td></tr>';
+        }
+        out += '<tr><td>42.2</td><td>'+fmtTime(goalSec)+'</td></tr>';
+        out += '</tbody></table>';
+        elFull.innerHTML = out;
+        elFull.dataset.built='1';
+      }, { once:false });
+
+    } else {
+      elCheckpoint.innerHTML = '<p class="tiny muted2">Set distance to Marathon to view marathon checkpoint splits.</p>';
+      elPrintBand.innerHTML = '<p class="tiny muted2">Set distance to Marathon to generate a marathon pace band.</p>';
+      elFull.innerHTML = '';
+    }
+  }
+
+  function reset(){
+    elH.value=DEFAULT.h; elM.value=DEFAULT.m; elS.value=DEFAULT.s;
+    elDist.value=String(DEFAULT.dist);
+    elResults.innerHTML='';
+    elCheckpoint.innerHTML='';
+    elPrintBand.innerHTML='';
+    elFull.innerHTML='';
+    if(fullDetails) fullDetails.open=false;
+  }
+
+  calcBtn.addEventListener('click', compute);
+  resetBtn.addEventListener('click', reset);
+  printBtn.addEventListener('click', function(){ window.print(); });
+
+  // initial
+  compute();
+})();
+</script>
+
+
+<footer class="wrap" style="padding:24px 16px 40px">
+  <div class="card" style="padding:16px">
+    <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
+      <a href="/">Pace chart hub</a>
+      <a href="/marathon-pace-calculator/">Calculator</a>
+      <a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
+      <a href="/monthly-training-plan/">Monthly plan</a>
+      <a href="/how-to-use-marathon-pace-chart/">How to use</a>
+      <a href="/even-vs-negative-splits/">Even vs negative splits</a>
+      <a href="/sitemap/">HTML sitemap</a>
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/disclaimer/">Disclaimer</a>
+    </div>
+    <p class="tiny muted" style="margin-top:12px">Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>
