@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>The Math of “Time in the Bank”: Why Starting 10 sec/km Too Fast Usually Costs You Minutes</title>
+  <meta name="description" content="A simple break-even equation shows how tiny late-race slowdowns erase early 'banked time'—plus a calculator, table, and pacing rules to avoid the 30–35K blow-up." />
+  <link rel="canonical" href="https://marathonpacekm.com/blog/time-in-the-bank-math/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Math of “Time in the Bank”" />
+  <meta property="og:description" content="Break-even pacing math + a calculator: how a small slowdown late wipes out early 'banked time'." />
+  <meta property="og:url" content="https://marathonpacekm.com/blog/time-in-the-bank-math/" />
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"The Math of “Time in the Bank”: Why Starting 10 sec/km Too Fast Usually Costs You Minutes",
+    "description":"A simple break-even equation shows how tiny late-race slowdowns erase early 'banked time'—plus a calculator, table, and pacing rules to avoid the 30–35K blow-up.",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/time-in-the-bank-math/"},
+    "datePublished":"2026-01-28",
+    "dateModified":"2026-01-28",
+    "author":{"@type":"Organization","name":"Marathon Pace KM"},
+    "publisher":{"@type":"Organization","name":"Marathon Pace KM"}
+  }
+  </script>
+
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; line-height: 1.6; }
+    header { padding: 18px 16px; border-bottom: 1px solid #eee; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+    .topbar { display: flex; gap: 12px; align-items: baseline; justify-content: space-between; flex-wrap: wrap; }
+    .brand { font-weight: 800; letter-spacing: 0.2px; }
+    .brand a { text-decoration: none; color: inherit; }
+    nav a { margin-right: 12px; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { padding: 26px 0 44px; }
+    h1 { margin: 0 0 10px; font-size: 34px; letter-spacing: -0.2px; }
+    .lede { margin: 0 0 16px; color: #333; max-width: 75ch; }
+    .meta { color:#666; font-size: 13px; margin-bottom: 18px; }
+    .callout { border: 1px solid #eee; border-radius: 12px; padding: 14px; margin: 18px 0; }
+    .callout strong { display:block; margin-bottom: 6px; }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .card { grid-column: span 12; border: 1px solid #eee; border-radius: 12px; padding: 16px; }
+    @media (min-width: 900px) { .card.half { grid-column: span 6; } }
+    code, pre { background: #f7f7f7; border-radius: 8px; }
+    code { padding: 2px 6px; }
+    pre { padding: 12px; overflow: auto; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0 0; }
+    th, td { text-align: left; padding: 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+    th { font-size: 13px; color: #555; }
+    .small { font-size: 13px; color:#666; }
+    .inputs { display:flex; flex-wrap: wrap; gap: 10px; align-items: end; }
+    label { font-size: 13px; color:#555; display:block; margin-bottom: 6px; }
+    input { padding: 10px 10px; border: 1px solid #ddd; border-radius: 10px; min-width: 140px; }
+    button { padding: 10px 12px; border: 1px solid #ddd; border-radius: 10px; cursor:pointer; background: white; }
+    button:hover { border-color:#aaa; }
+    .result { margin-top: 12px; padding: 12px; border: 1px dashed #ddd; border-radius: 12px; }
+    .kicker { font-weight: 700; }
+    .hr { border-top: 1px solid #eee; margin: 22px 0; }
+    footer { padding: 22px 16px; border-top: 1px solid #eee; color: #666; font-size: 13px; }
+    .muted a { color: inherit; }
+    .related a { display: inline-block; margin-right: 10px; margin-bottom: 8px; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand"><a href="/">Marathon Pace KM</a></div>
+        <nav aria-label="Primary">
+          <a href="/">Home</a>
+          <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>
+          <a href="/monthly-training-plan/">Monthly Training Plan</a>
+          <a href="/blog/">Blog</a>
+          <a href="/sitemap/">All pages</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h1>The Math of “Time in the Bank”</h1>
+    <p class="lede">
+      Lots of runners try to “bank time” early (e.g., <strong>10 sec/km faster than goal pace</strong>) and hope to hang on.
+      Here’s the problem: the math is brutal. A surprisingly tiny slowdown later can erase all your early gains.
+    </p>
+    <div class="meta">Published: 2026-01-28 • Updated: 2026-01-28</div>
+
+    <div class="callout">
+      <strong>Use this with your pacing plan</strong>
+      Plug your goal time into the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>, then use the break-even math below to sanity-check your early pacing.
+    </div>
+
+    <h2>The one equation that kills “banking time”</h2>
+    <p>
+      Suppose you run the first <em>D</em> km <strong>Δ seconds per km faster</strong> than goal pace.
+      You “gain” <code>Δ × D</code> seconds early. If you then slow by <em>S</em> seconds per km for the remaining distance,
+      you “lose” <code>S × (42.195 − D)</code> seconds.
+    </p>
+
+    <div class="card">
+      <p class="kicker">Break-even slowdown</p>
+      <p>
+        The slowdown that wipes out your early gains is:
+      </p>
+      <pre><code>Break-even S (sec/km) = (Δ × D) / (42.195 − D)</code></pre>
+      <p class="small">
+        If your actual slowdown later is <strong>bigger</strong> than this, “banking time” makes you slower overall.
+      </p>
+    </div>
+
+    <div class="grid" style="margin-top: 14px;">
+      <section class="card half">
+        <h2>Calculator: how fragile is your “banked time”?</h2>
+        <div class="inputs">
+          <div>
+            <label for="delta">Early faster than goal (sec/km)</label>
+            <input id="delta" type="number" value="10" min="1" step="1" />
+          </div>
+          <div>
+            <label for="dist">How long you hold it (km)</label>
+            <input id="dist" type="number" value="10" min="1" step="0.1" />
+          </div>
+          <div>
+            <label for="slow">Late slowdown (sec/km)</label>
+            <input id="slow" type="number" value="5" min="0" step="1" />
+          </div>
+          <button id="calc">Calculate</button>
+        </div>
+
+        <div class="result" id="result" aria-live="polite"></div>
+        <p class="small">
+          Try it: keep <strong>10 sec/km fast</strong> for 10 km. Notice the break-even slowdown is only about ~3 sec/km.
+          In the real world, late-race slowdowns can be far larger when runners hit “the wall.” :contentReference[oaicite:0]{index=0}
+        </p>
+      </section>
+
+      <section class="card half">
+        <h2>Break-even table (Δ = 10 sec/km)</h2>
+        <p class="small">How much can you slow later before your early “banked time” disappears?</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Early fast distance (km)</th>
+              <th>Break-even later slowdown (sec/km)</th>
+              <th>Interpretation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>5</td><td>~1.3</td><td>Slow just a tiny bit later and you’re net slower.</td></tr>
+            <tr><td>10</td><td>~3.1</td><td>If you slow &gt; 3 sec/km later, you lose time overall.</td></tr>
+            <tr><td>15</td><td>~5.5</td><td>Even modest fade wipes out the early gain.</td></tr>
+            <tr><td>21.1 (half)</td><td>~10.0</td><td>You must run the second half no slower than goal pace to benefit.</td></tr>
+            <tr><td>30</td><td>~24.6</td><td>By 30K the “damage” is often already done if this was unsustainable.</td></tr>
+            <tr><td>35</td><td>~48.6</td><td>Holding 10 sec/km fast to 35K is rare; if you can, your goal was too conservative.</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <div class="hr"></div>
+
+    <h2>What real marathon data says about pacing (and “the wall”)</h2>
+    <ul>
+      <li>
+        Large-scale analyses of marathon splits consistently find that <strong>faster runners pace more evenly</strong> than slower runners. :contentReference[oaicite:1]{index=1}
+      </li>
+      <li>
+        A big open-access study using <strong>millions of race records</strong> defined “hitting the wall” as sustained late-race slowing and found it’s common (especially among men), typically late in the race. :contentReference[oaicite:2]{index=2}
+      </li>
+      <li>
+        Physiological models show that as intensity rises, the predicted distance to complete glycogen depletion falls, with failure risk often clustering around the later miles if fueling/intensity aren’t managed. :contentReference[oaicite:3]{index=3}
+      </li>
+      <li>
+        A systematic review of marathon pacing research notes positive pacing is common, and highlights practical value in understanding pacing strategy selection. :contentReference[oaicite:4]{index=4}
+      </li>
+    </ul>
+
+    <div class="callout">
+      <strong>Translation: “banking time” is a fragile bet.</strong>
+      The math says you can’t afford much late slowdown. Real-world marathon data shows late slowdowns are common — especially when pacing is aggressive.
+      So the safest path to a PR is usually: controlled start → settle → only push after 30–32K if you still feel good.
+    </div>
+
+    <h2>3 simple rules to avoid the 30–35K blow-up</h2>
+    <ol>
+      <li><strong>Start controlled for 3–5K.</strong> Your HR/RPE should feel “too easy.” (You can’t win the race here — you can only lose it.)</li>
+      <li><strong>Lock into goal effort, not ego.</strong> If conditions are tough (heat/wind/hills), pace by effort and accept the time adjustment.</li>
+      <li><strong>Earn the right to speed up after 30K.</strong> If you’ve fueled well and your effort is steady, then gradually lift pace.</li>
+    </ol>
+
+    <div class="callout">
+      <strong>Next step</strong>
+      Build a pacing plan from your goal time:
+      <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a> •
+      <a href="/monthly-training-plan/">Monthly Training Plan</a>
+    </div>
+
+    <h2>Related guides</h2>
+    <p class="related">
+      <a href="/blog/marathon-splits/">Marathon splits explained</a>
+      <a href="/blog/negative-split-pacing/">Negative split pacing</a>
+      <a href="/blog/racing-in-heat-wind-hills/">Pacing in heat/wind/hills</a>
+      <a href="/blog/half-marathon-to-marathon-pace/">Half → marathon pace conversion</a>
+      <a href="/blog/marathon-pace-bands/">Pace bands (printable)</a>
+    </p>
+
+    <p class="small muted">
+      Notes: This post includes a simple arithmetic “break-even” model plus references to pacing research. It’s not claiming to predict your exact fade — it’s showing how small fades erase early “banked time.”
+    </p>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© <span id="y"></span> Marathon Pace KM • <a href="/privacy/">Privacy</a> • <a href="/disclaimer/">Disclaimer</a> • <a href="/contact/">Contact</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const MARATHON_KM = 42.195;
+
+      const deltaEl = document.getElementById("delta");
+      const distEl  = document.getElementById("dist");
+      const slowEl  = document.getElementById("slow");
+      const outEl   = document.getElementById("result");
+      const btn     = document.getElementById("calc");
+
+      function fmtTime(seconds) {
+        const sign = seconds < 0 ? "-" : "";
+        seconds = Math.abs(seconds);
+        const m = Math.floor(seconds / 60);
+        const s = Math.round(seconds % 60);
+        return sign + m + ":" + String(s).padStart(2, "0");
+      }
+
+      function calc() {
+        const delta = Number(deltaEl.value);
+        const dist  = Number(distEl.value);
+        const slow  = Number(slowEl.value);
+
+        if (!Number.isFinite(delta) || !Number.isFinite(dist) || !Number.isFinite(slow)) {
+          outEl.textContent = "Please enter valid numbers.";
+          return;
+        }
+        if (dist <= 0 || dist >= MARATHON_KM) {
+          outEl.textContent = "Distance held (km) must be between 0 and 42.195.";
+          return;
+        }
+        if (delta <= 0) {
+          outEl.textContent = "Early faster than goal must be > 0 sec/km.";
+          return;
+        }
+        if (slow < 0) {
+          outEl.textContent = "Late slowdown can’t be negative (use 0 if perfectly even).";
+          return;
+        }
+
+        const remaining = MARATHON_KM - dist;
+        const timeGained = delta * dist;           // seconds
+        const timeLost   = slow * remaining;       // seconds
+        const net        = timeLost - timeGained;  // + = slower overall
+        const breakEven  = (delta * dist) / remaining;
+
+        outEl.innerHTML = `
+          <div><strong>Early “banked time”:</strong> ${fmtTime(timeGained)} (from ${delta.toFixed(0)} sec/km for ${dist.toFixed(1)} km)</div>
+          <div><strong>Late time lost:</strong> ${fmtTime(timeLost)} (from ${slow.toFixed(0)} sec/km for ${remaining.toFixed(3)} km)</div>
+          <div style="margin-top:8px;"><strong>Net result:</strong> ${net >= 0 ? `<span>${fmtTime(net)} slower</span>` : `<span>${fmtTime(net)} faster</span>`}</div>
+          <div class="small" style="margin-top:8px;">
+            <strong>Break-even slowdown:</strong> about <strong>${breakEven.toFixed(1)} sec/km</strong>.
+            If your late slowdown is bigger than this, “banking time” makes you slower overall.
+          </div>
+        `;
+      }
+
+      btn.addEventListener("click", calc);
+      calc();
+
+      document.getElementById("y").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
