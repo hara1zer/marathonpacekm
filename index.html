@@ -505,4 +505,106 @@
 <h3>Why does my watch pace differ from the pace chart?</h3>
 <p>Instant GPS pace can fluctuate. Use lap-average pace (1 km) and pace by effort in wind, heat and hills.</p>
 <h3>What pace do I need for a sub-4 marathon?</h3>
-<p>Sub-4 pace averages about <strong>5:41 per km</strong>. Use the Sub-4 page or enter 3:59:59 / 4:00:00 to generate full splits.</
+<p>Sub-4 pace averages about <strong>5:41 per km</strong>. Use the Sub-4 page or enter 3:59:59 / 4:00:00 to generate full splits.</p>
+<p class="tiny muted">Note: This is a planning tool only. Official results depend on course and conditions.</p>
+<p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+</section>
+
+</main>
+
+<script defer="" src="/assets/app.js"></script>
+<script>
+    (function(){
+      var TIME_TO_URL = {
+        "3:00:00": "/3-00-marathon-pace-km/",
+        "3:05:00": "/3-05-marathon-pace-km/",
+        "3:10:00": "/3-10-marathon-pace-km/",
+        "3:15:00": "/3-15-marathon-pace-km/",
+        "3:30:00": "/3-30-marathon-pace-km/",
+        "3:45:00": "/3-45-marathon-pace-km/",
+        "3:50:00": "/3-50-marathon-pace-km/",
+        "3:55:00": "/3-55-marathon-pace-km/",
+        "3:59:59": "/sub-4-marathon-pace-km/",
+        "4:00:00": "/4-00-marathon-pace-km/",
+        "4:05:00": "/4-05-marathon-pace-km/",
+        "4:30:00": "/4-30-marathon-pace-km/",
+        "4:35:00": "/4-35-marathon-pace-km/",
+        "4:40:00": "/4-40-marathon-pace-km/",
+        "4:50:00": "/4-50-marathon-pace-km/",
+        "4:55:00": "/4-55-marathon-pace-km/",
+        "5:00:00": "/5-00-marathon-pace-km/",
+        "5:05:00": "/5-05-marathon-pace-km/"
+      };
+
+      function normalize(s){
+        return (s || "").replace(/ /g, " ").trim();
+      }
+
+      function linkifyChartOnce(){
+        var container = document.getElementById('chartTable');
+        if(!container) return;
+        var tables = container.querySelectorAll('table');
+        if(!tables || !tables.length) return;
+
+        tables.forEach(function(tbl){
+          var rows = tbl.querySelectorAll('tbody tr');
+          if(!rows || !rows.length) return;
+          rows.forEach(function(row){
+            var first = row.children && row.children[0];
+            if(!first) return;
+            if(first.querySelector('a')) return;
+
+            var txt = normalize(first.textContent);
+            var m = txt.match(/\b(\d{1,2}:\d{2}:\d{2})\b/);
+            var key = m ? m[1] : null;
+            var url = key ? TIME_TO_URL[key] : null;
+            if(!url) return;
+
+            var a = document.createElement('a');
+            a.href = url;
+            a.textContent = txt;
+            a.style.textDecoration = 'none';
+            a.addEventListener('mouseover', function(){ a.style.textDecoration = 'underline'; });
+            a.addEventListener('mouseout', function(){ a.style.textDecoration = 'none'; });
+
+            first.textContent = '';
+            first.appendChild(a);
+          });
+        });
+      }
+
+      var container = document.getElementById('chartTable');
+      if(!container) return;
+
+      var obs = new MutationObserver(function(){
+        linkifyChartOnce();
+      });
+      obs.observe(container, { childList: true, subtree: true });
+
+      window.addEventListener('load', function(){
+        setTimeout(linkifyChartOnce, 150);
+      });
+    })();
+  </script>
+
+<footer class="wrap" style="padding:24px 16px 40px">
+<div class="card" style="padding:16px">
+<div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
+<a href="/">Pace chart hub</a>
+<a href="/marathon-pace-calculator/">Calculator</a>
+<a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
+<a href="/monthly-training-plan/">Monthly plan</a>
+<a href="/blog/">Blog</a>
+<a href="/how-to-use-marathon-pace-chart/">How to use</a>
+<a href="/even-vs-negative-splits/">Even vs negative splits</a>
+<a href="/sitemap/">HTML sitemap</a>
+<a href="/about/">About</a>
+<a href="/contact/">Contact</a>
+<a href="/privacy/">Privacy</a>
+<a href="/disclaimer/">Disclaimer</a>
+</div>
+<p class="tiny muted" style="margin-top:12px">Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.</p>
+</div>
+</footer>
+</body>
+</html>
