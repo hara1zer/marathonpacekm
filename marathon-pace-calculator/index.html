@@ -29,7 +29,7 @@
   <style>
     html { scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    #calculator, #checkpoints, #pace-band, #full-splits, #goal-times, #faq { scroll-margin-top: 16px; }
+    #calculator, #checkpoints, #pace-band, #full-splits, #goal-times, #related, #faq { scroll-margin-top: 16px; }
     .splits-table{ width:100%; border-collapse: collapse; margin-top: 10px; overflow:hidden; border-radius: 12px; border: 1px solid rgba(0,0,0,.10); background: rgba(255,255,255,.6); }
     .splits-table th, .splits-table td{ text-align:left; padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
     .splits-table tr:last-child td{ border-bottom: 0; }
@@ -84,11 +84,32 @@
 
 </head>
 
-<body>
+<body id="top">
   <header class="wrap" style="padding-top:28px">
     <a class="btn secondary" href="/">← Back to pace chart hub</a>
     <h1 style="margin-top:14px">Marathon Pace Calculator (KM & Miles)</h1>
     <p class="sub">Enter a goal finish time to calculate <strong>pace per km</strong> and <strong>pace per mile</strong>, plus key checkpoints and a printable pace band.</p>
+
+    <!-- Start here block (internal linking + guidance) -->
+    <div class="card" style="margin-top:12px;padding:14px">
+      <p class="muted" style="margin:0">
+        <strong>Start here:</strong>
+        Pick a realistic goal time →
+        <a href="/blog/choose-marathon-goal-time/">choose your marathon goal</a>,
+        avoid early pacing mistakes →
+        <a href="/blog/time-in-the-bank-math/">the “time in the bank” math</a>,
+        and build your checkpoints →
+        <a href="/blog/marathon-splits/">marathon splits explained</a>.
+      </p>
+      <p class="tiny muted2" style="margin:10px 0 0">
+        Want to predict a marathon from a recent race?
+        <a href="/blog/marathon-pace-from-half-marathon/">half → marathon</a> ·
+        <a href="/blog/marathon-pace-from-10k/">10K → marathon</a> ·
+        <a href="/blog/marathon-pace-from-5k/">5K → marathon</a> ·
+        <a href="/blog/vdot-marathon-pace/">VDOT explained</a> ·
+        <a href="/blog/race-time-predictor-marathon/">combine multiple races</a>
+      </p>
+    </div>
 
     <div class="toc" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
       <a class="btn" href="#calculator">Calculator</a>
@@ -96,6 +117,7 @@
       <a class="btn secondary" href="#pace-band">Printable pace band</a>
       <a class="btn secondary" href="#goal-times">Goal times</a>
       <a class="btn secondary" href="#faq">FAQ</a>
+      <a class="btn secondary" href="#related">Related guides</a>
     </div>
   </header>
 
@@ -176,6 +198,32 @@
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
 
+    <!-- New related guides section -->
+    <section id="related" class="card">
+      <h2>Related guides (recommended reading)</h2>
+      <p class="muted">These explain the “why” behind pacing and help you choose a realistic target.</p>
+
+      <div class="links">
+        <a href="/blog/choose-marathon-goal-time/">Choose a realistic marathon goal time</a>
+        <a href="/blog/time-in-the-bank-math/">Why starting too fast costs minutes</a>
+        <a href="/blog/marathon-splits/">Marathon splits explained</a>
+        <a href="/blog/negative-split-pacing/">Negative split pacing</a>
+        <a href="/blog/racing-in-heat-wind-hills/">Heat / wind / hills pacing</a>
+        <a href="/blog/marathon-pace-bands/">How to use a pace band</a>
+      </div>
+
+      <p class="tiny muted2" style="margin-top:10px">
+        Race-based prediction:
+        <a href="/blog/marathon-pace-from-half-marathon/">Half marathon → marathon pace</a> ·
+        <a href="/blog/marathon-pace-from-10k/">10K → marathon pace</a> ·
+        <a href="/blog/marathon-pace-from-5k/">5K → marathon pace</a> ·
+        <a href="/blog/vdot-marathon-pace/">VDOT marathon pace</a> ·
+        <a href="/blog/race-time-predictor-marathon/">Combine races predictor</a>
+      </p>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
     <section id="faq" class="card">
       <h2>Marathon pace calculator FAQ</h2>
       <h3>How do I calculate pace per mile from pace per km?</h3>
@@ -186,9 +234,12 @@
 
       <h3>What should I do if conditions are hot or hilly?</h3>
       <p>Use effort as the guide. Expect slower splits in heat or hills and focus on consistency rather than forcing exact numbers.</p>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
 
   </main>
+
 <script>
 (function(){
   var elH=document.getElementById('h');
@@ -332,7 +383,6 @@
 })();
 </script>
 
-
 <footer class="wrap" style="padding:24px 16px 40px">
   <div class="card" style="padding:16px">
     <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
@@ -351,7 +401,6 @@
     <p class="tiny muted" style="margin-top:12px">Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.</p>
   </div>
 </footer>
-
 
 </body>
 </html>
