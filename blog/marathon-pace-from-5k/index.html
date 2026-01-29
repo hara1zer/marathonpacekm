@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marathon Pace From 5K Time | Why It’s Risky + Calculator</title>
+  <meta name="description" content="Convert your 5K time into a marathon pace estimate, plus conservative ranges and why short races often overpredict marathon potential." />
+  <link rel="canonical" href="https://marathonpacekm.com/blog/marathon-pace-from-5k/" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Marathon Pace From 5K Time" />
+  <meta property="og:description" content="5K → marathon pace calculator + realistic conservative ranges." />
+  <meta property="og:url" content="https://marathonpacekm.com/blog/marathon-pace-from-5k/" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"Marathon Pace From 5K Time (Calculator + Realistic Ranges)",
+    "description":"Convert your 5K time into a marathon pace estimate, plus conservative ranges and why short races often overpredict marathon potential.",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/marathon-pace-from-5k/"},
+    "datePublished":"2026-01-29",
+    "dateModified":"2026-01-29",
+    "author":{"@type":"Organization","name":"Marathon Pace KM"},
+    "publisher":{"@type":"Organization","name":"Marathon Pace KM"}
+  }
+  </script>
+
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; line-height: 1.6; }
+    header { padding: 18px 16px; border-bottom: 1px solid #eee; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+    .topbar { display:flex; gap:12px; justify-content:space-between; align-items:baseline; flex-wrap:wrap; }
+    .brand { font-weight: 800; letter-spacing: .2px; }
+    .brand a { color: inherit; text-decoration: none; }
+    nav a { margin-right: 12px; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { padding: 26px 0 44px; }
+    h1 { margin: 0 0 10px; font-size: 34px; letter-spacing: -0.2px; }
+    .lede { margin: 0 0 16px; color:#333; max-width: 75ch; }
+    .meta { color:#666; font-size: 13px; margin-bottom: 18px; }
+    .callout { border: 1px solid #eee; border-radius: 12px; padding: 14px; margin: 18px 0; }
+    .callout strong { display:block; margin-bottom: 6px; }
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .card { grid-column: span 12; border:1px solid #eee; border-radius: 12px; padding: 16px; }
+    @media (min-width: 900px) { .card.half { grid-column: span 6; } }
+    label { font-size: 13px; color:#555; display:block; margin-bottom: 6px; }
+    input, select { padding: 10px; border:1px solid #ddd; border-radius: 10px; min-width: 160px; }
+    button { padding: 10px 12px; border:1px solid #ddd; border-radius: 10px; background: #fff; cursor:pointer; }
+    button:hover { border-color:#aaa; }
+    .inputs { display:flex; flex-wrap:wrap; gap:10px; align-items:end; }
+    .result { margin-top: 12px; padding: 12px; border: 1px dashed #ddd; border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { text-align:left; padding: 10px; border-bottom:1px solid #eee; vertical-align:top; }
+    th { font-size: 13px; color:#555; }
+    .small { font-size: 13px; color:#666; }
+    .hr { border-top:1px solid #eee; margin: 22px 0; }
+    .related a { display:inline-block; margin-right:10px; margin-bottom:8px; }
+    footer { padding: 22px 16px; border-top:1px solid #eee; color:#666; font-size:13px; }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><a href="/">Marathon Pace KM</a></div>
+      <nav aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>
+        <a href="/monthly-training-plan/">Monthly Training Plan</a>
+        <a href="/blog/">Blog</a>
+        <a href="/sitemap/">All pages</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Marathon pace from 5K time</h1>
+  <p class="lede">
+    You <em>can</em> estimate marathon pace from a 5K — but it’s one of the easiest ways to get an over-optimistic marathon goal.
+    Why? A 5K reflects speed + VO₂max more than marathon-specific endurance and fueling durability.
+  </p>
+  <div class="meta">Published: 2026-01-29 • Updated: 2026-01-29</div>
+
+  <div class="callout">
+    <strong>If you only have a 5K time…</strong>
+    Use the conservative range below, then validate with longer events when possible:
+    <a href="/blog/marathon-pace-from-10k/">10K → marathon</a> or
+    <a href="/blog/marathon-pace-from-half-marathon/">Half → marathon</a>.
+  </div>
+
+  <h2>Calculator (Riegel-style model)</h2>
+  <p>
+    A widely used prediction approach uses a power-law scaling of time vs distance (often called “Riegel” in running calculators).
+    Shorter races generally require a more conservative endurance assumption when projecting to 42.195 km.
+  </p>
+  <p class="small">
+    Riegel paper copies: <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">RRTC PDF</a>,
+    <a href="https://www.nku.edu/~longa/classes/mat375/days/docs/CrossCountry/riegel.pdf" target="_blank" rel="noopener">alternate PDF</a>.
+  </p>
+
+  <div class="grid">
+    <section class="card half">
+      <h2>5K → marathon calculator</h2>
+      <div class="inputs">
+        <div>
+          <label for="t5">Your 5K time (hh:mm:ss or mm:ss)</label>
+          <input id="t5" value="22:00" />
+        </div>
+        <div>
+          <label for="exp">Endurance assumption</label>
+          <select id="exp">
+            <option value="1.07" selected>Conservative (1.07)</option>
+            <option value="1.06">Balanced (1.06)</option>
+            <option value="1.08">Very conservative (1.08)</option>
+          </select>
+        </div>
+        <button id="calc">Calculate</button>
+      </div>
+      <div class="result" id="out" aria-live="polite"></div>
+
+      <p class="small">
+        If your longest runs aren’t close to 28–32 km and you haven’t practiced marathon fueling, choose 1.07–1.08.
+      </p>
+    </section>
+
+    <section class="card half">
+      <h2>Why 5K overpredicts marathon (common reasons)</h2>
+      <ul>
+        <li><strong>Durability:</strong> the marathon exposes fatigue resistance and training depth.</li>
+        <li><strong>Fueling:</strong> carbohydrate availability and intake strategy matter late in the race.</li>
+        <li><strong>Pacing errors:</strong> small early overpacing can cause big late slowdowns.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Read next</strong>
+        <div class="related">
+          <a href="/blog/time-in-the-bank-math/">The math of starting too fast</a>
+          <a href="/blog/marathon-splits/">Marathon splits explained</a>
+          <a href="/blog/negative-split-pacing/">Negative split pacing</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="hr"></div>
+
+  <h2>Better alternatives (if you can get them)</h2>
+  <ul>
+    <li><a href="/blog/marathon-pace-from-10k/">Marathon pace from 10K time</a> (stronger signal than 5K)</li>
+    <li><a href="/blog/marathon-pace-from-half-marathon/">Marathon pace from half marathon time</a> (usually best race predictor)</li>
+    <li><a href="/blog/vdot-marathon-pace/">VDOT marathon pace</a> (fitness concept + training intensities)</li>
+  </ul>
+
+  <h2>References</h2>
+  <ol class="small">
+    <li>Riegel PS. “Athletic Records and Human Endurance.” PDFs: <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">RRTC</a>, <a href="https://www.nku.edu/~longa/classes/mat375/days/docs/CrossCountry/riegel.pdf" target="_blank" rel="noopener">alternate</a>.</li>
+    <li>Review of prediction models: <a href="https://www.mdpi.com/1660-4601/17/21/8289" target="_blank" rel="noopener">Predictive Performance Models in Long-Distance Runners</a>.</li>
+    <li>Large-dataset performance prediction: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0157257" target="_blank" rel="noopener">PLOS ONE model paper</a>.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Practical recommendation</strong>
+    If you only have a 5K, start conservative and aim to negative split. Pair this estimate with
+    <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a> and
+    <a href="/monthly-training-plan/">Monthly Training Plan</a>.
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="y"></span> Marathon Pace KM • <a href="/privacy/">Privacy</a> • <a href="/disclaimer/">Disclaimer</a> • <a href="/contact/">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const MARA_KM = 42.195;
+  const FIVEK_KM = 5;
+
+  function parseTimeToSeconds(s) {
+    s = String(s).trim();
+    const parts = s.split(":").map(p => p.trim());
+    if (parts.length === 2) return Number(parts[0]) * 60 + Number(parts[1]);
+    if (parts.length === 3) return Number(parts[0]) * 3600 + Number(parts[1]) * 60 + Number(parts[2]);
+    return NaN;
+  }
+
+  function fmtHMS(totalSeconds) {
+    totalSeconds = Math.round(totalSeconds);
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
+    return h > 0 ? `${h}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}` : `${m}:${String(s).padStart(2,"0")}`;
+  }
+
+  function fmtPace(secPerKm) {
+    const m = Math.floor(secPerKm / 60);
+    const s = Math.round(secPerKm % 60);
+    return `${m}:${String(s).padStart(2,"0")}/km`;
+  }
+
+  function riegelPredict(t1, d1, d2, exp) {
+    return t1 * Math.pow(d2 / d1, exp);
+  }
+
+  const t5 = document.getElementById("t5");
+  const exp = document.getElementById("exp");
+  const out = document.getElementById("out");
+  const btn = document.getElementById("calc");
+
+  function render() {
+    const t1 = parseTimeToSeconds(t5.value);
+    const e = Number(exp.value);
+    if (!Number.isFinite(t1) || t1 <= 0) {
+      out.textContent = "Enter a valid 5K time like 22:00 or 0:22:00.";
+      return;
+    }
+    const maraSeconds = riegelPredict(t1, FIVEK_KM, MARA_KM, e);
+    const pace = fmtPace(maraSeconds / MARA_KM);
+    out.innerHTML = `
+      <div><strong>Predicted marathon time:</strong> ${fmtHMS(maraSeconds)}</div>
+      <div><strong>Predicted marathon pace:</strong> ${pace}</div>
+      <div class="small" style="margin-top:8px;">
+        Treat this as a range. Validate with a 10K or half marathon when possible.
+      </div>
+    `;
+  }
+
+  btn.addEventListener("click", render);
+  render();
+  document.getElementById("y").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
