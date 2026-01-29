@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Marathon Pace From Half Marathon Time | Best Predictor + Calculator</title>
   <meta name="description" content="Convert your half marathon time into a realistic marathon pace using a prediction model plus practical adjustment ranges based on endurance and training." />
-  <link rel="canonical" href="https://marathonpacekm.com/blog/marathon-pace-from-half-marathon/" />
+  <link rel="canonical" href="https://marathonpacekm.com/blog/half-marathon-to-marathon-pace/" />
   <meta name="robots" content="index,follow" />
 
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Marathon Pace From Half Marathon Time" />
   <meta property="og:description" content="Half marathon → marathon pace calculator + realistic adjustment ranges." />
-  <meta property="og:url" content="https://marathonpacekm.com/blog/marathon-pace-from-half-marathon/" />
+  <meta property="og:url" content="https://marathonpacekm.com/blog/half-marathon-to-marathon-pace/" />
 
   <script type="application/ld+json">
   {
@@ -19,7 +19,7 @@
     "@type":"BlogPosting",
     "headline":"Marathon Pace From Half Marathon Time (Calculator + Realistic Ranges)",
     "description":"Convert your half marathon time into a realistic marathon pace using a prediction model plus practical adjustment ranges based on endurance and training.",
-    "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/marathon-pace-from-half-marathon/"},
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/half-marathon-to-marathon-pace/"},
     "datePublished":"2026-01-29",
     "dateModified":"2026-01-29",
     "author":{"@type":"Organization","name":"Marathon Pace KM"},
@@ -94,7 +94,8 @@
 
   <h2>Calculator</h2>
   <p class="small">
-    Model background: power-law time vs distance scaling (often called Riegel). See: <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">RRTC PDF</a>.
+    Model background: power-law time vs distance scaling (often called Riegel). See:
+    <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">RRTC PDF</a>.
   </p>
 
   <div class="grid">
@@ -223,7 +224,7 @@
   function exponentsForMode(m) {
     if (m === "aggr") return {lo: 1.05, mid: 1.055, hi: 1.06};
     if (m === "cons") return {lo: 1.065, mid: 1.075, hi: 1.085};
-    return {lo: 1.06, mid: 1.065, hi: 1.075}; // balanced
+    return {lo: 1.06, mid: 1.065, hi: 1.075};
   }
 
   function render() {
@@ -249,7 +250,6 @@
   btn.addEventListener("click", render);
   render();
 
-  // Example table
   const rows = ["1:20:00","1:30:00","1:40:00","1:50:00","2:00:00","2:10:00"];
   const tb = document.getElementById("tableBody");
 
