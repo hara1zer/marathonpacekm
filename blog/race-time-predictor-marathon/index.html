@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Race Predictor Marathon Time | Combine 5K/10K/Half for Better Accuracy</title>
+  <meta name="description" content="A practical marathon time predictor that combines multiple race results (5K/10K/half), shows ranges, and explains why single-race predictors often fail." />
+  <link rel="canonical" href="https://marathonpacekm.com/blog/race-time-predictor-marathon/" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Race Predictor Marathon Time" />
+  <meta property="og:description" content="Combine 5K/10K/half marathon results for a more realistic marathon prediction." />
+  <meta property="og:url" content="https://marathonpacekm.com/blog/race-time-predictor-marathon/" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"Race Predictor Marathon Time: Combine 5K/10K/Half for Better Accuracy",
+    "description":"A practical marathon time predictor that combines multiple race results (5K/10K/half), shows ranges, and explains why single-race predictors often fail.",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/race-time-predictor-marathon/"},
+    "datePublished":"2026-01-29",
+    "dateModified":"2026-01-29",
+    "author":{"@type":"Organization","name":"Marathon Pace KM"},
+    "publisher":{"@type":"Organization","name":"Marathon Pace KM"}
+  }
+  </script>
+
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; line-height: 1.6; }
+    header { padding: 18px 16px; border-bottom: 1px solid #eee; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+    .topbar { display:flex; gap:12px; justify-content:space-between; align-items:baseline; flex-wrap:wrap; }
+    .brand { font-weight: 800; letter-spacing: .2px; }
+    .brand a { color: inherit; text-decoration: none; }
+    nav a { margin-right: 12px; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { padding: 26px 0 44px; }
+    h1 { margin: 0 0 10px; font-size: 34px; letter-spacing: -0.2px; }
+    .lede { margin: 0 0 16px; color:#333; max-width: 75ch; }
+    .meta { color:#666; font-size: 13px; margin-bottom: 18px; }
+    .callout { border: 1px solid #eee; border-radius: 12px; padding: 14px; margin: 18px 0; }
+    .callout strong { display:block; margin-bottom: 6px; }
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .card { grid-column: span 12; border:1px solid #eee; border-radius: 12px; padding: 16px; }
+    @media (min-width: 900px) { .card.half { grid-column: span 6; } }
+    label { font-size: 13px; color:#555; display:block; margin-bottom: 6px; }
+    input { padding: 10px; border:1px solid #ddd; border-radius: 10px; min-width: 180px; }
+    button { padding: 10px 12px; border:1px solid #ddd; border-radius: 10px; background: #fff; cursor:pointer; }
+    button:hover { border-color:#aaa; }
+    .inputs { display:flex; flex-wrap:wrap; gap:10px; align-items:end; }
+    .result { margin-top: 12px; padding: 12px; border: 1px dashed #ddd; border-radius: 12px; }
+    .small { font-size: 13px; color:#666; }
+    .hr { border-top:1px solid #eee; margin: 22px 0; }
+    .related a { display:inline-block; margin-right:10px; margin-bottom:8px; }
+    footer { padding: 22px 16px; border-top:1px solid #eee; color:#666; font-size:13px; }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><a href="/">Marathon Pace KM</a></div>
+      <nav aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>
+        <a href="/monthly-training-plan/">Monthly Training Plan</a>
+        <a href="/blog/">Blog</a>
+        <a href="/sitemap/">All pages</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Race predictor marathon time (combine multiple races)</h1>
+  <p class="lede">
+    Single-race predictors can swing wildly depending on whether you’re more “speed-strong” or “endurance-strong.”
+    A simple improvement is to predict your marathon from <em>each</em> distance (5K/10K/half) and then combine them into a weighted estimate.
+  </p>
+  <div class="meta">Published: 2026-01-29 • Updated: 2026-01-29</div>
+
+  <div class="callout">
+    <strong>Use this to set a realistic goal</strong>
+    Then generate your exact pacing checkpoints with <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a> and build the month with
+    <a href="/monthly-training-plan/">Monthly Training Plan</a>.
+  </div>
+
+  <h2>How the combined predictor works</h2>
+  <ol>
+    <li>Predict marathon time from each race using the same time–distance model (Riegel-style).</li>
+    <li>Weight longer races more heavily (half marathon &gt; 10K &gt; 5K) because they reflect endurance better.</li>
+    <li>Return a range (conservative ↔ aggressive) instead of pretending there’s one perfect number.</li>
+  </ol>
+
+  <p class="small">
+    Model background: <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">Riegel / endurance power-law</a>.
+    Broader review of prediction models: <a href="https://www.mdpi.com/1660-4601/17/21/8289" target="_blank" rel="noopener">MDPI review</a>.
+  </p>
+
+  <div class="grid">
+    <section class="card half">
+      <h2>Enter your races (optional fields)</h2>
+      <div class="inputs">
+        <div>
+          <label for="t5">5K time (mm:ss)</label>
+          <input id="t5" value="" placeholder="e.g. 22:00" />
+        </div>
+        <div>
+          <label for="t10">10K time (mm:ss)</label>
+          <input id="t10" value="" placeholder="e.g. 45:00" />
+        </div>
+        <div>
+          <label for="thm">Half time (hh:mm:ss)</label>
+          <input id="thm" value="" placeholder="e.g. 1:40:00" />
+        </div>
+        <button id="calc">Predict marathon</button>
+      </div>
+
+      <div class="result" id="out" aria-live="polite"></div>
+      <p class="small">
+        Tip: if you have a half marathon, it should usually dominate your prediction.
+        If you only have a 5K, keep targets conservative.
+      </p>
+    </section>
+
+    <section class="card half">
+      <h2>What to do with the result</h2>
+      <ul>
+        <li>Build a checkpoint plan: <a href="/blog/marathon-splits/">Marathon splits explained</a></li>
+        <li>Choose execution strategy: <a href="/blog/negative-split-pacing/">Negative split pacing</a></li>
+        <li>Sanity-check early pacing: <a href="/blog/time-in-the-bank-math/">Time-in-the-bank math</a></li>
+        <li>Adjust for race day: <a href="/blog/racing-in-heat-wind-hills/">Heat / wind / hills pacing</a></li>
+      </ul>
+
+      <div class="callout">
+        <strong>Related conversion posts</strong>
+        <div class="related">
+          <a href="/blog/marathon-pace-from-5k/">5K → marathon</a>
+          <a href="/blog/marathon-pace-from-10k/">10K → marathon</a>
+          <a href="/blog/marathon-pace-from-half-marathon/">Half → marathon</a>
+          <a href="/blog/vdot-marathon-pace/">VDOT explained</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="hr"></div>
+
+  <h2>Why the combined approach is more realistic</h2>
+  <p>
+    Prediction accuracy improves when models use more data points and account for how individuals differ.
+    Large-dataset work shows you can build better predictors from runners’ histories than from a single result.
+  </p>
+
+  <h2>References</h2>
+  <ol class="small">
+    <li>Riegel PS. Endurance power-law background: <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">ARHE PDF</a>.</li>
+    <li>Review of performance prediction models: <a href="https://www.mdpi.com/1660-4601/17/21/8289" target="_blank" rel="noopener">Predictive Performance Models in Long-Distance Runners</a>.</li>
+    <li>Large dataset prediction example: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0157257" target="_blank" rel="noopener">PLOS ONE performance prediction</a>.</li>
+    <li>Training + race history prediction approach: <a href="https://researchrepository.ucd.ie/bitstreams/7dbb0849-5603-41fa-89cb-d175d1378577/download" target="_blank" rel="noopener">Case-based marathon prediction (PDF)</a>.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Next step</strong>
+    Convert your chosen marathon time into exact pace checkpoints: <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>.
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="y"></span> Marathon Pace KM • <a href="/privacy/">Privacy</a> • <a href="/disclaimer/">Disclaimer</a> • <a href="/contact/">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const MARA_KM = 42.195;
+
+  function parseTimeToSeconds(s) {
+    s = String(s).trim();
+    if (!s) return NaN;
+    const parts = s.split(":").map(p => p.trim());
+    if (parts.length === 2) return Number(parts[0]) * 60 + Number(parts[1]);
+    if (parts.length === 3) return Number(parts[0]) * 3600 + Number(parts[1]) * 60 + Number(parts[2]);
+    return NaN;
+  }
+
+  function fmtHMS(totalSeconds) {
+    totalSeconds = Math.round(totalSeconds);
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
+    return h > 0 ? `${h}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}` : `${m}:${String(s).padStart(2,"0")}`;
+  }
+
+  function fmtPace(secPerKm) {
+    const m = Math.floor(secPerKm / 60);
+    const s = Math.round(secPerKm % 60);
+    return `${m}:${String(s).padStart(2,"0")}/km`;
+  }
+
+  function riegelPredict(t1, d1, d2, exp) {
+    return t1 * Math.pow(d2 / d1, exp);
+  }
+
+  function combine(preds) {
+    // preds: [{seconds, weight}]
+    const wsum = preds.reduce((a,p)=>a+p.weight,0);
+    const mean = preds.reduce((a,p)=>a+p.seconds*p.weight,0) / wsum;
+    return mean;
+  }
+
+  const t5 = document.getElementById("t5");
+  const t10 = document.getElementById("t10");
+  const thm = document.getElementById("thm");
+  const out = document.getElementById("out");
+  const btn = document.getElementById("calc");
+
+  function predict() {
+    const predsAgg = [];
+    const predsCon = [];
+
+    const s5 = parseTimeToSeconds(t5.value);
+    const s10 = parseTimeToSeconds(t10.value);
+    const shm = parseTimeToSeconds(thm.value);
+
+    // weights emphasize longer races
+    if (Number.isFinite(s5) && s5 > 0) {
+      predsAgg.push({ seconds: riegelPredict(s5, 5, MARA_KM, 1.06), weight: 1 });
+      predsCon.push({ seconds: riegelPredict(s5, 5, MARA_KM, 1.08), weight: 1 });
+    }
+    if (Number.isFinite(s10) && s10 > 0) {
+      predsAgg.push({ seconds: riegelPredict(s10, 10, MARA_KM, 1.05), weight: 2 });
+      predsCon.push({ seconds: riegelPredict(s10, 10, MARA_KM, 1.07), weight: 2 });
+    }
+    if (Number.isFinite(shm) && shm > 0) {
+      predsAgg.push({ seconds: riegelPredict(shm, 21.0975, MARA_KM, 1.055), weight: 5 });
+      predsCon.push({ seconds: riegelPredict(shm, 21.0975, MARA_KM, 1.08), weight: 5 });
+    }
+
+    if (predsAgg.length === 0) {
+      out.textContent = "Enter at least one race time (5K, 10K, or half).";
+      return;
+    }
+
+    const aggressive = combine(predsAgg);
+    const conservative = combine(predsCon);
+    const mid = (aggressive + conservative) / 2;
+
+    out.innerHTML = `
+      <div><strong>Suggested marathon range:</strong> ${fmtHMS(aggressive)} – ${fmtHMS(conservative)}</div>
+      <div><strong>Balanced target:</strong> ${fmtHMS(mid)} (${fmtPace(mid / MARA_KM)})</div>
+      <div class="small" style="margin-top:8px;">
+        Use the conservative end if your marathon-specific base, fueling practice, or race-day conditions are uncertain.
+      </div>
+    `;
+  }
+
+  btn.addEventListener("click", predict);
+  predict();
+
+  document.getElementById("y").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
