@@ -1,212 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marathon Pace From Half Marathon Time | Best Predictor + Calculator</title>
+  <meta name="description" content="Convert your half marathon time into a realistic marathon pace using a prediction model plus practical adjustment ranges based on endurance and training." />
+  <link rel="canonical" href="https://marathonpacekm.com/blog/marathon-pace-from-half-marathon/" />
+  <meta name="robots" content="index,follow" />
 
-<title>Half Marathon to Marathon Pace: Accurate Conversion (With Examples)</title>
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Marathon Pace From Half Marathon Time" />
+  <meta property="og:description" content="Half marathon → marathon pace calculator + realistic adjustment ranges." />
+  <meta property="og:url" content="https://marathonpacekm.com/blog/marathon-pace-from-half-marathon/" />
 
-<meta name="description" content="Convert your half marathon time into a realistic marathon pace. Learn the correct slowdown ranges, examples, and how mileage changes your result.">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="canonical" href="https://marathonpacekm.com/blog/half-marathon-to-marathon-pace/">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Half Marathon to Marathon Pace",
-  "description": "How to accurately convert a half marathon time into a realistic marathon pace using fitness, mileage, and endurance.",
-  "author": {
-    "@type": "Organization",
-    "name": "Marathon Pace KM"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Marathon Pace KM"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://marathonpacekm.com/blog/half-marathon-to-marathon-pace/"
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"Marathon Pace From Half Marathon Time (Calculator + Realistic Ranges)",
+    "description":"Convert your half marathon time into a realistic marathon pace using a prediction model plus practical adjustment ranges based on endurance and training.",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/marathon-pace-from-half-marathon/"},
+    "datePublished":"2026-01-29",
+    "dateModified":"2026-01-29",
+    "author":{"@type":"Organization","name":"Marathon Pace KM"},
+    "publisher":{"@type":"Organization","name":"Marathon Pace KM"}
   }
-}
-</script>
+  </script>
 
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; line-height: 1.6; }
+    header { padding: 18px 16px; border-bottom: 1px solid #eee; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+    .topbar { display:flex; gap:12px; justify-content:space-between; align-items:baseline; flex-wrap:wrap; }
+    .brand { font-weight: 800; letter-spacing: .2px; }
+    .brand a { color: inherit; text-decoration: none; }
+    nav a { margin-right: 12px; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { padding: 26px 0 44px; }
+    h1 { margin: 0 0 10px; font-size: 34px; letter-spacing: -0.2px; }
+    .lede { margin: 0 0 16px; color:#333; max-width: 75ch; }
+    .meta { color:#666; font-size: 13px; margin-bottom: 18px; }
+    .callout { border: 1px solid #eee; border-radius: 12px; padding: 14px; margin: 18px 0; }
+    .callout strong { display:block; margin-bottom: 6px; }
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .card { grid-column: span 12; border:1px solid #eee; border-radius: 12px; padding: 16px; }
+    @media (min-width: 900px) { .card.half { grid-column: span 6; } }
+    label { font-size: 13px; color:#555; display:block; margin-bottom: 6px; }
+    input, select { padding: 10px; border:1px solid #ddd; border-radius: 10px; min-width: 160px; }
+    button { padding: 10px 12px; border:1px solid #ddd; border-radius: 10px; background: #fff; cursor:pointer; }
+    button:hover { border-color:#aaa; }
+    .inputs { display:flex; flex-wrap:wrap; gap:10px; align-items:end; }
+    .result { margin-top: 12px; padding: 12px; border: 1px dashed #ddd; border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { text-align:left; padding: 10px; border-bottom:1px solid #eee; vertical-align:top; }
+    th { font-size: 13px; color:#555; }
+    .small { font-size: 13px; color:#666; }
+    .hr { border-top:1px solid #eee; margin: 22px 0; }
+    .related a { display:inline-block; margin-right:10px; margin-bottom:8px; }
+    footer { padding: 22px 16px; border-top:1px solid #eee; color:#666; font-size:13px; }
+  </style>
 </head>
 
 <body>
-<main>
-<article>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><a href="/">Marathon Pace KM</a></div>
+      <nav aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>
+        <a href="/monthly-training-plan/">Monthly Training Plan</a>
+        <a href="/blog/">Blog</a>
+        <a href="/sitemap/">All pages</a>
+      </nav>
+    </div>
+  </div>
+</header>
 
-<h1>Half Marathon to Marathon Pace: How to Convert Your Time Accurately</h1>
+<main class="wrap">
+  <h1>Marathon pace from half marathon time</h1>
+  <p class="lede">
+    If you have one race to predict a marathon, the half marathon is usually the best compromise:
+    long enough to reflect endurance, short enough that fueling/pacing mistakes are less catastrophic than a full marathon.
+  </p>
+  <div class="meta">Published: 2026-01-29 • Updated: 2026-01-29</div>
 
-<p>Your half marathon time is one of the most powerful tools for predicting marathon performance — if you convert it correctly.</p>
+  <div class="callout">
+    <strong>Use this the “safe” way</strong>
+    Generate a time range below, then plug the target into the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>
+    and plan the next month in <a href="/monthly-training-plan/">Monthly Training Plan</a>.
+  </div>
 
-<p>Many runners make the same mistake: they double their half marathon time and assume that’s a realistic marathon goal. For most runners, this leads to aggressive pacing, late-race fatigue, and a painful final 10 km.</p>
+  <h2>Calculator</h2>
+  <p class="small">
+    Model background: power-law time vs distance scaling (often called Riegel). See: <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">RRTC PDF</a>.
+  </p>
 
-<p>This guide explains how to convert your half marathon time into a <strong>realistic marathon pace</strong>, with clear ranges, examples, and adjustments based on mileage and experience.</p>
+  <div class="grid">
+    <section class="card half">
+      <h2>Half → marathon calculator</h2>
+      <div class="inputs">
+        <div>
+          <label for="thm">Your half marathon time (hh:mm:ss)</label>
+          <input id="thm" value="1:40:00" />
+        </div>
+        <div>
+          <label for="mode">Endurance adjustment</label>
+          <select id="mode">
+            <option value="aggr">Aggressive (strong endurance)</option>
+            <option value="bal" selected>Balanced</option>
+            <option value="cons">Conservative (new to marathon)</option>
+          </select>
+        </div>
+        <button id="calc">Calculate</button>
+      </div>
+      <div class="result" id="out" aria-live="polite"></div>
 
-<hr>
+      <p class="small">
+        Conservative is appropriate if you haven’t done marathon-specific long runs or practiced race fueling.
+      </p>
+    </section>
 
-<h2>Why the Half Marathon Is the Best Predictor</h2>
+    <section class="card half">
+      <h2>How to pick the right range</h2>
+      <ul>
+        <li><strong>Aggressive:</strong> you’ve built consistent volume, long runs, and tolerate goal pace late.</li>
+        <li><strong>Balanced:</strong> decent base, but still building marathon-specific durability.</li>
+        <li><strong>Conservative:</strong> first marathon, inconsistent long runs, uncertain fueling, or tough conditions.</li>
+      </ul>
+      <div class="callout">
+        <strong>Helpful companions</strong>
+        <div class="related">
+          <a href="/blog/time-in-the-bank-math/">The math of starting too fast</a>
+          <a href="/blog/marathon-splits/">Marathon splits explained</a>
+          <a href="/blog/negative-split-pacing/">Negative split pacing</a>
+        </div>
+      </div>
+    </section>
+  </div>
 
-<p>The half marathon balances speed and endurance better than any other race distance.</p>
+  <div class="hr"></div>
 
-<ul>
-  <li>Shorter races (5K, 10K) overestimate marathon ability</li>
-  <li>The marathon itself is too dependent on fueling and durability</li>
-</ul>
+  <h2>Quick rule of thumb (for planning)</h2>
+  <p>
+    Many runners find the marathon is not “2× the half.” A small additional slowdown is normal as distance doubles,
+    especially without marathon-specific training.
+  </p>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Half marathon time</th>
+          <th>Marathon (aggressive)</th>
+          <th>Marathon (balanced)</th>
+          <th>Marathon (conservative)</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <p class="small">
+      Once you choose a target, build a checkpoint plan using <a href="/blog/marathon-splits/">Marathon splits explained</a>.
+    </p>
+  </div>
 
-<p>A well-raced half marathon reflects aerobic capacity, fatigue resistance, and pacing control — all critical for marathon success.</p>
+  <h2>References</h2>
+  <ol class="small">
+    <li>Riegel PS. “Athletic Records and Human Endurance.” <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">PDF</a>.</li>
+    <li>Review of performance models: <a href="https://www.mdpi.com/1660-4601/17/21/8289" target="_blank" rel="noopener">Predictive Performance Models in Long-Distance Runners</a>.</li>
+    <li>Large dataset prediction example: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0157257" target="_blank" rel="noopener">PLOS ONE performance prediction</a>.</li>
+  </ol>
 
-<hr>
-
-<h2>Why You Can’t Just Double Your Half Marathon Time</h2>
-
-<p>The marathon introduces physiological stress that doesn’t fully appear in a half marathon:</p>
-
-<ul>
-  <li>Glycogen depletion</li>
-  <li>Muscle fiber damage</li>
-  <li>Heat accumulation</li>
-  <li>Neuromuscular fatigue</li>
-</ul>
-
-<p>Even well-trained runners experience some slowdown in the second half of the marathon.</p>
-
-<p>The key question is not <em>if</em> you slow down — but <em>how much</em>.</p>
-
-<hr>
-
-<h2>Typical Half Marathon → Marathon Slowdown</h2>
-
-<p>Most runners fall into one of these ranges:</p>
-
-<ul>
-  <li><strong>Elite / very high mileage:</strong> +3–5%</li>
-  <li><strong>Well-trained amateurs:</strong> +6–10%</li>
-  <li><strong>First-time or low mileage runners:</strong> +10–15%</li>
-</ul>
-
-<p>The better your endurance base, the smaller the slowdown.</p>
-
-<hr>
-
-<h2>Half Marathon to Marathon Conversion Examples</h2>
-
-<h3>1:30 Half Marathon</h3>
-<ul>
-  <li>Likely marathon range: 3:10–3:15</li>
-  <li>Target pace examples:
-    <ul>
-      <li><a href="/3-10-marathon-pace/">3:10 marathon pace</a></li>
-      <li><a href="/3-15-marathon-pace/">3:15 marathon pace</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h3>1:40 Half Marathon</h3>
-<ul>
-  <li>Likely marathon range: 3:30–3:35</li>
-  <li>Target pace examples:
-    <ul>
-      <li><a href="/3-30-marathon-pace/">3:30 marathon pace</a></li>
-      <li><a href="/3-35-marathon-pace/">3:35 marathon pace</a></li>
-    </ul>
-  </li>
-</ul>
-
-<h3>1:50 Half Marathon</h3>
-<ul>
-  <li>Likely marathon range: 3:50–4:00</li>
-  <li>Target pace examples:
-    <ul>
-      <li><a href="/3-50-marathon-pace/">3:50 marathon pace</a></li>
-      <li><a href="/4-00-marathon-pace/">4:00 marathon pace</a></li>
-    </ul>
-  </li>
-</ul>
-
-<hr>
-
-<h2>How Weekly Mileage Changes the Conversion</h2>
-
-<p>Two runners with identical half marathon times may need very different marathon pacing.</p>
-
-<p>General guidance:</p>
-
-<ul>
-  <li><strong>Under 50 km/week:</strong> use conservative end of the range</li>
-  <li><strong>60–75 km/week:</strong> mid-range targets are realistic</li>
-  <li><strong>80+ km/week:</strong> aggressive but controlled pacing possible</li>
-</ul>
-
-<p>Mileage builds the durability required to hold pace after 30 km.</p>
-
-<hr>
-
-<h2>Why Long Runs Matter More Than Speed</h2>
-
-<p>The best indicator that your conversion is realistic is how your long runs feel.</p>
-
-<p>Signs your marathon pace is appropriate:</p>
-
-<ul>
-  <li>You can finish 28–32 km runs without dramatic slowing</li>
-  <li>Marathon-pace segments feel controlled, not forced</li>
-  <li>You recover well in the days following long runs</li>
-</ul>
-
-<p>If marathon pace feels unsustainable in training, it will not improve on race day.</p>
-
-<hr>
-
-<h2>Use the Marathon Pace Calculator</h2>
-
-<p>The calculator on Marathon Pace KM converts your half marathon time into:</p>
-
-<ul>
-  <li>Exact pace per kilometre</li>
-  <li>Projected finish time</li>
-  <li>Checkpoint splits throughout the race</li>
-</ul>
-
-<p><a href="/">Open the marathon pace calculator</a></p>
-
-<hr>
-
-<h2>Common Half-to-Marathon Conversion Mistakes</h2>
-
-<ul>
-  <li>Using an old half marathon result</li>
-  <li>Ignoring weekly mileage</li>
-  <li>Overestimating race-day adrenaline</li>
-  <li>Choosing the fastest possible conversion</li>
-</ul>
-
-<p>When in doubt, choose the slower end of the range.</p>
-
-<hr>
-
-<h2>Lock In Your Exact Marathon Pace</h2>
-
-<p>Once you’ve identified your realistic range, the next step is precision.</p>
-
-<p>Use the pace pages below to see exact splits and pacing:</p>
-
-<nav>
-<ul>
-  <li><a href="/3-05-marathon-pace/">3:05 Marathon Pace</a></li>
-  <li><a href="/3-15-marathon-pace/">3:15 Marathon Pace</a></li>
-  <li><a href="/3-30-marathon-pace/">3:30 Marathon Pace</a></li>
-  <li><a href="/3-45-marathon-pace/">3:45 Marathon Pace</a></li>
-  <li><a href="/4-00-marathon-pace/">4:00 Marathon Pace</a></li>
-</ul>
-</nav>
-
-<p><strong>A correct half-to-marathon conversion doesn’t feel exciting early — it feels sustainable late.</strong></p>
-
-</article>
+  <div class="callout">
+    <strong>Next step</strong>
+    Use the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a> to turn your predicted marathon time into pace bands,
+    then produce your month plan with <a href="/monthly-training-plan/">Monthly Training Plan</a>.
+  </div>
 </main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="y"></span> Marathon Pace KM • <a href="/privacy/">Privacy</a> • <a href="/disclaimer/">Disclaimer</a> • <a href="/contact/">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const MARA_KM = 42.195;
+  const HALF_KM = 21.0975;
+
+  function parseTimeToSeconds(s) {
+    s = String(s).trim();
+    const parts = s.split(":").map(p => p.trim());
+    if (parts.length === 2) return Number(parts[0]) * 60 + Number(parts[1]);
+    if (parts.length === 3) return Number(parts[0]) * 3600 + Number(parts[1]) * 60 + Number(parts[2]);
+    return NaN;
+  }
+
+  function fmtHMS(totalSeconds) {
+    totalSeconds = Math.round(totalSeconds);
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
+    return h > 0 ? `${h}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}` : `${m}:${String(s).padStart(2,"0")}`;
+  }
+
+  function fmtPace(secPerKm) {
+    const m = Math.floor(secPerKm / 60);
+    const s = Math.round(secPerKm % 60);
+    return `${m}:${String(s).padStart(2,"0")}/km`;
+  }
+
+  function riegelPredict(t1, d1, d2, exp) {
+    return t1 * Math.pow(d2 / d1, exp);
+  }
+
+  const thm = document.getElementById("thm");
+  const mode = document.getElementById("mode");
+  const out = document.getElementById("out");
+  const btn = document.getElementById("calc");
+
+  function exponentsForMode(m) {
+    if (m === "aggr") return {lo: 1.05, mid: 1.055, hi: 1.06};
+    if (m === "cons") return {lo: 1.065, mid: 1.075, hi: 1.085};
+    return {lo: 1.06, mid: 1.065, hi: 1.075}; // balanced
+  }
+
+  function render() {
+    const t1 = parseTimeToSeconds(thm.value);
+    if (!Number.isFinite(t1) || t1 <= 0) {
+      out.textContent = "Enter a valid half marathon time like 1:40:00.";
+      return;
+    }
+    const exps = exponentsForMode(mode.value);
+    const lo = riegelPredict(t1, HALF_KM, MARA_KM, exps.lo);
+    const mid = riegelPredict(t1, HALF_KM, MARA_KM, exps.mid);
+    const hi = riegelPredict(t1, HALF_KM, MARA_KM, exps.hi);
+
+    out.innerHTML = `
+      <div><strong>Suggested marathon range:</strong> ${fmtHMS(lo)} – ${fmtHMS(hi)}</div>
+      <div><strong>Balanced target:</strong> ${fmtHMS(mid)} (${fmtPace(mid / MARA_KM)})</div>
+      <div class="small" style="margin-top:8px;">
+        Choose the conservative end if conditions are tough or marathon-specific training is limited.
+      </div>
+    `;
+  }
+
+  btn.addEventListener("click", render);
+  render();
+
+  // Example table
+  const rows = ["1:20:00","1:30:00","1:40:00","1:50:00","2:00:00","2:10:00"];
+  const tb = document.getElementById("tableBody");
+
+  function predictRow(hmStr) {
+    const t = parseTimeToSeconds(hmStr);
+    const ag = fmtHMS(riegelPredict(t, HALF_KM, MARA_KM, 1.055));
+    const ba = fmtHMS(riegelPredict(t, HALF_KM, MARA_KM, 1.065));
+    const co = fmtHMS(riegelPredict(t, HALF_KM, MARA_KM, 1.08));
+    return `<tr><td>${hmStr}</td><td>${ag}</td><td>${ba}</td><td>${co}</td></tr>`;
+  }
+  tb.innerHTML = rows.map(predictRow).join("");
+
+  document.getElementById("y").textContent = new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
