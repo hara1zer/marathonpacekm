@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marathon Pace From 10K Time | Calculator + Examples</title>
+  <meta name="description" content="Convert your 10K time into a realistic marathon pace using a research-backed prediction model, plus conservative/aggressive ranges and pacing advice." />
+  <link rel="canonical" href="https://marathonpacekm.com/blog/marathon-pace-from-10k/" />
+  <meta name="robots" content="index,follow" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Marathon Pace From 10K Time" />
+  <meta property="og:description" content="10K → marathon pace calculator + realistic ranges and examples." />
+  <meta property="og:url" content="https://marathonpacekm.com/blog/marathon-pace-from-10k/" />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"Marathon Pace From 10K Time (Calculator + Examples)",
+    "description":"Convert your 10K time into a realistic marathon pace using a research-backed prediction model, plus conservative/aggressive ranges and pacing advice.",
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/marathon-pace-from-10k/"},
+    "datePublished":"2026-01-29",
+    "dateModified":"2026-01-29",
+    "author":{"@type":"Organization","name":"Marathon Pace KM"},
+    "publisher":{"@type":"Organization","name":"Marathon Pace KM"}
+  }
+  </script>
+
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; line-height: 1.6; }
+    header { padding: 18px 16px; border-bottom: 1px solid #eee; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
+    .topbar { display:flex; gap:12px; justify-content:space-between; align-items:baseline; flex-wrap:wrap; }
+    .brand { font-weight: 800; letter-spacing: .2px; }
+    .brand a { color: inherit; text-decoration: none; }
+    nav a { margin-right: 12px; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    main { padding: 26px 0 44px; }
+    h1 { margin: 0 0 10px; font-size: 34px; letter-spacing: -0.2px; }
+    .lede { margin: 0 0 16px; color:#333; max-width: 75ch; }
+    .meta { color:#666; font-size: 13px; margin-bottom: 18px; }
+    .callout { border: 1px solid #eee; border-radius: 12px; padding: 14px; margin: 18px 0; }
+    .callout strong { display:block; margin-bottom: 6px; }
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
+    .card { grid-column: span 12; border:1px solid #eee; border-radius: 12px; padding: 16px; }
+    @media (min-width: 900px) { .card.half { grid-column: span 6; } }
+    label { font-size: 13px; color:#555; display:block; margin-bottom: 6px; }
+    input, select { padding: 10px; border:1px solid #ddd; border-radius: 10px; min-width: 160px; }
+    button { padding: 10px 12px; border:1px solid #ddd; border-radius: 10px; background: #fff; cursor:pointer; }
+    button:hover { border-color:#aaa; }
+    .inputs { display:flex; flex-wrap:wrap; gap:10px; align-items:end; }
+    .result { margin-top: 12px; padding: 12px; border: 1px dashed #ddd; border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { text-align:left; padding: 10px; border-bottom:1px solid #eee; vertical-align:top; }
+    th { font-size: 13px; color:#555; }
+    .small { font-size: 13px; color:#666; }
+    .hr { border-top:1px solid #eee; margin: 22px 0; }
+    .related a { display:inline-block; margin-right:10px; margin-bottom:8px; }
+    footer { padding: 22px 16px; border-top:1px solid #eee; color:#666; font-size:13px; }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><a href="/">Marathon Pace KM</a></div>
+      <nav aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>
+        <a href="/monthly-training-plan/">Monthly Training Plan</a>
+        <a href="/blog/">Blog</a>
+        <a href="/sitemap/">All pages</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Marathon pace from 10K time</h1>
+  <p class="lede">
+    Your 10K is a strong signal of fitness, but it’s still much shorter than a marathon — so the key is using a model
+    that accounts for the way pace typically slows as distance increases. Below is a practical calculator and realistic ranges.
+  </p>
+  <div class="meta">Published: 2026-01-29 • Updated: 2026-01-29</div>
+
+  <div class="callout">
+    <strong>Fastest way to use this</strong>
+    1) Predict your marathon time below → 2) confirm pacing in the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a> →
+    3) build the next month of training with <a href="/monthly-training-plan/">Monthly Training Plan</a>.
+  </div>
+
+  <h2>The prediction model (simple, widely used)</h2>
+  <p>
+    A common race-prediction approach is a power-law relationship between time and distance, popularized by Pete Riegel.
+    In its classic form, it uses an exponent around <strong>1.06</strong> for endurance events.
+  </p>
+  <p class="small">
+    Reference: Riegel’s “Athletic Records and Human Endurance” (American Scientist) is frequently cited as the basis for this style of model.
+    See open copies: <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">RRTC PDF</a> or
+    <a href="https://www.nku.edu/~longa/classes/mat375/days/docs/CrossCountry/riegel.pdf" target="_blank" rel="noopener">alternate PDF</a>.
+  </p>
+
+  <div class="grid">
+    <section class="card half">
+      <h2>10K → marathon calculator</h2>
+      <div class="inputs">
+        <div>
+          <label for="t10">Your 10K time (hh:mm:ss or mm:ss)</label>
+          <input id="t10" value="45:00" />
+        </div>
+        <div>
+          <label for="exp">“Fatigue factor” (exponent)</label>
+          <select id="exp">
+            <option value="1.06" selected>Balanced (1.06)</option>
+            <option value="1.05">Aggressive (1.05)</option>
+            <option value="1.07">Conservative (1.07)</option>
+            <option value="1.08">Very conservative (1.08)</option>
+          </select>
+        </div>
+        <button id="calc">Calculate</button>
+      </div>
+      <div class="result" id="out" aria-live="polite"></div>
+
+      <p class="small">
+        Tip: if your long-run base is limited, choose a more conservative exponent (1.07–1.08).
+        If you have strong endurance and marathon-specific training, 1.05–1.06 may be closer.
+      </p>
+    </section>
+
+    <section class="card half">
+      <h2>Why 10K-based predictions can miss</h2>
+      <ul>
+        <li><strong>Endurance vs speed:</strong> a good 10K reflects fitness, but marathon success also depends on durability, fueling, and pacing.</li>
+        <li><strong>Heat/hills/wind:</strong> conditions can change marathon pace meaningfully — plan by effort when needed.</li>
+        <li><strong>Execution:</strong> even small early mistakes can cause large late slowdowns.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>Read next</strong>
+        <div class="related">
+          <a href="/blog/time-in-the-bank-math/">The math of starting too fast</a>
+          <a href="/blog/marathon-splits/">Marathon splits explained</a>
+          <a href="/blog/negative-split-pacing/">Negative split pacing</a>
+          <a href="/blog/racing-in-heat-wind-hills/">Pacing in heat/wind/hills</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="hr"></div>
+
+  <h2>Quick reality-check ranges</h2>
+  <p>
+    Because a 10K is shorter, it’s smart to treat the output as a <strong>range</strong>.
+    Use the table below as a starting point (it’s generated using the same model with different exponents).
+  </p>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>10K time</th>
+          <th>Marathon (aggressive 1.05)</th>
+          <th>Marathon (balanced 1.06)</th>
+          <th>Marathon (conservative 1.07)</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <p class="small">
+      Want exact pacing at each checkpoint? Use <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a> and pair it with
+      <a href="/blog/marathon-splits/">Marathon splits explained</a>.
+    </p>
+  </div>
+
+  <h2>References (models & deeper reading)</h2>
+  <ol class="small">
+    <li>Riegel PS. “Athletic Records and Human Endurance” (American Scientist). PDFs: <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">RRTC</a>, <a href="https://www.nku.edu/~longa/classes/mat375/days/docs/CrossCountry/riegel.pdf" target="_blank" rel="noopener">alternate</a>.</li>
+    <li>Review of performance models: <a href="https://www.mdpi.com/1660-4601/17/21/8289" target="_blank" rel="noopener">Predictive Performance Models in Long-Distance Runners</a>.</li>
+    <li>More advanced statistical prediction (large datasets): <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0157257" target="_blank" rel="noopener">PLOS ONE: individual performance prediction</a>.</li>
+  </ol>
+
+  <div class="callout">
+    <strong>Bottom line</strong>
+    A 10K can estimate marathon potential — but your <em>training-specific endurance</em> determines whether you can cash it in.
+    Use the conservative range unless your training says otherwise.
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="y"></span> Marathon Pace KM • <a href="/privacy/">Privacy</a> • <a href="/disclaimer/">Disclaimer</a> • <a href="/contact/">Contact</a></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const MARA_KM = 42.195;
+  const TENK_KM = 10;
+
+  function parseTimeToSeconds(s) {
+    s = String(s).trim();
+    if (!s) return NaN;
+    const parts = s.split(":").map(p => p.trim());
+    if (parts.length === 2) {
+      const m = Number(parts[0]), sec = Number(parts[1]);
+      return (m*60 + sec);
+    }
+    if (parts.length === 3) {
+      const h = Number(parts[0]), m = Number(parts[1]), sec = Number(parts[2]);
+      return (h*3600 + m*60 + sec);
+    }
+    return NaN;
+  }
+
+  function fmtHMS(totalSeconds) {
+    totalSeconds = Math.round(totalSeconds);
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
+    const mm = String(m).padStart(2, "0");
+    const ss = String(s).padStart(2, "0");
+    return h > 0 ? `${h}:${mm}:${ss}` : `${m}:${ss.padStart(2,"0")}`;
+  }
+
+  function pacePerKmFromTime(seconds, km) {
+    return seconds / km;
+  }
+
+  function fmtPace(secPerKm) {
+    const m = Math.floor(secPerKm / 60);
+    const s = Math.round(secPerKm % 60);
+    return `${m}:${String(s).padStart(2,"0")}/km`;
+  }
+
+  function riegelPredict(t1, d1, d2, exp) {
+    return t1 * Math.pow(d2 / d1, exp);
+  }
+
+  const t10 = document.getElementById("t10");
+  const exp = document.getElementById("exp");
+  const out = document.getElementById("out");
+  const btn = document.getElementById("calc");
+
+  function render() {
+    const t1 = parseTimeToSeconds(t10.value);
+    const e = Number(exp.value);
+    if (!Number.isFinite(t1) || t1 <= 0 || !Number.isFinite(e)) {
+      out.textContent = "Enter a valid 10K time like 45:00 or 0:45:00.";
+      return;
+    }
+    const maraSeconds = riegelPredict(t1, TENK_KM, MARA_KM, e);
+    const pace = fmtPace(pacePerKmFromTime(maraSeconds, MARA_KM));
+    out.innerHTML = `
+      <div><strong>Predicted marathon time:</strong> ${fmtHMS(maraSeconds)}</div>
+      <div><strong>Predicted marathon pace:</strong> ${pace}</div>
+      <div class="small" style="margin-top:8px;">
+        Use this as a starting point, then validate with long-run fitness and race-day conditions.
+      </div>
+    `;
+  }
+
+  btn.addEventListener("click", render);
+  render();
+
+  // Build examples table
+  const rows = ["35:00","40:00","45:00","50:00","55:00","60:00"];
+  const tb = document.getElementById("tableBody");
+  function rowHTML(tStr) {
+    const tSec = parseTimeToSeconds(tStr);
+    const a = fmtHMS(riegelPredict(tSec, TENK_KM, MARA_KM, 1.05));
+    const b = fmtHMS(riegelPredict(tSec, TENK_KM, MARA_KM, 1.06));
+    const c = fmtHMS(riegelPredict(tSec, TENK_KM, MARA_KM, 1.07));
+    return `<tr><td>${tStr}</td><td>${a}</td><td>${b}</td><td>${c}</td></tr>`;
+  }
+  tb.innerHTML = rows.map(rowHTML).join("");
+
+  document.getElementById("y").textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
