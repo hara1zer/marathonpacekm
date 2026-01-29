@@ -147,34 +147,68 @@
   <!-- Blog -->
   <url>
     <loc>https://marathonpacekm.com/blog/</loc>
+    <lastmod>2026-01-29</lastmod>
   </url>
 
   <url>
     <loc>https://marathonpacekm.com/blog/choose-marathon-goal-time/</loc>
+    <lastmod>2026-01-29</lastmod>
   </url>
 
   <url>
     <loc>https://marathonpacekm.com/blog/half-marathon-to-marathon-pace/</loc>
+    <lastmod>2026-01-29</lastmod>
   </url>
 
   <url>
     <loc>https://marathonpacekm.com/blog/marathon-splits/</loc>
+    <lastmod>2026-01-29</lastmod>
   </url>
 
   <url>
     <loc>https://marathonpacekm.com/blog/negative-split-pacing/</loc>
+    <lastmod>2026-01-29</lastmod>
   </url>
 
   <url>
     <loc>https://marathonpacekm.com/blog/racing-in-heat-wind-hills/</loc>
+    <lastmod>2026-01-29</lastmod>
   </url>
 
   <url>
     <loc>https://marathonpacekm.com/blog/marathon-pace-bands/</loc>
+    <lastmod>2026-01-29</lastmod>
   </url>
 
   <url>
     <loc>https://marathonpacekm.com/blog/time-in-the-bank-math/</loc>
+    <lastmod>2026-01-29</lastmod>
+  </url>
+
+  <!-- New prediction/VDOT posts -->
+  <url>
+    <loc>https://marathonpacekm.com/blog/marathon-pace-from-10k/</loc>
+    <lastmod>2026-01-29</lastmod>
+  </url>
+
+  <url>
+    <loc>https://marathonpacekm.com/blog/marathon-pace-from-5k/</loc>
+    <lastmod>2026-01-29</lastmod>
+  </url>
+
+  <url>
+    <loc>https://marathonpacekm.com/blog/marathon-pace-from-half-marathon/</loc>
+    <lastmod>2026-01-29</lastmod>
+  </url>
+
+  <url>
+    <loc>https://marathonpacekm.com/blog/vdot-marathon-pace/</loc>
+    <lastmod>2026-01-29</lastmod>
+  </url>
+
+  <url>
+    <loc>https://marathonpacekm.com/blog/race-time-predictor-marathon/</loc>
+    <lastmod>2026-01-29</lastmod>
   </url>
 
 </urlset>
