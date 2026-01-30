@@ -71,6 +71,18 @@
     .sheet th, .sheet td { text-align:left; padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
     .sheet tr:last-child td { border-bottom: 0; }
 
+    /* Embed UI */
+    textarea.embed {
+      width: 100%;
+      min-height: 92px;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 12px;
+      padding: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      background: rgba(255,255,255,.75);
+    }
+
     @media print {
       header, footer, .no-print, .backtop { display: none !important; }
       .print-only { display: block !important; }
@@ -178,6 +190,18 @@
 
       <div class="results" id="shareOut" aria-live="polite"></div>
 
+      <!-- NEW: Embed snippet generator -->
+      <div class="card" style="margin-top:12px; padding:14px">
+        <p class="muted" style="margin:0"><strong>Embed this pace band</strong> (for clubs/coaches)</p>
+        <p class="tiny muted2" style="margin:6px 0 10px">
+          Paste this snippet into a website to embed the generator with your current settings.
+        </p>
+        <textarea id="embedCode" class="embed" readonly></textarea>
+        <div class="row actions" style="margin-top:10px; gap:10px">
+          <button class="btn secondary" id="copyEmbedBtn" type="button">Copy embed code</button>
+        </div>
+      </div>
+
       <p class="tiny muted2" style="margin-top:12px">
         Tip: share the link with your running group so they can generate their own band.
       </p>
@@ -271,11 +295,13 @@
     var updateBtn = document.getElementById('updateBtn');
     var printBtn = document.getElementById('printBtn');
     var copyBtn = document.getElementById('copyBtn');
+    var copyEmbedBtn = document.getElementById('copyEmbedBtn');
 
     var summary = document.getElementById('summary');
     var wristTable = document.getElementById('wristTable');
     var a4Table = document.getElementById('a4Table');
     var shareOut = document.getElementById('shareOut');
+    var embedCode = document.getElementById('embedCode');
 
     function clamp(n, lo, hi){
       n = Number(n);
@@ -329,10 +355,8 @@
       if(styleKey === 'neg'){
         pace1 = paceEven + offsetSecPerKm;
       } else {
-        // pos
         pace1 = Math.max(0, paceEven - offsetSecPerKm);
       }
-      // solve pace2 so total time stays the same
       pace2 = (paceEven*MARA - pace1*HALF) / (MARA - HALF);
 
       if(d <= HALF) return pace1 * d;
@@ -342,6 +366,32 @@
     function setLayoutClass(layout){
       document.body.classList.remove('layout-wrist','layout-a4');
       document.body.classList.add(layout === 'a4' ? 'layout-a4' : 'layout-wrist');
+    }
+
+    function buildShareURL(){
+      var url = new URL(window.location.href);
+      url.searchParams.set('h', String(elH.value||0));
+      url.searchParams.set('m', String(elM.value||0));
+      url.searchParams.set('s', String(elS.value||0));
+      url.searchParams.set('layout', elLayout.value);
+      url.searchParams.set('style', elStyle.value);
+      url.searchParams.set('offset', String(elOffset.value||0));
+      url.searchParams.delete('autoPrint');
+      return url;
+    }
+
+    function buildEmbedSnippet(shareUrl){
+      var src = shareUrl.toString();
+      return [
+        '<iframe',
+        '  src="' + src.replace(/"/g, '&quot;') + '"',
+        '  width="420"',
+        '  height="760"',
+        '  style="border:1px solid #eee;border-radius:12px;"',
+        '  loading="lazy"',
+        '  referrerpolicy="no-referrer-when-downgrade">',
+        '</iframe>'
+      ].join("\n");
     }
 
     function update(){
@@ -366,7 +416,6 @@
       var paceEven = total / MARA;                 // sec/km
       var paceMi = paceEven * 1.609344;            // sec/mi
 
-      // checkpoints
       var cps = [
         {label:'5K', km:5},
         {label:'10K', km:10},
@@ -381,7 +430,6 @@
         return { label: c.label, time: fmtHMS(t) };
       });
 
-      // summary KPIs
       summary.innerHTML =
         '<div class="fact"><div class="tiny muted2">Goal time</div><strong>' + fmtHMS(total) + '</strong></div>' +
         '<div class="fact"><div class="tiny muted2">Avg pace</div><strong>' + fmtPace(paceEven) + '/km</strong></div>' +
@@ -391,19 +439,14 @@
       wristTable.innerHTML = buildTable(rows);
       a4Table.innerHTML = buildA4(rows);
 
-      // update share link display (not copying yet)
-      var url = new URL(window.location.href);
-      url.searchParams.set('h', String(hh));
-      url.searchParams.set('m', String(mm));
-      url.searchParams.set('s', String(ss));
-      url.searchParams.set('layout', layout);
-      url.searchParams.set('style', style);
-      url.searchParams.set('offset', String(offset));
-      url.searchParams.delete('autoPrint');
-
+      var shareUrl = buildShareURL();
       shareOut.innerHTML =
         '<p class="tiny muted2">Share link ready. (Click “Copy share link”)</p>' +
-        '<p class="tiny muted"><code>' + url.toString() + '</code></p>';
+        '<p class="tiny muted"><code>' + shareUrl.toString() + '</code></p>';
+
+      if(embedCode){
+        embedCode.value = buildEmbedSnippet(shareUrl);
+      }
     }
 
     function applyFromQuery(){
@@ -430,22 +473,31 @@
 
     copyBtn.addEventListener('click', async function(){
       update();
-      var url = new URL(window.location.href);
-      url.searchParams.set('h', String(elH.value||0));
-      url.searchParams.set('m', String(elM.value||0));
-      url.searchParams.set('s', String(elS.value||0));
-      url.searchParams.set('layout', elLayout.value);
-      url.searchParams.set('style', elStyle.value);
-      url.searchParams.set('offset', String(elOffset.value||0));
-      url.searchParams.delete('autoPrint');
-
+      var shareUrl = buildShareURL().toString();
       try{
-        await navigator.clipboard.writeText(url.toString());
-        shareOut.innerHTML = '<p class="tiny muted2">Copied share link to clipboard ✅</p><p class="tiny muted"><code>' + url.toString() + '</code></p>';
+        await navigator.clipboard.writeText(shareUrl);
+        shareOut.innerHTML = '<p class="tiny muted2">Copied share link to clipboard ✅</p><p class="tiny muted"><code>' + shareUrl + '</code></p>';
       } catch(e){
-        shareOut.innerHTML = '<p class="tiny muted2">Couldn’t auto-copy. Copy manually:</p><p class="tiny muted"><code>' + url.toString() + '</code></p>';
+        shareOut.innerHTML = '<p class="tiny muted2">Couldn’t auto-copy. Copy manually:</p><p class="tiny muted"><code>' + shareUrl + '</code></p>';
       }
     });
+
+    if(copyEmbedBtn){
+      copyEmbedBtn.addEventListener('click', async function(){
+        update();
+        var code = (embedCode && embedCode.value) ? embedCode.value : '';
+        if(!code){
+          shareOut.innerHTML = '<p class="tiny muted2">Embed code not available.</p>';
+          return;
+        }
+        try{
+          await navigator.clipboard.writeText(code);
+          shareOut.innerHTML = '<p class="tiny muted2">Copied embed code to clipboard ✅</p>';
+        } catch(e){
+          shareOut.innerHTML = '<p class="tiny muted2">Couldn’t auto-copy embed code. Copy manually from the box.</p>';
+        }
+      });
+    }
 
     applyFromQuery();
   })();
