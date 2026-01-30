@@ -165,7 +165,10 @@
 
     <section id="pace-band" class="card">
       <h2>Printable pace band</h2>
-      <p class="muted">This prints a compact checkpoint band (ideal to fold or tape). Use the print button in the calculator.</p>
+      <p class="muted">Generate a wrist pace band or A4 pacing sheet, then print or save as PDF.</p>
+      <p class="tiny muted2" style="margin-top:6px">
+        Use the dedicated tool: <a href="/printable-pace-band/"><strong>Printable pace band (PDF)</strong></a>.
+      </p>
       <div id="printBand" class="results"></div>
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
@@ -198,7 +201,7 @@
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
 
-    <!-- New related guides section -->
+    <!-- Related guides section -->
     <section id="related" class="card">
       <h2>Related guides (recommended reading)</h2>
       <p class="muted">These explain the “why” behind pacing and help you choose a realistic target.</p>
@@ -376,7 +379,20 @@
 
   calcBtn.addEventListener('click', compute);
   resetBtn.addEventListener('click', reset);
-  printBtn.addEventListener('click', function(){ window.print(); });
+
+  // UPDATED: open the dedicated printable pace band tool (PDF-friendly) with your inputs
+  printBtn.addEventListener('click', function(){
+    var q = new URLSearchParams({
+      h: elH.value || 0,
+      m: elM.value || 0,
+      s: elS.value || 0,
+      layout: 'wrist',
+      style: 'even',
+      offset: '5',
+      autoPrint: '1'
+    });
+    window.open('/printable-pace-band/?' + q.toString(), '_blank');
+  });
 
   // initial
   compute();
@@ -388,6 +404,7 @@
     <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
       <a href="/">Pace chart hub</a>
       <a href="/marathon-pace-calculator/">Calculator</a>
+      <a href="/printable-pace-band/">Printable pace band</a>
       <a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
       <a href="/monthly-training-plan/">Monthly plan</a>
       <a href="/how-to-use-marathon-pace-chart/">How to use</a>
