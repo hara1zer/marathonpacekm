@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Marathon Time Predictor | Predict Finish Time & Pace (KM + Miles)</title>
+  <meta name="description" content="Free marathon time predictor. Use a recent 5K/10K/half + weekly km and longest run to estimate a realistic marathon finish time range and pace per km/mi." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://marathonpacekm.com/marathon-time-predictor/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Marathon Time Predictor (KM + Miles)" />
+  <meta property="og:description" content="Predict marathon finish time and pace from a recent race + weekly km + longest run. Includes conservative/balanced/aggressive ranges." />
+  <meta property="og:url" content="https://marathonpacekm.com/marathon-time-predictor/" />
+  <meta property="og:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Marathon Time Predictor (KM + Miles)" />
+  <meta name="twitter:description" content="Predict marathon finish time and pace from a recent race + weekly km + longest run." />
+  <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
+
+  <link rel="preload" href="/assets/style.css" as="style" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    #calculator, #resultsBlock, #how-to-use, #faq { scroll-margin-top: 16px; }
+
+    .splits-table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      overflow:hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.6);
+    }
+    .splits-table th, .splits-table td{
+      text-align:left;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      vertical-align: top;
+    }
+    .splits-table tr:last-child td{ border-bottom: 0; }
+  </style>
+
+  <!-- Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
+      {"@type":"ListItem","position":2,"name":"Marathon Time Predictor","item":"https://marathonpacekm.com/marathon-time-predictor/"}
+    ]
+  }
+  </script>
+
+  <!-- FAQ schema (matches visible FAQ below) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Is this marathon time predictor accurate?",
+        "acceptedAnswer":{"@type":"Answer","text":"It’s an estimate. It combines your recent race performance with basic endurance signals (weekly distance and longest run) to produce a conservative/balanced/aggressive range. Your result depends heavily on pacing, fueling, conditions, and marathon-specific training."}
+      },
+      {
+        "@type":"Question",
+        "name":"Why does it show a range instead of one time?",
+        "acceptedAnswer":{"@type":"Answer","text":"Marathon outcomes vary with durability and execution. A range is safer and more realistic than a single number, especially for first-time marathoners or inconsistent training blocks."}
+      },
+      {
+        "@type":"Question",
+        "name":"What race distance predicts marathon best?",
+        "acceptedAnswer":{"@type":"Answer","text":"A half marathon usually predicts marathon better than a 10K or 5K because it captures more endurance. If you only have a 5K, it’s safest to use the conservative end of the range."}
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+</head>
+
+<body id="top">
+  <header class="wrap" style="padding-top:28px">
+    <a class="btn secondary" href="/">← Back to pace chart hub</a>
+    <h1 style="margin-top:14px">Marathon Time Predictor (KM + Miles)</h1>
+    <p class="sub">
+      Estimate a realistic marathon finish time range using a recent race (5K/10K/half) plus your weekly kilometres and longest run.
+      This returns a <strong>conservative</strong>, <strong>balanced</strong>, and <strong>aggressive</strong> result — then links you into pacing tools.
+    </p>
+
+    <div class="toc" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+      <a class="btn" href="#calculator">Predictor</a>
+      <a class="btn secondary" href="#resultsBlock">Results</a>
+      <a class="btn secondary" href="#how-to-use">How to use</a>
+      <a class="btn secondary" href="#faq">FAQ</a>
+    </div>
+
+    <div class="card" style="margin-top:12px;padding:14px">
+      <p class="muted" style="margin:0">
+        <strong>Fast workflow:</strong>
+        Predict your time → open the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a> for checkpoints + printable pace band →
+        read <a href="/blog/time-in-the-bank-math/">why starting too fast costs minutes</a>.
+      </p>
+      <p class="tiny muted2" style="margin:10px 0 0">
+        Prefer combining multiple races? Use:
+        <a href="/blog/race-time-predictor-marathon/">Combine races marathon predictor</a>.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap" id="content">
+
+    <section id="calculator" class="card">
+      <h2>Marathon predictor</h2>
+      <p class="muted">
+        Enter your most recent race and basic endurance signals. If you’re keep it simple: choose your half marathon and use honest weekly km.
+      </p>
+
+      <div class="grid">
+        <div>
+          <label>Recent race distance</label>
+          <select id="raceDist">
+            <option value="21.0975" selected>Half Marathon (21.0975 km)</option>
+            <option value="10">10K (10 km)</option>
+            <option value="5">5K (5 km)</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Race time</label>
+          <div class="row">
+            <input id="rh" type="number" min="0" value="1" /> <span>h</span>
+            <input id="rm" type="number" min="0" max="59" value="40" /> <span>m</span>
+            <input id="rs" type="number" min="0" max="59" value="0" /> <span>s</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:10px">
+        <div>
+          <label>Average weekly distance (km)</label>
+          <input id="wk" type="number" min="0" value="55" />
+          <p class="tiny muted2" style="margin-top:6px">Use your recent 4–6 week average.</p>
+        </div>
+
+        <div>
+          <label>Longest run in the last 6–8 weeks (km)</label>
+          <input id="lr" type="number" min="0" value="28" />
+          <p class="tiny muted2" style="margin-top:6px">If you haven’t done a long run yet, be conservative.</p>
+        </div>
+
+        <div>
+          <label>Marathon experience</label>
+          <select id="exp">
+            <option value="first" selected>First marathon / unsure</option>
+            <option value="some">Some experience</option>
+            <option value="many">Experienced (multiple marathons)</option>
+          </select>
+          <p class="tiny muted2" style="margin-top:6px">Experience shifts the range slightly safer/less safe.</p>
+        </div>
+
+        <div>
+          <label>Race day difficulty</label>
+          <select id="cond">
+            <option value="normal" selected>Normal conditions</option>
+            <option value="tough">Tough (hot / windy / hilly)</option>
+          </select>
+          <p class="tiny muted2" style="margin-top:6px">Tough conditions widen the range and push conservative.</p>
+        </div>
+      </div>
+
+      <div class="row actions" style="margin-top:12px; gap:10px">
+        <button class="btn" id="calcBtn" type="button">Predict marathon</button>
+        <button class="btn secondary" id="resetBtn" type="button">Reset</button>
+      </div>
+
+      <div id="results" class="results" aria-live="polite"></div>
+
+      <p class="tiny muted" style="margin-top:12px">
+        Tip: If your inputs are optimistic (week km exaggerated or no long run), the “aggressive” number will mislead.
+        When in doubt, choose the conservative end and aim to negative split.
+      </p>
+    </section>
+
+    <section id="resultsBlock" class="card">
+      <h2>What to do with your result</h2>
+      <p class="muted">Use the range to pick a realistic goal, then build execution checkpoints.</p>
+
+      <div class="row actions" style="margin-top:10px; gap:10px">
+        <a class="btn" href="/marathon-pace-calculator/">Open Marathon Pace Calculator</a>
+        <a class="btn secondary" href="/monthly-training-plan/">Build Monthly Training Plan</a>
+        <a class="btn secondary" href="/blog/marathon-splits/">Marathon splits explained</a>
+      </div>
+
+      <p class="tiny muted2" style="margin-top:12px">
+        Avoid the classic mistake: “banking time” early. Read:
+        <a href="/blog/time-in-the-bank-math/">The math of time in the bank</a>.
+      </p>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="how-to-use" class="card">
+      <h2>How to use this predictor (best practice)</h2>
+      <ol class="muted">
+        <li><strong>Start with your longest recent race</strong> (half marathon &gt; 10K &gt; 5K).</li>
+        <li><strong>Be honest with weekly km</strong>. Overstating volume makes predictions dangerously aggressive.</li>
+        <li><strong>Use a range</strong>, then pick a target you can execute in your conditions.</li>
+        <li><strong>Generate checkpoints + pace band</strong> in the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>.</li>
+        <li><strong>Plan execution</strong> with <a href="/blog/marathon-splits/">splits</a> and <a href="/blog/negative-split-pacing/">negative split pacing</a>.</li>
+      </ol>
+
+      <div class="card" style="padding:14px; margin-top:10px">
+        <p class="muted" style="margin:0"><strong>Recommended reading:</strong></p>
+        <p class="tiny muted" style="margin:8px 0 0">
+          <a href="/blog/choose-marathon-goal-time/">Choose a realistic marathon goal time</a> ·
+          <a href="/blog/time-in-the-bank-math/">Why starting too fast costs minutes</a> ·
+          <a href="/blog/racing-in-heat-wind-hills/">Pacing in heat/wind/hills</a>
+        </p>
+      </div>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="faq" class="card">
+      <h2>Marathon predictor FAQ</h2>
+
+      <h3>Is this marathon time predictor accurate?</h3>
+      <p>It’s an estimate. It blends your race performance with endurance signals (weekly distance + longest run) to produce a realistic range. Your actual result depends heavily on fueling, pacing, conditions, and marathon-specific training.</p>
+
+      <h3>Why does it show a range instead of one time?</h3>
+      <p>Because marathon outcomes vary. Two runners with identical 10K times can differ massively at 35K depending on durability and execution. A range is safer and more useful.</p>
+
+      <h3>What race distance predicts marathon best?</h3>
+      <p>A half marathon usually predicts marathon better than a 10K or 5K because it captures more endurance. If you only have a 5K, use the conservative end of the range.</p>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+  </main>
+
+  <script>
+  (function(){
+    var MARA = 42.195;
+
+    var raceDist = document.getElementById('raceDist');
+    var rh = document.getElementById('rh');
+    var rm = document.getElementById('rm');
+    var rs = document.getElementById('rs');
+    var wk = document.getElementById('wk');
+    var lr = document.getElementById('lr');
+    var exp = document.getElementById('exp');
+    var cond = document.getElementById('cond');
+
+    var calcBtn = document.getElementById('calcBtn');
+    var resetBtn = document.getElementById('resetBtn');
+    var out = document.getElementById('results');
+
+    var DEFAULT = {
+      dist: 21.0975,
+      rh: 1, rm: 40, rs: 0,
+      wk: 55,
+      lr: 28,
+      exp: 'first',
+      cond: 'normal'
+    };
+
+    function clamp(n, lo, hi){
+      n = Number(n);
+      if(!Number.isFinite(n)) return lo;
+      if(n < lo) return lo;
+      if(n > hi) return hi;
+      return n;
+    }
+
+    function toSeconds(h,m,s){
+      return (Number(h)||0)*3600 + (Number(m)||0)*60 + (Number(s)||0);
+    }
+
+    function fmtHMS(sec){
+      sec = Math.max(0, Math.round(sec));
+      var h = Math.floor(sec/3600);
+      var m = Math.floor((sec%3600)/60);
+      var s = sec%60;
+      return h + ":" + String(m).padStart(2,'0') + ":" + String(s).padStart(2,'0');
+    }
+
+    function fmtPace(secPer){
+      secPer = Math.max(0, Math.round(secPer));
+      var m = Math.floor(secPer/60);
+      var s = secPer%60;
+      return m + ":" + String(s).padStart(2,'0');
+    }
+
+    function roundToNearest(sec, step){
+      step = step || 30;
+      return Math.round(sec / step) * step;
+    }
+
+    // Riegel-style projection: t2 = t1 * (d2/d1)^exp
+    function project(t1, d1, d2, exp){
+      return t1 * Math.pow(d2/d1, exp);
+    }
+
+    function enduranceScore(weeklyKm, longRunKm, expKey){
+      // weekly: 0..1 where 0=0km, 1=~80km+
+      var w = clamp(weeklyKm / 80, 0, 1);
+      // long run: 0..1 where 18->0, 32->1
+      var l = clamp((longRunKm - 18) / 14, 0, 1);
+
+      var e = 0;
+      if(expKey === 'many') e = 1;
+      else if(expKey === 'some') e = 0.6;
+      else e = 0.25;
+
+      // weights tuned for practicality
+      return 0.50*w + 0.35*l + 0.15*e;
+    }
+
+    function baseExponent(d1){
+      // shorter race -> more optimistic if used raw -> start more conservative
+      if(Math.abs(d1 - 21.0975) < 1e-6) return 1.060;
+      if(Math.abs(d1 - 10) < 1e-6) return 1.068;
+      return 1.078; // 5K
+    }
+
+    function compute(){
+      var d1 = Number(raceDist.value);
+      var t1 = toSeconds(rh.value, rm.value, rs.value);
+
+      var weeklyKm = clamp(wk.value, 0, 250);
+      var longRunKm = clamp(lr.value, 0, 80);
+
+      // sanitize time inputs
+      rh.value = clamp(rh.value, 0, 99);
+      rm.value = clamp(rm.value, 0, 59);
+      rs.value = clamp(rs.value, 0, 59);
+      wk.value = weeklyKm;
+      lr.value = longRunKm;
+
+      if(!Number.isFinite(d1) || d1 <= 0 || !Number.isFinite(t1) || t1 <= 0){
+        out.innerHTML = '<p class="tiny muted2">Enter a valid race time and distance.</p>';
+        return;
+      }
+
+      var end = enduranceScore(weeklyKm, longRunKm, exp.value);
+      var e0 = baseExponent(d1);
+
+      // better endurance -> slightly smaller exponent (less fade)
+      var eAdj = e0 - (0.030 * end);
+
+      // tough conditions -> nudge more conservative
+      if(cond.value === 'tough') eAdj += 0.010;
+
+      // build range
+      var eAgg = eAdj - 0.010;
+      var eBal = eAdj;
+      var eCon = eAdj + 0.015;
+
+      var tAgg = project(t1, d1, MARA, eAgg);
+      var tBal = project(t1, d1, MARA, eBal);
+      var tCon = project(t1, d1, MARA, eCon);
+
+      // round targets for readability
+      tAgg = roundToNearest(tAgg, 30);
+      tBal = roundToNearest(tBal, 30);
+      tCon = roundToNearest(tCon, 30);
+
+      var paceAggKm = tAgg / MARA;
+      var paceBalKm = tBal / MARA;
+      var paceConKm = tCon / MARA;
+
+      var paceAggMi = paceAggKm * 1.609344;
+      var paceBalMi = paceBalKm * 1.609344;
+      var paceConMi = paceConKm * 1.609344;
+
+      // checkpoints based on balanced pace
+      var cps = [
+        {label:'5 km', km:5},
+        {label:'10 km', km:10},
+        {label:'Half (21.0975)', km:21.0975},
+        {label:'30 km', km:30},
+        {label:'40 km', km:40},
+        {label:'Finish', km:42.195}
+      ];
+
+      var rows = cps.map(function(c){
+        return {label:c.label, time: fmtHMS(paceBalKm * c.km)};
+      });
+
+      var table = '<table class="splits-table"><thead><tr><th>Checkpoint (balanced)</th><th>Time</th></tr></thead><tbody>';
+      rows.forEach(function(r){
+        table += '<tr><td>' + r.label + '</td><td>' + r.time + '</td></tr>';
+      });
+      table += '</tbody></table>';
+
+      out.innerHTML =
+        '<div class="kpi">' +
+          '<div class="fact"><div class="tiny muted2">Conservative</div><strong>' + fmtHMS(tCon) + '</strong><div class="tiny muted2">' + fmtPace(paceConKm) + '/km · ' + fmtPace(paceConMi) + '/mi</div></div>' +
+          '<div class="fact"><div class="tiny muted2">Balanced</div><strong>' + fmtHMS(tBal) + '</strong><div class="tiny muted2">' + fmtPace(paceBalKm) + '/km · ' + fmtPace(paceBalMi) + '/mi</div></div>' +
+          '<div class="fact"><div class="tiny muted2">Aggressive</div><strong>' + fmtHMS(tAgg) + '</strong><div class="tiny muted2">' + fmtPace(paceAggKm) + '/km · ' + fmtPace(paceAggMi) + '/mi</div></div>' +
+        '</div>' +
+        '<p class="tiny muted2" style="margin-top:10px">Pick conservative if you’re unsure about fueling, long runs, or conditions. If you choose aggressive, you must execute perfectly.</p>' +
+        '<div class="row actions" style="margin-top:10px; gap:10px">' +
+          '<a class="btn" href="/marathon-pace-calculator/">Build pace band + checkpoints</a>' +
+          '<a class="btn secondary" href="/blog/time-in-the-bank-math/">Avoid starting too fast</a>' +
+          '<a class="btn secondary" href="/monthly-training-plan/">Build a month plan</a>' +
+        '</div>' +
+        '<div style="margin-top:12px">' + table + '</div>' +
+        '<p class="tiny muted" style="margin-top:10px">Learn execution: <a href="/blog/marathon-splits/">splits explained</a> · <a href="/blog/negative-split-pacing/">negative split pacing</a> · <a href="/blog/racing-in-heat-wind-hills/">heat/wind/hills pacing</a></p>';
+    }
+
+    function reset(){
+      raceDist.value = String(DEFAULT.dist);
+      rh.value = DEFAULT.rh; rm.value = DEFAULT.rm; rs.value = DEFAULT.rs;
+      wk.value = DEFAULT.wk;
+      lr.value = DEFAULT.lr;
+      exp.value = DEFAULT.exp;
+      cond.value = DEFAULT.cond;
+      out.innerHTML = '';
+      compute();
+    }
+
+    calcBtn.addEventListener('click', compute);
+    resetBtn.addEventListener('click', reset);
+
+    // initial
+    compute();
+  })();
+  </script>
+
+  <footer class="wrap" style="padding:24px 16px 40px">
+    <div class="card" style="padding:16px">
+      <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="/">Pace chart hub</a>
+        <a href="/marathon-pace-calculator/">Calculator</a>
+        <a href="/monthly-training-plan/">Monthly plan</a>
+        <a href="/blog/">Blog</a>
+        <a href="/sitemap/">HTML sitemap</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </div>
+      <p class="tiny muted" style="margin-top:12px">
+        Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
