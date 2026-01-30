@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Printable Marathon Pace Band (PDF) | KM & Miles</title>
+  <meta name="description" content="Free printable marathon pace band generator. Enter a goal time to create a wrist pace band or A4 pacing sheet with checkpoints. Print or save as PDF." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://marathonpacekm.com/printable-pace-band/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Printable Marathon Pace Band (PDF)" />
+  <meta property="og:description" content="Generate a wrist pace band or A4 pacing sheet from your marathon goal time. Print or save as PDF." />
+  <meta property="og:url" content="https://marathonpacekm.com/printable-pace-band/" />
+  <meta property="og:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Printable Marathon Pace Band (PDF)" />
+  <meta name="twitter:description" content="Generate a wrist pace band or A4 pacing sheet from your marathon goal time. Print or save as PDF." />
+  <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
+
+  <link rel="preload" href="/assets/style.css" as="style" />
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    #generator, #preview, #howto, #faq { scroll-margin-top: 16px; }
+
+    /* Print handling */
+    .no-print { display: block; }
+    .print-only { display: none; }
+
+    body.layout-wrist #wristBand { display: block; }
+    body.layout-wrist #a4Sheet { display: none; }
+
+    body.layout-a4 #wristBand { display: none; }
+    body.layout-a4 #a4Sheet { display: block; }
+
+    /* Wrist band styling */
+    .band {
+      border: 1px dashed rgba(0,0,0,.25);
+      border-radius: 12px;
+      padding: 10px;
+      background: rgba(255,255,255,.7);
+      max-width: 360px;
+    }
+    .band h3 { margin: 0 0 6px; }
+    .band table { width: 100%; border-collapse: collapse; }
+    .band th, .band td {
+      text-align: left;
+      padding: 6px 6px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      font-size: 14px;
+      vertical-align: top;
+    }
+    .band tr:last-child td { border-bottom: 0; }
+
+    .cut {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(0,0,0,.25);
+      font-size: 12px;
+      color: rgba(0,0,0,.65);
+    }
+
+    /* A4 sheet styling */
+    .sheet h3 { margin: 0 0 8px; }
+    .sheet table { width: 100%; border-collapse: collapse; margin-top: 10px; overflow:hidden; border-radius: 12px; border: 1px solid rgba(0,0,0,.10); background: rgba(255,255,255,.7); }
+    .sheet th, .sheet td { text-align:left; padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
+    .sheet tr:last-child td { border-bottom: 0; }
+
+    @media print {
+      header, footer, .no-print, .backtop { display: none !important; }
+      .print-only { display: block !important; }
+      body { background:#fff !important; }
+      .card { box-shadow:none !important; background:#fff !important; }
+
+      @page { margin: 10mm; }
+      /* Keep wrist band compact on page */
+      .band { max-width: 80mm; }
+      .band th, .band td { font-size: 11px; padding: 4px 4px; }
+      .sheet th, .sheet td { font-size: 12px; }
+      a { text-decoration:none !important; color:#000 !important; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BreadcrumbList",
+    "itemListElement":[
+      {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
+      {"@type":"ListItem","position":2,"name":"Printable Pace Band","item":"https://marathonpacekm.com/printable-pace-band/"}
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+</head>
+
+<body id="top" class="layout-wrist">
+  <header class="wrap" style="padding-top:28px">
+    <a class="btn secondary" href="/">← Back to pace chart hub</a>
+    <h1 style="margin-top:14px">Printable Marathon Pace Band (PDF)</h1>
+    <p class="sub">
+      Generate a <strong>wrist pace band</strong> or <strong>A4 pacing sheet</strong> from your goal time.
+      Print it or “Save as PDF” from your browser print dialog.
+    </p>
+
+    <div class="toc" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+      <a class="btn" href="#generator">Generator</a>
+      <a class="btn secondary" href="#preview">Preview</a>
+      <a class="btn secondary" href="#howto">How to print</a>
+      <a class="btn secondary" href="#faq">FAQ</a>
+    </div>
+
+    <p class="tiny muted" style="margin-top:10px">
+      Want checkpoint splits + a calculator too? Use: <a href="/marathon-pace-calculator/"><strong>Marathon Pace Calculator</strong></a> ·
+      Want pacing strategy? Read: <a href="/blog/marathon-splits/"><strong>Marathon splits explained</strong></a> ·
+      <a href="/blog/time-in-the-bank-math/"><strong>Why starting too fast fails</strong></a>
+    </p>
+  </header>
+
+  <main class="wrap" id="content">
+
+    <section id="generator" class="card">
+      <h2>Pace band generator</h2>
+      <p class="muted">Enter a goal time and choose a layout. Optional: choose an even pace or a mild negative split script.</p>
+
+      <div class="grid">
+        <div>
+          <label>Goal finish time</label>
+          <div class="row">
+            <input id="h" type="number" min="0" value="4" /> <span>h</span>
+            <input id="m" type="number" min="0" max="59" value="0" /> <span>m</span>
+            <input id="s" type="number" min="0" max="59" value="0" /> <span>s</span>
+          </div>
+        </div>
+
+        <div>
+          <label>Layout</label>
+          <select id="layout">
+            <option value="wrist" selected>Wrist band (cut & tape)</option>
+            <option value="a4">A4 pacing sheet</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Pacing style</label>
+          <select id="style">
+            <option value="even" selected>Even pace</option>
+            <option value="neg">Negative split (start slightly slower)</option>
+            <option value="pos">Positive split (start slightly faster)</option>
+          </select>
+          <p class="tiny muted2" style="margin-top:6px">
+            Negative split is usually safer for most runners.
+          </p>
+        </div>
+
+        <div>
+          <label>Split offset (sec/km) (for neg/pos)</label>
+          <input id="offset" type="number" min="0" max="30" value="5" />
+          <p class="tiny muted2" style="margin-top:6px">
+            Example: 5 sec/km slower first half → faster second half to match your goal time.
+          </p>
+        </div>
+      </div>
+
+      <div class="row actions" style="margin-top:12px; gap:10px">
+        <button class="btn" id="updateBtn" type="button">Update</button>
+        <button class="btn secondary" id="printBtn" type="button">Print / Save as PDF</button>
+        <button class="btn secondary" id="copyBtn" type="button">Copy share link</button>
+      </div>
+
+      <div class="results" id="shareOut" aria-live="polite"></div>
+
+      <p class="tiny muted2" style="margin-top:12px">
+        Tip: share the link with your running group so they can generate their own band.
+      </p>
+    </section>
+
+    <section id="preview" class="card">
+      <h2>Preview</h2>
+      <p class="muted no-print">Switch layout above, then click “Print / Save as PDF”.</p>
+
+      <!-- Print-only header -->
+      <div class="print-only" style="margin-bottom:10px">
+        <h2 style="margin:0 0 6px">Marathon Pace Band</h2>
+        <p class="tiny muted2" style="margin:0">Generated by marathonpacekm.com/printable-pace-band/</p>
+      </div>
+
+      <div id="summary" class="kpi"></div>
+
+      <!-- Wrist band -->
+      <div id="wristBand" class="band" style="margin-top:12px">
+        <h3>Wrist pace band</h3>
+        <div id="wristTable"></div>
+        <div class="cut">
+          Cut on the dotted border, fold, and tape. Optional: cover with clear tape for sweat resistance.
+        </div>
+      </div>
+
+      <!-- A4 sheet -->
+      <div id="a4Sheet" class="sheet" style="margin-top:12px">
+        <h3>A4 pacing sheet</h3>
+        <p class="tiny muted2" style="margin:0">
+          Use this as a quick reference. In tough conditions, pace by effort, not by watch pace.
+        </p>
+        <div id="a4Table"></div>
+
+        <div class="card" style="padding:14px; margin-top:12px">
+          <p class="muted" style="margin:0"><strong>Execution reminders</strong></p>
+          <ul class="tiny muted" style="margin:8px 0 0">
+            <li>Start controlled for the first 3–5 km (avoid early surges).</li>
+            <li>Focus on checkpoint times (10K, half, 30K, 40K).</li>
+            <li>If hot/windy/hilly: aim for even effort, not even pace.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="howto" class="card">
+      <h2>How to print / save as PDF</h2>
+      <ol class="muted">
+        <li>Click <strong>Print / Save as PDF</strong>.</li>
+        <li>In the print dialog, choose <strong>Save as PDF</strong> (or your printer).</li>
+        <li>Set margins to default (this page already uses print-friendly margins).</li>
+        <li>For wrist bands: print, cut, fold, and tape (clear tape works well).</li>
+      </ol>
+      <p class="tiny muted2">
+        Want to build splits + a pace band together? Use the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>.
+      </p>
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="faq" class="card">
+      <h2>Pace band FAQ</h2>
+
+      <h3>What should I put on a pace band?</h3>
+      <p>Most runners do best with key checkpoints: 5K, 10K, half, 30K, 40K, and finish. Keep it simple so it’s readable under fatigue.</p>
+
+      <h3>Even pace or negative split?</h3>
+      <p>For most runners, a mild negative split strategy is safer: start controlled, then gradually lift if you feel strong after 30K.</p>
+
+      <h3>Can I share a pace band with someone?</h3>
+      <p>Yes — click “Copy share link”. Anyone with the link will load the same goal time + layout settings.</p>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+  </main>
+
+  <script>
+  (function(){
+    var MARA = 42.195;
+    var HALF = 21.0975;
+
+    var elH = document.getElementById('h');
+    var elM = document.getElementById('m');
+    var elS = document.getElementById('s');
+    var elLayout = document.getElementById('layout');
+    var elStyle = document.getElementById('style');
+    var elOffset = document.getElementById('offset');
+
+    var updateBtn = document.getElementById('updateBtn');
+    var printBtn = document.getElementById('printBtn');
+    var copyBtn = document.getElementById('copyBtn');
+
+    var summary = document.getElementById('summary');
+    var wristTable = document.getElementById('wristTable');
+    var a4Table = document.getElementById('a4Table');
+    var shareOut = document.getElementById('shareOut');
+
+    function clamp(n, lo, hi){
+      n = Number(n);
+      if(!Number.isFinite(n)) return lo;
+      if(n < lo) return lo;
+      if(n > hi) return hi;
+      return n;
+    }
+
+    function toSeconds(h,m,s){
+      return (Number(h)||0)*3600 + (Number(m)||0)*60 + (Number(s)||0);
+    }
+
+    function fmtHMS(sec){
+      sec = Math.max(0, Math.round(sec));
+      var h = Math.floor(sec/3600);
+      var m = Math.floor((sec%3600)/60);
+      var s = sec%60;
+      return h + ":" + String(m).padStart(2,'0') + ":" + String(s).padStart(2,'0');
+    }
+
+    function fmtPace(secPer){
+      secPer = Math.max(0, Math.round(secPer));
+      var m = Math.floor(secPer/60);
+      var s = secPer%60;
+      return m + ":" + String(s).padStart(2,'0');
+    }
+
+    function buildTable(rows){
+      var html = '<table><thead><tr><th>CP</th><th>Time</th></tr></thead><tbody>';
+      rows.forEach(function(r){
+        html += '<tr><td>' + r.label + '</td><td>' + r.time + '</td></tr>';
+      });
+      html += '</tbody></table>';
+      return html;
+    }
+
+    function buildA4(rows){
+      var html = '<table><thead><tr><th>Checkpoint</th><th>Time</th></tr></thead><tbody>';
+      rows.forEach(function(r){
+        html += '<tr><td>' + r.label + '</td><td>' + r.time + '</td></tr>';
+      });
+      html += '</tbody></table>';
+      return html;
+    }
+
+    function paceAtDistance(d, paceEven, styleKey, offsetSecPerKm){
+      if(styleKey === 'even') return paceEven * d;
+
+      var pace1, pace2;
+      if(styleKey === 'neg'){
+        pace1 = paceEven + offsetSecPerKm;
+      } else {
+        // pos
+        pace1 = Math.max(0, paceEven - offsetSecPerKm);
+      }
+      // solve pace2 so total time stays the same
+      pace2 = (paceEven*MARA - pace1*HALF) / (MARA - HALF);
+
+      if(d <= HALF) return pace1 * d;
+      return pace1*HALF + pace2*(d - HALF);
+    }
+
+    function setLayoutClass(layout){
+      document.body.classList.remove('layout-wrist','layout-a4');
+      document.body.classList.add(layout === 'a4' ? 'layout-a4' : 'layout-wrist');
+    }
+
+    function update(){
+      var hh = clamp(elH.value, 0, 99);
+      var mm = clamp(elM.value, 0, 59);
+      var ss = clamp(elS.value, 0, 59);
+      elH.value = hh; elM.value = mm; elS.value = ss;
+
+      var total = toSeconds(hh,mm,ss);
+      if(total <= 0){
+        shareOut.innerHTML = '<p class="tiny muted2">Enter a valid goal time.</p>';
+        return;
+      }
+
+      var layout = elLayout.value;
+      var style = elStyle.value;
+      var offset = clamp(elOffset.value, 0, 30);
+      elOffset.value = offset;
+
+      setLayoutClass(layout);
+
+      var paceEven = total / MARA;                 // sec/km
+      var paceMi = paceEven * 1.609344;            // sec/mi
+
+      // checkpoints
+      var cps = [
+        {label:'5K', km:5},
+        {label:'10K', km:10},
+        {label:'Half', km:21.0975},
+        {label:'30K', km:30},
+        {label:'40K', km:40},
+        {label:'Finish', km:42.195}
+      ];
+
+      var rows = cps.map(function(c){
+        var t = paceAtDistance(c.km, paceEven, style, offset);
+        return { label: c.label, time: fmtHMS(t) };
+      });
+
+      // summary KPIs
+      summary.innerHTML =
+        '<div class="fact"><div class="tiny muted2">Goal time</div><strong>' + fmtHMS(total) + '</strong></div>' +
+        '<div class="fact"><div class="tiny muted2">Avg pace</div><strong>' + fmtPace(paceEven) + '/km</strong></div>' +
+        '<div class="fact"><div class="tiny muted2">Avg pace</div><strong>' + fmtPace(paceMi) + '/mi</strong></div>' +
+        '<div class="fact"><div class="tiny muted2">Style</div><strong>' + (style==='even'?'Even':(style==='neg'?'Negative split':'Positive split')) + '</strong></div>';
+
+      wristTable.innerHTML = buildTable(rows);
+      a4Table.innerHTML = buildA4(rows);
+
+      // update share link display (not copying yet)
+      var url = new URL(window.location.href);
+      url.searchParams.set('h', String(hh));
+      url.searchParams.set('m', String(mm));
+      url.searchParams.set('s', String(ss));
+      url.searchParams.set('layout', layout);
+      url.searchParams.set('style', style);
+      url.searchParams.set('offset', String(offset));
+      url.searchParams.delete('autoPrint');
+
+      shareOut.innerHTML =
+        '<p class="tiny muted2">Share link ready. (Click “Copy share link”)</p>' +
+        '<p class="tiny muted"><code>' + url.toString() + '</code></p>';
+    }
+
+    function applyFromQuery(){
+      var q = new URLSearchParams(window.location.search);
+      if(q.has('h')) elH.value = clamp(q.get('h'), 0, 99);
+      if(q.has('m')) elM.value = clamp(q.get('m'), 0, 59);
+      if(q.has('s')) elS.value = clamp(q.get('s'), 0, 59);
+      if(q.has('layout')) elLayout.value = q.get('layout');
+      if(q.has('style')) elStyle.value = q.get('style');
+      if(q.has('offset')) elOffset.value = clamp(q.get('offset'), 0, 30);
+
+      update();
+
+      if(q.get('autoPrint') === '1'){
+        setTimeout(function(){ window.print(); }, 300);
+      }
+    }
+
+    updateBtn.addEventListener('click', update);
+    printBtn.addEventListener('click', function(){
+      update();
+      setTimeout(function(){ window.print(); }, 150);
+    });
+
+    copyBtn.addEventListener('click', async function(){
+      update();
+      var url = new URL(window.location.href);
+      url.searchParams.set('h', String(elH.value||0));
+      url.searchParams.set('m', String(elM.value||0));
+      url.searchParams.set('s', String(elS.value||0));
+      url.searchParams.set('layout', elLayout.value);
+      url.searchParams.set('style', elStyle.value);
+      url.searchParams.set('offset', String(elOffset.value||0));
+      url.searchParams.delete('autoPrint');
+
+      try{
+        await navigator.clipboard.writeText(url.toString());
+        shareOut.innerHTML = '<p class="tiny muted2">Copied share link to clipboard ✅</p><p class="tiny muted"><code>' + url.toString() + '</code></p>';
+      } catch(e){
+        shareOut.innerHTML = '<p class="tiny muted2">Couldn’t auto-copy. Copy manually:</p><p class="tiny muted"><code>' + url.toString() + '</code></p>';
+      }
+    });
+
+    applyFromQuery();
+  })();
+  </script>
+
+  <footer class="wrap" style="padding:24px 16px 40px">
+    <div class="card" style="padding:16px">
+      <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
+        <a href="/">Pace chart hub</a>
+        <a href="/marathon-pace-calculator/">Calculator</a>
+        <a href="/monthly-training-plan/">Monthly plan</a>
+        <a href="/blog/">Blog</a>
+        <a href="/sitemap/">HTML sitemap</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </div>
+      <p class="tiny muted" style="margin-top:12px">
+        Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
