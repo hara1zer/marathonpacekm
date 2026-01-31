@@ -29,10 +29,27 @@
   <style>
     html { scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    #calculator, #checkpoints, #pace-band, #full-splits, #goal-times, #related, #faq { scroll-margin-top: 16px; }
-    .splits-table{ width:100%; border-collapse: collapse; margin-top: 10px; overflow:hidden; border-radius: 12px; border: 1px solid rgba(0,0,0,.10); background: rgba(255,255,255,.6); }
-    .splits-table th, .splits-table td{ text-align:left; padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
+
+    #calculator, #checkpoints, #pace-band, #templates, #share, #full-splits, #goal-times, #related, #faq { scroll-margin-top: 16px; }
+
+    .splits-table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      overflow:hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.6);
+    }
+    .splits-table th, .splits-table td{
+      text-align:left;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      vertical-align: top;
+    }
     .splits-table tr:last-child td{ border-bottom: 0; }
+
+    /* legacy: print this page as a fallback band */
     #printBand { display:none; }
     @media print{
       header, .toc, #calculator .actions, #fullSplitsDetails, footer, .backtop { display:none !important; }
@@ -41,6 +58,17 @@
       .card { box-shadow:none !important; background:#fff !important; }
       a { text-decoration:none !important; color:#000 !important; }
     }
+
+    /* mini share UI helpers */
+    .mini-input{
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 12px;
+      background: rgba(255,255,255,.7);
+      font-size: 14px;
+    }
+    textarea.mini-input{ min-height: 90px; resize: vertical; }
   </style>
 
   <script type="application/ld+json">
@@ -81,7 +109,6 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
 </head>
 
 <body id="top">
@@ -115,6 +142,8 @@
       <a class="btn" href="#calculator">Calculator</a>
       <a class="btn secondary" href="#checkpoints">Checkpoints</a>
       <a class="btn secondary" href="#pace-band">Printable pace band</a>
+      <a class="btn secondary" href="#templates">Templates</a>
+      <a class="btn secondary" href="#share">Share / embed</a>
       <a class="btn secondary" href="#goal-times">Goal times</a>
       <a class="btn secondary" href="#faq">FAQ</a>
       <a class="btn secondary" href="#related">Related guides</a>
@@ -145,15 +174,34 @@
             <option value="5">5 km</option>
           </select>
         </div>
+
+        <div>
+          <label>Pace band PDF layout</label>
+          <select id="pdfLayout">
+            <option value="wrist" selected>Wrist band (cut & tape)</option>
+            <option value="a4">A4 pacing sheet</option>
+          </select>
+          <p class="tiny muted2" style="margin-top:6px">
+            For clubs/coaches: use “Share / embed” below.
+          </p>
+        </div>
       </div>
 
-      <div class="row actions" style="margin-top:10px;gap:10px">
+      <div class="row actions" style="margin-top:10px;gap:10px;flex-wrap:wrap">
         <button class="btn" id="calcBtn">Calculate</button>
         <button class="btn secondary" id="resetBtn">Reset</button>
-        <button class="btn secondary" id="printBtn" type="button">Print pace band</button>
+
+        <!-- PDF export uses your dedicated printable tool (best UX) -->
+        <button class="btn secondary" id="pdfBtn" type="button">Open pace band PDF</button>
+
+        <!-- optional fallback: print this page band (legacy) -->
+        <button class="btn secondary" id="printThisBtn" type="button">Quick print (this page)</button>
+
+        <button class="btn secondary" id="copyShareBtn" type="button">Copy share link</button>
       </div>
 
       <div id="results" class="results" aria-live="polite"></div>
+      <div id="calcShareMsg" class="results" aria-live="polite"></div>
     </section>
 
     <section id="checkpoints" class="card">
@@ -165,11 +213,77 @@
 
     <section id="pace-band" class="card">
       <h2>Printable pace band</h2>
-      <p class="muted">Generate a wrist pace band or A4 pacing sheet, then print or save as PDF.</p>
-      <p class="tiny muted2" style="margin-top:6px">
-        Use the dedicated tool: <a href="/printable-pace-band/"><strong>Printable pace band (PDF)</strong></a>.
+      <p class="muted">Best option: generate a wrist pace band or A4 pacing sheet, then print or save as PDF.</p>
+
+      <div class="row actions" style="margin-top:12px;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="/printable-pace-band/"><strong>Open printable pace band tool</strong></a>
+        <a class="btn secondary" href="/blog/marathon-pace-bands/">How to use a pace band</a>
+      </div>
+
+      <p class="tiny muted2" style="margin-top:10px">
+        Tip: use the calculator above to pick your goal time, then open the PDF pace band (wrist or A4).
       </p>
+
+      <!-- legacy: this page can still print a compact checkpoint band -->
       <div id="printBand" class="results"></div>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="templates" class="card">
+      <h2>Downloadable templates (sub-X pace bands)</h2>
+      <p class="muted">
+        If you want a quick “ready-to-share” template page, use these. Each is a shortcut for a common marathon goal.
+      </p>
+
+      <div class="links" style="margin-top:10px">
+        <a href="/pace-band/3-00/">3:00</a>
+        <a href="/pace-band/3-15/">3:15</a>
+        <a href="/pace-band/3-30/">3:30</a>
+        <a href="/pace-band/3-45/">3:45</a>
+        <a href="/pace-band/sub-4/">Sub-4</a>
+        <a href="/pace-band/4-00/">4:00</a>
+        <a href="/pace-band/4-30/">4:30</a>
+        <a href="/pace-band/5-00/">5:00</a>
+      </div>
+
+      <p class="tiny muted2" style="margin-top:10px">
+        If your club has a standard goal time, link the matching template. If not, link the generator with your exact time (see next section).
+      </p>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="share" class="card">
+      <h2>Share this pace band (copy link + embed)</h2>
+      <p class="muted">
+        Clubs/coaches can link to a pre-filled pace band, or embed it in a page so runners can print instantly.
+        (This uses your dedicated <code>/printable-pace-band/</code> generator.)
+      </p>
+
+      <div class="grid" style="margin-top:10px">
+        <div>
+          <label>Share link (pre-filled)</label>
+          <input id="shareUrl" class="mini-input" type="text" value="" readonly />
+          <div class="row actions" style="margin-top:10px;gap:10px;flex-wrap:wrap">
+            <button class="btn" id="copyShareBtn2" type="button">Copy link</button>
+            <button class="btn secondary" id="openShareBtn" type="button">Open link</button>
+          </div>
+          <p class="tiny muted2" style="margin-top:10px">
+            This loads the same goal time + layout instantly.
+          </p>
+        </div>
+
+        <div>
+          <label>Embed snippet (iframe)</label>
+          <textarea id="embedSnippet" class="mini-input" readonly></textarea>
+          <p class="tiny muted2" style="margin-top:10px">
+            Paste into your club site. Tip: use the A4 layout for desktop printing.
+          </p>
+        </div>
+      </div>
+
+      <div id="shareMsg" class="results" aria-live="polite"></div>
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
 
@@ -249,6 +363,8 @@
   var elM=document.getElementById('m');
   var elS=document.getElementById('s');
   var elDist=document.getElementById('dist');
+  var elPdfLayout=document.getElementById('pdfLayout');
+
   var elResults=document.getElementById('results');
   var elCheckpoint=document.getElementById('checkpointTable');
   var elPrintBand=document.getElementById('printBand');
@@ -257,9 +373,27 @@
 
   var calcBtn=document.getElementById('calcBtn');
   var resetBtn=document.getElementById('resetBtn');
-  var printBtn=document.getElementById('printBtn');
+  var pdfBtn=document.getElementById('pdfBtn');
+  var printThisBtn=document.getElementById('printThisBtn');
+
+  var copyShareBtn=document.getElementById('copyShareBtn');
+  var copyShareBtn2=document.getElementById('copyShareBtn2');
+  var openShareBtn=document.getElementById('openShareBtn');
+
+  var shareUrlInput=document.getElementById('shareUrl');
+  var embedSnippet=document.getElementById('embedSnippet');
+
+  var shareMsg=document.getElementById('shareMsg');
+  var calcShareMsg=document.getElementById('calcShareMsg');
 
   var DEFAULT={h:4,m:0,s:0,dist:42.195};
+
+  // state for the full-splits builder (prevents multiple listeners + stale builds)
+  var last = {
+    isMarathon: true,
+    secPerKm: 0,
+    goalSec: 0
+  };
 
   function clampInt(v,min,max){
     var n=parseInt(v,10);
@@ -293,6 +427,76 @@
     return html;
   }
 
+  function buildPaceBandURL(opts){
+    // opts: {layout, autoPrint}
+    var h = clampInt(elH.value,0,99);
+    var m = clampInt(elM.value,0,59);
+    var s = clampInt(elS.value,0,59);
+
+    var layout = (opts && opts.layout) ? String(opts.layout) : 'wrist';
+    var autoPrint = (opts && opts.autoPrint) ? '1' : '0';
+
+    // keep defaults simple; the generator has controls for style/offset
+    var q = new URLSearchParams({
+      h: String(h),
+      m: String(m),
+      s: String(s),
+      layout: layout,
+      style: 'even',
+      offset: '5'
+    });
+
+    if(autoPrint === '1') q.set('autoPrint','1');
+
+    return '/printable-pace-band/?' + q.toString();
+  }
+
+  function updateShareUI(){
+    // share should always be for Marathon bands; still build a link for non-marathon, but message clarifies
+    var layout = elPdfLayout ? elPdfLayout.value : 'wrist';
+    var url = buildPaceBandURL({ layout: layout, autoPrint: false });
+
+    shareUrlInput.value = window.location.origin + url;
+
+    // embed (responsive-ish)
+    var iframe = ''
+      + '<iframe'
+      + ' src="' + (window.location.origin + url) + '"'
+      + ' width="100%"'
+      + ' height="720"'
+      + ' style="border:1px solid rgba(0,0,0,.12);border-radius:12px"'
+      + ' loading="lazy"'
+      + '></iframe>';
+
+    embedSnippet.value = iframe;
+
+    shareMsg.innerHTML = '';
+    calcShareMsg.innerHTML = '';
+  }
+
+  async function copyToClipboard(text){
+    try{
+      await navigator.clipboard.writeText(text);
+      return true;
+    }catch(e){
+      return false;
+    }
+  }
+
+  async function copyShareLink(where){
+    var txt = shareUrlInput.value || '';
+    if(!txt){
+      if(where) where.innerHTML = '<p class="tiny muted2">No share link yet — enter a goal time first.</p>';
+      return;
+    }
+    var ok = await copyToClipboard(txt);
+    if(where){
+      where.innerHTML = ok
+        ? '<p class="tiny muted2">Copied share link ✅</p>'
+        : '<p class="tiny muted2">Couldn’t auto-copy — copy manually from the box above.</p>';
+    }
+  }
+
   function compute(){
     var h=clampInt(elH.value,0,99);
     var m=clampInt(elM.value,0,59);
@@ -307,6 +511,9 @@
       elCheckpoint.innerHTML='';
       elPrintBand.innerHTML='';
       elFull.innerHTML='';
+      if(elFull) elFull.dataset.built='0';
+      last.isMarathon=false;
+      updateShareUI();
       return;
     }
 
@@ -325,8 +532,15 @@
       + '</div>'
       + '<p class="tiny muted2" style="margin-top:10px">*Halfway shown is for the selected distance (or half marathon if shorter).</p>';
 
+    // Update state for full splits
+    last.secPerKm = secPerKm;
+    last.goalSec = goalSec;
+
     // Checkpoints for marathon only
-    if(Math.abs(dist-42.195) < 1e-6){
+    var isMarathon = Math.abs(dist-42.195) < 1e-6;
+    last.isMarathon = isMarathon;
+
+    if(isMarathon){
       var cps=[
         {label:'5 km', km:5},
         {label:'10 km', km:10},
@@ -341,58 +555,118 @@
       }
       elCheckpoint.innerHTML = buildCheckpointTable(rows);
 
-      // Printable band (same checkpoints, compact)
-      elPrintBand.innerHTML = '<h3 style="margin:0 0 8px">Printable pace band</h3>' + buildCheckpointTable(rows);
+      // Legacy printable band on this page (kept as fallback)
+      elPrintBand.innerHTML = '<h3 style="margin:0 0 8px">Quick checkpoint band (fallback)</h3>'
+        + '<p class="tiny muted2" style="margin:0 0 8px">For best printing/export, use the PDF tool above.</p>'
+        + buildCheckpointTable(rows);
 
-      // Full 1 km splits (lazy)
-      elFull.innerHTML='';
-      fullDetails.addEventListener('toggle', function(){
-        if(!fullDetails.open) return;
-        if(elFull.dataset.built === '1') return;
-        var out='';
-        out += '<table class="splits-table"><thead><tr><th>KM</th><th>Cumulative</th></tr></thead><tbody>';
-        for(var km=1; km<=42; km++){
-          out += '<tr><td>'+km+'</td><td>'+fmtTime(secPerKm*km)+'</td></tr>';
-        }
-        out += '<tr><td>42.2</td><td>'+fmtTime(goalSec)+'</td></tr>';
-        out += '</tbody></table>';
-        elFull.innerHTML = out;
-        elFull.dataset.built='1';
-      }, { once:false });
-
+      // Mark full-splits as needing rebuild
+      if(elFull){
+        elFull.dataset.built='0';
+        elFull.innerHTML='';
+      }
     } else {
       elCheckpoint.innerHTML = '<p class="tiny muted2">Set distance to Marathon to view marathon checkpoint splits.</p>';
       elPrintBand.innerHTML = '<p class="tiny muted2">Set distance to Marathon to generate a marathon pace band.</p>';
-      elFull.innerHTML = '';
+      if(elFull){
+        elFull.dataset.built='0';
+        elFull.innerHTML='';
+      }
     }
+
+    updateShareUI();
   }
 
   function reset(){
     elH.value=DEFAULT.h; elM.value=DEFAULT.m; elS.value=DEFAULT.s;
     elDist.value=String(DEFAULT.dist);
+    if(elPdfLayout) elPdfLayout.value='wrist';
+
     elResults.innerHTML='';
     elCheckpoint.innerHTML='';
     elPrintBand.innerHTML='';
-    elFull.innerHTML='';
+    if(elFull){
+      elFull.innerHTML='';
+      elFull.dataset.built='0';
+    }
     if(fullDetails) fullDetails.open=false;
+
+    shareMsg.innerHTML='';
+    calcShareMsg.innerHTML='';
+    updateShareUI();
+  }
+
+  // Build full splits ONCE, with state from latest compute()
+  function buildFullSplitsIfNeeded(){
+    if(!fullDetails || !fullDetails.open) return;
+    if(!elFull) return;
+
+    if(!last.isMarathon){
+      elFull.innerHTML = '<p class="tiny muted2">Set distance to Marathon to generate a full 1 km marathon table.</p>';
+      elFull.dataset.built='1';
+      return;
+    }
+
+    if(elFull.dataset.built === '1') return;
+
+    var out='';
+    out += '<table class="splits-table"><thead><tr><th>KM</th><th>Cumulative</th></tr></thead><tbody>';
+    for(var km=1; km<=42; km++){
+      out += '<tr><td>'+km+'</td><td>'+fmtTime(last.secPerKm*km)+'</td></tr>';
+    }
+    out += '<tr><td>42.2</td><td>'+fmtTime(last.goalSec)+'</td></tr>';
+    out += '</tbody></table>';
+    elFull.innerHTML = out;
+    elFull.dataset.built='1';
   }
 
   calcBtn.addEventListener('click', compute);
   resetBtn.addEventListener('click', reset);
 
-  // UPDATED: open the dedicated printable pace band tool (PDF-friendly) with your inputs
-  printBtn.addEventListener('click', function(){
-    var q = new URLSearchParams({
-      h: elH.value || 0,
-      m: elM.value || 0,
-      s: elS.value || 0,
-      layout: 'wrist',
-      style: 'even',
-      offset: '5',
-      autoPrint: '1'
+  if(fullDetails){
+    fullDetails.addEventListener('toggle', function(){
+      buildFullSplitsIfNeeded();
     });
-    window.open('/printable-pace-band/?' + q.toString(), '_blank');
+  }
+
+  // Open the dedicated printable pace band tool with current inputs
+  pdfBtn.addEventListener('click', function(){
+    compute(); // ensures UI + share link updated
+    var layout = elPdfLayout ? elPdfLayout.value : 'wrist';
+    var url = buildPaceBandURL({ layout: layout, autoPrint: true });
+    window.open(url, '_blank');
   });
+
+  // Fallback: print this page (uses @media print + #printBand)
+  printThisBtn.addEventListener('click', function(){
+    compute();
+    window.print();
+  });
+
+  // Copy share link buttons
+  copyShareBtn.addEventListener('click', function(){
+    compute();
+    copyShareLink(calcShareMsg);
+  });
+
+  copyShareBtn2.addEventListener('click', function(){
+    compute();
+    copyShareLink(shareMsg);
+  });
+
+  openShareBtn.addEventListener('click', function(){
+    compute();
+    var url = shareUrlInput.value || '';
+    if(!url) return;
+    window.open(url, '_blank');
+  });
+
+  // Keep share UI in sync when layout changes
+  if(elPdfLayout){
+    elPdfLayout.addEventListener('change', function(){
+      updateShareUI();
+    });
+  }
 
   // initial
   compute();
