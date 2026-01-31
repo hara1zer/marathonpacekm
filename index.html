@@ -28,7 +28,7 @@
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     /* include monthly-plan for correct anchor offset */
-    #start-here, #quick-chart, #calculator, #monthly-plan, #popular-goal-times, #pace-chart, #how-to-use, #guides, #faq { scroll-margin-top: 16px; }
+    #start-here, #quick-chart, #calculator, #pace-bands, #monthly-plan, #popular-goal-times, #pace-chart, #how-to-use, #guides, #faq { scroll-margin-top: 16px; }
 
     .toc { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
     .toc a { text-decoration:none; }
@@ -127,6 +127,7 @@
 
 <p class="tiny muted newlink">
   New: <a href="/monthly-training-plan/"><strong>Monthly training plan builder</strong></a> → generate a 4-week plan from your recent mileage + goal.
+  &nbsp;·&nbsp; <a href="/printable-pace-band/"><strong>Printable pace band (PDF)</strong></a> → wrist band + A4 sheet (shareable templates).
   &nbsp;·&nbsp; Read: <a href="/blog/"><strong>Marathon pacing blog</strong></a> → goal setting, splits, predictors, and race-day strategy.
 </p>
 
@@ -146,6 +147,7 @@
   <a class="btn" href="#start-here">Start here</a>
   <a class="btn secondary" href="#quick-chart">Quick pace chart</a>
   <a class="btn secondary" href="#calculator">Calculator</a>
+  <a class="btn secondary" href="#pace-bands">Pace bands</a>
   <a class="btn secondary" href="/monthly-training-plan/">Monthly plan</a>
   <a class="btn secondary" href="#popular-goal-times">Goal times</a>
   <a class="btn secondary" href="#pace-chart">Full pace chart</a>
@@ -274,11 +276,48 @@
 <button class="btn secondary" id="resetBtn">Reset</button>
 </div>
 <div aria-live="polite" class="results" id="results"></div>
+
 <p class="tiny muted" style="margin-top:10px">
-  Want checkpoint splits + a printable pace band? Use the standalone version:
-  <a href="/marathon-pace-calculator/"><strong>Marathon pace calculator</strong></a>.
+  Want a printable pace band (PDF)? Use:
+  <a href="/printable-pace-band/"><strong>Printable pace band tool</strong></a>
+  or pick a template below.
 </p>
+
 <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+</section>
+
+<!-- NEW: Pace band templates section -->
+<section class="card" id="pace-bands">
+  <h2>Printable pace bands (PDF)</h2>
+  <p class="muted">
+    Print a wrist pace band or an A4 pacing sheet. Use the generator for any goal time, or pick a popular template.
+    These pages are designed to be shareable (clubs can embed them).
+  </p>
+
+  <div class="row actions" style="margin-top:12px; gap:10px">
+    <a class="btn" href="/printable-pace-band/">Open pace band generator</a>
+    <a class="btn secondary" href="/pace-band/sub-4/">Sub-4 template</a>
+    <a class="btn secondary" href="/pace-band/4-00/">4:00 template</a>
+  </div>
+
+  <p class="tiny muted" style="margin-top:10px">Templates:</p>
+  <div class="links">
+    <a href="/pace-band/3-00/">3:00</a>
+    <a href="/pace-band/3-15/">3:15</a>
+    <a href="/pace-band/3-30/">3:30</a>
+    <a href="/pace-band/3-45/">3:45</a>
+    <a href="/pace-band/sub-4/">Sub-4</a>
+    <a href="/pace-band/4-00/">4:00</a>
+    <a href="/pace-band/4-30/">4:30</a>
+    <a href="/pace-band/5-00/">5:00</a>
+  </div>
+
+  <p class="tiny muted note" style="margin-top:10px">
+    Tip: share the template link with your running group. For clubs/coaches, the generator page includes a copy/paste embed snippet.
+    Learn how to use them: <a href="/blog/marathon-pace-bands/">pace band guide</a>.
+  </p>
+
+  <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
 </section>
 
 <!-- Monthly training plan CTA section -->
@@ -537,7 +576,8 @@
       };
 
       function normalize(s){
-        return (s || "").replace(/ /g, " ").trim();
+        // Normalize regular spaces + non-breaking spaces
+        return (s || "").replace(/[\u00A0 ]+/g, " ").trim();
       }
 
       function linkifyChartOnce(){
@@ -592,6 +632,7 @@
 <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
 <a href="/">Pace chart hub</a>
 <a href="/marathon-pace-calculator/">Calculator</a>
+<a href="/printable-pace-band/">Printable pace band</a>
 <a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
 <a href="/monthly-training-plan/">Monthly plan</a>
 <a href="/blog/">Blog</a>
