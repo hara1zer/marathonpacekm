@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Dew Point Pacing Guide: How to Adjust Marathon Pace When It’s Humid | MarathonPaceKM</title>
+  <meta name="description" content="A dew point pacing guide for runners: simple dew point table (°C/°F), when to switch to effort, HR/RPE pacing script, and practical adjustments for humid marathon days." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <!-- Canonical (update if your final URL differs) -->
+  <link rel="canonical" href="https://marathonpacekm.com/blog/dew-point-pacing-guide/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="MarathonPaceKM" />
+  <meta property="og:title" content="Dew Point Pacing Guide: How to Adjust Marathon Pace When It’s Humid" />
+  <meta property="og:description" content="Simple dew point table + exactly when to switch to effort, with a practical HR/RPE pacing script for humid marathon days." />
+  <meta property="og:url" content="https://marathonpacekm.com/blog/dew-point-pacing-guide/" />
+  <!-- Optional OG image -->
+  <!-- <meta property="og:image" content="https://marathonpacekm.com/images/blog/dew-point-pacing-guide-og.jpg" /> -->
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dew Point Pacing Guide: How to Adjust Marathon Pace When It’s Humid" />
+  <meta name="twitter:description" content="Simple dew point table + when to switch to effort, with a practical HR/RPE pacing script for humid marathon days." />
+  <!-- <meta name="twitter:image" content="https://marathonpacekm.com/images/blog/dew-point-pacing-guide-og.jpg" /> -->
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Dew Point Pacing Guide: How to Adjust Marathon Pace When It’s Humid",
+    "description":"A dew point pacing guide for runners: simple dew point table (°C/°F), when to switch to effort, HR/RPE pacing script, and practical adjustments for humid marathon days.",
+    "author":{"@type":"Organization","name":"MarathonPaceKM"},
+    "publisher":{"@type":"Organization","name":"MarathonPaceKM"},
+    "mainEntityOfPage":"https://marathonpacekm.com/blog/dew-point-pacing-guide/",
+    "datePublished":"2026-02-23",
+    "dateModified":"2026-02-23"
+  }
+  </script>
+
+  <!-- FAQ Schema (matches FAQ section below) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Why is dew point better than humidity for pacing?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Relative humidity depends on temperature and can be misleading. Dew point is a direct indicator of moisture content (analogous to absolute humidity), which affects sweat evaporation and heat loss—critical for running performance."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"At what dew point should I stop chasing goal pace?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"As a practical rule, when dew point is ~18°C (65°F) or higher, humidity starts to meaningfully reduce evaporative cooling. At ~21°C (70°F) and above, many runners should switch to effort/HR/RPE pacing from the start and adjust time goals."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"How do I pace a marathon in high dew point conditions?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Use a conservative start, cap effort early with HR and RPE, and let pace float (especially on hills/wind). Keep pacing smooth, fuel early, and focus on maintaining form rather than forcing splits."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Can I use a dew point table to predict exact pace adjustments?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"A table can guide strategy, but exact seconds-per-km adjustments vary by runner, temperature, wind, sun, and acclimation. Use the dew point table to decide when to switch to effort, then refine with a conditions-adjusted pace tool and HR/RPE."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Does dew point matter if the air temperature is cool?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"High dew point still reduces sweat evaporation, but total heat strain depends on temperature, sun, and wind too. Dew point is a strong ‘humidity stress’ signal, not the whole story."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <main class="content-wrap">
+    <article class="post">
+
+      <header class="post-header">
+        <p class="breadcrumb">
+          <a href="/">Home</a> › <a href="/blog/">Blog</a> › Dew Point Pacing Guide
+        </p>
+
+        <h1>Dew Point Pacing Guide: How to Adjust Marathon Pace When It’s Humid</h1>
+
+        <p class="post-meta">
+          Updated: <time datetime="2026-02-23">23 Feb 2026</time> · Reading time: ~12–16 min
+        </p>
+
+        <p class="lede">
+          Humidity doesn’t just feel gross—it changes your physiology.
+          When the air is already “full” of moisture, sweat evaporates more slowly, cooling becomes less effective,
+          heart rate drifts upward, and the same pace costs more.
+          The simplest way to quantify this is <strong>dew point</strong>.
+          This guide gives you a <strong>dew point table</strong>, a clear “<strong>switch to effort</strong>” rule,
+          and a practical marathon pacing script for humid days.
+        </p>
+      </header>
+
+      <!-- Quick action block -->
+      <aside class="callout callout-primary" aria-label="Quick workflow">
+        <h2 class="callout-title">Do this first (2 minutes)</h2>
+        <ol>
+          <li>
+            Confirm a realistic goal time:
+            <a href="/marathon-time-predictor/">Marathon Time Predictor</a>
+          </li>
+          <li>
+            Convert it into exact marathon pace + splits:
+            <a href="/">Marathon Pace Calculator</a>
+          </li>
+          <li>
+            Adjust for heat, wind, hills, and humidity (dew point):
+            <a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a>
+          </li>
+          <li>
+            Print a backup plan for GPS chaos:
+            <a href="/printable-pace-band/">Printable Pace Band</a>
+          </li>
+        </ol>
+      </aside>
+
+      <!-- TOC -->
+      <nav class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#dew-point-101">Dew point 101 (why it matters for runners)</a></li>
+          <li><a href="#table">The dew point pacing table (simple)</a></li>
+          <li><a href="#switch-to-effort">When to switch to effort (the rule)</a></li>
+          <li><a href="#race-script">Race-day pacing script (HR + RPE + pace)</a></li>
+          <li><a href="#practice">How to practise humid pacing in training</a></li>
+          <li><a href="#mistakes">Common mistakes (and fixes)</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#references">References</a></li>
+        </ol>
+      </nav>
+
+      <section id="dew-point-101">
+        <h2>Dew point 101 (why it matters for runners)</h2>
+        <p>
+          Dew point is a measure of atmospheric moisture: it’s the temperature air must be cooled to reach saturation.
+          Higher dew point = more water vapour in the air.
+          Meteorologists often use dew point because it reflects moisture content more directly than relative humidity.
+        </p>
+
+        <p>
+          For runners, the big deal is <strong>evaporative cooling</strong>.
+          When moisture content is high, sweat evaporates more slowly, so your body must work harder to shed heat.
+          Research in heat stress highlights that <strong>absolute humidity</strong> (water content in air) governs evaporative rate,
+          and elevated humidity can increase thermal strain and impair endurance performance.
+        </p>
+
+        <aside class="callout callout-note" aria-label="Dew point in plain English">
+          <h3 class="callout-title">Dew point in plain English</h3>
+          <p>
+            Relative humidity can say “60%” on a cool morning and “40%” on a hot afternoon, yet the hot afternoon may feel far more oppressive.
+            Dew point cuts through that confusion: if dew point is high, it’s going to feel muggy—especially once you start sweating.
+          </p>
+        </aside>
+
+        <p>
+          Important nuance: dew point is not the whole weather picture.
+          Sun, wind, and air temperature matter too—multi-factor heat metrics (like WBGT) often predict performance better than temperature alone.
+          But dew point is a fast, practical “humidity stress” signal you can use immediately.
+        </p>
+      </section>
+
+      <section id="table">
+        <h2>The dew point pacing table (simple)</h2>
+        <p>
+          This table is a runner-friendly way to decide whether you should (a) follow goal pace, or (b) switch to effort/HR/RPE.
+          Use it alongside your <a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a> for a more complete estimate.
+        </p>
+
+        <div class="table-wrap" role="region" aria-label="Dew point pacing table" tabindex="0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Dew point</th>
+                <th>How it usually feels</th>
+                <th>What to do</th>
+                <th>Marathon pacing cue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>&le; 10°C</strong><br/>(≤ 50°F)</td>
+                <td>Dry / comfortable</td>
+                <td>Normal plan</td>
+                <td>Pace targets are usually reliable</td>
+              </tr>
+              <tr>
+                <td><strong>10–15°C</strong><br/>(50–59°F)</td>
+                <td>Comfortable → slightly humid</td>
+                <td>Mostly normal</td>
+                <td>Use pace + RPE check; avoid early surges</td>
+              </tr>
+              <tr>
+                <td><strong>15–18°C</strong><br/>(59–65°F)</td>
+                <td>Sticky/muggy begins</td>
+                <td>Be conservative early</td>
+                <td>Start with an HR/RPE cap through 10K</td>
+              </tr>
+              <tr>
+                <td><strong>18–21°C</strong><br/>(65–70°F)</td>
+                <td>Oppressive for many runners</td>
+                <td><strong>Switch to effort</strong></td>
+                <td>Pace becomes an upper bound; expect drift</td>
+              </tr>
+              <tr>
+                <td><strong>21–24°C</strong><br/>(70–75°F)</td>
+                <td>Very muggy / high strain</td>
+                <td><strong>Effort + adjusted goal</strong></td>
+                <td>RPE/HR drive pacing; protect the first half</td>
+              </tr>
+              <tr>
+                <td><strong>&ge; 24°C</strong><br/>(≥ 75°F)</td>
+                <td>Extreme humidity stress</td>
+                <td><strong>Safety-first strategy</strong></td>
+                <td>Dial back goals; avoid racing early</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <aside class="callout callout-warning" aria-label="Important note">
+          <h3 class="callout-title">Important note</h3>
+          <p>
+            Dew point is a humidity signal, not a full heat index.
+            A 20°C dew point with 14°C air temperature is not the same as a 20°C dew point with 28°C air temperature.
+            Still: once you’re producing lots of sweat, high dew point makes cooling harder—so effort-based pacing becomes more valuable.
+          </p>
+        </aside>
+      </section>
+
+      <section id="switch-to-effort">
+        <h2>When to switch to effort (the rule)</h2>
+
+        <p>
+          If you want one rule you can use without thinking:
+        </p>
+
+        <aside class="callout callout-primary" aria-label="Switch to effort rule">
+          <h3 class="callout-title">Switch-to-effort rule</h3>
+          <p class="lede">
+            <strong>If dew point is &ge; 18°C (65°F), treat goal pace as a ceiling and pace the marathon by effort (HR + RPE) from the start.</strong>
+          </p>
+          <p>
+            If dew point is &ge; 21°C (70°F), assume you’ll need a more conservative time goal unless you’re highly heat-acclimated
+            and conditions are otherwise favourable (cool, cloudy, windy).
+          </p>
+        </aside>
+
+        <h3>Extra “yes, switch now” triggers</h3>
+        <ul>
+          <li><strong>Air temperature &ge; 20°C</strong> AND <strong>dew point &ge; 18°C</strong></li>
+          <li>Full sun with low wind (even if the air temp isn’t extreme)</li>
+          <li>Your heart rate is unusually high in the first 3–5K at what should be “easy” marathon effort</li>
+          <li>You’re already sweating heavily before 10K</li>
+        </ul>
+
+        <p>
+          If any of these are true, your best race is almost always the one with an intentionally boring first half.
+        </p>
+      </section>
+
+      <section id="race-script">
+        <h2>Race-day pacing script (HR + RPE + pace)</h2>
+        <p>
+          Use this as a practical script for humid days. It’s designed to prevent early debt and survive HR drift.
+          (If you want the pace-first version too, link it with: <a href="/blog/how-to-pace-first-10k-marathon/">How to pace the first 10K</a>.)
+        </p>
+
+        <div class="table-wrap" role="region" aria-label="Humid marathon pacing script" tabindex="0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Segment</th>
+                <th>Primary guide</th>
+                <th>Target feel (RPE)</th>
+                <th>What to do</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>0–10K</strong><br/>Settle + cap</td>
+                <td><strong>HR cap + RPE</strong></td>
+                <td><strong>RPE 5–6</strong><br/>short phrases OK</td>
+                <td>
+                  Stay conservative. No surges to “hit pace.”<br/>
+                  Pace is allowed to be a touch slower than plan if HR climbs early.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>10–30K</strong><br/>Lock in</td>
+                <td><strong>RPE</strong> (pace as upper bound)</td>
+                <td><strong>RPE ~6</strong><br/>steady focus</td>
+                <td>
+                  Expect gradual HR drift. Don’t panic-chase pace.<br/>
+                  Keep fueling on schedule. Keep form cues consistent.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>30–42K</strong><br/>Race smart</td>
+                <td><strong>RPE + mechanics</strong></td>
+                <td><strong>RPE 6.5–7.5</strong></td>
+                <td>
+                  If you can still fuel + hold form: push.<br/>
+                  If you can’t: focus on rhythm and damage control.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <aside class="callout callout-note" aria-label="Fueling matters more in humidity">
+          <h3 class="callout-title">Fueling matters more in humidity</h3>
+          <p>
+            Heat + humidity increases strain. That makes pacing smoothness and fueling discipline even more important.
+            Don’t “save gels for later.” Start early, take them consistently, and use aid stations to keep cooling/hydration steady.
+          </p>
+        </aside>
+
+        <h3>How to use your tools on race morning</h3>
+        <ol>
+          <li>Check forecast dew point (your weather app usually shows it)</li>
+          <li>Plug into <a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a></li>
+          <li>Print <a href="/printable-pace-band/">pace band</a> for the adjusted plan</li>
+          <li>Run the first 10K on an effort cap (HR + RPE), not on ego pace</li>
+        </ol>
+      </section>
+
+      <section id="practice">
+        <h2>How to practise humid pacing in training</h2>
+
+        <h3>Workout 1: MP blocks with notes (best practice)</h3>
+        <ul>
+          <li>Long run 28–34 km (or scaled to your level)</li>
+          <li>Include <strong>2 × 5–8 km at marathon pace</strong> (easy jog between)</li>
+          <li>Record: average HR for each block + RPE at start/end + whether pace “cost” rises late</li>
+        </ul>
+
+        <h3>Workout 2: RPE progression long run (low risk, high learning)</h3>
+        <ul>
+          <li>Start easy (RPE 4)</li>
+          <li>Move to steady (RPE 5)</li>
+          <li>Finish controlled (RPE 6), optionally near MP if the day is good</li>
+        </ul>
+
+        <h3>Workout 3: Easy drift check (aerobic durability)</h3>
+        <ul>
+          <li>90–120 minutes easy</li>
+          <li>Observe: does HR rise sharply at the same pace? does pace drop at the same effort?</li>
+          <li>This is a good “base fitness + hydration habit” check</li>
+        </ul>
+
+        <aside class="callout callout-primary" aria-label="Related guide">
+          <h3 class="callout-title">Related guide</h3>
+          <p>
+            For a deeper HR/RPE script (and why HR drifts), use:
+            <a href="/blog/marathon-pacing-heart-rate-rpe-hr-drift/">Marathon pacing by HR &amp; RPE</a>.
+          </p>
+        </aside>
+      </section>
+
+      <section id="mistakes">
+        <h2>Common mistakes (and fixes)</h2>
+        <ol>
+          <li>
+            <strong>Using relative humidity instead of dew point.</strong><br/>
+            <em>Fix:</em> Use dew point for moisture stress; RH is temperature-dependent and often misleading.
+          </li>
+          <li>
+            <strong>Trying to “force splits” at dew point ≥ 18°C.</strong><br/>
+            <em>Fix:</em> Switch to effort pacing; let pace float while protecting early effort.
+          </li>
+          <li>
+            <strong>Overreacting to HR drift late.</strong><br/>
+            <em>Fix:</em> Drift is expected in long, warm efforts. Use RPE + mechanics to decide whether to push or stabilise.
+          </li>
+          <li>
+            <strong>Fueling too late.</strong><br/>
+            <em>Fix:</em> Start early and stay consistent; humidity increases strain and makes late saves harder.
+          </li>
+          <li>
+            <strong>Ignoring sun/wind.</strong><br/>
+            <em>Fix:</em> Dew point is a humidity signal, not the whole environment. Use the conditions adjuster for a full estimate.
+          </li>
+        </ol>
+
+        <aside class="callout callout-warning" aria-label="Safety note">
+          <h3 class="callout-title">Safety note</h3>
+          <p>
+            If you feel dizzy, confused, get chills/goosebumps in heat, or stop sweating despite overheating,
+            prioritise safety and seek medical help. No time goal is worth heat illness.
+          </p>
+        </aside>
+      </section>
+
+      <section id="faq">
+        <h2>FAQ</h2>
+
+        <h3>Why is dew point better than humidity for pacing?</h3>
+        <p>
+          Relative humidity is “relative to temperature” and can be misleading. Dew point reflects moisture content more directly
+          and is commonly used as a practical measure of how muggy it will feel—especially once you’re sweating.
+        </p>
+
+        <h3>At what dew point should I stop chasing goal pace?</h3>
+        <p>
+          A practical rule: at <strong>~18°C (65°F)</strong> and above, switch to effort-based pacing from the start.
+          At <strong>~21°C (70°F)</strong> and above, many runners need to adjust time goals unless conditions are otherwise favourable.
+        </p>
+
+        <h3>Can I use a dew point table to predict exact pace adjustments?</h3>
+        <p>
+          Use the table to choose strategy (pace vs effort). Exact seconds-per-km depend on temperature, sun, wind,
+          acclimation, and your fitness. For a tailored estimate, use the <a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a>.
+        </p>
+
+        <h3>Does dew point matter if the air temperature is cool?</h3>
+        <p>
+          It still affects evaporation, but overall strain depends on temperature, sun, and wind too. Dew point is a strong “humidity” signal,
+          not the whole heat picture.
+        </p>
+
+        <h3>What’s the best simple pacing plan for humid marathons?</h3>
+        <p>
+          Conservative first 10K (HR/RPE cap), steady mid-race (RPE anchored), then race the last 12K by RPE and mechanics if fueling is working.
+        </p>
+      </section>
+
+      <section class="related">
+        <h2>Related tools &amp; guides</h2>
+        <ul>
+          <li><a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a></li>
+          <li><a href="/">Marathon Pace Calculator</a></li>
+          <li><a href="/printable-pace-band/">Printable Pace Band</a></li>
+          <li><a href="/marathon-time-predictor/">Marathon Time Predictor</a></li>
+          <li><a href="/blog/marathon-pacing-heart-rate-rpe-hr-drift/">Marathon pacing by HR &amp; RPE</a></li>
+          <li><a href="/blog/how-to-pace-first-10k-marathon/">How to pace the first 10K</a></li>
+          <li><a href="/blog/marathon-pace-workouts/">Marathon pace workouts</a></li>
+        </ul>
+      </section>
+
+      <section id="references">
+        <h2>References</h2>
+        <ol>
+          <li>
+            National Weather Service glossary: Dew point definition.
+            <a href="https://forecast.weather.gov/glossary.php?word=DEW" target="_blank" rel="noopener noreferrer">NWS</a>
+          </li>
+          <li>
+            NWS explainer: dew point vs relative humidity (and general comfort thresholds).
+            <a href="https://www.weather.gov/arx/why_dewpoint_vs_humidity" target="_blank" rel="noopener noreferrer">NWS</a>
+          </li>
+          <li>
+            NWS humidity discussion: dew point as a practical moisture indicator (analogous to absolute humidity).
+            <a href="https://www.weather.gov/lmk/humidity" target="_blank" rel="noopener noreferrer">NWS</a>
+          </li>
+          <li>
+            Jenkins EJ, et al. (2023). Impacts of air temperature and humidity; absolute humidity governs evaporative rate (Endurance exercise).
+            <a href="https://pubmed.ncbi.nlm.nih.gov/36537856/" target="_blank" rel="noopener noreferrer">PubMed</a>
+          </li>
+          <li>
+            Mantzios K, et al. (2021). Weather parameters and endurance running performance; WBGT and performance decrement outside optimal conditions.
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8677617/" target="_blank" rel="noopener noreferrer">PMC</a>
+          </li>
+          <li>
+            Souissi A, et al. (2021). Cardiovascular drift during prolonged exercise (mechanisms and context).
+            <a href="https://www.sciencedirect.com/science/article/pii/S0024320521010961" target="_blank" rel="noopener noreferrer">ScienceDirect</a>
+          </li>
+          <li>
+            Bright FM, et al. (2025). Elevated humidity impairs evaporative heat loss and self-paced performance in the heat.
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11922688/" target="_blank" rel="noopener noreferrer">PMC</a>
+          </li>
+        </ol>
+
+        <p class="note">
+          Educational content only. Adjust pacing for your history, acclimation, and race-day conditions.
+        </p>
+      </section>
+
+      <footer class="post-footer">
+        <p>
+          If you tell me your goal time and your typical marathon HR (or recent half marathon HR),
+          I can generate a dew-point-specific <strong>first 10K HR cap</strong> and a “pace ceiling” plan
+          you can paste straight into your pace band.
+        </p>
+      </footer>
+
+    </article>
+  </main>
+
+  <!-- Optional minimal styles (remove if your site already styles these classes) -->
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; }
+    .content-wrap { max-width: 900px; margin: 0 auto; padding: 24px 16px 64px; }
+    .breadcrumb { font-size: 0.95rem; margin: 0 0 10px; }
+    .breadcrumb a { text-decoration: none; }
+    .post-header h1 { font-size: 2rem; line-height: 1.15; margin: 0 0 10px; }
+    .post-meta { margin: 0 0 14px; opacity: 0.85; }
+    .lede { font-size: 1.1rem; margin: 0 0 18px; }
+    .toc { border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 14px 16px; margin: 18px 0 24px; }
+    .toc h2 { margin: 0 0 8px; font-size: 1.1rem; }
+    .toc ol { margin: 0; padding-left: 18px; }
+    section { margin: 26px 0; }
+    h2 { margin: 0 0 10px; font-size: 1.55rem; }
+    h3 { margin: 18px 0 8px; font-size: 1.2rem; }
+    .callout { border-radius: 14px; padding: 14px 16px; margin: 16px 0; border: 1px solid rgba(0,0,0,0.12); }
+    .callout-title { margin: 0 0 6px; font-size: 1.05rem; }
+    .callout-primary { background: rgba(0, 120, 255, 0.06); }
+    .callout-warning { background: rgba(255, 140, 0, 0.08); }
+    .callout-note { background: rgba(0, 0, 0, 0.04); }
+    .table-wrap { overflow-x: auto; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; min-width: 860px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,0.08); text-align: left; vertical-align: top; }
+    th { background: rgba(0,0,0,0.04); }
+    .related ul { padding-left: 18px; }
+    .note { opacity: 0.85; }
+  </style>
+</body>
+</html>
