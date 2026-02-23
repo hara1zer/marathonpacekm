@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Marathon Pacing by Heart Rate & RPE (and Why HR Drifts Upward) | MarathonPaceKM</title>
+  <meta name="description" content="How to pace a marathon using heart rate and RPE: practical HR caps, an RPE script for each race segment, why heart rate drifts upward, and how to adjust in heat, wind, and hills." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <!-- Canonical (update if your final URL differs) -->
+  <link rel="canonical" href="https://marathonpacekm.com/blog/marathon-pacing-heart-rate-rpe-hr-drift/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="MarathonPaceKM" />
+  <meta property="og:title" content="Marathon Pacing by Heart Rate & RPE (and Why HR Drifts Upward)" />
+  <meta property="og:description" content="Practical HR caps + an RPE pacing script, plus the real reason HR drifts upward and how to adjust for heat/wind/hills." />
+  <meta property="og:url" content="https://marathonpacekm.com/blog/marathon-pacing-heart-rate-rpe-hr-drift/" />
+  <!-- Optional OG image -->
+  <!-- <meta property="og:image" content="https://marathonpacekm.com/images/blog/hr-rpe-drift-og.jpg" /> -->
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Marathon Pacing by Heart Rate & RPE (and Why HR Drifts Upward)" />
+  <meta name="twitter:description" content="Practical HR caps + an RPE pacing script, plus why HR drifts upward and how to adjust in tough conditions." />
+  <!-- <meta name="twitter:image" content="https://marathonpacekm.com/images/blog/hr-rpe-drift-og.jpg" /> -->
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline":"Marathon Pacing by Heart Rate & RPE (and Why HR Drifts Upward)",
+    "description":"How to pace a marathon using heart rate and RPE: practical HR caps, an RPE script for each race segment, why heart rate drifts upward, and how to adjust in heat, wind, and hills.",
+    "author":{"@type":"Organization","name":"MarathonPaceKM"},
+    "publisher":{"@type":"Organization","name":"MarathonPaceKM"},
+    "mainEntityOfPage":"https://marathonpacekm.com/blog/marathon-pacing-heart-rate-rpe-hr-drift/",
+    "datePublished":"2026-02-23",
+    "dateModified":"2026-02-23"
+  }
+  </script>
+
+  <!-- FAQ Schema (matches FAQ section below) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"Why does my heart rate drift upward at the same pace?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"During prolonged exercise, cardiovascular drift can occur: stroke volume and mean arterial pressure tend to decline while heart rate rises to maintain cardiac output. Heat stress, dehydration, and skin blood flow demands can amplify the effect."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Should I pace my marathon by heart rate or pace?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Best practice for most runners is hybrid: use pace targets when conditions are stable, but use heart rate caps and RPE to prevent early overpacing and to adjust for heat/wind/hills. Pace is a plan; effort is the truth."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"What RPE should a marathon feel like?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Early should feel controlled (you can speak short phrases). Mid-race is steady and focused. Late-race becomes hard but manageable if pacing and fueling are right. If it feels like threshold at 5K, you’re going too fast or conditions are harsh."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Can I use heart rate as a ceiling in the first 10K?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes. A first-10K HR cap is one of the simplest ways to avoid paying early pace debt later—especially in heat, wind, hills, or when adrenaline makes pace feel easy."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"How do I set my marathon heart rate without a lab test?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Use your recent race data to estimate goal pace, then practice marathon-pace blocks in long runs while tracking HR and RPE. Your marathon HR target is the one you can hold with controlled breathing and stable mechanics while fueling successfully."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <main class="content-wrap">
+    <article class="post">
+
+      <header class="post-header">
+        <p class="breadcrumb">
+          <a href="/">Home</a> › <a href="/blog/">Blog</a> › HR & RPE Marathon Pacing
+        </p>
+
+        <h1>Marathon Pacing by Heart Rate &amp; RPE (and Why HR Drifts Upward)</h1>
+
+        <p class="post-meta">
+          Updated: <time datetime="2026-02-23">23 Feb 2026</time> · Reading time: ~12–16 min
+        </p>
+
+        <p class="lede">
+          GPS pace lies. Weather changes. Adrenaline makes “too fast” feel easy.
+          Heart rate and RPE (rate of perceived exertion) help you pace the marathon like a grown-up:
+          <strong>controlled early, steady middle, brave late</strong>.
+          This guide shows you exactly how to use HR + RPE, and why heart rate drifts upward even when you run the same pace.
+        </p>
+      </header>
+
+      <!-- Quick action block -->
+      <aside class="callout callout-primary" aria-label="Quick workflow">
+        <h2 class="callout-title">Do this first (2 minutes)</h2>
+        <ol>
+          <li>
+            Confirm a realistic goal time:
+            <a href="/marathon-time-predictor/">Marathon Time Predictor</a>
+          </li>
+          <li>
+            Convert it into exact MP + splits:
+            <a href="/">Marathon Pace Calculator</a>
+          </li>
+          <li>
+            Adjust expectations for heat/wind/hills:
+            <a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a>
+          </li>
+          <li>
+            Print a checkpoint plan:
+            <a href="/printable-pace-band/">Printable Pace Band</a>
+          </li>
+        </ol>
+      </aside>
+
+      <!-- TOC -->
+      <nav class="toc" aria-label="Table of contents">
+        <h2>On this page</h2>
+        <ol>
+          <li><a href="#why-hr-rpe">Why HR + RPE are useful for marathon pacing</a></li>
+          <li><a href="#what-is-rpe">What RPE is (and how to use it)</a></li>
+          <li><a href="#why-hr-drifts">Why heart rate drifts upward (the real reasons)</a></li>
+          <li><a href="#hybrid-method">The best approach: hybrid pacing (pace + HR cap + RPE)</a></li>
+          <li><a href="#race-script">A race-day HR &amp; RPE script (0–42.2K)</a></li>
+          <li><a href="#set-targets">How to set your HR targets without a lab test</a></li>
+          <li><a href="#training">How to train HR + RPE pacing in long runs</a></li>
+          <li><a href="#mistakes">Common mistakes (and fixes)</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#references">References</a></li>
+        </ol>
+      </nav>
+
+      <section id="why-hr-rpe">
+        <h2>Why HR + RPE are useful for marathon pacing</h2>
+        <p>
+          Pace is external. Heart rate and RPE are internal.
+          The marathon is long enough that internal cost matters more than early pace precision.
+          Research in marathoners has linked pacing strategy to “cardiac drift” and performance, and “cardiac cost”
+          (heart rate relative to running speed) has been used to quantify how the internal cost of the same pace changes during a marathon.
+        </p>
+
+        <aside class="callout callout-note" aria-label="The core idea">
+          <h3 class="callout-title">Core idea</h3>
+          <p>
+            <strong>Pace is a plan. Effort is the truth.</strong>
+            HR and RPE stop you from spending effort too early—especially when conditions or adrenaline trick you.
+          </p>
+        </aside>
+
+        <p>
+          HR isn’t perfect (it lags and it drifts), and RPE is subjective.
+          But together they give you a reliable “effort dashboard” when GPS and crowd chaos are unreliable.
+        </p>
+      </section>
+
+      <section id="what-is-rpe">
+        <h2>What RPE is (and how to use it)</h2>
+        <p>
+          RPE (rating of perceived exertion) is a simple way to score how hard the work feels.
+          The classic Borg scale runs from <strong>6 to 20</strong> and was designed to roughly correlate with heart rate (in broad strokes),
+          and many studies show RPE correlates strongly with physiological markers like heart rate and lactate.
+        </p>
+
+        <div class="table-wrap" role="region" aria-label="RPE cheat sheet" tabindex="0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>RPE (0–10)</th>
+                <th>What it feels like</th>
+                <th>Talk test</th>
+                <th>Where it fits in marathon day</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>3–4</strong></td>
+                <td>Easy / relaxed</td>
+                <td>Full sentences</td>
+                <td>Warm-up & early settling; easy kilometres</td>
+              </tr>
+              <tr>
+                <td><strong>5</strong></td>
+                <td>Steady / “all day”</td>
+                <td>Short sentences</td>
+                <td>Early marathon once settled (cool conditions)</td>
+              </tr>
+              <tr>
+                <td><strong>6</strong></td>
+                <td>Controlled work</td>
+                <td>Short phrases</td>
+                <td>Typical marathon effort mid-race</td>
+              </tr>
+              <tr>
+                <td><strong>7</strong></td>
+                <td>Hard but manageable</td>
+                <td>1–3 words</td>
+                <td>Late marathon if pacing/fueling are good</td>
+              </tr>
+              <tr>
+                <td><strong>8+</strong></td>
+                <td>Very hard / survival</td>
+                <td>Not really</td>
+                <td>Final push only (last few km)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <aside class="callout callout-warning" aria-label="RPE guardrail">
+          <h3 class="callout-title">RPE guardrail</h3>
+          <p>
+            If you’re at “threshold feel” (RPE 7–8, talk test broken) before 5–10K,
+            you’re either pacing too fast or conditions are harsher than your plan assumed.
+            Fix it early.
+          </p>
+        </aside>
+      </section>
+
+      <section id="why-hr-drifts">
+        <h2>Why heart rate drifts upward (even at the same pace)</h2>
+        <p>
+          During prolonged exercise, many runners see HR slowly creep upward even while pace stays steady.
+          This is commonly described as <strong>cardiovascular drift</strong>.
+          Reviews describe the pattern as a time-dependent rise in HR alongside declines in stroke volume and mean arterial pressure during prolonged work.
+        </p>
+
+        <h3>The main drivers of HR drift</h3>
+        <ul>
+          <li><strong>Heat stress / thermoregulation:</strong> as skin and core temperature rise, cardiovascular demands shift, which can reduce stroke volume and push HR up.</li>
+          <li><strong>Dehydration and reduced plasma volume:</strong> fluid loss can reduce stroke volume and cardiac output, especially in the heat, increasing HR for the same pace.</li>
+          <li><strong>Reduced ventricular filling time at higher HR:</strong> as HR rises, filling time shortens, which can further reduce stroke volume.</li>
+          <li><strong>Neuromuscular fatigue:</strong> as mechanics degrade slightly, the same pace can become “costlier.”</li>
+        </ul>
+
+        <aside class="callout callout-note" aria-label="Why drift matters">
+          <h3 class="callout-title">Why drift matters for pacing</h3>
+          <p>
+            If you pace only by HR, drift can force you to slow more than necessary late.
+            If you pace only by pace, drift can hide that you’re overcooking the internal cost early.
+            That’s why marathon pacing works best as a <strong>hybrid</strong>.
+          </p>
+        </aside>
+
+        <p>
+          Marathon research specifically has linked pacing strategy with cardiac drift and performance, and more recent work in elite marathoners
+          discusses how stable HR early in the marathon can relate to performance and “durability.”
+        </p>
+      </section>
+
+      <section id="hybrid-method">
+        <h2>The best approach: hybrid pacing (pace + HR cap + RPE)</h2>
+
+        <p>
+          Here’s the simplest way to think about it:
+        </p>
+
+        <div class="table-wrap" role="region" aria-label="Hybrid pacing logic" tabindex="0">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>When</th>
+                <th>Primary guide</th>
+                <th>Secondary guide</th>
+                <th>Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>0–10K</strong></td>
+                <td><strong>HR cap</strong></td>
+                <td>RPE + pace cap</td>
+                <td>Adrenaline + crowds make pace feel easy; HR cap prevents early debt</td>
+              </tr>
+              <tr>
+                <td><strong>10–30K</strong></td>
+                <td><strong>Pace</strong> (if conditions stable)</td>
+                <td>RPE</td>
+                <td>Settle into sustainable rhythm; keep effort honest</td>
+              </tr>
+              <tr>
+                <td><strong>30–42K</strong></td>
+                <td><strong>RPE</strong></td>
+                <td>HR + pace</td>
+                <td>Late drift/fatigue makes HR less actionable; RPE tells you what’s sustainable</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <aside class="callout callout-primary" aria-label="Tools to support hybrid pacing">
+          <h3 class="callout-title">Make hybrid pacing easy</h3>
+          <p>
+            Use your <a href="/">goal pace</a> + <a href="/printable-pace-band/">pace band</a> as the external plan,
+            and use <a href="/race-conditions-pace-adjuster/">conditions-adjusted expectations</a> plus an early HR cap as the internal guardrail.
+          </p>
+        </aside>
+      </section>
+
+      <section id="race-script">
+        <h2>A race-day HR &amp; RPE script (0–42.2K)</h2>
+
+        <p>
+          This is a “doable” script—not a perfect physiological model. The key is restraint early and patience mid-race.
+          If you want a pace-first script for the opening, pair this with:
+          <a href="/blog/how-to-pace-first-10k-marathon/">How to pace the first 10K</a>.
+        </p>
+
+        <section>
+          <h3>0–3K: settle (HR lags; don’t chase it)</h3>
+          <ul>
+            <li><strong>RPE:</strong> 4–5 (controlled, relaxed)</li>
+            <li><strong>Rule:</strong> no surges, no weaving</li>
+            <li><strong>HR:</strong> ignore the first 2–3 minutes; HR response lags</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>3–10K: the “HR cap” window</h3>
+          <ul>
+            <li><strong>RPE:</strong> 5–6 (short phrases OK)</li>
+            <li><strong>HR:</strong> hold under your planned early cap (see next section for how to set it)</li>
+            <li><strong>Pace:</strong> allow a slight pace float on hills/headwinds; don’t “buy” pace with effort</li>
+          </ul>
+
+          <aside class="callout callout-warning" aria-label="Early red flag">
+            <h4 class="callout-title">Early red flag</h4>
+            <p>
+              If you’re at RPE 7 (“hard”) before 10K, or HR is already near your threshold-range,
+              you’re overpacing or conditions are harsh. Adjust now.
+            </p>
+          </aside>
+        </section>
+
+        <section>
+          <h3>10–30K: lock in (pace as plan, RPE as truth)</h3>
+          <ul>
+            <li><strong>RPE:</strong> 6 (steady focus)</li>
+            <li><strong>Pace:</strong> target goal MP when conditions are stable</li>
+            <li><strong>HR:</strong> expect gradual drift; don’t panic-slow unless RPE is rising too</li>
+            <li><strong>Fuel:</strong> keep fueling on schedule (don’t wait for “low energy”)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>30–42K: race by RPE (with HR as context)</h3>
+          <ul>
+            <li><strong>RPE:</strong> 6.5 → 7.5 depending on your day</li>
+            <li><strong>HR:</strong> may climb from drift; use it as a warning sign, not a steering wheel</li>
+            <li><strong>Pace:</strong> let pace reflect the conditions and your durability; keep form cues strong</li>
+          </ul>
+
+          <aside class="callout callout-note" aria-label="A simple finish rule">
+            <h4 class="callout-title">Simple finish rule</h4>
+            <p>
+              If you can still take fuel and maintain mechanics, you can push.
+              If fueling is failing and form collapses, focus on rhythm and damage control.
+            </p>
+          </aside>
+        </section>
+      </section>
+
+      <section id="set-targets">
+        <h2>How to set your HR targets without a lab test</h2>
+
+        <p>
+          The goal isn’t a magical HR number. The goal is a cap that keeps you honest early and supports even pacing.
+        </p>
+
+        <h3>Step 1: Get an accurate goal pace</h3>
+        <p>
+          Use <a href="/marathon-time-predictor/">the predictor</a> plus your recent races, then convert to MP with
+          <a href="/">the pace calculator</a>. If it’s hot or windy, adjust with
+          <a href="/race-conditions-pace-adjuster/">the conditions tool</a>.
+        </p>
+
+        <h3>Step 2: Find your “marathon HR range” in training</h3>
+        <p>
+          In a long run with marathon-pace blocks (broken), note the HR you can hold while:
+          <strong>(a)</strong> breathing stays controlled,
+          <strong>(b)</strong> mechanics stay clean,
+          <strong>(c)</strong> fueling works.
+        </p>
+        <ul>
+          <li>Example session: <strong>2 × 6 km @ MP</strong> inside a long run</li>
+          <li>Record: HR average for each block + RPE start/end + drift pattern</li>
+        </ul>
+
+        <h3>Step 3: Set a conservative HR cap for the first 10K</h3>
+        <p>
+          Your early cap should be <strong>below</strong> the HR you held during MP blocks late in long runs.
+          The point is restraint: prevent the “easy early” trap that turns into late-race slowdown.
+        </p>
+
+        <aside class="callout callout-warning" aria-label="Important note">
+          <h4 class="callout-title">Important note</h4>
+          <p>
+            Heart rate is influenced by sleep, stress, caffeine, heat, dehydration, hills, and adrenaline.
+            That’s why RPE is always the cross-check.
+          </p>
+        </aside>
+      </section>
+
+      <section id="training">
+        <h2>How to train HR + RPE pacing in long runs</h2>
+
+        <h3>Workout 1: “HR-capped” easy long run</h3>
+        <ul>
+          <li>Run easy and keep HR under an easy cap</li>
+          <li>Observe drift: does HR creep up? does pace fall?</li>
+          <li>Practice fueling if the run is &gt; 90 minutes</li>
+        </ul>
+
+        <h3>Workout 2: MP blocks with RPE notes (best practice)</h3>
+        <ul>
+          <li>Example: 28–34 km total with <strong>2 × 6 km @ MP</strong> (2 km easy between)</li>
+          <li>Write down RPE at start and end of each block</li>
+          <li>Goal: stable pacing + controlled breathing, not “fast for Strava”</li>
+        </ul>
+
+        <h3>Workout 3: Progression long run by RPE</h3>
+        <ul>
+          <li>Start easy (RPE 4)</li>
+          <li>Move to steady (RPE 5)</li>
+          <li>Finish controlled (RPE 6), optionally near MP if the day is good</li>
+        </ul>
+
+        <aside class="callout callout-primary" aria-label="Link to your MP workouts guide">
+          <h3 class="callout-title">Need marathon-pace workout options?</h3>
+          <p>
+            Use: <a href="/blog/marathon-pace-workouts/">Marathon pace workouts (8 sessions)</a>
+            and <a href="/blog/long-run-structure-fast-finish-vs-blocks-vs-progression/">Long run structure guide</a>.
+          </p>
+        </aside>
+      </section>
+
+      <section id="mistakes">
+        <h2>Common mistakes (and fixes)</h2>
+
+        <ol>
+          <li>
+            <strong>Chasing HR in the first 2K.</strong><br />
+            <em>Fix:</em> HR lags. Use RPE + a pace cap early; use HR cap after you settle.
+          </li>
+          <li>
+            <strong>Using HR as the only steering wheel late.</strong><br />
+            <em>Fix:</em> drift is expected. Late-race pace should be driven by RPE + mechanics + fueling success.
+          </li>
+          <li>
+            <strong>Ignoring conditions.</strong><br />
+            <em>Fix:</em> in heat/wind/hills, anchor by RPE and let pace float; use the <a href="/race-conditions-pace-adjuster/">conditions adjuster</a>.
+          </li>
+          <li>
+            <strong>Turning every long run into “steady.”</strong><br />
+            <em>Fix:</em> alternate easy long runs with specific long runs. Keep easy days easy.
+          </li>
+          <li>
+            <strong>Fueling too late.</strong><br />
+            <em>Fix:</em> practice fueling early and consistently; don’t wait for the crash.
+          </li>
+        </ol>
+      </section>
+
+      <section id="faq">
+        <h2>FAQ</h2>
+
+        <h3>Why does my heart rate drift upward at the same pace?</h3>
+        <p>
+          Cardiovascular drift during prolonged exercise often includes a gradual decline in stroke volume and mean arterial pressure
+          with a compensatory rise in HR. Heat stress and dehydration can amplify this effect.
+        </p>
+
+        <h3>Should I pace my marathon by heart rate or pace?</h3>
+        <p>
+          Hybrid works best: pace targets for stable conditions, but HR caps + RPE to prevent early overpacing and to adjust for conditions.
+        </p>
+
+        <h3>What RPE should a marathon feel like?</h3>
+        <p>
+          Early: controlled (short phrases). Mid: steady focus. Late: hard but manageable if pacing and fueling are right.
+          If it feels like threshold early, you’re going too fast or conditions are harsh.
+        </p>
+
+        <h3>Can I use heart rate as a ceiling in the first 10K?</h3>
+        <p>
+          Yes—this is one of the simplest ways to avoid the “easy early” trap that leads to late slowdown.
+        </p>
+
+        <h3>How do I set my marathon HR without a lab test?</h3>
+        <p>
+          Practice marathon-pace blocks in long runs and note the HR you can hold with controlled breathing, stable mechanics,
+          and successful fueling. Use that to set a conservative early cap on race day.
+        </p>
+      </section>
+
+      <section class="related">
+        <h2>Related tools &amp; guides</h2>
+        <ul>
+          <li><a href="/marathon-time-predictor/">Marathon Time Predictor</a></li>
+          <li><a href="/">Marathon Pace Calculator</a></li>
+          <li><a href="/printable-pace-band/">Printable Pace Band</a></li>
+          <li><a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a></li>
+          <li><a href="/blog/how-to-pace-first-10k-marathon/">How to pace the first 10K</a></li>
+          <li><a href="/blog/marathon-pace-workouts/">Marathon pace workouts</a></li>
+          <li><a href="/blog/tempo-vs-threshold-vs-marathon-pace/">Tempo vs threshold vs marathon pace</a></li>
+          <li><a href="/blog/long-run-structure-fast-finish-vs-blocks-vs-progression/">Long run structure guide</a></li>
+          <li><a href="/blog/marathon-pace-readiness-test/">Marathon pace readiness test</a></li>
+        </ul>
+      </section>
+
+      <section id="references">
+        <h2>References</h2>
+        <ol>
+          <li>
+            Souissi A, et al. (2021). <em>A new perspective on cardiovascular drift during prolonged exercise</em>.
+            <a href="https://pubmed.ncbi.nlm.nih.gov/34717912/" target="_blank" rel="noopener noreferrer">PubMed</a>
+            · <a href="https://www.sciencedirect.com/science/article/pii/S0024320521010961" target="_blank" rel="noopener noreferrer">ScienceDirect</a>
+          </li>
+          <li>
+            Coyle EF. (1998). <em>Cardiovascular drift during prolonged exercise and the effects of dehydration</em>.
+            <a href="https://pubmed.ncbi.nlm.nih.gov/9694416/" target="_blank" rel="noopener noreferrer">PubMed</a>
+          </li>
+          <li>
+            Coyle EF. (2001). <em>Cardiovascular drift during prolonged exercise: new perspectives</em>.
+            <a href="https://pubmed.ncbi.nlm.nih.gov/11337829/" target="_blank" rel="noopener noreferrer">PubMed</a>
+          </li>
+          <li>
+            Billat VL, et al. (2020). <em>Pacing strategy affects the sub-elite marathoner’s cardiac drift and performance</em>.
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7043260/" target="_blank" rel="noopener noreferrer">PMC</a>
+            · <a href="https://pubmed.ncbi.nlm.nih.gov/32140116/" target="_blank" rel="noopener noreferrer">PubMed</a>
+          </li>
+          <li>
+            Takayama F, et al. (2025). <em>Do heart rates of elite marathon runners exhibit room for drift? Implications for durability</em>.
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12034733/" target="_blank" rel="noopener noreferrer">PMC</a>
+            · <a href="https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2025.1571498/full" target="_blank" rel="noopener noreferrer">Frontiers</a>
+          </li>
+          <li>
+            Billat VL, et al. (2012). <em>Cardiac output and performance during a marathon race</em> (cardiac cost context).
+            <a href="https://onlinelibrary.wiley.com/doi/10.1100/2012/810859" target="_blank" rel="noopener noreferrer">Wiley</a>
+          </li>
+          <li>
+            Scherr J, et al. (2013). <em>Associations between Borg’s RPE and physiological measures (HR, lactate)</em>.
+            <a href="https://pubmed.ncbi.nlm.nih.gov/22615009/" target="_blank" rel="noopener noreferrer">PubMed</a>
+          </li>
+          <li>
+            Chou TH, et al. (2022). <em>Cardiovascular responses to hot skin at rest and during exercise</em> (heat effects on SV/filling).
+            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10405766/" target="_blank" rel="noopener noreferrer">PMC</a>
+          </li>
+          <li>
+            Watanabe K, et al. (2020). <em>Dehydration reduces stroke volume and cardiac output during intense prolonged exercise in the heat</em>.
+            <a href="https://physoc.onlinelibrary.wiley.com/doi/full/10.14814/phy2.14433" target="_blank" rel="noopener noreferrer">Wiley</a>
+          </li>
+          <li>
+            Williams N. (2017). <em>The Borg Rating of Perceived Exertion (RPE) scale</em>.
+            <a href="https://academic.oup.com/occmed/article/67/5/404/3975235" target="_blank" rel="noopener noreferrer">OUP</a>
+          </li>
+        </ol>
+
+        <p class="note">
+          Educational content only. Adjust pacing for your history, health, recovery, and race-day conditions.
+        </p>
+      </section>
+
+      <footer class="post-footer">
+        <p>
+          If you share your goal time + last long run (distance) + any recent race (10K/half),
+          I can generate a custom <strong>early HR cap</strong> and a <strong>mid-race HR/RPE range</strong> to test in training.
+        </p>
+      </footer>
+
+    </article>
+  </main>
+
+  <!-- Optional minimal styles (remove if your site already styles these classes) -->
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; }
+    .content-wrap { max-width: 900px; margin: 0 auto; padding: 24px 16px 64px; }
+    .breadcrumb { font-size: 0.95rem; margin: 0 0 10px; }
+    .breadcrumb a { text-decoration: none; }
+    .post-header h1 { font-size: 2rem; line-height: 1.15; margin: 0 0 10px; }
+    .post-meta { margin: 0 0 14px; opacity: 0.85; }
+    .lede { font-size: 1.1rem; margin: 0 0 18px; }
+    .toc { border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 14px 16px; margin: 18px 0 24px; }
+    .toc h2 { margin: 0 0 8px; font-size: 1.1rem; }
+    .toc ol { margin: 0; padding-left: 18px; }
+    section { margin: 26px 0; }
+    h2 { margin: 0 0 10px; font-size: 1.55rem; }
+    h3 { margin: 18px 0 8px; font-size: 1.2rem; }
+    h4 { margin: 12px 0 6px; font-size: 1.05rem; }
+    .callout { border-radius: 14px; padding: 14px 16px; margin: 16px 0; border: 1px solid rgba(0,0,0,0.12); }
+    .callout-title { margin: 0 0 6px; font-size: 1.05rem; }
+    .callout-primary { background: rgba(0, 120, 255, 0.06); }
+    .callout-warning { background: rgba(255, 140, 0, 0.08); }
+    .callout-note { background: rgba(0, 0, 0, 0.04); }
+    .table-wrap { overflow-x: auto; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; min-width: 860px; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,0.08); text-align: left; vertical-align: top; }
+    th { background: rgba(0,0,0,0.04); }
+    .related ul { padding-left: 18px; }
+    .note { opacity: 0.85; }
+  </style>
+</body>
+</html>
