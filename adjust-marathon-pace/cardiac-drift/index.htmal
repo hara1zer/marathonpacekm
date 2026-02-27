@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Cardiac Drift (Heart Rate Drift): What It Means + How to Adjust Pace | Marathon Pace KM</title>
+  <meta name="description" content="Cardiac (cardiovascular) drift explained: why heart rate rises at the same pace, what causes it (heat, dehydration, fatigue), how to test it (aerobic decoupling), and how to adjust training and marathon pacing using practical checkpoints." />
+  <link rel="canonical" href="https://marathonpacekm.com/adjust-marathon-pace/cardiac-drift/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Cardiac Drift (Heart Rate Drift): What It Means + How to Adjust Pace" />
+  <meta property="og:description" content="Why HR rises at the same pace, how to measure aerobic decoupling, and what to do in training and races to prevent late blow-ups." />
+  <meta property="og:url" content="https://marathonpacekm.com/adjust-marathon-pace/cardiac-drift/" />
+  <meta property="og:image" content="https://marathonpacekm.com/assets/og/adjust-pace-cardiac-drift.png" />
+
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <!-- JSON-LD: Breadcrumbs + Article + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://marathonpacekm.com/"},
+          {"@type":"ListItem","position":2,"name":"Adjust Marathon Pace","item":"https://marathonpacekm.com/adjust-marathon-pace/"},
+          {"@type":"ListItem","position":3,"name":"Cardiac Drift","item":"https://marathonpacekm.com/adjust-marathon-pace/cardiac-drift/"}
+        ]
+      },
+      {
+        "@type":"Article",
+        "headline":"Cardiac Drift (Heart Rate Drift): What It Means + How to Adjust Pace",
+        "description":"Cardiac (cardiovascular) drift explained: why heart rate rises at the same pace, what causes it (heat, dehydration, fatigue), how to test it (aerobic decoupling), and how to adjust training and marathon pacing using practical checkpoints.",
+        "mainEntityOfPage":"https://marathonpacekm.com/adjust-marathon-pace/cardiac-drift/",
+        "author":{"@type":"Organization","name":"Marathon Pace KM"},
+        "publisher":{
+          "@type":"Organization",
+          "name":"Marathon Pace KM",
+          "logo":{"@type":"ImageObject","url":"https://marathonpacekm.com/assets/logo.png"}
+        }
+      },
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {
+            "@type":"Question",
+            "name":"What is cardiac drift?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Cardiac drift (often called cardiovascular drift) is a gradual rise in heart rate during steady exercise even when pace stays the same. It is commonly linked to rising body temperature, dehydration-related reductions in stroke volume, and accumulated fatigue."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Is cardiac drift normal?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Some drift is normal in long steady sessions, especially in warm conditions. Excessive drift at easy effort can indicate limited aerobic endurance, heat stress, dehydration, or that you are not recovered."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"How do I measure heart rate drift or aerobic decoupling?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"A common method is a 60-minute steady test and comparing heart rate relative to pace in the first half vs second half. Training platforms may show this as Pa:HR or Pw:Hr (aerobic decoupling). Lower decoupling suggests better aerobic endurance at that duration and intensity."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Should I slow down if my heart rate drifts upward?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"If drift is trending up early and effort is rising, a small pace reduction and better cooling/hydration often prevents a large late slowdown. Use trends over several kilometers rather than reacting to one spike."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="/">Marathon Pace KM</a>
+      <nav class="nav">
+        <a href="/marathon-pace-chart/">Pace Chart</a>
+        <a href="/predict-marathon-time/">Predictor</a>
+        <a href="/half-marathon-to-marathon/">Half → Full</a>
+        <a href="/adjust-marathon-pace/">Adjust Pace</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">›</span>
+      <a href="/adjust-marathon-pace/">Adjust Marathon Pace</a> <span aria-hidden="true">›</span>
+      <span>Cardiac Drift</span>
+    </nav>
+
+    <article>
+      <h1>Cardiac Drift (Heart Rate Drift): What It Means + How to Adjust Pace</h1>
+
+      <p class="lead">
+        If you’ve ever done a steady run where pace stays stable but heart rate keeps climbing,
+        you’ve seen <strong>cardiac drift</strong> (often called <strong>cardiovascular drift</strong>).
+        Understanding it helps you make smarter pacing calls in training and race day — especially in heat, humidity,
+        or late in long runs.
+      </p>
+
+      <div class="callout">
+        <p><strong>Use with your pacing plan:</strong></p>
+        <p>
+          Tools:
+          <a href="/marathon-pace-chart/">Marathon pace chart (KM)</a> ·
+          <a href="/predict-marathon-time/">Predict marathon time</a> ·
+          <a href="/half-marathon-to-marathon/">Half → marathon conversion</a> ·
+          <a href="/adjust-marathon-pace/">All adjustment modules</a> ·
+          Heat module: <a href="/adjust-marathon-pace/heat/">adjust pace for heat</a>
+        </p>
+      </div>
+
+      <h2 id="toc">On this page</h2>
+      <ul class="toc">
+        <li><a href="#definition">Definition: what drift is (and isn’t)</a></li>
+        <li><a href="#mechanisms">Why HR drifts upward (the physiology)</a></li>
+        <li><a href="#causes">Top causes: heat, dehydration, fatigue, pacing errors</a></li>
+        <li><a href="#measure">How to measure drift: aerobic decoupling</a></li>
+        <li><a href="#training-actions">What to do in training</a></li>
+        <li><a href="#race-actions">What to do on race day</a></li>
+        <li><a href="#checkpoints">Checkpoints: 20 min / Half / 30K</a></li>
+        <li><a href="#mistakes">Common mistakes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+
+      <h2 id="definition">Definition: what cardiac drift is (and isn’t)</h2>
+      <p>
+        <strong>Cardiac drift</strong> = heart rate rises over time during a steady effort even if pace stays constant.
+        In research literature it’s often described as <strong>cardiovascular drift</strong>, and typically includes:
+        <strong>HR ↑</strong> and <strong>stroke volume ↓</strong> during prolonged exercise (often starting after ~10–20 minutes).
+        A classic review by Coyle discusses this pattern and the mechanisms. (<a href="https://pubmed.ncbi.nlm.nih.gov/11337829/" target="_blank" rel="noopener noreferrer">Coyle 2001</a>)
+      </p>
+      <p>
+        Drift is not the same as:
+      </p>
+      <ul>
+        <li><strong>Bad GPS</strong> (pace jumps): HR drift is a trend in your body, not your watch.</li>
+        <li><strong>Short-term HR spikes</strong> from hills or surges: drift is a gradual upward slope over time.</li>
+        <li><strong>Fatigue drift</strong> (global “everything feels harder”): drift can overlap with fatigue, but heat/dehydration can cause drift even when legs feel okay early.</li>
+      </ul>
+
+      <h2 id="mechanisms">Why HR drifts upward (the physiology, simplified)</h2>
+      <p>
+        During prolonged exercise, especially with rising body temperature and fluid loss, stroke volume can progressively decline.
+        To maintain cardiac output, heart rate tends to rise. Coyle’s earlier work describes dehydration/hyperthermia as major contributors,
+        with a substantial portion of stroke volume reduction attributed to reduced blood volume from dehydration. (<a href="https://pubmed.ncbi.nlm.nih.gov/9694416/" target="_blank" rel="noopener noreferrer">Coyle 1998</a>)
+      </p>
+      <p>
+        When dehydration is added to hyperthermia (exercise in the heat), cardiovascular strain can become large enough that maintaining
+        cardiac output becomes difficult. This has been shown in classic physiological studies by González-Alonso and colleagues. (
+        <a href="https://journals.physiology.org/doi/abs/10.1152/jappl.1997.82.4.1229" target="_blank" rel="noopener noreferrer">González-Alonso et al. 1997</a>;
+        <a href="https://journals.physiology.org/doi/abs/10.1152/ajpheart.2000.278.2.H321" target="_blank" rel="noopener noreferrer">González-Alonso et al. 2000</a>
+        )
+      </p>
+      <p>
+        Modern reviews still describe cardiovascular drift as a real, multi-factor phenomenon (not “sensor error”),
+        with contributions from thermoregulation, hydration status, and hemodynamics. (
+        <a href="https://www.sciencedirect.com/science/article/pii/S0024320521010961" target="_blank" rel="noopener noreferrer">Souissi et al. 2021</a>
+        )
+      </p>
+
+      <h2 id="causes">Top causes (what makes drift worse)</h2>
+      <div class="table-wrap" role="region" aria-label="Causes of cardiac drift table">
+        <table>
+          <thead>
+            <tr>
+              <th>Cause</th>
+              <th>What you’ll notice</th>
+              <th>Best response</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Heat / humidity</td>
+              <td>HR climbs earlier; RPE rises; you feel “hot”</td>
+              <td>Ease slightly, cool early, hydrate; see <a href="/adjust-marathon-pace/heat/">heat module</a></td>
+            </tr>
+            <tr>
+              <td>Dehydration</td>
+              <td>HR rises faster over time; dry mouth; reduced sweat later</td>
+              <td>Drink early; consider electrolytes; avoid “saving” fluids</td>
+            </tr>
+            <tr>
+              <td>Overpacing early</td>
+              <td>HR drift starts early; breathing feels too hard</td>
+              <td>Small early pace cut now prevents big late slowdown</td>
+            </tr>
+            <tr>
+              <td>Low aerobic endurance</td>
+              <td>Easy effort “decouples” after 30–60 min</td>
+              <td>More true easy volume + long steady runs</td>
+            </tr>
+            <tr>
+              <td>Accumulated fatigue / poor sleep</td>
+              <td>Higher HR at same pace + higher RPE</td>
+              <td>Downgrade intensity; see <a href="/adjust-marathon-pace/fatigue-drift/">fatigue drift</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Dehydration and heat together are especially potent for drift. A more recent experimental paper also reports that dehydration
+        accrued during intense prolonged exercise in heat compromises cardiac output and blood flow. (
+        <a href="https://physoc.onlinelibrary.wiley.com/doi/full/10.14814/phy2.14433" target="_blank" rel="noopener noreferrer">Watanabe et al. 2020</a>
+        )
+      </p>
+
+      <h2 id="measure">How to measure drift: aerobic decoupling (Pa:HR / Pw:Hr)</h2>
+      <p>
+        A practical way to quantify drift is to compare the relationship between <strong>output</strong> (pace) and <strong>input</strong> (heart rate)
+        between the first and second half of a steady session. Training platforms often call this <strong>aerobic decoupling</strong>
+        (e.g., <strong>Pa:HR</strong> for running pace-to-heart rate). TrainingPeaks provides a simple explanation of this metric and how to view it. (
+        <a href="https://help.trainingpeaks.com/hc/en-us/articles/204071724-Aerobic-Decoupling-Pw-Hr-and-Pa-HR-and-Efficiency-Factor-EF" target="_blank" rel="noopener noreferrer">TrainingPeaks help</a>
+        )
+      </p>
+
+      <h3>Simple drift test (field-friendly)</h3>
+      <ol>
+        <li><strong>Pick a stable route</strong> (flat, minimal stops) or a treadmill.</li>
+        <li><strong>Run 60 minutes steady</strong> at an easy-to-moderate aerobic effort (conversational, not “tempo”).</li>
+        <li><strong>Compare first half vs second half</strong>: if HR rises a lot while pace stays the same, drift/decoupling is higher.</li>
+        <li><strong>Repeat over time</strong> to track aerobic durability.</li>
+      </ol>
+
+      <p class="meta">
+        A practical guide to an aerobic/HR drift test is also described by Uphill Athlete (useful for repeatable testing). (
+        <a href="https://uphillathlete.com/aerobic-training/heart-rate-drift/" target="_blank" rel="noopener noreferrer">Uphill Athlete guide</a>
+        )
+      </p>
+
+      <div class="callout">
+        <h3>How to interpret decoupling (practical)</h3>
+        <p>
+          If decoupling increases early in a run (e.g., by 20–30 minutes), it usually points to pace being too ambitious for your current aerobic durability,
+          heat/hydration issues, or fatigue. Improvements typically come from more easy volume, long steady running, and better pacing discipline.
+        </p>
+      </div>
+
+      <h2 id="training-actions">What to do in training</h2>
+
+      <h3>1) If you see drift on easy runs</h3>
+      <ul>
+        <li><strong>Slow down</strong> until the effort is truly easy again.</li>
+        <li><strong>Control conditions</strong> (heat, hills, wind) before concluding fitness changed.</li>
+        <li><strong>Hydrate earlier</strong> (don’t wait until you’re thirsty on long runs).</li>
+      </ul>
+
+      <h3>2) Build “aerobic durability”</h3>
+      <ul>
+        <li><strong>Consistent easy volume</strong> (most of the ROI comes from boring runs).</li>
+        <li><strong>Long steady runs</strong> (progress duration gradually; keep effort capped).</li>
+        <li><strong>Fuel the long run</strong> so late drift is not just glycogen + dehydration.</li>
+      </ul>
+
+      <h3>3) Use drift as feedback, not punishment</h3>
+      <p>
+        Drift is information. If you keep forcing pace while drift climbs, you often turn aerobic training into a fatigue spiral.
+        If you instead adjust and keep the session aerobic, you get the adaptation you want with less damage.
+      </p>
+
+      <h2 id="race-actions">What to do on race day</h2>
+      <p>
+        In a marathon, drift is expected to some extent — but <strong>early</strong> drift is the danger sign.
+        If HR is already climbing fast by 20–30 minutes (and conditions aren’t unusually hot),
+        it’s often a pacing error, poor fueling, dehydration, or an “off day.”
+      </p>
+
+      <div class="callout">
+        <h3>Race-day rule</h3>
+        <p>
+          <strong>Make small corrections early.</strong>
+          A 5–15 sec/km concession at 8–15K can prevent a 30–60 sec/km collapse after 30K.
+        </p>
+      </div>
+
+      <h3>Race actions that reduce drift</h3>
+      <ul>
+        <li><strong>Cap effort early</strong> (don’t “chase splits” into wind/hills).</li>
+        <li><strong>Hydrate early + consistently</strong> (especially warm/humid races).</li>
+        <li><strong>Use cooling</strong> when available (water/ice) in heat.</li>
+        <li><strong>Fuel early</strong> (late fueling often arrives after the drift has already climbed).</li>
+      </ul>
+
+      <p class="meta">
+        Drift and pacing strategy have also been examined in marathoners using measures of cardiac cost / drift during the race. (
+        <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.03026/full" target="_blank" rel="noopener noreferrer">Billat et al. 2019/2020</a>
+        )
+      </p>
+
+      <h2 id="checkpoints">Checkpoints that prevent blow-ups</h2>
+
+      <h3>~20 minutes</h3>
+      <ul>
+        <li><strong>Good sign:</strong> HR stabilizes and effort feels controlled.</li>
+        <li><strong>Warning sign:</strong> HR keeps trending up and breathing feels “too hard for this early.”</li>
+        <li><strong>Action:</strong> ease slightly, smooth cadence, check hydration/cooling.</li>
+      </ul>
+
+      <h3>Halfway</h3>
+      <ul>
+        <li><strong>Good sign:</strong> you feel like you can hold form to 30K.</li>
+        <li><strong>Warning sign:</strong> you’re already “hanging on.”</li>
+        <li><strong>Action:</strong> stabilize (small pace cut, consistent drinking/fueling), protect the final 12K.</li>
+      </ul>
+
+      <h3>30K</h3>
+      <ul>
+        <li><strong>Goal:</strong> still runnable and controlled.</li>
+        <li><strong>If fading:</strong> stop trying to “hold pace”; aim for steady effort and minimize further drift.</li>
+      </ul>
+
+      <h2 id="mistakes">Common mistakes</h2>
+      <ul>
+        <li><strong>Using HR as a rigid speed limit</strong> → use HR as a trend + pair it with RPE and split stability.</li>
+        <li><strong>Reacting to one spike</strong> → decide based on 2–3 km trends.</li>
+        <li><strong>Ignoring heat/hydration</strong> → heat and dehydration are major drift multipliers (see references below).</li>
+        <li><strong>Trying to “win back” time</strong> after a hill or headwind → surges increase drift later.</li>
+      </ul>
+
+      <h2 id="faq">FAQ</h2>
+
+      <h3>How much drift is “too much”?</h3>
+      <p>
+        There isn’t one universal threshold because conditions and intensity matter. Use drift as a trend:
+        if drift rises early at an easy effort, it usually signals limited aerobic durability, heat/hydration issues,
+        or accumulated fatigue. For platform-based interpretation, see aerobic decoupling guidance. (
+        <a href="https://help.trainingpeaks.com/hc/en-us/articles/204071724-Aerobic-Decoupling-Pw-Hr-and-Pa-HR-and-Efficiency-Factor-EF" target="_blank" rel="noopener noreferrer">TrainingPeaks</a>
+        )
+      </p>
+
+      <h3>Does drift mean I’m unfit?</h3>
+      <p>
+        Not necessarily. Drift increases with heat, dehydration, and fatigue. If you see big drift only in warm conditions,
+        you may simply need better heat management and hydration (and possibly acclimation), not a new fitness plan.
+      </p>
+
+      <h3>Should I pace by HR in the marathon?</h3>
+      <p>
+        HR can be useful as a guardrail, especially early and in heat, but it should not be your only tool.
+        Combine HR trend with RPE, breathing, and how stable your splits feel over several kilometers.
+      </p>
+
+      <hr />
+
+      <p class="meta">
+        Next module: <a href="/adjust-marathon-pace/race-day-adrenaline/">Race-day adrenaline</a> ·
+        Back to hub: <a href="/adjust-marathon-pace/">Adjust Marathon Pace</a>
+      </p>
+
+      <h2 id="references">References</h2>
+      <ul>
+        <li>
+          Coyle EF. <em>Cardiovascular drift during prolonged exercise: new perspectives.</em> Exerc Sport Sci Rev (2001).
+          <a href="https://pubmed.ncbi.nlm.nih.gov/11337829/" target="_blank" rel="noopener noreferrer">PubMed</a>
+        </li>
+        <li>
+          Coyle EF. <em>Cardiovascular drift during prolonged exercise and the effects of dehydration.</em> Int J Sports Med (1998).
+          <a href="https://pubmed.ncbi.nlm.nih.gov/9694416/" target="_blank" rel="noopener noreferrer">PubMed</a>
+        </li>
+        <li>
+          González-Alonso J, et al. <em>Dehydration markedly impairs cardiovascular function in hyperthermic endurance athletes during exercise.</em> J Appl Physiol (1997).
+          <a href="https://journals.physiology.org/doi/abs/10.1152/jappl.1997.82.4.1229" target="_blank" rel="noopener noreferrer">Abstract</a>
+        </li>
+        <li>
+          González-Alonso J, et al. <em>Stroke volume during exercise: interaction of environment and hydration.</em> Am J Physiol Heart Circ Physiol (2000).
+          <a href="https://journals.physiology.org/doi/abs/10.1152/ajpheart.2000.278.2.H321" target="_blank" rel="noopener noreferrer">Abstract</a>
+        </li>
+        <li>
+          Souissi A, et al. <em>A new perspective on cardiovascular drift during prolonged exercise.</em> Life Sciences (2021).
+          <a href="https://www.sciencedirect.com/science/article/pii/S0024320521010961" target="_blank" rel="noopener noreferrer">Article page</a>
+        </li>
+        <li>
+          Watanabe K, et al. <em>Dehydration reduces stroke volume and cardiac output during intense prolonged whole-body exercise in the heat.</em> Physiological Reports (2020).
+          <a href="https://physoc.onlinelibrary.wiley.com/doi/full/10.14814/phy2.14433" target="_blank" rel="noopener noreferrer">Full text</a>
+        </li>
+        <li>
+          Billat VL, et al. <em>Pacing Strategy Affects the Sub-Elite Marathoner’s Cardiac Drift and Performance.</em> Frontiers in Psychology (2019/2020).
+          <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2019.03026/full" target="_blank" rel="noopener noreferrer">Full text</a>
+        </li>
+        <li>
+          TrainingPeaks Help Center. <em>Aerobic Decoupling (Pw:Hr and Pa:HR) and Efficiency Factor.</em>
+          <a href="https://help.trainingpeaks.com/hc/en-us/articles/204071724-Aerobic-Decoupling-Pw-Hr-and-Pa-HR-and-Efficiency-Factor-EF" target="_blank" rel="noopener noreferrer">Guide</a>
+        </li>
+        <li>
+          Uphill Athlete. <em>Understanding the Heart Rate Drift Test: A Practical Guide.</em>
+          <a href="https://uphillathlete.com/aerobic-training/heart-rate-drift/" target="_blank" rel="noopener noreferrer">Guide</a>
+        </li>
+      </ul>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Marathon Pace KM</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
