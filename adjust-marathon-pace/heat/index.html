@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Adjust Marathon Pace for Heat & Humidity (Practical Rules) | Marathon Pace KM</title>
+  <meta name="description" content="How to adjust marathon pace for heat and humidity: practical early-pace rules, 10K/half/30K checkpoints, HR drift guidance, and fueling/hydration priorities." />
+  <link rel="canonical" href="https://marathonpacekm.com/adjust-marathon-pace/heat/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Adjust Marathon Pace for Heat & Humidity (Practical Rules)" />
+  <meta property="og:description" content="Simple pacing adjustments that prevent blow-ups in warm races: early pace rules, checkpoints, HR drift, and hydration/fueling priorities." />
+  <meta property="og:url" content="https://marathonpacekm.com/adjust-marathon-pace/heat/" />
+  <meta property="og:image" content="https://marathonpacekm.com/assets/og/adjust-pace-heat.png" />
+
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <!-- JSON-LD: Breadcrumbs + Article + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://marathonpacekm.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Adjust Marathon Pace", "item": "https://marathonpacekm.com/adjust-marathon-pace/" },
+          { "@type": "ListItem", "position": 3, "name": "Heat & Humidity", "item": "https://marathonpacekm.com/adjust-marathon-pace/heat/" }
+        ]
+      },
+      {
+        "@type": "Article",
+        "headline": "Adjust Marathon Pace for Heat & Humidity",
+        "description": "How to adjust marathon pace for heat and humidity: practical early-pace rules, checkpoints, HR drift guidance, and fueling/hydration priorities.",
+        "mainEntityOfPage": "https://marathonpacekm.com/adjust-marathon-pace/heat/",
+        "author": { "@type": "Organization", "name": "Marathon Pace KM" },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Marathon Pace KM",
+          "logo": { "@type": "ImageObject", "url": "https://marathonpacekm.com/assets/logo.png" }
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Should I slow down at the start if it’s warm?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. In heat, early overpacing is the fastest route to a big late slowdown. A small early reduction in pace is usually repaid later because you preserve cooling capacity and limit heart-rate drift."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is humidity worse than temperature for pacing?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Often, yes. High humidity reduces sweat evaporation, so core temperature rises faster at the same pace. When it’s humid, pace adjustments are usually needed even if the temperature doesn’t seem extreme."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use heart rate to guide pacing in heat?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use heart rate as a trend, not a rigid cap. If HR climbs faster than expected early, ease slightly and prioritize cooling and hydration. Reassess after 2–3 km rather than reacting to a single spike."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do I fade late in warm marathons even with good fitness?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Heat stress compounds over time: dehydration, rising core temperature, and increasing cardiovascular strain reduce sustainable pace. The best prevention is conservative early pacing plus consistent fluids/electrolytes and sensible cooling."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="/">Marathon Pace KM</a>
+      <nav class="nav">
+        <a href="/marathon-pace-chart/">Pace Chart</a>
+        <a href="/predict-marathon-time/">Predictor</a>
+        <a href="/half-marathon-to-marathon/">Half → Full</a>
+        <a href="/adjust-marathon-pace/">Adjust Pace</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">›</span>
+      <a href="/adjust-marathon-pace/">Adjust Marathon Pace</a> <span aria-hidden="true">›</span>
+      <span>Heat &amp; Humidity</span>
+    </nav>
+
+    <article>
+      <h1>Adjust Marathon Pace for Heat &amp; Humidity</h1>
+
+      <p class="lead">
+        Warm races don’t just “feel harder” — they change what pace is sustainable.
+        The key is to <strong>adjust early</strong> so heart rate and core temperature don’t spiral later.
+        This guide gives you simple decisions for the start, plus checkpoints at <strong>10K</strong>, <strong>Half</strong>, and <strong>30K</strong>.
+      </p>
+
+      <div class="callout">
+        <p><strong>Start here:</strong> build a baseline pacing plan, then apply heat adjustments.</p>
+        <p>
+          Tools:
+          <a href="/marathon-pace-chart/">Marathon pace chart (KM)</a> ·
+          <a href="/predict-marathon-time/">Predict marathon time</a> ·
+          <a href="/half-marathon-to-marathon/">Half → marathon conversion</a> ·
+          <a href="/adjust-marathon-pace/">All adjustment modules</a>
+        </p>
+      </div>
+
+      <h2 id="toc">On this page</h2>
+      <ul class="toc">
+        <li><a href="#why-heat-changes-pace">Why heat changes pace</a></li>
+        <li><a href="#how-to-adjust">How to adjust pace (simple rules)</a></li>
+        <li><a href="#checkpoints">Checkpoints: 10K, Half, 30K</a></li>
+        <li><a href="#cooling-hydration">Cooling + hydration priorities</a></li>
+        <li><a href="#training">Training for warm conditions</a></li>
+        <li><a href="#mistakes">Common mistakes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <h2 id="why-heat-changes-pace">Why heat &amp; humidity change sustainable pace</h2>
+      <p>
+        In warm conditions your body must divert more blood flow toward the skin for cooling.
+        That reduces the “spare capacity” for delivering oxygen to working muscles.
+        The result is usually <strong>higher heart rate at the same pace</strong> (cardiac drift) and a faster rise in perceived effort.
+      </p>
+      <p>
+        Humidity often makes this worse because sweat evaporates less efficiently. Even if pace feels okay early, heat stress
+        compounds — which is why warm marathons often fall apart after 30K.
+      </p>
+
+      <h2 id="how-to-adjust">How to adjust pace (simple rules)</h2>
+
+      <div class="callout">
+        <h3>Core rule</h3>
+        <p>
+          <strong>When it’s warm, protect the first 10–15K.</strong>
+          A small early pace reduction is usually the highest-return decision you can make.
+        </p>
+      </div>
+
+      <p>
+        Use the options below depending on how you like to pace:
+      </p>
+
+      <h3>Option A: Effort-first pacing (recommended)</h3>
+      <ul>
+        <li>Run the first 10–15K at a controlled effort (RPE) that feels sustainable and conversational-ish.</li>
+        <li>Let pace “settle” naturally; don’t force splits if HR/effort is already climbing.</li>
+        <li>Reassess at 10K and Half; make only small changes.</li>
+      </ul>
+
+      <h3>Option B: Pace-first pacing (if you need a number)</h3>
+      <p>
+        If you need a simple approach: in warm conditions, start slightly slower than goal pace and allow yourself to “earn”
+        speed later if effort stays controlled.
+      </p>
+
+      <div class="table-wrap" role="region" aria-label="Heat adjustment guide">
+        <table>
+          <thead>
+            <tr>
+              <th>Condition signal</th>
+              <th>What you’ll notice early</th>
+              <th>Best action (first 10–15K)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Warm but manageable</td>
+              <td>Effort a touch higher than normal</td>
+              <td>Ease slightly early; hold steady; reassess at 10K</td>
+            </tr>
+            <tr>
+              <td>Hot and/or humid</td>
+              <td>HR rising faster than expected, sweating heavy</td>
+              <td>Reduce early pace; prioritize cooling + fluids; keep effort capped</td>
+            </tr>
+            <tr>
+              <td>Sunny + little shade</td>
+              <td>Feeling “heated” even if pace is stable</td>
+              <td>Back off early, seek shade where possible, use on-course cooling</td>
+            </tr>
+            <tr>
+              <td>Cramping / GI risk signs</td>
+              <td>Stomach slosh, nausea, tightening calves</td>
+              <td>Slow slightly, sip fluids, consider electrolytes; stop forcing gels</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="meta">
+        Tip: If you’ve ever “felt great early then detonated late,” heat is usually a multiplier. Fix the first 10–15K.
+      </p>
+
+      <h2 id="checkpoints">Heat pacing checkpoints (10K, Half, 30K)</h2>
+
+      <h3>10K checkpoint</h3>
+      <ul>
+        <li><strong>Good sign:</strong> effort feels controlled and breathing is smooth.</li>
+        <li><strong>Warning sign:</strong> HR is climbing faster than expected or you feel “worked” already.</li>
+        <li><strong>Action:</strong> ease by a small amount for 2–3K and re-check. In heat, early restraint pays back later.</li>
+      </ul>
+
+      <h3>Halfway checkpoint</h3>
+      <ul>
+        <li><strong>Good sign:</strong> you can imagine holding effort to 30K without a fight.</li>
+        <li><strong>Warning sign:</strong> you’re thinking “I hope I can hang on.”</li>
+        <li><strong>Action:</strong> reduce effort slightly now; lock in fueling + fluids; aim for stable splits.</li>
+      </ul>
+
+      <h3>30K checkpoint</h3>
+      <ul>
+        <li><strong>Goal:</strong> arrive at 30K feeling controlled, not heroic.</li>
+        <li><strong>If you’re fading:</strong> slow slightly, keep cadence smooth, and keep fluids coming.</li>
+        <li><strong>If you feel great:</strong> gradually increase effort rather than snapping into a surge.</li>
+      </ul>
+
+      <h2 id="cooling-hydration">Cooling + hydration priorities (simple)</h2>
+      <p>
+        Pacing is still #1, but cooling and fluids amplify good pacing decisions.
+        In warm races, dehydration and heat stress can cause a vicious loop: higher HR → more strain → slower pace.
+      </p>
+
+      <ul>
+        <li><strong>Drink early and regularly</strong> (don’t wait until you feel thirsty).</li>
+        <li><strong>Electrolytes matter more</strong> in heat, especially if you’re a salty sweater.</li>
+        <li><strong>Use on-course cooling</strong> when available: water over head/neck, ice in hat/shorts (if provided).</li>
+        <li><strong>Fueling:</strong> don’t “save” gels for later — late fueling is often too late in heat.</li>
+      </ul>
+
+      <div class="callout">
+        <h3>Simple decision</h3>
+        <p>
+          If pace is slipping and effort is rising, prioritize: <strong>slow slightly + cool + sip fluids</strong> rather than “pushing through.”
+        </p>
+      </div>
+
+      <h2 id="training">Training for warm conditions</h2>
+      <ul>
+        <li><strong>Heat acclimation</strong> improves tolerance, but it’s still not a free pass to hold normal pace in hot/humid races.</li>
+        <li><strong>Practice fueling/hydration</strong> on longer runs so your gut is prepared when it’s warm.</li>
+        <li><strong>Use effort-based sessions</strong> when it’s hot: pace targets can become misleading.</li>
+      </ul>
+
+      <h2 id="mistakes">Common heat pacing mistakes</h2>
+      <ul>
+        <li><strong>Trying to hit perfect splits early</strong> → pace by effort; let conditions move your split.</li>
+        <li><strong>Ignoring humidity</strong> → humidity often demands an adjustment even at “moderate” temperatures.</li>
+        <li><strong>Waiting until 30K to respond</strong> → by then heat stress is already compounding.</li>
+        <li><strong>Using HR as an absolute limiter</strong> → watch the trend + effort; don’t overreact to one reading.</li>
+      </ul>
+
+      <h2 id="faq">FAQ</h2>
+
+      <h3>How early should I adjust pace for heat?</h3>
+      <p>
+        As early as the first few kilometers. In heat, overpacing in the first 10–15K is one of the biggest causes of late-race collapse.
+      </p>
+
+      <h3>What if I feel amazing early?</h3>
+      <p>
+        That’s common (adrenaline + fresh legs). In warm conditions, “amazing early” often just means you haven’t paid the heat bill yet.
+        Keep effort capped until halfway. If you still feel controlled at 30K, then you can press gradually.
+      </p>
+
+      <h3>Should I change my goal time in warm conditions?</h3>
+      <p>
+        Often yes. If conditions are significantly warmer or more humid than your normal training, adjust expectations and aim for execution.
+        A well-managed warm race can beat a higher goal that ends in a big slowdown.
+      </p>
+
+      <hr />
+
+      <p class="meta">
+        Next module: <a href="/adjust-marathon-pace/wind/">Adjust pace for wind</a> ·
+        Back to hub: <a href="/adjust-marathon-pace/">Adjust Marathon Pace</a>
+      </p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Marathon Pace KM</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
