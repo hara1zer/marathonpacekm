@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Adjust Marathon Pace for Hills (Up & Down) + Effort Rules | Marathon Pace KM</title>
+  <meta name="description" content="How to adjust marathon pace for hills: why even pace fails, how to pace climbs/descents by effort, checkpoint decisions, and hill-specific training to prevent late-race blow-ups." />
+  <link rel="canonical" href="https://marathonpacekm.com/adjust-marathon-pace/hills/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Adjust Marathon Pace for Hills (Up & Down) + Effort Rules" />
+  <meta property="og:description" content="Practical hill pacing: how to handle climbs, descents, and rolling courses with effort-based rules and checkpoints at 10K/half/30K." />
+  <meta property="og:url" content="https://marathonpacekm.com/adjust-marathon-pace/hills/" />
+  <meta property="og:image" content="https://marathonpacekm.com/assets/og/adjust-pace-hills.png" />
+
+  <link rel="stylesheet" href="/assets/style.css" />
+
+  <!-- JSON-LD: Breadcrumbs + Article + FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://marathonpacekm.com/"},
+          {"@type":"ListItem","position":2,"name":"Adjust Marathon Pace","item":"https://marathonpacekm.com/adjust-marathon-pace/"},
+          {"@type":"ListItem","position":3,"name":"Hills","item":"https://marathonpacekm.com/adjust-marathon-pace/hills/"}
+        ]
+      },
+      {
+        "@type":"Article",
+        "headline":"Adjust Marathon Pace for Hills (Up & Down)",
+        "description":"How to adjust marathon pace for hills: why even pace fails, how to pace climbs/descents by effort, checkpoint decisions, and hill-specific training to prevent late-race blow-ups.",
+        "mainEntityOfPage":"https://marathonpacekm.com/adjust-marathon-pace/hills/",
+        "author":{"@type":"Organization","name":"Marathon Pace KM"},
+        "publisher":{
+          "@type":"Organization",
+          "name":"Marathon Pace KM",
+          "logo":{"@type":"ImageObject","url":"https://marathonpacekm.com/assets/logo.png"}
+        }
+      },
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {
+            "@type":"Question",
+            "name":"Should I try to hold exact marathon pace on hills?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Usually no. On hills, even pace often means uneven effort. The better strategy is even-ish effort: accept slower splits uphill, then regain time gradually on flats/descents without surging."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Is downhill running 'free speed'?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Not free. Downhills can lower metabolic cost at moderate grades, but aggressive downhill pacing increases muscle damage and can ruin the final 10–12K. Use controlled downhill speed and keep cadence smooth."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"How should I handle rolling hills?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Use a steady effort band. Let pace float slower on the ups and slightly faster on the downs, but avoid spikes. The goal is to keep breathing and leg strain consistent so the late race stays runnable."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Should I train hills for a hilly marathon?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Yes. Hill-specific training improves strength, running economy on slopes, and downhill resilience. Include hill strides, controlled hill reps, and long runs that simulate the course profile."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="/">Marathon Pace KM</a>
+      <nav class="nav">
+        <a href="/marathon-pace-chart/">Pace Chart</a>
+        <a href="/predict-marathon-time/">Predictor</a>
+        <a href="/half-marathon-to-marathon/">Half → Full</a>
+        <a href="/adjust-marathon-pace/">Adjust Pace</a>
+        <a href="/blog/">Blog</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">›</span>
+      <a href="/adjust-marathon-pace/">Adjust Marathon Pace</a> <span aria-hidden="true">›</span>
+      <span>Hills</span>
+    </nav>
+
+    <article>
+      <h1>Adjust Marathon Pace for Hills (Up &amp; Down)</h1>
+
+      <p class="lead">
+        On a hilly course, “even pace” is often a trap. It forces you to overwork uphill and overstride downhill.
+        The goal is <strong>even-ish effort</strong> so you protect your legs and avoid a late-race slowdown.
+      </p>
+
+      <div class="callout">
+        <p><strong>Start here:</strong> build your baseline pacing plan, then apply hill rules.</p>
+        <p>
+          Tools:
+          <a href="/marathon-pace-chart/">Marathon pace chart (KM)</a> ·
+          <a href="/predict-marathon-time/">Predict marathon time</a> ·
+          <a href="/half-marathon-to-marathon/">Half → marathon conversion</a> ·
+          <a href="/adjust-marathon-pace/">All adjustment modules</a>
+        </p>
+      </div>
+
+      <h2 id="toc">On this page</h2>
+      <ul class="toc">
+        <li><a href="#why-hills-change-pace">Why hills change sustainable pace</a></li>
+        <li><a href="#core-rules">Core hill pacing rules</a></li>
+        <li><a href="#uphill">How to run uphills</a></li>
+        <li><a href="#downhill">How to run downhills (without trashing your quads)</a></li>
+        <li><a href="#rolling">Rolling hills strategy</a></li>
+        <li><a href="#checkpoints">Checkpoints: 10K, Half, 30K</a></li>
+        <li><a href="#training">Training for hilly marathons</a></li>
+        <li><a href="#mistakes">Common mistakes</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+
+      <h2 id="why-hills-change-pace">Why hills change sustainable pace</h2>
+      <p>
+        Going uphill raises the energy cost of running quickly as grade increases, while moderate downhills can reduce cost up to a point,
+        then cost rises again on very steep descents. This “U-shaped” relationship is well described in classic treadmill-slope work by Minetti and colleagues.  [oai_citation:0‡PubMed](https://pubmed.ncbi.nlm.nih.gov/12183501/?utm_source=chatgpt.com)
+      </p>
+      <p>
+        The practical takeaway: if you try to keep the <em>same pace</em> on climbs, your effort spikes and you burn matches (and glycogen).
+        If you try to “make up everything” on descents, you increase eccentric muscle damage (quad soreness) and often pay for it after 30K.
+      </p>
+      <p>
+        Also: people vary. Economy on level ground doesn’t perfectly predict economy uphill/downhill—there’s meaningful individual difference.  [oai_citation:1‡Frontiers](https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2021.697315/full?utm_source=chatgpt.com)
+      </p>
+
+      <h2 id="core-rules">Core hill pacing rules (simple and reliable)</h2>
+      <div class="callout">
+        <h3>Core rule</h3>
+        <p>
+          <strong>Run hills by effort, not by pace.</strong>
+          Accept slower splits uphill, then regain time gradually on flats and controlled descents.
+        </p>
+      </div>
+
+      <ul>
+        <li><strong>Cap uphill effort early</strong> (especially before halfway). If it feels like threshold effort, you’re overpaying.</li>
+        <li><strong>Shorten stride, keep cadence</strong> on climbs. Keep the work “aerobic” as long as possible.</li>
+        <li><strong>Descend controlled</strong>: quick feet, slight forward lean from ankles, no braking.</li>
+        <li><strong>Think in trends</strong> (2–3 km), not one split. Hills create normal pace “noise.”</li>
+      </ul>
+
+      <h2 id="uphill">How to run uphills</h2>
+      <p>
+        The best uphill marathon pacing is boring: you keep breathing controlled and let pace slow as needed.
+        Upills are where runners accidentally turn marathon effort into 10K effort.
+      </p>
+
+      <h3>Uphill cues</h3>
+      <ul>
+        <li><strong>Shorter steps</strong> (don’t reach).</li>
+        <li><strong>Cadence steady</strong> (avoid “grinding”).</li>
+        <li><strong>Lean from the ankles</strong>, not the waist.</li>
+        <li><strong>Relax shoulders/hands</strong> (tension = wasted energy).</li>
+      </ul>
+
+      <h3>Uphill decision rule</h3>
+      <div class="callout">
+        <p>
+          If breathing jumps from “controlled” to “working hard” on an early climb,
+          <strong>ease effort immediately</strong>. You’ll lose seconds now and save minutes later.
+        </p>
+      </div>
+
+      <h2 id="downhill">How to run downhills (without trashing your quads)</h2>
+      <p>
+        Moderate downhills can feel easier metabolically, but your muscles (especially quads) absorb more eccentric load.
+        If you “attack” descents early, you can create soreness and stiffness that shows up later as a form collapse.
+      </p>
+
+      <h3>Downhill cues</h3>
+      <ul>
+        <li><strong>Quick feet</strong>, slightly higher cadence than flat.</li>
+        <li><strong>Land under your hips</strong> (avoid overstriding/braking).</li>
+        <li><strong>Stay tall</strong>, slight forward lean from ankles.</li>
+        <li><strong>Controlled speed</strong>: you should feel smooth, not reckless.</li>
+      </ul>
+
+      <h3>Downhill decision rule</h3>
+      <div class="callout">
+        <p>
+          Use downhills to <strong>return toward goal pace gradually</strong>, not to sprint.
+          If your quads start “thumping” early, back off—late-race cost is coming.
+        </p>
+      </div>
+
+      <h2 id="rolling">Rolling hills strategy (the “effort band”)</h2>
+      <p>
+        Rolling courses tempt you into repeated surges: push the uphill, sprint the crest, bomb the downhill.
+        That pattern is a classic cause of late fade.
+      </p>
+
+      <div class="table-wrap" role="region" aria-label="Rolling hills strategy">
+        <table>
+          <thead>
+            <tr>
+              <th>Segment</th>
+              <th>What most runners do</th>
+              <th>What works better</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Uphill</td>
+              <td>Force pace, spike effort</td>
+              <td>Cap effort, shorten stride, accept slower split</td>
+            </tr>
+            <tr>
+              <td>Crest</td>
+              <td>Surge to “make up time”</td>
+              <td>Stay smooth for 10–20 seconds, then settle</td>
+            </tr>
+            <tr>
+              <td>Downhill</td>
+              <td>Overstride/brake or bomb too hard</td>
+              <td>Quick cadence, controlled speed, regain time gradually</td>
+            </tr>
+            <tr>
+              <td>Flat after hills</td>
+              <td>Recover too long</td>
+              <td>Return to goal effort once breathing settles</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="checkpoints">Hill pacing checkpoints (10K, Half, 30K)</h2>
+
+      <h3>10K checkpoint</h3>
+      <ul>
+        <li><strong>Good sign:</strong> climbs feel controlled; you’re not “charging” them.</li>
+        <li><strong>Warning sign:</strong> you’re already counting seconds lost uphill and trying to win them back.</li>
+        <li><strong>Action:</strong> commit to effort pacing and smooth descents; stop chasing the watch.</li>
+      </ul>
+
+      <h3>Halfway checkpoint</h3>
+      <ul>
+        <li><strong>Good sign:</strong> you can imagine holding form on the next set of hills.</li>
+        <li><strong>Warning sign:</strong> quads feel heavy or you’re braking downhill.</li>
+        <li><strong>Action:</strong> descend more conservatively, keep cadence, and protect quads for the final 12K.</li>
+      </ul>
+
+      <h3>30K checkpoint</h3>
+      <ul>
+        <li><strong>Goal:</strong> still runnable; form intact.</li>
+        <li><strong>If fading:</strong> reduce downhill aggression and keep effort steady uphill; focus on cadence + fueling.</li>
+        <li><strong>If strong:</strong> increase effort gradually on flats/small rises; avoid all-or-nothing surges on steep climbs.</li>
+      </ul>
+
+      <h2 id="training">Training for hilly marathons</h2>
+      <p>
+        The goal of hill training isn’t just strength—it’s learning the pacing feel and building downhill resilience.
+        Also, because the metabolic cost of graded running rises with slope, steep hill reps can become very intense very quickly,
+        so controlling effort matters.  [oai_citation:2‡PubMed](https://pubmed.ncbi.nlm.nih.gov/12183501/?utm_source=chatgpt.com)
+      </p>
+
+      <h3>3 hill sessions that transfer well to marathon racing</h3>
+      <ol>
+        <li>
+          <strong>Hill strides (neuromuscular)</strong><br/>
+          6–10 × 10–20 seconds uphill, walk back recovery. Fast but relaxed. Great for form and stiffness without big fatigue.
+        </li>
+        <li>
+          <strong>Controlled hill reps (strength endurance)</strong><br/>
+          6–10 × 60–120 seconds uphill at “comfortably hard” (not a sprint), jog down easy. Keep effort consistent rep-to-rep.
+        </li>
+        <li>
+          <strong>Hilly long run (specificity)</strong><br/>
+          Long run on rolling terrain. Practice: cap effort on climbs, controlled descents, fueling on the move.
+          This is where you learn the “effort band.”
+        </li>
+      </ol>
+
+      <h3>Downhill durability (important)</h3>
+      <p>
+        If your race has long descents, include some controlled downhill running in training—start small.
+        The goal is to adapt to eccentric loading without wrecking your week.
+      </p>
+
+      <h2 id="mistakes">Common hill pacing mistakes</h2>
+      <ul>
+        <li><strong>Trying to “protect average pace” on climbs</strong> → effort spikes; late-race cost rises.</li>
+        <li><strong>Bombing descents early</strong> → quad damage; form collapse later.</li>
+        <li><strong>Surging over every crest</strong> → repeated glycogen spikes.</li>
+        <li><strong>Using one split to make decisions</strong> → hills create normal pace variability; use trends.</li>
+      </ul>
+
+      <h2 id="faq">FAQ</h2>
+
+      <h3>Should I use Grade Adjusted Pace (GAP)?</h3>
+      <p>
+        GAP can be useful in training to compare efforts across routes, but in racing you still need real-world pacing:
+        effort, breathing, and form come first. Use GAP as a sanity check, not a steering wheel.
+      </p>
+
+      <h3>How steep is “too steep” to hold marathon effort?</h3>
+      <p>
+        It depends on the runner and the length of the climb, but the principle is consistent:
+        as grade increases, the energy cost rises and the pace you can hold at marathon effort drops.  [oai_citation:3‡PubMed](https://pubmed.ncbi.nlm.nih.gov/12183501/?utm_source=chatgpt.com)
+        If you’re turning a climb into a threshold grind early, you’re going to pay later.
+      </p>
+
+      <h3>Is downhill running always easier?</h3>
+      <p>
+        Metabolically, moderate downhill can be cheaper than flat, but very steep downhill becomes more costly again,
+        and muscle damage risk increases—so “easier” can still be a trap.  [oai_citation:4‡PubMed](https://pubmed.ncbi.nlm.nih.gov/12183501/?utm_source=chatgpt.com)
+      </p>
+
+      <h2 id="references">References</h2>
+      <ul>
+        <li>
+          Minetti AE, et al. <em>Energy cost of walking and running at extreme uphill and downhill slopes.</em> J Appl Physiol (2002).
+          <a href="https://pubmed.ncbi.nlm.nih.gov/12183501/" rel="noopener noreferrer" target="_blank">PubMed</a>
+          (describes the slope vs energy-cost relationship for walking/running).  [oai_citation:5‡PubMed](https://pubmed.ncbi.nlm.nih.gov/12183501/?utm_source=chatgpt.com)
+        </li>
+        <li>
+          Lemire M, et al. <em>Level, Uphill, and Downhill Running Economy Values Are Correlated…</em> Frontiers in Physiology (2021).
+          <a href="https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2021.697315/full" rel="noopener noreferrer" target="_blank">Full text</a>
+          (shows meaningful individual differences across slope conditions).  [oai_citation:6‡Frontiers](https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2021.697315/full?utm_source=chatgpt.com)
+        </li>
+        <li>
+          ACSM (example worksheet). <em>Metabolic Calculations / ACSM walking & running equation examples.</em>
+          <a href="https://www.depts.ttu.edu/ksm/_documents/grad/acsm_comps/6c-23-2013_HFI_Metabolic_Calculations.pdf" rel="noopener noreferrer" target="_blank">PDF</a>
+          (illustrates how grade increases oxygen cost estimates).  [oai_citation:7‡depts.ttu.edu](https://www.depts.ttu.edu/ksm/_documents/grad/acsm_comps/6c-23-2013_HFI_Metabolic_Calculations.pdf?utm_source=chatgpt.com)
+        </li>
+        <li>
+          Ruiz A, et al. <em>An evaluation of the accuracy of the ACSM metabolic equation…</em> J Strength Cond Res (1999).
+          <a href="https://journals.lww.com/nsca-jscr/abstract/1999/08000/an_evaluation_of_the_accuracy_of_the_american.7.aspx" rel="noopener noreferrer" target="_blank">Abstract</a>
+          (notes estimation error—use equations as approximations, not exact truth).  [oai_citation:8‡Lippincott Journals](https://journals.lww.com/nsca-jscr/abstract/1999/08000/an_evaluation_of_the_accuracy_of_the_american.7.aspx?utm_source=chatgpt.com)
+        </li>
+      </ul>
+
+      <hr />
+
+      <p class="meta">
+        Next module: <a href="/adjust-marathon-pace/fatigue-drift/">Fatigue drift</a> ·
+        Back to hub: <a href="/adjust-marathon-pace/">Adjust Marathon Pace</a>
+      </p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Marathon Pace KM</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
