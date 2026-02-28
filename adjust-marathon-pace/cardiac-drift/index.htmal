@@ -116,6 +116,12 @@
         or late in long runs.
       </p>
 
+      <!-- ✅ Added internal link to the decision page -->
+      <p class="meta">
+        Looking for a quick decision rule when your HR is higher than expected?
+        Read: <a href="/blog/should-i-slow-down-if-heart-rate-is-high/">Should I slow down if my heart rate is high?</a>
+      </p>
+
       <div class="callout">
         <p><strong>Use with your pacing plan:</strong></p>
         <p>
@@ -290,6 +296,10 @@
         <p>
           <strong>Make small corrections early.</strong>
           A 5–15 sec/km concession at 8–15K can prevent a 30–60 sec/km collapse after 30K.
+        </p>
+        <p class="meta">
+          Need an on-the-spot decision? Read:
+          <a href="/blog/should-i-slow-down-if-heart-rate-is-high/">Should I slow down if my heart rate is high?</a>
         </p>
       </div>
 
