@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Marathon Fueling Calculator: Gels Per Hour, Timing & Race-Day Plan | MarathonPaceKM</title>
+  <meta name="description" content="Free marathon fueling calculator: work out carbs per hour, gels needed, gel timing, sports drink contribution, and a printable race-day fueling plan based on your target finish time." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://marathonpacekm.com/marathon-fueling-calculator/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="MarathonPaceKM" />
+  <meta property="og:title" content="Marathon Fueling Calculator: Gels Per Hour, Timing & Race-Day Plan" />
+  <meta property="og:description" content="Calculate marathon gel timing, carbs per hour, total gels needed, sports drink contribution, and a simple race-day fueling plan." />
+  <meta property="og:url" content="https://marathonpacekm.com/marathon-fueling-calculator/" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Marathon Fueling Calculator: Gels Per Hour, Timing & Race-Day Plan" />
+  <meta name="twitter:description" content="Free marathon fueling calculator for gels, carbs/hour, sports drink, and race-day scheduling." />
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Marathon Fueling Calculator",
+    "url":"https://marathonpacekm.com/marathon-fueling-calculator/",
+    "applicationCategory":"SportsApplication",
+    "operatingSystem":"Any",
+    "description":"A free marathon fueling calculator that estimates carbs per hour, gel timing, total gels needed, and a race-day fueling plan."
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"How many gels do I need for a marathon?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"It depends on your target finish time, your carb target per hour, the carb content of each gel, and whether you use sports drink. This calculator estimates both gels per hour and total gels needed."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Should I fuel by kilometres or time?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Time is usually more reliable because carbohydrate intake is time-based. Kilometre checkpoints can be useful as a backup reminder."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"When should I take my first gel in a marathon?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Many runners do better starting early, often around 20 to 35 minutes into the race, then repeating on a consistent schedule."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: rgba(0,0,0,0.12);
+      --panel: #f8fafc;
+      --primary-soft: rgba(0, 120, 255, 0.06);
+      --note-soft: rgba(0, 0, 0, 0.04);
+      --warn-soft: rgba(255, 140, 0, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.55;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 16px 72px;
+    }
+
+    .breadcrumb {
+      font-size: 0.95rem;
+      margin: 0 0 10px;
+    }
+
+    .breadcrumb a {
+      text-decoration: none;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin: 0 0 10px;
+    }
+
+    .lede {
+      font-size: 1.08rem;
+      color: var(--text);
+      max-width: 860px;
+      margin: 0 0 18px;
+    }
+
+    .meta {
+      color: var(--muted);
+      margin: 0 0 16px;
+      font-size: 0.96rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: start;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 920px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fff;
+      padding: 18px;
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 1.4rem;
+    }
+
+    .subhead {
+      margin: 20px 0 10px;
+      font-size: 1.05rem;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 680px) {
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.96rem;
+    }
+
+    .hint {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 400;
+    }
+
+    input, select, textarea, button {
+      font: inherit;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 12px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      margin-bottom: 6px;
+    }
+
+    .checkbox-row input {
+      width: auto;
+      margin: 0;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    button {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 14px;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    button.primary {
+      background: var(--primary-soft);
+      font-weight: 700;
+    }
+
+    .callout {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 18px 0 0;
+    }
+
+    .callout.primary { background: var(--primary-soft); }
+    .callout.note { background: var(--note-soft); }
+    .callout.warn { background: var(--warn-soft); }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0 16px;
+    }
+
+    @media (max-width: 600px) {
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      background: var(--panel);
+    }
+
+    .stat-label {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-top: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    th {
+      background: rgba(0,0,0,0.04);
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .footer-links {
+      margin-top: 28px;
+    }
+
+    .footer-links ul {
+      padding-left: 18px;
+    }
+
+    .small {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <p class="breadcrumb">
+      <a href="/">Home</a> › Marathon Fueling Calculator
+    </p>
+
+    <h1>Marathon Fueling Calculator</h1>
+    <p class="meta">Updated: 12 Mar 2026 · Free tool</p>
+    <p class="lede">
+      Work out your marathon fueling plan based on finish time, carb target, gel size, and sports drink use.
+      This calculator estimates gels per hour, total gels needed, gel timing, and approximate kilometre checkpoints.
+    </p>
+
+    <div class="grid">
+      <section class="card" aria-labelledby="calc-heading">
+        <h2 id="calc-heading">Calculator inputs</h2>
+
+        <div class="field-grid">
+          <div>
+            <label for="finishHours">Target finish time</label>
+            <div class="field-grid" style="grid-template-columns: 1fr 1fr; gap: 10px;">
+              <div>
+                <input id="finishHours" type="number" min="2" max="8" step="1" value="4" />
+                <span class="hint">Hours</span>
+              </div>
+              <div>
+                <input id="finishMinutes" type="number" min="0" max="59" step="1" value="0" />
+                <span class="hint">Minutes</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label for="carbTarget">Carb target per hour (g)</label>
+            <input id="carbTarget" type="number" min="20" max="120" step="1" value="60" />
+            <span class="hint">Common range: 30–90 g/h</span>
+          </div>
+
+          <div>
+            <label for="gelCarbs">Carbs per gel (g)</label>
+            <input id="gelCarbs" type="number" min="5" max="60" step="1" value="25" />
+            <span class="hint">Check your label</span>
+          </div>
+
+          <div>
+            <label for="firstGel">First gel at</label>
+            <input id="firstGel" type="number" min="10" max="60" step="1" value="25" />
+            <span class="hint">Minutes into the race</span>
+          </div>
+
+          <div>
+            <label for="interval">Gel interval</label>
+            <select id="interval">
+              <option value="20">Every 20 minutes</option>
+              <option value="25" selected>Every 25 minutes</option>
+              <option value="30">Every 30 minutes</option>
+              <option value="35">Every 35 minutes</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="carryExtra">Extra backup gels</label>
+            <input id="carryExtra" type="number" min="0" max="5" step="1" value="1" />
+            <span class="hint">Recommended: 1 extra</span>
+          </div>
+        </div>
+
+        <div class="checkbox-row">
+          <input id="useDrink" type="checkbox" />
+          <label for="useDrink" style="margin:0;font-weight:600;">Include sports drink in carb total</label>
+        </div>
+
+        <div id="drinkFields" class="field-grid hidden">
+          <div>
+            <label for="drinkCarbs">Carbs per serving of sports drink (g)</label>
+            <input id="drinkCarbs" type="number" min="0" max="80" step="1" value="20" />
+          </div>
+          <div>
+            <label for="drinkServings">Planned sports drink servings per hour</label>
+            <input id="drinkServings" type="number" min="0" max="4" step="0.25" value="1" />
+          </div>
+        </div>
+
+        <div class="callout note">
+          <strong>Tip:</strong> fuel by time first. Kilometre markers are helpful as reminders, but your carbohydrate intake is time-based.
+        </div>
+
+        <div class="actions">
+          <button class="primary" id="calculateBtn" type="button">Calculate fueling plan</button>
+          <button id="copyPlanBtn" type="button">Copy race-day plan</button>
+          <button id="resetBtn" type="button">Reset</button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="results-heading">
+        <h2 id="results-heading">Your fueling plan</h2>
+
+        <div class="results-grid">
+          <div class="stat">
+            <span class="stat-label">Target race time</span>
+            <span class="stat-value" id="outRaceTime">4:00</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Approx pace per km</span>
+            <span class="stat-value" id="outPaceKm">5:41 /km</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Carbs from gels per hour</span>
+            <span class="stat-value" id="outGelCarbsPerHour">60 g/h</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Gels per hour</span>
+            <span class="stat-value" id="outGelsPerHour">2.4</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Planned gels during race</span>
+            <span class="stat-value" id="outPlannedGels">9</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Carry this many gels</span>
+            <span class="stat-value" id="outCarryGels">10</span>
+          </div>
+        </div>
+
+        <div class="callout primary">
+          <strong id="outSummary">Start at 25 minutes, then take 1 gel every 25 minutes.</strong>
+        </div>
+
+        <div class="table-wrap" role="region" aria-label="Fueling schedule" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Race time</th>
+                <th>Approx km</th>
+                <th>Fuel</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleBody"></tbody>
+          </table>
+        </div>
+
+        <h3 class="subhead">Copyable race-day plan</h3>
+        <textarea id="planText" readonly></textarea>
+
+        <p class="small">
+          Educational use only. Always test your exact products and timing in training before race day.
+        </p>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:22px;">
+      <h2>How to use this calculator</h2>
+      <ol>
+        <li>Choose a realistic marathon finish time.</li>
+        <li>Set your carb target per hour based on your experience and gut tolerance.</li>
+        <li>Enter the carb content of your gel.</li>
+        <li>Decide when you will take your first gel and how often you want reminders.</li>
+        <li>If you use sports drink, include it so the calculator reduces how much you need from gels alone.</li>
+      </ol>
+
+      <div class="callout warn">
+        <strong>Important:</strong> A higher carb target is not automatically better. The best plan is the one you can actually tolerate and execute.
+      </div>
+    </section>
+
+    <section class="card footer-links">
+      <h2>Related tools &amp; guides</h2>
+      <ul>
+        <li><a href="/">Marathon Pace Calculator</a></li>
+        <li><a href="/marathon-time-predictor/">Marathon Time Predictor</a></li>
+        <li><a href="/printable-pace-band/">Printable Pace Band</a></li>
+        <li><a href="/blog/marathon-fueling-by-finish-time-gel-schedule/">Marathon Fueling by Finish Time</a></li>
+        <li><a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    const marathonKm = 42.195;
+
+    const finishHoursEl = document.getElementById('finishHours');
+    const finishMinutesEl = document.getElementById('finishMinutes');
+    const carbTargetEl = document.getElementById('carbTarget');
+    const gelCarbsEl = document.getElementById('gelCarbs');
+    const firstGelEl = document.getElementById('firstGel');
+    const intervalEl = document.getElementById('interval');
+    const carryExtraEl = document.getElementById('carryExtra');
+    const useDrinkEl = document.getElementById('useDrink');
+    const drinkFieldsEl = document.getElementById('drinkFields');
+    const drinkCarbsEl = document.getElementById('drinkCarbs');
+    const drinkServingsEl = document.getElementById('drinkServings');
+
+    const outRaceTimeEl = document.getElementById('outRaceTime');
+    const outPaceKmEl = document.getElementById('outPaceKm');
+    const outGelCarbsPerHourEl = document.getElementById('outGelCarbsPerHour');
+    const outGelsPerHourEl = document.getElementById('outGelsPerHour');
+    const outPlannedGelsEl = document.getElementById('outPlannedGels');
+    const outCarryGelsEl = document.getElementById('outCarryGels');
+    const outSummaryEl = document.getElementById('outSummary');
+    const scheduleBodyEl = document.getElementById('scheduleBody');
+    const planTextEl = document.getElementById('planText');
+
+    function clamp(num, min, max) {
+      return Math.max(min, Math.min(max, num));
+    }
+
+    function formatRaceTime(totalMinutes) {
+      const hours = Math.floor(totalMinutes / 60);
+      const minutes = Math.round(totalMinutes % 60);
+      return `${hours}:${String(minutes).padStart(2, '0')}`;
+    }
+
+    function formatClockMinutes(totalMinutes) {
+      const hours = Math.floor(totalMinutes / 60);
+      const minutes = Math.round(totalMinutes % 60);
+      return `${hours}:${String(minutes).padStart(2, '0')}`;
+    }
+
+    function formatPace(minPerKm) {
+      const minutes = Math.floor(minPerKm);
+      const seconds = Math.round((minPerKm - minutes) * 60);
+      const safeSeconds = seconds === 60 ? 59 : seconds;
+      return `${minutes}:${String(safeSeconds).padStart(2, '0')} /km`;
+    }
+
+    function round1(n) {
+      return Math.round(n * 10) / 10;
+    }
+
+    function calculate() {
+      const finishHours = clamp(parseInt(finishHoursEl.value || '4', 10), 2, 8);
+      const finishMinutes = clamp(parseInt(finishMinutesEl.value || '0', 10), 0, 59);
+      const totalRaceMinutes = finishHours * 60 + finishMinutes;
+
+      const carbTarget = clamp(parseFloat(carbTargetEl.value || '60'), 20, 120);
+      const gelCarbs = clamp(parseFloat(gelCarbsEl.value || '25'), 5, 60);
+      const firstGel = clamp(parseFloat(firstGelEl.value || '25'), 10, 60);
+      const interval = clamp(parseFloat(intervalEl.value || '25'), 15, 45);
+      const carryExtra = clamp(parseInt(carryExtraEl.value || '1', 10), 0, 5);
+
+      const useDrink = useDrinkEl.checked;
+      const drinkCarbs = useDrink ? clamp(parseFloat(drinkCarbsEl.value || '20'), 0, 80) : 0;
+      const drinkServings = useDrink ? clamp(parseFloat(drinkServingsEl.value || '1'), 0, 4) : 0;
+
+      const drinkCarbsPerHour = useDrink ? (drinkCarbs * drinkServings) : 0;
+      const gelCarbsPerHour = Math.max(0, carbTarget - drinkCarbsPerHour);
+      const gelsPerHour = gelCarbsPerHour / gelCarbs;
+
+      const pacePerKm = totalRaceMinutes / marathonKm;
+
+      const times = [];
+      let t = firstGel;
+      while (t < totalRaceMinutes - 5) {
+        times.push(t);
+        t += interval;
+      }
+
+      const plannedGels = times.length;
+      const carryGels = plannedGels + carryExtra;
+
+      outRaceTimeEl.textContent = formatRaceTime(totalRaceMinutes);
+      outPaceKmEl.textContent = formatPace(pacePerKm);
+      outGelCarbsPerHourEl.textContent = `${round1(gelCarbsPerHour)} g/h`;
+      outGelsPerHourEl.textContent = `${round1(gelsPerHour)}`;
+      outPlannedGelsEl.textContent = `${plannedGels}`;
+      outCarryGelsEl.textContent = `${carryGels}`;
+
+      let summary = `Start at ${Math.round(firstGel)} minutes, then take 1 gel every ${Math.round(interval)} minutes.`;
+      if (useDrink && drinkCarbsPerHour > 0) {
+        summary += ` Sports drink contributes about ${round1(drinkCarbsPerHour)} g/h.`;
+      }
+      outSummaryEl.textContent = summary;
+
+      scheduleBodyEl.innerHTML = '';
+      times.forEach((time, index) => {
+        const approxKm = time / pacePerKm;
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${index + 1}</td>
+          <td><strong>${formatClockMinutes(time)}</strong></td>
+          <td>${approxKm.toFixed(1)} km</td>
+          <td>1 gel (${gelCarbs}g)</td>
+          <td>${index === 0 ? 'Start early; do not wait until you feel low.' : 'Take with water where practical.'}</td>
+        `;
+        scheduleBodyEl.appendChild(row);
+      });
+
+      const planLines = [];
+      planLines.push('MARATHON FUELING PLAN');
+      planLines.push('');
+      planLines.push(`Target finish time: ${formatRaceTime(totalRaceMinutes)}`);
+      planLines.push(`Approx pace: ${formatPace(pacePerKm)}`);
+      planLines.push(`Carb target: ${carbTarget} g/h`);
+      if (useDrink && drinkCarbsPerHour > 0) {
+        planLines.push(`Sports drink contribution: ${round1(drinkCarbsPerHour)} g/h`);
+        planLines.push(`Target carbs from gels: ${round1(gelCarbsPerHour)} g/h`);
+      } else {
+        planLines.push(`Target carbs from gels: ${round1(gelCarbsPerHour)} g/h`);
+      }
+      planLines.push(`Gel size: ${gelCarbs} g`);
+      planLines.push(`Gels per hour: ${round1(gelsPerHour)}`);
+      planLines.push(`Planned gels during race: ${plannedGels}`);
+      planLines.push(`Carry this many gels: ${carryGels}`);
+      planLines.push('');
+      planLines.push(`Schedule: first gel at ${Math.round(firstGel)} minutes, then every ${Math.round(interval)} minutes.`);
+      planLines.push('');
+      planLines.push('GEL SCHEDULE');
+      times.forEach((time, index) => {
+        const approxKm = time / pacePerKm;
+        planLines.push(`${index + 1}. ${formatClockMinutes(time)} (${approxKm.toFixed(1)} km) — 1 gel`);
+      });
+      planLines.push('');
+      planLines.push('Reminder: practice this plan in training before race day.');
+
+      planTextEl.value = planLines.join('\n');
+    }
+
+    function resetCalculator() {
+      finishHoursEl.value = 4;
+      finishMinutesEl.value = 0;
+      carbTargetEl.value = 60;
+      gelCarbsEl.value = 25;
+      firstGelEl.value = 25;
+      intervalEl.value = 25;
+      carryExtraEl.value = 1;
+      useDrinkEl.checked = false;
+      drinkCarbsEl.value = 20;
+      drinkServingsEl.value = 1;
+      drinkFieldsEl.classList.add('hidden');
+      calculate();
+    }
+
+    document.getElementById('calculateBtn').addEventListener('click', calculate);
+    document.getElementById('resetBtn').addEventListener('click', resetCalculator);
+
+    document.getElementById('copyPlanBtn').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(planTextEl.value);
+        const btn = document.getElementById('copyPlanBtn');
+        const oldText = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(() => {
+          btn.textContent = oldText;
+        }, 1400);
+      } catch (err) {
+        planTextEl.select();
+      }
+    });
+
+    useDrinkEl.addEventListener('change', () => {
+      drinkFieldsEl.classList.toggle('hidden', !useDrinkEl.checked);
+      calculate();
+    });
+
+    [
+      finishHoursEl, finishMinutesEl, carbTargetEl, gelCarbsEl, firstGelEl,
+      intervalEl, carryExtraEl, drinkCarbsEl, drinkServingsEl
+    ].forEach(el => {
+      el.addEventListener('input', calculate);
+      el.addEventListener('change', calculate);
+    });
+
+    calculate();
+  </script>
+</body>
+</html>
