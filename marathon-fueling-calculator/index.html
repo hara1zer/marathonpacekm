@@ -78,6 +78,7 @@
     }
 
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       background: var(--bg);
@@ -196,6 +197,44 @@
       resize: vertical;
     }
 
+    .time-field {
+      display: block;
+    }
+
+    .time-example {
+      display: block;
+      margin-top: 4px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 400;
+    }
+
+    .time-input-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .time-part {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    .time-separator {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      padding-top: 12px;
+      color: var(--muted);
+      flex: 0 0 auto;
+    }
+
+    .time-part input {
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
     .checkbox-row {
       display: flex;
       align-items: center;
@@ -298,10 +337,6 @@
       background: rgba(0,0,0,0.04);
     }
 
-    .muted {
-      color: var(--muted);
-    }
-
     .hidden {
       display: none;
     }
@@ -310,13 +345,20 @@
       margin-top: 28px;
     }
 
-    .footer-links ul {
+    .footer-links ul,
+    .related-products ul {
       padding-left: 18px;
     }
 
     .small {
       font-size: 0.92rem;
       color: var(--muted);
+    }
+
+    .affiliate-note {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin-top: 14px;
     }
   </style>
 </head>
@@ -339,15 +381,17 @@
         <h2 id="calc-heading">Calculator inputs</h2>
 
         <div class="field-grid">
-          <div>
+          <div class="time-field">
             <label for="finishHours">Target finish time</label>
-            <div class="field-grid" style="grid-template-columns: 1fr 1fr; gap: 10px;">
-              <div>
-                <input id="finishHours" type="number" min="2" max="8" step="1" value="4" />
+            <span class="time-example">Example: 3:30</span>
+            <div class="time-input-group" aria-label="Target finish time in hours and minutes">
+              <div class="time-part">
+                <input id="finishHours" type="number" min="2" max="8" step="1" value="4" inputmode="numeric" placeholder="3" />
                 <span class="hint">Hours</span>
               </div>
-              <div>
-                <input id="finishMinutes" type="number" min="0" max="59" step="1" value="0" />
+              <div class="time-separator" aria-hidden="true">:</div>
+              <div class="time-part">
+                <input id="finishMinutes" type="number" min="0" max="59" step="1" value="00" inputmode="numeric" placeholder="00" />
                 <span class="hint">Minutes</span>
               </div>
             </div>
@@ -473,6 +517,71 @@
       </section>
     </div>
 
+    <section class="card related-products" style="margin-top:22px;">
+      <h2>Recommended fueling products</h2>
+      <p>
+        Once you know your timing plan, the next step is choosing products you can actually tolerate and repeat under marathon effort.
+      </p>
+
+      <div class="table-wrap" role="region" aria-label="Recommended fueling products" tabindex="0">
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Best for</th>
+              <th>Typical use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong>
+                  <a href="https://amzn.to/4svnr4M" target="_blank" rel="sponsored noopener noreferrer">Maurten Gel 100</a>
+                </strong>
+              </td>
+              <td>Runners who want simple carb delivery and minimal flavour</td>
+              <td>Used as a standard gel within 20–30 minute fueling schedules</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  <a href="https://amzn.to/3OU2oux" target="_blank" rel="sponsored noopener noreferrer">GU Energy Gel</a>
+                </strong>
+              </td>
+              <td>Runners who want lots of flavour options and easy availability</td>
+              <td>Works well when building a repeatable gel-by-time plan</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  <a href="https://amzn.to/46UdGVL" target="_blank" rel="sponsored noopener noreferrer">SiS Beta Fuel Gel</a>
+                </strong>
+              </td>
+              <td>Runners pushing higher carb targets per hour</td>
+              <td>Useful when trying to reduce how often you need to take gels</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>
+                  <a href="https://amzn.to/4bB2pvY" target="_blank" rel="sponsored noopener noreferrer">Tailwind Endurance Fuel Drink Mix</a>
+                </strong>
+              </td>
+              <td>Runners who prefer drinking part of their carbohydrate intake</td>
+              <td>Can support gels or replace some gel intake on longer runs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout note">
+        <strong>Important:</strong> practice exact products in training before race day. A good plan on paper is only useful if your stomach accepts it at marathon effort.
+      </div>
+
+      <p class="affiliate-note">
+        Disclosure: Some links on this page are affiliate links. This means MarathonPaceKM may earn a small commission at no extra cost to you.
+      </p>
+    </section>
+
     <section class="card" style="margin-top:22px;">
       <h2>How to use this calculator</h2>
       <ol>
@@ -496,6 +605,7 @@
         <li><a href="/printable-pace-band/">Printable Pace Band</a></li>
         <li><a href="/blog/marathon-fueling-by-finish-time-gel-schedule/">Marathon Fueling by Finish Time</a></li>
         <li><a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a></li>
+        <li><a href="/blog/racing-in-heat-wind-hills/">Racing in heat, wind, and hills</a></li>
       </ul>
     </section>
   </main>
@@ -642,7 +752,7 @@
 
     function resetCalculator() {
       finishHoursEl.value = 4;
-      finishMinutesEl.value = 0;
+      finishMinutesEl.value = '00';
       carbTargetEl.value = 60;
       gelCarbsEl.value = 25;
       firstGelEl.value = 25;
