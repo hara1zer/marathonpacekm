@@ -28,34 +28,278 @@
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     #generator, #preview, #howto, #faq { scroll-margin-top: 16px; }
 
-    /* Print handling */
     .no-print { display: block; }
     .print-only { display: none; }
 
-    body.layout-wrist #wristBand { display: block; }
-    body.layout-wrist #a4Sheet { display: none; }
+    body.layout-wrist #wristBandPanel { display: block; }
+    body.layout-wrist #a4SheetPanel { display: none; }
 
-    body.layout-a4 #wristBand { display: none; }
-    body.layout-a4 #a4Sheet { display: block; }
+    body.layout-a4 #wristBandPanel { display: none; }
+    body.layout-a4 #a4SheetPanel { display: block; }
 
-    /* Wrist band styling */
-    .band {
-      border: 1px dashed rgba(0,0,0,.25);
+    .row-inline {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .premium-preview {
+      display: grid;
+      gap: 18px;
+    }
+
+    .result-hero {
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 20px;
+      padding: 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.86));
+    }
+
+    .result-kicker {
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #2457d6;
+      margin-bottom: 8px;
+    }
+
+    .result-title {
+      margin: 0;
+      font-size: clamp(28px, 5vw, 44px);
+      line-height: 1.05;
+    }
+
+    .result-sub {
+      margin: 8px 0 0;
+      color: rgba(0,0,0,.68);
+    }
+
+    .summary-grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .summary-card {
+      background: rgba(255,255,255,.85);
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+
+    .summary-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: rgba(0,0,0,.55);
+      margin-bottom: 4px;
+    }
+
+    .summary-value {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .checkpoints-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+    }
+
+    .checkpoint-card {
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      background: rgba(255,255,255,.78);
+      padding: 12px 14px;
+    }
+
+    .checkpoint-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: rgba(0,0,0,.55);
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .checkpoint-value {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .preview-layout {
+      display: grid;
+      gap: 18px;
+    }
+
+    .split-panel,
+    .side-panel {
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,.82);
+    }
+
+    .panel-head {
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    .panel-head h3 {
+      margin: 0 0 4px;
+      font-size: 22px;
+    }
+
+    .panel-head p {
+      margin: 0;
+      color: rgba(0,0,0,.64);
+      font-size: 14px;
+    }
+
+    .split-table-wrap {
+      overflow-x: auto;
+    }
+
+    .split-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 420px;
+    }
+
+    .split-table th {
+      text-align: left;
+      padding: 12px 14px;
+      background: rgba(0,0,0,.05);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
+
+    .split-table td {
+      padding: 12px 14px;
+      font-size: 18px;
+      font-weight: 700;
+      border-top: 1px solid rgba(0,0,0,.06);
+    }
+
+    .split-table tr.band-strong td {
+      background: #d61f2c;
+      color: #fff;
+      border-top-color: rgba(255,255,255,.22);
+    }
+
+    .split-table tr.band-light td {
+      background: #fff;
+      color: #111;
+    }
+
+    .compact-band {
+      margin: 14px;
+      border: 1px solid rgba(0,0,0,.14);
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .compact-band-head {
+      padding: 12px;
+      text-align: center;
+      background: rgba(0,0,0,.04);
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    .compact-brand {
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #2457d6;
+    }
+
+    .compact-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-top: 4px;
+    }
+
+    .compact-sub {
+      font-size: 14px;
+      color: rgba(0,0,0,.65);
+      margin-top: 2px;
+    }
+
+    .compact-grid-head,
+    .compact-grid-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.25fr;
+      text-align: center;
+    }
+
+    .compact-grid-head {
+      background: rgba(0,0,0,.08);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .compact-grid-head div,
+    .compact-grid-row div {
+      padding: 9px 6px;
+    }
+
+    .compact-grid-row.band-strong {
+      background: #d61f2c;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .compact-grid-row.band-light {
+      background: #fff;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .side-copy {
+      padding: 0 14px 14px;
+      color: rgba(0,0,0,.7);
+      font-size: 14px;
+    }
+
+    .wrist-box {
+      margin-top: 12px;
+      border: 1px dashed rgba(0,0,0,.24);
       border-radius: 12px;
       padding: 10px;
-      background: rgba(255,255,255,.7);
-      max-width: 360px;
+      background: rgba(255,255,255,.72);
+      max-width: 380px;
     }
-    .band h3 { margin: 0 0 6px; }
-    .band table { width: 100%; border-collapse: collapse; }
-    .band th, .band td {
+
+    .wrist-box h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .wrist-box table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .wrist-box th, .wrist-box td {
       text-align: left;
       padding: 6px 6px;
       border-bottom: 1px solid rgba(0,0,0,.08);
       font-size: 14px;
       vertical-align: top;
     }
-    .band tr:last-child td { border-bottom: 0; }
+
+    .wrist-box tr:last-child td { border-bottom: 0; }
 
     .cut {
       margin-top: 10px;
@@ -65,13 +309,37 @@
       color: rgba(0,0,0,.65);
     }
 
-    /* A4 sheet styling */
-    .sheet h3 { margin: 0 0 8px; }
-    .sheet table { width: 100%; border-collapse: collapse; margin-top: 10px; overflow:hidden; border-radius: 12px; border: 1px solid rgba(0,0,0,.10); background: rgba(255,255,255,.7); }
-    .sheet th, .sheet td { text-align:left; padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,.08); vertical-align: top; }
-    .sheet tr:last-child td { border-bottom: 0; }
+    .sheet-box {
+      margin-top: 12px;
+    }
 
-    /* Embed UI */
+    .sheet-box table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.75);
+    }
+
+    .sheet-box th, .sheet-box td {
+      text-align:left;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+      vertical-align: top;
+    }
+
+    .sheet-box tr:last-child td { border-bottom: 0; }
+
+    .execution-box {
+      margin-top: 12px;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      padding: 14px;
+      background: rgba(255,255,255,.75);
+    }
+
     textarea.embed {
       width: 100%;
       min-height: 92px;
@@ -83,17 +351,50 @@
       background: rgba(255,255,255,.75);
     }
 
+    .empty-state {
+      border: 1px dashed rgba(0,0,0,.18);
+      border-radius: 18px;
+      padding: 20px;
+      background: rgba(255,255,255,.6);
+      color: rgba(0,0,0,.7);
+    }
+
+    .empty-state strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 6px;
+      color: #111;
+    }
+
+    @media (min-width: 760px) {
+      .summary-grid {
+        grid-template-columns: repeat(4, minmax(0,1fr));
+      }
+      .checkpoints-grid {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+      }
+    }
+
+    @media (min-width: 980px) {
+      .preview-layout {
+        grid-template-columns: 1.25fr .85fr;
+        align-items: start;
+      }
+    }
+
     @media print {
       header, footer, .no-print, .backtop { display: none !important; }
       .print-only { display: block !important; }
       body { background:#fff !important; }
-      .card { box-shadow:none !important; background:#fff !important; }
+      .card, .result-hero, .split-panel, .side-panel, .checkpoint-card, .summary-card { box-shadow:none !important; background:#fff !important; }
 
       @page { margin: 10mm; }
-      /* Keep wrist band compact on page */
-      .band { max-width: 80mm; }
-      .band th, .band td { font-size: 11px; padding: 4px 4px; }
-      .sheet th, .sheet td { font-size: 12px; }
+
+      .wrist-box { max-width: 80mm; }
+      .wrist-box th, .wrist-box td { font-size: 11px; padding: 4px 4px; }
+      .sheet-box th, .sheet-box td { font-size: 12px; }
+
+      .compact-band { margin: 0; }
       a { text-decoration:none !important; color:#000 !important; }
     }
   </style>
@@ -190,7 +491,6 @@
 
       <div class="results" id="shareOut" aria-live="polite"></div>
 
-      <!-- NEW: Embed snippet generator -->
       <div class="card" style="margin-top:12px; padding:14px">
         <p class="muted" style="margin:0"><strong>Embed this pace band</strong> (for clubs/coaches)</p>
         <p class="tiny muted2" style="margin:6px 0 10px">
@@ -209,34 +509,73 @@
 
     <section id="preview" class="card">
       <h2>Preview</h2>
-      <p class="muted no-print">Switch layout above, then click “Print / Save as PDF”.</p>
+      <p class="muted no-print">Generate your pace band below, then print or save as PDF.</p>
 
-      <!-- Print-only header -->
       <div class="print-only" style="margin-bottom:10px">
         <h2 style="margin:0 0 6px">Marathon Pace Band</h2>
         <p class="tiny muted2" style="margin:0">Generated by marathonpacekm.com/printable-pace-band/</p>
       </div>
 
-      <div id="summary" class="kpi"></div>
+      <div id="previewContent" class="premium-preview">
+        <div id="emptyState" class="empty-state" style="display:none">
+          <strong>Select a goal time to generate your pace band</strong>
+          Your summary cards, checkpoint splits, printable table, and wrist-band preview will appear here.
+        </div>
 
-      <!-- Wrist band -->
-      <div id="wristBand" class="band" style="margin-top:12px">
-        <h3>Wrist pace band</h3>
-        <div id="wristTable"></div>
-        <div class="cut">
-          Cut on the dotted border, fold, and tape. Optional: cover with clear tape for sweat resistance.
+        <div id="fullPreview" style="display:none">
+          <div class="result-hero">
+            <div class="result-kicker">Marathon Pace KM</div>
+            <h3 id="resultTitle" class="result-title">4:00 Marathon Pace Band</h3>
+            <p class="result-sub">A cleaner, more race-ready pace reference for print, screenshot, or race-day use.</p>
+
+            <div id="summaryCards" class="summary-grid"></div>
+          </div>
+
+          <div id="checkpointCards" class="checkpoints-grid"></div>
+
+          <div class="preview-layout">
+            <div class="split-panel">
+              <div class="panel-head">
+                <h3>Race Split Table</h3>
+                <p>Styled like a premium pace band, but easier to scan on mobile.</p>
+              </div>
+              <div id="splitTableWrap" class="split-table-wrap"></div>
+            </div>
+
+            <div class="side-panel">
+              <div class="panel-head">
+                <h3>Compact Pace Band</h3>
+                <p>Ideal for print, screenshot, or quick race-day reference.</p>
+              </div>
+
+              <div id="compactBand"></div>
+
+              <div class="side-copy">
+                Keep this simple on race day: check your big checkpoints, avoid early surges, and adjust for heat, wind, and hills by effort rather than forcing exact pace.
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- A4 sheet -->
-      <div id="a4Sheet" class="sheet" style="margin-top:12px">
-        <h3>A4 pacing sheet</h3>
+      <div id="wristBandPanel" style="margin-top:14px">
+        <div class="wrist-box">
+          <h4>Wrist pace band</h4>
+          <div id="wristTable"></div>
+          <div class="cut">
+            Cut on the dotted border, fold, and tape. Optional: cover with clear tape for sweat resistance.
+          </div>
+        </div>
+      </div>
+
+      <div id="a4SheetPanel" class="sheet-box" style="margin-top:14px">
+        <h3 style="margin:0 0 8px">A4 pacing sheet</h3>
         <p class="tiny muted2" style="margin:0">
           Use this as a quick reference. In tough conditions, pace by effort, not by watch pace.
         </p>
         <div id="a4Table"></div>
 
-        <div class="card" style="padding:14px; margin-top:12px">
+        <div class="execution-box">
           <p class="muted" style="margin:0"><strong>Execution reminders</strong></p>
           <ul class="tiny muted" style="margin:8px 0 0">
             <li>Start controlled for the first 3–5 km (avoid early surges).</li>
@@ -297,11 +636,17 @@
     var copyBtn = document.getElementById('copyBtn');
     var copyEmbedBtn = document.getElementById('copyEmbedBtn');
 
-    var summary = document.getElementById('summary');
+    var summaryCards = document.getElementById('summaryCards');
+    var checkpointCards = document.getElementById('checkpointCards');
+    var splitTableWrap = document.getElementById('splitTableWrap');
+    var compactBand = document.getElementById('compactBand');
     var wristTable = document.getElementById('wristTable');
     var a4Table = document.getElementById('a4Table');
     var shareOut = document.getElementById('shareOut');
     var embedCode = document.getElementById('embedCode');
+    var resultTitle = document.getElementById('resultTitle');
+    var emptyState = document.getElementById('emptyState');
+    var fullPreview = document.getElementById('fullPreview');
 
     function clamp(n, lo, hi){
       n = Number(n);
@@ -330,24 +675,6 @@
       return m + ":" + String(s).padStart(2,'0');
     }
 
-    function buildTable(rows){
-      var html = '<table><thead><tr><th>CP</th><th>Time</th></tr></thead><tbody>';
-      rows.forEach(function(r){
-        html += '<tr><td>' + r.label + '</td><td>' + r.time + '</td></tr>';
-      });
-      html += '</tbody></table>';
-      return html;
-    }
-
-    function buildA4(rows){
-      var html = '<table><thead><tr><th>Checkpoint</th><th>Time</th></tr></thead><tbody>';
-      rows.forEach(function(r){
-        html += '<tr><td>' + r.label + '</td><td>' + r.time + '</td></tr>';
-      });
-      html += '</tbody></table>';
-      return html;
-    }
-
     function paceAtDistance(d, paceEven, styleKey, offsetSecPerKm){
       if(styleKey === 'even') return paceEven * d;
 
@@ -357,10 +684,10 @@
       } else {
         pace1 = Math.max(0, paceEven - offsetSecPerKm);
       }
-      pace2 = (paceEven*MARA - pace1*HALF) / (MARA - HALF);
+      pace2 = (paceEven * MARA - pace1 * HALF) / (MARA - HALF);
 
       if(d <= HALF) return pace1 * d;
-      return pace1*HALF + pace2*(d - HALF);
+      return pace1 * HALF + pace2 * (d - HALF);
     }
 
     function setLayoutClass(layout){
@@ -386,12 +713,123 @@
         '<iframe',
         '  src="' + src.replace(/"/g, '&quot;') + '"',
         '  width="420"',
-        '  height="760"',
+        '  height="920"',
         '  style="border:1px solid #eee;border-radius:12px;"',
         '  loading="lazy"',
         '  referrerpolicy="no-referrer-when-downgrade">',
         '</iframe>'
-      ].join("\n");
+      ].join("\\n");
+    }
+
+    function buildSummaryCards(total, paceEven, paceMi, style){
+      return ''
+        + '<div class="summary-card">'
+        +   '<div class="summary-label">Goal Time</div>'
+        +   '<div class="summary-value">' + fmtHMS(total) + '</div>'
+        + '</div>'
+        + '<div class="summary-card">'
+        +   '<div class="summary-label">Pace / KM</div>'
+        +   '<div class="summary-value">' + fmtPace(paceEven) + '</div>'
+        + '</div>'
+        + '<div class="summary-card">'
+        +   '<div class="summary-label">Pace / Mile</div>'
+        +   '<div class="summary-value">' + fmtPace(paceMi) + '</div>'
+        + '</div>'
+        + '<div class="summary-card">'
+        +   '<div class="summary-label">Style</div>'
+        +   '<div class="summary-value" style="font-size:18px">' + styleLabel(style) + '</div>'
+        + '</div>';
+    }
+
+    function buildCheckpointCards(rows){
+      return rows.map(function(r){
+        return ''
+          + '<div class="checkpoint-card">'
+          +   '<div class="checkpoint-label">' + r.label + '</div>'
+          +   '<div class="checkpoint-value">' + r.time + '</div>'
+          + '</div>';
+      }).join('');
+    }
+
+    function buildSplitRows(total, paceEven, style, offset){
+      var rows = [];
+      for(var km = 1; km <= 42; km++){
+        var elapsed = paceAtDistance(km, paceEven, style, offset);
+        var prevElapsed = paceAtDistance(km - 1, paceEven, style, offset);
+        rows.push({
+          label: String(km),
+          split: fmtHMS(elapsed - prevElapsed).replace(/^0:/, ''),
+          elapsed: fmtHMS(elapsed)
+        });
+      }
+
+      var finalElapsed = paceAtDistance(MARA, paceEven, style, offset);
+      var elapsed42 = paceAtDistance(42, paceEven, style, offset);
+      rows.push({
+        label: '42.2',
+        split: fmtHMS(finalElapsed - elapsed42).replace(/^0:/, ''),
+        elapsed: fmtHMS(finalElapsed)
+      });
+
+      return rows;
+    }
+
+    function buildPremiumSplitTable(rows){
+      var html = '<table class="split-table"><thead><tr><th>KM</th><th>Split</th><th>Elapsed</th></tr></thead><tbody>';
+      rows.forEach(function(r, i){
+        html += '<tr class="' + (i % 2 === 0 ? 'band-strong' : 'band-light') + '">';
+        html += '<td>' + r.label + '</td>';
+        html += '<td>' + r.split + '</td>';
+        html += '<td>' + r.elapsed + '</td>';
+        html += '</tr>';
+      });
+      html += '</tbody></table>';
+      return html;
+    }
+
+    function buildCompactBand(goalTime, paceEven, rows){
+      var shortRows = rows.slice(0, 8);
+      var html = ''
+        + '<div class="compact-band">'
+        +   '<div class="compact-band-head">'
+        +     '<div class="compact-brand">Marathon Pace KM</div>'
+        +     '<div class="compact-title">' + goalTime + ' Pace Band</div>'
+        +     '<div class="compact-sub">' + fmtPace(paceEven) + ' / km</div>'
+        +   '</div>'
+        +   '<div class="compact-grid-head"><div>KM</div><div>Split</div><div>Elapsed</div></div>';
+
+      shortRows.forEach(function(r, i){
+        html += '<div class="compact-grid-row ' + (i % 2 === 0 ? 'band-strong' : 'band-light') + '">';
+        html += '<div>' + r.label + '</div><div>' + r.split + '</div><div>' + r.elapsed + '</div>';
+        html += '</div>';
+      });
+
+      html += '</div>';
+      return html;
+    }
+
+    function buildTable(rows){
+      var html = '<table><thead><tr><th>CP</th><th>Time</th></tr></thead><tbody>';
+      rows.forEach(function(r){
+        html += '<tr><td>' + r.label + '</td><td>' + r.time + '</td></tr>';
+      });
+      html += '</tbody></table>';
+      return html;
+    }
+
+    function buildA4(rows){
+      var html = '<table><thead><tr><th>Checkpoint</th><th>Time</th></tr></thead><tbody>';
+      rows.forEach(function(r){
+        html += '<tr><td>' + r.label + '</td><td>' + r.time + '</td></tr>';
+      });
+      html += '</tbody></table>';
+      return html;
+    }
+
+    function styleLabel(style){
+      if(style === 'neg') return 'Negative split';
+      if(style === 'pos') return 'Positive split';
+      return 'Even pace';
     }
 
     function update(){
@@ -401,11 +839,6 @@
       elH.value = hh; elM.value = mm; elS.value = ss;
 
       var total = toSeconds(hh,mm,ss);
-      if(total <= 0){
-        shareOut.innerHTML = '<p class="tiny muted2">Enter a valid goal time.</p>';
-        return;
-      }
-
       var layout = elLayout.value;
       var style = elStyle.value;
       var offset = clamp(elOffset.value, 0, 30);
@@ -413,8 +846,21 @@
 
       setLayoutClass(layout);
 
-      var paceEven = total / MARA;                 // sec/km
-      var paceMi = paceEven * 1.609344;            // sec/mi
+      if(total <= 0){
+        emptyState.style.display = 'block';
+        fullPreview.style.display = 'none';
+        wristTable.innerHTML = '';
+        a4Table.innerHTML = '';
+        shareOut.innerHTML = '<p class="tiny muted2">Enter a valid goal time.</p>';
+        if(embedCode) embedCode.value = '';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+      fullPreview.style.display = 'block';
+
+      var paceEven = total / MARA;
+      var paceMi = paceEven * 1.609344;
 
       var cps = [
         {label:'5K', km:5},
@@ -425,19 +871,21 @@
         {label:'Finish', km:42.195}
       ];
 
-      var rows = cps.map(function(c){
+      var checkpointRows = cps.map(function(c){
         var t = paceAtDistance(c.km, paceEven, style, offset);
         return { label: c.label, time: fmtHMS(t) };
       });
 
-      summary.innerHTML =
-        '<div class="fact"><div class="tiny muted2">Goal time</div><strong>' + fmtHMS(total) + '</strong></div>' +
-        '<div class="fact"><div class="tiny muted2">Avg pace</div><strong>' + fmtPace(paceEven) + '/km</strong></div>' +
-        '<div class="fact"><div class="tiny muted2">Avg pace</div><strong>' + fmtPace(paceMi) + '/mi</strong></div>' +
-        '<div class="fact"><div class="tiny muted2">Style</div><strong>' + (style==='even'?'Even':(style==='neg'?'Negative split':'Positive split')) + '</strong></div>';
+      var splitRows = buildSplitRows(total, paceEven, style, offset);
 
-      wristTable.innerHTML = buildTable(rows);
-      a4Table.innerHTML = buildA4(rows);
+      resultTitle.textContent = fmtHMS(total) + ' Marathon Pace Band';
+      summaryCards.innerHTML = buildSummaryCards(total, paceEven, paceMi, style);
+      checkpointCards.innerHTML = buildCheckpointCards(checkpointRows);
+      splitTableWrap.innerHTML = buildPremiumSplitTable(splitRows);
+      compactBand.innerHTML = buildCompactBand(fmtHMS(total), paceEven, splitRows);
+
+      wristTable.innerHTML = buildTable(checkpointRows);
+      a4Table.innerHTML = buildA4(checkpointRows);
 
       var shareUrl = buildShareURL();
       shareOut.innerHTML =
