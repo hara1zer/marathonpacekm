@@ -5,20 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Race-Day Pace Adjuster | Heat, Humidity, Wind & Hills (Marathon)</title>
-  <meta name="description" content="Free race-day pace adjuster for marathon pacing. Estimate safer pacing in heat/humidity, wind, and hilly courses. Outputs an adjusted pace range and finish time range." />
+  <meta name="description" content="Free race-day pace adjuster for marathon pacing. Estimate safer pacing in heat, humidity, wind, and hilly courses. Get an adjusted pace range, finish-time range, and practical race-day guidance." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://marathonpacekm.com/race-conditions-pace-adjuster/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Race-Day Pace Adjuster (Heat / Wind / Hills)" />
-  <meta property="og:description" content="Adjust marathon pace for conditions: heat/humidity, wind, and hills. Get a safer pace range and finish-time range." />
+  <meta property="og:title" content="Race-Day Pace Adjuster | Heat, Wind & Hills (Marathon)" />
+  <meta property="og:description" content="Adjust marathon pace for heat, humidity, wind, and hills. Get a safer pace range, finish-time range, and practical execution advice." />
   <meta property="og:url" content="https://marathonpacekm.com/race-conditions-pace-adjuster/" />
   <meta property="og:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
+  <meta property="og:image:alt" content="Race-day pace adjuster for heat, wind, and hills" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Race-Day Pace Adjuster (Heat / Wind / Hills)" />
-  <meta name="twitter:description" content="Adjust marathon pace for conditions: heat/humidity, wind, and hills." />
+  <meta name="twitter:title" content="Race-Day Pace Adjuster | Heat, Wind & Hills (Marathon)" />
+  <meta name="twitter:description" content="Adjust marathon pace for heat, humidity, wind, and hills. Get a safer pace range and finish-time range." />
   <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
+  <meta name="theme-color" content="#0b1220" />
 
   <link rel="preload" href="/assets/style.css" as="style" />
   <link rel="stylesheet" href="/assets/style.css" />
@@ -26,58 +28,209 @@
   <style>
     html { scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    #calculator, #resultsBlock, #how-to-use, #faq { scroll-margin-top: 16px; }
+
+    :root{
+      --bg:#0b1220;
+      --text:#f5f7ff;
+      --muted:rgba(245,247,255,.80);
+      --muted2:rgba(245,247,255,.64);
+      --line:rgba(255,255,255,.12);
+      --btn:#ffffff;
+      --btnText:#0b1220;
+      --btn2:rgba(255,255,255,.14);
+      --accent:rgba(73,126,255,.95);
+      --good:rgba(60,200,120,.18);
+      --warn:rgba(255,185,73,.16);
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.25);
+    }
+
+    body{
+      background:
+        radial-gradient(1200px 600px at 30% 10%, rgba(73,126,255,.22), transparent 55%),
+        radial-gradient(900px 500px at 80% 0%, rgba(255,122,73,.18), transparent 60%),
+        var(--bg);
+      color:var(--text);
+    }
+
+    .sub{ color:var(--muted); max-width:78ch; }
+    .tiny{ font-size:13px; }
+    .muted{ color:var(--muted); }
+    .muted2{ color:var(--muted2); }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .intro-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.07));
+    }
+
+    .toc { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
+    .toc a { text-decoration:none; }
+
+    .facts{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:10px;
+      margin-top:12px;
+    }
+    @media (min-width: 720px){
+      .facts{ grid-template-columns:repeat(4, minmax(0,1fr)); }
+    }
+
+    .fact,
+    .mini-card,
+    .splitBox{
+      padding:12px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      background:rgba(0,0,0,.18);
+    }
+
+    .kpi{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .result-fact{
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
+      min-width:180px;
+    }
+
+    .callout{
+      padding:12px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      background:rgba(0,0,0,.18);
+      margin-top:12px;
+    }
+    .callout.info{ background:rgba(73,126,255,.12); }
+    .callout.good{ background:rgba(60,200,120,.10); }
+    .callout.warn{ background:rgba(255,185,73,.10); }
+
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 760px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    .triple{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    @media (max-width: 760px){
+      .triple{ grid-template-columns:1fr; }
+    }
+
+    .row{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .row input{ max-width:110px; }
+
+    input, select{
+      width:100%;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.25);
+      color:var(--text);
+      outline:none;
+    }
+    input:focus, select:focus{
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px rgba(73,126,255,.25);
+    }
 
     .splits-table{
       width:100%;
-      border-collapse: collapse;
-      margin-top: 10px;
+      border-collapse:collapse;
+      margin-top:10px;
       overflow:hidden;
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.6);
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.18);
     }
     .splits-table th, .splits-table td{
       text-align:left;
-      padding: 10px 12px;
-      border-bottom: 1px solid rgba(0,0,0,.08);
-      vertical-align: top;
+      padding:10px 12px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      vertical-align:top;
     }
-    .splits-table tr:last-child td{ border-bottom: 0; }
+    .splits-table tr:last-child td{ border-bottom:0; }
+
+    .section-note{
+      border-left:3px solid rgba(255,255,255,.22);
+      padding-left:12px;
+      margin-top:10px;
+    }
+
+    #calculator, #resultsBlock, #how-to-use, #common-mistakes, #how-to-execute, #faq, #experience-note {
+      scroll-margin-top:16px;
+    }
   </style>
 
-  <!-- Breadcrumbs -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
-      {"@type":"ListItem","position":2,"name":"Race-Day Pace Adjuster","item":"https://marathonpacekm.com/race-conditions-pace-adjuster/"}
-    ]
-  }
-  </script>
-
-  <!-- FAQ schema (matches visible FAQ below) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
+    "@graph":[
       {
-        "@type":"Question",
-        "name":"How much should I slow down for heat in a marathon?",
-        "acceptedAnswer":{"@type":"Answer","text":"There isn’t one perfect number. Heat/humidity increases cardiovascular strain, so you should pace by effort and plan a conservative slowdown. This tool provides a safer adjustment range, but your optimal pace depends on acclimation, fueling, and conditions."}
+        "@type":"WebSite",
+        "@id":"https://marathonpacekm.com/#website",
+        "url":"https://marathonpacekm.com/",
+        "name":"Marathon Pace KM"
       },
       {
-        "@type":"Question",
-        "name":"Is dew point better than humidity for pacing?",
-        "acceptedAnswer":{"@type":"Answer","text":"Dew point is often a better single indicator of how muggy it feels because it reflects absolute moisture in the air. If you know dew point, use it. If not, this tool can estimate it from temperature and relative humidity."}
+        "@type":"WebPage",
+        "@id":"https://marathonpacekm.com/race-conditions-pace-adjuster/#webpage",
+        "url":"https://marathonpacekm.com/race-conditions-pace-adjuster/",
+        "name":"Race-Day Pace Adjuster | Heat, Humidity, Wind & Hills (Marathon)",
+        "description":"Free race-day pace adjuster for marathon pacing. Estimate safer pacing in heat, humidity, wind, and hilly courses. Get an adjusted pace range, finish-time range, and practical race-day guidance.",
+        "isPartOf":{"@id":"https://marathonpacekm.com/#website"}
       },
       {
-        "@type":"Question",
-        "name":"Should I still aim for even splits in tough conditions?",
-        "acceptedAnswer":{"@type":"Answer","text":"In heat/wind/hills, aim for even effort rather than even pace. Accept slightly slower early splits to avoid late-race collapse. Negative split execution can still work if you stay controlled early."}
+        "@type":"BreadcrumbList",
+        "@id":"https://marathonpacekm.com/race-conditions-pace-adjuster/#breadcrumb",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://marathonpacekm.com/"},
+          {"@type":"ListItem","position":2,"name":"Race-Day Pace Adjuster","item":"https://marathonpacekm.com/race-conditions-pace-adjuster/"}
+        ]
+      },
+      {
+        "@type":"FAQPage",
+        "@id":"https://marathonpacekm.com/race-conditions-pace-adjuster/#faq",
+        "mainEntity":[
+          {
+            "@type":"Question",
+            "name":"How much should I slow down for heat in a marathon?",
+            "acceptedAnswer":{"@type":"Answer","text":"There is not one perfect number. Heat and humidity increase cardiovascular strain, so you should pace by effort and plan a conservative slowdown. This tool provides a safer adjustment range, but your optimal pace still depends on acclimation, fueling, and the exact conditions."}
+          },
+          {
+            "@type":"Question",
+            "name":"Is dew point better than humidity for pacing?",
+            "acceptedAnswer":{"@type":"Answer","text":"Dew point is often a better single indicator of how muggy conditions feel because it reflects absolute moisture in the air. If you know dew point, use it. If not, this tool can estimate it from temperature and relative humidity."}
+          },
+          {
+            "@type":"Question",
+            "name":"Should I still aim for even splits in tough conditions?",
+            "acceptedAnswer":{"@type":"Answer","text":"In heat, wind, or hills, aim for even effort rather than even pace. Accept slightly slower early splits to avoid a late-race collapse. A small negative split can still happen if you stay controlled early."}
+          },
+          {
+            "@type":"Question",
+            "name":"Should I bank time on a tough marathon day?",
+            "acceptedAnswer":{"@type":"Answer","text":"Usually no. Banking time early in bad conditions often increases the risk of a bigger slowdown later. On difficult days, patience is usually cheaper than hero pacing."}
+          }
+        ]
       }
     ]
   }
@@ -90,39 +243,54 @@
 
 <body id="top">
   <header class="wrap" style="padding-top:28px">
+    <nav aria-label="Breadcrumb" class="crumbs tiny muted">
+      <a href="/">Home</a> › <span>Race-Day Pace Adjuster</span>
+    </nav>
     <a class="btn secondary" href="/">← Back to pace chart hub</a>
     <h1 style="margin-top:14px">Race-Day Pace Adjuster (Heat / Wind / Hills)</h1>
     <p class="sub">
       Adjust a target marathon pace for race-day conditions. This tool estimates a safer <strong>pace range</strong> and <strong>finish-time range</strong>
-      when it’s hot/humid, windy, or hilly — so you don’t force splits and blow up late.
+      when it’s hot, humid, windy, or hilly, so you do not force ideal-condition splits into a day that clearly is not ideal.
     </p>
 
-    <div class="toc" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+    <div aria-label="On-page navigation" class="toc">
       <a class="btn" href="#calculator">Adjuster</a>
       <a class="btn secondary" href="#resultsBlock">Results</a>
       <a class="btn secondary" href="#how-to-use">How to use</a>
+      <a class="btn secondary" href="#how-to-execute">Execution</a>
       <a class="btn secondary" href="#faq">FAQ</a>
     </div>
 
-    <div class="card" style="margin-top:12px;padding:14px">
-      <p class="muted" style="margin:0">
-        <strong>Fast workflow:</strong>
-        Enter your target → apply adjustments → build checkpoint splits + printable band in
-        <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>.
-      </p>
-      <p class="tiny muted2" style="margin:10px 0 0">
-        Read the guide: <a href="/blog/racing-in-heat-wind-hills/">Pacing in heat, wind, and hills</a>.
-      </p>
+    <div class="facts" aria-label="Quick facts">
+      <div class="fact"><strong>Use case</strong><br />Heat, wind, hills</div>
+      <div class="fact"><strong>Output</strong><br />Safer pace range</div>
+      <div class="fact"><strong>Best for</strong><br />Marathon planning</div>
+      <div class="fact"><strong>Mindset</strong><br />Even effort, not ego</div>
     </div>
   </header>
 
   <main class="wrap" id="content">
+    <section class="card intro-card" id="experience-note">
+      <h2>Why this page matters</h2>
+      <p class="muted">
+        A lot of marathon pacing advice assumes a cool, flat, low-wind day. Real races are often not like that.
+        Heat, humidity, headwinds, and hills all raise the cost of the pace, sometimes just enough to turn a reasonable goal into a bad pacing decision.
+      </p>
+      <p class="muted">
+        That is why this page exists. The goal is not to replace judgment with fake precision. It is to help you stop pretending that
+        <a href="/sub-4-marathon-pace-km/"><strong>sub-4 pace</strong></a>, <a href="/4-00-marathon-pace-km/"><strong>4:00 marathon pace</strong></a>,
+        or <a href="/3-55-marathon-pace-km/"><strong>3:55 marathon pace</strong></a> should be raced the same way in every set of conditions.
+      </p>
+      <div class="callout good">
+        <strong>Plain-English takeaway:</strong> on tough race days, the best pacing move is often accepting a smarter early slowdown so you do not create a much bigger late slowdown.
+      </div>
+    </section>
 
     <section id="calculator" class="card">
       <h2>Conditions pace adjuster</h2>
       <p class="muted">
-        Start with your “ideal conditions” marathon target pace/time, then adjust for heat/humidity (dew point),
-        wind, and hills. Outputs a recommended pace range.
+        Start with your “ideal conditions” marathon target pace or finish time, then adjust for heat, humidity, wind, and hills.
+        The tool gives you a recommended pace range rather than a single fake-perfect number.
       </p>
 
       <div class="grid">
@@ -133,25 +301,25 @@
             <input id="m" type="number" min="0" max="59" value="0" /> <span>m</span>
             <input id="s" type="number" min="0" max="59" value="0" /> <span>s</span>
           </div>
-          <p class="tiny muted2" style="margin-top:6px">Or just pick a goal you’d run in cool/flat conditions.</p>
+          <p class="tiny muted2" style="margin-top:6px">Use the time you would target on a cool, flat, low-wind day.</p>
         </div>
 
         <div>
           <label>Temperature (°C)</label>
           <input id="tempC" type="number" min="-5" max="45" value="18" />
-          <p class="tiny muted2" style="margin-top:6px">Use forecast race start temperature if possible.</p>
+          <p class="tiny muted2" style="margin-top:6px">Race-start temperature is usually the best starting point.</p>
         </div>
 
         <div>
           <label>Relative humidity (%)</label>
           <input id="rhPct" type="number" min="0" max="100" value="60" />
-          <p class="tiny muted2" style="margin-top:6px">Used to estimate dew point if you don’t know it.</p>
+          <p class="tiny muted2" style="margin-top:6px">Used to estimate dew point if you do not know it.</p>
         </div>
 
         <div>
           <label>Dew point (°C) (optional override)</label>
           <input id="dewC" type="number" min="-10" max="35" placeholder="leave blank to estimate" />
-          <p class="tiny muted2" style="margin-top:6px">If you know dew point, enter it for better accuracy.</p>
+          <p class="tiny muted2" style="margin-top:6px">If you know dew point, use it. It is often more useful than humidity alone.</p>
         </div>
       </div>
 
@@ -159,7 +327,7 @@
         <div>
           <label>Wind (km/h)</label>
           <input id="wind" type="number" min="0" max="80" value="10" />
-          <p class="tiny muted2" style="margin-top:6px">A rough average is fine.</p>
+          <p class="tiny muted2" style="margin-top:6px">A rough average is fine. You do not need perfect weather data.</p>
         </div>
 
         <div>
@@ -169,7 +337,7 @@
             <option value="rolling">Rolling</option>
             <option value="hilly">Hilly</option>
           </select>
-          <p class="tiny muted2" style="margin-top:6px">Use your best judgment for the course profile.</p>
+          <p class="tiny muted2" style="margin-top:6px">Use your best judgment for the overall course profile.</p>
         </div>
 
         <div>
@@ -179,7 +347,7 @@
             <option value="some">Somewhat</option>
             <option value="yes">Yes (trained in heat)</option>
           </select>
-          <p class="tiny muted2" style="margin-top:6px">Acclimation reduces heat penalty.</p>
+          <p class="tiny muted2" style="margin-top:6px">Acclimation reduces the expected heat penalty.</p>
         </div>
 
         <div>
@@ -189,7 +357,7 @@
             <option value="normal">Normal race effort</option>
             <option value="aggr">Aggressive (higher risk)</option>
           </select>
-          <p class="tiny muted2" style="margin-top:6px">Aggressive reduces the adjustment slightly.</p>
+          <p class="tiny muted2" style="margin-top:6px">Aggressive reduces the adjustment slightly, but increases risk.</p>
         </div>
       </div>
 
@@ -200,44 +368,84 @@
 
       <div id="results" class="results" aria-live="polite"></div>
 
-      <p class="tiny muted" style="margin-top:12px">
-        This is a planning tool. In tough conditions, pace by <strong>effort</strong> and accept slower splits.
-        If you “bank time” early, conditions will punish you late.
-      </p>
+      <div class="callout warn">
+        <strong>Important:</strong> this is a planning tool, not a guarantee. In tough conditions, pace by <strong>effort</strong> and accept slower early splits.
+        If you try to “bank time” in bad conditions, the conditions often take it back with interest.
+      </div>
     </section>
 
     <section id="resultsBlock" class="card">
       <h2>What to do with your adjusted pace</h2>
       <p class="muted">
-        Choose a target within the recommended range, then generate checkpoint splits and a printable pace band.
+        Once you have a safer pace range, choose a target near the middle or conservative end if the day looks challenging.
+        Then build checkpoint splits and a printable pace band from that adjusted target.
       </p>
 
       <div class="row actions" style="margin-top:10px; gap:10px">
         <a class="btn" href="/marathon-pace-calculator/">Build checkpoint splits + pace band</a>
-        <a class="btn secondary" href="/blog/racing-in-heat-wind-hills/">Heat/wind/hills guide</a>
-        <a class="btn secondary" href="/blog/time-in-the-bank-math/">Why starting too fast fails</a>
+        <a class="btn secondary" href="/blog/racing-in-heat-wind-hills/">Heat / wind / hills guide</a>
+        <a class="btn secondary" href="/blog/time-in-the-bank-math/">Why banking time fails</a>
+      </div>
+
+      <div class="callout info">
+        <strong>Best practice:</strong> do not just take the mid-point and lock it in as gospel. Ask whether the day is drifting harder, calmer, or more exposed than forecast,
+        and be willing to race the first 10–15 km by feel.
       </div>
 
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
 
     <section id="how-to-use" class="card">
-      <h2>How to use this (best practice)</h2>
+      <h2>How to use this well</h2>
       <ol class="muted">
-        <li><strong>Start with your ideal-condition goal</strong> (cool / flat / low wind).</li>
-        <li><strong>Use dew point if possible</strong>. If not, humidity + temperature estimates it.</li>
-        <li><strong>Pick a target pace range</strong>, then run by effort in the first 10–15K.</li>
-        <li><strong>Generate checkpoints</strong> in <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>.</li>
-        <li><strong>Execute</strong> with <a href="/blog/marathon-splits/">splits</a> and <a href="/blog/negative-split-pacing/">negative split pacing</a>.</li>
+        <li><strong>Start with your ideal-condition goal</strong>, not a desperate stretch target.</li>
+        <li><strong>Use dew point if possible</strong>. If not, temperature plus humidity is still useful.</li>
+        <li><strong>Treat the output as a range</strong>, not as one magic pace.</li>
+        <li><strong>Run the first 10–15 km by effort</strong>, especially in heat or headwind.</li>
+        <li><strong>Generate checkpoints</strong> in the <a href="/marathon-pace-calculator/"><strong>Marathon Pace Calculator</strong></a>.</li>
+        <li><strong>Execute with restraint</strong>, using tools like <a href="/blog/marathon-splits/"><strong>splits</strong></a> and <a href="/blog/negative-split-pacing/"><strong>negative split pacing</strong></a>.</li>
       </ol>
 
-      <div class="card" style="padding:14px; margin-top:10px">
-        <p class="muted" style="margin:0"><strong>Recommended reading:</strong></p>
-        <p class="tiny muted" style="margin:8px 0 0">
-          <a href="/blog/racing-in-heat-wind-hills/">Pacing in heat, wind, and hills</a> ·
-          <a href="/blog/time-in-the-bank-math/">Time-in-the-bank math</a> ·
-          <a href="/blog/marathon-splits/">Marathon splits explained</a>
-        </p>
+      <div class="callout">
+        <strong>Good question to ask before the gun:</strong> “Am I trying to run my ideal race, or the race this day actually allows?”
+      </div>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
+    <section id="common-mistakes" class="card">
+      <h2>Common mistakes in bad conditions</h2>
+      <ul class="muted">
+        <li><strong>Using ideal-condition pace anyway:</strong> the weather does not care what your training block said.</li>
+        <li><strong>Chasing a lost kilometre immediately:</strong> one slow split in wind or heat is not an emergency.</li>
+        <li><strong>Banking time before the course bites:</strong> this usually turns a manageable race into a late collapse.</li>
+        <li><strong>Ignoring hills on effort:</strong> forcing uphill pace often costs more than the seconds you “save.”</li>
+        <li><strong>Underfueling because the day feels slower:</strong> slower pace does not remove the need for carbs and fluids.</li>
+      </ul>
+    </section>
+
+    <section id="how-to-execute" class="card">
+      <h2>How to execute in heat, wind, and hills</h2>
+
+      <div class="triple">
+        <div class="mini-card">
+          <strong>Heat / humidity</strong>
+          <p class="muted">Bias conservative early. Cardiac strain often rises before your pace or ego admits it.</p>
+        </div>
+        <div class="mini-card">
+          <strong>Wind</strong>
+          <p class="muted">Focus on effort, posture, and rhythm. Headwinds punish surging more than patient pacing.</p>
+        </div>
+        <div class="mini-card">
+          <strong>Hills</strong>
+          <p class="muted">Let pace float uphill, stay smooth on the crest, and use the downhills without overstriding.</p>
+        </div>
+      </div>
+
+      <div class="section-note muted">
+        In all three cases, <strong>even effort</strong> usually beats <strong>even pace</strong>. That is also why pages like
+        <a href="/how-to-use-marathon-pace-chart/"><strong>how to use a marathon pace chart</strong></a> and
+        <a href="/even-vs-negative-splits/"><strong>even vs negative splits</strong></a> matter so much on tougher days.
       </div>
 
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
@@ -247,13 +455,16 @@
       <h2>Race conditions pacing FAQ</h2>
 
       <h3>How much should I slow down for heat in a marathon?</h3>
-      <p>There isn’t one perfect number. Heat/humidity increases cardiovascular strain, so pace by effort and plan a conservative slowdown. This tool provides a safer adjustment range, but your optimal pace depends on acclimation, fueling, and conditions.</p>
+      <p>There is not one perfect number. Heat and humidity increase cardiovascular strain, so pace by effort and plan a conservative slowdown. This tool provides a safer adjustment range, but your optimal pace still depends on acclimation, fueling, and the exact conditions.</p>
 
       <h3>Is dew point better than humidity for pacing?</h3>
       <p>Dew point is often a better single indicator because it reflects absolute moisture. If you know dew point, use it. If not, this tool estimates it from temperature and humidity.</p>
 
       <h3>Should I still aim for even splits in tough conditions?</h3>
-      <p>In heat/wind/hills, aim for even effort rather than even pace. Accept slightly slower early splits to avoid late-race collapse. Negative split execution can still work if you stay controlled early.</p>
+      <p>In heat, wind, or hills, aim for even effort rather than even pace. Accept slightly slower early splits to avoid late-race collapse. A small negative split can still happen if you stay controlled early.</p>
+
+      <h3>Should I bank time on a tough marathon day?</h3>
+      <p>Usually no. Banking time early in bad conditions often increases the risk of a much bigger slowdown later.</p>
 
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
@@ -319,9 +530,7 @@
       return mm + ":" + String(ss).padStart(2,'0');
     }
 
-    // Dew point estimate (Magnus) for °C and RH%
     function estimateDewPointC(tC, rh){
-      // avoid log(0)
       rh = clamp(rh, 1, 100);
       var a = 17.27;
       var b = 237.7;
@@ -331,46 +540,33 @@
     }
 
     function heatPenaltyPct(tC, dpC, acclKey){
-      // penalty is driven mostly by dew point (mugginess) and temperature above mild range
-      // mild baseline ~ 10–15C
-      var t = tC;
-      var dp = dpC;
+      var tExcess = Math.max(0, tC - 15);
+      var tPct = tExcess * 0.25;
 
-      // temperature component (only above 15C)
-      var tExcess = Math.max(0, t - 15);
-      var tPct = tExcess * 0.25; // 0.25% per degree C above 15
-
-      // dew point component (only above 12C)
-      var dpExcess = Math.max(0, dp - 12);
-      var dpPct = dpExcess * 0.35; // 0.35% per degree C above 12
+      var dpExcess = Math.max(0, dpC - 12);
+      var dpPct = dpExcess * 0.35;
 
       var pct = tPct + dpPct;
 
-      // acclimation reduces penalty
       if(acclKey === 'yes') pct *= 0.70;
       else if(acclKey === 'some') pct *= 0.85;
 
-      // cap the planning penalty
-      pct = clamp(pct, 0, 12); // max 12% slowdown planning
+      pct = clamp(pct, 0, 12);
       return pct;
     }
 
     function windPenaltyPct(windKmh){
-      // rough planning penalty (average wind): small but real
-      // 0% up to 10 km/h, then ~0.15% per km/h up to cap
-      var w = windKmh;
-      var pct = Math.max(0, w - 10) * 0.15;
-      return clamp(pct, 0, 4); // cap 4%
+      var pct = Math.max(0, windKmh - 10) * 0.15;
+      return clamp(pct, 0, 4);
     }
 
     function hillsPenaltyPct(hillsKey){
       if(hillsKey === 'flat') return 0;
-      if(hillsKey === 'rolling') return 1.5;  // planning %
-      return 3.0; // hilly
+      if(hillsKey === 'rolling') return 1.5;
+      return 3.0;
     }
 
     function riskAdjustment(pct, riskKey){
-      // safe -> slightly more conservative, aggressive -> slightly less conservative
       if(riskKey === 'safe') return pct * 1.10;
       if(riskKey === 'aggr') return pct * 0.90;
       return pct;
@@ -410,7 +606,6 @@
       var totalPct = heatPct + windPct + hillPct;
       totalPct = riskAdjustment(totalPct, risk.value);
 
-      // produce a range: low = 70% of penalty, high = 115% of penalty
       var lowPct = clamp(totalPct * 0.70, 0, 25);
       var hiPct  = clamp(totalPct * 1.15, 0, 25);
 
@@ -430,12 +625,12 @@
 
       out.innerHTML =
         '<div class="kpi">' +
-          '<div class="fact"><div class="tiny muted2">Adjusted range (safer)</div><strong>' + fmtHMS(timeLow) + ' – ' + fmtHMS(timeHi) + '</strong><div class="tiny muted2">' +
+          '<div class="result-fact"><div class="tiny muted2">Adjusted range (safer)</div><strong>' + fmtHMS(timeLow) + ' – ' + fmtHMS(timeHi) + '</strong><div class="tiny muted2">' +
             fmtPace(paceLow) + '–' + fmtPace(paceHi) + '/km · ' +
             fmtPace(paceLowMi) + '–' + fmtPace(paceHiMi) + '/mi</div></div>' +
-          '<div class="fact"><div class="tiny muted2">Suggested target (mid)</div><strong>' + fmtHMS(timeMid) + '</strong><div class="tiny muted2">' +
+          '<div class="result-fact"><div class="tiny muted2">Suggested target (mid)</div><strong>' + fmtHMS(timeMid) + '</strong><div class="tiny muted2">' +
             fmtPace(paceMid) + '/km · ' + fmtPace(paceMidMi) + '/mi</div></div>' +
-          '<div class="fact"><div class="tiny muted2">Total adjustment</div><strong>+' + totalPct.toFixed(1) + '%</strong><div class="tiny muted2">Heat ' + heatPct.toFixed(1) + '% · Wind ' + windPct.toFixed(1) + '% · Hills ' + hillPct.toFixed(1) + '%</div></div>' +
+          '<div class="result-fact"><div class="tiny muted2">Total adjustment</div><strong>+' + totalPct.toFixed(1) + '%</strong><div class="tiny muted2">Heat ' + heatPct.toFixed(1) + '% · Wind ' + windPct.toFixed(1) + '% · Hills ' + hillPct.toFixed(1) + '%</div></div>' +
         '</div>' +
         '<p class="tiny muted2" style="margin-top:10px">Dew point used: <strong>' + dp.toFixed(1) + '°C</strong> (temp ' + tC.toFixed(1) + '°C, RH ' + rH.toFixed(0) + '%).</p>' +
         '<div class="row actions" style="margin-top:10px; gap:10px">' +
@@ -443,7 +638,7 @@
           '<a class="btn secondary" href="/blog/racing-in-heat-wind-hills/">Read conditions guide</a>' +
           '<a class="btn secondary" href="/monthly-training-plan/">Build a month plan</a>' +
         '</div>' +
-        '<p class="tiny muted" style="margin-top:10px">Best practice: run the first 10–15K by effort, not by watch pace. Don’t “bank time” in tough conditions.</p>';
+        '<p class="tiny muted" style="margin-top:10px">Best practice: run the first 10–15 km by effort, not by watch pace. Do not try to “bank time” in tough conditions.</p>';
     }
 
     function reset(){
@@ -473,7 +668,7 @@
         <a href="/marathon-pace-calculator/">Calculator</a>
         <a href="/monthly-training-plan/">Monthly plan</a>
         <a href="/blog/">Blog</a>
-        <a href="/sitemap/">HTML sitemap</a>
+        <a href="/sitemap.html">HTML sitemap</a>
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
         <a href="/privacy/">Privacy</a>
