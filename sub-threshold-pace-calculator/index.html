@@ -188,4 +188,438 @@
 
             <div>
               <label for="minutes">Minutes</label>
-              <input id="minutes" name="minutes" type="number" min="0" max="59" step
+              <input id="minutes" name="minutes" type="number" min="0" max="59" step="1" value="45" />
+            </div>
+
+            <div>
+              <label for="seconds">Seconds</label>
+              <input id="seconds" name="seconds" type="number" min="0" max="59" step="1" value="0" />
+            </div>
+
+            <div>
+              <label for="experience">Training level</label>
+              <select id="experience" name="experience">
+                <option value="conservative">Conservative / newer to threshold work</option>
+                <option value="moderate" selected>Moderate / some workout experience</option>
+                <option value="advanced">Advanced / experienced and durable</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="conditions">Conditions today</label>
+              <select id="conditions" name="conditions">
+                <option value="normal" selected>Normal</option>
+                <option value="fatigued">Tired / carrying fatigue</option>
+                <option value="warm">Warm or humid</option>
+                <option value="both">Warm + fatigued</option>
+              </select>
+            </div>
+          </div>
+
+          <p class="button-row">
+            <button type="submit" class="button">Calculate sub-threshold pace</button>
+            <button type="button" class="button button-secondary" id="reset-btn">Reset</button>
+          </p>
+        </form>
+
+        <div id="results" class="results" hidden>
+          <h3>Your estimated sub-threshold pace range</h3>
+          <p><strong>Recommended range:</strong> <span id="pace-range"></span> /km</p>
+          <p><strong>Conservative target:</strong> <span id="pace-conservative"></span> /km</p>
+          <p><strong>Moderate target:</strong> <span id="pace-moderate"></span> /km</p>
+          <p><strong>Upper-end cap:</strong> <span id="pace-advanced"></span> /km</p>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>Suggested use</th>
+                  <th>Pace guide</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Longer controlled reps</td>
+                  <td id="longer-reps"></td>
+                </tr>
+                <tr>
+                  <td>Shorter threshold reps</td>
+                  <td id="shorter-reps"></td>
+                </tr>
+                <tr>
+                  <td>Tired / cautious day</td>
+                  <td id="cautious-day"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout">
+            <p id="result-note"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-to-use">
+        <h2>How to use this calculator</h2>
+        <p>
+          This tool is best used as a <strong>starting estimate</strong>, not as a command. Pick the most recent race result that best reflects your current shape, then use the suggested range as a practical guide for threshold sessions.
+        </p>
+        <ul>
+          <li>Choose a recent race distance.</li>
+          <li>Enter your finishing time.</li>
+          <li>Select a realistic training level.</li>
+          <li>Adjust for fatigue or warm conditions when needed.</li>
+          <li>Start at the easier end if you are unsure.</li>
+        </ul>
+        <p>
+          Once you get a result, use it for sessions such as 5 x 6 minutes, 4 x 8 minutes, 4 x 10 minutes, or 6 x 1 km. For a broader explanation, read <a href="/norwegian-singles/">Norwegian Singles</a>. For marathon-specific context, read <a href="/norwegian-singles-marathon-training/">Norwegian Singles for Marathon Training</a>.
+        </p>
+      </section>
+
+      <section id="what-is-sub-threshold">
+        <h2>What sub-threshold pace means</h2>
+        <p>
+          Sub-threshold pace is a controlled intensity that sits <strong>just under your true threshold</strong>. It should feel honest and productive, but not desperate. You should be able to complete the session with fairly even pacing, decent mechanics, and enough left in the tank to train again in the next few days.
+        </p>
+        <p>
+          In practical terms, sub-threshold work usually feels:
+        </p>
+        <ul>
+          <li>harder than easy running</li>
+          <li>more controlled than race effort</li>
+          <li>sustainable across multiple reps</li>
+          <li>repeatable within a normal training week</li>
+        </ul>
+        <p>
+          That is why this kind of pace is so useful for <a href="/norwegian-singles-workouts/">Norwegian Singles workouts</a> and controlled threshold training. It gives you a meaningful aerobic stimulus without the recovery cost of trying to prove fitness every session.
+        </p>
+      </section>
+
+      <section id="methodology">
+        <h2>How this estimate is built</h2>
+        <p>
+          This calculator uses your recent race performance to create a <strong>practical sub-threshold pace range</strong> rather than one single “perfect” pace. That is deliberate. Real-world threshold work depends on your durability, training history, terrain, weather, fatigue, and how honest your last race result is.
+        </p>
+
+        <h3>Methodology principles</h3>
+        <ul>
+          <li>5K results are adjusted more conservatively because threshold pace should be meaningfully slower than 5K race pace.</li>
+          <li>10K results often provide a very useful anchor for threshold work.</li>
+          <li>Half marathon results can provide a strong estimate for experienced runners.</li>
+          <li>Marathon results are helpful, but only if the race reflected true fitness and was not heavily compromised by pacing, fuelling, weather, or cramping.</li>
+        </ul>
+
+        <p>
+          This is a practical coaching-style estimate, not a laboratory lactate test. That is also why the result includes a range and separate guidance for conservative, moderate, and upper-end pacing.
+        </p>
+
+        <div class="callout">
+          <p>
+            <strong>Important:</strong> if the calculated pace feels too aggressive, back off. Threshold work is supposed to be controlled. A slightly easier session that preserves the rest of your training week is usually smarter than a “perfect” pace that blows you up.
+          </p>
+        </div>
+      </section>
+
+      <section class="card callout">
+        <h2>Recommended tools</h2>
+        <p>
+          If you want a few simple tools to help with pacing and controlled threshold sessions, these are relevant options:
+        </p>
+        <ul>
+          <li><a href="https://amzn.to/3NHIrqo" rel="sponsored noopener noreferrer" target="_blank">Polar H10 Heart Rate Monitor Chest Strap</a></li>
+          <li><a href="https://amzn.to/4bfTRuy" rel="sponsored noopener noreferrer" target="_blank">Garmin HRM 600</a></li>
+          <li><a href="https://amzn.to/4lBhhxN" rel="sponsored noopener noreferrer" target="_blank">Garmin Forerunner 970</a></li>
+        </ul>
+        <p>
+          Keep the gear side simple. The biggest performance win is still getting the effort right.
+        </p>
+      </section>
+
+      <section id="session-examples">
+        <h2>Session examples for this pace range</h2>
+        <p>
+          Once you have your estimated range, here are the kinds of sessions that usually fit well:
+        </p>
+
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Session</th>
+                <th>When it fits well</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>5 x 6 minutes</td>
+                <td>Excellent all-round threshold session for many runners</td>
+              </tr>
+              <tr>
+                <td>4 x 8 minutes</td>
+                <td>Good for slightly longer controlled work</td>
+              </tr>
+              <tr>
+                <td>4 x 10 minutes</td>
+                <td>Best for durable runners with good pacing discipline</td>
+              </tr>
+              <tr>
+                <td>6 x 1 km</td>
+                <td>Useful when runners like simple, repeatable structure</td>
+              </tr>
+              <tr>
+                <td>3 x 12 minutes</td>
+                <td>Helpful for marathon-oriented threshold development</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          You can see more structure ideas on the planned <a href="/norwegian-singles-plan/">Norwegian Singles Plan</a> page and more specific session guidance on <a href="/norwegian-singles-workouts/">Norwegian Singles Workouts</a>.
+        </p>
+      </section>
+
+      <section id="mistakes">
+        <h2>Common mistakes with sub-threshold pacing</h2>
+
+        <h3>1. Using an old personal best</h3>
+        <p>
+          If your current fitness is below that result, the estimate will be too aggressive.
+        </p>
+
+        <h3>2. Treating threshold pace like race pace</h3>
+        <p>
+          A threshold session should not feel like a 5K time trial broken into chunks.
+        </p>
+
+        <h3>3. Ignoring conditions</h3>
+        <p>
+          Heat, humidity, hills, and general fatigue can change what “correct” pacing looks like on the day.
+        </p>
+
+        <h3>4. Assuming one pace fits every session</h3>
+        <p>
+          Longer reps often work better at the easier end of the range, while shorter controlled reps may sit slightly quicker.
+        </p>
+
+        <h3>5. Using the output without checking feel</h3>
+        <p>
+          This is a guide, not a command. Your breathing, rhythm, repeatability, and next-day recovery still matter.
+        </p>
+
+        <p>
+          If you are unsure whether this style currently suits you, visit <a href="/who-should-not-do-norwegian-singles/">Who Should Not Do Norwegian Singles?</a> or compare it with <a href="/norwegian-singles-vs-tempo-runs/">Norwegian Singles vs Tempo Runs</a>.
+        </p>
+      </section>
+
+      <section id="related-guides" class="related-links">
+        <h2>Related guides</h2>
+        <ul>
+          <li><a href="/norwegian-singles/">Norwegian Singles overview</a></li>
+          <li><a href="/norwegian-singles-marathon-training/">Norwegian Singles for Marathon Training</a></li>
+          <li><a href="/norwegian-singles-workouts/">Norwegian Singles Workouts</a></li>
+          <li><a href="/norwegian-singles-plan/">Norwegian Singles Plan</a></li>
+          <li><a href="/norwegian-singles-vs-double-threshold/">Norwegian Singles vs Double Threshold</a></li>
+          <li><a href="/norwegian-singles-vs-tempo-runs/">Norwegian Singles vs Tempo Runs</a></li>
+          <li><a href="/what-is-the-norwegian-method-running/">What Is the Norwegian Method in Running?</a></li>
+          <li><a href="/who-should-not-do-norwegian-singles/">Who Should Not Do Norwegian Singles?</a></li>
+          <li><a href="/blog/tempo-vs-threshold-vs-marathon-pace/">Tempo vs Threshold vs Marathon Pace</a></li>
+          <li><a href="/marathon-pace-calculator/">Marathon Pace Calculator</a></li>
+        </ul>
+      </section>
+
+      <section id="faq">
+        <h2>FAQ</h2>
+
+        <h3>What is sub-threshold pace?</h3>
+        <p>
+          It is a controlled training intensity just below true threshold. It should feel steady and repeatable rather than all-out.
+        </p>
+
+        <h3>Is this calculator exact?</h3>
+        <p>
+          No. It is a practical estimate designed for real-world training, not a lab measurement.
+        </p>
+
+        <h3>What if the suggested pace feels too hard?</h3>
+        <p>
+          Slow down. Threshold training should preserve control and repeatability. Use the easier end of the range or back off further.
+        </p>
+
+        <h3>Which race distance gives the best estimate?</h3>
+        <p>
+          A recent, representative 10K or half marathon often gives a strong estimate, but the best choice depends on what most accurately reflects your current shape.
+        </p>
+
+        <h3>Is this for marathon runners only?</h3>
+        <p>
+          No. It can help 5K, 10K, half marathon, and marathon runners. The key is using the output in context.
+        </p>
+
+        <h3>Can I use this for Norwegian Singles?</h3>
+        <p>
+          Yes. That is exactly what it is designed for: controlled threshold sessions and Norwegian Singles-style training.
+        </p>
+      </section>
+
+      <section class="bottom-line card">
+        <h2>Bottom line</h2>
+        <p>
+          A good sub-threshold pace is not about finding the fastest pace you can survive. It is about finding a pace you can <strong>repeat, control, and recover from</strong>.
+        </p>
+        <p>
+          Use this calculator as a practical starting point, then refine from there based on feel, conditions, and how the session fits the rest of your week.
+        </p>
+        <p class="button-row">
+          <a class="button" href="/norwegian-singles-workouts/">See threshold workout examples</a>
+          <a class="button button-secondary" href="/norwegian-singles-marathon-training/">Read the marathon guide</a>
+        </p>
+      </section>
+
+      <section class="affiliate-disclosure">
+        <p class="affiliate-note">
+          Some links on this page may be affiliate links, which means we may earn a small commission at no extra cost to you.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <nav aria-label="Footer">
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/marathon-pace-calculator/">Pace Calculator</a>
+        <a href="/printable-pace-band/">Pace Band</a>
+        <a href="/about/">About</a>
+      </nav>
+      <p>&copy; <span id="year"></span> Marathon Pace KM</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const form = document.getElementById('threshold-calculator');
+      const results = document.getElementById('results');
+      const resetBtn = document.getElementById('reset-btn');
+
+      const paceRange = document.getElementById('pace-range');
+      const paceConservative = document.getElementById('pace-conservative');
+      const paceModerate = document.getElementById('pace-moderate');
+      const paceAdvanced = document.getElementById('pace-advanced');
+      const longerReps = document.getElementById('longer-reps');
+      const shorterReps = document.getElementById('shorter-reps');
+      const cautiousDay = document.getElementById('cautious-day');
+      const resultNote = document.getElementById('result-note');
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      const distances = {
+        "5k": 5,
+        "10k": 10,
+        "half": 21.0975,
+        "marathon": 42.195
+      };
+
+      function secPerKm(totalSeconds, distanceKm) {
+        return totalSeconds / distanceKm;
+      }
+
+      function formatPace(secondsPerKm) {
+        const rounded = Math.round(secondsPerKm);
+        const mins = Math.floor(rounded / 60);
+        const secs = rounded % 60;
+        return mins + ":" + String(secs).padStart(2, "0");
+      }
+
+      function computeBaseThreshold(racePace, distance) {
+        if (distance === "5k") return racePace + 22;
+        if (distance === "10k") return racePace + 12;
+        if (distance === "half") return racePace + 4;
+        if (distance === "marathon") return racePace - 6;
+        return racePace + 12;
+      }
+
+      function applyExperience(base, experience) {
+        if (experience === "conservative") return { low: base + 6, mid: base + 10, high: base + 14 };
+        if (experience === "advanced") return { low: base - 4, mid: base, high: base + 4 };
+        return { low: base, mid: base + 4, high: base + 8 };
+      }
+
+      function applyConditions(values, conditions) {
+        let offset = 0;
+        if (conditions === "fatigued") offset = 4;
+        if (conditions === "warm") offset = 4;
+        if (conditions === "both") offset = 8;
+
+        return {
+          low: values.low + offset,
+          mid: values.mid + offset,
+          high: values.high + offset
+        };
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const distance = document.getElementById('distance').value;
+        const hours = parseInt(document.getElementById('hours').value || "0", 10);
+        const minutes = parseInt(document.getElementById('minutes').value || "0", 10);
+        const seconds = parseInt(document.getElementById('seconds').value || "0", 10);
+        const experience = document.getElementById('experience').value;
+        const conditions = document.getElementById('conditions').value;
+
+        const totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+
+        if (!totalSeconds || totalSeconds <= 0) {
+          alert("Please enter a valid time.");
+          return;
+        }
+
+        const distanceKm = distances[distance];
+        const racePace = secPerKm(totalSeconds, distanceKm);
+        const baseThreshold = computeBaseThreshold(racePace, distance);
+        const experienced = applyExperience(baseThreshold, experience);
+        const finalValues = applyConditions(experienced, conditions);
+
+        const minRange = Math.min(finalValues.low, finalValues.high);
+        const maxRange = Math.max(finalValues.low, finalValues.high);
+
+        paceRange.textContent = formatPace(minRange) + " to " + formatPace(maxRange);
+        paceConservative.textContent = formatPace(finalValues.high);
+        paceModerate.textContent = formatPace(finalValues.mid);
+        paceAdvanced.textContent = formatPace(finalValues.low);
+
+        longerReps.textContent = formatPace(finalValues.mid + 4) + " to " + formatPace(finalValues.high);
+        shorterReps.textContent = formatPace(finalValues.low) + " to " + formatPace(finalValues.mid);
+        cautiousDay.textContent = formatPace(finalValues.high + 4) + " to " + formatPace(finalValues.high + 8);
+
+        let note = "Start conservatively and use feel. A good threshold session should feel controlled, steady, and repeatable.";
+        if (distance === "marathon") {
+          note = "Marathon results can underestimate threshold pace if the race was compromised. Use this result carefully and prioritise control.";
+        } else if (distance === "5k") {
+          note = "5K pace is much faster than threshold pace. Be careful not to force the workout too hard just because the reps look short.";
+        } else if (conditions === "both") {
+          note = "Because you selected warm conditions and fatigue, this estimate has been softened. On a day like this, protecting control is more important than chasing pace.";
+        }
+
+        resultNote.textContent = note;
+        results.hidden = false;
+        results.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      resetBtn.addEventListener('click', function () {
+        form.reset();
+        document.getElementById('hours').value = 0;
+        document.getElementById('minutes').value = 45;
+        document.getElementById('seconds').value = 0;
+        document.getElementById('distance').value = '10k';
+        document.getElementById('experience').value = 'moderate';
+        document.getElementById('conditions').value = 'normal';
+        results.hidden = true;
+      });
+    })();
+  </script>
+</body>
+</html>
