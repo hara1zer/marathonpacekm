@@ -19,17 +19,89 @@
 
 <link rel="stylesheet" href="/assets/style.css" />
 
+<style>
+  .eeat-box{
+    border: 1px solid rgba(0,0,0,.10);
+    border-radius: 14px;
+    padding: 14px;
+    background: rgba(0,0,0,.03);
+    margin: 14px 0;
+  }
+  .eeat-box h2,
+  .eeat-box h3{
+    margin-top: 0;
+  }
+  .divider{
+    border: 0;
+    height: 1px;
+    background: rgba(0,0,0,.10);
+    margin: 28px 0;
+  }
+</style>
+
 <script type="application/ld+json">
 {
- "@context":"https://schema.org",
- "@type":"Article",
- "headline":"How to Know If You're Overpacing in a Marathon",
- "author":{"@type":"Organization","name":"Marathon Pace KM"},
- "publisher":{
-   "@type":"Organization",
-   "name":"Marathon Pace KM",
-   "logo":{"@type":"ImageObject","url":"https://marathonpacekm.com/assets/logo.png"}
- }
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://marathonpacekm.com/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://marathonpacekm.com/blog/"},
+        {"@type":"ListItem","position":3,"name":"How to Know If You're Overpacing in a Marathon","item":"https://marathonpacekm.com/blog/how-to-know-if-youre-overpacing/"}
+      ]
+    },
+    {
+      "@type":"Article",
+      "headline":"How to Know If You're Overpacing in a Marathon (Early Warning Signs)",
+      "description":"Wondering if you're running too fast in a marathon or workout? Learn the early warning signs of overpacing using effort, heart rate, breathing, and split stability — before the 30K blow-up.",
+      "mainEntityOfPage":{
+        "@type":"WebPage",
+        "@id":"https://marathonpacekm.com/blog/how-to-know-if-youre-overpacing/"
+      },
+      "author":{
+        "@type":"Organization",
+        "name":"Marathon Pace KM",
+        "url":"https://marathonpacekm.com/about/"
+      },
+      "publisher":{
+        "@type":"Organization",
+        "name":"Marathon Pace KM",
+        "logo":{"@type":"ImageObject","url":"https://marathonpacekm.com/assets/logo.png"},
+        "url":"https://marathonpacekm.com/"
+      },
+      "dateModified":"2026-03-20"
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"Is starting slightly slow better in a marathon?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Usually yes. Even pacing or a slight negative split is more reliable than starting aggressively and trying to hang on later."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Should I chase lost time if I realize I started too slow?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Usually no. Surging to make up time often raises effort cost more than runners expect and increases the risk of late-race slowdown."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"How early can overpacing show up?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Often within the first 5–15 kilometres through breathing tension, rising heart rate, unstable splits, or an effort level that already feels too active for marathon pace."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -37,250 +109,305 @@
 <body>
 
 <header class="site-header">
-<div class="container">
-<a class="logo" href="/">Marathon Pace KM</a>
-<nav class="nav">
-<a href="/marathon-pace-chart/">Pace Chart</a>
-<a href="/predict-marathon-time/">Predictor</a>
-<a href="/half-marathon-to-marathon/">Half → Full</a>
-<a href="/adjust-marathon-pace/">Adjust Pace</a>
-<a href="/blog/">Blog</a>
-</nav>
-</div>
+  <div class="container">
+    <a class="logo" href="/">Marathon Pace KM</a>
+    <nav class="nav">
+      <a href="/marathon-pace-chart/">Pace Chart</a>
+      <a href="/predict-marathon-time/">Predictor</a>
+      <a href="/half-marathon-to-marathon/">Half → Full</a>
+      <a href="/adjust-marathon-pace/">Adjust Pace</a>
+      <a href="/blog/">Blog</a>
+    </nav>
+  </div>
 </header>
 
 <main class="container">
 
-<nav class="breadcrumbs">
-<a href="/">Home</a> ›
-<a href="/blog/">Blog</a> ›
-<span>How to Know If You're Overpacing</span>
-</nav>
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/">Home</a> ›
+    <a href="/blog/">Blog</a> ›
+    <span>How to Know If You're Overpacing</span>
+  </nav>
 
-<article>
+  <article>
 
-<h1>How to Know If You're Overpacing in a Marathon</h1>
+    <h1>How to Know If You're Overpacing in a Marathon</h1>
 
-<p class="lead">
-Most marathon blow-ups don’t start at 30K.
-They start in the <strong>first 5–15 kilometres</strong> — when pace feels easy but effort cost is already too high.
-</p>
+    <p class="lead">
+      Most marathon blow-ups don’t start at 30K.
+      They start in the <strong>first 5–15 kilometres</strong> — when pace feels easy but effort cost is already too high.
+    </p>
 
-<div class="callout">
-<strong>Related decision guides:</strong><br>
-<a href="/blog/should-i-slow-down-if-heart-rate-is-high/">HR high?</a> ·
-<a href="/blog/when-to-adjust-marathon-pace-mid-race/">Adjust pace mid-race</a> ·
-<a href="/blog/why-marathon-pace-feels-harder-some-days/">Why pace feels harder</a> ·
-<a href="/adjust-marathon-pace/cardiac-drift/">Cardiac drift</a>
-</div>
+    <p>
+      This matters whether you are racing from a strict pace plan or training with more controlled threshold-based structure.
+      If you use <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a>,
+      overpacing usually shows up as effort drift before the pace itself looks obviously wrong.
+    </p>
 
----
+    <div class="eeat-box">
+      <h2 style="font-size:1.1rem;">How this guide is meant to be used</h2>
+      <p class="meta" style="margin-bottom:0;">
+        This article is written for runners trying to catch pacing mistakes early enough to save the day.
+        At Marathon Pace KM, the focus is practical decision-making: use breathing, effort, heart-rate behaviour,
+        and split stability together rather than trusting one number in isolation.
+      </p>
+    </div>
 
-<h2>The #1 Truth About Overpacing</h2>
+    <div class="callout">
+      <strong>Related decision guides:</strong><br>
+      <a href="/blog/should-i-slow-down-if-heart-rate-is-high/">HR high?</a> ·
+      <a href="/blog/when-to-adjust-marathon-pace-mid-race/">Adjust pace mid-race</a> ·
+      <a href="/blog/why-marathon-pace-feels-harder-some-days/">Why pace feels harder</a> ·
+      <a href="/adjust-marathon-pace/cardiac-drift/">Cardiac drift</a>
+    </div>
 
-<p>
-Overpacing rarely feels fast early.
-It feels <strong>comfortable but slightly “too good.”</strong>
-Adrenaline, crowds, taper freshness, and cool weather hide the true effort cost.
-</p>
+    <hr class="divider" />
 
-<div class="callout">
-<strong>If marathon pace feels effortless in the first 5–10K, you are probably slightly overpacing.</strong>
-</div>
+    <h2>The #1 Truth About Overpacing</h2>
 
----
+    <p>
+      Overpacing rarely feels fast early.
+      It feels <strong>comfortable but slightly too good</strong>.
+      Adrenaline, crowds, taper freshness, and cool weather hide the true effort cost.
+    </p>
 
-<h2>5 Early Warning Signs You're Overpacing</h2>
+    <div class="callout">
+      <strong>If marathon pace feels effortless in the first 5–10K, you are probably slightly overpacing.</strong>
+    </div>
 
-<h3>1. Breathing is not fully relaxed</h3>
-<ul>
-<li>You can talk — but only short phrases</li>
-<li>Breathing feels “active” instead of automatic</li>
-<li>Effort feels closer to steady/tempo</li>
-</ul>
+    <p>
+      That does not mean you should panic. It means you should pay attention early, while the race is still easy to fix.
+    </p>
 
-✅ Marathon effort should feel boring early.
+    <hr class="divider" />
 
----
+    <h2>5 Early Warning Signs You're Overpacing</h2>
 
-<h3>2. Heart rate climbs earlier than expected</h3>
+    <h3>1. Breathing is not fully relaxed</h3>
+    <ul>
+      <li>You can talk — but only short phrases</li>
+      <li>Breathing feels active instead of automatic</li>
+      <li>Effort feels closer to steady or tempo than controlled marathon rhythm</li>
+    </ul>
 
-<p>
-Heart rate naturally rises later due to
-<a href="/adjust-marathon-pace/cardiac-drift/">cardiac drift</a>.
-But early upward trend = pacing error.
-</p>
+    <p>Marathon effort should feel boring early.</p>
 
-<p class="meta">
-Decision help:
-<a href="/blog/should-i-slow-down-if-heart-rate-is-high/">Should I slow down if HR is high?</a>
-</p>
+    <hr class="divider" />
 
----
+    <h3>2. Heart rate climbs earlier than expected</h3>
 
-<h3>3. Splits require effort to maintain</h3>
+    <p>
+      Heart rate naturally rises later due to
+      <a href="/adjust-marathon-pace/cardiac-drift/">cardiac drift</a>.
+      But an early upward trend can point to pacing error, especially if conditions are not unusually hot or hilly.
+    </p>
 
-<p>
-If you must constantly correct pace:
-</p>
+    <p class="meta">
+      Decision help:
+      <a href="/blog/should-i-slow-down-if-heart-rate-is-high/">Should I slow down if HR is high?</a>
+    </p>
 
-<ul>
-<li>speed up after hills</li>
-<li>push into wind</li>
-<li>fight GPS fluctuations</li>
-</ul>
+    <hr class="divider" />
 
-You are increasing metabolic cost.
+    <h3>3. Splits require effort to maintain</h3>
 
-Smooth pacing beats perfect pacing.
+    <p>
+      If you must constantly correct pace, you are often spending more energy than you realize.
+    </p>
 
----
+    <ul>
+      <li>speed up after hills</li>
+      <li>push into wind</li>
+      <li>fight GPS fluctuations</li>
+    </ul>
 
-<h3>4. You feel unusually good</h3>
+    <p>
+      Smooth pacing beats perfect pacing.
+    </p>
 
-<p>
-Classic marathon trap:
-</p>
+    <hr class="divider" />
 
-<ul>
-<li>legs feel light</li>
-<li>crowd energy high</li>
-<li>pace feels easy</li>
-</ul>
+    <h3>4. You feel unusually good</h3>
 
-That feeling often disappears after 25–30K.
+    <p>
+      This is one of the classic marathon traps:
+    </p>
 
----
+    <ul>
+      <li>legs feel light</li>
+      <li>crowd energy is high</li>
+      <li>pace feels easy</li>
+    </ul>
 
-<h3>5. HR + RPE mismatch</h3>
+    <p>
+      That feeling often disappears after 25–30K.
+      The goal is not to use the best feeling of the day to set your pace. The goal is to use the right effort for the whole race.
+    </p>
 
-<p>
-Danger sign:
-</p>
+    <hr class="divider" />
 
-<ul>
-<li>HR slightly elevated</li>
-<li>Effort feels manageable</li>
-<li>You ignore it</li>
-</ul>
+    <h3>5. HR + RPE mismatch</h3>
 
-This combination predicts late slowdown surprisingly well in pacing studies.
-</p>
+    <p>
+      One dangerous combination is:
+    </p>
 
----
+    <ul>
+      <li>HR slightly elevated</li>
+      <li>effort still feels manageable</li>
+      <li>you ignore it because pace looks good</li>
+    </ul>
 
-<h2>The 10K Self-Check Rule</h2>
+    <p>
+      This is often how runners drift just a little above sustainable marathon effort without noticing soon enough.
+    </p>
 
-<div class="callout">
-At 10K ask:
-<ul>
-<li>Could I comfortably hold this for 30K more?</li>
-<li>Is breathing calm?</li>
-<li>Does pace feel restrained?</li>
-</ul>
+    <hr class="divider" />
 
-If unsure → slow 5–10 sec/km.
-</div>
+    <h2>The 10K Self-Check Rule</h2>
 
-Small early corrections prevent massive late losses.
+    <div class="callout">
+      At 10K ask:
+      <ul>
+        <li>Could I comfortably hold this for 30K more?</li>
+        <li>Is breathing calm?</li>
+        <li>Does pace feel restrained?</li>
+      </ul>
 
----
+      If unsure → slow 5–10 sec/km.
+    </div>
 
-<h2>Why Overpacing Causes the 30K Wall</h2>
+    <p>
+      Small early corrections prevent massive late losses.
+    </p>
 
-<p>
-Running slightly above sustainable intensity accelerates:
-</p>
+    <hr class="divider" />
 
-<ul>
-<li>glycogen depletion</li>
-<li>muscle damage</li>
-<li>thermal strain</li>
-<li>cardiac drift</li>
-</ul>
+    <h2>Why Overpacing Causes the 30K Wall</h2>
 
-Even a 2–3% pacing error early can produce large slowdown later.
-</p>
+    <p>
+      Running slightly above sustainable intensity accelerates:
+    </p>
 
----
+    <ul>
+      <li>glycogen depletion</li>
+      <li>muscle damage</li>
+      <li>thermal strain</li>
+      <li>cardiac drift</li>
+    </ul>
 
-<h2>What To Do If You Realize You're Overpacing</h2>
+    <p>
+      Even a small pacing error early can produce a much larger slowdown later.
+    </p>
 
-<h3>Step 1 — Don't panic</h3>
-<p>Most races are salvageable before halfway.</p>
+    <p>
+      This is also why marathon training should make marathon pace feel controlled, not tense.
+      If you are building that control through threshold-based work, see
+      <a href="/norwegian-singles-vs-tempo-runs/">Norwegian Singles vs tempo runs</a>
+      for how steady work and threshold work support marathon pacing differently.
+    </p>
 
-<h3>Step 2 — Reduce pace slightly</h3>
-<ul>
-<li>Slow 5–15 sec/km</li>
-<li>Hold for 3–5 km</li>
-<li>Let HR stabilize</li>
-</ul>
+    <hr class="divider" />
 
-<h3>Step 3 — Stabilize effort</h3>
-<ul>
-<li>Relax shoulders</li>
-<li>Shorten stride slightly</li>
-<li>Resume fueling/hydration</li>
-</ul>
+    <h2>What To Do If You Realize You're Overpacing</h2>
 
-See:
-<a href="/blog/when-to-adjust-marathon-pace-mid-race/">Mid-race adjustment guide</a>
+    <h3>Step 1 — Don't panic</h3>
+    <p>Most races are salvageable before halfway.</p>
 
----
+    <h3>Step 2 — Reduce pace slightly</h3>
+    <ul>
+      <li>Slow 5–15 sec/km</li>
+      <li>Hold for 3–5 km</li>
+      <li>Let HR stabilize</li>
+    </ul>
 
-<h2>The Golden Marathon Rule</h2>
+    <h3>Step 3 — Stabilize effort</h3>
+    <ul>
+      <li>Relax shoulders</li>
+      <li>Shorten stride slightly</li>
+      <li>Resume fueling and hydration</li>
+    </ul>
 
-<div class="callout">
-<strong>The marathon rewards restraint, not bravery.</strong>
-</div>
+    <p>
+      See:
+      <a href="/blog/when-to-adjust-marathon-pace-mid-race/">Mid-race adjustment guide</a>
+    </p>
 
-Most personal bests come from pacing that feels conservative until late.
+    <hr class="divider" />
 
----
+    <h2>The Golden Marathon Rule</h2>
 
-<h2>FAQ</h2>
+    <div class="callout">
+      <strong>The marathon rewards restraint, not bravery.</strong>
+    </div>
 
-<h3>Is starting slightly slow better?</h3>
-<p>
-Yes. Negative or even pacing consistently produces better outcomes than aggressive starts.
-</p>
+    <p>
+      Most personal bests come from pacing that feels conservative until late.
+    </p>
 
-<h3>Should I chase lost time?</h3>
-<p>
-Almost never. Surging increases fatigue cost dramatically.
-</p>
+    <hr class="divider" />
 
-<h3>Do elite runners overpace?</h3>
-<p>
-Even elites misjudge early pace — but experienced runners correct early rather than fight later.
-</p>
+    <h2>FAQ</h2>
 
----
+    <h3>Is starting slightly slow better?</h3>
+    <p>
+      Usually yes. Even pacing or a small negative split tends to produce better outcomes than aggressive starts.
+    </p>
 
-<h2>References</h2>
+    <h3>Should I chase lost time?</h3>
+    <p>
+      Almost never. Surging increases fatigue cost dramatically.
+    </p>
 
-<ul>
-<li>Smyth B. Fast starters and slow finishers in endurance running (2018).</li>
-<li>Billat VL et al. Pacing strategy and cardiac drift in marathon runners.</li>
-<li>Coyle EF. Cardiovascular drift during prolonged exercise.</li>
-</ul>
+    <h3>Do elite runners overpace?</h3>
+    <p>
+      Even elites misjudge early pace sometimes, but experienced runners usually correct earlier rather than fighting the mistake later.
+    </p>
 
-<hr>
+    <hr class="divider" />
 
-<p class="meta">
-Next:
-<a href="/adjust-marathon-pace/race-day-adrenaline/">Race-day adrenaline</a> ·
-Back to:
-<a href="/adjust-marathon-pace/">Adjust Marathon Pace Hub</a>
-</p>
+    <h2>References</h2>
 
-</article>
+    <ul>
+      <li>Smyth B. Fast starters and slow finishers in endurance running (2018).</li>
+      <li>Billat VL et al. Pacing strategy and cardiac drift in marathon runners.</li>
+      <li>Coyle EF. Cardiovascular drift during prolonged exercise.</li>
+    </ul>
+
+    <section class="eeat-box" aria-label="About Marathon Pace KM">
+      <h2 style="font-size:1.1rem;">About Marathon Pace KM</h2>
+      <p class="meta">
+        Marathon Pace KM publishes practical pacing tools, calculators, and training guides designed to help runners
+        make better decisions from race data, pacing logic, recovery context, and real-world training feedback.
+      </p>
+      <p class="meta">
+        Learn more on the <a href="/about/">About</a> page, get in touch via <a href="/contact/">Contact</a>,
+        and read the <a href="/disclaimer/">Disclaimer</a> and <a href="/privacy/">Privacy Policy</a>.
+      </p>
+      <p class="meta">
+        Related pages:
+        <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a> ·
+        <a href="/norwegian-singles-vs-tempo-runs/">Norwegian Singles vs tempo runs</a> ·
+        <a href="/who-should-not-do-norwegian-singles/">Who should not do Norwegian Singles</a>
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <p class="meta">
+      Next:
+      <a href="/adjust-marathon-pace/race-day-adrenaline/">Race-day adrenaline</a> ·
+      Back to:
+      <a href="/adjust-marathon-pace/">Adjust Marathon Pace Hub</a>
+    </p>
+
+  </article>
 </main>
 
 <footer class="site-footer">
-<div class="container">
-<p>&copy; <span id="year"></span> Marathon Pace KM</p>
-</div>
+  <div class="container">
+    <p>&copy; <span id="year"></span> Marathon Pace KM</p>
+  </div>
 </footer>
 
 <script>
