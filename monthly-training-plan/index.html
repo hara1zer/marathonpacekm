@@ -4,10 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Marathon Training Planner | Marathon Pace KM</title>
-  <meta name="description" content="Generate a personalised 4-week training plan using your recent running, goal date, availability and injury status. Includes pace guidance, exact workouts, share link and calendar export." />
+  <meta name="description" content="Generate a personalised 4-week marathon training plan using your recent running, goal date, availability, and injury status. Includes pace guidance, exact workouts, methodology notes, share link, and calendar export." />
   <link rel="canonical" href="https://marathonpacekm.com/monthly-training-plan/" />
 
-  <!-- Use your site styles if present -->
   <link rel="preload" href="/assets/style.css" as="style" />
   <link rel="stylesheet" href="/assets/style.css" />
   <style>
@@ -31,6 +30,7 @@
 
     h1{ margin:0; font-size: 28px; letter-spacing: -0.02em; }
     h2{ margin:0 0 10px; font-size: 18px; letter-spacing: -0.01em; }
+    h3{ margin:0 0 8px; font-size: 16px; letter-spacing: -0.01em; }
     p{ margin: 8px 0; }
     .sub{ color: var(--muted); margin-top: 8px; line-height: 1.45; }
     .tiny{ font-size: 12px; color: var(--muted); }
@@ -205,16 +205,76 @@
 
     .meter{ height: 10px; border-radius: 999px; background: rgba(0,0,0,.08); overflow:hidden; }
     .meter > div{ height: 100%; width: 0%; background: #111; }
+
+    .method-list{ margin:8px 0 0 18px; }
+    .method-list li{ margin:6px 0; }
   </style>
 
   <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},{"@type":"ListItem","position":2,"name":"Monthly training plan","item":"https://marathonpacekm.com/monthly-training-plan/"}]}
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
+          {"@type":"ListItem","position":2,"name":"Monthly training plan","item":"https://marathonpacekm.com/monthly-training-plan/"}
+        ]
+      },
+      {
+        "@type":"WebApplication",
+        "name":"Marathon Training Planner",
+        "url":"https://marathonpacekm.com/monthly-training-plan/",
+        "applicationCategory":"HealthApplication",
+        "operatingSystem":"Web",
+        "description":"Interactive 4-week marathon training planner that uses recent training, goal date, pace anchors, availability, and injury status to generate a structured running plan.",
+        "creator":{
+          "@type":"Organization",
+          "name":"Marathon Pace KM",
+          "url":"https://marathonpacekm.com/about/"
+        },
+        "publisher":{
+          "@type":"Organization",
+          "name":"Marathon Pace KM",
+          "url":"https://marathonpacekm.com/"
+        }
+      },
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {
+            "@type":"Question",
+            "name":"What training methods does this planner use?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"The planner blends principles from several established marathon-training approaches rather than copying a single plan. Depending on the runner and phase, it may use Daniels-style pace guidance, Pfitz-style medium-long runs, Hansons-style distribution, and controlled Norwegian-style threshold singles."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Does this planner create the same plan for everyone?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"No. The planner changes phase, workload, workout type, and progression based on recent mileage, frequency, long-run history, injury status, pace anchor, available training days, and time caps."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Who is this planner best for?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"It is designed for runners who want a practical 4-week marathon training structure based on current fitness and availability. It works best as an educational planning tool, not as medical or individualized clinical advice."
+            }
+          }
+        ]
+      }
+    ]
+  }
   </script>
 
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
 </head>
 
 <body>
@@ -225,7 +285,7 @@
           <h1>Marathon Training Planner</h1>
           <p class="sub">
             Generate a personalised 4-week plan from your recent running, goal date, availability, and injury status.
-            The plan automatically chooses the right phase (base → marathon block → taper) and blends training approaches when appropriate.
+            The planner automatically chooses the right phase (base → marathon block → taper) and blends training approaches when appropriate.
           </p>
           <div class="row" style="margin-top:8px;">
             <span class="pill"><strong>Auto phase</strong> from date</span>
@@ -239,10 +299,40 @@
           <button class="btn ghost" id="btnLoadDemo" type="button">Load demo</button>
         </div>
       </div>
+
+      <div class="callout" style="margin-top:14px;">
+        <h2 class="callout-title">How this planner builds your plan</h2>
+        <p class="tiny">
+          This tool does not just output a generic calendar. It uses your recent mileage, longest run, current frequency,
+          injury status, available run days, time caps, and pace anchor to choose a safe 4-week structure.
+          Depending on your inputs, it may lean more toward simple consistency, controlled threshold development,
+          marathon-specific work, or reduced-load tapering.
+        </p>
+        <p class="tiny">
+          It is influenced by several established marathon-training ideas rather than one single “school”:
+        </p>
+        <ul class="tiny method-list">
+          <li><strong>Daniels-style pace guidance</strong> for effort bands when a race anchor is available.</li>
+          <li><strong>Pfitz-style medium-long runs</strong> when frequency and durability support them.</li>
+          <li><strong>Hansons-style distribution</strong> when long-run load should stay proportionate to weekly volume.</li>
+          <li><strong>Controlled Norwegian-style threshold singles</strong> when the runner is durable enough for threshold structure without overreaching.</li>
+          <li><strong>Beginner-safe consistency-first progression</strong> when the inputs suggest rebuilding or return-to-run status.</li>
+        </ul>
+        <p class="tiny">
+          The goal is not to imitate any single published plan exactly. The goal is to produce a practical, repeatable month of training
+          that matches the runner’s current situation.
+        </p>
+        <p class="tiny" style="margin-top:10px;">
+          Related guides:
+          <a href="/norwegian-singles-marathon-training/">Norwegian Singles for Marathon Training</a>,
+          <a href="/norwegian-singles-workouts/">Norwegian Singles Workouts</a>,
+          <a href="/sub-threshold-pace-calculator/">Sub-Threshold Pace Calculator</a>,
+          <a href="/blog/marathon-pace-workouts/">Marathon Pace Workouts</a>.
+        </p>
+      </div>
     </div>
 
     <div class="grid" style="margin-top:14px;">
-      <!-- LEFT: Wizard -->
       <div class="card">
         <div class="stickyBar">
           <div class="row" style="justify-content:space-between;">
@@ -266,7 +356,6 @@
           </div>
         </div>
 
-        <!-- STEP 1 -->
         <div class="section active" data-step="0">
           <h2>Goal</h2>
 
@@ -300,7 +389,6 @@
           </div>
         </div>
 
-        <!-- STEP 2 -->
         <div class="section" data-step="1">
           <h2>Recent training</h2>
 
@@ -343,7 +431,6 @@
           </div>
         </div>
 
-        <!-- STEP 3 -->
         <div class="section" data-step="2">
           <h2>Durability (auto category)</h2>
 
@@ -415,7 +502,6 @@
           </div>
         </div>
 
-        <!-- STEP 4 -->
         <div class="section" data-step="3">
           <h2>Paces (VDOT if available)</h2>
 
@@ -467,7 +553,6 @@
           </div>
         </div>
 
-        <!-- STEP 5 -->
         <div class="section" data-step="4">
           <h2>Availability</h2>
 
@@ -530,22 +615,30 @@
           </div>
         </div>
 
-        <!-- STEP 6 -->
         <div class="section" data-step="5">
           <h2>Review & generate</h2>
           <div class="help">
             <div style="font-weight:950;">What the planner does</div>
             <div class="tiny">
               <ul class="tiny" style="margin:8px 0 0 18px;">
-                <li>Automatically selects phase (Base / Block / Taper) from race date (or uses override).</li>
+                <li>Automatically selects phase (Base / Block / Taper) from race date, unless you override it.</li>
                 <li>Auto-categorises runners (A/B/C) for safety and progression caps.</li>
-                <li>Blends “schools” when appropriate (Pfitz-style MLR, Hansons-style distribution, Norwegian threshold singles, etc.).</li>
-                <li>Always respects selected run days (no “3 days selected → 2 runs”).</li>
-                <li>Paces are rounded to the nearest 5 seconds and never show invalid times.</li>
-                <li>Quality sessions are exact prescriptions (e.g., 3×8, 2×12, 2×20).</li>
+                <li>Blends training ideas when appropriate instead of forcing one methodology on everyone.</li>
+                <li>Always respects selected run days.</li>
+                <li>Paces are rounded to the nearest 5 seconds.</li>
+                <li>Quality sessions are exact prescriptions where appropriate.</li>
               </ul>
             </div>
           </div>
+
+          <details>
+            <summary>Methodology note</summary>
+            <div class="tiny" style="margin-top:10px;">
+              This planner is designed as an educational training-structure tool. It uses broad principles from marathon coaching systems,
+              but it is not a direct replica of any one named program. That is deliberate: the aim is to match plan structure to current
+              durability, phase, and recovery capacity rather than force every runner into the same template.
+            </div>
+          </details>
 
           <div class="actions">
             <button class="btn secondary" type="button" data-prev>Back</button>
@@ -554,7 +647,6 @@
         </div>
       </div>
 
-      <!-- RIGHT: Preview -->
       <div class="card">
         <div class="previewHeader">
           <div>
@@ -608,17 +700,30 @@
           </div>
         </details>
 
+        <div class="callout" style="margin-top:12px;">
+          <div style="font-weight:950;">Who this planner is best for</div>
+          <div class="tiny">
+            Runners who want a structured 4-week block based on current fitness and availability, especially if they prefer a practical,
+            editable plan over a rigid one-size-fits-all schedule.
+          </div>
+        </div>
+
+        <div class="callout warn" style="margin-top:12px;">
+          <div style="font-weight:950;">Important limitation</div>
+          <div class="tiny">
+            This planner cannot assess pain response, biomechanics, medical history, sleep, life stress, or clinical injury risk the way
+            a qualified coach or clinician can. Reduce or stop sessions if pain increases or recovery clearly breaks down.
+          </div>
+        </div>
+
         <p class="tiny" style="margin-top:12px;">
-          Disclaimer: educational planning tool. Adjust for fatigue/pain and seek professional advice if symptoms persist.
+          Disclaimer: educational planning tool. Adjust for fatigue and pain, and seek professional advice if symptoms persist.
         </p>
       </div>
     </div>
   </div>
 
   <script>
-    // ---------------------------
-    // Utilities
-    // ---------------------------
     const $ = (id) => document.getElementById(id);
     const dayOrder = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 
@@ -626,13 +731,11 @@
     function round1(n){ return Math.round(n*10)/10; }
     function safeNum(v, fallback=0){ const n = Number(v); return isFinite(n) ? n : fallback; }
 
-    // Round seconds to nearest 5 seconds
     function roundTo5(sec){
       if(!isFinite(sec) || sec <= 0) return sec;
       return 5 * Math.round(sec/5);
     }
 
-    // Fixed formatting (no 5:60)
     function paceSecondsToString(secPerKm){
       if(!isFinite(secPerKm) || secPerKm <= 0) return "—";
       const sec = Math.max(0, Math.round(secPerKm));
@@ -665,8 +768,8 @@
 
     function nextMondayISO(){
       const d = new Date();
-      const day = d.getDay();           // Sun=0..Sat=6
-      const monIndex = (day + 6) % 7;   // Mon=0..Sun=6
+      const day = d.getDay();
+      const monIndex = (day + 6) % 7;
       const add = (7 - monIndex) % 7 || 7;
       d.setDate(d.getDate() + add);
       return d.toISOString().slice(0,10);
@@ -690,9 +793,6 @@
       return selected.length ? selected : ["Mon","Wed","Sat"];
     }
 
-    // ---------------------------
-    // Inputs
-    // ---------------------------
     function getInputs(){
       const last4 = [
         safeNum($("w1").value, 0),
@@ -740,9 +840,6 @@
       };
     }
 
-    // ---------------------------
-    // Phase selection (AUTO)
-    // ---------------------------
     function weeksUntil(dateISO){
       if(!dateISO) return null;
       const today = new Date();
@@ -766,9 +863,6 @@
       return "Taper";
     }
 
-    // ---------------------------
-    // A/B/C category + beginner detection
-    // ---------------------------
     function bandToWeeks(v){
       if(v==="0-3") return 2;
       if(v==="4-8") return 6;
@@ -796,14 +890,11 @@
       return advanced ? "C" : "B";
     }
 
-    // ---------------------------
-    // VDOT paces
-    // ---------------------------
     function vdotFromRace(distanceKm, timeSec){
       const distanceM = distanceKm * 1000;
       const tMin = timeSec / 60;
       if(tMin <= 0) return null;
-      const v = distanceM / tMin; // m/min
+      const v = distanceM / tMin;
       const vo2 = -4.60 + 0.182258*v + 0.000104*v*v;
       const pct = 0.8 + 0.1894393*Math.exp(-0.012778*tMin) + 0.2989558*Math.exp(-0.1932605*tMin);
       const vdot = vo2 / pct;
@@ -818,7 +909,7 @@
       const v1 = (-b + Math.sqrt(disc)) / (2*a);
       const v2 = (-b - Math.sqrt(disc)) / (2*a);
       const v = Math.max(v1, v2);
-      return (isFinite(v) && v > 0) ? v : null; // m/min
+      return (isFinite(v) && v > 0) ? v : null;
     }
 
     function paceFromVO2(vo2){
@@ -837,7 +928,6 @@
     }
 
     function pacesFallback(inputs){
-      // priority: easy pace -> goal time -> generic
       let EASY = null;
       if(inputs.anchorType === "easy"){
         const e = parseTimeToSeconds(inputs.easyPace);
@@ -877,12 +967,8 @@
       return roundTo5(paces.EASY + extra);
     }
 
-    // ---------------------------
-    // Exact workout libraries
-    // ---------------------------
     function pickThresholdWorkout(cat, phase, deload){
       if(cat === "A") return null;
-      // taper weeks: shorter doses
       if(deload || phase === "taper"){
         return (cat === "C") ? "2×10 min @ T (3 min easy)" : "2×8 min @ T (3 min easy)";
       }
@@ -902,22 +988,16 @@
       if(phase !== "block") return null;
       if(cat === "A") return null;
       if(inputs.tolSpeed === "no") return null;
-      // For marathon block keep VO2 minimal; use as optional touch for B/C
       if(deload) return "6×1 min fast (2 min easy)";
       if(cat === "C") return "5×3 min @ I (2 min easy)";
       return "5×2 min @ I (2 min easy)";
     }
 
-    // ---------------------------
-    // Blended engine (philosophy components) with gating
-    // ---------------------------
     function chooseBlend(inputs, cat, phase, paces){
       const avg4 = inputs.avg4 || 0;
       const freq = inputs.daysAvailable.length;
       const lrBase = Math.max(inputs.lr30 || 0, inputs.lr12 || 0);
 
-      // Base: blend is mostly structural; Block: full blend; Taper: scaled
-      // We'll output: keyTypes list (T/MP/VO2), includeMLR, hansonsOn, norwegianSingles
       let quality = 2;
       if(inputs.injuryStatus === "red") quality = 0;
       else if(inputs.injuryStatus === "yellow") quality = 1;
@@ -925,57 +1005,41 @@
       else if(phase === "base") quality = (cat === "C" && inputs.tolTempo !== "no") ? 1 : 0;
       else if(phase === "taper") quality = (cat === "A") ? 0 : 1;
 
-      // Hansons-like distribution: good if freq >=6 and LR cap/time cap tight or LR base low ratio
       const lrRatio = avg4 > 0 ? (lrBase / avg4) : 0;
       const hansonsOn = (phase === "block") && inputs.injuryStatus==="green" && freq >= 6 && (inputs.longRunCapMin > 0 && inputs.longRunCapMin <= 150 || (lrRatio > 0 && lrRatio < 0.22));
-
-      // Pfitz-like MLR: if freq>=5 and base/block (not taper) and not A
       const includeMLR = (cat !== "A") && (freq >= 5) && (phase !== "taper") && (inputs.injuryStatus !== "red");
-
-      // Norwegian singles: allow only if green, freq>=6, avg4>=50, and phase=block (or late base)
       const norwegianSingles = (cat !== "A") && inputs.injuryStatus==="green" && freq >= 6 && avg4 >= 50 && (phase === "block");
 
-      // Key session selection
       const keys = [];
       if(quality <= 0) {
-        // none
       } else {
         if(phase === "base") {
-          // only controlled threshold if appropriate
           if(inputs.tolTempo !== "no") keys.push("T");
         } else if(phase === "block") {
           if(norwegianSingles && inputs.tolTempo !== "no") {
-            // replace big T workout with controlled T singles; still include MP if marathon
             keys.push("T_SINGLE");
             if(quality >= 2) keys.push("MP");
           } else {
             if(inputs.tolTempo !== "no") keys.push("T");
             if(quality >= 2) keys.push("MP");
-            // optional VO2 as 3rd only for C and only if ok
             if(quality >= 3 && inputs.tolSpeed !== "no") keys.push("VO2");
           }
-        } else { // taper
+        } else {
           if(inputs.tolTempo !== "no") keys.push("T_SINGLE");
         }
       }
 
       while(keys.length > quality) keys.pop();
 
-      // Explain blend in human terms
       const labels = [];
       if(cat === "A") labels.push("Beginner-safe structure");
       if(phase === "base") labels.push("Base build focus");
       if(phase === "block") labels.push("Marathon-specific focus");
       if(phase === "taper") labels.push("Taper focus");
-
       if(includeMLR) labels.push("Pfitz-style medium-long run");
       if(hansonsOn) labels.push("Hansons-style distribution");
       if(norwegianSingles) labels.push("Norwegian controlled threshold singles");
-
-      // Daniels is your pace framework (VDOT)
       if(paces && (paces.vdot || inputs.anchorType !== "none")) labels.push("Daniels-style pace guidance");
-
-      // Higdon-style simplicity if low frequency
       if(freq <= 4) labels.push("Higdon-style simplicity");
 
       return {
@@ -985,34 +1049,22 @@
       };
     }
 
-    // ---------------------------
-    // Progression weeks (phase-aware)
-    // ---------------------------
     function computeWeeks(inputs, cat, phase){
       const avg4 = inputs.avg4 || 0;
       const maxWeek6m = inputs.maxWeek6m || 0;
 
-      // If no data, set safe baseline based on category
       let base = avg4;
       if(base <= 0){
         base = (cat === "A") ? 8 : (cat === "B" ? 28 : 55);
       }
 
-      // Base build: gentle 3 build + 1 deload
-      // Block: moderate build (or hold) depending on category
-      // Taper: reduce volume over 4 weeks
       let w = [base, base, base, base];
-
       const ceiling = (maxWeek6m > 0) ? maxWeek6m * 0.95 : Infinity;
-
       const aggr = inputs.aggr || "normal";
       const injury = inputs.injuryStatus;
-
       const rf = (injury==="red") ? 0.70 : (injury==="yellow") ? 0.85 : 1.0;
 
       if(phase === "taper"){
-        // 4-week taper template (relative to current base)
-        // keep frequency; reduce volume
         const t1 = 0.85, t2 = 0.72, t3 = 0.58, t4 = 0.45;
         w = [
           round1(Math.min(ceiling, base*t1)),
@@ -1023,13 +1075,11 @@
         return w;
       }
 
-      // Base/block progression rates by category
-      let p1=0.04, p2=0.07, p3=0.10; // default base build-ish
+      let p1=0.04, p2=0.07, p3=0.10;
       if(cat==="A"){ p1=0.03; p2=0.05; p3=0.08; }
       if(cat==="C"){ p1=0.03; p2=0.05; p3=0.07; }
 
       if(phase === "block"){
-        // block: smaller progression (hold quality)
         p1 *= 0.8; p2 *= 0.8; p3 *= 0.8;
         if(cat==="A"){ p1=0.02; p2=0.03; p3=0.05; }
       }
@@ -1046,7 +1096,6 @@
       const deloadPct = (cat==="A") ? 0.20 : (rf < 0.85 ? 0.30 : 0.22);
       const w4 = w3*(1-deloadPct);
 
-      // 2-week cap for A (and soften if returning)
       const cap2wk = (cat==="A") ? 1.30 : 1.25;
       const w2c = Math.min(w2, base*cap2wk);
       const w3c = Math.min(w3, w2c*(1+0.12));
@@ -1055,11 +1104,7 @@
       return [round1(w1), round1(w2c), round1(w3c), round1(w4c)];
     }
 
-    // ---------------------------
-    // Long-run caps (share + spike + time)
-    // ---------------------------
     function longRunShareCap(cat, phase){
-      // In block, LR share can be a bit higher for B/C, but keep safe
       if(cat==="A") return 0.35;
       if(phase==="block") return (cat==="C") ? 0.28 : 0.30;
       return 0.30;
@@ -1082,9 +1127,6 @@
       return Math.min(km, capKm);
     }
 
-    // ---------------------------
-    // Session templates (exact)
-    // ---------------------------
     function sessionTemplate(type, paces, inputs, cat, phase, extras){
       extras = extras || {};
       const cap = easyCapSec(paces, inputs, cat);
@@ -1105,7 +1147,7 @@
       if(type==="REC"){
         return {
           tag:"REC", title:"Very easy / recovery", paceLine: easyLine,
-          details:"Short and gentle. Swap to walk/cycle if niggles flare."
+          details:"Short and gentle. Swap to walk or bike if niggles flare."
         };
       }
 
@@ -1113,7 +1155,7 @@
         return {
           tag:"LR", title:"Long run (easy)", paceLine: easyLine,
           details: (phase==="block")
-            ? "Mostly easy. If feeling great, finish last 15–25 min steady. Fuel if >90 min."
+            ? "Mostly easy. If feeling good, finish the last 15–25 min steady. Fuel if over 90 min."
             : "Keep it comfortable. Focus on consistency and safe progression."
         };
       }
@@ -1121,7 +1163,7 @@
       if(type==="MLR"){
         return {
           tag:"MLR", title:"Medium-long run", paceLine: paces.STEADY ? `Steady: ${formatRange(paces.STEADY,10)} (or easier)` : easyLine,
-          details:"Aerobic volume builder. Controlled effort — not a race."
+          details:"Aerobic volume builder. Controlled effort, not a race."
         };
       }
 
@@ -1173,9 +1215,6 @@
       return { tag:"", title:"Run", paceLine: easyLine, details:"" };
     }
 
-    // ---------------------------
-    // Build week plan (run-day invariant)
-    // ---------------------------
     function pickQualityDays(runDays, longRunDay){
       const lrDay = runDays.includes(longRunDay) ? longRunDay : runDays[runDays.length-1];
       const preferred = ["Tue","Thu","Wed","Mon","Fri","Sat","Sun"];
@@ -1196,7 +1235,6 @@
 
       const easySec = paces.EASY || 360;
 
-      // initialize: every selected run day is a run
       const dayPlan = {};
       for(const d of dayOrder){
         dayPlan[d] = { type:"REST", km:0, ...sessionTemplate("REST", paces, inputs, cat, phase) };
@@ -1205,12 +1243,10 @@
         dayPlan[d] = { type:"EASY", km:0, ...sessionTemplate("EASY", paces, inputs, cat, phase) };
       }
 
-      // Beginner: run-walk on first 2 runs + slightly longer RW on LR day
       if(cat === "A" && (inputs.canRun5 === "no" || inputs.injuryStatus === "red")){
         const ordered = runDays.slice().sort((a,b)=> dayOrder.indexOf(a)-dayOrder.indexOf(b));
         const baseRW = ["6×(1 min run / 2 min walk)","6×(2 min run / 2 min walk)","6×(3 min run / 90s walk)","5×(3 min run / 90s walk)"][weekIndex] || "6×(2/2)";
         const longRW = ["8×(1/2)","8×(2/2)","8×(3/90s)","6×(2/2)"][weekIndex] || "8×(2/2)";
-        // assign LR day to RW long
         const lr = runDays.includes(lrDay) ? lrDay : ordered[ordered.length-1];
         dayPlan[lr] = { type:"RW", km:0, ...sessionTemplate("RW", paces, inputs, cat, phase, {rw: longRW}) };
         dayPlan[lr].tag = "RW+";
@@ -1226,10 +1262,8 @@
           }
         }
       } else {
-        // non-beginner: assign LR
         dayPlan[lrDay] = { type:"LR", km:0, ...sessionTemplate("LR", paces, inputs, cat, phase) };
 
-        // Assign key workouts to qDays
         const thr = pickThresholdWorkout(cat, phase, deload);
         const mp = pickMPWorkout(cat, phase, deload);
         const vo2 = pickVO2Workout(cat, phase, deload, inputs);
@@ -1251,7 +1285,6 @@
           }
         }
 
-        // MLR if enabled and there’s a free run day to assign
         if(blend.includeMLR && !deload){
           const pref = ["Wed","Thu","Tue","Mon","Fri","Sat","Sun"];
           let mlrDay = null;
@@ -1266,20 +1299,12 @@
         }
       }
 
-      // Allocate km safely (no long-run skew, respect caps)
-      // Long run target:
       let lrKm = 0;
-
-      // If beginner RW, distribute evenly (km is approximate)
-      const runCount = runDays.length;
       const shareCap = longRunShareCap(cat, phase);
-
-      // Identify LR day (for non-beginner)
       const lrKey = (cat === "A") ? null : lrDay;
 
       if(cat !== "A"){
         lrKm = weekKm * (phase==="block" ? 0.26 : 0.24);
-
         lrKm = Math.min(lrKm, weekKm * shareCap);
         lrKm = Math.min(lrKm, longRunCapKmByTime(inputs, easySec));
         lrKm = Math.min(lrKm, longestRunSpikeCapKm(inputs.lr30 || 0));
@@ -1291,7 +1316,6 @@
         dayPlan[lrKey].km = lrKm;
       }
 
-      // Allocate km for key days
       for(const d of runDays){
         const t = dayPlan[d].type;
         if(t==="T" || t==="T_SINGLE" || t==="MP" || t==="VO2"){
@@ -1310,7 +1334,6 @@
         }
       }
 
-      // Fill remaining km across remaining run days
       let used = dayOrder.reduce((s,d)=> s + (dayPlan[d].km||0), 0);
       let remaining = Math.max(0, weekKm - used);
 
@@ -1325,7 +1348,6 @@
         dayPlan[d].km = km;
       }
 
-      // Final nudge to hit weekly total
       used = dayOrder.reduce((s,d)=> s + (dayPlan[d].km||0), 0);
       const diff = round1(weekKm - used);
       if(Math.abs(diff) >= 0.2){
@@ -1334,7 +1356,6 @@
         dayPlan[targetDay].km = round1(Math.max(0, dayPlan[targetDay].km + diff));
       }
 
-      // If yellow/red, mark one shortest easy as REC (but keep run count)
       if(inputs.injuryStatus !== "green"){
         const easies = runDays
           .filter(d => dayPlan[d].type==="EASY")
@@ -1348,11 +1369,7 @@
       return dayPlan;
     }
 
-    // ---------------------------
-    // Build plan
-    // ---------------------------
     function computePaces(inputs){
-      // VDOT if race anchor; otherwise fallback
       if(inputs.anchorType === "race"){
         const dist = (inputs.raceDist === "custom") ? inputs.raceDistCustom : Number(inputs.raceDist);
         const t = parseTimeToSeconds(inputs.raceTime);
@@ -1372,7 +1389,6 @@
       const phase = pickPhase(inputs);
       const cat = categoryABC(inputs);
 
-      // If no training data, set a safe baseline
       const anyMileage = inputs.last4.some(x => x > 0);
       if(!anyMileage){
         const base = (cat==="A") ? 8 : (cat==="B" ? 28 : 55);
@@ -1382,7 +1398,6 @@
 
       const paces = computePaces(inputs);
 
-      // Confidence scoring
       let confidence = 45;
       confidence += anyMileage ? 20 : 0;
       confidence += inputs.lr30 > 0 ? 10 : 0;
@@ -1390,20 +1405,18 @@
       confidence += inputs.goalDate ? 10 : 0;
       confidence = clamp(confidence, 35, 95);
 
-      // Blend + weeks
       const blend = chooseBlend(inputs, cat, phase, paces);
       const weeks = computeWeeks(inputs, cat, phase);
 
-      // Warnings / notes
       const warnings = [];
       warnings.push(`Phase: ${phaseLabel(phase)} (auto${inputs.phaseOverride!=="auto" ? " override applied" : ""}).`);
       warnings.push(`Category: ${cat} (auto safety category).`);
       warnings.push(`Run days selected: ${inputs.daysAvailable.join(", ")} — plan schedules every selected day.`);
       if(cat==="A") warnings.push("Beginner-safe mode: no marathon-specific workouts; focus on consistency and gentle progression.");
       if(inputs.injuryStatus !== "green") warnings.push(`Injury status ${inputs.injuryStatus.toUpperCase()}: intensity reduced and recovery emphasis increased.`);
-      if(inputs.anchorType === "none") warnings.push("Effort-based pacing: use conversational effort for easy runs, controlled effort for workouts.");
+      if(inputs.anchorType === "none") warnings.push("Effort-based pacing: use conversational effort for easy runs and controlled effort for workouts.");
+      warnings.push("Methodology note: this plan blends multiple training approaches based on your inputs rather than copying one named system exactly.");
 
-      // Build weeks
       const planWeeks = [];
       for(let wi=0; wi<4; wi++){
         planWeeks.push(buildWeekPlan(weeks[wi], inputs, cat, phase, blend, paces, wi));
@@ -1412,9 +1425,6 @@
       return { inputs, startDate, phase, cat, paces, blend, weeks, planWeeks, warnings, confidence };
     }
 
-    // ---------------------------
-    // Render
-    // ---------------------------
     let CURRENT = null;
 
     function renderPaces(plan){
@@ -1452,7 +1462,7 @@
       $("confText").textContent =
         `${plan.confidence}% confidence. ` +
         (plan.confidence >= 80 ? "Strong inputs."
-          : plan.confidence >= 55 ? "Good — add a race/time trial for tighter paces."
+          : plan.confidence >= 55 ? "Good — add a race or time trial for tighter paces."
           : "Add more inputs for tighter recommendations.");
 
       $("paceText").innerHTML = renderPaces(plan);
@@ -1528,9 +1538,6 @@
       $("previewSubtitle").textContent = "Generated. Use Share / Copy / .ics to export.";
     }
 
-    // ---------------------------
-    // Copy / Share / ICS
-    // ---------------------------
     function planToText(plan){
       const lines = [];
       lines.push(`MARATHON TRAINING PLAN — Start ${plan.startDate}`);
@@ -1766,9 +1773,6 @@
       } catch {}
     }
 
-    // ---------------------------
-    // UI wiring
-    // ---------------------------
     function syncAnchorUI(){
       const a = $("anchorType").value;
       $("raceBlock").style.display = (a==="race") ? "block" : "none";
@@ -1792,7 +1796,6 @@
         const inputs = getInputs();
         saveDraft();
 
-        // sensible defaults for caps
         if(!inputs.weekdayCap) $("weekdayCap").value = 60;
         if(!inputs.longRunCapMin) $("longRunCap").value = 150;
 
@@ -1884,7 +1887,6 @@
     }
 
     function loadDemo(){
-      // A realistic "block" demo: race in 10 weeks, intermediate, 5–6 runs/wk
       const d = new Date();
       d.setDate(d.getDate() + 70);
       $("goalDate").value = d.toISOString().slice(0,10);
@@ -1923,7 +1925,6 @@
       $("previewSubtitle").textContent = "Demo loaded.";
     }
 
-    // stepper nav
     document.querySelectorAll("[data-next]").forEach(btn => btn.addEventListener("click", () => {
       const current = Number(document.querySelector(".section.active").dataset.step);
       setStep(Math.min(5, current+1));
@@ -1934,17 +1935,14 @@
     }));
     document.querySelectorAll(".step").forEach(s => s.addEventListener("click", () => setStep(Number(s.dataset.step))));
 
-    // day chips
     document.querySelectorAll("#daysChips .chip").forEach(ch => ch.addEventListener("click", () => {
       toggleChip(ch);
       saveDraft();
     }));
 
-    // anchor changes
     $("anchorType").addEventListener("change", () => { syncAnchorUI(); saveDraft(); });
     $("raceDist").addEventListener("change", () => { syncAnchorUI(); saveDraft(); });
 
-    // buttons
     $("btnGenerate").addEventListener("click", generate);
     $("btnGenerate2").addEventListener("click", generate);
     $("btnShare").addEventListener("click", share);
@@ -1953,7 +1951,6 @@
     $("btnReset").addEventListener("click", resetAll);
     $("btnLoadDemo").addEventListener("click", loadDemo);
 
-    // autosave on input changes
     const autosaveIds = [
       "goalDate","goalTime","phaseOverride",
       "w1","w2","w3","w4","runsPerWeek","lr30","lr12","maxWeek6m",
@@ -1963,36 +1960,50 @@
     ];
     autosaveIds.forEach(id => { const el = $(id); if(el) el.addEventListener("input", () => saveDraft()); });
 
-    // init
     syncAnchorUI();
     loadDraft();
     applyParams();
 
-    // auto-generate on share link
     if(location.search && location.search.length > 3){
       try { generate(); } catch {}
     }
   </script>
 
-<footer class="wrap" style="padding:24px 16px 40px">
-  <div class="card" style="padding:16px">
-    <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
-      <a href="/">Pace chart hub</a>
-      <a href="/marathon-pace-calculator/">Calculator</a>
-      <a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
-      <a href="/monthly-training-plan/">Monthly plan</a>
-      <a href="/how-to-use-marathon-pace-chart/">How to use</a>
-      <a href="/even-vs-negative-splits/">Even vs negative splits</a>
-      <a href="/sitemap/">HTML sitemap</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="/disclaimer/">Disclaimer</a>
+  <footer class="wrap" style="padding:24px 16px 40px">
+    <div class="card" style="padding:16px">
+      <h2 style="margin-bottom:8px;">About this planner</h2>
+      <p class="tiny">
+        Marathon Pace KM publishes practical pacing tools, calculators, and training guides built to help runners make better decisions
+        from recent race data, current training load, and real-world recovery limits. This planner is designed to support training structure,
+        not replace medical care, individualized coaching, or injury diagnosis.
+      </p>
+      <p class="tiny">
+        Learn more about the site on <a href="/about/">About</a>. Contact us via <a href="/contact/">Contact</a>.
+        Read our <a href="/privacy/">Privacy</a> policy and <a href="/disclaimer/">Disclaimer</a>.
+      </p>
+
+      <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px">
+        <a href="/">Pace chart hub</a>
+        <a href="/marathon-pace-calculator/">Calculator</a>
+        <a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
+        <a href="/monthly-training-plan/">Monthly plan</a>
+        <a href="/how-to-use-marathon-pace-chart/">How to use</a>
+        <a href="/even-vs-negative-splits/">Even vs negative splits</a>
+        <a href="/sub-threshold-pace-calculator/">Sub-threshold calculator</a>
+        <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a>
+        <a href="/norwegian-singles-workouts/">Norwegian Singles workouts</a>
+        <a href="/blog/marathon-pace-workouts/">Marathon pace workouts</a>
+        <a href="/sitemap/">HTML sitemap</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/disclaimer/">Disclaimer</a>
+      </div>
+
+      <p class="tiny muted" style="margin-top:12px">
+        Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.
+      </p>
     </div>
-    <p class="tiny muted" style="margin-top:12px">Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.</p>
-  </div>
-</footer>
-
-
+  </footer>
 </body>
 </html>
