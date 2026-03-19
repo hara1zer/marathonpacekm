@@ -4,29 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>The Math of “Time in the Bank”: Why Starting 10 sec/km Too Fast Usually Costs You Minutes</title>
+  <title>The Math of “Time in the Bank”: Why Starting 10 sec/km Too Fast Usually Costs You Minutes | Marathon Pace KM</title>
   <meta name="description" content="A simple break-even equation shows how tiny late-race slowdowns erase early 'banked time'—plus a calculator, table, and pacing rules to avoid the 30–35K blow-up." />
   <link rel="canonical" href="https://marathonpacekm.com/blog/time-in-the-bank-math/" />
   <meta name="robots" content="index,follow" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="article" />
   <meta property="og:title" content="The Math of “Time in the Bank”" />
   <meta property="og:description" content="Break-even pacing math + a calculator: how a small slowdown late wipes out early 'banked time'." />
   <meta property="og:url" content="https://marathonpacekm.com/blog/time-in-the-bank-math/" />
 
-  <!-- Schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"BlogPosting",
-    "headline":"The Math of “Time in the Bank”: Why Starting 10 sec/km Too Fast Usually Costs You Minutes",
-    "description":"A simple break-even equation shows how tiny late-race slowdowns erase early 'banked time'—plus a calculator, table, and pacing rules to avoid the 30–35K blow-up.",
-    "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/time-in-the-bank-math/"},
-    "datePublished":"2026-01-28",
-    "dateModified":"2026-01-28",
-    "author":{"@type":"Organization","name":"Marathon Pace KM"},
-    "publisher":{"@type":"Organization","name":"Marathon Pace KM"}
+    "@graph":[
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://marathonpacekm.com/"},
+          {"@type":"ListItem","position":2,"name":"Blog","item":"https://marathonpacekm.com/blog/"},
+          {"@type":"ListItem","position":3,"name":"The Math of Time in the Bank","item":"https://marathonpacekm.com/blog/time-in-the-bank-math/"}
+        ]
+      },
+      {
+        "@type":"BlogPosting",
+        "headline":"The Math of “Time in the Bank”: Why Starting 10 sec/km Too Fast Usually Costs You Minutes",
+        "description":"A simple break-even equation shows how tiny late-race slowdowns erase early 'banked time'—plus a calculator, table, and pacing rules to avoid the 30–35K blow-up.",
+        "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/time-in-the-bank-math/"},
+        "datePublished":"2026-01-28",
+        "dateModified":"2026-03-20",
+        "author":{"@type":"Organization","name":"Marathon Pace KM","url":"https://marathonpacekm.com/about/"},
+        "publisher":{"@type":"Organization","name":"Marathon Pace KM","url":"https://marathonpacekm.com/"}
+      },
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {
+            "@type":"Question",
+            "name":"Does banking time early in a marathon usually work?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Usually not. Small early time gains are often erased by even modest late-race slowdowns, especially when runners start above sustainable marathon effort."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"How much late slowdown wipes out early banked time?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"It depends on how fast you start and how long you hold it. This page uses a simple break-even equation to show how little late slowdown is needed to erase an early gain."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"What is the safer alternative to banking time?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"A controlled start, steady middle, and only squeezing pace after 30–32K if effort is still stable is usually the safer way to run your best marathon."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 
@@ -46,6 +85,7 @@
     .meta { color:#666; font-size: 13px; margin-bottom: 18px; }
     .callout { border: 1px solid #eee; border-radius: 12px; padding: 14px; margin: 18px 0; }
     .callout strong { display:block; margin-bottom: 6px; }
+    .eeat-box { border: 1px solid #eee; border-radius: 12px; padding: 14px; margin: 18px 0; background:#fafafa; }
     .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
     .card { grid-column: span 12; border: 1px solid #eee; border-radius: 12px; padding: 16px; }
     @media (min-width: 900px) { .card.half { grid-column: span 6; } }
@@ -89,21 +129,37 @@
   <main class="wrap">
     <h1>The Math of “Time in the Bank”</h1>
     <p class="lede">
-      Lots of runners try to “bank time” early (e.g., <strong>10 sec/km faster than goal pace</strong>) and hope to hang on.
-      Here’s the problem: the math is brutal. A surprisingly tiny slowdown later can erase all your early gains.
+      Lots of runners try to bank time early, for example by running <strong>10 sec/km faster than goal pace</strong> and hoping to hang on.
+      The problem is that the math is brutal. A surprisingly small slowdown later can erase all your early gains.
     </p>
-    <div class="meta">Published: 2026-01-28 • Updated: 2026-01-28</div>
+    <div class="meta">Published: 2026-01-28 • Updated: 2026-03-20</div>
+
+    <div class="eeat-box">
+      <strong>How to use this page</strong>
+      <p style="margin:8px 0 0;">
+        This article is not trying to predict your exact fade. It gives you a simple break-even model to show why aggressive early pacing is usually fragile.
+        At Marathon Pace KM, the goal is practical pacing judgment: use the math to pressure-test your race plan before race day, then combine it with effort, fueling, and course conditions.
+      </p>
+    </div>
 
     <div class="callout">
       <strong>Use this with your pacing plan</strong>
       Plug your goal time into the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>, then use the break-even math below to sanity-check your early pacing.
+      If you want training structure around realistic marathon effort, also see <a href="/monthly-training-plan/">Monthly Training Plan</a> and
+      <a href="/blog/marathon-pace-workouts/">Marathon Pace Workouts</a>.
     </div>
+
+    <p>
+      This also connects to threshold-based marathon preparation. Runners using
+      <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a>
+      often benefit because controlled threshold work can improve pace judgment, but the race itself still rewards restraint, not optimistic arithmetic.
+    </p>
 
     <h2>The one equation that kills “banking time”</h2>
     <p>
       Suppose you run the first <em>D</em> km <strong>Δ seconds per km faster</strong> than goal pace.
-      You “gain” <code>Δ × D</code> seconds early. If you then slow by <em>S</em> seconds per km for the remaining distance,
-      you “lose” <code>S × (42.195 − D)</code> seconds.
+      You gain <code>Δ × D</code> seconds early. If you then slow by <em>S</em> seconds per km for the remaining distance,
+      you lose <code>S × (42.195 − D)</code> seconds.
     </p>
 
     <div class="card">
@@ -113,13 +169,13 @@
       </p>
       <pre><code>Break-even S (sec/km) = (Δ × D) / (42.195 − D)</code></pre>
       <p class="small">
-        If your actual slowdown later is <strong>bigger</strong> than this, “banking time” makes you slower overall.
+        If your actual slowdown later is <strong>bigger</strong> than this, banking time makes you slower overall.
       </p>
     </div>
 
     <div class="grid" style="margin-top: 14px;">
       <section class="card half">
-        <h2>Calculator: how fragile is your “banked time”?</h2>
+        <h2>Calculator: how fragile is your banked time?</h2>
         <div class="inputs">
           <div>
             <label for="delta">Early faster than goal (sec/km)</label>
@@ -138,14 +194,14 @@
 
         <div class="result" id="result" aria-live="polite"></div>
         <p class="small">
-          Try it: keep <strong>10 sec/km fast</strong> for 10 km. Notice the break-even slowdown is only about ~3 sec/km.
-          In the real world, late-race slowdowns can be far larger when runners hit “the wall.” :contentReference[oaicite:0]{index=0}
+          Try it: keep <strong>10 sec/km fast</strong> for 10 km. The break-even slowdown is only about <strong>3.1 sec/km</strong>.
+          In real marathons, late-race slowdowns can easily be larger than that when runners overpace or underfuel.
         </p>
       </section>
 
       <section class="card half">
         <h2>Break-even table (Δ = 10 sec/km)</h2>
-        <p class="small">How much can you slow later before your early “banked time” disappears?</p>
+        <p class="small">How much can you slow later before your early banked time disappears?</p>
         <table>
           <thead>
             <tr>
@@ -156,11 +212,11 @@
           </thead>
           <tbody>
             <tr><td>5</td><td>~1.3</td><td>Slow just a tiny bit later and you’re net slower.</td></tr>
-            <tr><td>10</td><td>~3.1</td><td>If you slow &gt; 3 sec/km later, you lose time overall.</td></tr>
+            <tr><td>10</td><td>~3.1</td><td>If you slow more than 3 sec/km later, you lose time overall.</td></tr>
             <tr><td>15</td><td>~5.5</td><td>Even modest fade wipes out the early gain.</td></tr>
-            <tr><td>21.1 (half)</td><td>~10.0</td><td>You must run the second half no slower than goal pace to benefit.</td></tr>
-            <tr><td>30</td><td>~24.6</td><td>By 30K the “damage” is often already done if this was unsustainable.</td></tr>
-            <tr><td>35</td><td>~48.6</td><td>Holding 10 sec/km fast to 35K is rare; if you can, your goal was too conservative.</td></tr>
+            <tr><td>21.1 (half)</td><td>~10.0</td><td>You must run the second half very well to benefit.</td></tr>
+            <tr><td>30</td><td>~24.6</td><td>By 30K the damage is often already done if this was unsustainable.</td></tr>
+            <tr><td>35</td><td>~48.6</td><td>If you can hold 10 sec/km fast to 35K, your original goal was likely too conservative.</td></tr>
           </tbody>
         </table>
       </section>
@@ -168,62 +224,61 @@
 
     <div class="hr"></div>
 
-   <h2>What real marathon data says about pacing (and “the wall”)</h2>
-<ul>
-  <li>
-    Large-scale analyses of marathon pacing consistently find that <strong>faster runners pace more evenly</strong> than slower runners. <a href="#ref-1">[1]</a>
-  </li>
-  <li>
-    A large open-access analysis of recreational marathoners used late-race slowing as a proxy for “hitting the wall” and found it’s common, typically late in the race. <a href="#ref-2">[2]</a>
-  </li>
-  <li>
-    Physiological modeling work describes how glycogen depletion risk depends on intensity and explains why aggressive pacing can increase late-race failure risk. <a href="#ref-3">[3]</a>
-  </li>
-  <li>
-    A systematic review summarizes marathon pacing strategies and factors that influence them (even/positive/negative split patterns). <a href="#ref-4">[4]</a>
-  </li>
-</ul>
-
-<div class="callout">
-  <strong>Translation: “banking time” is a fragile bet.</strong>
-  The math says you can’t afford much late slowdown. Real-world marathon data shows late slowdowns are common—especially when pacing is aggressive.
-  So the safest path to a PR is usually: controlled start → settle → only push after 30–32K if you still feel good.
-</div>
-
-<h3>References</h3>
-<ol class="small">
-  <li id="ref-1">
-    Ristanović L, et al. (2023). <em>The pacing differences in performance levels of marathon and half-marathon runners</em>.
-    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10771621/" target="_blank" rel="noopener">Open access</a>
-  </li>
-  <li id="ref-2">
-    Smyth B. (2021). <em>How recreational marathon runners hit the wall: A large-scale data analysis of late-race pacing collapse</em>.
-    <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0251513" target="_blank" rel="noopener">PLOS ONE</a>
-    (also <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8133477/" target="_blank" rel="noopener">PMC</a>)
-  </li>
-  <li id="ref-3">
-    Rapoport BI. (2010). <em>Metabolic Factors Limiting Performance in Marathon Runners</em>.
-    <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2958805/" target="_blank" rel="noopener">Open access</a>
-  </li>
-  <li id="ref-4">
-    Sha J, et al. (2024). <em>Pacing strategies in marathons: A systematic review</em>.
-    <a href="https://pubmed.ncbi.nlm.nih.gov/39281580/" target="_blank" rel="noopener">PubMed</a>
-  </li>
-</ol>
-
+    <h2>What real marathon data says about pacing (and the wall)</h2>
+    <ul>
+      <li>Large-scale analyses consistently find that <strong>faster runners pace more evenly</strong> than slower runners.</li>
+      <li>Late-race slowdown is common in recreational marathons, especially after aggressive early pacing.</li>
+      <li>Physiological modeling helps explain why small early pacing errors can magnify glycogen and fatigue problems later.</li>
+      <li>Systematic reviews of marathon pacing strategies generally support controlled starts and steadier pacing over optimistic time-banking.</li>
+    </ul>
 
     <div class="callout">
-      <strong>Translation: “banking time” is a fragile bet.</strong>
-      The math says you can’t afford much late slowdown. Real-world marathon data shows late slowdowns are common — especially when pacing is aggressive.
-      So the safest path to a PR is usually: controlled start → settle → only push after 30–32K if you still feel good.
+      <strong>Translation: banking time is a fragile bet.</strong>
+      The math says you can’t afford much late slowdown. Real-world marathon data shows late slowdowns are common, especially when pacing is aggressive.
+      The safer path to a PR is usually: controlled start → settle → only push after 30–32K if you still feel good.
+    </div>
+
+    <h3>References</h3>
+    <ol class="small">
+      <li id="ref-1">
+        Ristanović L, et al. (2023). <em>The pacing differences in performance levels of marathon and half-marathon runners</em>.
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10771621/" target="_blank" rel="noopener">Open access</a>
+      </li>
+      <li id="ref-2">
+        Smyth B. (2021). <em>How recreational marathon runners hit the wall: A large-scale data analysis of late-race pacing collapse</em>.
+        <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0251513" target="_blank" rel="noopener">PLOS ONE</a>
+        (also <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8133477/" target="_blank" rel="noopener">PMC</a>)
+      </li>
+      <li id="ref-3">
+        Rapoport BI. (2010). <em>Metabolic Factors Limiting Performance in Marathon Runners</em>.
+        <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2958805/" target="_blank" rel="noopener">Open access</a>
+      </li>
+      <li id="ref-4">
+        Sha J, et al. (2024). <em>Pacing strategies in marathons: A systematic review</em>.
+        <a href="https://pubmed.ncbi.nlm.nih.gov/39281580/" target="_blank" rel="noopener">PubMed</a>
+      </li>
+    </ol>
+
+    <div class="callout">
+      <strong>What this means in practice</strong>
+      If you need early overpacing to feel confident, the issue is usually not courage. It is target setting, restraint, or both.
+      For a practical race-decision framework, see <a href="/blog/how-to-know-if-youre-overpacing/">How to Know If You’re Overpacing</a> and
+      <a href="/blog/when-to-adjust-marathon-pace-mid-race/">When to Adjust Marathon Pace Mid-Race</a>.
     </div>
 
     <h2>3 simple rules to avoid the 30–35K blow-up</h2>
     <ol>
-      <li><strong>Start controlled for 3–5K.</strong> Your HR/RPE should feel “too easy.” (You can’t win the race here — you can only lose it.)</li>
-      <li><strong>Lock into goal effort, not ego.</strong> If conditions are tough (heat/wind/hills), pace by effort and accept the time adjustment.</li>
+      <li><strong>Start controlled for 3–5K.</strong> Your HR and RPE should feel almost too easy. You can’t win the race here — you can only make it harder later.</li>
+      <li><strong>Lock into goal effort, not ego.</strong> If conditions are tough (heat, wind, hills), pace by effort and accept the time adjustment.</li>
       <li><strong>Earn the right to speed up after 30K.</strong> If you’ve fueled well and your effort is steady, then gradually lift pace.</li>
     </ol>
+
+    <p>
+      This is also one reason some runners do better with controlled threshold support in training:
+      <a href="/norwegian-singles-vs-tempo-runs/">Norwegian Singles vs tempo runs</a>.
+      But if threshold structure tends to make you push too hard rather than judge effort better, read
+      <a href="/who-should-not-do-norwegian-singles/">who should not do Norwegian Singles</a>.
+    </p>
 
     <div class="callout">
       <strong>Next step</strong>
@@ -239,10 +294,24 @@
       <a href="/blog/racing-in-heat-wind-hills/">Pacing in heat/wind/hills</a>
       <a href="/blog/half-marathon-to-marathon-pace/">Half → marathon pace conversion</a>
       <a href="/blog/marathon-pace-bands/">Pace bands (printable)</a>
+      <a href="/blog/marathon-pace-workouts/">Marathon pace workouts</a>
+      <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a>
     </p>
 
+    <section class="eeat-box" aria-label="About Marathon Pace KM">
+      <strong>About Marathon Pace KM</strong>
+      <p style="margin:8px 0 0;">
+        Marathon Pace KM publishes practical pacing tools, calculators, and training guides designed to help runners make better decisions
+        from race data, pacing logic, recovery context, and real-world training feedback.
+      </p>
+      <p style="margin:8px 0 0;">
+        Learn more on the <a href="/about/">About</a> page, get in touch via <a href="/contact/">Contact</a>,
+        and read the <a href="/privacy/">Privacy</a> policy and <a href="/disclaimer/">Disclaimer</a>.
+      </p>
+    </section>
+
     <p class="small muted">
-      Notes: This post includes a simple arithmetic “break-even” model plus references to pacing research. It’s not claiming to predict your exact fade — it’s showing how small fades erase early “banked time.”
+      Notes: This post uses a simple arithmetic break-even model plus pacing research. It is not claiming to predict your exact fade — it shows how small fades can erase early banked time.
     </p>
   </main>
 
@@ -293,18 +362,18 @@
         }
 
         const remaining = MARATHON_KM - dist;
-        const timeGained = delta * dist;           // seconds
-        const timeLost   = slow * remaining;       // seconds
-        const net        = timeLost - timeGained;  // + = slower overall
+        const timeGained = delta * dist;
+        const timeLost   = slow * remaining;
+        const net        = timeLost - timeGained;
         const breakEven  = (delta * dist) / remaining;
 
         outEl.innerHTML = `
-          <div><strong>Early “banked time”:</strong> ${fmtTime(timeGained)} (from ${delta.toFixed(0)} sec/km for ${dist.toFixed(1)} km)</div>
+          <div><strong>Early banked time:</strong> ${fmtTime(timeGained)} (from ${delta.toFixed(0)} sec/km for ${dist.toFixed(1)} km)</div>
           <div><strong>Late time lost:</strong> ${fmtTime(timeLost)} (from ${slow.toFixed(0)} sec/km for ${remaining.toFixed(3)} km)</div>
           <div style="margin-top:8px;"><strong>Net result:</strong> ${net >= 0 ? `<span>${fmtTime(net)} slower</span>` : `<span>${fmtTime(net)} faster</span>`}</div>
           <div class="small" style="margin-top:8px;">
             <strong>Break-even slowdown:</strong> about <strong>${breakEven.toFixed(1)} sec/km</strong>.
-            If your late slowdown is bigger than this, “banking time” makes you slower overall.
+            If your late slowdown is bigger than this, banking time makes you slower overall.
           </div>
         `;
       }
