@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Marathon Pace Calculator (KM & Miles) | Splits, Checkpoints, Pace Band</title>
-  <meta name="description" content="Free marathon pace calculator (KM & miles). Enter a goal time to get pace per km/mi, key checkpoints (5k/10k/half/30k/40k) and a printable pace band." />
+  <meta name="description" content="Free marathon pace calculator (KM & miles). Enter a goal time to get pace per km/mi, key checkpoints (5k/10k/half/30k/40k), pace-band links, and practical pacing guidance." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://marathonpacekm.com/marathon-pace-calculator/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Marathon Pace Calculator (KM & Miles)" />
-  <meta property="og:description" content="Enter a goal time to calculate pace per km/mi, checkpoints and a printable pace band." />
+  <meta property="og:description" content="Enter a goal time to calculate pace per km/mi, checkpoints, pace-band links, and practical marathon pacing guidance." />
   <meta property="og:url" content="https://marathonpacekm.com/marathon-pace-calculator/" />
   <meta property="og:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
   <meta property="og:image:width" content="1200" />
@@ -20,7 +20,7 @@
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Marathon Pace Calculator (KM & Miles)" />
-  <meta name="twitter:description" content="Calculate pace per km/mi, checkpoints and a printable pace band." />
+  <meta name="twitter:description" content="Calculate pace per km/mi, checkpoints, pace-band links, and practical marathon pacing guidance." />
   <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
 
   <link rel="preload" href="/assets/style.css" as="style" />
@@ -30,7 +30,7 @@
     html { scroll-behavior: smooth; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
-    #calculator, #checkpoints, #pace-band, #templates, #share, #full-splits, #goal-times, #related, #faq { scroll-margin-top: 16px; }
+    #calculator, #checkpoints, #pace-band, #templates, #share, #full-splits, #goal-times, #related, #faq, #methodology { scroll-margin-top: 16px; }
 
     .splits-table{
       width:100%;
@@ -49,7 +49,6 @@
     }
     .splits-table tr:last-child td{ border-bottom: 0; }
 
-    /* legacy: print this page as a fallback band */
     #printBand { display:none; }
     @media print{
       header, .toc, #calculator .actions, #fullSplitsDetails, footer, .backtop { display:none !important; }
@@ -59,7 +58,6 @@
       a { text-decoration:none !important; color:#000 !important; }
     }
 
-    /* mini share UI helpers */
     .mini-input{
       width: 100%;
       padding: 10px 12px;
@@ -69,38 +67,73 @@
       font-size: 14px;
     }
     textarea.mini-input{ min-height: 90px; resize: vertical; }
+
+    .eeat-box{
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(0,0,0,.03);
+      margin-top: 12px;
+    }
+    .eeat-box h2,
+    .eeat-box h3{
+      margin-top: 0;
+    }
   </style>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
-      {"@type":"ListItem","position":2,"name":"Marathon Pace Calculator","item":"https://marathonpacekm.com/marathon-pace-calculator/"}
-    ]
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "How do I calculate marathon pace per km?",
-        "acceptedAnswer": {"@type":"Answer","text":"Divide your goal finish time by 42.195 km. This calculator does it instantly and shows checkpoints and splits."}
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
+          {"@type":"ListItem","position":2,"name":"Marathon Pace Calculator","item":"https://marathonpacekm.com/marathon-pace-calculator/"}
+        ]
       },
       {
-        "@type": "Question",
-        "name": "What pace do I need for a sub-4 marathon?",
-        "acceptedAnswer": {"@type":"Answer","text":"Sub-4 marathon pace is about 5:41 per km (9:09 per mile). Enter 3:59:59 to generate your full checkpoint splits."}
+        "@type": "WebApplication",
+        "name": "Marathon Pace Calculator",
+        "url": "https://marathonpacekm.com/marathon-pace-calculator/",
+        "applicationCategory": "SportsApplication",
+        "operatingSystem": "Web",
+        "description": "Interactive marathon pace calculator that converts goal finish time into pace per kilometre, pace per mile, key checkpoints, and pace-band links.",
+        "creator": {
+          "@type": "Organization",
+          "name": "Marathon Pace KM",
+          "url": "https://marathonpacekm.com/about/"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Marathon Pace KM",
+          "url": "https://marathonpacekm.com/"
+        }
       },
       {
-        "@type": "Question",
-        "name": "Why does my watch pace not match the chart?",
-        "acceptedAnswer": {"@type":"Answer","text":"Instant GPS pace can fluctuate due to signal noise, corners, crowds, elevation and aid stations. Use lap pace (1 km or 1 mile) and effort to stay consistent."}
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I calculate marathon pace per km?",
+            "acceptedAnswer": {"@type":"Answer","text":"Divide your goal finish time by 42.195 km. This calculator does it instantly and shows checkpoints and splits."}
+          },
+          {
+            "@type": "Question",
+            "name": "What pace do I need for a sub-4 marathon?",
+            "acceptedAnswer": {"@type":"Answer","text":"Sub-4 marathon pace is about 5:41 per km (9:09 per mile). Enter 3:59:59 to generate your full checkpoint splits."}
+          },
+          {
+            "@type": "Question",
+            "name": "Why does my watch pace not match the chart?",
+            "acceptedAnswer": {"@type":"Answer","text":"Instant GPS pace can fluctuate due to signal noise, corners, crowds, elevation, and aid stations. Lap pace and effort are usually more reliable than staring at instant pace."}
+          },
+          {
+            "@type": "Question",
+            "name": "Is calculator pace the same as the best race-day pace?",
+            "acceptedAnswer": {"@type":"Answer","text":"Not always. Calculator pace is a planning starting point. Heat, hills, wind, fueling, fitness, and pacing discipline can all change what is realistic on race day."}
+          }
+        ]
       }
     ]
   }
@@ -117,7 +150,22 @@
     <h1 style="margin-top:14px">Marathon Pace Calculator (KM & Miles)</h1>
     <p class="sub">Enter a goal finish time to calculate <strong>pace per km</strong> and <strong>pace per mile</strong>, plus key checkpoints and a printable pace band.</p>
 
-    <!-- Start here block (internal linking + guidance) -->
+    <div class="eeat-box">
+      <h2 style="font-size:1.15rem;margin-bottom:8px;">How to use this calculator well</h2>
+      <p class="muted" style="margin:0 0 8px">
+        This calculator is designed as a <strong>practical pacing tool</strong>, not a guarantee of race-day outcome.
+        It turns a target finish time into clean pacing numbers, then helps you compare that target against checkpoints,
+        pacing bands, and related guidance on marathon execution.
+      </p>
+      <p class="tiny muted2" style="margin:0">
+        Best use: start with a realistic goal, calculate your pace, then sense-check it against your recent race data,
+        training history, race conditions, and how marathon pace actually feels in workouts. For training structure around
+        that pace, see <a href="/monthly-training-plan/">Monthly Training Plan</a>. For threshold work that supports marathon pacing,
+        see <a href="/norwegian-singles-marathon-training/">Norwegian Singles for Marathon Training</a> and
+        <a href="/sub-threshold-pace-calculator/">Sub-Threshold Pace Calculator</a>.
+      </p>
+    </div>
+
     <div class="card" style="margin-top:12px;padding:14px">
       <p class="muted" style="margin:0">
         <strong>Start here:</strong>
@@ -136,6 +184,13 @@
         <a href="/blog/vdot-marathon-pace/">VDOT explained</a> ·
         <a href="/blog/race-time-predictor-marathon/">combine multiple races</a>
       </p>
+      <p class="tiny muted2" style="margin:10px 0 0">
+        Training support:
+        <a href="/blog/marathon-pace-workouts/">marathon pace workouts</a> ·
+        <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a> ·
+        <a href="/norwegian-singles-workouts/">Norwegian Singles workouts</a> ·
+        <a href="/sub-threshold-pace-calculator/">sub-threshold pace calculator</a>
+      </p>
     </div>
 
     <div class="toc" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
@@ -144,7 +199,9 @@
       <a class="btn secondary" href="#pace-band">Printable pace band</a>
       <a class="btn secondary" href="#templates">Templates</a>
       <a class="btn secondary" href="#share">Share / embed</a>
+      <a class="btn secondary" href="#full-splits">Full splits</a>
       <a class="btn secondary" href="#goal-times">Goal times</a>
+      <a class="btn secondary" href="#methodology">Methodology</a>
       <a class="btn secondary" href="#faq">FAQ</a>
       <a class="btn secondary" href="#related">Related guides</a>
     </div>
@@ -182,7 +239,7 @@
             <option value="a4">A4 pacing sheet</option>
           </select>
           <p class="tiny muted2" style="margin-top:6px">
-            For clubs/coaches: use “Share / embed” below.
+            For clubs and coaches: use “Share / embed” below.
           </p>
         </div>
       </div>
@@ -190,18 +247,25 @@
       <div class="row actions" style="margin-top:10px;gap:10px;flex-wrap:wrap">
         <button class="btn" id="calcBtn">Calculate</button>
         <button class="btn secondary" id="resetBtn">Reset</button>
-
-        <!-- PDF export uses your dedicated printable tool (best UX) -->
         <button class="btn secondary" id="pdfBtn" type="button">Open pace band PDF</button>
-
-        <!-- optional fallback: print this page band (legacy) -->
         <button class="btn secondary" id="printThisBtn" type="button">Quick print (this page)</button>
-
         <button class="btn secondary" id="copyShareBtn" type="button">Copy share link</button>
       </div>
 
       <div id="results" class="results" aria-live="polite"></div>
       <div id="calcShareMsg" class="results" aria-live="polite"></div>
+
+      <div class="eeat-box" style="margin-top:16px">
+        <h3 style="font-size:1rem;margin-bottom:8px;">Important pacing note</h3>
+        <p class="tiny muted2" style="margin:0">
+          A calculator gives you a <strong>starting pace target</strong>. It does not know whether the day is hot, windy,
+          hilly, crowded, under-fueled, or ambitious for your current fitness. If the calculated pace looks right on paper
+          but feels like threshold effort too early in training, re-check the goal with
+          <a href="/blog/choose-marathon-goal-time/">goal-time guidance</a>,
+          <a href="/blog/race-time-predictor-marathon/">race-based prediction</a>, or
+          <a href="/sub-threshold-pace-calculator/">sub-threshold pace estimates</a>.
+        </p>
+      </div>
     </section>
 
     <section id="checkpoints" class="card">
@@ -224,7 +288,6 @@
         Tip: use the calculator above to pick your goal time, then open the PDF pace band (wrist or A4).
       </p>
 
-      <!-- legacy: this page can still print a compact checkpoint band -->
       <div id="printBand" class="results"></div>
 
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
@@ -248,7 +311,7 @@
       </div>
 
       <p class="tiny muted2" style="margin-top:10px">
-        If your club has a standard goal time, link the matching template. If not, link the generator with your exact time (see next section).
+        If your club has a standard goal time, link the matching template. If not, link the generator with your exact time.
       </p>
 
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
@@ -257,8 +320,8 @@
     <section id="share" class="card">
       <h2>Share this pace band (copy link + embed)</h2>
       <p class="muted">
-        Clubs/coaches can link to a pre-filled pace band, or embed it in a page so runners can print instantly.
-        (This uses your dedicated <code>/printable-pace-band/</code> generator.)
+        Clubs and coaches can link to a pre-filled pace band, or embed it in a page so runners can print instantly.
+        (This uses the dedicated <code>/printable-pace-band/</code> generator.)
       </p>
 
       <div class="grid" style="margin-top:10px">
@@ -315,7 +378,39 @@
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
 
-    <!-- Related guides section -->
+    <section id="methodology" class="card">
+      <h2>Methodology and intended use</h2>
+      <p class="muted">
+        This calculator uses straightforward finish-time math: total goal time divided by selected race distance,
+        then converted into pace-per-kilometre, pace-per-mile, and key cumulative checkpoints.
+      </p>
+
+      <div class="eeat-box">
+        <h3 style="font-size:1rem;margin-bottom:8px;">What this tool is good for</h3>
+        <p class="tiny muted2" style="margin:0 0 8px">
+          Use it to set a clean pacing framework, generate checkpoints, build a pace band, compare common goal times,
+          and pressure-test whether your target makes sense in the context of recent race performances and workouts.
+        </p>
+        <p class="tiny muted2" style="margin:0">
+          It works especially well alongside:
+          <a href="/blog/marathon-pace-workouts/">marathon pace workouts</a>,
+          <a href="/monthly-training-plan/">training-plan structure</a>,
+          <a href="/norwegian-singles-marathon-training/">threshold support for marathon training</a>, and
+          <a href="/blog/racing-in-heat-wind-hills/">conditions-based pacing adjustments</a>.
+        </p>
+      </div>
+
+      <div class="eeat-box">
+        <h3 style="font-size:1rem;margin-bottom:8px;">What this tool does not know</h3>
+        <p class="tiny muted2" style="margin:0">
+          It does not know your injury status, recovery capacity, fueling plan, heat adaptation, course profile, or whether your goal is realistic.
+          That is why the best workflow is: estimate pace here, validate it with training and race data, then adjust when real-world conditions demand it.
+        </p>
+      </div>
+
+      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
+    </section>
+
     <section id="related" class="card">
       <h2>Related guides (recommended reading)</h2>
       <p class="muted">These explain the “why” behind pacing and help you choose a realistic target.</p>
@@ -327,6 +422,10 @@
         <a href="/blog/negative-split-pacing/">Negative split pacing</a>
         <a href="/blog/racing-in-heat-wind-hills/">Heat / wind / hills pacing</a>
         <a href="/blog/marathon-pace-bands/">How to use a pace band</a>
+        <a href="/blog/marathon-pace-workouts/">Marathon pace workouts</a>
+        <a href="/norwegian-singles-marathon-training/">Norwegian Singles for Marathon Training</a>
+        <a href="/norwegian-singles-workouts/">Norwegian Singles Workouts</a>
+        <a href="/sub-threshold-pace-calculator/">Sub-Threshold Pace Calculator</a>
       </div>
 
       <p class="tiny muted2" style="margin-top:10px">
@@ -343,14 +442,18 @@
 
     <section id="faq" class="card">
       <h2>Marathon pace calculator FAQ</h2>
+
       <h3>How do I calculate pace per mile from pace per km?</h3>
-      <p>Multiply pace-per-km seconds by 1.609344 to get pace per mile (or use this calculator).</p>
+      <p>Multiply pace-per-km seconds by 1.609344 to get pace per mile, or use this calculator.</p>
 
       <h3>Should I aim for even splits?</h3>
       <p>Most runners do best with steady pacing and a controlled first half. Small negative splits can happen naturally if you stay calm early.</p>
 
       <h3>What should I do if conditions are hot or hilly?</h3>
       <p>Use effort as the guide. Expect slower splits in heat or hills and focus on consistency rather than forcing exact numbers.</p>
+
+      <h3>Is marathon pace the same as threshold pace?</h3>
+      <p>No. Marathon pace is slower and more sustainable than threshold pace. If you want a better feel for that difference, read <a href="/blog/tempo-vs-threshold-vs-marathon-pace/">tempo vs threshold vs marathon pace</a> or use the <a href="/sub-threshold-pace-calculator/">sub-threshold pace calculator</a>.</p>
 
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
@@ -388,7 +491,6 @@
 
   var DEFAULT={h:4,m:0,s:0,dist:42.195};
 
-  // state for the full-splits builder (prevents multiple listeners + stale builds)
   var last = {
     isMarathon: true,
     secPerKm: 0,
@@ -428,7 +530,6 @@
   }
 
   function buildPaceBandURL(opts){
-    // opts: {layout, autoPrint}
     var h = clampInt(elH.value,0,99);
     var m = clampInt(elM.value,0,59);
     var s = clampInt(elS.value,0,59);
@@ -436,7 +537,6 @@
     var layout = (opts && opts.layout) ? String(opts.layout) : 'wrist';
     var autoPrint = (opts && opts.autoPrint) ? '1' : '0';
 
-    // keep defaults simple; the generator has controls for style/offset
     var q = new URLSearchParams({
       h: String(h),
       m: String(m),
@@ -452,13 +552,11 @@
   }
 
   function updateShareUI(){
-    // share should always be for Marathon bands; still build a link for non-marathon, but message clarifies
     var layout = elPdfLayout ? elPdfLayout.value : 'wrist';
     var url = buildPaceBandURL({ layout: layout, autoPrint: false });
 
     shareUrlInput.value = window.location.origin + url;
 
-    // embed (responsive-ish)
     var iframe = ''
       + '<iframe'
       + ' src="' + (window.location.origin + url) + '"'
@@ -519,8 +617,6 @@
 
     var secPerKm = goalSec / dist;
     var secPerMile = secPerKm * 1.609344;
-
-    // KPIs
     var halfTime = fmtTime(secPerKm * Math.min(21.0975, dist));
 
     elResults.innerHTML = ''
@@ -532,11 +628,9 @@
       + '</div>'
       + '<p class="tiny muted2" style="margin-top:10px">*Halfway shown is for the selected distance (or half marathon if shorter).</p>';
 
-    // Update state for full splits
     last.secPerKm = secPerKm;
     last.goalSec = goalSec;
 
-    // Checkpoints for marathon only
     var isMarathon = Math.abs(dist-42.195) < 1e-6;
     last.isMarathon = isMarathon;
 
@@ -555,12 +649,10 @@
       }
       elCheckpoint.innerHTML = buildCheckpointTable(rows);
 
-      // Legacy printable band on this page (kept as fallback)
       elPrintBand.innerHTML = '<h3 style="margin:0 0 8px">Quick checkpoint band (fallback)</h3>'
         + '<p class="tiny muted2" style="margin:0 0 8px">For best printing/export, use the PDF tool above.</p>'
         + buildCheckpointTable(rows);
 
-      // Mark full-splits as needing rebuild
       if(elFull){
         elFull.dataset.built='0';
         elFull.innerHTML='';
@@ -596,7 +688,6 @@
     updateShareUI();
   }
 
-  // Build full splits ONCE, with state from latest compute()
   function buildFullSplitsIfNeeded(){
     if(!fullDetails || !fullDetails.open) return;
     if(!elFull) return;
@@ -629,21 +720,18 @@
     });
   }
 
-  // Open the dedicated printable pace band tool with current inputs
   pdfBtn.addEventListener('click', function(){
-    compute(); // ensures UI + share link updated
+    compute();
     var layout = elPdfLayout ? elPdfLayout.value : 'wrist';
     var url = buildPaceBandURL({ layout: layout, autoPrint: true });
     window.open(url, '_blank');
   });
 
-  // Fallback: print this page (uses @media print + #printBand)
   printThisBtn.addEventListener('click', function(){
     compute();
     window.print();
   });
 
-  // Copy share link buttons
   copyShareBtn.addEventListener('click', function(){
     compute();
     copyShareLink(calcShareMsg);
@@ -661,26 +749,38 @@
     window.open(url, '_blank');
   });
 
-  // Keep share UI in sync when layout changes
   if(elPdfLayout){
     elPdfLayout.addEventListener('change', function(){
       updateShareUI();
     });
   }
 
-  // initial
   compute();
 })();
 </script>
 
 <footer class="wrap" style="padding:24px 16px 40px">
   <div class="card" style="padding:16px">
+    <h2 style="margin-bottom:8px;">About Marathon Pace KM</h2>
+    <p class="tiny muted" style="margin-top:0">
+      Marathon Pace KM publishes practical pacing tools, calculators, and training guides designed to help runners
+      make better decisions from race targets, recent performances, and real-world training feedback.
+      This calculator is intended as an educational pacing tool, not medical advice or a guarantee of race outcome.
+    </p>
+    <p class="tiny muted">
+      Learn more on <a href="/about/">About</a>, get in touch via <a href="/contact/">Contact</a>,
+      and read our <a href="/privacy/">Privacy</a> policy and <a href="/disclaimer/">Disclaimer</a>.
+    </p>
+
     <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
       <a href="/">Pace chart hub</a>
       <a href="/marathon-pace-calculator/">Calculator</a>
       <a href="/printable-pace-band/">Printable pace band</a>
       <a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
       <a href="/monthly-training-plan/">Monthly plan</a>
+      <a href="/sub-threshold-pace-calculator/">Sub-threshold calculator</a>
+      <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a>
+      <a href="/norwegian-singles-workouts/">Norwegian Singles workouts</a>
       <a href="/how-to-use-marathon-pace-chart/">How to use</a>
       <a href="/even-vs-negative-splits/">Even vs negative splits</a>
       <a href="/sitemap/">HTML sitemap</a>
