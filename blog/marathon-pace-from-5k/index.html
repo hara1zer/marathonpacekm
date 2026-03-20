@@ -1,35 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-AU">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Marathon Pace From 5K Time | Why It’s Risky + Calculator</title>
-  <meta name="description" content="Convert your 5K time into a marathon pace estimate, plus conservative ranges and why short races often overpredict marathon potential." />
+
+  <title>Marathon Pace From 5K Time | Calculator, Conservative Ranges & Why 5K Often Overpredicts</title>
+  <meta name="description" content="Convert your 5K time into a marathon pace estimate, see conservative ranges, and learn why short races often overpredict marathon potential without durability, fueling, and pacing discipline." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://marathonpacekm.com/blog/marathon-pace-from-5k/" />
-  <meta name="robots" content="index,follow" />
 
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Marathon Pace From 5K Time" />
-  <meta property="og:description" content="5K → marathon pace calculator + realistic conservative ranges." />
+  <meta property="og:site_name" content="MarathonPaceKM" />
+  <meta property="og:title" content="Marathon Pace From 5K Time | Calculator, Conservative Ranges & Why 5K Often Overpredicts" />
+  <meta property="og:description" content="Use your 5K time to estimate marathon pace, then adjust conservatively for durability, fueling, and pacing risk." />
   <meta property="og:url" content="https://marathonpacekm.com/blog/marathon-pace-from-5k/" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Marathon Pace From 5K Time | Calculator, Conservative Ranges & Why 5K Often Overpredicts" />
+  <meta name="twitter:description" content="A practical 5K to marathon pace calculator with safer ranges and internal checks before you trust the number." />
 
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"BlogPosting",
-    "headline":"Marathon Pace From 5K Time (Calculator + Realistic Ranges)",
-    "description":"Convert your 5K time into a marathon pace estimate, plus conservative ranges and why short races often overpredict marathon potential.",
-    "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/marathon-pace-from-5k/"},
-    "datePublished":"2026-01-29",
-    "dateModified":"2026-01-29",
-    "author":{"@type":"Organization","name":"Marathon Pace KM"},
-    "publisher":{"@type":"Organization","name":"Marathon Pace KM"}
+    "@graph":[
+      {
+        "@type":"BreadcrumbList",
+        "itemListElement":[
+          {"@type":"ListItem","position":1,"name":"Home","item":"https://marathonpacekm.com/"},
+          {"@type":"ListItem","position":2,"name":"Blog","item":"https://marathonpacekm.com/blog/"},
+          {"@type":"ListItem","position":3,"name":"Marathon Pace From 5K Time","item":"https://marathonpacekm.com/blog/marathon-pace-from-5k/"}
+        ]
+      },
+      {
+        "@type":"BlogPosting",
+        "headline":"Marathon Pace From 5K Time (Calculator + Conservative Ranges)",
+        "description":"Convert your 5K time into a marathon pace estimate, plus conservative ranges and why short races often overpredict marathon potential.",
+        "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/marathon-pace-from-5k/"},
+        "datePublished":"2026-01-29",
+        "dateModified":"2026-03-20",
+        "author":{"@type":"Organization","name":"MarathonPaceKM"},
+        "publisher":{"@type":"Organization","name":"MarathonPaceKM"}
+      },
+      {
+        "@type":"FAQPage",
+        "mainEntity":[
+          {
+            "@type":"Question",
+            "name":"Can I predict my marathon pace from a 5K time?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Yes, but 5K-based marathon predictions are less reliable than predictions from a 10K or half marathon because the 5K reflects speed more than marathon-specific durability, fueling, and pacing skill."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"Why does a 5K often overpredict marathon time?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Because a runner can have strong 5K speed without having the long-run durability, aerobic base, fueling practice, or pacing discipline needed to hold marathon pace for 42.2 km."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"What is better than a 5K for predicting marathon pace?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"A 10K is usually better, and a half marathon is often the best single race predictor. The best approach is to combine race data with marathon-specific long runs and pacing/fueling practice."
+            }
+          },
+          {
+            "@type":"Question",
+            "name":"How should I use a 5K marathon prediction safely?",
+            "acceptedAnswer":{
+              "@type":"Answer",
+              "text":"Use the conservative end of the range, then validate it with a 10K, half marathon, or a marathon-pace readiness test before locking in your goal."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 
   <style>
     :root { color-scheme: light; }
-    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; line-height: 1.6; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; line-height: 1.6; color: #111; background: #fff; }
     header { padding: 18px 16px; border-bottom: 1px solid #eee; }
     .wrap { max-width: 980px; margin: 0 auto; padding: 0 16px; }
     .topbar { display:flex; gap:12px; justify-content:space-between; align-items:baseline; flex-wrap:wrap; }
@@ -38,27 +96,37 @@
     nav a { margin-right: 12px; text-decoration: none; }
     nav a:hover { text-decoration: underline; }
     main { padding: 26px 0 44px; }
-    h1 { margin: 0 0 10px; font-size: 34px; letter-spacing: -0.2px; }
-    .lede { margin: 0 0 16px; color:#333; max-width: 75ch; }
+    h1 { margin: 0 0 10px; font-size: 34px; letter-spacing: -0.2px; line-height: 1.15; }
+    h2 { margin-top: 28px; }
+    h3 { margin-top: 22px; }
+    .lede { margin: 0 0 16px; color:#333; max-width: 75ch; font-size: 1.06rem; }
     .meta { color:#666; font-size: 13px; margin-bottom: 18px; }
-    .callout { border: 1px solid #eee; border-radius: 12px; padding: 14px; margin: 18px 0; }
-    .callout strong { display:block; margin-bottom: 6px; }
+    .breadcrumb { font-size: 14px; color:#666; margin: 0 0 10px; }
+    .breadcrumb a { color: inherit; text-decoration: none; }
+    .toc { border: 1px solid #eee; border-radius: 12px; padding: 14px; margin: 18px 0 22px; background: #fafafa; }
+    .toc h2 { margin: 0 0 8px; font-size: 18px; }
+    .toc ol { margin: 0; padding-left: 18px; }
+    .callout { border: 1px solid #eee; border-radius: 12px; padding: 14px; margin: 18px 0; background: #fcfcfc; }
+    .callout strong.block { display:block; margin-bottom: 6px; }
     .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 14px; }
-    .card { grid-column: span 12; border:1px solid #eee; border-radius: 12px; padding: 16px; }
+    .card { grid-column: span 12; border:1px solid #eee; border-radius: 12px; padding: 16px; background:#fff; }
     @media (min-width: 900px) { .card.half { grid-column: span 6; } }
     label { font-size: 13px; color:#555; display:block; margin-bottom: 6px; }
-    input, select { padding: 10px; border:1px solid #ddd; border-radius: 10px; min-width: 160px; }
-    button { padding: 10px 12px; border:1px solid #ddd; border-radius: 10px; background: #fff; cursor:pointer; }
+    input, select { padding: 10px; border:1px solid #ddd; border-radius: 10px; min-width: 160px; font: inherit; }
+    button { padding: 10px 12px; border:1px solid #ddd; border-radius: 10px; background: #fff; cursor:pointer; font: inherit; }
     button:hover { border-color:#aaa; }
     .inputs { display:flex; flex-wrap:wrap; gap:10px; align-items:end; }
-    .result { margin-top: 12px; padding: 12px; border: 1px dashed #ddd; border-radius: 12px; }
-    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    th, td { text-align:left; padding: 10px; border-bottom:1px solid #eee; vertical-align:top; }
-    th { font-size: 13px; color:#555; }
+    .result { margin-top: 12px; padding: 12px; border: 1px dashed #ddd; border-radius: 12px; background:#fff; }
     .small { font-size: 13px; color:#666; }
     .hr { border-top:1px solid #eee; margin: 22px 0; }
-    .related a { display:inline-block; margin-right:10px; margin-bottom:8px; }
+    .related a, .links a { display:inline-block; margin-right:10px; margin-bottom:8px; }
+    .table-wrap { overflow-x:auto; border:1px solid #eee; border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { text-align:left; padding: 10px; border-bottom:1px solid #eee; vertical-align:top; }
+    th { font-size: 13px; color:#555; background:#fafafa; }
+    tr:last-child td { border-bottom: 0; }
     footer { padding: 22px 16px; border-top:1px solid #eee; color:#666; font-size:13px; }
+    .note { color:#555; }
   </style>
 </head>
 
@@ -72,103 +140,339 @@
         <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>
         <a href="/monthly-training-plan/">Monthly Training Plan</a>
         <a href="/blog/">Blog</a>
-        <a href="/sitemap/">All pages</a>
+        <a href="/sitemap.html">All pages</a>
       </nav>
     </div>
   </div>
 </header>
 
 <main class="wrap">
-  <h1>Marathon pace from 5K time</h1>
+  <p class="breadcrumb">
+    <a href="/">Home</a> › <a href="/blog/">Blog</a> › Marathon Pace From 5K Time
+  </p>
+
+  <h1>Marathon Pace From 5K Time</h1>
   <p class="lede">
-    You <em>can</em> estimate marathon pace from a 5K — but it’s one of the easiest ways to get an over-optimistic marathon goal.
-    Why? A 5K reflects speed + VO₂max more than marathon-specific endurance and fueling durability.
+    You <em>can</em> estimate marathon pace from a 5K, but it is one of the easiest ways to set an over-optimistic marathon goal.
+    A 5K shows speed and VO₂-oriented fitness well. The marathon asks for something bigger: <strong>durability, fueling, pacing discipline, and the ability to keep the same effort economical for 42.2 km</strong>.
   </p>
-  <div class="meta">Published: 2026-01-29 • Updated: 2026-01-29</div>
+  <div class="meta">Published: 29 Jan 2026 • Updated: 20 Mar 2026</div>
 
-  <div class="callout">
-    <strong>If you only have a 5K time…</strong>
-    Use the conservative range below, then validate with longer events when possible:
-    <a href="/blog/marathon-pace-from-10k/">10K → marathon</a> or
-    <a href="/blog/marathon-pace-from-half-marathon/">Half → marathon</a>.
-  </div>
+  <aside class="callout" aria-label="Quick workflow">
+    <strong class="block">Best way to use this page</strong>
+    Use the calculator below for a <strong>starting point</strong>, then validate it with:
+    <a href="/blog/marathon-pace-from-10k/">10K → marathon</a>,
+    <a href="/blog/half-marathon-to-marathon-pace/">half marathon → marathon</a>,
+    the <a href="/blog/marathon-pace-readiness-test/">marathon pace readiness test</a>,
+    and finally convert the goal into exact splits with the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>.
+  </aside>
 
-  <h2>Calculator (Riegel-style model)</h2>
-  <p>
-    A widely used prediction approach uses a power-law scaling of time vs distance (often called “Riegel” in running calculators).
-    Shorter races generally require a more conservative endurance assumption when projecting to 42.195 km.
-  </p>
-  <p class="small">
-    Riegel paper copies: <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">RRTC PDF</a>,
-    <a href="https://www.nku.edu/~longa/classes/mat375/days/docs/CrossCountry/riegel.pdf" target="_blank" rel="noopener">alternate PDF</a>.
-  </p>
+  <nav class="toc" aria-label="Table of contents">
+    <h2>On this page</h2>
+    <ol>
+      <li><a href="#calculator">5K to marathon calculator</a></li>
+      <li><a href="#why-risky">Why 5K often overpredicts marathon pace</a></li>
+      <li><a href="#use-safely">How to use a 5K prediction safely</a></li>
+      <li><a href="#better-predictors">Better predictors than 5K</a></li>
+      <li><a href="#reality-check">Reality checks before you trust the number</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#references">References</a></li>
+    </ol>
+  </nav>
 
-  <div class="grid">
-    <section class="card half">
-      <h2>5K → marathon calculator</h2>
-      <div class="inputs">
-        <div>
-          <label for="t5">Your 5K time (hh:mm:ss or mm:ss)</label>
-          <input id="t5" value="22:00" />
+  <section id="calculator">
+    <h2>Calculator (Riegel-style model)</h2>
+    <p>
+      A widely used prediction approach uses a power-law relationship between time and distance, often referred to in running calculators as the
+      <strong>Riegel model</strong>. It is useful, but the farther you project from the source race, the more careful you should be.
+      Going from 5K to marathon is a very large jump, so conservative assumptions matter.
+    </p>
+    <p class="small">
+      Model background:
+      <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener noreferrer">RRTC PDF</a> ·
+      <a href="https://www.nku.edu/~longa/classes/mat375/days/docs/CrossCountry/riegel.pdf" target="_blank" rel="noopener noreferrer">alternate PDF</a>
+    </p>
+
+    <div class="grid">
+      <section class="card half">
+        <h3>5K → marathon calculator</h3>
+        <div class="inputs">
+          <div>
+            <label for="t5">Your 5K time (hh:mm:ss or mm:ss)</label>
+            <input id="t5" value="22:00" />
+          </div>
+          <div>
+            <label for="exp">Endurance assumption</label>
+            <select id="exp">
+              <option value="1.07" selected>Conservative (1.07)</option>
+              <option value="1.06">Balanced (1.06)</option>
+              <option value="1.08">Very conservative (1.08)</option>
+            </select>
+          </div>
+          <button id="calc" type="button">Calculate</button>
         </div>
-        <div>
-          <label for="exp">Endurance assumption</label>
-          <select id="exp">
-            <option value="1.07" selected>Conservative (1.07)</option>
-            <option value="1.06">Balanced (1.06)</option>
-            <option value="1.08">Very conservative (1.08)</option>
-          </select>
+        <div class="result" id="out" aria-live="polite"></div>
+
+        <p class="small">
+          Use <strong>1.07–1.08</strong> if your long runs are limited, your fueling is untested, or this is your first serious marathon build.
+          A 5K prediction should usually be treated as a ceiling, not a promise.
+        </p>
+      </section>
+
+      <section class="card half">
+        <h3>Quick workflow</h3>
+        <ol>
+          <li>Generate a conservative marathon estimate here</li>
+          <li>Check it against <a href="/blog/marathon-pace-from-10k/">your 10K equivalent</a></li>
+          <li>Check it again against <a href="/blog/half-marathon-to-marathon-pace/">your half marathon equivalent</a></li>
+          <li>Turn the target into exact pace and splits with the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a></li>
+          <li>Pressure-test it with the <a href="/blog/marathon-pace-readiness-test/">readiness test</a> and your <a href="/monthly-training-plan/">training plan</a></li>
+        </ol>
+
+        <div class="callout">
+          <strong class="block">Key principle</strong>
+          The shorter the predictor race, the more marathon-specific evidence you need before trusting the output.
         </div>
-        <button id="calc">Calculate</button>
-      </div>
-      <div class="result" id="out" aria-live="polite"></div>
-
-      <p class="small">
-        If your longest runs aren’t close to 28–32 km and you haven’t practiced marathon fueling, choose 1.07–1.08.
-      </p>
-    </section>
-
-    <section class="card half">
-      <h2>Why 5K overpredicts marathon (common reasons)</h2>
-      <ul>
-        <li><strong>Durability:</strong> the marathon exposes fatigue resistance and training depth.</li>
-        <li><strong>Fueling:</strong> carbohydrate availability and intake strategy matter late in the race.</li>
-        <li><strong>Pacing errors:</strong> small early overpacing can cause big late slowdowns.</li>
-      </ul>
-
-      <div class="callout">
-        <strong>Read next</strong>
-        <div class="related">
-          <a href="/blog/time-in-the-bank-math/">The math of starting too fast</a>
-          <a href="/blog/marathon-splits/">Marathon splits explained</a>
-          <a href="/blog/negative-split-pacing/">Negative split pacing</a>
-        </div>
-      </div>
-    </section>
-  </div>
+      </section>
+    </div>
+  </section>
 
   <div class="hr"></div>
 
-  <h2>Better alternatives (if you can get them)</h2>
-  <ul>
-    <li><a href="/blog/marathon-pace-from-10k/">Marathon pace from 10K time</a> (stronger signal than 5K)</li>
-    <li><a href="/blog/marathon-pace-from-half-marathon/">Marathon pace from half marathon time</a> (usually best race predictor)</li>
-    <li><a href="/blog/vdot-marathon-pace/">VDOT marathon pace</a> (fitness concept + training intensities)</li>
-  </ul>
+  <section id="why-risky">
+    <h2>Why 5K often overpredicts marathon pace</h2>
 
-  <h2>References</h2>
-  <ol class="small">
-    <li>Riegel PS. “Athletic Records and Human Endurance.” PDFs: <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener">RRTC</a>, <a href="https://www.nku.edu/~longa/classes/mat375/days/docs/CrossCountry/riegel.pdf" target="_blank" rel="noopener">alternate</a>.</li>
-    <li>Review of prediction models: <a href="https://www.mdpi.com/1660-4601/17/21/8289" target="_blank" rel="noopener">Predictive Performance Models in Long-Distance Runners</a>.</li>
-    <li>Large-dataset performance prediction: <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0157257" target="_blank" rel="noopener">PLOS ONE model paper</a>.</li>
-  </ol>
+    <p>
+      A 5K rewards speed, aerobic power, and the ability to tolerate discomfort for a relatively short duration.
+      A marathon adds a different layer: <strong>durability under long fatigue</strong>.
+      That means a runner can have a very good 5K and still miss a marathon prediction badly.
+    </p>
 
-  <div class="callout">
-    <strong>Practical recommendation</strong>
-    If you only have a 5K, start conservative and aim to negative split. Pair this estimate with
-    <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a> and
-    <a href="/monthly-training-plan/">Monthly Training Plan</a>.
-  </div>
+    <div class="table-wrap" role="region" aria-label="Why 5K overpredicts marathon">
+      <table>
+        <thead>
+          <tr>
+            <th>What 5K shows well</th>
+            <th>What marathon additionally demands</th>
+            <th>Why this matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Speed and VO₂-oriented fitness</td>
+            <td>Long-run durability</td>
+            <td>You may have the speed for the pace, but not the fatigue resistance to hold it for 42.2 km</td>
+          </tr>
+          <tr>
+            <td>Short-race aggression</td>
+            <td>Pacing discipline</td>
+            <td>Small early overpacing errors are manageable in a 5K but expensive in a marathon</td>
+          </tr>
+          <tr>
+            <td>Minimal fueling dependence</td>
+            <td>Fueling and hydration execution</td>
+            <td>Marathon performance depends heavily on taking in carbs and fluids well enough to keep going</td>
+          </tr>
+          <tr>
+            <td>Low duration risk</td>
+            <td>Late-race collapse risk</td>
+            <td>The marathon punishes optimistic goals much harder than a 5K does</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="callout">
+      <strong class="block">Translation</strong>
+      A 5K can tell you what is <em>theoretically possible</em>. It does not prove what is <em>currently sustainable</em> over a marathon.
+    </aside>
+  </section>
+
+  <section id="use-safely">
+    <h2>How to use a 5K prediction safely</h2>
+
+    <p>
+      The safest way to use a 5K marathon estimate is to treat it as the <strong>optimistic edge of your range</strong>, then move more conservative unless your training gives strong evidence otherwise.
+    </p>
+
+    <h3>Use the conservative end if any of these are true</h3>
+    <ul>
+      <li>You have not completed marathon-specific long runs with pace blocks</li>
+      <li>You have not practiced fueling during long runs</li>
+      <li>Your weekly volume is modest or inconsistent</li>
+      <li>You are new to the marathon distance</li>
+      <li>You tend to start races too fast</li>
+      <li>Race-day conditions may be hot, humid, windy, or hilly</li>
+    </ul>
+
+    <h3>Use the balanced end only if training supports it</h3>
+    <ul>
+      <li>Your long runs are consistent</li>
+      <li>You recover well from marathon-specific sessions</li>
+      <li>You have tested goal pace in long runs</li>
+      <li>You have a working fueling plan</li>
+    </ul>
+
+    <aside class="callout">
+      <strong class="block">Best next tool</strong>
+      Once you pick a realistic target, turn it into exact checkpoints with the
+      <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>, then build the execution side with
+      <a href="/blog/marathon-splits/">Marathon splits</a>,
+      <a href="/blog/how-to-pace-first-10k-marathon/">first 10K pacing</a>,
+      and <a href="/blog/time-in-the-bank-math/">time-in-the-bank math</a>.
+    </aside>
+  </section>
+
+  <section id="better-predictors">
+    <h2>Better predictors than 5K</h2>
+
+    <p>
+      If you can get a longer race result, use it. For marathon prediction, distance matters.
+    </p>
+
+    <div class="links">
+      <a href="/blog/marathon-pace-from-10k/">Marathon pace from 10K time</a>
+      <a href="/blog/half-marathon-to-marathon-pace/">Marathon pace from half marathon time</a>
+      <a href="/blog/vdot-marathon-pace/">VDOT marathon pace</a>
+      <a href="/blog/race-time-predictor-marathon/">Combine multiple races predictor</a>
+    </div>
+
+    <div class="table-wrap" role="region" aria-label="Prediction hierarchy">
+      <table>
+        <thead>
+          <tr>
+            <th>Predictor</th>
+            <th>Usefulness for marathon</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>5K</td>
+            <td>Moderate</td>
+            <td>Useful starting point, but usually the riskiest single race to extrapolate from</td>
+          </tr>
+          <tr>
+            <td>10K</td>
+            <td>Good</td>
+            <td>Better balance of speed and endurance</td>
+          </tr>
+          <tr>
+            <td>Half marathon</td>
+            <td>Very good</td>
+            <td>Usually the best single race predictor for marathon pace</td>
+          </tr>
+          <tr>
+            <td>Multiple race inputs + marathon-specific training evidence</td>
+            <td>Best</td>
+            <td>Reduces the risk of trusting one flattering result</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="reality-check">
+    <h2>Reality checks before you trust the number</h2>
+
+    <p>
+      Before locking in your marathon target from a 5K, run through these checks:
+    </p>
+
+    <ol>
+      <li>
+        <strong>Does the estimate agree with your 10K or half marathon?</strong><br />
+        If not, the longer race is usually the safer anchor.
+      </li>
+      <li>
+        <strong>Can you run marathon pace in training without it feeling like threshold?</strong><br />
+        Use the <a href="/blog/marathon-pace-readiness-test/">marathon pace readiness test</a>.
+      </li>
+      <li>
+        <strong>Can you structure long runs around it?</strong><br />
+        Use <a href="/blog/long-run-structure-fast-finish-vs-blocks-vs-progression/">long run structure guidance</a>.
+      </li>
+      <li>
+        <strong>Do your early-race pacing habits support the target?</strong><br />
+        Review <a href="/blog/how-to-know-if-youre-overpacing/">how to know if you're overpacing</a> and
+        <a href="/blog/how-to-pace-first-10k-marathon/">how to pace the first 10K</a>.
+      </li>
+      <li>
+        <strong>Can you fuel the race properly?</strong><br />
+        Use the <a href="/marathon-fueling-calculator/">Marathon Fueling Calculator</a> and
+        <a href="/blog/marathon-fueling-by-finish-time-gel-schedule/">fueling guide</a>.
+      </li>
+    </ol>
+
+    <aside class="callout">
+      <strong class="block">Practical recommendation</strong>
+      If you only have a 5K, start conservative and aim for calm, even pacing.
+      You are much more likely to run your best marathon by being slightly cautious early than by trusting the most aggressive 5K-derived number.
+    </aside>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+
+    <h3>Can I predict my marathon pace from a 5K time?</h3>
+    <p>
+      Yes, but it is less reliable than using a 10K or half marathon. The 5K is a useful starting point, not a final answer.
+    </p>
+
+    <h3>Why does a 5K often overpredict marathon pace?</h3>
+    <p>
+      Because the marathon depends on durability, fueling, pacing, and fatigue resistance far more than a 5K does.
+    </p>
+
+    <h3>What is better than a 5K for predicting marathon pace?</h3>
+    <p>
+      A 10K is usually better, and a half marathon is often the best single race predictor. Combining multiple race inputs is even better.
+    </p>
+
+    <h3>How should I use a 5K prediction safely?</h3>
+    <p>
+      Use the conservative end of the range, then validate it with longer-race data or a marathon-specific readiness test before committing fully.
+    </p>
+  </section>
+
+  <section id="references">
+    <h2>References</h2>
+    <ol class="small">
+      <li>
+        Riegel PS. “Athletic Records and Human Endurance.”
+        <a href="https://www.rrtc.net/Articles/ARHE.pdf" target="_blank" rel="noopener noreferrer">RRTC PDF</a>,
+        <a href="https://www.nku.edu/~longa/classes/mat375/days/docs/CrossCountry/riegel.pdf" target="_blank" rel="noopener noreferrer">alternate PDF</a>.
+      </li>
+      <li>
+        Review of prediction models:
+        <a href="https://www.mdpi.com/1660-4601/17/21/8289" target="_blank" rel="noopener noreferrer">Predictive Performance Models in Long-Distance Runners</a>.
+      </li>
+      <li>
+        Large-dataset performance prediction:
+        <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0157257" target="_blank" rel="noopener noreferrer">PLOS ONE model paper</a>.
+      </li>
+    </ol>
+    <p class="small note">
+      Educational content only. Use this page as a prediction guide, then validate the target with training evidence and race-specific planning.
+    </p>
+  </section>
+
+  <section class="callout" aria-label="Related pages">
+    <strong class="block">Related tools & guides</strong>
+    <div class="related">
+      <a href="/marathon-time-predictor/">Marathon Time Predictor</a>
+      <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>
+      <a href="/monthly-training-plan/">Monthly Training Plan</a>
+      <a href="/blog/marathon-pace-from-10k/">Marathon pace from 10K</a>
+      <a href="/blog/half-marathon-to-marathon-pace/">Marathon pace from half marathon</a>
+      <a href="/blog/vdot-marathon-pace/">VDOT marathon pace</a>
+      <a href="/blog/race-time-predictor-marathon/">Combine races predictor</a>
+      <a href="/blog/marathon-splits/">Marathon splits</a>
+      <a href="/blog/negative-split-pacing/">Negative split pacing</a>
+      <a href="/blog/time-in-the-bank-math/">Time in the bank math</a>
+      <a href="/blog/marathon-pace-readiness-test/">MP readiness test</a>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -216,17 +520,25 @@
   function render() {
     const t1 = parseTimeToSeconds(t5.value);
     const e = Number(exp.value);
+
     if (!Number.isFinite(t1) || t1 <= 0) {
       out.textContent = "Enter a valid 5K time like 22:00 or 0:22:00.";
       return;
     }
+
     const maraSeconds = riegelPredict(t1, FIVEK_KM, MARA_KM, e);
     const pace = fmtPace(maraSeconds / MARA_KM);
+
+    const conservative = riegelPredict(t1, FIVEK_KM, MARA_KM, 1.08);
+    const balanced = riegelPredict(t1, FIVEK_KM, MARA_KM, 1.07);
+    const optimistic = riegelPredict(t1, FIVEK_KM, MARA_KM, 1.06);
+
     out.innerHTML = `
       <div><strong>Predicted marathon time:</strong> ${fmtHMS(maraSeconds)}</div>
       <div><strong>Predicted marathon pace:</strong> ${pace}</div>
+      <div style="margin-top:8px;"><strong>Useful range:</strong> ${fmtHMS(conservative)} – ${fmtHMS(optimistic)}</div>
       <div class="small" style="margin-top:8px;">
-        Treat this as a range. Validate with a 10K or half marathon when possible.
+        Balanced default: ${fmtHMS(balanced)}. Use the conservative end if your marathon-specific training is limited.
       </div>
     `;
   }
