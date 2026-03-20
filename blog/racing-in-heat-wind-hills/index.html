@@ -21,28 +21,99 @@
 <meta name="twitter:title" content="Marathon Pacing in Heat, Wind, and Hills (How to Adjust Safely)" />
 <meta name="twitter:description" content="How to adjust marathon pace for heat, wind, and hills without blowing up late." />
 
+<link rel="stylesheet" href="/assets/style.css" />
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "Marathon Pacing in Heat, Wind, and Hills (How to Adjust Safely)",
-  "description": "A practical guide to adjusting marathon pace for heat, wind, and hills while maintaining control and avoiding late-race collapse.",
-  "author": {
-    "@type": "Organization",
-    "name": "MarathonPaceKM"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "MarathonPaceKM"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://marathonpacekm.com/blog/racing-in-heat-wind-hills/"
-  },
-  "dateModified": "2026-03-12"
+  "@graph": [
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {"@type":"ListItem","position":1,"name":"Home","item":"https://marathonpacekm.com/"},
+        {"@type":"ListItem","position":2,"name":"Blog","item":"https://marathonpacekm.com/blog/"},
+        {"@type":"ListItem","position":3,"name":"Marathon Pacing in Heat, Wind, and Hills","item":"https://marathonpacekm.com/blog/racing-in-heat-wind-hills/"}
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Marathon Pacing in Heat, Wind, and Hills (How to Adjust Safely)",
+      "description": "A practical guide to adjusting marathon pace for heat, wind, and hills while maintaining control and avoiding late-race collapse.",
+      "author": {
+        "@type": "Organization",
+        "name": "MarathonPaceKM",
+        "url":"https://marathonpacekm.com/about/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "MarathonPaceKM",
+        "url":"https://marathonpacekm.com/"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://marathonpacekm.com/blog/racing-in-heat-wind-hills/"
+      },
+      "dateModified": "2026-03-20"
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"Should I hold goal marathon pace in hot conditions?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Usually no. In heat, the smarter move is to protect effort first and accept slower splits early rather than forcing goal pace and paying for it later."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Should I try to make up time with a tailwind or downhill?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Usually not aggressively. Small free gains are fine, but trying to win back time often increases energy cost and makes late-race slowdown more likely."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"How should I pace hills in a marathon?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Run hills by effort, not by forcing exact flat-ground pace. Slow slightly on climbs, stay controlled, and avoid overstriding on descents."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 
+<style>
+  :root { color-scheme: light; }
+  body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; }
+  .content-wrap { max-width: 900px; margin: 0 auto; padding: 24px 16px 64px; }
+  .breadcrumb { font-size: 0.95rem; margin: 0 0 10px; }
+  .breadcrumb a { text-decoration: none; }
+  .post-header h1 { font-size: 2rem; line-height: 1.15; margin: 0 0 10px; }
+  .post-meta { margin: 0 0 14px; opacity: 0.85; }
+  .lede { font-size: 1.1rem; margin: 0 0 18px; }
+  .toc { border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 14px 16px; margin: 18px 0 24px; }
+  .toc h2 { margin: 0 0 8px; font-size: 1.1rem; }
+  .toc ol { margin: 0; padding-left: 18px; }
+  section { margin: 26px 0; }
+  h2 { margin: 0 0 10px; font-size: 1.55rem; }
+  h3 { margin: 18px 0 8px; font-size: 1.2rem; }
+  .callout { border-radius: 14px; padding: 14px 16px; margin: 16px 0; border: 1px solid rgba(0,0,0,0.12); }
+  .callout-title { margin: 0 0 6px; font-size: 1.05rem; }
+  .callout-note { background: rgba(0, 0, 0, 0.04); }
+  .eeat-box { border-radius: 14px; padding: 14px 16px; margin: 16px 0; border: 1px solid rgba(0,0,0,0.12); background: rgba(0,0,0,0.03); }
+  .table-wrap { overflow-x: auto; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; }
+  table { width: 100%; border-collapse: collapse; min-width: 860px; }
+  th, td { padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,0.08); text-align: left; vertical-align: top; }
+  th { background: rgba(0,0,0,0.04); }
+  .related ul { padding-left: 18px; }
+  .affiliate-note { font-size: 0.95rem; opacity: 0.8; }
+</style>
 </head>
 
 <body>
@@ -57,7 +128,7 @@
   <h1>Marathon Pacing in Heat, Wind, and Hills</h1>
 
   <p class="post-meta">
-    Updated: <time datetime="2026-03-12">12 Mar 2026</time> · Reading time: ~8–10 min
+    Updated: <time datetime="2026-03-20">20 Mar 2026</time> · Reading time: ~8–10 min
   </p>
 
   <p class="lede">
@@ -73,6 +144,15 @@
     If you want a structured adjustment before race day, start with the
     <a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a>.
   </p>
+
+  <div class="eeat-box">
+    <h2 style="font-size:1.1rem;">How to use this guide</h2>
+    <p style="margin-bottom:0;">
+      This page is for practical race-day decisions. At Marathon Pace KM, the core principle is simple:
+      protect effort first, then let pace reflect the conditions. The goal is not to run the pace you wrote down at home.
+      The goal is to run the best race the day allows.
+    </p>
+  </div>
 </header>
 
 <nav class="toc" aria-label="Table of contents">
@@ -97,12 +177,18 @@
 
   <p>Trying to force goal pace when conditions are unfavourable leads to:</p>
   <ul>
-    <li>Accelerated glycogen depletion</li>
-    <li>Excessive cardiovascular strain</li>
-    <li>Sharp late-race pace collapse</li>
+    <li>accelerated glycogen depletion</li>
+    <li>excessive cardiovascular strain</li>
+    <li>sharp late-race pace collapse</li>
   </ul>
 
   <p>The best marathon runners adapt early — not late.</p>
+
+  <p>
+    This is one reason controlled marathon training matters so much.
+    Systems like <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a>
+    can improve your feel for sustainable effort, but even great preparation does not cancel out heat, wind, or hills.
+  </p>
 </section>
 
 <section id="heat">
@@ -117,7 +203,7 @@
   <ul>
     <li>+5–10 sec/km for mild warmth</li>
     <li>+10–20 sec/km for hot conditions</li>
-    <li>Prioritise effort and heart rate over pace</li>
+    <li>prioritise effort and heart rate over pace</li>
   </ul>
 
   <p>Attempting to hold goal pace in the heat often feels manageable early — until it doesn’t.</p>
@@ -140,9 +226,9 @@
 
   <p>In hot conditions:</p>
   <ul>
-    <li>Fuel earlier and more consistently</li>
-    <li>Use aid stations aggressively</li>
-    <li>Accept that pace must adapt</li>
+    <li>fuel earlier and more consistently</li>
+    <li>use aid stations aggressively</li>
+    <li>accept that pace must adapt</li>
   </ul>
 
   <p>No fueling strategy can save an overpaced marathon in the heat.</p>
@@ -171,16 +257,16 @@
   <p>Running into a headwind increases energy cost significantly.</p>
 
   <ul>
-    <li>Ignore pace and run by effort</li>
-    <li>Draft when possible</li>
-    <li>Accept slower splits into the wind</li>
+    <li>ignore pace and run by effort</li>
+    <li>draft when possible</li>
+    <li>accept slower splits into the wind</li>
   </ul>
 
   <h3>Tailwinds</h3>
 
-  <p>Tailwinds feel helpful, but the benefit is smaller than expected.</p>
+  <p>Tailwinds feel helpful, but the benefit is usually smaller than runners expect.</p>
 
-  <p>A common mistake is overusing tailwinds to “bank time,” only to pay for it later.</p>
+  <p>A common mistake is overusing tailwinds to bank time, only to pay for it later.</p>
 
   <p>
     For a more specific breakdown, read
@@ -197,16 +283,16 @@
 
   <h3>Climbs</h3>
   <ul>
-    <li>Slow down deliberately</li>
-    <li>Focus on effort and breathing</li>
-    <li>Protect glycogen stores</li>
+    <li>slow down deliberately</li>
+    <li>focus on effort and breathing</li>
+    <li>protect glycogen stores</li>
   </ul>
 
   <h3>Descents</h3>
   <ul>
-    <li>Avoid overstriding</li>
-    <li>Protect quads early</li>
-    <li>Let pace come naturally</li>
+    <li>avoid overstriding</li>
+    <li>protect quads early</li>
+    <li>let pace come naturally</li>
   </ul>
 
   <p>
@@ -224,15 +310,20 @@
 
   <p>Even when conditions are challenging, the best-performing runners:</p>
   <ul>
-    <li>Start conservatively</li>
-    <li>Adjust effort early</li>
-    <li>Maintain consistency rather than speed</li>
+    <li>start conservatively</li>
+    <li>adjust effort early</li>
+    <li>maintain consistency rather than speed</li>
   </ul>
 
-  <p>Trying to “force” even splits in tough conditions usually backfires.</p>
+  <p>Trying to force even splits in tough conditions usually backfires.</p>
 
   <p>
     The goal is not perfect splits. The goal is a sustainable effort that still leaves you able to race the final 10–12K.
+  </p>
+
+  <p>
+    For most runners, this looks closer to even-to-controlled pacing than a formal negative split.
+    For that discussion, see <a href="/blog/negative-split-marathon/">Negative Split Marathon Pacing</a>.
   </p>
 </section>
 
@@ -243,9 +334,9 @@
 
   <p>Use it to understand:</p>
   <ul>
-    <li>Baseline pace per kilometre</li>
-    <li>Checkpoint expectations</li>
-    <li>Effort distribution</li>
+    <li>baseline pace per kilometre</li>
+    <li>checkpoint expectations</li>
+    <li>effort distribution</li>
   </ul>
 
   <p>Then adapt intelligently on race day.</p>
@@ -266,6 +357,11 @@
   </nav>
 
   <p><strong>Smart marathon pacing adapts to the day — not the spreadsheet.</strong></p>
+
+  <p>
+    If you tend to rely heavily on pace targets in training too, it can help to compare threshold-based control with more traditional steady work.
+    See <a href="/norwegian-singles-vs-tempo-runs/">Norwegian Singles vs Tempo Runs</a>.
+  </p>
 </section>
 
 <section id="recommended-products">
@@ -338,7 +434,28 @@
     <li><a href="/blog/dew-point-pacing-guide/">Dew point pacing guide</a></li>
     <li><a href="/blog/wind-pacing-headwind-tailwind/">Wind pacing: headwind vs tailwind</a></li>
     <li><a href="/blog/hills-pacing-give-away-seconds-avoid-quad-destruction/">Hills pacing guide</a></li>
+    <li><a href="/blog/when-to-adjust-marathon-pace-mid-race/">When to adjust marathon pace mid-race</a></li>
+    <li><a href="/blog/should-i-slow-down-if-heart-rate-is-high/">Should I slow down if HR is high?</a></li>
   </ul>
+</section>
+
+<section class="eeat-box" aria-label="About Marathon Pace KM">
+  <h2 style="font-size:1.1rem;">About Marathon Pace KM</h2>
+  <p>
+    Marathon Pace KM publishes practical pacing tools, calculators, and training guides designed to help runners
+    make better decisions from race data, pacing logic, recovery context, and real-world training feedback.
+  </p>
+  <p>
+    Learn more on the <a href="/about/">About</a> page, get in touch via <a href="/contact/">Contact</a>,
+    and read the <a href="/disclaimer/">Disclaimer</a> and <a href="/privacy/">Privacy Policy</a>.
+  </p>
+  <p>
+    Related pages:
+    <a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a> ·
+    <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a> ·
+    <a href="/norwegian-singles/">Norwegian Singles</a> ·
+    <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a>
+  </p>
 </section>
 
 <footer class="post-footer">
@@ -353,31 +470,5 @@
 
 </article>
 </main>
-
-<style>
-  :root { color-scheme: light; }
-  body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; }
-  .content-wrap { max-width: 900px; margin: 0 auto; padding: 24px 16px 64px; }
-  .breadcrumb { font-size: 0.95rem; margin: 0 0 10px; }
-  .breadcrumb a { text-decoration: none; }
-  .post-header h1 { font-size: 2rem; line-height: 1.15; margin: 0 0 10px; }
-  .post-meta { margin: 0 0 14px; opacity: 0.85; }
-  .lede { font-size: 1.1rem; margin: 0 0 18px; }
-  .toc { border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 14px 16px; margin: 18px 0 24px; }
-  .toc h2 { margin: 0 0 8px; font-size: 1.1rem; }
-  .toc ol { margin: 0; padding-left: 18px; }
-  section { margin: 26px 0; }
-  h2 { margin: 0 0 10px; font-size: 1.55rem; }
-  h3 { margin: 18px 0 8px; font-size: 1.2rem; }
-  .callout { border-radius: 14px; padding: 14px 16px; margin: 16px 0; border: 1px solid rgba(0,0,0,0.12); }
-  .callout-title { margin: 0 0 6px; font-size: 1.05rem; }
-  .callout-note { background: rgba(0, 0, 0, 0.04); }
-  .table-wrap { overflow-x: auto; border: 1px solid rgba(0,0,0,0.12); border-radius: 12px; }
-  table { width: 100%; border-collapse: collapse; min-width: 860px; }
-  th, td { padding: 10px 12px; border-bottom: 1px solid rgba(0,0,0,0.08); text-align: left; vertical-align: top; }
-  th { background: rgba(0,0,0,0.04); }
-  .related ul { padding-left: 18px; }
-  .affiliate-note { font-size: 0.95rem; opacity: 0.8; }
-</style>
 </body>
 </html>
