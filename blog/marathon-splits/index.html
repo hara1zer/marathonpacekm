@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,31 +8,37 @@
 
 <meta name="description" content="Learn exactly what your marathon splits should look like at 5K, 10K, halfway, 30K, and 40K. Avoid early mistakes, pace the marathon properly, and use key checkpoints to stay controlled." />
 <link rel="canonical" href="https://marathonpacekm.com/blog/marathon-splits-explained/" />
-<meta name="robots" content="index,follow" />
+<meta name="robots" content="index,follow,max-image-preview:large" />
 
 <meta property="og:type" content="article" />
+<meta property="og:site_name" content="Marathon Pace KM" />
 <meta property="og:title" content="Marathon Splits Explained: 5K, 10K, Half, 30K & 40K" />
 <meta property="og:description" content="A practical guide to marathon splits, pacing checkpoints, and how to avoid early mistakes that ruin the final 10K." />
 <meta property="og:url" content="https://marathonpacekm.com/blog/marathon-splits-explained/" />
 <meta property="og:image" content="https://marathonpacekm.com/assets/og/blog-marathon-splits.png" />
 
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Marathon Splits Explained: 5K, 10K, Half, 30K & 40K" />
+<meta name="twitter:description" content="A practical guide to marathon splits, pacing checkpoints, and how to avoid early mistakes that ruin the final 10K." />
+<meta name="twitter:image" content="https://marathonpacekm.com/assets/og/blog-marathon-splits.png" />
+
 <link rel="stylesheet" href="/assets/style.css" />
 
 <style>
   .container{max-width:900px;margin:0 auto;padding:0 16px;}
-  .eeat-box{
-    border:1px solid rgba(0,0,0,.10);
-    border-radius:14px;
-    padding:14px;
-    background:rgba(0,0,0,.03);
-    margin:16px 0;
-  }
-  .callout{
+  .eeat-box,
+  .callout,
+  .toc-box,
+  .next-step-box{
     border:1px solid rgba(0,0,0,.10);
     border-radius:14px;
     padding:14px;
     margin:16px 0;
   }
+  .eeat-box{background:rgba(0,0,0,.03);}
+  .callout-note{background:rgba(0,0,0,.04);}
+  .callout-primary{background:rgba(0,120,255,.06);}
+  .callout-warning{background:rgba(255,140,0,.08);}
   .toc li{margin:6px 0;}
   .divider{
     border:0;
@@ -40,6 +46,24 @@
     background:rgba(0,0,0,.10);
     margin:28px 0;
   }
+  .table-wrap{
+    overflow-x:auto;
+    border:1px solid rgba(0,0,0,.10);
+    border-radius:14px;
+    margin:16px 0;
+  }
+  table{
+    width:100%;
+    min-width:680px;
+    border-collapse:collapse;
+  }
+  th,td{
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid rgba(0,0,0,.08);
+    vertical-align:top;
+  }
+  th{background:rgba(0,0,0,.04);}
 </style>
 
 <script type="application/ld+json">
@@ -72,7 +96,7 @@
         "@type": "WebPage",
         "@id": "https://marathonpacekm.com/blog/marathon-splits-explained/"
       },
-      "dateModified":"2026-03-20"
+      "dateModified":"2026-03-21"
     },
     {
       "@type":"FAQPage",
@@ -99,6 +123,14 @@
           "acceptedAnswer":{
             "@type":"Answer",
             "text":"Halfway is the most useful diagnostic point, but the first 5K is often the most dangerous split because that is where many runners pace too aggressively without realizing it."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"What should I do after choosing my marathon splits?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Turn your target into exact pace-per-kilometre and checkpoint times, then use a pace band or calculator so you can follow the plan under race-day pressure."
           }
         }
       ]
@@ -128,7 +160,7 @@
 
 <p class="lead">
   Understanding marathon splits is one of the simplest ways to improve race-day performance.
-  Most runners do not fail because they lack fitness — they fail because they distribute that fitness poorly.
+  Most runners do not fail because they lack fitness. They fail because they distribute that fitness poorly.
 </p>
 
 <p>
@@ -136,10 +168,19 @@
   and how to avoid the early mistakes that ruin the final 10 kilometres.
 </p>
 
+<div class="callout callout-primary">
+  <strong>Best order to use this page</strong>
+  <p style="margin:8px 0 0;">
+    Choose a realistic target with <a href="/blog/choose-marathon-goal-time/">How to Choose a Realistic Marathon Goal Time</a>,
+    build your exact pacing with the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>,
+    then use this page to interpret what your 5K, 10K, half, 30K, and 40K splits should actually feel like.
+  </p>
+</div>
+
 <div class="eeat-box">
   <h2 style="font-size:1.1rem;">How to use this guide</h2>
   <p style="margin-bottom:0;">
-    This page is meant to help you connect race pacing with practical checkpoint decisions.
+    This page is designed to connect race pacing with practical checkpoint decisions.
     At Marathon Pace KM, the goal is not just to show split numbers. It is to help you interpret what those numbers mean,
     when to trust them, and when to back off before a small pacing mistake becomes a late-race collapse.
   </p>
@@ -154,18 +195,21 @@
   </p>
 </div>
 
-<h2>On this page</h2>
-<ul class="toc">
-  <li><a href="#what-are-splits">What are marathon splits?</a></li>
-  <li><a href="#why-splits-matter">Why marathon splits matter more than pace feel</a></li>
-  <li><a href="#0-5k">0–5K: the most dangerous split</a></li>
-  <li><a href="#5-10k">5–10K: settling into rhythm</a></li>
-  <li><a href="#half">Half marathon: the reality check</a></li>
-  <li><a href="#30k">30K: where the marathon actually begins</a></li>
-  <li><a href="#40k">40K: damage control or controlled finish</a></li>
-  <li><a href="#even-vs-negative">Even splits vs negative splits</a></li>
-  <li><a href="#pace-pages">Use pace pages to lock in your splits</a></li>
-</ul>
+<div class="toc-box">
+  <h2 style="margin-top:0;">On this page</h2>
+  <ul class="toc">
+    <li><a href="#what-are-splits">What are marathon splits?</a></li>
+    <li><a href="#why-splits-matter">Why marathon splits matter more than pace feel</a></li>
+    <li><a href="#0-5k">0–5K: the most dangerous split</a></li>
+    <li><a href="#5-10k">5–10K: settling into rhythm</a></li>
+    <li><a href="#half">Half marathon: the reality check</a></li>
+    <li><a href="#30k">30K: where the marathon actually begins</a></li>
+    <li><a href="#40k">40K: damage control or controlled finish</a></li>
+    <li><a href="#even-vs-negative">Even splits vs negative splits</a></li>
+    <li><a href="#pace-pages">Use pace pages to lock in your splits</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</div>
 
 <hr class="divider" />
 
@@ -181,7 +225,17 @@
   <li>40 km</li>
 </ul>
 
-<p>These splits provide objective feedback on whether you’re pacing appropriately — or heading toward trouble.</p>
+<p>
+  These splits provide objective feedback on whether you are pacing appropriately or quietly drifting toward trouble.
+  They are especially useful because marathon effort can feel deceptively easy early.
+</p>
+
+<div class="callout callout-note">
+  <strong>Simple rule</strong>
+  <p style="margin:8px 0 0;">
+    Splits are not just numbers to admire after the race. They are decision points. Each one tells you whether to stay patient, settle down, or make a small correction before the cost gets bigger.
+  </p>
+</div>
 
 <hr class="divider" />
 
@@ -201,9 +255,15 @@
 <p>In the marathon, discipline beats bravery.</p>
 
 <p>
-  This is also why threshold-supported training has to stay controlled.
-  Systems like <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a> can help runners improve sustainable pace judgment,
-  but race-day splitting still depends on restraint more than fitness expression in the first half.
+  This is also why marathon pace should feel controlled in training. Systems like
+  <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a> can help runners improve sustainable pace judgment,
+  but race-day splitting still depends more on restraint than on showing fitness in the first half.
+</p>
+
+<p>
+  If you have not yet locked in a realistic target, go back to
+  <a href="/blog/choose-marathon-goal-time/">How to Choose a Realistic Marathon Goal Time</a>
+  before obsessing over the split table.
 </p>
 
 <hr class="divider" />
@@ -227,11 +287,14 @@
 </ul>
 
 <p>
-  If your goal is <a href="/3-30-marathon-pace/">3:30 marathon pace</a>, the first 5 km should not feel like effort — it should feel like restraint.
+  If your goal is <a href="/3-30-marathon-pace-km/">3:30 marathon pace</a>, the first 5 km should not feel like effort.
+  It should feel like restraint.
 </p>
 
 <p>
-  If you want the warning signs in more detail, read <a href="/blog/how-to-know-if-youre-overpacing/">How to Know If You’re Overpacing</a>.
+  If you want the warning signs in more detail, read
+  <a href="/blog/how-to-know-if-youre-overpacing/">How to Know If You’re Overpacing</a> and
+  <a href="/blog/how-to-pace-first-10k-marathon/">How to Pace the First 10K of a Marathon</a>.
 </p>
 
 <hr class="divider" />
@@ -255,8 +318,15 @@
 </ul>
 
 <p>
-  Even at faster targets like <a href="/3-05-marathon-pace/">3:05 marathon pace</a>, the 10 km split should feel conservative.
+  Even at faster targets like <a href="/3-05-marathon-pace-km/">3:05 marathon pace</a>, the 10 km split should feel conservative.
 </p>
+
+<div class="callout callout-warning">
+  <strong>Do not confuse “good” with “too good”</strong>
+  <p style="margin:8px 0 0;">
+    If marathon pace feels effortless at 8–10 km, that is not always a good sign. It can mean adrenaline is hiding the true cost. That is why your 10K split should feel controlled, not exciting.
+  </p>
+</div>
 
 <hr class="divider" />
 
@@ -277,12 +347,13 @@
 
 <p>Example pacing pages:</p>
 <ul>
-  <li><a href="/3-15-marathon-pace/">3:15 marathon pace splits</a></li>
-  <li><a href="/3-45-marathon-pace/">3:45 marathon pace splits</a></li>
+  <li><a href="/3-15-marathon-pace-km/">3:15 marathon pace splits</a></li>
+  <li><a href="/3-45-marathon-pace-km/">3:45 marathon pace splits</a></li>
 </ul>
 
 <p>
-  If you need a decision framework here, use <a href="/blog/when-to-adjust-marathon-pace-mid-race/">When to Adjust Marathon Pace Mid-Race</a>.
+  If you need a decision framework here, use
+  <a href="/blog/when-to-adjust-marathon-pace-mid-race/">When to Adjust Marathon Pace Mid-Race</a>.
 </p>
 
 <hr class="divider" />
@@ -307,7 +378,7 @@
   <li>lose mental focus</li>
 </ul>
 
-<p>If you arrive at 30 km feeling strong, your splits have been correct.</p>
+<p>If you arrive at 30 km feeling strong, your splits have probably been correct.</p>
 
 <p>
   This is also where the myth of banking time usually collapses.
@@ -316,9 +387,9 @@
 
 <hr class="divider" />
 
-<h2 id="40k">40 km: Damage Control or Controlled Finish</h2>
+<h2 id="40k">40K: Damage Control or Controlled Finish</h2>
 
-<p>The final 2 km are rarely about speed — they’re about survival.</p>
+<p>The final 2.2 km are rarely about speed. They are about survival or control.</p>
 
 <p>At this point:</p>
 <ul>
@@ -327,7 +398,11 @@
 </ul>
 
 <p>
-  Runners targeting <a href="/4-00-marathon-pace/">4:00 marathon pace</a> often finish stronger than faster runners who started too aggressively.
+  Runners targeting <a href="/4-00-marathon-pace-km/">4:00 marathon pace</a> often finish stronger than faster runners who started too aggressively.
+</p>
+
+<p>
+  If you are still making smart decisions at 40K, the race has gone well. If you are just trying not to stop, the problem usually started much earlier.
 </p>
 
 <hr class="divider" />
@@ -345,8 +420,38 @@
 <p>If unsure, default to even splits.</p>
 
 <p>
-  For the deeper pacing comparison, read <a href="/blog/negative-split-pacing/">Negative Split Pacing</a>.
+  For the deeper pacing comparison, read
+  <a href="/blog/negative-split-pacing/">Negative Split Pacing</a>.
 </p>
+
+<div class="table-wrap" role="region" aria-label="Even vs negative split summary" tabindex="0">
+  <table>
+    <thead>
+      <tr>
+        <th>Approach</th>
+        <th>Best for</th>
+        <th>Main risk</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Even splits</strong></td>
+        <td>Most marathoners</td>
+        <td>Requires patience early</td>
+      </tr>
+      <tr>
+        <td><strong>Slight negative split</strong></td>
+        <td>Experienced runners with strong durability</td>
+        <td>Easy to overthink and under-race early</td>
+      </tr>
+      <tr>
+        <td><strong>Positive split</strong></td>
+        <td>Usually accidental, not ideal</td>
+        <td>Late-race collapse</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <hr class="divider" />
 
@@ -363,16 +468,45 @@
 
 <nav aria-label="Goal pace pages">
 <ul>
-  <li><a href="/3-05-marathon-pace/">3:05 Marathon Pace</a></li>
-  <li><a href="/3-15-marathon-pace/">3:15 Marathon Pace</a></li>
-  <li><a href="/3-30-marathon-pace/">3:30 Marathon Pace</a></li>
-  <li><a href="/3-45-marathon-pace/">3:45 Marathon Pace</a></li>
-  <li><a href="/4-00-marathon-pace/">4:00 Marathon Pace</a></li>
+  <li><a href="/3-05-marathon-pace-km/">3:05 Marathon Pace</a></li>
+  <li><a href="/3-15-marathon-pace-km/">3:15 Marathon Pace</a></li>
+  <li><a href="/3-30-marathon-pace-km/">3:30 Marathon Pace</a></li>
+  <li><a href="/3-45-marathon-pace-km/">3:45 Marathon Pace</a></li>
+  <li><a href="/4-00-marathon-pace-km/">4:00 Marathon Pace</a></li>
 </ul>
 </nav>
 
 <p>
-  <strong>Correct marathon splits don’t feel impressive early — they feel intelligent late.</strong>
+  For a custom target instead of a shortcut page, use the
+  <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>.
+</p>
+
+<p>
+  <strong>Correct marathon splits do not feel impressive early. They feel intelligent late.</strong>
+</p>
+
+<hr class="divider" />
+
+<h2 id="faq">FAQ</h2>
+
+<h3>What are marathon splits?</h3>
+<p>
+  Marathon splits are your cumulative times or average pace at key checkpoints such as 5K, 10K, halfway, 30K, and 40K. They help you judge whether your pacing is controlled or too aggressive.
+</p>
+
+<h3>Should marathon splits be even?</h3>
+<p>
+  Most runners do best with even pacing or a very small negative split. Starting aggressively and trying to bank time usually increases the risk of a bigger slowdown later.
+</p>
+
+<h3>What is the most important marathon split?</h3>
+<p>
+  Halfway is the most useful diagnostic point, but the first 5K is often the most dangerous split because that is where many runners pace too aggressively without realising it.
+</p>
+
+<h3>What should I do after choosing my marathon splits?</h3>
+<p>
+  Turn your target into exact pace-per-kilometre and checkpoint times, then use a pace band or calculator so you can follow the plan under race-day pressure.
 </p>
 
 <section class="eeat-box" aria-label="About Marathon Pace KM">
@@ -393,6 +527,12 @@
     <a href="/norwegian-singles-marathon-training/">Norwegian Singles for marathon training</a>
   </p>
 </section>
+
+<div class="next-step-box">
+  <strong>Next step</strong>
+  After publishing this, update your <strong>negative split pacing</strong> page next. That gives you a strong internal cluster of:
+  <strong>goal time → splits → even vs negative pacing → first 10K execution</strong>.
+</div>
 
 </article>
 </main>
