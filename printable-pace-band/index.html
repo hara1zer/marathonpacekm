@@ -4,20 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Printable Marathon Pace Band & Phone Card | Free PDF</title>
-  <meta name="description" content="Create a free marathon pace band and phone card in kilometres or miles. Print three true-size wrist bands or download a race-day PNG." />
+  <title>Free Marathon Pace Band Generator | Printable KM &amp; Miles</title>
+  <meta name="description" content="Create a free printable marathon pace band in KM or miles. Set your goal time, choose your pacing plan, then print, save as PDF or download a phone card." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://marathonpacekm.com/printable-pace-band/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Printable Marathon Pace Band & Phone Card" />
-  <meta property="og:description" content="Enter your marathon goal time to create a printable wrist band and downloadable phone card." />
+  <meta property="og:title" content="Free Marathon Pace Band Generator | Printable KM &amp; Miles" />
+  <meta property="og:description" content="Build a custom marathon pace band in kilometres or miles. Print your wrist bands, save as PDF from the print dialog, or download a phone card." />
   <meta property="og:url" content="https://marathonpacekm.com/printable-pace-band/" />
   <meta property="og:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Printable Marathon Pace Band & Phone Card" />
-  <meta name="twitter:description" content="Create a printable marathon wrist band and downloadable race-day phone card." />
+  <meta name="twitter:title" content="Free Marathon Pace Band Generator | Printable KM &amp; Miles" />
+  <meta name="twitter:description" content="Generate a free marathon pace band for your goal time. Print in kilometres or miles and download a race-day phone card." />
   <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
 
   <link rel="preload" href="/assets/style.css" as="style" />
@@ -35,7 +35,10 @@
     }
 
     html { scroll-behavior: smooth; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
     #generator, #outputs, #howto, #faq { scroll-margin-top: 16px; }
 
     .visually-hidden {
@@ -50,181 +53,79 @@
       border: 0 !important;
     }
 
-    .generator-intro {
-      max-width: 760px;
-    }
+    .generator-intro { max-width: 760px; }
+    .intro-benefits { margin-top: 8px; }
 
-    .control-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .control-group {
-      min-width: 0;
-    }
-
-    .control-group > label,
-    .control-label {
-      display: block;
-      margin-bottom: 7px;
-      font-size: 14px;
-      font-weight: 800;
-      color: var(--band-ink);
-    }
-
-    .time-inputs,
-    .pace-inputs {
+    .goal-presets {
       display: flex;
-      align-items: center;
-      gap: 7px;
-      flex-wrap: nowrap;
-    }
-
-    .time-inputs input,
-    .pace-inputs input {
-      width: 76px;
-      min-width: 0;
-    }
-
-    .input-suffix {
-      color: var(--band-muted);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .field-help {
-      margin: 7px 0 0;
-      color: var(--band-muted);
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .strategy-settings {
-      margin-top: 16px;
-      padding: 14px;
-      border: 1px solid var(--band-line);
-      border-radius: 14px;
-      background: rgba(255, 255, 255, .62);
-    }
-
-    .strategy-option[hidden] {
-      display: none !important;
-    }
-
-    .inline-setting {
-      display: flex;
-      gap: 10px;
-      align-items: center;
       flex-wrap: wrap;
-    }
-
-    .inline-setting input {
-      width: 92px;
-    }
-
-    .controlled-example {
-      margin-top: 12px;
-      padding: 12px;
-      border: 1px solid rgba(36, 87, 214, .18);
-      border-radius: 12px;
-      background: rgba(36, 87, 214, .055);
-    }
-
-    .controlled-times {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-      gap: 10px;
-      align-items: center;
-    }
-
-    .controlled-time {
-      min-width: 0;
-    }
-
-    .controlled-time span {
-      display: block;
-      color: var(--band-muted);
-      font-size: 10px;
-      font-weight: 850;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-    }
-
-    .controlled-time strong {
-      display: block;
-      margin-top: 3px;
-      color: var(--band-ink);
-      font-size: 21px;
-      font-variant-numeric: tabular-nums;
-      line-height: 1;
-    }
-
-    .controlled-arrow {
-      color: var(--band-blue);
-      font-size: 21px;
-      font-weight: 900;
-    }
-
-    .controlled-recovery {
+      gap: 8px;
       margin: 10px 0 0;
-      color: var(--band-muted);
-      font-size: 12px;
-      line-height: 1.45;
     }
 
-    .action-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .action-row .btn {
-      cursor: pointer;
-    }
-
-    .btn-primary-strong {
-      background: var(--band-red) !important;
-      border-color: var(--band-red) !important;
-      color: #fff !important;
-    }
-
-    .btn-primary-strong:hover {
-      background: var(--band-red-dark) !important;
-      border-color: var(--band-red-dark) !important;
-    }
-
-    .status-line {
-      min-height: 22px;
-      margin-top: 10px;
-      color: var(--band-muted);
-      font-size: 13px;
-    }
-
-    .advanced-options {
-      margin-top: 16px;
+    .goal-preset {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 8px 13px;
       border: 1px solid var(--band-line);
-      border-radius: 14px;
-      background: rgba(255, 255, 255, .55);
-    }
-
-    .advanced-options > summary {
-      padding: 13px 14px;
-      cursor: pointer;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--band-ink);
+      font-size: 14px;
       font-weight: 800;
+      text-decoration: none;
+      box-sizing: border-box;
     }
 
-    .advanced-inner {
-      padding: 0 14px 14px;
+    .goal-preset:hover,
+    .goal-preset[aria-current="true"] {
+      border-color: var(--band-red);
+      background: #fff4f5;
+      color: var(--band-red-dark);
     }
 
-    .optional-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid var(--band-blue);
+      outline-offset: 3px;
     }
+
+    .control-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 18px; }
+    .control-group { min-width: 0; }
+    .control-group > label, .control-label { display: block; margin-bottom: 7px; font-size: 14px; font-weight: 800; color: var(--band-ink); }
+    .time-inputs, .pace-inputs { display: flex; align-items: center; gap: 7px; flex-wrap: nowrap; }
+    .time-inputs input, .pace-inputs input { width: 76px; min-width: 0; }
+    .input-suffix { color: var(--band-muted); font-size: 14px; font-weight: 700; }
+    .field-help { margin: 7px 0 0; color: var(--band-muted); font-size: 12px; line-height: 1.45; }
+
+    .strategy-settings { margin-top: 16px; padding: 14px; border: 1px solid var(--band-line); border-radius: 14px; background: rgba(255, 255, 255, .62); }
+    .strategy-option[hidden] { display: none !important; }
+    .inline-setting { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .inline-setting input { width: 92px; }
+    .controlled-example { margin-top: 12px; padding: 12px; border: 1px solid rgba(36, 87, 214, .18); border-radius: 12px; background: rgba(36, 87, 214, .055); }
+    .controlled-times { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; }
+    .controlled-time { min-width: 0; }
+    .controlled-time span { display: block; color: var(--band-muted); font-size: 10px; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+    .controlled-time strong { display: block; margin-top: 3px; color: var(--band-ink); font-size: 21px; font-variant-numeric: tabular-nums; line-height: 1; }
+    .controlled-arrow { color: var(--band-blue); font-size: 21px; font-weight: 900; }
+    .controlled-recovery { margin: 10px 0 0; color: var(--band-muted); font-size: 12px; line-height: 1.45; }
+
+    .action-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .action-row .btn { cursor: pointer; }
+    .btn-primary-strong { background: var(--band-red) !important; border-color: var(--band-red) !important; color: #fff !important; }
+    .btn-primary-strong:hover { background: var(--band-red-dark) !important; border-color: var(--band-red-dark) !important; }
+    .status-line { min-height: 22px; margin-top: 10px; color: var(--band-muted); font-size: 13px; }
+
+    .advanced-options { margin-top: 16px; border: 1px solid var(--band-line); border-radius: 14px; background: rgba(255, 255, 255, .55); }
+    .advanced-options > summary { padding: 13px 14px; cursor: pointer; font-weight: 800; }
+    .advanced-inner { padding: 0 14px 14px; }
+    .optional-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 
     textarea.embed {
       width: 100%;
@@ -240,73 +141,17 @@
       box-sizing: border-box;
     }
 
-    .result-summary {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 18px;
-    }
+    .result-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }
+    .summary-card { padding: 13px 14px; border: 1px solid var(--band-line); border-radius: 15px; background: rgba(255, 255, 255, .82); }
+    .summary-label { margin-bottom: 4px; color: var(--band-muted); font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .summary-value { color: var(--band-ink); font-size: clamp(18px, 4vw, 23px); font-weight: 850; line-height: 1.1; }
 
-    .summary-card {
-      padding: 13px 14px;
-      border: 1px solid var(--band-line);
-      border-radius: 15px;
-      background: rgba(255, 255, 255, .82);
-    }
-
-    .summary-label {
-      margin-bottom: 4px;
-      color: var(--band-muted);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .summary-value {
-      color: var(--band-ink);
-      font-size: clamp(18px, 4vw, 23px);
-      font-weight: 850;
-      line-height: 1.1;
-    }
-
-    .output-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-    }
-
-    .output-card {
-      min-width: 0;
-      overflow: hidden;
-      border: 1px solid var(--band-line);
-      border-radius: 20px;
-      background: rgba(255, 255, 255, .82);
-    }
-
-    .output-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 16px;
-      border-bottom: 1px solid var(--band-line);
-    }
-
-    .output-head h3 {
-      margin: 0 0 4px;
-      font-size: 22px;
-    }
-
-    .output-head p {
-      margin: 0;
-      color: var(--band-muted);
-      font-size: 14px;
-    }
-
-    .output-body {
-      padding: 16px;
-    }
+    .output-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    .output-card { min-width: 0; overflow: hidden; border: 1px solid var(--band-line); border-radius: 20px; background: rgba(255, 255, 255, .82); }
+    .output-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px; padding: 16px; border-bottom: 1px solid var(--band-line); }
+    .output-head h3 { margin: 0 0 4px; font-size: 22px; }
+    .output-head p { margin: 0; color: var(--band-muted); font-size: 14px; }
+    .output-body { padding: 16px; }
 
     .wrist-preview-scroll {
       padding: 14px;
@@ -321,11 +166,7 @@
       background-size: 16px 16px;
     }
 
-    .wrist-preview-note {
-      margin: 10px 0 0;
-      color: var(--band-muted);
-      font-size: 12px;
-    }
+    .wrist-preview-note { margin: 10px 0 0; color: var(--band-muted); font-size: 12px; }
 
     .pace-band {
       width: 225mm;
@@ -343,118 +184,21 @@
       -webkit-print-color-adjust: exact;
     }
 
-    .band-brand {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 2mm;
-      background: #111;
-      color: #fff;
-      text-align: left;
-      box-sizing: border-box;
-    }
+    .band-brand { display: flex; flex-direction: column; justify-content: center; padding: 2mm; background: #111; color: #fff; text-align: left; box-sizing: border-box; }
+    .band-brand-name { font-size: 5.2pt; font-weight: 800; letter-spacing: .08em; line-height: 1.1; text-transform: uppercase; }
+    .band-goal { margin-top: 1.2mm; font-size: 13pt; font-weight: 900; line-height: 1; }
+    .band-pace { margin-top: 1mm; font-size: 6.5pt; font-weight: 700; line-height: 1.15; }
+    .band-runner { margin-top: 1mm; overflow: hidden; font-size: 5.5pt; line-height: 1.1; text-overflow: ellipsis; white-space: nowrap; }
+    .band-checkpoints { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(2, 1fr); min-width: 0; }
+    .band-cell { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; border-right: .2mm solid #9ca3af; border-bottom: .2mm solid #9ca3af; text-align: center; box-sizing: border-box; }
+    .band-cell:nth-child(5n) { border-right: 0; }
+    .band-cell:nth-child(n+6) { border-bottom: 0; }
+    .band-cell:nth-child(odd) { background: #f1f3f5; }
+    .band-distance { font-size: 6pt; font-weight: 900; letter-spacing: .035em; line-height: 1; text-transform: uppercase; }
+    .band-time { margin-top: 1mm; font-size: 10pt; font-variant-numeric: tabular-nums; font-weight: 900; line-height: 1; white-space: nowrap; }
+    .band-tape { display: flex; align-items: center; justify-content: center; border-left: .35mm dashed #111; color: #4b5563; font-size: 5.5pt; font-weight: 800; letter-spacing: .1em; text-align: center; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg); }
 
-    .band-brand-name {
-      font-size: 5.2pt;
-      font-weight: 800;
-      letter-spacing: .08em;
-      line-height: 1.1;
-      text-transform: uppercase;
-    }
-
-    .band-goal {
-      margin-top: 1.2mm;
-      font-size: 13pt;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .band-pace {
-      margin-top: 1mm;
-      font-size: 6.5pt;
-      font-weight: 700;
-      line-height: 1.15;
-    }
-
-    .band-runner {
-      margin-top: 1mm;
-      overflow: hidden;
-      font-size: 5.5pt;
-      line-height: 1.1;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .band-checkpoints {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      grid-template-rows: repeat(2, 1fr);
-      min-width: 0;
-    }
-
-    .band-cell {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-width: 0;
-      border-right: .2mm solid #9ca3af;
-      border-bottom: .2mm solid #9ca3af;
-      text-align: center;
-      box-sizing: border-box;
-    }
-
-    .band-cell:nth-child(5n) {
-      border-right: 0;
-    }
-
-    .band-cell:nth-child(n+6) {
-      border-bottom: 0;
-    }
-
-    .band-cell:nth-child(odd) {
-      background: #f1f3f5;
-    }
-
-    .band-distance {
-      font-size: 6pt;
-      font-weight: 900;
-      letter-spacing: .035em;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .band-time {
-      margin-top: 1mm;
-      font-size: 10pt;
-      font-variant-numeric: tabular-nums;
-      font-weight: 900;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .band-tape {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-left: .35mm dashed #111;
-      color: #4b5563;
-      font-size: 5.5pt;
-      font-weight: 800;
-      letter-spacing: .1em;
-      text-align: center;
-      text-transform: uppercase;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-    }
-
-    .phone-stage {
-      display: flex;
-      justify-content: center;
-      padding: 12px;
-      border-radius: 16px;
-      background: var(--band-soft);
-    }
+    .phone-stage { display: flex; justify-content: center; padding: 12px; border-radius: 16px; background: var(--band-soft); }
 
     .phone-card {
       width: min(100%, 390px);
@@ -471,259 +215,56 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    .phone-top {
-      padding: 22px 22px 12px;
-    }
+    .phone-top { padding: 22px 22px 12px; }
+    .phone-brand { font-size: 10px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+    .phone-race { min-height: 18px; margin-top: 14px; overflow: hidden; color: rgba(255, 255, 255, .72); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+    .phone-title { margin-top: 4px; font-size: clamp(28px, 8vw, 40px); font-weight: 900; letter-spacing: -.04em; line-height: 1; }
+    .phone-runner { min-height: 16px; margin-top: 7px; overflow: hidden; color: rgba(255, 255, 255, .72); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+    .phone-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 22px 12px; }
+    .phone-stat { padding: 10px 11px; border: 1px solid rgba(255, 255, 255, .14); border-radius: 12px; background: rgba(255, 255, 255, .08); }
+    .phone-stat-label { color: rgba(255, 255, 255, .62); font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .phone-stat-value { margin-top: 3px; font-size: 17px; font-weight: 900; }
+    .phone-checkpoints { flex: 1; min-height: 0; margin: 0 14px; overflow: hidden; border: 1px solid rgba(255, 255, 255, .12); border-radius: 15px; background: rgba(255, 255, 255, .96); color: var(--band-ink); }
+    .phone-row { height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #e7e9ee; box-sizing: border-box; }
+    .phone-row:last-child { border-bottom: 0; }
+    .phone-row:nth-child(even) { background: #f5f6f8; }
+    .phone-distance { color: #4b5563; font-size: 11px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+    .phone-time { font-size: clamp(15px, 4.2vw, 19px); font-variant-numeric: tabular-nums; font-weight: 900; }
+    .phone-cue { margin: 12px 14px 0; padding: 10px 12px; border: 1px solid rgba(255, 255, 255, .12); border-radius: 13px; background: rgba(214, 31, 44, .16); font-size: 10px; font-weight: 800; line-height: 1.35; text-align: center; }
+    .phone-footer { padding: 10px 22px 16px; color: rgba(255, 255, 255, .55); font-size: 8px; font-weight: 800; letter-spacing: .09em; text-align: center; text-transform: uppercase; }
 
-    .phone-brand {
-      font-size: 10px;
-      font-weight: 900;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .phone-race {
-      min-height: 18px;
-      margin-top: 14px;
-      overflow: hidden;
-      color: rgba(255, 255, 255, .72);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      text-overflow: ellipsis;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .phone-title {
-      margin-top: 4px;
-      font-size: clamp(28px, 8vw, 40px);
-      font-weight: 900;
-      letter-spacing: -.04em;
-      line-height: 1;
-    }
-
-    .phone-runner {
-      min-height: 16px;
-      margin-top: 7px;
-      overflow: hidden;
-      color: rgba(255, 255, 255, .72);
-      font-size: 12px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    .phone-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      padding: 0 22px 12px;
-    }
-
-    .phone-stat {
-      padding: 10px 11px;
-      border: 1px solid rgba(255, 255, 255, .14);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, .08);
-    }
-
-    .phone-stat-label {
-      color: rgba(255, 255, 255, .62);
-      font-size: 8px;
-      font-weight: 800;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .phone-stat-value {
-      margin-top: 3px;
-      font-size: 17px;
-      font-weight: 900;
-    }
-
-    .phone-checkpoints {
-      flex: 1;
-      min-height: 0;
-      margin: 0 14px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, .12);
-      border-radius: 15px;
-      background: rgba(255, 255, 255, .96);
-      color: var(--band-ink);
-    }
-
-    .phone-row {
-      height: 10%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 15px;
-      border-bottom: 1px solid #e7e9ee;
-      box-sizing: border-box;
-    }
-
-    .phone-row:last-child {
-      border-bottom: 0;
-    }
-
-    .phone-row:nth-child(even) {
-      background: #f5f6f8;
-    }
-
-    .phone-distance {
-      color: #4b5563;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    .phone-time {
-      font-size: clamp(15px, 4.2vw, 19px);
-      font-variant-numeric: tabular-nums;
-      font-weight: 900;
-    }
-
-    .phone-cue {
-      margin: 12px 14px 0;
-      padding: 10px 12px;
-      border: 1px solid rgba(255, 255, 255, .12);
-      border-radius: 13px;
-      background: rgba(214, 31, 44, .16);
-      font-size: 10px;
-      font-weight: 800;
-      line-height: 1.35;
-      text-align: center;
-    }
-
-    .phone-footer {
-      padding: 10px 22px 16px;
-      color: rgba(255, 255, 255, .55);
-      font-size: 8px;
-      font-weight: 800;
-      letter-spacing: .09em;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    .split-details {
-      margin-top: 18px;
-      border: 1px solid var(--band-line);
-      border-radius: 16px;
-      background: rgba(255, 255, 255, .7);
-      overflow: hidden;
-    }
-
-    .split-details > summary {
-      padding: 14px 16px;
-      cursor: pointer;
-      font-weight: 850;
-    }
-
-    .split-table-wrap {
-      overflow-x: auto;
-      border-top: 1px solid var(--band-line);
-    }
-
-    .split-table {
-      width: 100%;
-      min-width: 440px;
-      border-collapse: collapse;
-    }
-
-    .split-table th,
-    .split-table td {
-      padding: 10px 14px;
-      border-bottom: 1px solid #eceef2;
-      text-align: left;
-    }
-
-    .split-table th {
-      background: #f5f6f8;
-      color: #4b5563;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-    }
-
-    .split-table td {
-      font-size: 15px;
-      font-variant-numeric: tabular-nums;
-      font-weight: 750;
-    }
-
-    .split-table tr:last-child td {
-      border-bottom: 0;
-      background: #fff4f5;
-      color: var(--band-red-dark);
-      font-weight: 900;
-    }
-
-    .scale-demo {
-      display: inline-flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-top: 8px;
-      color: var(--band-muted);
-      font-size: 11px;
-    }
-
-    .scale-line-screen {
-      width: 50mm;
-      border-top: 2px solid #111;
-    }
-
-    #printSheet {
-      display: none;
-    }
+    .split-details { margin-top: 18px; border: 1px solid var(--band-line); border-radius: 16px; background: rgba(255, 255, 255, .7); overflow: hidden; }
+    .split-details > summary { padding: 14px 16px; cursor: pointer; font-weight: 850; }
+    .split-table-wrap { overflow-x: auto; border-top: 1px solid var(--band-line); }
+    .split-table { width: 100%; min-width: 440px; border-collapse: collapse; }
+    .split-table th, .split-table td { padding: 10px 14px; border-bottom: 1px solid #eceef2; text-align: left; }
+    .split-table th { background: #f5f6f8; color: #4b5563; font-size: 12px; font-weight: 900; letter-spacing: .05em; text-transform: uppercase; }
+    .split-table td { font-size: 15px; font-variant-numeric: tabular-nums; font-weight: 750; }
+    .split-table tr:last-child td { border-bottom: 0; background: #fff4f5; color: var(--band-red-dark); font-weight: 900; }
+    .scale-demo { display: inline-flex; flex-direction: column; gap: 5px; margin-top: 8px; color: var(--band-muted); font-size: 11px; }
+    .scale-line-screen { width: 50mm; border-top: 2px solid #111; }
+    #printSheet { display: none; }
 
     @media (min-width: 680px) {
-      .control-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .optional-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .result-summary {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
+      .control-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .optional-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .result-summary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     }
 
     @media (min-width: 980px) {
-      .output-grid {
-        grid-template-columns: minmax(0, 1.45fr) minmax(320px, .75fr);
-        align-items: start;
-      }
+      .output-grid { grid-template-columns: minmax(0, 1.45fr) minmax(320px, .75fr); align-items: start; }
     }
 
     @media (max-width: 520px) {
-      .action-row .btn {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .output-head {
-        display: block;
-      }
-
-      .output-head .btn {
-        width: 100%;
-        margin-top: 12px;
-      }
+      .action-row .btn { width: 100%; justify-content: center; text-align: center; }
+      .output-head { display: block; }
+      .output-head .btn { width: 100%; margin-top: 12px; }
     }
 
     @media print {
-      @page {
-        size: A4 landscape;
-        margin: 10mm;
-      }
+      @page { size: A4 landscape; margin: 10mm; }
 
-      html,
-      body {
+      html, body {
         width: auto !important;
         min-width: 0 !important;
         margin: 0 !important;
@@ -731,9 +272,7 @@
         background: #fff !important;
       }
 
-      body > * {
-        display: none !important;
-      }
+      body > * { display: none !important; }
 
       body > #printSheet {
         width: 277mm;
@@ -751,49 +290,13 @@
         -webkit-print-color-adjust: exact;
       }
 
-      .print-heading {
-        width: 225mm;
-        margin: 0;
-        padding: 0;
-      }
-
-      .print-title {
-        margin: 0;
-        font-size: 13pt;
-        font-weight: 900;
-      }
-
-      .print-instructions {
-        margin: 1.5mm 0 0;
-        color: #444;
-        font-size: 8pt;
-      }
-
-      .print-scale {
-        display: flex;
-        align-items: flex-end;
-        gap: 3mm;
-        margin-top: 2mm;
-        color: #444;
-        font-size: 7pt;
-      }
-
-      .print-scale-line {
-        width: 50mm;
-        border-top: .4mm solid #111;
-      }
-
-      .print-band-row {
-        width: 225mm;
-        height: 38mm;
-        flex: 0 0 38mm;
-        break-inside: avoid;
-        page-break-inside: avoid;
-      }
-
-      .pace-band {
-        box-shadow: none !important;
-      }
+      .print-heading { width: 225mm; margin: 0; padding: 0; }
+      .print-title { margin: 0; font-size: 13pt; font-weight: 900; }
+      .print-instructions { margin: 1.5mm 0 0; color: #444; font-size: 8pt; }
+      .print-scale { display: flex; align-items: flex-end; gap: 3mm; margin-top: 2mm; color: #444; font-size: 7pt; }
+      .print-scale-line { width: 50mm; border-top: .4mm solid #111; }
+      .print-band-row { width: 225mm; height: 38mm; flex: 0 0 38mm; break-inside: avoid; page-break-inside: avoid; }
+      .pace-band { box-shadow: none !important; }
     }
   </style>
 
@@ -813,7 +316,7 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Printable Pace Band",
+            "name": "Marathon Pace Band Generator",
             "item": "https://marathonpacekm.com/printable-pace-band/"
           }
         ]
@@ -829,33 +332,73 @@
           "price": "0",
           "priceCurrency": "USD"
         },
-        "description": "Create a printable marathon wrist band and downloadable phone pace card in kilometres or miles."
+        "description": "Generate a free printable marathon pace band in kilometres or miles with custom goal times, three pacing plans, browser printing, PDF saving through the print dialog and a downloadable phone card."
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
           {
             "@type": "Question",
+            "name": "What is a marathon pace band?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A marathon pace band, also called a pace bracelet, is a wrist-sized list of target elapsed times at race checkpoints. It helps you compare your progress with your finish-time goal without doing calculations during the race."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I save my marathon pace band as a PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Select Print bands / Save PDF, then choose Save as PDF if it is available in your browser or operating system. Use A4 landscape and 100% or Actual size. The phone card downloads separately as a PNG image."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I make a pace band in kilometres or miles?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Choose Kilometres or Miles in the generator. The wrist band and phone card use your selected units, and the summary shows average pace in both. The full marathon distance used for every calculation is 42.195 km."
+            }
+          },
+          {
+            "@type": "Question",
             "name": "What checkpoints should be on a marathon pace band?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A readable pace band should prioritise cumulative times at major checkpoints. This generator uses ten checkpoints, including halfway and the finish."
+              "text": "This generator uses ten checkpoints. In kilometres, these are 5K, 10K, 15K, 20K, halfway, 25K, 30K, 35K, 40K and the finish. In miles, they are 3, 6, 9, 12, halfway, 15, 18, 21, 24 and the finish. The expandable split table also shows every kilometre or mile."
             }
           },
           {
             "@type": "Question",
-            "name": "Should I use even pace or a negative split?",
+            "name": "Should I use even pace, a controlled start, or a negative split?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Even pacing is the simplest plan. A controlled start reaches 5K slightly behind an even-pace schedule and then makes a very small adjustment across the remaining distance, while a negative split gradually increases pace across the race."
+              "text": "Even pace keeps the planned pace constant. A controlled start reaches 5K slightly behind an even-pace schedule, then adjusts the remaining pace to preserve the same finish-time goal. A gradual negative split starts slower and gets faster across the race. On hills or in difficult conditions, use the times as a guide and allow for changes in effort."
             }
           },
           {
             "@type": "Question",
-            "name": "How do I print the wrist bands at the correct size?",
+            "name": "Does a controlled start change my planned finish time?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Choose Print wrist bands, select A4 landscape and print at 100 percent or actual size. Check the 50 millimetre scale line before cutting."
+              "text": "The calculated finish time stays the same. With the default 15-second cushion, your 5K target is 15 seconds slower than an even-pace schedule. The remaining 37.195 km is about 0.4 seconds per kilometre faster than your overall average. These are planned splits; they do not guarantee a race result."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I know the band printed at the right size?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Print on A4 landscape at 100% or Actual size, then measure the supplied 50 mm line. If it does not measure exactly 50 mm, turn off Fit to page or other scaling and print again. Each wrist band is 225 mm long and 38 mm high, including the tape-overlap area."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I share my pace plan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Copy share link preserves your goal time, units, pacing strategy and any optional runner or race name you enter. The phone card can also be downloaded as a PNG. Advanced and sharing options includes an iframe snippet for embedding the generator."
             }
           }
         ]
@@ -867,22 +410,32 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="alternate icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
-     crossorigin="anonymous"></script>     </head>
+
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
+    crossorigin="anonymous"></script>
+</head>
 
 <body id="top">
   <header class="wrap" style="padding-top:28px">
     <a class="btn secondary" href="/">← Back to pace chart hub</a>
-    <h1 style="margin-top:14px">Printable Marathon Pace Band & Phone Card</h1>
+
+    <h1 style="margin-top:14px">Marathon Pace Band Generator</h1>
+
     <p class="sub generator-intro">
-      Enter one goal time to create both a <strong>true-size wrist band</strong> and a
-      <strong>downloadable race-day phone card</strong>. Use kilometres or miles, then choose
-      even pacing, a controlled start, or a gradual negative split.
+      Create a <strong>free printable marathon pace band</strong> in kilometres or miles.
+      Enter your goal finish time to build a custom wrist band with cumulative checkpoint times,
+      using even pacing, a controlled start or a gradual negative split.
+    </p>
+
+    <p class="muted generator-intro intro-benefits">
+      Print three wrist bands at actual size, save as PDF from your browser's print dialog,
+      or download a matching race-day phone card. No sign-up required.
     </p>
 
     <div class="toc" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
-      <a class="btn" href="#generator">Create your plan</a>
-      <a class="btn secondary" href="#outputs">Preview both formats</a>
+      <a class="btn" href="#generator">Create your pace band</a>
+      <a class="btn secondary" href="#outputs">See the pace band preview</a>
       <a class="btn secondary" href="#howto">Printing guide</a>
       <a class="btn secondary" href="#faq">FAQ</a>
     </div>
@@ -897,14 +450,40 @@
 
   <main class="wrap" id="content">
     <section id="generator" class="card">
-      <h2>Create your marathon race plan</h2>
+      <h2>Create your printable pace band</h2>
+
       <p class="muted generator-intro">
         Goal time and average pace stay synchronised. Both race-day formats update instantly.
       </p>
 
+      <p class="control-label" id="presetLabel" style="margin-top:16px">
+        Choose a goal time to get started
+      </p>
+
+      <nav class="goal-presets" aria-labelledby="presetLabel">
+        <a class="goal-preset" data-goal-seconds="10800" href="?h=3&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 3:00 marathon pace band">3:00 band</a>
+        <a class="goal-preset" data-goal-seconds="12600" href="?h=3&amp;m=30&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 3:30 marathon pace band">3:30 band</a>
+        <a class="goal-preset" data-goal-seconds="14400" href="?h=4&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 4:00 marathon pace band" aria-current="true">4:00 band</a>
+        <a class="goal-preset" data-goal-seconds="16200" href="?h=4&amp;m=30&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 4:30 marathon pace band">4:30 band</a>
+        <a class="goal-preset" data-goal-seconds="18000" href="?h=5&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 5:00 marathon pace band">5:00 band</a>
+        <a class="goal-preset" data-goal-seconds="19800" href="?h=5&amp;m=30&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 5:30 marathon pace band">5:30 band</a>
+      </nav>
+
+      <p class="field-help">
+        Or enter any goal time below. These shortcuts change only your finish time.
+      </p>
+
+      <noscript>
+        <p>
+          Enable JavaScript to customise, print or download a pace band.
+          The 4-hour example below remains visible.
+        </p>
+      </noscript>
+
       <div class="control-grid">
         <div class="control-group">
           <span class="control-label" id="goalTimeLabel">Goal finish time</span>
+
           <div class="time-inputs" role="group" aria-labelledby="goalTimeLabel">
             <label class="visually-hidden" for="h">Goal hours</label>
             <input id="h" type="number" min="0" max="24" inputmode="numeric" value="4" />
@@ -922,6 +501,7 @@
 
         <div class="control-group">
           <span class="control-label" id="paceLabel">Average pace per kilometre</span>
+
           <div class="pace-inputs" role="group" aria-labelledby="paceLabel">
             <label class="visually-hidden" for="paceM">Pace minutes</label>
             <input id="paceM" type="number" min="0" max="59" inputmode="numeric" value="5" />
@@ -931,11 +511,13 @@
             <input id="paceS" type="number" min="0" max="59" inputmode="numeric" value="41" />
             <span class="input-suffix">s</span>
           </div>
+
           <p class="field-help">Editing either the goal time or pace updates the other.</p>
         </div>
 
         <div class="control-group">
           <label for="unit">Primary unit</label>
+
           <select id="unit">
             <option value="km" selected>Kilometres</option>
             <option value="mi">Miles</option>
@@ -944,11 +526,13 @@
 
         <div class="control-group">
           <label for="strategy">Pacing plan</label>
+
           <select id="strategy">
             <option value="controlled" selected>Controlled start (recommended)</option>
             <option value="even">Even pace</option>
             <option value="negative">Gradual negative split</option>
           </select>
+
           <p class="field-help" id="strategyHelp">
             Reach 5K slightly behind an even-pace schedule, then settle.
           </p>
@@ -964,21 +548,26 @@
             <input id="startCushion" type="number" min="0" max="120" step="1" value="15" />
             <span class="input-suffix">seconds behind even pace</span>
           </div>
+
           <p class="field-help">
             This is the total cushion at the 5K timing mat—not an amount added to every kilometre.
           </p>
+
           <div class="controlled-example" id="controlledExample" aria-live="polite">
             <div class="controlled-times">
               <div class="controlled-time">
                 <span>Even-plan 5K</span>
                 <strong id="evenFiveK">28:26</strong>
               </div>
+
               <span class="controlled-arrow" aria-hidden="true">→</span>
+
               <div class="controlled-time">
                 <span>Your controlled 5K</span>
                 <strong id="controlledFiveK">28:41</strong>
               </div>
             </div>
+
             <p class="controlled-recovery" id="controlledRecovery">
               After 5K, only a tiny pace adjustment is needed to preserve your finish time.
             </p>
@@ -993,6 +582,7 @@
             <input id="negativeMargin" type="number" min="0" max="10" step="0.5" value="2" />
             <span class="input-suffix">minutes</span>
           </div>
+
           <p class="field-help">
             Pace changes gradually throughout the race rather than jumping suddenly at halfway.
           </p>
@@ -1000,6 +590,7 @@
 
         <div class="strategy-option" id="evenSettings" hidden>
           <strong>Even pace keeps the planned average constant from start to finish.</strong>
+
           <p class="field-help">
             On hills, in wind, or in heat, treat this as an elapsed-time guide and run by even effort.
           </p>
@@ -1008,15 +599,20 @@
 
       <details class="advanced-options">
         <summary>Advanced and sharing options</summary>
+
         <div class="advanced-inner">
           <div class="optional-grid">
             <div class="control-group">
-              <label for="runnerName">Runner name <span class="muted">(optional)</span></label>
+              <label for="runnerName">
+                Runner name <span class="muted">(optional)</span>
+              </label>
               <input id="runnerName" type="text" maxlength="40" autocomplete="name" placeholder="e.g. Davin" />
             </div>
 
             <div class="control-group">
-              <label for="raceName">Race name <span class="muted">(optional)</span></label>
+              <label for="raceName">
+                Race name <span class="muted">(optional)</span>
+              </label>
               <input id="raceName" type="text" maxlength="50" placeholder="e.g. Sydney Marathon" />
             </div>
           </div>
@@ -1024,6 +620,7 @@
           <div style="margin-top:14px">
             <label for="embedCode"><strong>Embed this generator</strong></label>
             <textarea id="embedCode" class="embed" readonly></textarea>
+
             <button class="btn secondary" id="copyEmbedBtn" type="button" style="margin-top:9px">
               Copy embed code
             </button>
@@ -1032,8 +629,8 @@
       </details>
 
       <div class="action-row">
-        <button class="btn btn-primary-strong" id="downloadBtn" type="button">Download phone card (PNG)</button>
-        <button class="btn secondary" id="printBtn" type="button">Print 3 wrist bands</button>
+        <button class="btn btn-primary-strong" id="printBtn" type="button">Print bands / Save PDF</button>
+        <button class="btn secondary" id="downloadBtn" type="button">Download phone card (PNG)</button>
         <button class="btn secondary" id="copyBtn" type="button">Copy share link</button>
       </div>
 
@@ -1041,27 +638,77 @@
     </section>
 
     <section id="outputs" class="card">
-      <h2>Your race-day formats</h2>
-      <p class="muted">Both versions use exactly the same pacing calculation and checkpoint times.</p>
+      <h2>Your marathon pace band and phone card</h2>
 
-      <div class="result-summary" id="summaryCards"></div>
+      <p class="muted" id="outputDescription">
+        Example: a 4:00:00 marathon pace band in kilometres using a controlled start.
+        Both formats show cumulative elapsed times, including halfway and the finish.
+      </p>
+
+      <div class="result-summary" id="summaryCards">
+        <div class="summary-card">
+          <div class="summary-label">Goal time</div>
+          <div class="summary-value">4:00:00</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Average / km</div>
+          <div class="summary-value">5:41</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Average / mile</div>
+          <div class="summary-value">9:09</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Race plan</div>
+          <div class="summary-value">Controlled start</div>
+        </div>
+      </div>
 
       <div class="output-grid">
         <article class="output-card">
           <div class="output-head">
             <div>
-              <h3>Printable wrist band</h3>
+              <h3>Printable marathon pace band</h3>
               <p>Ten readable checkpoints, a cut line, and a tape-overlap section.</p>
             </div>
-            <button class="btn secondary" id="printBtnInline" type="button">Print bands</button>
+
+            <button class="btn btn-primary-strong" id="printBtnInline" type="button">
+              Print / Save PDF
+            </button>
           </div>
+
           <div class="output-body">
             <div class="wrist-preview-scroll" aria-label="Scrollable wrist band preview">
-              <div id="wristPreview"></div>
+              <div id="wristPreview">
+                <div class="pace-band">
+                  <div class="band-brand">
+                    <div class="band-brand-name">Marathon</div>
+                    <div class="band-goal">4:00:00</div>
+                    <div class="band-pace">5:41 / km</div>
+                  </div>
+
+                  <div class="band-checkpoints">
+                    <div class="band-cell"><span class="band-distance">5K</span><span class="band-time">28:41</span></div>
+                    <div class="band-cell"><span class="band-distance">10K</span><span class="band-time">57:06</span></div>
+                    <div class="band-cell"><span class="band-distance">15K</span><span class="band-time">1:25:30</span></div>
+                    <div class="band-cell"><span class="band-distance">20K</span><span class="band-time">1:53:54</span></div>
+                    <div class="band-cell"><span class="band-distance">HALF</span><span class="band-time">2:00:09</span></div>
+                    <div class="band-cell"><span class="band-distance">25K</span><span class="band-time">2:22:19</span></div>
+                    <div class="band-cell"><span class="band-distance">30K</span><span class="band-time">2:50:43</span></div>
+                    <div class="band-cell"><span class="band-distance">35K</span><span class="band-time">3:19:07</span></div>
+                    <div class="band-cell"><span class="band-distance">40K</span><span class="band-time">3:47:32</span></div>
+                    <div class="band-cell"><span class="band-distance">FINISH</span><span class="band-time">4:00:00</span></div>
+                  </div>
+
+                  <div class="band-tape">Tape overlap</div>
+                </div>
+              </div>
             </div>
+
             <p class="wrist-preview-note">
               The preview may scroll on smaller screens. The printed band is exactly 225 × 38 mm.
             </p>
+
             <div class="scale-demo">
               <span>This screen line represents 50 mm, but only the printed scale check is authoritative.</span>
               <span class="scale-line-screen" aria-hidden="true"></span>
@@ -1075,8 +722,12 @@
               <h3>Phone card</h3>
               <p>A clean 9:16 image for saving, sharing, or checking before the race.</p>
             </div>
-            <button class="btn btn-primary-strong" id="downloadBtnInline" type="button">Download PNG</button>
+
+            <button class="btn secondary" id="downloadBtnInline" type="button">
+              Download PNG
+            </button>
           </div>
+
           <div class="output-body">
             <div class="phone-stage">
               <div id="phonePreview" style="width:100%;display:flex;justify-content:center"></div>
@@ -1094,55 +745,57 @@
     </section>
 
     <section id="howto" class="card">
-      <h2>How to print and wear the wrist band</h2>
+      <h2>How to print your marathon pace band</h2>
+
       <ol class="muted">
-        <li>Select <strong>Print 3 wrist bands</strong>.</li>
+        <li>Set your goal time, units and pacing plan, then select <strong>Print bands / Save PDF</strong>.</li>
+        <li>Choose your printer, or <strong>Save as PDF</strong> if your browser offers it.</li>
         <li>Use <strong>A4 landscape</strong> and choose <strong>100% or Actual size</strong>. Turn off “Fit to page”.</li>
         <li>Confirm the printed scale line measures exactly <strong>50 mm</strong>.</li>
         <li>Cut around the dashed border, wrap the band around your wrist, and tape the marked overlap.</li>
         <li>Cover the front with clear tape before the race if you want extra sweat and rain protection.</li>
       </ol>
+
       <p class="tiny muted2">
-        The print job contains only three pace bands and the scale guide—not the generator, FAQ, or webpage preview.
+        The print layout contains three wrist bands and a 50 mm scale guide.
+        If you save a PDF, use the same A4 landscape and actual-size settings when you print it later.
       </p>
+
+      <p class="muted">
+        Read the band against official course markers using elapsed time from your race start,
+        including any stops. A checkpoint time is the total time to that point,
+        not the time for the next segment.
+      </p>
+
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
 
     <section id="faq" class="card">
       <h2>Marathon pace band FAQ</h2>
 
+      <h3>What is a marathon pace band?</h3>
+      <p>A marathon pace band, also called a pace bracelet, is a wrist-sized list of target elapsed times at race checkpoints. It helps you compare your progress with your finish-time goal without doing calculations during the race.</p>
+
+      <h3>Can I save my marathon pace band as a PDF?</h3>
+      <p>Yes. Select Print bands / Save PDF, then choose Save as PDF if it is available in your browser or operating system. Use A4 landscape and 100% or Actual size. The phone card downloads separately as a PNG image.</p>
+
+      <h3>Can I make a pace band in kilometres or miles?</h3>
+      <p>Yes. Choose Kilometres or Miles in the generator. The wrist band and phone card use your selected units, and the summary shows average pace in both. The full marathon distance used for every calculation is 42.195 km.</p>
+
       <h3>What checkpoints should be on a marathon pace band?</h3>
-      <p>
-        Readability matters more than squeezing in every split. The wrist band uses ten major checkpoints:
-        every 5 km with halfway and the finish, or equivalent three-mile checkpoints when miles are selected.
-        A complete kilometre- or mile-by-mile table remains available underneath the previews.
-      </p>
+      <p>This generator uses ten checkpoints. In kilometres, these are 5K, 10K, 15K, 20K, halfway, 25K, 30K, 35K, 40K and the finish. In miles, they are 3, 6, 9, 12, halfway, 15, 18, 21, 24 and the finish. The expandable split table also shows every kilometre or mile.</p>
 
       <h3>Should I use even pace, a controlled start, or a negative split?</h3>
-      <p>
-        Even pace is the simplest plan. Controlled start gives you a deliberate cushion at the 5K checkpoint
-        to discourage an early surge, then makes a very small adjustment across the remaining distance.
-        The negative-split option increases speed progressively, so there is no abrupt pace change at halfway.
-      </p>
+      <p>Even pace keeps the planned pace constant. A controlled start reaches 5K slightly behind an even-pace schedule, then adjusts the remaining pace to preserve the same finish-time goal. A gradual negative split starts slower and gets faster across the race. On hills or in difficult conditions, use the times as a guide and allow for changes in effort.</p>
 
-      <h3>Will the controlled start make me miss my goal time?</h3>
-      <p>
-        No. With the default setting, your controlled 5K time is 15 seconds slower than the even-plan 5K time.
-        Those 15 seconds are spread across the remaining 37.2 km, requiring an adjustment of only about
-        0.4 seconds per kilometre.
-      </p>
+      <h3>Does a controlled start change my planned finish time?</h3>
+      <p>The calculated finish time stays the same. With the default 15-second cushion, your 5K target is 15 seconds slower than an even-pace schedule. The remaining 37.195 km is about 0.4 seconds per kilometre faster than your overall average. These are planned splits; they do not guarantee a race result.</p>
 
       <h3>How do I know the band printed at the right size?</h3>
-      <p>
-        Print at 100% or Actual size, then measure the supplied 50 mm line. If the line is not exactly 50 mm,
-        disable “Fit to page” or other scaling in the print dialog and try again.
-      </p>
+      <p>Print on A4 landscape at 100% or Actual size, then measure the supplied 50 mm line. If it does not measure exactly 50 mm, turn off Fit to page or other scaling and print again. Each wrist band is 225 mm long and 38 mm high, including the tape-overlap area.</p>
 
       <h3>Can I share my pace plan?</h3>
-      <p>
-        Yes. Copy the share link to preserve the goal time, units, pacing strategy, and optional race details.
-        The phone card can also be downloaded as a PNG.
-      </p>
+      <p>Yes. Copy share link preserves your goal time, units, pacing strategy and any optional runner or race name you enter. The phone card can also be downloaded as a PNG. Advanced and sharing options includes an iframe snippet for embedding the generator.</p>
 
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
@@ -1152,13 +805,16 @@
     <div class="print-heading">
       <p class="print-title">Marathon pace bands</p>
       <p class="print-instructions">
-        Print at 100% / Actual size on A4 landscape. Cut around each dashed border and tape at the marked overlap.
+        Print at 100% / Actual size on A4 landscape.
+        Cut around each dashed border and tape at the marked overlap.
       </p>
+
       <div class="print-scale">
         <span class="print-scale-line" aria-hidden="true"></span>
         <span>This line must measure exactly 50 mm.</span>
       </div>
     </div>
+
     <div class="print-band-row" id="printBand1"></div>
     <div class="print-band-row" id="printBand2"></div>
     <div class="print-band-row" id="printBand3"></div>
@@ -1200,6 +856,8 @@
     var splitSummary = document.getElementById("splitSummary");
     var embedCode = document.getElementById("embedCode");
     var statusLine = document.getElementById("status");
+    var outputDescription = document.getElementById("outputDescription");
+    var goalPresets = document.querySelectorAll(".goal-preset");
 
     var printBand1 = document.getElementById("printBand1");
     var printBand2 = document.getElementById("printBand2");
@@ -1267,7 +925,10 @@
       var hours = Math.floor(total / 3600);
       var minutes = Math.floor((total % 3600) / 60);
       var seconds = total % 60;
-      return hours + ":" + String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+
+      return hours + ":" +
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
     }
 
     function formatElapsed(total){
@@ -1275,9 +936,13 @@
       var hours = Math.floor(total / 3600);
       var minutes = Math.floor((total % 3600) / 60);
       var seconds = total % 60;
+
       if(hours > 0){
-        return hours + ":" + String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
+        return hours + ":" +
+          String(minutes).padStart(2, "0") + ":" +
+          String(seconds).padStart(2, "0");
       }
+
       return minutes + ":" + String(seconds).padStart(2, "0");
     }
 
@@ -1296,14 +961,18 @@
     function syncPaceFromGoal(){
       var total = goalSeconds();
       if(total <= 0) return;
+
       var pace = Math.round(paceSecondsForUnit(total, elUnit.value));
       elPaceM.value = Math.floor(pace / 60);
       elPaceS.value = pace % 60;
     }
 
     function syncGoalFromPace(){
-      var pace = clamp(elPaceM.value, 0, 59) * 60 + clamp(elPaceS.value, 0, 59);
+      var pace = clamp(elPaceM.value, 0, 59) * 60 +
+        clamp(elPaceS.value, 0, 59);
+
       if(pace <= 0) return;
+
       var secondsPerKm = elUnit.value === "mi" ? pace / KM_PER_MILE : pace;
       setGoalSeconds(secondsPerKm * MARATHON_KM);
     }
@@ -1317,11 +986,14 @@
     function strategyCue(){
       if(elStrategy.value === "negative"){
         var margin = clamp(elNegativeMargin.value, 0, 10);
-        return "Build gradually · second half " + margin.toFixed(margin % 1 ? 1 : 0) + " min faster";
+        return "Build gradually · second half " +
+          margin.toFixed(margin % 1 ? 1 : 0) + " min faster";
       }
+
       if(elStrategy.value === "even"){
         return "Settle early · hold an even race effort";
       }
+
       var cushion = Math.round(clamp(elStartCushion.value, 0, 120));
       return "First 5K: " + cushion + " sec behind even pace · then settle";
     }
@@ -1344,17 +1016,23 @@
         var correction = totalOpeningExtra / (MARATHON_KM - settleDistance);
 
         if(distance <= settleDistance){
-          var taperedExtra = startingAllowancePerKm * (distance - (distance * distance) / (2 * settleDistance));
+          var taperedExtra = startingAllowancePerKm *
+            (distance - (distance * distance) / (2 * settleDistance));
+
           return averagePace * distance + taperedExtra;
         }
 
-        return averagePace * distance + totalOpeningExtra - correction * (distance - settleDistance);
+        return averagePace * distance +
+          totalOpeningExtra -
+          correction * (distance - settleDistance);
       }
 
       if(strategy === "negative"){
         var marginSeconds = clamp(elNegativeMargin.value, 0, 10) * 60;
         var gradient = (2 * marginSeconds) / MARATHON_KM;
-        return averagePace * distance + gradient * (distance - (distance * distance) / MARATHON_KM);
+
+        return averagePace * distance +
+          gradient * (distance - (distance * distance) / MARATHON_KM);
       }
 
       return averagePace * distance;
@@ -1411,17 +1089,20 @@
       for(var index = 1; index <= fullSteps; index++){
         var distance = index * stepKm;
         var elapsed = elapsedAtKm(distance, total);
+
         rows.push({
           label: String(index),
           segment: formatPace(elapsed - previousElapsed),
           elapsed: formatElapsed(elapsed)
         });
+
         previousDistance = distance;
         previousElapsed = elapsed;
       }
 
       if(previousDistance < MARATHON_KM){
         var finishElapsed = elapsedAtKm(MARATHON_KM, total);
+
         rows.push({
           label: "Finish",
           segment: formatPace(finishElapsed - previousElapsed),
@@ -1522,6 +1203,7 @@
     function splitTableHTML(total){
       var rows = fullSplitRows(total);
       var unitHeading = elUnit.value === "mi" ? "Mile" : "KM";
+
       var body = rows.map(function(row){
         return (
           '<tr>' +
@@ -1547,11 +1229,14 @@
       evenSettings.hidden = strategy !== "even";
 
       if(strategy === "negative"){
-        strategyHelp.textContent = "Increase pace progressively across the race with no halfway jump.";
+        strategyHelp.textContent =
+          "Increase pace progressively across the race with no halfway jump.";
       } else if(strategy === "even"){
-        strategyHelp.textContent = "Hold the same planned average pace from start to finish.";
+        strategyHelp.textContent =
+          "Hold the same planned average pace from start to finish.";
       } else {
-        strategyHelp.textContent = "Reach 5K slightly behind an even-pace schedule, then settle.";
+        strategyHelp.textContent =
+          "Reach 5K slightly behind an even-pace schedule, then settle.";
       }
     }
 
@@ -1566,14 +1251,16 @@
       var evenFiveKTime = (total / MARATHON_KM) * 5;
       var controlledFiveKTime = evenFiveKTime + cushion;
       var correctionPerKm = cushion / (MARATHON_KM - 5);
-      var correctionForUnit = elUnit.value === "mi" ? correctionPerKm * KM_PER_MILE : correctionPerKm;
+      var correctionForUnit = elUnit.value === "mi" ?
+        correctionPerKm * KM_PER_MILE : correctionPerKm;
       var unitLabel = elUnit.value === "mi" ? "mile" : "km";
 
       evenFiveK.textContent = formatElapsed(evenFiveKTime);
       controlledFiveK.textContent = formatElapsed(controlledFiveKTime);
 
       if(cushion <= 0){
-        controlledRecovery.textContent = "A zero-second cushion is the same as an even-pace plan.";
+        controlledRecovery.textContent =
+          "A zero-second cushion is the same as an even-pace plan.";
       } else {
         controlledRecovery.textContent =
           "After 5K, the remaining target is only " +
@@ -1626,6 +1313,7 @@
     function showStatus(message){
       statusLine.textContent = message;
       if(statusTimer) window.clearTimeout(statusTimer);
+
       statusTimer = window.setTimeout(function(){
         statusLine.textContent = "";
       }, 5000);
@@ -1633,13 +1321,32 @@
 
     function render(){
       var total = goalSeconds();
+
       if(total <= 0){
         showStatus("Enter a valid marathon goal time.");
-        return;
+        return false;
       }
 
       setStrategyUI();
       setUnitUI();
+
+      outputDescription.textContent =
+        "Preview: a " + formatGoal(total) + " marathon pace band in " +
+        (elUnit.value === "mi" ? "miles" : "kilometres") + " using " +
+        (elStrategy.value === "controlled" ?
+          "a controlled start" :
+          elStrategy.value === "negative" ?
+            "a gradual negative split" : "even pacing") +
+        ". Both formats show cumulative elapsed times, including halfway and the finish.";
+
+      goalPresets.forEach(function(link){
+        if(Number(link.dataset.goalSeconds) === total){
+          link.setAttribute("aria-current", "true");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+
       updateControlledExample(total);
 
       var rows = checkpointRows(total);
@@ -1653,6 +1360,8 @@
       printBand2.innerHTML = band;
       printBand3.innerHTML = band;
       embedCode.value = buildEmbedSnippet(buildShareURL());
+
+      return true;
     }
 
     function copyText(text){
@@ -1668,6 +1377,7 @@
         area.style.opacity = "0";
         document.body.appendChild(area);
         area.select();
+
         try {
           var copied = document.execCommand("copy");
           document.body.removeChild(area);
@@ -1681,6 +1391,7 @@
 
     function svgText(x, y, text, options){
       options = options || {};
+
       var attributes = [
         'x="' + x + '"',
         'y="' + y + '"',
@@ -1689,8 +1400,15 @@
         'font-size="' + (options.size || 32) + '"',
         'font-weight="' + (options.weight || 700) + '"'
       ];
-      if(options.anchor) attributes.push('text-anchor="' + options.anchor + '"');
-      if(options.spacing) attributes.push('letter-spacing="' + options.spacing + '"');
+
+      if(options.anchor){
+        attributes.push('text-anchor="' + options.anchor + '"');
+      }
+
+      if(options.spacing){
+        attributes.push('letter-spacing="' + options.spacing + '"');
+      }
+
       return "<text " + attributes.join(" ") + ">" + escapeXML(text) + "</text>";
     }
 
@@ -1710,44 +1428,91 @@
       svg.push('<rect width="1080" height="1920" fill="url(#bg)"/>');
       svg.push('<rect width="1080" height="720" fill="url(#glow)"/>');
 
-      svg.push(svgText(72, 96, "MARATHON PACE KM", { fill: "#ffffff", size: 24, weight: 900, spacing: 4 }));
-      svg.push(svgText(72, 184, race.toUpperCase(), { fill: "#d1d5db", size: 28, weight: 800, spacing: 2 }));
-      svg.push(svgText(72, 296, formatGoal(total), { fill: "#ffffff", size: 94, weight: 900 }));
+      svg.push(svgText(72, 96, "MARATHON PACE KM", {
+        fill: "#ffffff", size: 24, weight: 900, spacing: 4
+      }));
+
+      svg.push(svgText(72, 184, race.toUpperCase(), {
+        fill: "#d1d5db", size: 28, weight: 800, spacing: 2
+      }));
+
+      svg.push(svgText(72, 296, formatGoal(total), {
+        fill: "#ffffff", size: 94, weight: 900
+      }));
+
       if(runner){
-        svg.push(svgText(74, 345, runner, { fill: "#d1d5db", size: 28, weight: 600 }));
+        svg.push(svgText(74, 345, runner, {
+          fill: "#d1d5db", size: 28, weight: 600
+        }));
       }
 
       svg.push('<rect x="72" y="388" width="452" height="142" rx="24" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16"/>');
       svg.push('<rect x="556" y="388" width="452" height="142" rx="24" fill="#ffffff" fill-opacity=".09" stroke="#ffffff" stroke-opacity=".16"/>');
-      svg.push(svgText(104, 432, "AVERAGE PACE", { fill: "#aeb6c3", size: 20, weight: 900, spacing: 2 }));
-      svg.push(svgText(104, 494, pace, { fill: "#ffffff", size: 44, weight: 900 }));
-      svg.push(svgText(588, 432, "RACE PLAN", { fill: "#aeb6c3", size: 20, weight: 900, spacing: 2 }));
-      svg.push(svgText(588, 494, strategyLabel(), { fill: "#ffffff", size: 38, weight: 900 }));
 
-      svg.push(svgText(82, 594, "KEY CHECKPOINTS", { fill: "#ffffff", size: 22, weight: 900, spacing: 3 }));
+      svg.push(svgText(104, 432, "AVERAGE PACE", {
+        fill: "#aeb6c3", size: 20, weight: 900, spacing: 2
+      }));
+
+      svg.push(svgText(104, 494, pace, {
+        fill: "#ffffff", size: 44, weight: 900
+      }));
+
+      svg.push(svgText(588, 432, "RACE PLAN", {
+        fill: "#aeb6c3", size: 20, weight: 900, spacing: 2
+      }));
+
+      svg.push(svgText(588, 494, strategyLabel(), {
+        fill: "#ffffff", size: 38, weight: 900
+      }));
+
+      svg.push(svgText(82, 594, "KEY CHECKPOINTS", {
+        fill: "#ffffff", size: 22, weight: 900, spacing: 3
+      }));
+
       svg.push('<rect x="72" y="624" width="936" height="850" rx="30" fill="#ffffff"/>');
 
       rows.forEach(function(row, index){
         var rowTop = 624 + index * 85;
+
         if(index % 2 === 1){
           svg.push('<rect x="72" y="' + rowTop + '" width="936" height="85" fill="#f3f4f6"/>');
         }
+
         if(index > 0){
           svg.push('<line x1="92" y1="' + rowTop + '" x2="988" y2="' + rowTop + '" stroke="#e5e7eb" stroke-width="2"/>');
         }
-        svg.push(svgText(112, rowTop + 56, row.label, { fill: "#5b6472", size: 26, weight: 900, spacing: 2 }));
-        svg.push(svgText(958, rowTop + 58, row.time, { fill: "#111827", size: 39, weight: 900, anchor: "end" }));
+
+        svg.push(svgText(112, rowTop + 56, row.label, {
+          fill: "#5b6472", size: 26, weight: 900, spacing: 2
+        }));
+
+        svg.push(svgText(958, rowTop + 58, row.time, {
+          fill: "#111827", size: 39, weight: 900, anchor: "end"
+        }));
       });
 
       svg.push('<rect x="72" y="1518" width="936" height="190" rx="28" fill="#d61f2c" fill-opacity=".18" stroke="#ef5360" stroke-opacity=".45"/>');
-      svg.push(svgText(540, 1572, "RACE-DAY CUE", { fill: "#f5b9bf", size: 21, weight: 900, anchor: "middle", spacing: 3 }));
-      svg.push(svgText(540, 1632, cueParts[0] || "", { fill: "#ffffff", size: 36, weight: 900, anchor: "middle" }));
+
+      svg.push(svgText(540, 1572, "RACE-DAY CUE", {
+        fill: "#f5b9bf", size: 21, weight: 900, anchor: "middle", spacing: 3
+      }));
+
+      svg.push(svgText(540, 1632, cueParts[0] || "", {
+        fill: "#ffffff", size: 36, weight: 900, anchor: "middle"
+      }));
+
       if(cueParts[1]){
-        svg.push(svgText(540, 1676, cueParts[1], { fill: "#ffffff", size: 30, weight: 800, anchor: "middle" }));
+        svg.push(svgText(540, 1676, cueParts[1], {
+          fill: "#ffffff", size: 30, weight: 800, anchor: "middle"
+        }));
       }
 
-      svg.push(svgText(540, 1826, "MARATHONPACEKM.COM", { fill: "#9ca3af", size: 22, weight: 900, anchor: "middle", spacing: 4 }));
+      svg.push(svgText(540, 1826, "MARATHONPACEKM.COM", {
+        fill: "#9ca3af", size: 22, weight: 900, anchor: "middle", spacing: 4
+      }));
+
       svg.push('</svg>');
+
       return svg.join("");
     }
 
@@ -1760,11 +1525,15 @@
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      window.setTimeout(function(){ URL.revokeObjectURL(url); }, 2000);
+
+      window.setTimeout(function(){
+        URL.revokeObjectURL(url);
+      }, 2000);
     }
 
     function downloadPhoneCard(){
-      render();
+      if(!render()) return;
+
       var total = goalSeconds();
       var rows = checkpointRows(total);
       var svg = buildPhoneSVG(total, rows);
@@ -1776,17 +1545,21 @@
         var canvas = document.createElement("canvas");
         canvas.width = 1080;
         canvas.height = 1920;
+
         var context = canvas.getContext("2d");
         context.drawImage(image, 0, 0, 1080, 1920);
         URL.revokeObjectURL(svgURL);
 
-        var filename = "marathon-pace-card-" + formatGoal(total).replace(/:/g, "-") + ".png";
+        var filename = "marathon-pace-card-" +
+          formatGoal(total).replace(/:/g, "-") + ".png";
+
         if(canvas.toBlob){
           canvas.toBlob(function(blob){
             if(!blob){
               showStatus("The image could not be generated in this browser.");
               return;
             }
+
             triggerBlobDownload(blob, filename);
             showStatus("Phone card downloaded.");
           }, "image/png");
@@ -1808,7 +1581,8 @@
     }
 
     function printBands(){
-      render();
+      if(!render()) return;
+
       window.setTimeout(function(){
         window.print();
       }, 80);
@@ -1828,6 +1602,7 @@
 
       var strategy = query.get("strategy");
       var legacyStyle = query.get("style");
+
       if(["controlled", "even", "negative"].indexOf(strategy) !== -1){
         elStrategy.value = strategy;
       } else if(legacyStyle === "neg"){
@@ -1840,19 +1615,31 @@
         elStartCushion.value = clamp(query.get("cushion"), 0, 120);
       } else if(query.has("start")){
         var legacyAllowance = clamp(query.get("start"), 0, 30);
-        var legacyAllowancePerKm = elUnit.value === "mi" ? legacyAllowance / KM_PER_MILE : legacyAllowance;
-        elStartCushion.value = Math.round((legacyAllowancePerKm * 5 / 2) * 2) / 2;
+        var legacyAllowancePerKm = elUnit.value === "mi" ?
+          legacyAllowance / KM_PER_MILE : legacyAllowance;
+
+        elStartCushion.value =
+          Math.round((legacyAllowancePerKm * 5 / 2) * 2) / 2;
       }
 
       if(query.has("negative")){
         elNegativeMargin.value = clamp(query.get("negative"), 0, 10);
       } else if(legacyStyle === "neg" && query.has("offset")){
         var legacyOffset = clamp(query.get("offset"), 0, 30);
-        elNegativeMargin.value = Math.min(10, Math.round((legacyOffset * MARATHON_KM / 60) * 10) / 10);
+
+        elNegativeMargin.value = Math.min(
+          10,
+          Math.round((legacyOffset * MARATHON_KM / 60) * 10) / 10
+        );
       }
 
-      if(query.has("name")) elRunnerName.value = shorten(query.get("name"), 40);
-      if(query.has("race")) elRaceName.value = shorten(query.get("race"), 50);
+      if(query.has("name")){
+        elRunnerName.value = shorten(query.get("name"), 40);
+      }
+
+      if(query.has("race")){
+        elRaceName.value = shorten(query.get("race"), 50);
+      }
 
       syncPaceFromGoal();
       syncingInputs = false;
@@ -1863,9 +1650,34 @@
       }
     }
 
+    goalPresets.forEach(function(link){
+      link.addEventListener("click", function(event){
+        if(
+          event.ctrlKey ||
+          event.metaKey ||
+          event.shiftKey ||
+          event.altKey ||
+          event.button !== 0
+        ){
+          return;
+        }
+
+        event.preventDefault();
+        setGoalSeconds(Number(link.dataset.goalSeconds));
+        syncPaceFromGoal();
+        render();
+
+        showStatus(
+          formatGoal(goalSeconds()) +
+          " goal loaded. Your units and pacing plan are unchanged."
+        );
+      });
+    });
+
     [elH, elM, elS].forEach(function(input){
       input.addEventListener("input", function(){
         if(syncingInputs) return;
+
         syncingInputs = true;
         syncPaceFromGoal();
         syncingInputs = false;
@@ -1876,6 +1688,7 @@
     [elPaceM, elPaceS].forEach(function(input){
       input.addEventListener("input", function(){
         if(syncingInputs) return;
+
         syncingInputs = true;
         syncGoalFromPace();
         syncingInputs = false;
@@ -1890,7 +1703,13 @@
       render();
     });
 
-    [elStrategy, elStartCushion, elNegativeMargin, elRunnerName, elRaceName].forEach(function(input){
+    [
+      elStrategy,
+      elStartCushion,
+      elNegativeMargin,
+      elRunnerName,
+      elRaceName
+    ].forEach(function(input){
       input.addEventListener("input", render);
       input.addEventListener("change", render);
     });
@@ -1901,7 +1720,10 @@
     printBtnInline.addEventListener("click", printBands);
 
     copyBtn.addEventListener("click", function(){
+      if(!render()) return;
+
       var url = buildShareURL().toString();
+
       copyText(url).then(function(){
         showStatus("Share link copied.");
       }).catch(function(){
@@ -1910,11 +1732,14 @@
     });
 
     copyEmbedBtn.addEventListener("click", function(){
-      render();
+      if(!render()) return;
+
       copyText(embedCode.value).then(function(){
         showStatus("Embed code copied.");
       }).catch(function(){
-        showStatus("Could not copy automatically. Select the embed code and copy it manually.");
+        showStatus(
+          "Could not copy automatically. Select the embed code and copy it manually."
+        );
       });
     });
 
@@ -1935,9 +1760,11 @@
         <a href="/privacy/">Privacy</a>
         <a href="/disclaimer/">Disclaimer</a>
       </div>
+
       <p class="tiny muted" style="margin-top:12px">
-        Training content is general information, not medical advice. Always listen to your body and
-        consider professional guidance for injuries or health concerns.
+        Training content is general information, not medical advice.
+        Always listen to your body and consider professional guidance
+        for injuries or health concerns.
       </p>
     </div>
   </footer>
