@@ -1,442 +1,182 @@
-<!DOCTYPE html>
-
-<html lang="en">
+<!doctype html>
+<html lang="en-AU">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Marathon Pace Chart (KM) + Calculator | Splits, Pace Band &amp; Conversions</title>
-<meta content="Marathon pace chart in kilometres (KM) plus a free calculator for splits and pace per km. Enter a goal time to get average pace, key checkpoints (5k/10k/half/30k/40k) and a pacing reference." name="description"/>
-<meta content="index, follow" name="robots"/>
-<link href="https://marathonpacekm.com/" rel="canonical"/>
-<!-- Open Graph / Social -->
-<meta content="website" property="og:type"/>
-<meta content="Marathon Pace Chart (KM) + Calculator" property="og:title"/>
-<meta content="Marathon pace chart in KM plus a calculator for splits and pace per km. Key checkpoints + pacing reference." property="og:description"/>
-<meta content="https://marathonpacekm.com/" property="og:url"/>
-<meta content="https://marathonpacekm.com/assets/og/pace-chart.png" property="og:image"/>
-<meta content="1200" property="og:image:width"/>
-<meta content="630" property="og:image:height"/>
-<meta content="Marathon pace chart (KM) and calculator" property="og:image:alt"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="Marathon Pace Chart (KM) + Calculator" name="twitter:title"/>
-<meta content="Marathon pace chart in KM plus a calculator for splits and pace per km." name="twitter:description"/>
-<meta content="https://marathonpacekm.com/assets/og/pace-chart.png" name="twitter:image"/>
-<link as="style" href="/assets/style.css" rel="preload"/>
-<link href="/assets/style.css" rel="stylesheet"/>
-<style>
-    html { scroll-behavior: smooth; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-
-    /* include monthly-plan for correct anchor offset */
-    #start-here, #quick-chart, #calculator, #pace-bands, #monthly-plan, #popular-goal-times, #pace-chart, #how-to-use, #guides, #faq { scroll-margin-top: 16px; }
-
-    .toc { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; }
-    .toc a { text-decoration:none; }
-
-    .facts { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top:12px; }
-    @media (min-width: 720px){ .facts { grid-template-columns: repeat(4, minmax(0,1fr)); } }
-    .fact{
-      padding: 12px;
-      border: 1px solid rgba(0,0,0,.08);
-      border-radius: 12px;
-      background: rgba(255,255,255,.6);
-    }
-
-    .splits-table{
-      width:100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-      overflow:hidden;
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,.10);
-      background: rgba(255,255,255,.6);
-    }
-    .splits-table th, .splits-table td{
-      text-align:left;
-      padding: 10px 12px;
-      border-bottom: 1px solid rgba(0,0,0,.08);
-      vertical-align: top;
-    }
-    .splits-table tr:last-child td{ border-bottom: 0; }
-
-    .note { margin-top:10px; }
-
-    /* one-line under-H1 link */
-    .newlink { margin: 4px 0 10px; }
-    .newlink a { text-decoration: none; }
-    .newlink a:hover { text-decoration: underline; }
-  </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "name": "Marathon Pace KM",
-      "url": "https://marathonpacekm.com/"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is a marathon pace chart (KM)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A marathon pace chart (KM) converts finish times into average pace per kilometre and often includes key split times like 5k, 10k, half marathon, 30k and 40k."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How do I calculate marathon pace per km?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Divide your goal finish time by 42.195 km. This calculator does it instantly and shows splits and checkpoints."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Why does my GPS pace differ from the pace chart?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Instant GPS pace can fluctuate due to signal noise, corners, crowds, elevation and aid stations. Use 1 km lap-average pace and effort to stay consistent."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What pace do I need for a sub-4 marathon?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A sub-4 marathon averages about 5:41 per km. Use the goal pages or enter 3:59:59 / 4:00:00 to generate splits."
-          }
-        }
-      ]
-    }
-  ]
-}
-  </script>
-<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="/favicon.ico" rel="alternate icon"/>
-<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
-     crossorigin="anonymous"></script>     </head>
-
-<body id="top"><!-- HOMEPAGE: /index.html (Marathon Pace Chart hub) -->
-
-<header class="wrap">
-<h1>Marathon Pace Chart (KM) + Calculator</h1>
-
-<p class="tiny muted newlink">
-  New: <a href="/monthly-training-plan/"><strong>Monthly training plan builder</strong></a> → generate a 4-week plan from your recent mileage + goal.
-  &nbsp;·&nbsp; <a href="/printable-pace-band/"><strong>Printable pace band (PDF)</strong></a> → wrist band + A4 sheet (shareable templates).
-  &nbsp;·&nbsp; <a href="/marathon-fueling-calculator/"><strong>Marathon fueling calculator</strong></a> → build a gel-by-time race plan from your target finish time.
-  &nbsp;·&nbsp; Read: <a href="/blog/"><strong>Marathon pacing blog</strong></a> → goal setting, splits, predictors, and race-day strategy.
-</p>
-
-<p class="tiny muted" style="margin:0 0 10px">
-  Prefer a standalone calculator? <a href="/marathon-pace-calculator/"><strong>Marathon pace calculator</strong></a> ·
-  Prefer miles? <a href="/marathon-pace-chart-min-per-mile/"><strong>Min/mile pace chart</strong></a> ·
-  Adjust for conditions? <a href="/adjust-marathon-pace/"><strong>Adjust marathon pace (heat/wind/hills)</strong></a>
-</p>
-
-<p class="sub">
-  Convert marathon finish times into <strong>pace per kilometre</strong>, key checkpoints, and full race splits.
-  This tool is built for runners using <strong>kilometres (KM)</strong>. Use the quick pace chart for fast reference,
-  then enter your goal time to generate detailed splits instantly.
-</p>
-
-<div aria-label="On-page navigation" class="toc">
-  <a class="btn" href="#start-here">Start here</a>
-  <a class="btn secondary" href="#quick-chart">Quick pace chart</a>
-  <a class="btn secondary" href="#calculator">Calculator</a>
-  <a class="btn secondary" href="#pace-bands">Pace bands</a>
-  <a class="btn secondary" href="/monthly-training-plan/">Monthly plan</a>
-  <a class="btn secondary" href="#popular-goal-times">Goal times</a>
-  <a class="btn secondary" href="#pace-chart">Full pace chart</a>
-  <a class="btn secondary" href="#how-to-use">How to use</a>
-  <a class="btn secondary" href="#guides">Guides + predictors</a>
-  <a class="btn secondary" href="/adjust-marathon-pace/">Adjust pace</a>
-  <a class="btn secondary" href="#faq">FAQ</a>
-  <a class="btn secondary" href="/blog/">Blog</a>
-</div>
-
-<div aria-label="Quick facts" class="facts">
-  <div class="fact"><strong>Marathon</strong><br/>42.195 km</div>
-  <div class="fact"><strong>Half</strong><br/>21.0975 km</div>
-  <div class="fact"><strong>Pacing tip</strong><br/>Even-ish splits</div>
-  <div class="fact"><strong>Buffer</strong><br/>±5–10 sec/km</div>
-</div>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marathon Pace Chart (KM) & Calculator | Marathon Pace KM</title>
+  <meta name="description" content="Find your marathon pace per km with a free pace chart and calculator. Get accurate race splits, convert pace to finish time, and create a printable pace band.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://marathonpacekm.com/">
+  <meta name="theme-color" content="#174f40">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Marathon Pace KM">
+  <meta property="og:title" content="Marathon Pace Chart (KM) & Calculator">
+  <meta property="og:description" content="Find your pace. Check your splits. Take your plan to race day with a printable pace band.">
+  <meta property="og:url" content="https://marathonpacekm.com/">
+  <meta property="og:image" content="https://marathonpacekm.com/assets/og/pace-chart.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Marathon pace chart in kilometres and calculator">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Marathon Pace Chart (KM) & Calculator">
+  <meta name="twitter:description" content="Calculate your pace, check every split and create a race-day pace band.">
+  <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png">
+  <link rel="icon" href="https://marathonpacekm.com/favicon.svg" type="image/svg+xml">
+  <link rel="alternate icon" href="https://marathonpacekm.com/favicon.ico">
+  <link rel="apple-touch-icon" href="https://marathonpacekm.com/apple-touch-icon.png">
+  <!-- This homepage owns its styles and calculator. Do not also load /assets/app.js here. -->
+  <style>:root{--ink:#152d27;--muted:#536760;--green:#174f40;--deep:#103c31;--lime:#dbf397;--paper:#f6f8f3;--line:#dbe4d9;--white:#fff;--radius:20px;font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);font-synthesis:none;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-size:16px;line-height:1.55}button,input,select,textarea{font:inherit}button,a,input,select,summary{-webkit-tap-highlight-color:transparent}button,select,summary{cursor:pointer}button{touch-action:manipulation}button:disabled{cursor:wait;opacity:.6}a{color:var(--green);text-underline-offset:4px}a:hover{text-decoration-thickness:2px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:3px solid #ad7300;outline-offset:4px}h1,h2,h3,p{margin:0}h1,h2,h3{line-height:1.15;letter-spacing:-.035em}h2{font-size:clamp(1.5rem,3vw,2rem)}h3{font-size:1.16rem}p+p{margin-top:12px}[hidden]{display:none!important}.wrap{width:min(1200px,calc(100% - 64px));margin-inline:auto}.muted{color:var(--muted)}.small{font-size:.875rem}.eyebrow{font-size:.72rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase;color:var(--green)}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip{position:absolute;top:12px;left:12px;transform:translateY(-150%);background:white;padding:10px 16px;z-index:100}.skip:focus{transform:none}.site-header{border-bottom:1px solid var(--line);background:var(--paper)}.header-inner{min-height:86px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);font-weight:760;letter-spacing:-.035em;line-height:1.15;font-size:1.04rem}.brand-mark{display:grid;place-items:center;width:42px;height:42px;background:var(--green);border-radius:50%;color:var(--lime);flex:none}.brand small{display:block;font-size:.64rem;font-weight:600;letter-spacing:.12em;margin-top:5px;text-transform:uppercase;color:var(--muted)}.main-nav{display:flex;align-items:center;gap:28px}.main-nav a{font-size:.87rem;font-weight:600;text-decoration:none;padding-block:10px}.main-nav .nav-cta{border:1px solid #bacbbb;border-radius:99px;padding:10px 17px}.intro{padding:38px 0 26px}.intro-line{display:flex;justify-content:space-between;gap:24px;align-items:end}.intro h1{font-size:clamp(2rem,4.3vw,3.4rem);margin:10px 0 13px;max-width:950px;letter-spacing:-.05em}.intro p{max-width:750px;color:var(--muted)}.intro-note{white-space:nowrap;font-size:.8rem;padding-bottom:3px;color:var(--muted)}.jump-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;font-size:.85rem}.jump-links a{text-decoration:none;border-bottom:1px solid #b7c8b8}.workbench{display:grid;grid-template-columns:minmax(0,1.28fr) minmax(0,1fr);align-items:start;gap:24px}.panel{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;min-width:0}.panel-pad{padding:26px}.panel h2{font-size:1.4rem;letter-spacing:-.025em}.panel-heading{display:flex;align-items:start;justify-content:space-between;gap:12px;margin-bottom:18px}.panel-heading p{margin-top:7px}.tag{background:#edf3e7;color:var(--green);font-size:.69rem;font-weight:700;letter-spacing:.045em;padding:5px 9px;border-radius:99px;white-space:nowrap}.mode-switch{display:flex;gap:4px;padding:4px;background:#f0f4ed;border:0;border-radius:12px;margin:0 0 20px;min-width:0}.mode-switch label{position:relative;flex:1;min-width:0}.mode-switch input{position:absolute;opacity:0;width:1px;height:1px}.mode-switch span{display:flex;align-items:center;justify-content:center;padding:10px 5px;border-radius:8px;font-size:.83rem;font-weight:650;min-height:44px}.mode-switch input:checked+span{background:#fff;color:var(--green);box-shadow:0 1px 5px #163c2010}.mode-switch input:focus-visible+span{outline:3px solid #ad7300;outline-offset:2px}.field-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px;align-items:end}.time-group{padding:0;margin:0;border:0;min-width:0}.time-group legend,.field-label{display:block;font-weight:650;font-size:.81rem;margin-bottom:8px}.time-fields{display:flex;gap:8px;align-items:center}.time-field{flex:1;min-width:0}.time-field label{display:block;font-size:.69rem;color:var(--muted);margin-bottom:5px}.time-field input{font-size:1.3rem;text-align:center;font-weight:620;width:100%;padding:10px 3px;height:51px;font-variant-numeric:tabular-nums}.time-field input::-webkit-inner-spin-button,.time-field input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.time-field input{-moz-appearance:textfield;appearance:textfield}input,select,textarea{border:1px solid #b8c8b8;border-radius:9px;background:#fff;color:var(--ink);max-width:100%}select{height:51px;padding:8px 27px 8px 10px;width:100%;font-size:.88rem}input[aria-invalid=true]{border-color:#b23926;background:#fff7f5}.presets{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:17px 0 0}.presets>span{font-size:.73rem;color:var(--muted);margin-right:3px}.preset{border:1px solid var(--line);border-radius:99px;background:#fff;padding:7px 11px;min-height:40px;font-size:.77rem;font-weight:600}.preset:hover{background:#eef4e7;border-color:#a8bea1}.preset[aria-pressed=true]{background:var(--green);color:white;border-color:var(--green)}.form-actions{display:flex;align-items:center;gap:12px;margin-top:18px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border:1px solid transparent;border-radius:10px;padding:11px 17px;font-size:.86rem;font-weight:700;text-decoration:none;line-height:1.3;background:var(--green);color:#fff}.btn:hover{background:#0e3b2e;text-decoration:none}.btn-light{background:var(--lime);color:var(--deep)}.btn-light:hover{background:#e5ffa3}.btn-outline{background:white;border-color:var(--line);color:var(--green)}.btn-outline:hover{background:#f0f5ec}.text-button{border:0;background:transparent;color:var(--muted);font-size:.82rem;text-decoration:underline;text-underline-offset:4px;min-height:44px;padding:8px}.error{font-size:.85rem;color:#a62b1f;margin-top:12px}.result{background:var(--deep);color:white;padding:24px 26px 26px;position:relative;min-height:333px}.result-top{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:.78rem;color:#c7d9cb}.result-top strong{color:white;font-weight:650}.result-primary{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:14px 0 15px}.result-primary .metric:first-child{border-right:1px solid #ffffff24}.metric span{display:block;font-size:.72rem;color:#c7d9cb}.metric strong{display:block;font-size:clamp(2rem,3.6vw,2.75rem);line-height:1.15;font-weight:650;letter-spacing:-.045em;margin:5px 0;color:var(--lime);font-variant-numeric:tabular-nums}.metric small{font-size:.73rem;color:#c7d9cb}.checkpoints{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 12px;border-top:1px solid #ffffff24;padding-top:16px;margin:0}.checkpoints div{min-width:0}.checkpoints dt{font-size:.68rem;color:#c7d9cb}.checkpoints dd{margin:3px 0 0;font-weight:600;font-size:.98rem;font-variant-numeric:tabular-nums}.result .result-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:20px}.result .text-link{color:white;font-size:.81rem;padding:8px 4px}.result-note{font-size:.7rem;color:#c7d9cb;margin-top:14px}.result-stale{position:absolute;inset:0;background:#103c31f7;display:grid;place-items:center;text-align:center;padding:35px;font-size:1rem;z-index:2}.export-area{padding:16px 26px 20px;border-top:0}.export-actions{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}.export-actions button{min-height:40px;border:0;background:transparent;font-size:.78rem;padding:5px 0;color:var(--green);text-decoration:underline;text-underline-offset:4px}.export-actions button:disabled{cursor:not-allowed}.status{font-size:.8rem;color:var(--muted);margin-top:8px;min-height:1.25em}.manual-copy{margin-top:10px}.manual-copy label{display:block;font-size:.8rem;margin-bottom:6px}.manual-copy textarea{width:100%;padding:10px;height:95px;font-size:.8rem}.full-splits{margin-top:4px}.full-splits summary{font-size:.86rem;font-weight:650;min-height:42px;padding:8px 0}.split-controls{margin:10px 0;max-width:230px}.table-scroll{overflow:auto;overscroll-behavior-x:contain}.pace-table{width:100%;border-collapse:collapse;font-size:.87rem;font-variant-numeric:tabular-nums}.pace-table th{font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:right;background:#f3f6ef;white-space:nowrap}.pace-table th:first-child,.pace-table td:first-child{text-align:left}.pace-table th,.pace-table td{padding:12px 13px;border-bottom:1px solid #e8eee3;text-align:right;white-space:nowrap}.pace-table tbody tr:last-child td{border-bottom:0}.pace-table td:first-child{font-weight:650}.pace-table td a{display:inline-block;padding:5px 0;color:var(--green);text-decoration-thickness:1px}.pace-table tbody tr:hover{background:#f5f9ed}.pace-table .featured-row{background:#edf6df}.pace-table .featured-row td:nth-child(2){font-weight:750;color:var(--green)}.quick-table th,.quick-table td{padding:9px 20px}.quick-table td{height:46px}.chart-footer{padding:20px}.chart-footer p{margin-bottom:14px}.chart-footer a{font-size:.84rem}.chart-footer .btn{width:100%}.chart-note{padding:0 20px 18px;font-size:.73rem;color:var(--muted)}.sub-four{margin-top:18px;padding-top:17px;border-top:1px solid var(--line);font-size:.83rem}.sub-four strong{display:block;margin-bottom:3px}.section{margin-top:54px;scroll-margin-top:22px}.section-title{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:23px}.section-title p{margin-top:9px;max-width:670px;color:var(--muted)}.section-title>a{font-size:.83rem;white-space:nowrap}.tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.tool-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;background:white;padding:24px;color:var(--ink);text-decoration:none;min-width:0}.tool-card:hover{border-color:#7f9b72;background:#fcfef8}.tool-number{font-size:.7rem;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.05em;margin-bottom:28px}.tool-card h3{margin-bottom:10px}.tool-card p{font-size:.86rem;color:var(--muted);margin-bottom:20px}.tool-card .tool-link{margin-top:auto;font-size:.83rem;font-weight:700;color:var(--green)}.tool-card-feature{background:#edf4e2;border-color:#c6d8b4}.secondary-tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:18px}.secondary-tool{padding:20px 0;border-top:1px solid var(--line)}.secondary-tool a{font-size:.89rem;font-weight:650}.secondary-tool p{font-size:.81rem;color:var(--muted);margin-top:6px}.full-chart{padding:0;background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden}.full-chart>summary{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px;list-style:none}.full-chart>summary::-webkit-details-marker{display:none}.full-chart>summary:after{content:"+";font-size:1.6rem;font-weight:400}.full-chart[open]>summary:after{content:"−"}.full-chart>summary h2{font-size:1.28rem}.summary-description{display:block;margin-top:8px;font-size:.84rem;color:var(--muted);font-weight:400;letter-spacing:normal;line-height:1.55}.full-chart>summary:focus-visible{outline-offset:-5px}.full-chart .pace-table th,.full-chart .pace-table td{padding:12px 24px}.full-chart-note{font-size:.8rem;color:var(--muted);padding:16px 24px}.guide-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}.guide{display:block;padding:24px 0;border-top:1px solid var(--line);text-decoration:none;color:var(--ink)}.guide:hover h3{color:var(--green);text-decoration:underline;text-underline-offset:5px}.guide .eyebrow{display:block;font-size:.63rem;margin-bottom:10px}.guide h3{font-size:1.15rem}.guide p{font-size:.85rem;color:var(--muted);margin-top:8px;max-width:500px}.method-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:40px;padding:32px;border:1px solid var(--line);background:#eff4e9;border-radius:20px}.method-grid h2{font-size:1.45rem;margin:8px 0 16px}.method-grid p,.method-grid li{font-size:.88rem}.method-grid ol{padding-left:20px;margin:0}.method-grid li+li{margin-top:12px}.formula{font-size:.86rem;background:white;border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:16px 0;font-variant-numeric:tabular-nums}.method-detail{border-top:1px solid #cad9c2;padding-top:18px;margin-top:18px}.faq-grid{display:grid;grid-template-columns:1fr 1.65fr;gap:45px}.faq-intro p{margin-top:12px;color:var(--muted);font-size:.9rem}.faq-list details{border-bottom:1px solid var(--line)}.faq-list details:first-child{border-top:1px solid var(--line)}.faq-list summary{padding:20px 28px 20px 0;font-weight:650;font-size:.91rem;position:relative;list-style:none}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:"+";position:absolute;right:3px;top:17px;font-size:1.15rem;font-weight:400}.faq-list details[open] summary:after{content:"−"}.faq-list details p{padding:0 20px 21px 0;font-size:.88rem;color:var(--muted)}.about-strip{display:flex;align-items:center;justify-content:space-between;gap:30px;background:var(--green);border-radius:18px;padding:28px 32px;color:#fff;margin-bottom:48px}.about-strip h2{font-size:1.3rem;margin-bottom:8px}.about-strip p{font-size:.85rem;max-width:650px;color:#d3e1d4}.about-strip a{flex:none;color:var(--lime);font-size:.86rem}.site-footer{border-top:1px solid var(--line);padding:32px 0 24px}.footer-top{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:30px}.footer-top p{max-width:280px;font-size:.79rem;color:var(--muted);margin-top:13px}.footer-group{display:flex;flex-wrap:wrap;align-content:start;gap:10px 16px}.footer-group strong{width:100%;font-size:.76rem;margin-bottom:3px}.footer-group a{font-size:.77rem;color:var(--muted)}.footer-bottom{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:19px;margin-top:30px;font-size:.72rem;color:var(--muted)}.footer-bottom a{white-space:nowrap}.anchor-target{scroll-margin-top:20px}#calculator,#quick-chart,#pace-chart{scroll-margin-top:20px}.noscript-note{padding:14px 18px;background:#fff2d7;border-radius:10px;margin-bottom:18px;font-size:.87rem}
+@media(min-width:1450px){.intro{padding-top:46px}}
+@media(max-width:1000px){.wrap{width:calc(100% - 40px)}.workbench{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px}.panel-pad{padding:22px}.field-layout{grid-template-columns:1fr;gap:15px}.intro-note{display:none}.metric strong{font-size:2.15rem}.quick-table th,.quick-table td{padding-inline:16px}.tool-card{padding:21px}.main-nav{gap:20px}.mode-switch span{font-size:.8rem}}
+@media(max-width:760px){.wrap{width:calc(100% - 32px)}.header-inner{min-height:70px;gap:14px}.brand{font-size:.9rem;gap:9px}.brand-mark{width:36px;height:36px}.brand small{font-size:.57rem}.main-nav{gap:14px}.main-nav a{font-size:.78rem}.main-nav .desktop-nav{display:none}.main-nav .nav-cta{padding:8px 12px}.intro{padding:25px 0 22px}.intro h1{font-size:clamp(1.9rem,7vw,2.9rem);line-height:1.12;max-width:620px;margin-top:9px}.intro p{font-size:.9rem;max-width:590px}.intro .eyebrow{font-size:.64rem}.jump-links{gap:14px;margin-top:12px;font-size:.77rem}.workbench{grid-template-columns:1fr;gap:22px}.panel-pad{padding:21px}.field-layout{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:16px}.panel-heading{margin-bottom:16px}.result{padding:22px;min-height:315px}.metric strong{font-size:2.6rem}.quick-table th,.quick-table td{padding-inline:22px}.section{margin-top:38px}.section-title{align-items:start;margin-bottom:20px}.section-title h2{font-size:1.65rem}.section-title p{font-size:.86rem}.section-title>a{font-size:.78rem}.tool-grid{grid-template-columns:1fr}.tool-card{padding:23px;min-height:0}.tool-number{margin-bottom:14px}.tool-card p{margin-bottom:15px}.secondary-tools{grid-template-columns:1fr;gap:0;margin-top:22px}.secondary-tool{padding:18px 2px}.guide-grid{grid-template-columns:1fr;gap:0}.guide{padding:21px 0}.method-grid{grid-template-columns:1fr;gap:25px;padding:24px}.faq-grid{grid-template-columns:1fr;gap:22px}.faq-intro p{max-width:440px}.about-strip{padding:25px;display:block}.about-strip a{display:inline-block;margin-top:15px}.footer-top{grid-template-columns:1fr 1fr;gap:26px}.footer-brand{grid-column:1/-1}.footer-top p{max-width:450px}.footer-bottom{display:block}.footer-bottom a{display:inline-block;margin-top:12px}.full-chart>summary{padding:21px}.full-chart .pace-table th,.full-chart .pace-table td{padding:12px 16px}.full-chart-note{padding:16px}.export-area{padding-inline:22px}.full-chart>summary h2{font-size:1.14rem}}
+@media(max-width:430px){.main-nav>a:not(.nav-cta){display:none}.field-layout{grid-template-columns:1fr;gap:14px}.field-layout>.distance-field{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:15px}.distance-field .field-label{margin:0}.distance-field select{height:44px}.mode-switch{margin-bottom:17px}.mode-switch span{font-size:.77rem}.panel-heading .tag{display:none}.panel h2{font-size:1.25rem}.metric strong{font-size:2.45rem}.time-field input{height:49px}.presets{gap:6px}.preset{padding:6px 10px}.checkpoints dd{font-size:.93rem}.checkpoints dt{font-size:.65rem}.result .result-actions .btn{width:100%}.result .result-actions{gap:2px}.result .result-actions .text-link{font-size:.8rem}.result-top{font-size:.75rem}.section-title{display:block}.section-title>a{display:inline-block;margin-top:12px}.quick-table th,.quick-table td{padding:9px 17px}.full-chart .pace-table th,.full-chart .pace-table td{padding:12px 13px}.btn{font-size:.82rem}.form-actions .btn{flex:1}.intro p{font-size:.86rem}.full-chart>summary{gap:10px}.summary-description{font-size:.79rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media print{body{background:white;color:#000;font-size:10pt}.site-header,.intro,.quick-panel,#pace-chart,#start-here,#guides,#how-to-use,#faq,.about-strip,.site-footer,.panel-pad,.export-actions,.status,.manual-copy,.result-actions,.result-note,.split-controls,.jump-links{display:none!important}.wrap{width:100%}.workbench{display:block}.panel{border:0}.result{background:white;color:#000;padding:0 0 15pt;min-height:0}.result-top,.result-top strong,.metric span,.metric strong,.metric small,.checkpoints dt,.checkpoints dd{color:#000}.checkpoints{border-color:#aaa}.result-primary .metric:first-child{border-color:#aaa}.checkpoints div{break-inside:avoid}.full-splits>summary{display:none}.export-area{padding:0}.pace-table{font-size:9pt}thead{display:table-header-group}tr{break-inside:avoid}a{color:#000;text-decoration:none}}
+</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://marathonpacekm.com/#website","url":"https://marathonpacekm.com/","name":"Marathon Pace KM","inLanguage":"en-AU"},{"@type":"WebPage","@id":"https://marathonpacekm.com/#webpage","url":"https://marathonpacekm.com/","name":"Marathon Pace Chart (KM) & Calculator","description":"Marathon pace charts, a time and pace calculator, and cumulative race splits using 42.195 km.","isPartOf":{"@id":"https://marathonpacekm.com/#website"},"inLanguage":"en-AU","mainEntity":{"@id":"https://marathonpacekm.com/#calculator-app"}},{"@type":"WebApplication","@id":"https://marathonpacekm.com/#calculator-app","name":"Marathon Pace KM Calculator","url":"https://marathonpacekm.com/#calculator","applicationCategory":"SportsApplication","operatingSystem":"Any","isAccessibleForFree":true,"browserRequirements":"Requires JavaScript for interactive calculations.","featureList":["Finish time to pace per kilometre and mile","Pace to finish time","Cumulative race splits","CSV split download","Shareable finish-time target"]}]}</script>
+  <!-- Existing AdSense publisher preserved. Placement and exclusions are managed in AdSense. -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668" crossorigin="anonymous"></script>
+</head>
+<body id="top">
+<a class="skip" href="#content">Skip to calculator and pace chart</a>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label="Marathon Pace KM home">
+      <span class="brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+      <span>Marathon Pace KM<small>A plan for every kilometre</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#quick-chart">Pace chart</a><a class="desktop-nav" href="#start-here">Tools</a><a class="desktop-nav" href="#guides">Guides</a>
+      <a class="nav-cta" href="/printable-pace-band/">Pace band <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
 </header>
-
-<main class="wrap" id="content">
-<!-- PILLAR: visible chart above the fold -->
-
-<section class="card" id="start-here">
-<h2>Start here</h2>
-<p class="muted">If you want a fast answer, use the calculator. If you’re training, pick a goal-time page and use the pace band on race day.</p>
-<div class="grid">
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0">1) Use the calculator</h3>
-    <p class="muted">Enter a marathon time to get <strong>min/km</strong>, checkpoints (5k/10k/half/30k/40k) and full splits.</p>
-    <p><a class="btn" href="/marathon-pace-calculator/">Open pace calculator</a></p>
+<main class="wrap" id="content" tabindex="-1">
+  <div class="intro">
+    <span class="eyebrow">42.195 kilometres. One clear plan.</span>
+    <h1>Marathon pace chart <span style="color:var(--green)">(KM)</span> &amp; calculator</h1>
+    <div class="intro-line">
+      <p>Turn your finish-time goal into pace per kilometre and race splits. Then take your plan to the start line.</p>
+      <span class="intro-note">Free tools · No sign-up</span>
+    </div>
+    <nav class="jump-links" aria-label="On this page"><a href="#calculator">Calculate my pace</a><a href="#quick-chart">Quick chart</a><a href="#pace-chart">Full chart: 2:30–6:00</a></nav>
   </div>
 
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0">2) Pick your goal time page</h3>
-    <p class="muted">Dedicated pages for common goals (3:00 → 5:05) with a printable <strong>pace band</strong>, conversions and FAQs.</p>
-    <p><a class="btn" href="#popular-goal-times">Browse goal times</a></p>
+  <div class="workbench">
+    <section class="panel calculator-panel" id="calculator" aria-labelledby="calculator-title">
+      <div class="panel-pad">
+        <div class="panel-heading"><div><h2 id="calculator-title">Find your race pace</h2></div><span class="tag">FREE TOOL</span></div>
+        <noscript><p class="noscript-note">The calculator needs JavaScript. You can still use both pace charts below and visit the goal-time guides. The example shown is a 4-hour marathon.</p></noscript>
+        <form id="pace-form" novalidate data-js hidden>
+          <fieldset class="mode-switch"><legend class="sr-only">Calculate from</legend>
+            <label><input type="radio" name="mode" value="time" checked><span>Finish time → pace</span></label>
+            <label><input type="radio" name="mode" value="pace"><span>Pace → finish time</span></label>
+          </fieldset>
+          <div class="field-layout">
+            <fieldset class="time-group" id="time-inputs"><legend>Goal finish time</legend>
+              <div class="time-fields">
+                <div class="time-field"><label for="h">Hours</label><input id="h" type="number" inputmode="numeric" min="0" max="23" step="1" value="4" required aria-describedby="input-error"></div>
+                <div class="time-field"><label for="m">Minutes</label><input id="m" type="number" inputmode="numeric" min="0" max="59" step="1" value="0" required aria-describedby="input-error"></div>
+                <div class="time-field"><label for="s">Seconds</label><input id="s" type="number" inputmode="numeric" min="0" max="59" step="1" value="0" required aria-describedby="input-error"></div>
+              </div>
+            </fieldset>
+            <fieldset class="time-group" id="pace-inputs" hidden disabled><legend>Average pace</legend>
+              <div class="time-fields">
+                <div class="time-field"><label for="pace-min">Minutes</label><input id="pace-min" type="number" inputmode="numeric" min="0" max="59" step="1" value="5" required aria-describedby="input-error"></div>
+                <div class="time-field"><label for="pace-sec">Seconds</label><input id="pace-sec" type="number" inputmode="decimal" min="0" max="59.9" step="0.1" value="41.3" required aria-describedby="input-error"></div>
+              </div>
+            </fieldset>
+            <div class="distance-field"><label class="field-label" for="dist">Distance</label><select id="dist"><option value="42.195" selected>Marathon</option><option value="21.0975">Half marathon</option><option value="10">10 km</option><option value="5">5 km</option></select></div>
+          </div>
+          <div id="pace-unit-wrap" class="split-controls" hidden><label class="field-label" for="pace-unit">Pace unit</label><select id="pace-unit"><option value="km">Minutes per kilometre</option><option value="mi">Minutes per mile</option></select></div>
+          <div class="presets" id="presets" aria-label="Popular marathon targets"><span>Try a goal:</span><button type="button" class="preset" data-preset="12600" aria-pressed="false">3:30</button><button type="button" class="preset" data-preset="14399" aria-pressed="false">Sub-4</button><button type="button" class="preset" data-preset="14400" aria-pressed="true">4:00</button><button type="button" class="preset" data-preset="16200" aria-pressed="false">4:30</button></div>
+          <div class="form-actions"><button class="btn" type="submit" id="calcBtn">Calculate my splits <span aria-hidden="true">→</span></button><button type="button" class="text-button" id="resetBtn">Reset</button></div>
+          <p id="input-error" class="error" role="alert" hidden></p>
+        </form>
+      </div>
+      <div class="result" id="results" aria-labelledby="result-label">
+        <div class="result-top"><span id="result-label">Your even-pace plan</span><strong id="result-time">Marathon · 4:00:00</strong></div>
+        <div class="result-primary"><div class="metric"><span>Average per kilometre</span><strong id="result-km">5:41.3</strong><small>min / km</small></div><div class="metric"><span>Average per mile</span><strong id="result-mi">9:09.2</strong><small>min / mile</small></div></div>
+        <dl class="checkpoints" id="checkpoints"><div><dt>5 km</dt><dd>0:28:26</dd></div><div><dt>10 km</dt><dd>0:56:53</dd></div><div><dt>Halfway</dt><dd>2:00:00</dd></div><div><dt>30 km</dt><dd>2:50:38</dd></div><div><dt>40 km</dt><dd>3:47:31</dd></div><div><dt>Finish</dt><dd>4:00:00</dd></div></dl>
+        <div class="result-actions"><a class="btn btn-light" id="band-link" href="/printable-pace-band/?h=4&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=even">Make my pace band <span aria-hidden="true">→</span></a><a class="text-link" id="goal-link" href="/4-00-marathon-pace-km/">4:00 marathon guide</a></div>
+        <p class="result-note">Paces shown to 0.1 second. Checkpoints use unrounded pace and show elapsed time, including stops.</p>
+        <div class="result-stale" id="result-stale" hidden>Finish entering a valid time or pace to update your splits.</div>
+      </div>
+      <div class="export-area" data-js hidden>
+        <div class="export-actions"><button type="button" id="share-btn">Copy plan link</button><button type="button" id="copy-btn">Copy checkpoints</button><button type="button" id="download-btn">Download splits (CSV)</button></div>
+        <p class="status" id="action-status" role="status" aria-live="polite"></p>
+        <div class="manual-copy" id="manual-copy" hidden><label for="copy-text">Select and copy this text:</label><textarea id="copy-text" readonly></textarea></div>
+        <details class="full-splits" id="full-splits"><summary>View every split</summary>
+          <div class="split-controls"><label class="field-label" for="split-unit">Split interval</label><select id="split-unit"><option value="km">Every kilometre</option><option value="mi">Every mile</option><option value="5km">Every 5 kilometres</option></select></div>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Race split table"><table class="pace-table"><caption class="sr-only">Cumulative race splits and segment times</caption><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed</th><th scope="col">Segment</th></tr></thead><tbody id="splits-body"></tbody></table></div>
+        </details>
+      </div>
+      <p class="sr-only" id="result-announcement" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="panel quick-panel" id="quick-chart" aria-labelledby="quick-title">
+      <div class="panel-pad panel-heading"><div><span class="eyebrow">At a glance</span><h2 id="quick-title" style="margin-top:9px">Quick marathon pace chart</h2><p class="small muted">Your target time, average pace and halfway split.</p></div></div>
+      <table class="pace-table quick-table"><caption class="sr-only">Common marathon finish times with pace per kilometre and half-marathon checkpoints</caption><thead><tr><th scope="col">Finish time</th><th scope="col">Min / km</th><th scope="col">Halfway</th></tr></thead><tbody><tr><td><a href="/3-00-marathon-pace-km/" data-goal-seconds="10800">3:00:00</a></td><td>4:16</td><td>1:30:00</td></tr>
+<tr><td><a href="/3-15-marathon-pace-km/" data-goal-seconds="11700">3:15:00</a></td><td>4:37</td><td>1:37:30</td></tr>
+<tr><td><a href="/3-30-marathon-pace-km/" data-goal-seconds="12600">3:30:00</a></td><td>4:59</td><td>1:45:00</td></tr>
+<tr><td><a href="/3-45-marathon-pace-km/" data-goal-seconds="13500">3:45:00</a></td><td>5:20</td><td>1:52:30</td></tr>
+<tr class="featured-row"><td><a href="/4-00-marathon-pace-km/" data-goal-seconds="14400">4:00:00</a></td><td>5:41</td><td>2:00:00</td></tr>
+<tr><td>4:15:00</td><td>6:03</td><td>2:07:30</td></tr>
+<tr><td><a href="/4-30-marathon-pace-km/" data-goal-seconds="16200">4:30:00</a></td><td>6:24</td><td>2:15:00</td></tr>
+<tr><td><a href="/5-00-marathon-pace-km/" data-goal-seconds="18000">5:00:00</a></td><td>7:07</td><td>2:30:00</td></tr>
+<tr><td>5:30:00</td><td>7:49</td><td>2:45:00</td></tr>
+<tr><td>6:00:00</td><td>8:32</td><td>3:00:00</td></tr></tbody></table>
+      <div class="chart-footer"><p class="small muted">Select a linked finish time for its pacing guide.</p><a class="btn btn-outline" href="#pace-chart">Full chart: every 5 minutes <span aria-hidden="true">↓</span></a><div class="sub-four"><strong>Aiming to break four hours?</strong><a href="/sub-4-marathon-pace-km/" data-goal-seconds="14399">See the sub-4 marathon pace guide →</a></div></div>
+      <p class="chart-note">Chart paces are rounded to the nearest second. Use the calculator for precise paces and checkpoints. <a href="/marathon-pace-chart-min-per-mile/">Prefer a min/mile chart?</a></p>
+    </section>
   </div>
 
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0">3) Learn to use the chart</h3>
-    <p class="muted">A quick guide to choosing a realistic target, focusing on key checkpoints, and avoiding early surges.</p>
-    <p><a class="btn" href="/how-to-use-marathon-pace-chart/">How to use the pace chart</a></p>
-  </div>
+  <!-- Optional future ad location: between complete sections. No manual slot ID is invented here. -->
+  <section class="section" id="start-here" aria-labelledby="tools-title">
+    <div class="section-title"><div><span class="eyebrow">Your next step</span><h2 id="tools-title" style="margin-top:8px">Turn a target into a race plan.</h2><p>Choose your goal, keep your splits close, and plan what you’ll need along the way.</p></div></div>
+    <div class="tool-grid">
+      <a class="tool-card" href="/marathon-time-predictor/"><span class="tool-number">01 / CHOOSE A TARGET</span><h3>Marathon time predictor</h3><p>Estimate a marathon target from a recent 5K, 10K or half marathon, then check it against your training.</p><span class="tool-link">Estimate my finish time <span aria-hidden="true">↗</span></span></a>
+      <a class="tool-card tool-card-feature anchor-target" id="pace-bands" href="/printable-pace-band/"><span class="tool-number">02 / TAKE YOUR SPLITS WITH YOU</span><h3>Printable pace band</h3><p>Create a wrist band and matching phone card. Choose even pacing, a controlled start or a gradual negative split.</p><span class="tool-link">Create my pace band <span aria-hidden="true">↗</span></span></a>
+      <a class="tool-card" href="/marathon-fueling-calculator/"><span class="tool-number">03 / PLAN YOUR FUEL</span><h3>Marathon fueling calculator</h3><p>Build a gel-by-time schedule around your finish time, chosen carbohydrate target and products you’ve practised with.</p><span class="tool-link">Plan my race fueling <span aria-hidden="true">↗</span></span></a>
+    </div>
+    <div class="secondary-tools"><div class="secondary-tool"><a href="/adjust-marathon-pace/">Adjust pace for race conditions</a><p>Explore the effect of heat, wind, hills and fatigue on your target.</p></div><div class="secondary-tool anchor-target" id="monthly-plan"><a href="/monthly-training-plan/">Build a monthly training plan</a><p>Generate a four-week starting point from recent mileage and available running days.</p></div><div class="secondary-tool"><a href="/marathon-pace-calculator/">Open the dedicated pace calculator</a><p>Go straight to the standalone time and pace conversion tool.</p></div></div>
+  </section>
 
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0">4) Choose a pacing strategy</h3>
-    <p class="muted">Even splits vs negative splits — what works for most runners and how to execute it.</p>
-    <p><a class="btn" href="/even-vs-negative-splits/">Even vs negative splits</a></p>
-  </div>
-
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0">5) Predict from a recent race</h3>
-    <p class="muted">Use your 5K/10K/half to estimate a realistic marathon pace range (then validate with training).</p>
-    <p>
-      <a class="btn" href="/marathon-time-predictor/">Open marathon time predictor</a>
-    </p>
-    <p class="tiny muted" style="margin:10px 0 0">
-      Quick links:
-      <a href="/blog/half-marathon-to-marathon-pace/">Half → marathon</a> ·
-      <a href="/blog/marathon-pace-from-10k/">10K → marathon</a> ·
-      <a href="/blog/marathon-pace-from-5k/">5K → marathon</a> ·
-      <a href="/blog/race-time-predictor-marathon/">How the predictor works</a>
-    </p>
-  </div>
-
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0">6) Adjust pace for real-world conditions</h3>
-    <p class="muted">Heat, wind, hills, fatigue drift and HR drift can turn a good plan into a late slowdown. Use the adjustment hub and modules.</p>
-    <p><a class="btn" href="/adjust-marathon-pace/">Open adjust pace hub</a></p>
-    <p class="tiny muted" style="margin:10px 0 0">
-      Modules:
-      <a href="/adjust-marathon-pace/heat/">Heat</a> ·
-      <a href="/adjust-marathon-pace/wind/">Wind</a> ·
-      <a href="/adjust-marathon-pace/hills/">Hills</a> ·
-      <a href="/adjust-marathon-pace/fatigue-drift/">Fatigue drift</a> ·
-      <a href="/adjust-marathon-pace/cardiac-drift/">HR drift</a>
-    </p>
-  </div>
-</div>
-
-<p class="tiny muted" style="margin-top:10px">
-  Prefer miles? Use the <a href="/marathon-pace-chart-min-per-mile/">min/mile pace chart</a>. Want all guides? Visit the <a href="/blog/">blog</a>.
-</p>
-<p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-</section>
-
-<section class="card" id="quick-chart">
-<h2>Quick marathon pace chart (per KM)</h2>
-<p class="muted">Common finish times mapped to average pace. Click a goal time for the dedicated page, or use the calculator for full splits.</p>
-<table class="splits-table">
-<thead>
-<tr>
-<th>Finish time</th>
-<th>Avg pace (min/km)</th>
-</tr>
-</thead>
-<tbody>
-<tr><td><a href="/3-00-marathon-pace-km/">3:00:00</a></td><td>4:16</td></tr>
-<tr><td><a href="/3-15-marathon-pace-km/">3:15:00</a></td><td>4:37</td></tr>
-<tr><td><a href="/3-30-marathon-pace-km/">3:30:00</a></td><td>4:59</td></tr>
-<tr><td><a href="/3-45-marathon-pace-km/">3:45:00</a></td><td>5:20</td></tr>
-<tr><td><a href="/3-50-marathon-pace-km/">3:50:00</a></td><td>5:27</td></tr>
-<tr><td><a href="/sub-4-marathon-pace-km/">3:59:59 (Sub-4)</a></td><td>5:41</td></tr>
-<tr><td><a href="/4-00-marathon-pace-km/">4:00:00</a></td><td>5:41</td></tr>
-<tr><td><a href="/4-30-marathon-pace-km/">4:30:00</a></td><td>6:24</td></tr>
-<tr><td><a href="/4-50-marathon-pace-km/">4:50:00</a></td><td>6:52</td></tr>
-<tr><td><a href="/5-00-marathon-pace-km/">5:00:00</a></td><td>7:07</td></tr>
-</tbody>
-</table>
-<div class="row actions" style="margin-top:12px">
-<a class="btn" href="/marathon-pace-calculator/">Calculate my splits</a>
-<a class="btn secondary" href="#popular-goal-times">All goal-time pages</a>
-<a class="btn secondary" href="#pace-chart">Full pace chart</a>
-</div>
-
-<p class="tiny muted note">Note: pace is an average. Wind, heat, hills, crowds and aid stations can change real-world splits.</p>
-<p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-</section>
-
-<!-- Calculator (compatible with /assets/app.js) -->
-<section class="card" id="calculator">
-<h2>Marathon pace calculator (KM)</h2>
-<p class="muted">Enter a goal finish time to calculate pace per km and generate checkpoints and splits.</p>
-<div class="grid">
-<div>
-<label>Goal finish time</label>
-<div class="row">
-<input id="h" min="0" type="number" value="4"/> <span>h</span>
-<input id="m" max="59" min="0" type="number" value="0"/> <span>m</span>
-<input id="s" max="59" min="0" type="number" value="0"/> <span>s</span>
-</div>
-</div>
-<div>
-<label>Distance</label>
-<select id="dist">
-<option selected="" value="42.195">Marathon (42.195 km)</option>
-<option value="21.0975">Half Marathon (21.0975 km)</option>
-<option value="10">10 km</option>
-<option value="5">5 km</option>
-</select>
-</div>
-</div>
-<div class="row actions">
-<button class="btn" id="calcBtn">Calculate</button>
-<button class="btn secondary" id="resetBtn">Reset</button>
-</div>
-<div aria-live="polite" class="results" id="results"></div>
-
-<p class="tiny muted" style="margin-top:10px">
-  Want a printable pace band (PDF)? Use:
-  <a href="/printable-pace-band/"><strong>Printable pace band tool</strong></a>
-  or pick a template below.
-</p>
-
-<!-- NEW: Related tools cluster -->
-<p class="tiny muted" style="margin-top:8px">
-  Related tools:
-  <a href="/marathon-time-predictor/"><strong>Marathon time predictor</strong></a> ·
-  <a href="/blog/half-marathon-to-marathon-pace/"><strong>Half → marathon conversion</strong></a> ·
-  <a href="/race-conditions-pace-adjuster/"><strong>Race conditions pace adjuster</strong></a> ·
-  <a href="/adjust-marathon-pace/"><strong>Adjust pace for heat/wind/hills</strong></a> ·
-  <a href="/marathon-fueling-calculator/"><strong>Marathon fueling calculator</strong></a>
-</p>
-
-<p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-</section>
-
-<!-- NEW: Pace band templates section -->
-<section class="card" id="pace-bands">
-  <h2>Printable pace bands (PDF)</h2>
-  <p class="muted">
-    Print a wrist pace band or an A4 pacing sheet. Use the generator for any goal time, or pick a popular template.
-    These pages are designed to be shareable (clubs can embed them).
-  </p>
-
-  <div class="row actions" style="margin-top:12px; gap:10px">
-    <a class="btn" href="/printable-pace-band/">Open pace band generator</a>
-    <a class="btn secondary" href="/pace-band/sub-4/">Sub-4 template</a>
-    <a class="btn secondary" href="/pace-band/4-00/">4:00 template</a>
-  </div>
-
-  <p class="tiny muted" style="margin-top:10px">Templates:</p>
-  <div class="links">
-    <a href="/pace-band/3-00/">3:00</a>
-    <a href="/pace-band/3-15/">3:15</a>
-    <a href="/pace-band/3-30/">3:30</a>
-    <a href="/pace-band/3-45/">3:45</a>
-    <a href="/pace-band/sub-4/">Sub-4</a>
-    <a href="/pace-band/4-00/">4:00</a>
-    <a href="/pace-band/4-30/">4:30</a>
-    <a href="/pace-band/5-00/">5:00</a>
-  </div>
-
-  <p class="tiny muted note" style="margin-top:10px">
-    Tip: share the template link with your running group. For clubs/coaches, the generator page includes a copy/paste embed snippet.
-    Learn how to use them: <a href="/blog/marathon-pace-bands/">pace band guide</a>.
-  </p>
-
-  <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-</section>
-
-<!-- Monthly training plan CTA section -->
-<section class="card" id="monthly-plan">
-<h2>Monthly training plan builder (4-week plan)</h2>
-<p class="muted">
-  Generate a personalised month plan from your recent mileage, goal, available run days and injury status.
-  Includes weekly targets, key workouts, training paces, and export tools.
-</p>
-<div class="row actions">
-<a class="btn" href="/monthly-training-plan/">Build my monthly plan</a>
-<a class="btn secondary" href="/monthly-training-plan/">Open training plan tool</a>
-</div>
-<p class="tiny muted note">Tip: use this alongside the goal time pages to keep pacing realistic as your volume changes.</p>
-<p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-</section>
-
-<section class="card" id="popular-goal-times">
-<h2>Popular marathon goal times (KM)</h2>
-<p class="muted">Jump straight to a dedicated page with key splits, pace band, conversions and FAQs:</p>
-<p class="tiny muted" style="margin-top:8px">Tip: each goal-time page includes checkpoints, conversions, a printable pace band, and FAQs.</p>
-<div class="links">
-<a href="/3-00-marathon-pace-km/">3:00</a>
-<a href="/3-05-marathon-pace-km/">3:05</a>
-<a href="/3-10-marathon-pace-km/">3:10</a>
-<a href="/3-15-marathon-pace-km/">3:15</a>
-<a href="/3-30-marathon-pace-km/">3:30</a>
-<a href="/3-45-marathon-pace-km/">3:45</a>
-<a href="/3-50-marathon-pace-km/">3:50</a>
-<a href="/3-55-marathon-pace-km/">3:55</a>
-<a href="/sub-4-marathon-pace-km/">Sub-4</a>
-<a href="/4-00-marathon-pace-km/">4:00</a>
-<a href="/4-05-marathon-pace-km/">4:05</a>
-<a href="/4-30-marathon-pace-km/">4:30</a>
-<a href="/4-35-marathon-pace-km/">4:35</a>
-<a href="/4-40-marathon-pace-km/">4:40</a>
-<a href="/4-50-marathon-pace-km/">4:50</a>
-<a href="/4-55-marathon-pace-km/">4:55</a>
-<a href="/5-00-marathon-pace-km/">5:00</a>
-<a href="/5-05-marathon-pace-km/">5:05</a>
-</div>
-<p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-</section>
-
-<section class="card" id="pace-chart">
-<h2>Marathon pace chart (generated)</h2>
-<p class="muted">Use the calculator above, then see a fuller pacing table here.</p>
-<p class="tiny muted note">Tip: click a <strong>finish time</strong> in the table to open the matching goal page (when available).</p>
-<div id="chartTable"></div>
-
-<details class="note" open="">
-<summary><strong>Static pace chart (no-JS fallback)</strong></summary>
-<p class="tiny muted" style="margin:8px 0 0">If JavaScript is blocked, use this static table. It covers 2:30–6:00 (every 5 minutes). Times that have dedicated pages are clickable.</p>
-<div style="overflow:auto;margin-top:10px">
-<table class="splits-table">
-<thead><tr><th>Finish time</th><th>Pace (min/km)</th><th>Pace (min/mi)</th></tr></thead>
-<tbody>
-<tr><td>2:30:00</td><td>3:33</td><td>5:43</td></tr>
+  <div class="section anchor-target" id="popular-goal-times">
+    <details class="full-chart" id="pace-chart"><summary><h2>Full marathon pace chart: 2:30–6:00<span class="summary-description">Every 5 minutes · Pace per kilometre and mile · Linked goal-time guides</span></h2></summary>
+      <div class="table-scroll" id="chartTable" tabindex="0" role="region" aria-label="Full marathon pace chart"><table class="pace-table"><caption class="sr-only">Marathon finish times from 2 hours 30 minutes to 6 hours, in five-minute increments</caption><thead><tr><th scope="col">Finish time</th><th scope="col">Min / km</th><th scope="col">Min / mile</th></tr></thead><tbody><tr><td>2:30:00</td><td>3:33</td><td>5:43</td></tr>
 <tr><td>2:35:00</td><td>3:40</td><td>5:55</td></tr>
 <tr><td>2:40:00</td><td>3:48</td><td>6:06</td></tr>
 <tr><td>2:45:00</td><td>3:55</td><td>6:18</td></tr>
 <tr><td>2:50:00</td><td>4:02</td><td>6:29</td></tr>
 <tr><td>2:55:00</td><td>4:09</td><td>6:40</td></tr>
-<tr><td><a href="/3-00-marathon-pace-km/">3:00:00</a></td><td>4:16</td><td>6:52</td></tr>
-<tr><td><a href="/3-05-marathon-pace-km/">3:05:00</a></td><td>4:23</td><td>7:03</td></tr>
-<tr><td><a href="/3-10-marathon-pace-km/">3:10:00</a></td><td>4:30</td><td>7:15</td></tr>
-<tr><td><a href="/3-15-marathon-pace-km/">3:15:00</a></td><td>4:37</td><td>7:26</td></tr>
+<tr><td><a href="/3-00-marathon-pace-km/" data-goal-seconds="10800">3:00:00</a></td><td>4:16</td><td>6:52</td></tr>
+<tr><td><a href="/3-05-marathon-pace-km/" data-goal-seconds="11100">3:05:00</a></td><td>4:23</td><td>7:03</td></tr>
+<tr><td><a href="/3-10-marathon-pace-km/" data-goal-seconds="11400">3:10:00</a></td><td>4:30</td><td>7:15</td></tr>
+<tr><td><a href="/3-15-marathon-pace-km/" data-goal-seconds="11700">3:15:00</a></td><td>4:37</td><td>7:26</td></tr>
 <tr><td>3:20:00</td><td>4:44</td><td>7:38</td></tr>
 <tr><td>3:25:00</td><td>4:52</td><td>7:49</td></tr>
-<tr><td><a href="/3-30-marathon-pace-km/">3:30:00</a></td><td>4:59</td><td>8:01</td></tr>
+<tr><td><a href="/3-30-marathon-pace-km/" data-goal-seconds="12600">3:30:00</a></td><td>4:59</td><td>8:01</td></tr>
 <tr><td>3:35:00</td><td>5:06</td><td>8:12</td></tr>
 <tr><td>3:40:00</td><td>5:13</td><td>8:23</td></tr>
-<tr><td><a href="/3-45-marathon-pace-km/">3:45:00</a></td><td>5:20</td><td>8:35</td></tr>
-<tr><td><a href="/3-50-marathon-pace-km/">3:50:00</a></td><td>5:27</td><td>8:46</td></tr>
-<tr><td><a href="/3-55-marathon-pace-km/">3:55:00</a></td><td>5:34</td><td>8:58</td></tr>
-<tr><td><a href="/4-00-marathon-pace-km/">4:00:00</a></td><td>5:41</td><td>9:09</td></tr>
-<tr><td><a href="/4-05-marathon-pace-km/">4:05:00</a></td><td>5:48</td><td>9:21</td></tr>
+<tr><td><a href="/3-45-marathon-pace-km/" data-goal-seconds="13500">3:45:00</a></td><td>5:20</td><td>8:35</td></tr>
+<tr><td><a href="/3-50-marathon-pace-km/" data-goal-seconds="13800">3:50:00</a></td><td>5:27</td><td>8:46</td></tr>
+<tr><td><a href="/3-55-marathon-pace-km/" data-goal-seconds="14100">3:55:00</a></td><td>5:34</td><td>8:58</td></tr>
+<tr class="featured-row"><td><a href="/4-00-marathon-pace-km/" data-goal-seconds="14400">4:00:00</a></td><td>5:41</td><td>9:09</td></tr>
+<tr><td><a href="/4-05-marathon-pace-km/" data-goal-seconds="14700">4:05:00</a></td><td>5:48</td><td>9:21</td></tr>
 <tr><td>4:10:00</td><td>5:55</td><td>9:32</td></tr>
 <tr><td>4:15:00</td><td>6:03</td><td>9:44</td></tr>
 <tr><td>4:20:00</td><td>6:10</td><td>9:55</td></tr>
 <tr><td>4:25:00</td><td>6:17</td><td>10:06</td></tr>
-<tr><td><a href="/4-30-marathon-pace-km/">4:30:00</a></td><td>6:24</td><td>10:18</td></tr>
-<tr><td><a href="/4-35-marathon-pace-km/">4:35:00</a></td><td>6:31</td><td>10:29</td></tr>
-<tr><td><a href="/4-40-marathon-pace-km/">4:40:00</a></td><td>6:38</td><td>10:41</td></tr>
+<tr><td><a href="/4-30-marathon-pace-km/" data-goal-seconds="16200">4:30:00</a></td><td>6:24</td><td>10:18</td></tr>
+<tr><td><a href="/4-35-marathon-pace-km/" data-goal-seconds="16500">4:35:00</a></td><td>6:31</td><td>10:29</td></tr>
+<tr><td><a href="/4-40-marathon-pace-km/" data-goal-seconds="16800">4:40:00</a></td><td>6:38</td><td>10:41</td></tr>
 <tr><td>4:45:00</td><td>6:45</td><td>10:52</td></tr>
-<tr><td><a href="/4-50-marathon-pace-km/">4:50:00</a></td><td>6:52</td><td>11:04</td></tr>
-<tr><td><a href="/4-55-marathon-pace-km/">4:55:00</a></td><td>6:59</td><td>11:15</td></tr>
-<tr><td><a href="/5-00-marathon-pace-km/">5:00:00</a></td><td>7:07</td><td>11:27</td></tr>
-<tr><td><a href="/5-05-marathon-pace-km/">5:05:00</a></td><td>7:14</td><td>11:38</td></tr>
+<tr><td><a href="/4-50-marathon-pace-km/" data-goal-seconds="17400">4:50:00</a></td><td>6:52</td><td>11:04</td></tr>
+<tr><td><a href="/4-55-marathon-pace-km/" data-goal-seconds="17700">4:55:00</a></td><td>6:59</td><td>11:15</td></tr>
+<tr><td><a href="/5-00-marathon-pace-km/" data-goal-seconds="18000">5:00:00</a></td><td>7:07</td><td>11:27</td></tr>
+<tr><td><a href="/5-05-marathon-pace-km/" data-goal-seconds="18300">5:05:00</a></td><td>7:14</td><td>11:38</td></tr>
 <tr><td>5:10:00</td><td>7:21</td><td>11:49</td></tr>
 <tr><td>5:15:00</td><td>7:28</td><td>12:01</td></tr>
 <tr><td>5:20:00</td><td>7:35</td><td>12:12</td></tr>
@@ -447,248 +187,293 @@
 <tr><td>5:45:00</td><td>8:11</td><td>13:10</td></tr>
 <tr><td>5:50:00</td><td>8:18</td><td>13:21</td></tr>
 <tr><td>5:55:00</td><td>8:25</td><td>13:32</td></tr>
-<tr><td>6:00:00</td><td>8:32</td><td>13:44</td></tr>
-</tbody>
-</table>
-</div>
-</details>
-
-<details class="note">
-<summary><strong>All goal time pages</strong></summary>
-<div class="links" style="margin-top:10px">
-<a href="/3-00-marathon-pace-km/">3:00</a>
-<a href="/3-05-marathon-pace-km/">3:05</a>
-<a href="/3-10-marathon-pace-km/">3:10</a>
-<a href="/3-15-marathon-pace-km/">3:15</a>
-<a href="/3-30-marathon-pace-km/">3:30</a>
-<a href="/3-45-marathon-pace-km/">3:45</a>
-<a href="/3-50-marathon-pace-km/">3:50</a>
-<a href="/3-55-marathon-pace-km/">3:55</a>
-<a href="/sub-4-marathon-pace-km/">Sub-4</a>
-<a href="/4-00-marathon-pace-km/">4:00</a>
-<a href="/4-05-marathon-pace-km/">4:05</a>
-<a href="/4-30-marathon-pace-km/">4:30</a>
-<a href="/4-35-marathon-pace-km/">4:35</a>
-<a href="/4-40-marathon-pace-km/">4:40</a>
-<a href="/4-50-marathon-pace-km/">4:50</a>
-<a href="/4-55-marathon-pace-km/">4:55</a>
-<a href="/5-00-marathon-pace-km/">5:00</a>
-<a href="/5-05-marathon-pace-km/">5:05</a>
-</div>
-</details>
-
-<p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-</section>
-
-<section class="card" id="how-to-use">
-<h2>How to use the pace chart (KM)</h2>
-<ol class="muted">
-<li><strong>Pick a goal time</strong> (or choose a goal page).</li>
-<li><strong>Generate splits</strong> and focus on key checkpoints: 10k, half, 30k, 40k.</li>
-<li><strong>Avoid early surges</strong> — “banking time” often becomes a late slowdown.</li>
-<li><strong>Fuel early</strong> (small, regular carbs) and keep effort steady in heat/hills/wind.</li>
-</ol>
-<p class="tiny muted">Tip: use 1 km lap-average pace instead of instant GPS pace to avoid noise.</p>
-<p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-</section>
-
-<section class="card" id="guides">
-<h2>Guides + predictors (recommended)</h2>
-<p class="muted">Use these to turn the numbers into a race-day plan — and to choose a realistic target from your recent races.</p>
-
-<div class="grid">
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0"><a href="/blog/choose-marathon-goal-time/">How to choose a realistic marathon goal time</a></h3>
-    <p class="muted">Set a goal you can actually hold based on fitness, durability, and training.</p>
-    <p class="tiny muted">Best for: picking your target pace.</p>
+<tr><td>6:00:00</td><td>8:32</td><td>13:44</td></tr></tbody></table></div>
+      <p class="full-chart-note">All calculations use 42.195 km and 1 mile = 1.609344 km. Chart paces are rounded to whole seconds; they are references, not exact inputs for reconstructing a finish time. <a href="/sub-4-marathon-pace-km/">Sub-4 has its own guide.</a></p>
+    </details>
   </div>
 
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0"><a href="/blog/time-in-the-bank-math/">The math of “time in the bank” (starting too fast)</a></h3>
-    <p class="muted">A simple break-even model showing how tiny late slowdowns erase early “banked time”.</p>
-    <p class="tiny muted">Best for: avoiding the 30–35K blow-up.</p>
-  </div>
+  <section class="section" id="guides" aria-labelledby="guides-title">
+    <div class="section-title"><div><span class="eyebrow">Better decisions on race day</span><h2 id="guides-title" style="margin-top:8px">Make the numbers work for you.</h2></div><a href="/blog/">All pacing guides →</a></div>
+    <div class="guide-grid">
+      <a class="guide" href="/blog/choose-marathon-goal-time/"><span class="eyebrow">Goal setting</span><h3>Choose a realistic marathon goal</h3><p>Bring recent races, consistent mileage and long-run endurance into the same decision.</p></a>
+      <a class="guide" href="/blog/time-in-the-bank-math/"><span class="eyebrow">Race execution</span><h3>The cost of “banking time” early</h3><p>See how a late slowdown can undo the seconds gained in an overenthusiastic start.</p></a>
+      <a class="guide" href="/blog/half-marathon-to-marathon-pace/"><span class="eyebrow">Race prediction</span><h3>What your half marathon says about your goal</h3><p>Use a shorter race as a starting point, with room for differences in marathon preparation.</p></a>
+      <a class="guide" href="/blog/marathon-splits/"><span class="eyebrow">Checkpoints</span><h3>How to read your marathon splits</h3><p>Use elapsed time at course markers to check your plan at 10K, halfway, 30K and 40K.</p></a>
+    </div>
+  </section>
 
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0"><a href="/blog/marathon-splits/">Marathon splits explained (5K/10K/half/30K/40K)</a></h3>
-    <p class="muted">How to use checkpoints to stay on plan and catch pacing errors early.</p>
-    <p class="tiny muted">Best for: execution.</p>
-  </div>
+  <section class="section method-grid" id="how-to-use" aria-labelledby="method-title">
+    <div><span class="eyebrow">The maths behind your plan</span><h2 id="method-title">How is marathon pace calculated?</h2><p>Divide your finish time by the marathon distance of <strong>42.195 km</strong>. For a four-hour marathon:</p><div class="formula">240 minutes ÷ 42.195 km = <strong>5:41.3 per km</strong></div><p class="muted">A checkpoint time is your total finish time multiplied by the fraction of the course covered. At even pace, halfway through a four-hour marathon is exactly two hours.</p><div class="method-detail"><p class="small muted">The calculator keeps the full precision for splits, then rounds displayed elapsed times to the nearest second. Segment times are differences between those rounded checkpoints, so they add up to the displayed finish time.</p></div></div>
+    <div><h2 style="margin-top:0">Use the chart on race day</h2><ol><li>Choose a goal supported by recent racing and training. The numbers describe a pace, not a fitness prediction.</li><li>Compare your <strong>elapsed time</strong> with official course markers. Include stops; auto-pause can hide time that still counts in the race.</li><li>Let effort guide you when the course or conditions change. Avoid chasing every fluctuation in instant GPS pace.</li></ol><p style="margin-top:20px"><a href="/how-to-use-marathon-pace-chart/">Read the pace chart guide →</a></p><p><a href="/even-vs-negative-splits/">Compare even and negative splits →</a></p></div>
+  </section>
 
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0"><a href="/blog/negative-split-pacing/">Negative split pacing: who should do it and how</a></h3>
-    <p class="muted">A step-by-step pacing script for finishing strong without gambling early.</p>
-    <p class="tiny muted">Best for: PB attempts and controlled racing.</p>
-  </div>
+  <section class="section faq-grid" id="faq" aria-labelledby="faq-title"><div class="faq-intro"><span class="eyebrow">A few useful answers</span><h2 id="faq-title" style="margin-top:8px">Marathon pace FAQ</h2><p>What the chart means, where rounding matters, and how to take your splits with you.</p></div><div class="faq-list">
+    <details><summary>What pace do I need for a four-hour marathon?</summary><p>Exactly four hours over 42.195 km averages approximately <strong>5:41.27 per km</strong> or <strong>9:09.23 per mile</strong>. The quick chart rounds this to 5:41/km. Use elapsed-time checkpoints to track your goal; multiplying a rounded pace back by the distance gives a slightly different finish time. <a href="/4-00-marathon-pace-km/">View the four-hour marathon guide.</a></p></details>
+    <details><summary>Is 5:41 per kilometre enough for sub-4?</summary><p>Mathematically, exactly 5:41/km for 42.195 km gives approximately <strong>3:59:48</strong>. That leaves only about 12 seconds, so a watch showing 5:41/km does not guarantee sub-4. Use the <a href="/sub-4-marathon-pace-km/">sub-4 checkpoints</a> and official course markers, with stops included in elapsed time.</p></details>
+    <details><summary>Can I calculate finish time from my pace?</summary><p>Yes. Choose <strong>Pace → finish time</strong>, enter minutes and seconds per kilometre or mile, and select your distance. For example, 6:00/km over a marathon gives approximately <strong>4:13:10</strong>. Switching from a time target to a displayed, rounded pace can change the result slightly.</p></details>
+    <details><summary>Should every kilometre be exactly the same pace?</summary><p>The calculator shows an even-pace reference. Hills, weather, congestion and aid stations can change individual splits. The <a href="/adjust-marathon-pace/">pace adjustment tools</a> explore conditions, and the <a href="/printable-pace-band/">pace-band generator</a> also offers controlled-start and negative-split plans.</p></details>
+    <details><summary>Can I print or save my marathon splits?</summary><p>Select <strong>Make my pace band</strong> to carry your chosen marathon time into the generator. Print the band or choose Save as PDF in your browser’s print dialog, where available. You can also download a phone card there, or copy checkpoints and download a CSV from this calculator.</p></details>
+    <details><summary>Does this work for a half marathon, 10K or 5K?</summary><p>Yes. Change the calculator’s distance to half marathon (21.0975 km), 10 km or 5 km. The results and downloadable splits use your selected distance. The quick and full marathon charts, and the pace-band generator, remain specific to 42.195 km.</p></details>
+  </div></section>
 
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0"><a href="/adjust-marathon-pace/">Adjust marathon pace (heat, wind, hills & drift)</a></h3>
-    <p class="muted">Practical rules to adjust early, then verify at checkpoints (10K / Half / 30K).</p>
-    <p class="tiny muted">Best for: real-world race days.</p>
-  </div>
-
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0"><a href="/blog/marathon-pace-bands/">What pace band to wear (printable) + how to use it</a></h3>
-    <p class="muted">How to choose splits, print a band, and use it in the final 12K.</p>
-    <p class="tiny muted">Best for: simple race execution.</p>
-  </div>
-
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0"><a href="/how-to-use-marathon-pace-chart/">How to use a marathon pace chart (KM)</a></h3>
-    <p class="muted">A practical guide to picking a target, using checkpoints, and pacing with lap averages.</p>
-    <p class="tiny muted">Best for: first marathoners and planning.</p>
-  </div>
-
-  <div class="card" style="margin:0">
-    <h3 style="margin-top:0"><a href="/even-vs-negative-splits/">Even splits vs negative splits</a></h3>
-    <p class="muted">What to aim for and how to execute without “banking time”.</p>
-    <p class="tiny muted">Best for: finishing strong.</p>
-  </div>
-</div>
-
-<h3 style="margin-top:16px">Predict marathon pace from a recent race</h3>
-<p class="muted" style="margin-top:6px">Use these if you’re coming from a 5K / 10K / half marathon and want a realistic marathon target:</p>
-<div class="links">
-  <a href="/blog/half-marathon-to-marathon-pace/">Half marathon → marathon pace</a>
-  <a href="/blog/marathon-pace-from-10k/">10K → marathon pace</a>
-  <a href="/blog/marathon-pace-from-5k/">5K → marathon pace</a>
-  <a href="/blog/vdot-marathon-pace/">VDOT marathon pace explained</a>
-  <a href="/marathon-time-predictor/">Marathon time predictor tool</a>
-</div>
-
-<h3 style="margin-top:16px">Adjust pace for conditions (quick links)</h3>
-<p class="muted" style="margin-top:6px">Use these when conditions (or fatigue) change the effort cost of your planned pace:</p>
-<div class="links">
-  <a href="/adjust-marathon-pace/heat/">Adjust pace for heat</a>
-  <a href="/adjust-marathon-pace/wind/">Adjust pace for wind</a>
-  <a href="/adjust-marathon-pace/hills/">Adjust pace for hills</a>
-  <a href="/adjust-marathon-pace/fatigue-drift/">Fatigue drift</a>
-  <a href="/adjust-marathon-pace/cardiac-drift/">Cardiac (HR) drift</a>
-</div>
-
-<div class="row actions" style="margin-top:12px">
-  <a class="btn" href="/blog/">Browse the blog</a>
-  <a class="btn secondary" href="/marathon-pace-calculator/">Open pace calculator</a>
-  <a class="btn secondary" href="/monthly-training-plan/">Build a monthly plan</a>
-</div>
-
-<p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-</section>
-
-<section class="card" id="faq">
-<h2>Marathon pace chart (KM) FAQ</h2>
-<h3>What is a marathon pace chart (KM)?</h3>
-<p>A marathon pace chart converts finish times into <strong>average pace per kilometre</strong> and key split checkpoints (like 5k, 10k, half, 30k and 40k).</p>
-<h3>How do I calculate marathon pace per kilometre?</h3>
-<p>Divide your finish time by <strong>42.195 km</strong>. This calculator does it instantly and generates splits.</p>
-<h3>Why does my watch pace differ from the pace chart?</h3>
-<p>Instant GPS pace can fluctuate. Use lap-average pace (1 km) and pace by effort in wind, heat and hills.</p>
-<h3>What pace do I need for a sub-4 marathon?</h3>
-<p>Sub-4 pace averages about <strong>5:41 per km</strong>. Use the Sub-4 page or enter 3:59:59 / 4:00:00 to generate full splits.</p>
-<p class="tiny muted">Note: This is a planning tool only. Official results depend on course and conditions.</p>
-<p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-</section>
-
+  <section class="section about-strip"><div><h2>Built around the practical side of pacing.</h2><p>Marathon Pace KM brings calculations, race-day tools and pacing guides together. The aim is to help you make a plan you can understand and use.</p></div><a href="/about/">About this site →</a></section>
 </main>
+<footer class="site-footer"><div class="wrap"><div class="footer-top"><div class="footer-brand"><a class="brand" href="/">Marathon Pace KM</a><p>Pace charts, useful calculations and a clearer plan for race day.</p></div><nav class="footer-group" aria-label="More running tools"><strong>Explore</strong><a href="/marathon-pace-calculator/">Pace calculator</a><a href="/printable-pace-band/">Pace bands</a><a href="/marathon-time-predictor/">Time predictor</a><a href="/marathon-fueling-calculator/">Fueling calculator</a><a href="/monthly-training-plan/">Monthly plan</a><a href="/blog/">Pacing blog</a></nav><nav class="footer-group" aria-label="Site information"><strong>Marathon Pace KM</strong><a href="/about/">About</a><a href="/contact/">Contact &amp; corrections</a><a href="/sitemap/">All pages</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a></nav></div><div class="footer-bottom"><span>Planning tools and general training information. Calculated times do not guarantee race results.</span><a href="#top">Back to top ↑</a></div></div></footer>
+<script>(() => {
+  'use strict';
+  const MARATHON = 42.195;
+  const MILE = 1.609344;
+  const DISTANCES = {'42.195': 'Marathon', '21.0975': 'Half marathon', '10': '10 km', '5': '5 km'};
+  const pad = n => String(n).padStart(2, '0');
+  function clock(seconds) {
+    const whole = Math.round(seconds);
+    return `${Math.floor(whole / 3600)}:${pad(Math.floor(whole / 60) % 60)}:${pad(whole % 60)}`;
+  }
+  function pace(seconds) {
+    const tenths = Math.round(seconds * 10);
+    return `${Math.floor(tenths / 600)}:${pad(Math.floor(tenths / 10) % 60)}.${tenths % 10}`;
+  }
+  function checkpointsFor(distance) {
+    const points = distance === MARATHON ? [5, 10, distance / 2, 30, 40, distance] :
+      distance > 20 ? [5, 10, distance / 2, 15, 20, distance] :
+      distance === 10 ? [2, 4, 5, 6, 8, 10] : [1, 2, 2.5, 3, 4, 5];
+    return points.map(km => ({km, label: km === distance ? 'Finish' : km === distance / 2 ? 'Halfway' : `${km} km`}));
+  }
+  function buildSplits(total, distance, unit) {
+    const step = unit === 'mi' ? MILE : unit === '5km' ? 5 : 1;
+    const rows = [];
+    let previous = 0;
+    for (let i = 1; i * step < distance - 1e-8; i++) {
+      const km = i * step;
+      const elapsed = Math.round(total * km / distance);
+      rows.push({label: `${unit === 'mi' ? i : km} ${unit === 'mi' ? 'mi' : 'km'}`, km, elapsed, segment: elapsed - previous});
+      previous = elapsed;
+    }
+    const elapsed = Math.round(total);
+    rows.push({label: `Finish (${distance} km)`, km: distance, elapsed, segment: elapsed - previous});
+    return rows;
+  }
 
-<script defer="" src="/assets/app.js"></script>
-<script>
-    (function(){
-      var TIME_TO_URL = {
-        "3:00:00": "/3-00-marathon-pace-km/",
-        "3:05:00": "/3-05-marathon-pace-km/",
-        "3:10:00": "/3-10-marathon-pace-km/",
-        "3:15:00": "/3-15-marathon-pace-km/",
-        "3:30:00": "/3-30-marathon-pace-km/",
-        "3:45:00": "/3-45-marathon-pace-km/",
-        "3:50:00": "/3-50-marathon-pace-km/",
-        "3:55:00": "/3-55-marathon-pace-km/",
-        "3:59:59": "/sub-4-marathon-pace-km/",
-        "4:00:00": "/4-00-marathon-pace-km/",
-        "4:05:00": "/4-05-marathon-pace-km/",
-        "4:30:00": "/4-30-marathon-pace-km/",
-        "4:35:00": "/4-35-marathon-pace-km/",
-        "4:40:00": "/4-40-marathon-pace-km/",
-        "4:50:00": "/4-50-marathon-pace-km/",
-        "4:55:00": "/4-55-marathon-pace-km/",
-        "5:00:00": "/5-00-marathon-pace-km/",
-        "5:05:00": "/5-05-marathon-pace-km/"
-      };
+  // UI bindings. Calculations above keep full precision until display rounding.
+  const $ = id => document.getElementById(id);
+  const form = $('pace-form');
+  const goalUrls = new Map(Array.from(document.querySelectorAll('[data-goal-seconds]'), a => [Number(a.dataset.goalSeconds), a.getAttribute('href')]));
+  let current = {total: 14400, distance: MARATHON};
+  const exports = [$('share-btn'), $('copy-btn'), $('download-btn')];
 
-      function normalize(s){
-        // Normalize regular spaces + non-breaking spaces
-        return (s || "").replace(/[\u00A0 ]+/g, " ").trim();
+  function selectedMode() { return form.elements.mode.value; }
+  function setTime(total) {
+    const t = Math.round(total);
+    $('h').value = Math.floor(t / 3600);
+    $('m').value = Math.floor(t / 60) % 60;
+    $('s').value = t % 60;
+  }
+  function setPace(seconds) {
+    const tenths = Math.round(seconds * 10);
+    $('pace-min').value = Math.floor(tenths / 600);
+    $('pace-sec').value = ((tenths % 600) / 10).toFixed(1);
+  }
+  function showMode() {
+    const fromTime = selectedMode() === 'time';
+    $('time-inputs').hidden = !fromTime;
+    $('time-inputs').disabled = !fromTime;
+    $('pace-inputs').hidden = fromTime;
+    $('pace-inputs').disabled = fromTime;
+    $('pace-unit-wrap').hidden = fromTime;
+  }
+  function getInput() {
+    const fromTime = selectedMode() === 'time';
+    const ids = fromTime ? ['h', 'm', 's'] : ['pace-min', 'pace-sec'];
+    for (const id of ids) {
+      const field = $(id);
+      if (field.value.trim() === '' || !field.validity.valid || !Number.isFinite(Number(field.value))) {
+        const label = document.querySelector(`label[for="${id}"]`).textContent;
+        return {error: `Enter ${label.toLowerCase()} between ${field.min} and ${field.max}${field.step === '1' ? ' as a whole number' : ' (up to one decimal place)'}.`, field};
       }
-
-      function linkifyChartOnce(){
-        var container = document.getElementById('chartTable');
-        if(!container) return;
-        var tables = container.querySelectorAll('table');
-        if(!tables || !tables.length) return;
-
-        tables.forEach(function(tbl){
-          var rows = tbl.querySelectorAll('tbody tr');
-          if(!rows || !rows.length) return;
-          rows.forEach(function(row){
-            var first = row.children && row.children[0];
-            if(!first) return;
-            if(first.querySelector('a')) return;
-
-            var txt = normalize(first.textContent);
-            var m = txt.match(/\b(\d{1,2}:\d{2}:\d{2})\b/);
-            var key = m ? m[1] : null;
-            var url = key ? TIME_TO_URL[key] : null;
-            if(!url) return;
-
-            var a = document.createElement('a');
-            a.href = url;
-            a.textContent = txt;
-            a.style.textDecoration = 'none';
-            a.addEventListener('mouseover', function(){ a.style.textDecoration = 'underline'; });
-            a.addEventListener('mouseout', function(){ a.style.textDecoration = 'none'; });
-
-            first.textContent = '';
-            first.appendChild(a);
-          });
-        });
+    }
+    const distance = Number($('dist').value);
+    if (!Object.hasOwn(DISTANCES, String(distance))) return {error: 'Choose one of the available race distances.', field: $('dist')};
+    const total = fromTime ? Number($('h').value) * 3600 + Number($('m').value) * 60 + Number($('s').value) :
+      (Number($('pace-min').value) * 60 + Number($('pace-sec').value)) * distance / ($('pace-unit').value === 'mi' ? MILE : 1);
+    if (!(Math.round(total) >= 1 && Math.round(total) < 86400)) return {error: 'Enter a time or pace that gives a finish time from 1 second to less than 24 hours.', field: $(ids[0])};
+    return {total, distance};
+  }
+  function flagInvalid(result, explicit) {
+    $('result-stale').hidden = false;
+    $('results').setAttribute('aria-busy', 'true');
+    $('band-link').setAttribute('tabindex', '-1');
+    $('goal-link').setAttribute('tabindex', '-1');
+    $('band-link').setAttribute('aria-disabled', 'true');
+    $('goal-link').setAttribute('aria-disabled', 'true');
+    exports.forEach(button => button.disabled = true);
+    $('full-splits').hidden = true;
+    $('manual-copy').hidden = true;
+    $('action-status').textContent = '';
+    if (explicit) {
+      $('input-error').textContent = result.error;
+      $('input-error').hidden = false;
+      form.querySelectorAll('[aria-invalid]').forEach(field => field.removeAttribute('aria-invalid'));
+      result.field.setAttribute('aria-invalid', 'true');
+      result.field.focus();
+    }
+  }
+  function updateSplitTable() {
+    const fragment = document.createDocumentFragment();
+    for (const row of buildSplits(current.total, current.distance, $('split-unit').value)) {
+      const tr = document.createElement('tr');
+      for (const value of [row.label, clock(row.elapsed), clock(row.segment)]) {
+        const td = document.createElement('td'); td.textContent = value; tr.appendChild(td);
       }
+      fragment.appendChild(tr);
+    }
+    $('splits-body').replaceChildren(fragment);
+  }
+  function emitAction(action, detail = {}) {
+    // A local event hook only: no analytics account, cookies or network requests are added.
+    document.dispatchEvent(new CustomEvent('mpk:action', {detail: {action, ...detail}}));
+  }
+  function render(explicit = false, source = 'input') {
+    const next = getInput();
+    if (next.error) { flagInvalid(next, explicit); return false; }
+    current = next;
+    $('result-stale').hidden = true;
+    $('results').removeAttribute('aria-busy');
+    $('input-error').hidden = true;
+    $('input-error').textContent = '';
+    form.querySelectorAll('[aria-invalid]').forEach(field => field.removeAttribute('aria-invalid'));
+    exports.forEach(button => button.disabled = false);
+    $('full-splits').hidden = false;
+    $('band-link').removeAttribute('tabindex');
+    $('goal-link').removeAttribute('tabindex');
+    $('band-link').removeAttribute('aria-disabled');
+    $('goal-link').removeAttribute('aria-disabled');
+    $('manual-copy').hidden = true;
+    $('action-status').textContent = '';
+    $('result-time').textContent = `${DISTANCES[current.distance]} · ${clock(current.total)}`;
+    $('result-km').textContent = pace(current.total / current.distance);
+    $('result-mi').textContent = pace(current.total * MILE / current.distance);
+    const points = document.createDocumentFragment();
+    for (const point of checkpointsFor(current.distance)) {
+      const div = document.createElement('div'); const dt = document.createElement('dt'); const dd = document.createElement('dd');
+      dt.textContent = point.label; dd.textContent = clock(current.total * point.km / current.distance);
+      div.append(dt, dd); points.appendChild(div);
+    }
+    $('checkpoints').replaceChildren(points);
+    const isMarathon = current.distance === MARATHON;
+    $('presets').hidden = !isMarathon;
+    $('band-link').hidden = !isMarathon;
+    if (isMarathon) {
+      const t = Math.round(current.total);
+      const params = new URLSearchParams({h: String(Math.floor(t / 3600)), m: String(Math.floor(t / 60) % 60), s: String(t % 60), unit: 'km', strategy: 'even'});
+      $('band-link').setAttribute('href', '/printable-pace-band/?' + params.toString());
+    }
+    const exactGoal = Math.abs(current.total - Math.round(current.total)) < 1e-7;
+    const goalUrl = isMarathon && exactGoal ? goalUrls.get(Math.round(current.total)) : null;
+    $('goal-link').hidden = !goalUrl;
+    if (goalUrl) {
+      $('goal-link').setAttribute('href', goalUrl);
+      $('goal-link').textContent = current.total === 14399 ? 'Sub-4 marathon guide' : `${clock(current.total).slice(0, -3)} marathon guide`;
+    }
+    document.querySelectorAll('[data-preset]').forEach(button => button.setAttribute('aria-pressed', String(isMarathon && Math.abs(Number(button.dataset.preset) - current.total) < 1e-7)));
+    updateSplitTable();
+    if (explicit) {
+      $('result-announcement').textContent = `${DISTANCES[current.distance]}, ${clock(current.total)}. Average pace ${pace(current.total / current.distance)} per kilometre and ${pace(current.total * MILE / current.distance)} per mile. Splits updated.`;
+      emitAction('calculate', {source, mode: selectedMode(), distance: current.distance});
+    }
+    return true;
+  }
+  function usePreset(total) {
+    $('dist').value = String(MARATHON);
+    form.elements.mode.value = 'time';
+    showMode(); setTime(total); render(true, 'preset');
+  }
+  function checkpointText() {
+    const lines = [`${DISTANCES[current.distance]} — ${clock(current.total)}`, `Even-pace plan: ${pace(current.total / current.distance)} / km | ${pace(current.total * MILE / current.distance)} / mile`, 'Cumulative elapsed time (including stops):'];
+    for (const point of checkpointsFor(current.distance)) lines.push(`${point.label}: ${clock(current.total * point.km / current.distance)}`);
+    lines.push('https://marathonpacekm.com/'); return lines.join('\n');
+  }
+  async function copyText(value, message) {
+    $('manual-copy').hidden = true;
+    try {
+      if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(value);
+      $('action-status').textContent = message;
+    } catch (_) {
+      $('manual-copy').hidden = false;
+      $('copy-text').value = value; $('copy-text').focus(); $('copy-text').select();
+      $('action-status').textContent = 'Automatic copying is unavailable here. Select and copy the text below.';
+    }
+  }
+  function restorePlan() {
+    const params = new URLSearchParams(location.hash.slice(1));
+    if (!params.has('time') && !params.has('pace')) return;
+    const isPace = params.has('pace');
+    const raw = params.get(isPace ? 'pace' : 'time');
+    const distance = params.get('distance') || String(MARATHON);
+    const unit = params.get('unit') || 'km';
+    const validNumber = isPace ? /^\d+(?:\.\d)?$/.test(raw) && Number(raw) > 0 && Number(raw) < 3600 : /^\d+$/.test(raw) && Number(raw) >= 1 && Number(raw) < 86400;
+    const total = isPace ? Number(raw) * Number(distance) / (unit === 'mi' ? MILE : 1) : Number(raw);
+    if (!validNumber || !Object.hasOwn(DISTANCES, distance) || !['km', 'mi'].includes(unit) || Math.round(total) < 1 || Math.round(total) >= 86400) {
+      $('action-status').textContent = 'This saved plan has invalid values. Enter a new goal above.'; return;
+    }
+    $('dist').value = distance;
+    form.elements.mode.value = isPace ? 'pace' : 'time';
+    if (isPace) { $('pace-unit').value = unit; setPace(Number(raw)); } else setTime(Number(raw));
+    showMode(); render();
+  }
+  function openChartForAnchor() {
+    if (['#pace-chart', '#popular-goal-times', '#chartTable'].includes(location.hash)) $('pace-chart').open = true;
+  }
 
-      var container = document.getElementById('chartTable');
-      if(!container) return;
-
-      var obs = new MutationObserver(function(){
-        linkifyChartOnce();
-      });
-      obs.observe(container, { childList: true, subtree: true });
-
-      window.addEventListener('load', function(){
-        setTimeout(linkifyChartOnce, 150);
-      });
-    })();
-  </script>
-
-<footer class="wrap" style="padding:24px 16px 40px">
-<div class="card" style="padding:16px">
-<div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
-<a href="/">Pace chart hub</a>
-<a href="/marathon-pace-calculator/">Calculator</a>
-<a href="/printable-pace-band/">Printable pace band</a>
-<a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
-<a href="/monthly-training-plan/">Monthly plan</a>
-<a href="/marathon-time-predictor/">Marathon time predictor</a>
-<a href="/marathon-fueling-calculator/">Fueling calculator</a>
-<a href="/adjust-marathon-pace/">Adjust pace</a>
-<a href="/blog/">Blog</a>
-<a href="/how-to-use-marathon-pace-chart/">How to use</a>
-<a href="/even-vs-negative-splits/">Even vs negative splits</a>
-<a href="/sitemap/">HTML sitemap</a>
-<a href="/about/">About</a>
-<a href="/contact/">Contact</a>
-<a href="/privacy/">Privacy</a>
-<a href="/disclaimer/">Disclaimer</a>
-</div>
-<p class="tiny muted" style="margin-top:12px">Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.</p>
-</div>
-</footer>
+  form.addEventListener('submit', event => { event.preventDefault(); render(true, 'submit'); });
+  form.addEventListener('input', event => {
+    if (!event.target.matches('input[type="number"]')) return;
+    // Small tables can update immediately; exports always use the current valid input.
+    render();
+  });
+  for (const radio of form.querySelectorAll('input[name="mode"]')) radio.addEventListener('change', () => {
+    if (selectedMode() === 'pace') setPace(current.total / current.distance * ($('pace-unit').value === 'mi' ? MILE : 1));
+    else setTime(current.total);
+    showMode(); render(true, 'mode');
+  });
+  $('dist').addEventListener('change', () => render(true, 'distance'));
+  $('pace-unit').addEventListener('change', () => {
+    const value = Number($('pace-min').value) * 60 + Number($('pace-sec').value);
+    if (Number.isFinite(value) && value > 0) setPace(value * ($('pace-unit').value === 'mi' ? MILE : 1 / MILE));
+    render(true, 'pace_unit');
+  });
+  $('resetBtn').addEventListener('click', () => {
+    form.reset(); $('split-unit').value = 'km';
+    $('full-splits').open = false; current = {total: 14400, distance: MARATHON}; showMode(); render(true, 'reset');
+  });
+  document.querySelectorAll('[data-preset]').forEach(button => button.addEventListener('click', () => usePreset(Number(button.dataset.preset))));
+  $('split-unit').addEventListener('change', () => { updateSplitTable(); $('action-status').textContent = 'Split table updated.'; });
+  $('share-btn').addEventListener('click', async () => {
+    if (!render(true, 'share')) return;
+    const params = selectedMode() === 'time' ? new URLSearchParams({time: String(Math.round(current.total)), distance: String(current.distance)}) :
+      new URLSearchParams({pace: (Number($('pace-min').value) * 60 + Number($('pace-sec').value)).toFixed(1), unit: $('pace-unit').value, distance: String(current.distance)});
+    await copyText('https://marathonpacekm.com/#' + params.toString(), 'Plan link copied.'); emitAction('share_plan');
+  });
+  $('copy-btn').addEventListener('click', async () => { if (!render()) return; await copyText(checkpointText(), 'Checkpoints copied.'); emitAction('copy_checkpoints'); });
+  $('download-btn').addEventListener('click', () => {
+    if (!render()) return;
+    const rows = [['Checkpoint', 'Distance (km)', 'Elapsed (h:mm:ss)', 'Segment (h:mm:ss)'], ...buildSplits(current.total, current.distance, $('split-unit').value).map(r => [r.label, Number(r.km.toFixed(6)), clock(r.elapsed), clock(r.segment)])];
+    const csv = rows.map(row => row.map(value => '"' + String(value).replace(/"/g, '""') + '"').join(',')).join('\r\n');
+    const url = URL.createObjectURL(new Blob(['\ufeff' + csv], {type: 'text/csv;charset=utf-8;'}));
+    const a = document.createElement('a'); a.href = url;
+    a.download = `race-splits-${current.distance}km-${clock(current.total).replace(/:/g, '-')}-${$('split-unit').value}.csv`;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000);
+    $('action-status').textContent = 'CSV download started.'; emitAction('download_splits');
+  });
+  for (const id of ['band-link', 'goal-link']) $(id).addEventListener('click', event => {
+    if (!render()) { event.preventDefault(); return; }
+    emitAction(id === 'band-link' ? 'open_pace_band' : 'open_goal_guide');
+  });
+  document.querySelectorAll('a[href="#pace-chart"]').forEach(a => a.addEventListener('click', () => { $('pace-chart').open = true; }));
+  window.addEventListener('hashchange', () => { restorePlan(); openChartForAnchor(); });
+  document.querySelectorAll('[data-js]').forEach(element => element.hidden = false);
+  showMode(); render(); restorePlan(); openChartForAnchor();
+})();
+</script>
 </body>
 </html>
