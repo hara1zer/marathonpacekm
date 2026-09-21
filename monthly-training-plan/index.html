@@ -7,8 +7,8 @@
   <meta name="description" content="Generate a personalised 4-week marathon training plan using your recent running, goal date, availability, and injury status. Includes pace guidance, exact workouts, methodology notes, share link, and calendar export." />
   <link rel="canonical" href="https://marathonpacekm.com/monthly-training-plan/" />
 
-  <link rel="preload" href="/assets/style.css" as="style" />
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="preload" href="/assets/style.css?v=20260921" as="style" />
+  <link rel="stylesheet" href="/assets/style.css?v=20260921" />
   <style>
     :root{
       --bg:#fff;
@@ -286,7 +286,7 @@
           <h1>Marathon Training Planner</h1>
           <p class="sub">
             Generate a personalised 4-week plan from your recent running, goal date, availability, and injury status.
-            The planner automatically chooses the right phase (base → marathon block → taper) and blends training approaches when appropriate.
+            The planner estimates the training phase (base → marathon block → taper) and blends training approaches when appropriate.
           </p>
           <div class="row" style="margin-top:8px;">
             <span class="pill"><strong>Auto phase</strong> from date</span>
@@ -305,7 +305,7 @@
         <h2 class="callout-title">How this planner builds your plan</h2>
         <p class="tiny">
           This tool does not just output a generic calendar. It uses your recent mileage, longest run, current frequency,
-          injury status, available run days, time caps, and pace anchor to choose a safe 4-week structure.
+          injury status, available run days, time caps, and pace anchor to suggest a 4-week starting structure.
           Depending on your inputs, it may lean more toward simple consistency, controlled threshold development,
           marathon-specific work, or reduced-load tapering.
         </p>
@@ -393,12 +393,12 @@
         <div class="section" data-step="1">
           <h2>Recent training</h2>
 
-          <label>Last 4 weeks distance (km)</label>
+          <label>Last 4 complete weeks distance (km)</label><p class="tiny">Enter each week, including 0 for weeks without running. The average includes all four weeks.</p>
           <div class="row tight">
-            <input id="w1" type="number" min="0" step="0.1" placeholder="Week -1" />
-            <input id="w2" type="number" min="0" step="0.1" placeholder="Week -2" />
-            <input id="w3" type="number" min="0" step="0.1" placeholder="Week -3" />
-            <input id="w4" type="number" min="0" step="0.1" placeholder="Week -4" />
+            <input id="w1" aria-label="Week minus 1 distance in kilometres" type="number" min="0" step="0.1" placeholder="Week -1" />
+            <input id="w2" aria-label="Week minus 2 distance in kilometres" type="number" min="0" step="0.1" placeholder="Week -2" />
+            <input id="w3" aria-label="Week minus 3 distance in kilometres" type="number" min="0" step="0.1" placeholder="Week -3" />
+            <input id="w4" aria-label="Week minus 4 distance in kilometres" type="number" min="0" step="0.1" placeholder="Week -4" />
           </div>
 
           <div class="twoCol">
@@ -668,7 +668,7 @@
           <div class="tiny" id="summaryText">Not generated yet.</div>
           <div class="hr"></div>
           <div class="tiny">
-            <div style="font-weight:950; margin-bottom:6px;">Confidence</div>
+            <div style="font-weight:950; margin-bottom:6px;">Input completeness (heuristic)</div>
             <div class="meter"><div id="confBar"></div></div>
             <div class="tiny" id="confText" style="margin-top:6px;">—</div>
           </div>
@@ -752,19 +752,23 @@
       if(!s) return null;
       const parts = s.split(":").map(p => p.trim());
       if(parts.length !== 2 && parts.length !== 3) return null;
-      if(parts.some(p => p === "" || isNaN(Number(p)))) return null;
+      if(parts.some(p => !/^\d+$/.test(p))) return null;
 
       let h=0,m=0,sec=0;
       if(parts.length === 3){ h=+parts[0]; m=+parts[1]; sec=+parts[2]; }
       if(parts.length === 2){ m=+parts[0]; sec=+parts[1]; }
-      if(m>=60 || sec>=60) return null;
-      return h*3600 + m*60 + sec;
+      if((parts.length === 3 && m>=60) || sec>=60) return null;
+      return h*3600 + m*60 + sec || null;
+    }
+
+    function localDateISO(d){
+      return [d.getFullYear(), String(d.getMonth()+1).padStart(2,'0'), String(d.getDate()).padStart(2,'0')].join('-');
     }
 
     function addDaysISO(iso, add){
       const d = new Date(iso + "T00:00:00");
       d.setDate(d.getDate()+add);
-      return d.toISOString().slice(0,10);
+      return localDateISO(d);
     }
 
     function nextMondayISO(){
@@ -773,7 +777,7 @@
       const monIndex = (day + 6) % 7;
       const add = (7 - monIndex) % 7 || 7;
       d.setDate(d.getDate() + add);
-      return d.toISOString().slice(0,10);
+      return localDateISO(d);
     }
 
     function setStep(n){
@@ -801,8 +805,7 @@
         safeNum($("w3").value, 0),
         safeNum($("w4").value, 0),
       ];
-      const nonzero = last4.filter(x => x > 0);
-      const avg4 = (nonzero.length ? nonzero : last4).reduce((a,b)=>a+b,0) / (nonzero.length || 4);
+      const avg4 = last4.reduce((a,b)=>a+b,0) / 4;
 
       const daysAvailable = readDays();
 
@@ -1033,7 +1036,7 @@
       while(keys.length > quality) keys.pop();
 
       const labels = [];
-      if(cat === "A") labels.push("Beginner-safe structure");
+      if(cat === "A") labels.push("Lower-volume structure");
       if(phase === "base") labels.push("Base build focus");
       if(phase === "block") labels.push("Marathon-specific focus");
       if(phase === "taper") labels.push("Taper focus");
@@ -1411,9 +1414,9 @@
 
       const warnings = [];
       warnings.push(`Phase: ${phaseLabel(phase)} (auto${inputs.phaseOverride!=="auto" ? " override applied" : ""}).`);
-      warnings.push(`Category: ${cat} (auto safety category).`);
+      warnings.push(`Category: ${cat} (training category).`);
       warnings.push(`Run days selected: ${inputs.daysAvailable.join(", ")} — plan schedules every selected day.`);
-      if(cat==="A") warnings.push("Beginner-safe mode: no marathon-specific workouts; focus on consistency and gentle progression.");
+      if(cat==="A") warnings.push("Beginner mode: no marathon-specific workouts; focus on consistency and gentle progression.");
       if(inputs.injuryStatus !== "green") warnings.push(`Injury status ${inputs.injuryStatus.toUpperCase()}: intensity reduced and recovery emphasis increased.`);
       if(inputs.anchorType === "none") warnings.push("Effort-based pacing: use conversational effort for easy runs and controlled effort for workouts.");
       warnings.push("Methodology note: this plan blends multiple training approaches based on your inputs rather than copying one named system exactly.");
@@ -1461,9 +1464,9 @@
 
       $("confBar").style.width = `${plan.confidence}%`;
       $("confText").textContent =
-        `${plan.confidence}% confidence. ` +
-        (plan.confidence >= 80 ? "Strong inputs."
-          : plan.confidence >= 55 ? "Good — add a race or time trial for tighter paces."
+        `${plan.confidence}% input completeness. ` +
+        (plan.confidence >= 80 ? "More context supplied; this is not a prediction of plan suitability."
+          : plan.confidence >= 55 ? "Some context supplied — a recent race can inform pace estimates."
           : "Add more inputs for tighter recommendations.");
 
       $("paceText").innerHTML = renderPaces(plan);
@@ -1794,7 +1797,14 @@
 
     function generate(){
       try{
+        const recent = ['w1','w2','w3','w4'].map(id => $(id));
+        if(recent.some(el => el.value.trim() === '' || !el.checkValidity())) throw new Error('Enter all four recent weekly distances. Use 0 for a week without running.');
+        if(!recent.some(el => Number(el.value) > 0)) throw new Error('This progression planner needs some recent running. Four zero weeks cannot establish a running baseline.');
+        if(!document.querySelector('#daysChips .chip[aria-pressed="true"]')) throw new Error('Select at least one available running day.');
         const inputs = getInputs();
+        if(inputs.injuryStatus === 'red') throw new Error('This planner cannot provide a return-to-running plan for current worsening pain or injury. Seek an individual assessment before scheduling progression.');
+        if(inputs.goalTime && !parseTimeToSeconds(inputs.goalTime)) throw new Error('Enter a valid goal time, for example 3:45:00.');
+        if(inputs.anchorType === 'race' && !parseTimeToSeconds(inputs.raceTime)) throw new Error('Enter a valid recent race time.');
         saveDraft();
 
         if(!inputs.weekdayCap) $("weekdayCap").value = 60;
@@ -1805,7 +1815,13 @@
         renderPlan(plan);
       } catch(e){
         $("previewSubtitle").textContent = e?.message ? e.message : "Could not generate — check inputs.";
-        console.error(e);
+        CURRENT = null;
+        $("kpis").innerHTML = '';
+        $("workouts").innerHTML = '';
+        $("tableBody").innerHTML = '';
+        $("summaryText").textContent = '';
+        $("paceText").textContent = '';
+        $("warnText").textContent = '';
       }
     }
 
@@ -2006,5 +2022,6 @@
       </p>
     </div>
   </footer>
+<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
 </body>
 </html>

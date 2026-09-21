@@ -23,8 +23,8 @@
   <meta name="twitter:description" content="Convert finish times into pace per mile (and per km)." />
   <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
 
-  <link rel="preload" href="/assets/style.css" as="style" />
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="preload" href="/assets/style.css?v=20260921" as="style" />
+  <link rel="stylesheet" href="/assets/style.css?v=20260921" />
 
   <style>
     html { scroll-behavior: smooth; }
@@ -96,14 +96,14 @@
         <div>
           <label>Goal marathon time</label>
           <div class="row">
-            <input id="h" type="number" min="0" value="4" /> <span>h</span>
-            <input id="m" type="number" min="0" max="59" value="0" /> <span>m</span>
-            <input id="s" type="number" min="0" max="59" value="0" /> <span>s</span>
+            <input id="h" aria-label="Hours" type="number" min="0" value="4" /> <span>h</span>
+            <input id="m" aria-label="Minutes" type="number" min="0" max="59" value="0" /> <span>m</span>
+            <input id="s" aria-label="Seconds" type="number" min="0" max="59" value="0" /> <span>s</span>
           </div>
         </div>
         <div>
           <label>Distance</label>
-          <select id="dist">
+          <select id="dist" aria-label="Distance">
             <option value="42.195" selected>Marathon (42.195 km)</option>
             <option value="21.0975">Half Marathon (21.0975 km)</option>
             <option value="10">10 km</option>
@@ -223,5 +223,6 @@
 </footer>
 
 
+<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
 </body>
 </html>

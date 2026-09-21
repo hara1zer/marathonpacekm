@@ -23,8 +23,8 @@
   <meta name="twitter:description" content="Calculate pace per km/mi, checkpoints, pace-band links, and practical marathon pacing guidance." />
   <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
 
-  <link rel="preload" href="/assets/style.css" as="style" />
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="preload" href="/assets/style.css?v=20260921" as="style" />
+  <link rel="stylesheet" href="/assets/style.css?v=20260921" />
 
   <style>
     html { scroll-behavior: smooth; }
@@ -179,7 +179,7 @@
       </p>
       <p class="tiny muted2" style="margin:10px 0 0">
         Want to predict a marathon from a recent race?
-        <a href="/blog/marathon-pace-from-half-marathon/">half → marathon</a> ·
+        <a href="/blog/half-marathon-to-marathon-pace/">half → marathon</a> ·
         <a href="/blog/marathon-pace-from-10k/">10K → marathon</a> ·
         <a href="/blog/marathon-pace-from-5k/">5K → marathon</a> ·
         <a href="/blog/vdot-marathon-pace/">VDOT explained</a> ·
@@ -217,15 +217,15 @@
         <div>
           <label>Goal finish time</label>
           <div class="row">
-            <input id="h" type="number" min="0" value="4" /> <span>h</span>
-            <input id="m" type="number" min="0" max="59" value="0" /> <span>m</span>
-            <input id="s" type="number" min="0" max="59" value="0" /> <span>s</span>
+            <input id="h" aria-label="Hours" type="number" min="0" value="4" /> <span>h</span>
+            <input id="m" aria-label="Minutes" type="number" min="0" max="59" value="0" /> <span>m</span>
+            <input id="s" aria-label="Seconds" type="number" min="0" max="59" value="0" /> <span>s</span>
           </div>
         </div>
 
         <div>
           <label>Distance</label>
-          <select id="dist">
+          <select id="dist" aria-label="Distance">
             <option value="42.195" selected>Marathon (42.195 km)</option>
             <option value="21.0975">Half Marathon (21.0975 km)</option>
             <option value="10">10 km</option>
@@ -431,7 +431,7 @@
 
       <p class="tiny muted2" style="margin-top:10px">
         Race-based prediction:
-        <a href="/blog/marathon-pace-from-half-marathon/">Half marathon → marathon pace</a> ·
+        <a href="/blog/half-marathon-to-marathon-pace/">Half marathon → marathon pace</a> ·
         <a href="/blog/marathon-pace-from-10k/">10K → marathon pace</a> ·
         <a href="/blog/marathon-pace-from-5k/">5K → marathon pace</a> ·
         <a href="/blog/vdot-marathon-pace/">VDOT marathon pace</a> ·
@@ -597,6 +597,10 @@
   }
 
   function compute(){
+    if([elH,elM,elS].some(function(el){return el.value.trim()==='' || !el.checkValidity() || !Number.isInteger(Number(el.value));})){
+      elResults.innerHTML='<p role="alert">Enter valid whole hours, minutes (0–59) and seconds (0–59).</p>';
+      elCheckpoint.innerHTML='';elPrintBand.innerHTML='';elFull.innerHTML='';elFull.dataset.built='0';last.isMarathon=false;updateShareUI();return;
+    }
     var h=clampInt(elH.value,0,99);
     var m=clampInt(elM.value,0,59);
     var s=clampInt(elS.value,0,59);
@@ -618,7 +622,7 @@
 
     var secPerKm = goalSec / dist;
     var secPerMile = secPerKm * 1.609344;
-    var halfTime = fmtTime(secPerKm * Math.min(21.0975, dist));
+    var halfTime = fmtTime(goalSec / 2);
 
     elResults.innerHTML = ''
       + '<div class="kpi">'
@@ -627,7 +631,7 @@
       +   '<div class="fact"><div class="tiny muted2">Finish time</div><strong>'+fmtTime(goalSec)+'</strong></div>'
       +   '<div class="fact"><div class="tiny muted2">Halfway time*</div><strong>'+halfTime+'</strong></div>'
       + '</div>'
-      + '<p class="tiny muted2" style="margin-top:10px">*Halfway shown is for the selected distance (or half marathon if shorter).</p>';
+      + '<p class="tiny muted2" style="margin-top:10px">*Halfway is half of the selected distance; splits use unrounded pace.</p>';
 
     last.secPerKm = secPerKm;
     last.goalSec = goalSec;
@@ -794,5 +798,6 @@
   </div>
 </footer>
 
+<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
 </body>
 </html>

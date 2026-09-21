@@ -20,8 +20,8 @@
   <meta name="twitter:description" content="Print a Sub-4 (3:59:59) marathon pace band: wrist band or A4 pacing sheet with checkpoints." />
   <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
 
-  <link rel="preload" href="/assets/style.css" as="style" />
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="preload" href="/assets/style.css?v=20260921" as="style" />
+  <link rel="stylesheet" href="/assets/style.css?v=20260921" />
 
   <style>
     html { scroll-behavior: smooth; }
@@ -132,8 +132,8 @@
       </p>
 
       <div class="row actions" style="margin-top:10px; gap:10px">
-        <a class="btn" id="wristBtn" href="#">Wrist band (PDF)</a>
-        <a class="btn secondary" id="a4Btn" href="#">A4 sheet (PDF)</a>
+        <a class="btn" id="wristBtn" href="/printable-pace-band/?h=3&amp;m=59&amp;s=59&amp;strategy=even&amp;layout=wrist&amp;autoPrint=1">Wrist band (PDF)</a>
+        <a class="btn secondary" id="a4Btn" href="/printable-pace-band/?h=3&amp;m=59&amp;s=59&amp;strategy=even&amp;layout=a4&amp;autoPrint=1">A4 sheet (PDF)</a>
         <a class="btn secondary" href="/sub-4-marathon-pace-km/">Sub-4 goal page</a>
       </div>
 
@@ -143,7 +143,7 @@
           Average pace is about <strong>5:41 /km</strong> (≈ <strong>9:09 /mi</strong>). Use checkpoints to stay honest.
         </p>
 
-        <div id="tableWrap"></div>
+        <div id="tableWrap"><table class="splits-table"><caption>Even-pace elapsed checkpoints; full precision before rounding</caption><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody><tr><th scope="row">5 km</th><td>0:28:26</td></tr><tr><th scope="row">10 km</th><td>0:56:52</td></tr><tr><th scope="row">Halfway</th><td>2:00:00</td></tr><tr><th scope="row">30 km</th><td>2:50:37</td></tr><tr><th scope="row">40 km</th><td>3:47:30</td></tr><tr><th scope="row">Finish</th><td>3:59:59</td></tr></tbody></table></div>
 
         <p class="tiny muted2" style="margin-top:10px">
           Want to adjust for heat/wind/hills? Use:
@@ -156,7 +156,7 @@
         <p class="tiny muted2" style="margin:6px 0 10px">
           Paste this snippet into a website to embed the Sub-4 pace band generator.
         </p>
-        <textarea id="embedCode" class="embed" readonly></textarea>
+        <textarea aria-label="Pace band embed code" id="embedCode" class="embed" readonly></textarea>
         <div class="row actions" style="margin-top:10px; gap:10px">
           <button class="btn secondary" id="copyEmbedBtn" type="button">Copy embed code</button>
         </div>
@@ -198,7 +198,8 @@
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
 
-  </main>
+  <section class="card"><h2>Check this band before race day</h2><p>This preset targets 3:59:59 over 42.195 km. The halfway checkpoint displays as 2:00:00. Times include stationary stops; the printable band does not add an allowance for them.</p><p>Use the wrist option for a wearable strip and the A4 checkpoint sheet for a larger reference. Print at actual size and check the scale on wrist bands. Both links open the same goal in the generator; you can change units or pacing strategy there.</p><p>A controlled start or negative split changes later checkpoints while preserving the finish target. Read the required later pace before choosing it. <a href="/methodology/#pace-band">How the strategies are calculated</a> · <a href="/marathon-fueling-calculator/">Plan a separate fueling schedule</a>.</p></section>
+</main>
 
   <script>
   (function(){
@@ -305,5 +306,6 @@
       </p>
     </div>
   </footer>
+<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/about/">About Davin</a> <a href="/contact/">Contact &amp; corrections</a> <a href="/privacy/">Privacy</a> <a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
 </body>
 </html>

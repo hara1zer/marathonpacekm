@@ -15,8 +15,8 @@
   <meta property="og:description" content="3:45 marathon pace is 5:20 per km. View full 1–42.2km splits plus 5k/10k/half markers and pacing tips." />
   <meta property="og:url" content="https://marathonpacekm.com/3-45-marathon-pace-km/" />
 
-  <link rel="preload" href="/assets/style.css" as="style" />
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="preload" href="/assets/style.css?v=20260921" as="style" />
+  <link rel="stylesheet" href="/assets/style.css?v=20260921" />
 
   <script type="application/ld+json">
 {
@@ -62,7 +62,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
      crossorigin="anonymous"></script>     </head>
 
-<body>
+<body id="top">
   <header class="wrap">
     <h1>3:45 Marathon Pace Chart (min/km)</h1>
     <p class="sub">
@@ -81,15 +81,15 @@
         <div>
           <label>Goal finish time</label>
           <div class="row">
-            <input id="h" type="number" min="0" value="3" /> <span>h</span>
-            <input id="m" type="number" min="0" max="59" value="45" /> <span>m</span>
-            <input id="s" type="number" min="0" max="59" value="0" /> <span>s</span>
+            <input id="h" aria-label="Hours" type="number" min="0" value="3" /> <span>h</span>
+            <input id="m" aria-label="Minutes" type="number" min="0" max="59" value="45" /> <span>m</span>
+            <input id="s" aria-label="Seconds" type="number" min="0" max="59" value="0" /> <span>s</span>
           </div>
         </div>
 
         <div>
           <label>Distance</label>
-          <select id="dist">
+          <select id="dist" aria-label="Distance">
             <option value="42.195" selected>Marathon (42.195 km)</option>
             <option value="21.0975">Half Marathon (21.0975 km)</option>
             <option value="10">10 km</option>
@@ -117,32 +117,7 @@
   </div>
 </section>
     <!-- Training tie-in -->
-    <section class="card" id="training">
-      <h2>Training tie-in (what supports a 3:45:00 marathon)</h2>
-      <p class="muted">These are general training patterns that often support a <strong>3:45:00</strong> goal. Use effort and recovery as the primary guide.</p>
-
-      <h3>Typical weekly structure</h3>
-      <ul class="muted">
-        <li><strong>Volume:</strong> 65–105 km/week (typical) (individual needs vary)</li>
-        <li><strong>Long run:</strong> 2:20–3:00, with small marathon-pace segments added gradually</li>
-        <li><strong>1 quality session:</strong> threshold or hills (keep it controlled)</li>
-        <li><strong>1 marathon-specific session:</strong> marathon-pace / steady segments</li>
-        <li><strong>Easy runs:</strong> often around <strong>6:15–6:55/km</strong> (roughly +55–95 sec/km slower than goal pace)</li>
-      </ul>
-
-      <h3>Example key workout</h3>
-      <p class="muted">One marathon-specific option: <strong>3 × 5 km at ~marathon pace (5:20/km) with 1 km easy between</strong>. Keep the first rep smooth, and stop early if form breaks.</p>
-
-      <h3>Simple pacing anchors</h3>
-      <div class="splitGrid">
-        <div class="splitBox"><strong>Goal pace</strong><br><span class="muted">5:20/km</span><div class="tiny muted2">Marathon average</div></div>
-        <div class="splitBox"><strong>Goal pace</strong><br><span class="muted">8:35/mi</span><div class="tiny muted2">If your watch is miles</div></div>
-        <div class="splitBox"><strong>Steady</strong><br><span class="muted">5:40–6:00/km</span><div class="tiny muted2">Comfortably hard</div></div>
-        <div class="splitBox"><strong>Easy</strong><br><span class="muted">6:15–6:55/km</span><div class="tiny muted2">Conversation pace</div></div>
-      </div>
-
-      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-    </section>
+    <section class="card" id="training"><h2>Check whether 3:45 fits your current training</h2><p>A goal pace is arithmetic, not an individual training prescription. Compare a recent race with your sustained weekly running, long-run recovery and ability to keep marathon-specific work controlled. There is no universal weekly distance or fixed easy-pace offset that proves this target is right for you.</p><p>Keep easy running at an effort that lets you recover. A faster interval session can demonstrate speed without demonstrating the ability to hold 5:19.9/km for a marathon. <a href="/blog/sydney-marathon-2026-personal-review/#workouts">My Sydney preparation</a> is an example of that distinction.</p><p>Use the <a href="/marathon-time-predictor/">prediction scenarios</a>, <a href="/blog/marathon-pace-readiness-test/">readiness guide</a> and <a href="/monthly-training-plan/">monthly planner</a> as supporting information, not pass/fail tests.</p></section>
 
 
     <section id="pace-chart" class="card">
@@ -165,11 +140,13 @@
 
       <p class="tiny muted">Note: This is a planning tool only. Official results depend on course and conditions.</p>
     </section>
-  </main>
+  <section class="card" id="fueling"><h2>Plan fuel for 3:45 by grams and elapsed time</h2><p>Choose an hourly intake you have practised, check each product's carbohydrate content and include planned drinks. A finish-time goal alone does not determine how many gels you need.</p><p>For example, six 25 g gels contain 150 g. Across 3:45:00 that averages only <strong>40.0 g/h</strong> before drinks. If you chose 60 g/h as a practiced target, the race total would be about <strong>225 g</strong>. These are arithmetic comparisons, not personalised intake recommendations.</p><p>The <a href="/marathon-fueling-calculator/">fueling calculator</a> shows the actual average supplied by the selected schedule as well as your target. Account for product tolerance, station availability and what you actually consume. <a href="https://pubmed.ncbi.nlm.nih.gov/30747558/">Distance-running nutrition guidance</a> supports personalising and rehearsing the plan.</p></section>
+<section class="card editorial-example" id="worked-plan"><h2>Work through a 3:45 race plan</h2><p class="byline">Calculations and examples reviewed 21 September 2026 · <a href="/methodology/">Methods</a></p><p>The exact average is <strong>5:19.9/km</strong> or <strong>8:34.9/mile</strong>, shown here to a tenth of a second. Exactly 5:20/km over the marathon distance gives 3:45:02 when rounded to a second. Displayed pace and elapsed checkpoints answer different questions.</p><div class="table-scroll"><table><caption>Fixed even-pace reference for 3:45; includes any stops</caption><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody><tr><th scope="row">5 km</th><td>0:26:40</td></tr><tr><th scope="row">10 km</th><td>0:53:19</td></tr><tr><th scope="row">Halfway</th><td>1:52:30</td></tr><tr><th scope="row">30 km</th><td>2:39:58</td></tr><tr><th scope="row">40 km</th><td>3:33:18</td></tr><tr><th scope="row">Finish</th><td>3:45:00</td></tr></tbody></table></div><h3>How easily a banked minute disappears</h3><p>At 3:45, the average is 5:19.9/km. Running the opening 10 km ten seconds per kilometre faster would put you 100 seconds ahead of the even plan. A slowdown of just over eight seconds per kilometre across the final 12.195 km would erase that entire gain.</p><p>This is a break-even calculation, not a claim that a particular start will cause a particular slowdown. Its value is showing how little late-race deterioration is needed to undo an early gain. The <a href="/blog/time-in-the-bank-math/">time-in-the-bank calculator</a> lets you change those assumptions.</p><h3>Remember the distance after 40 km</h3><p>The even 40 km checkpoint is 3:33:18, leaving about 11:42 for the last 2.195 km. Being near the finish is not the same as being finished. Use the full-distance endpoint when judging whether your current elapsed time still matches the goal.</p><p>For a controlled opening, the pace-band generator shows the later adjustment needed to preserve 3:45. Read that adjustment before selecting it: a slower start only keeps the same finish time if later running makes up the difference. If the remaining pace no longer matches your effort, revise the goal rather than forcing a late rescue.</p><h3>Include a stop without confusing it with walking</h3><p>If you stand still for one minute in total, keeping 3:45:00 would require covering the distance in 3:44:00, averaging 5:18.5/km while moving. This example assumes no distance is covered during the stop. Walking is different because it still contributes distance.</p><p>Make a plan using <a href="/printable-pace-band/?h=3&amp;m=45&amp;s=0&amp;strategy=even">a pace band for this exact target</a>. For a controlled start or negative split, the tool recalculates the later pace needed to preserve the finish time. Neither option guarantees that the required effort is sustainable.</p></section>
+</main>
 <script>
   window.GOAL_PAGE = { goalSeconds: 13500, lockDistanceKm: 42.195 }; // 3:45:00
 </script>
-<script defer src="/assets/app.js"></script>
+<script defer src="/assets/app.js?v=20260921"></script>
 
 
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"2fadcf67bfba4d9691882d6f581d6c6f","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
@@ -194,5 +171,6 @@
 </footer>
 
 
+<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
 </body>
 </html>
