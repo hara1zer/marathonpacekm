@@ -1,43 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Core -->
-  <url><loc>https://marathonpacekm.com/</loc></url>
-  <url><loc>https://marathonpacekm.com/about/</loc></url>
-  <url><loc>https://marathonpacekm.com/contact/</loc></url>
-  <url><loc>https://marathonpacekm.com/disclaimer/</loc></url>
-  <url><loc>https://marathonpacekm.com/privacy/</loc></url>
-  <url><loc>https://marathonpacekm.com/sitemap.html</loc></url>
-
-  <!-- Tools & calculators -->
-  <url><loc>https://marathonpacekm.com/marathon-time-predictor/</loc></url>
-  <url><loc>https://marathonpacekm.com/marathon-fueling-calculator/</loc></url>
-  <url><loc>https://marathonpacekm.com/monthly-training-plan/</loc></url>
-  <url><loc>https://marathonpacekm.com/race-conditions-pace-adjuster/</loc></url>
-  <url><loc>https://marathonpacekm.com/pace-band/</loc></url>
-  <url><loc>https://marathonpacekm.com/printable-pace-band/</loc></url>
-  <url><loc>https://marathonpacekm.com/marathon-pace-calculator/</loc></url>
-  <url><loc>https://marathonpacekm.com/marathon-pace-chart-min-per-mile/</loc></url>
-  <url><loc>https://marathonpacekm.com/sub-threshold-pace-calculator/</loc></url>
-
-  <!-- Training methods -->
-  <url><loc>https://marathonpacekm.com/norwegian-singles/</loc></url>
-  <url><loc>https://marathonpacekm.com/norwegian-singles-marathon-training/</loc></url>
-  <url><loc>https://marathonpacekm.com/norwegian-singles-workouts/</loc></url>
-  <url><loc>https://marathonpacekm.com/norwegian-singles-vs-double-threshold/</loc></url>
-  <url><loc>https://marathonpacekm.com/norwegian-singles-plan/</loc></url>
-  <url><loc>https://marathonpacekm.com/norwegian-singles-vs-tempo-runs/</loc></url>
-  <url><loc>https://marathonpacekm.com/who-should-not-do-norwegian-singles/</loc></url>
-  <url><loc>https://marathonpacekm.com/what-is-the-norwegian-method-running/</loc></url>
-  <url><loc>https://marathonpacekm.com/norwegian-singles-faq/</loc></url>
-
-  <!-- Strategy -->
-  <url><loc>https://marathonpacekm.com/Marathon-pacing-strategy/</loc></url>
-  <url><loc>https://marathonpacekm.com/even-vs-negative-splits/</loc></url>
-  <url><loc>https://marathonpacekm.com/how-to-use-marathon-pace-chart/</loc></url>
-  <url><loc>https://marathonpacekm.com/sub-4-marathon-pace-km/</loc></url>
-
-  <!-- Marathon pace pages (KM) -->
   <url><loc>https://marathonpacekm.com/3-00-marathon-pace-km/</loc></url>
   <url><loc>https://marathonpacekm.com/3-05-marathon-pace-km/</loc></url>
   <url><loc>https://marathonpacekm.com/3-10-marathon-pace-km/</loc></url>
@@ -46,31 +8,25 @@
   <url><loc>https://marathonpacekm.com/3-45-marathon-pace-km/</loc></url>
   <url><loc>https://marathonpacekm.com/3-50-marathon-pace-km/</loc></url>
   <url><loc>https://marathonpacekm.com/3-55-marathon-pace-km/</loc></url>
-
   <url><loc>https://marathonpacekm.com/4-00-marathon-pace-km/</loc></url>
   <url><loc>https://marathonpacekm.com/4-05-marathon-pace-km/</loc></url>
+  <url><loc>https://marathonpacekm.com/4-15-marathon-pace-km/</loc></url>
   <url><loc>https://marathonpacekm.com/4-30-marathon-pace-km/</loc></url>
   <url><loc>https://marathonpacekm.com/4-35-marathon-pace-km/</loc></url>
   <url><loc>https://marathonpacekm.com/4-40-marathon-pace-km/</loc></url>
   <url><loc>https://marathonpacekm.com/4-50-marathon-pace-km/</loc></url>
   <url><loc>https://marathonpacekm.com/4-55-marathon-pace-km/</loc></url>
-
   <url><loc>https://marathonpacekm.com/5-00-marathon-pace-km/</loc></url>
   <url><loc>https://marathonpacekm.com/5-05-marathon-pace-km/</loc></url>
-
-  <!-- Adjust Marathon Pace -->
-  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/</loc></url>
-  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/heat/</loc></url>
-  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/wind/</loc></url>
-  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/hills/</loc></url>
-  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/fatigue-drift/</loc></url>
+  <url><loc>https://marathonpacekm.com/about/</loc></url>
   <url><loc>https://marathonpacekm.com/adjust-marathon-pace/cardiac-drift/</loc></url>
-  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/race-day-adrenaline/</loc></url>
+  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/fatigue-drift/</loc></url>
+  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/heat/</loc></url>
+  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/hills/</loc></url>
+  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/</loc></url>
   <url><loc>https://marathonpacekm.com/adjust-marathon-pace/late-race-slowdown/</loc></url>
-
-  <!-- Blog -->
-  <url><loc>https://marathonpacekm.com/blog/</loc></url>
-
+  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/race-day-adrenaline/</loc></url>
+  <url><loc>https://marathonpacekm.com/adjust-marathon-pace/wind/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/brisbane-marathon-pacing-strategy-2026/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/choose-marathon-goal-time/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/dew-point-pacing-guide/</loc></url>
@@ -79,9 +35,11 @@
   <url><loc>https://marathonpacekm.com/blog/half-marathon-to-marathon-pace/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/hills-pacing-give-away-seconds-avoid-quad-destruction/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/how-to-know-if-youre-overpacing/</loc></url>
+  <url><loc>https://marathonpacekm.com/blog/how-to-know-if-zone-2-is-working/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/how-to-pace-first-10k-marathon/</loc></url>
+  <url><loc>https://marathonpacekm.com/blog/how-to-salvage-a-marathon-training-plan/</loc></url>
+  <url><loc>https://marathonpacekm.com/blog/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/long-run-structure-fast-finish-vs-blocks-vs-progression/</loc></url>
-
   <url><loc>https://marathonpacekm.com/blog/marathon-fueling-by-finish-time-gel-schedule/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/marathon-pace-bands/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/marathon-pace-from-10k/</loc></url>
@@ -90,13 +48,13 @@
   <url><loc>https://marathonpacekm.com/blog/marathon-pace-workouts/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/marathon-pacing-heart-rate-rpe-hr-drift/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/marathon-splits/</loc></url>
-
   <url><loc>https://marathonpacekm.com/blog/melbourne-marathon-pacing-strategy-2026-windy-cool/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/negative-split-pacing/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/race-time-predictor-marathon/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/racing-in-heat-wind-hills/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/should-i-slow-down-if-heart-rate-is-high/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/signal-vs-noise-marathon-training-pace/</loc></url>
+  <url><loc>https://marathonpacekm.com/blog/sydney-marathon-2026-personal-review/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/sydney-marathon-pacing-strategy-2026/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/tempo-vs-threshold-vs-marathon-pace/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/time-in-the-bank-math/</loc></url>
@@ -106,5 +64,40 @@
   <url><loc>https://marathonpacekm.com/blog/why-do-i-slow-down-after-30k/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/why-marathon-pace-feels-harder-some-days/</loc></url>
   <url><loc>https://marathonpacekm.com/blog/wind-pacing-headwind-tailwind/</loc></url>
-
+  <url><loc>https://marathonpacekm.com/contact/</loc></url>
+  <url><loc>https://marathonpacekm.com/disclaimer/</loc></url>
+  <url><loc>https://marathonpacekm.com/editorial-policy/</loc></url>
+  <url><loc>https://marathonpacekm.com/even-vs-negative-splits/</loc></url>
+  <url><loc>https://marathonpacekm.com/how-to-use-marathon-pace-chart/</loc></url>
+  <url><loc>https://marathonpacekm.com/</loc></url>
+  <url><loc>https://marathonpacekm.com/marathon-fueling-calculator/</loc></url>
+  <url><loc>https://marathonpacekm.com/marathon-pace-calculator/</loc></url>
+  <url><loc>https://marathonpacekm.com/marathon-pace-chart-min-per-mile/</loc></url>
+  <url><loc>https://marathonpacekm.com/marathon-pacing-strategy/</loc></url>
+  <url><loc>https://marathonpacekm.com/marathon-time-predictor/</loc></url>
+  <url><loc>https://marathonpacekm.com/methodology/</loc></url>
+  <url><loc>https://marathonpacekm.com/monthly-training-plan/</loc></url>
+  <url><loc>https://marathonpacekm.com/norwegian-singles/</loc></url>
+  <url><loc>https://marathonpacekm.com/norwegian-singles-faq/</loc></url>
+  <url><loc>https://marathonpacekm.com/norwegian-singles-marathon-training/</loc></url>
+  <url><loc>https://marathonpacekm.com/norwegian-singles-plan/</loc></url>
+  <url><loc>https://marathonpacekm.com/norwegian-singles-vs-double-threshold/</loc></url>
+  <url><loc>https://marathonpacekm.com/norwegian-singles-vs-tempo-runs/</loc></url>
+  <url><loc>https://marathonpacekm.com/norwegian-singles-workouts/</loc></url>
+  <url><loc>https://marathonpacekm.com/pace-band/3-00/</loc></url>
+  <url><loc>https://marathonpacekm.com/pace-band/3-15/</loc></url>
+  <url><loc>https://marathonpacekm.com/pace-band/3-30/</loc></url>
+  <url><loc>https://marathonpacekm.com/pace-band/3-45/</loc></url>
+  <url><loc>https://marathonpacekm.com/pace-band/4-00/</loc></url>
+  <url><loc>https://marathonpacekm.com/pace-band/4-30/</loc></url>
+  <url><loc>https://marathonpacekm.com/pace-band/5-00/</loc></url>
+  <url><loc>https://marathonpacekm.com/pace-band/sub-4/</loc></url>
+  <url><loc>https://marathonpacekm.com/printable-pace-band/</loc></url>
+  <url><loc>https://marathonpacekm.com/privacy/</loc></url>
+  <url><loc>https://marathonpacekm.com/race-conditions-pace-adjuster/</loc></url>
+  <url><loc>https://marathonpacekm.com/sitemap/</loc></url>
+  <url><loc>https://marathonpacekm.com/sub-4-marathon-pace-km/</loc></url>
+  <url><loc>https://marathonpacekm.com/sub-threshold-pace-calculator/</loc></url>
+  <url><loc>https://marathonpacekm.com/what-is-the-norwegian-method-running/</loc></url>
+  <url><loc>https://marathonpacekm.com/who-should-not-do-norwegian-singles/</loc></url>
 </urlset>

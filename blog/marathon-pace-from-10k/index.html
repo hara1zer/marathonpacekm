@@ -134,7 +134,8 @@
     footer { padding: 22px 16px; border-top:1px solid #eee; color:#666; font-size:13px; }
   </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
-     crossorigin="anonymous"></script>     </head>
+     crossorigin="anonymous"></script>     <style>fieldset,.grid > *,.calc-grid > *, .calculator-grid > *, .layout > *, .field-grid > *{min-width:0} .timegrid{grid-template-columns:repeat(3,minmax(0,1fr))} .timegrid input{min-width:0;width:100%} .table-wrap{max-width:100%;min-width:0} .calc-grid,.calculator-grid{min-width:0}</style>
+<style>.table-scroll{overflow-x:auto;max-width:100%;min-width:0}a,code{overflow-wrap:anywhere}</style></head>
 
 <body>
 <header>
@@ -146,7 +147,7 @@
         <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>
         <a href="/monthly-training-plan/">Monthly Training Plan</a>
         <a href="/blog/">Blog</a>
-        <a href="/sitemap.html">All pages</a>
+        <a href="/sitemap/">All pages</a>
       </nav>
     </div>
   </div>
@@ -273,7 +274,7 @@
     </p>
 
     <div class="card">
-      <table>
+      <div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
         <thead>
           <tr>
             <th>Reason prediction misses</th>
@@ -298,7 +299,7 @@
             <td>Heat, humidity, hills, or wind make the raw prediction too optimistic for the day.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
     <p class="note">
@@ -313,7 +314,7 @@
     </p>
 
     <div class="card">
-      <table>
+      <div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
         <thead>
           <tr>
             <th>Range</th>
@@ -338,7 +339,7 @@
             <td>You would rather finish strong than gamble on a fragile prediction.</td>
           </tr>
         </tbody>
-      </table>
+      </table></div>
     </div>
 
     <div class="callout">
@@ -355,7 +356,7 @@
     </p>
 
     <div class="card">
-      <table>
+      <div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
         <thead>
           <tr>
             <th>10K time</th>
@@ -365,7 +366,7 @@
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
-      </table>
+      </table></div>
       <p class="small">
         Once you pick a target, use the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a> for exact pace per kilometre,
         and validate the number with the <a href="/blog/marathon-pace-readiness-test/">marathon pace readiness test</a>.
@@ -531,5 +532,6 @@
   document.getElementById("y").textContent = new Date().getFullYear();
 })();
 </script>
+<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/about/">About Davin</a> <a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
 </body>
 </html>

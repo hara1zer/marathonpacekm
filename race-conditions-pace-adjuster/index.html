@@ -5,25 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Race-Day Pace Adjuster | Heat, Humidity, Wind & Hills (Marathon)</title>
-  <meta name="description" content="Free race-day pace adjuster for marathon pacing. Estimate safer pacing in heat, humidity, wind, and hilly courses. Get an adjusted pace range, finish-time range, and practical race-day guidance." />
+  <meta name="description" content="Free race-day pace adjuster for marathon pacing. Estimate illustrative pacing in heat, humidity, wind, and hilly courses. Get an adjusted pace range, finish-time range, and practical race-day guidance." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://marathonpacekm.com/race-conditions-pace-adjuster/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Race-Day Pace Adjuster | Heat, Wind & Hills (Marathon)" />
-  <meta property="og:description" content="Adjust marathon pace for heat, humidity, wind, and hills. Get a safer pace range, finish-time range, and practical execution advice." />
+  <meta property="og:description" content="Adjust marathon pace for heat, humidity, wind, and hills. Get a illustrative pace range, finish-time range, and practical execution advice." />
   <meta property="og:url" content="https://marathonpacekm.com/race-conditions-pace-adjuster/" />
   <meta property="og:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
   <meta property="og:image:alt" content="Race-day pace adjuster for heat, wind, and hills" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Race-Day Pace Adjuster | Heat, Wind & Hills (Marathon)" />
-  <meta name="twitter:description" content="Adjust marathon pace for heat, humidity, wind, and hills. Get a safer pace range and finish-time range." />
+  <meta name="twitter:description" content="Adjust marathon pace for heat, humidity, wind, and hills. Get a illustrative pace range and finish-time range." />
   <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
   <meta name="theme-color" content="#0b1220" />
 
-  <link rel="preload" href="/assets/style.css" as="style" />
-  <link rel="stylesheet" href="/assets/style.css" />
+  <link rel="preload" href="/assets/style.css?v=20260921" as="style" />
+  <link rel="stylesheet" href="/assets/style.css?v=20260921" />
 
   <style>
     html { scroll-behavior: smooth; }
@@ -195,7 +195,7 @@
         "@id":"https://marathonpacekm.com/race-conditions-pace-adjuster/#webpage",
         "url":"https://marathonpacekm.com/race-conditions-pace-adjuster/",
         "name":"Race-Day Pace Adjuster | Heat, Humidity, Wind & Hills (Marathon)",
-        "description":"Free race-day pace adjuster for marathon pacing. Estimate safer pacing in heat, humidity, wind, and hilly courses. Get an adjusted pace range, finish-time range, and practical race-day guidance.",
+        "description":"Free race-day pace adjuster for marathon pacing. Estimate illustrative pacing in heat, humidity, wind, and hilly courses. Get an adjusted pace range, finish-time range, and practical race-day guidance.",
         "isPartOf":{"@id":"https://marathonpacekm.com/#website"}
       },
       {
@@ -213,7 +213,7 @@
           {
             "@type":"Question",
             "name":"How much should I slow down for heat in a marathon?",
-            "acceptedAnswer":{"@type":"Answer","text":"There is not one perfect number. Heat and humidity increase cardiovascular strain, so you should pace by effort and plan a conservative slowdown. This tool provides a safer adjustment range, but your optimal pace still depends on acclimation, fueling, and the exact conditions."}
+            "acceptedAnswer":{"@type":"Answer","text":"There is not one perfect number. Heat and humidity increase cardiovascular strain, so you should pace by effort and plan a conservative slowdown. This tool provides a illustrative adjustment range, but your appropriate effort still depends on acclimation, fueling, and the exact conditions."}
           },
           {
             "@type":"Question",
@@ -250,7 +250,7 @@
     <a class="btn secondary" href="/">← Back to pace chart hub</a>
     <h1 style="margin-top:14px">Race-Day Pace Adjuster (Heat / Wind / Hills)</h1>
     <p class="sub">
-      Adjust a target marathon pace for race-day conditions. This tool estimates a safer <strong>pace range</strong> and <strong>finish-time range</strong>
+      Adjust a target marathon pace for race-day conditions. This tool estimates a illustrative <strong>pace range</strong> and <strong>finish-time range</strong>
       when it’s hot, humid, windy, or hilly, so you do not force ideal-condition splits into a day that clearly is not ideal.
     </p>
 
@@ -264,7 +264,7 @@
 
     <div class="facts" aria-label="Quick facts">
       <div class="fact"><strong>Use case</strong><br />Heat, wind, hills</div>
-      <div class="fact"><strong>Output</strong><br />Safer pace range</div>
+      <div class="fact"><strong>Output</strong><br />Illustrative pace range</div>
       <div class="fact"><strong>Best for</strong><br />Marathon planning</div>
       <div class="fact"><strong>Mindset</strong><br />Even effort, not ego</div>
     </div>
@@ -291,16 +291,16 @@
       <h2>Conditions pace adjuster</h2>
       <p class="muted">
         Start with your “ideal conditions” marathon target pace or finish time, then adjust for heat, humidity, wind, and hills.
-        The tool gives you a recommended pace range rather than a single fake-perfect number.
+        The tool gives you a illustrative pace range rather than a single fake-perfect number.
       </p>
 
       <div class="grid">
         <div>
           <label>Target finish time (ideal conditions)</label>
           <div class="row">
-            <input id="h" type="number" min="0" value="4" /> <span>h</span>
-            <input id="m" type="number" min="0" max="59" value="0" /> <span>m</span>
-            <input id="s" type="number" min="0" max="59" value="0" /> <span>s</span>
+            <input id="h" aria-label="Hours" type="number" min="0" value="4" /> <span>h</span>
+            <input id="m" aria-label="Minutes" type="number" min="0" max="59" value="0" /> <span>m</span>
+            <input id="s" aria-label="Seconds" type="number" min="0" max="59" value="0" /> <span>s</span>
           </div>
           <p class="tiny muted2" style="margin-top:6px">Use the time you would target on a cool, flat, low-wind day.</p>
         </div>
@@ -354,7 +354,7 @@
         <div>
           <label>Goal style</label>
           <select id="risk">
-            <option value="safe" selected>Safe finish / low risk</option>
+            <option value="safe" selected>Larger adjustment</option>
             <option value="normal">Normal race effort</option>
             <option value="aggr">Aggressive (higher risk)</option>
           </select>
@@ -378,7 +378,7 @@
     <section id="resultsBlock" class="card">
       <h2>What to do with your adjusted pace</h2>
       <p class="muted">
-        Once you have a safer pace range, choose a target near the middle or conservative end if the day looks challenging.
+        Once you have a illustrative pace range, choose a target near the middle or conservative end if the day looks challenging.
         Then build checkpoint splits and a printable pace band from that adjusted target.
       </p>
 
@@ -452,11 +452,12 @@
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
 
-    <section id="faq" class="card">
+    <p class="wrap">These adjustments are unvalidated planning heuristics, not physiological predictions or a guarantee of safe exercise. See <a href="/methodology/#conditions">coefficients and limitations</a>; revise the plan by effort and actual conditions.</p>
+<section id="faq" class="card">
       <h2>Race conditions pacing FAQ</h2>
 
       <h3>How much should I slow down for heat in a marathon?</h3>
-      <p>There is not one perfect number. Heat and humidity increase cardiovascular strain, so pace by effort and plan a conservative slowdown. This tool provides a safer adjustment range, but your optimal pace still depends on acclimation, fueling, and the exact conditions.</p>
+      <p>There is not one perfect number. Heat and humidity increase cardiovascular strain, so pace by effort and plan a conservative slowdown. This tool provides a illustrative adjustment range, but your appropriate effort still depends on acclimation, fueling, and the exact conditions.</p>
 
       <h3>Is dew point better than humidity for pacing?</h3>
       <p>Dew point is often a better single indicator because it reflects absolute moisture. If you know dew point, use it. If not, this tool estimates it from temperature and humidity.</p>
@@ -574,6 +575,10 @@
     }
 
     function compute(){
+      var fields = [h,m,s,tempC,rhPct,wind];
+      if(fields.some(function(el){return el.value.trim()==='' || !el.checkValidity();}) || [h,m,s].some(function(el){return !Number.isInteger(Number(el.value));}) || (dewC.value.trim()!=='' && !dewC.checkValidity())){
+        out.innerHTML = '<p>Enter valid values within the displayed input ranges; finish-time fields must be whole numbers.</p>';return;
+      }
       var hh = clamp(h.value, 0, 99);
       var mm = clamp(m.value, 0, 59);
       var ss = clamp(s.value, 0, 59);
@@ -626,7 +631,7 @@
 
       out.innerHTML =
         '<div class="kpi">' +
-          '<div class="result-fact"><div class="tiny muted2">Adjusted range (safer)</div><strong>' + fmtHMS(timeLow) + ' – ' + fmtHMS(timeHi) + '</strong><div class="tiny muted2">' +
+          '<div class="result-fact"><div class="tiny muted2">Adjusted range (illustrative)</div><strong>' + fmtHMS(timeLow) + ' – ' + fmtHMS(timeHi) + '</strong><div class="tiny muted2">' +
             fmtPace(paceLow) + '–' + fmtPace(paceHi) + '/km · ' +
             fmtPace(paceLowMi) + '–' + fmtPace(paceHiMi) + '/mi</div></div>' +
           '<div class="result-fact"><div class="tiny muted2">Suggested target (mid)</div><strong>' + fmtHMS(timeMid) + '</strong><div class="tiny muted2">' +
@@ -669,7 +674,7 @@
         <a href="/marathon-pace-calculator/">Calculator</a>
         <a href="/monthly-training-plan/">Monthly plan</a>
         <a href="/blog/">Blog</a>
-        <a href="/sitemap.html">HTML sitemap</a>
+        <a href="/sitemap/">HTML sitemap</a>
         <a href="/about/">About</a>
         <a href="/contact/">Contact</a>
         <a href="/privacy/">Privacy</a>
@@ -680,5 +685,6 @@
       </p>
     </div>
   </footer>
+<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
 </body>
 </html>

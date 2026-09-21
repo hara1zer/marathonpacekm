@@ -362,7 +362,8 @@
     }
   </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
-     crossorigin="anonymous"></script>     </head>
+     crossorigin="anonymous"></script>     <style>fieldset,.grid > *,.calc-grid > *, .calculator-grid > *, .layout > *, .field-grid > *{min-width:0} .timegrid{grid-template-columns:repeat(3,minmax(0,1fr))} .timegrid input{min-width:0;width:100%} .table-wrap{max-width:100%;min-width:0} .calc-grid,.calculator-grid{min-width:0}</style>
+<style>.card{min-width:0} .calculator-layout > *{min-width:0}</style></head>
 
 <body>
   <main class="wrap">
@@ -371,7 +372,7 @@
     </p>
 
     <h1>Marathon Fueling Calculator</h1>
-    <p class="meta">Updated: 12 Mar 2026 · Free tool</p>
+    <p class="meta">Updated: 21 September 2026 · Free tool</p>
     <p class="lede">
       Work out your marathon fueling plan based on finish time, carb target, gel size, and sports drink use.
       This calculator estimates gels per hour, total gels needed, gel timing, and approximate kilometre checkpoints.
@@ -392,7 +393,7 @@
               </div>
               <div class="time-separator" aria-hidden="true">:</div>
               <div class="time-part">
-                <input id="finishMinutes" type="number" min="0" max="59" step="1" value="00" inputmode="numeric" placeholder="00" />
+                <input id="finishMinutes" aria-label="Finish time minutes" type="number" min="0" max="59" step="1" value="00" inputmode="numeric" placeholder="00" />
                 <span class="hint">Minutes</span>
               </div>
             </div>
@@ -462,6 +463,8 @@
 
       <section class="card" aria-labelledby="results-heading">
         <h2 id="results-heading">Your fueling plan</h2>
+        <p id="fuelError" role="alert" hidden></p>
+        <p id="actualIntake" role="status" aria-live="polite"></p>
 
         <div class="results-grid">
           <div class="stat">
@@ -473,11 +476,11 @@
             <span class="stat-value" id="outPaceKm">5:41 /km</span>
           </div>
           <div class="stat">
-            <span class="stat-label">Carbs from gels per hour</span>
+            <span class="stat-label">Target carbs from gels per hour</span>
             <span class="stat-value" id="outGelCarbsPerHour">60 g/h</span>
           </div>
           <div class="stat">
-            <span class="stat-label">Gels per hour</span>
+            <span class="stat-label">Gels per hour needed for target</span>
             <span class="stat-value" id="outGelsPerHour">2.4</span>
           </div>
           <div class="stat">
@@ -609,7 +612,8 @@
         <li><a href="/blog/racing-in-heat-wind-hills/">Racing in heat, wind, and hills</a></li>
       </ul>
     </section>
-  </main>
+  <section class="card" id="fuel-method"><h2>How to check the schedule</h2><p>The hourly target and the selected interval are separate inputs. We place one gel at the first-gel time, then at each interval before the finish. Scheduled gel grams divided by race duration gives the actual race-average intake; planned sports-drink grams are then added. Backup gels are not counted as eaten.</p><p>Example: over four hours, nine 25 g gels supply 225 g, averaging 56.25 g/h. That is below a 60 g/h target even though a gel every 25 minutes sounds like 60 g/h. The initial wait and final gap matter. Timing does not guarantee consumption or absorption.</p><p>Use an intake you have practised. <a href="https://pubmed.ncbi.nlm.nih.gov/30747558/">Burke and colleagues' review of distance-running nutrition</a> emphasises personalising and rehearsing carbohydrate and fluid plans. For an example of the limits of a gel count, see <a href="/blog/sydney-marathon-2026-personal-review/#fuel">my Sydney review</a>.</p></section>
+</main>
 
   <script>
     const marathonKm = 42.195;
@@ -653,10 +657,8 @@
     }
 
     function formatPace(minPerKm) {
-      const minutes = Math.floor(minPerKm);
-      const seconds = Math.round((minPerKm - minutes) * 60);
-      const safeSeconds = seconds === 60 ? 59 : seconds;
-      return `${minutes}:${String(safeSeconds).padStart(2, '0')} /km`;
+      const seconds = Math.round(minPerKm * 60);
+      return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')} /km`;
     }
 
     function round1(n) {
@@ -664,6 +666,20 @@
     }
 
     function calculate() {
+      const activeFields = [finishHoursEl, finishMinutesEl, carbTargetEl, gelCarbsEl, firstGelEl, carryExtraEl];
+      if (useDrinkEl.checked) activeFields.push(drinkCarbsEl, drinkServingsEl);
+      const invalid = activeFields.filter(el => el.value.trim() === '' || !el.checkValidity() || !Number.isFinite(Number(el.value)));
+      activeFields.forEach(el => el.setAttribute('aria-invalid', String(invalid.includes(el))));
+      document.getElementById('fuelError').hidden = invalid.length === 0;
+      document.getElementById('copyPlanBtn').disabled = invalid.length > 0;
+      if (invalid.length) {
+        document.getElementById('fuelError').textContent = 'Complete the inputs with values inside the displayed ranges.';
+        document.getElementById('actualIntake').textContent = '';
+        [outRaceTimeEl, outPaceKmEl, outGelCarbsPerHourEl, outGelsPerHourEl, outPlannedGelsEl, outCarryGelsEl].forEach(el => el.textContent = '—');
+        outSummaryEl.textContent = 'Update the inputs to generate a schedule.';
+        scheduleBodyEl.innerHTML = ''; planTextEl.value = '';
+        return;
+      }
       const finishHours = clamp(parseInt(finishHoursEl.value || '4', 10), 2, 8);
       const finishMinutes = clamp(parseInt(finishMinutesEl.value || '0', 10), 0, 59);
       const totalRaceMinutes = finishHours * 60 + finishMinutes;
@@ -686,13 +702,19 @@
 
       const times = [];
       let t = firstGel;
-      while (t < totalRaceMinutes - 5) {
+      while (gelCarbsPerHour > 0 && t < totalRaceMinutes) {
         times.push(t);
         t += interval;
       }
 
       const plannedGels = times.length;
       const carryGels = plannedGels + carryExtra;
+      const scheduledGelCarbs = plannedGels * gelCarbs / (totalRaceMinutes / 60);
+      const scheduledTotal = scheduledGelCarbs + drinkCarbsPerHour;
+      const gap = scheduledTotal - carbTarget;
+      const difference = Math.abs(gap) < 0.05 ? 'matches the target' : `${round1(Math.abs(gap))} g/h ${gap < 0 ? 'below' : 'above'} the target`;
+      const actualSummary = `This schedule supplies ${round1(scheduledGelCarbs)} g/h from gels and ${round1(scheduledTotal)} g/h including planned drinks, averaged over the full race. It ${difference === 'matches the target' ? difference : 'is ' + difference}.`;
+      document.getElementById('actualIntake').textContent = actualSummary + ' Adjust gel size, timing or planned drinks to match an intake you have practised; the target does not automatically change your chosen interval.';
 
       outRaceTimeEl.textContent = formatRaceTime(totalRaceMinutes);
       outPaceKmEl.textContent = formatPace(pacePerKm);
@@ -705,6 +727,7 @@
       if (useDrink && drinkCarbsPerHour > 0) {
         summary += ` Sports drink contributes about ${round1(drinkCarbsPerHour)} g/h.`;
       }
+      if (!plannedGels) summary = 'No gels are scheduled because the planned drinks already meet or exceed the selected carbohydrate target. Backup gels are separate from scheduled intake.';
       outSummaryEl.textContent = summary;
 
       scheduleBodyEl.innerHTML = '';
@@ -734,11 +757,12 @@
         planLines.push(`Target carbs from gels: ${round1(gelCarbsPerHour)} g/h`);
       }
       planLines.push(`Gel size: ${gelCarbs} g`);
-      planLines.push(`Gels per hour: ${round1(gelsPerHour)}`);
+      planLines.push(`Gels per hour needed for target: ${round1(gelsPerHour)}`);
+      planLines.push(actualSummary);
       planLines.push(`Planned gels during race: ${plannedGels}`);
       planLines.push(`Carry this many gels: ${carryGels}`);
       planLines.push('');
-      planLines.push(`Schedule: first gel at ${Math.round(firstGel)} minutes, then every ${Math.round(interval)} minutes.`);
+      planLines.push(plannedGels ? `Schedule: first gel at ${Math.round(firstGel)} minutes, then every ${Math.round(interval)} minutes.` : 'No gels scheduled; carbohydrate target covered by planned drinks.');
       planLines.push('');
       planLines.push('GEL SCHEDULE');
       times.forEach((time, index) => {
@@ -798,5 +822,6 @@
 
     calculate();
   </script>
+<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/about/">About Davin</a> <a href="/contact/">Contact &amp; corrections</a> <a href="/privacy/">Privacy</a> <a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
 </body>
 </html>

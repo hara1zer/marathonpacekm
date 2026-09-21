@@ -106,15 +106,18 @@ function calc() {
 
   if (!hEl || !mEl || !sEl || !distEl || !resultsEl) return;
 
-  // sanitize input
-  const h = clampInt(hEl.value, 0, 99, 0);
-  const m = clampInt(mEl.value, 0, 59, 0);
-  const s = clampInt(sEl.value, 0, 59, 0);
-
-  // write back sanitized values (prevents weird inputs)
-  hEl.value = h;
-  mEl.value = m;
-  sEl.value = s;
+  const fields = [hEl, mEl, sEl];
+  const valid = fields.every((el, index) => {
+    const value = el.value.trim();
+    const ok = /^\d+$/.test(value) && Number(value) <= (index === 0 ? 23 : 59);
+    el.setAttribute("aria-invalid", String(!ok));
+    return ok;
+  });
+  if (!valid) {
+    resultsEl.innerHTML = '<p role="alert">Enter whole hours (0–23), minutes (0–59) and seconds (0–59).</p>';
+    return;
+  }
+  const h = Number(hEl.value), m = Number(mEl.value), s = Number(sEl.value);
 
   const dist = Number(distEl.value);
   const totalSec = h * 3600 + m * 60 + s;
@@ -160,7 +163,7 @@ function calc() {
   const wholeKm = Math.floor(dist);
   let splitRows = "";
 
-  for (let km = 1; km <= wholeKm; km++) {
+  for (let km = 1; km <= wholeKm && km < dist; km++) {
     splitRows += `<tr><td>${km}</td><td>${secondsToHMS(secPerKm * km)}</td></tr>`;
   }
 
@@ -170,7 +173,8 @@ function calc() {
   splitRows += `<tr><td><b>${finishSplitLabel}</b></td><td><b>${timeStr}</b></td></tr>`;
 
   resultsEl.innerHTML = `
-    <p><b>Average pace:</b> ${paceStr}</p>
+    <p><b>Average pace:</b> ${paceStr} (rounded)</p>
+    <p class="tiny muted">Splits use unrounded pace over ${dist} km and continuous elapsed time, including stops.</p>
     <p class="muted"><b>Finish time:</b> ${timeStr} &nbsp;|&nbsp; <b>Distance:</b> ${dist} km</p>
 
     <h3>Race-day checkpoints</h3>
@@ -209,7 +213,7 @@ function resetForm() {
   if (mEl) mEl.value = 0;
   if (sEl) sEl.value = 0;
   if (distEl) distEl.value = "42.195";
-  if (resultsEl) resultsEl.innerHTML = "";
+  if (resultsEl) calc();
 }
 
 /* ---------- goal pages ---------- */
