@@ -1,0 +1,115 @@
+/* Shared Marathon Pace KM branding. Screen rules leave printable tools intact. */
+@media screen {
+  html:root {
+    --ink:#152d27; --text:#152d27; --muted:#536760; --muted2:#536760;
+    --green:#174f40; --deep:#103c31; --lime:#dbf397; --paper:#f6f8f3;
+    --line:#dbe4d9; --border:#dbe4d9; --line2:#e8eee3; --white:#fff;
+    --bg:#f6f8f3; --panel:#fff; --soft:#edf3e7; --primary:#174f40;
+    --primary-soft:#edf3e7; --radius:20px;
+    --band-red:#174f40; --band-red-dark:#103c31; --band-blue:#174f40;
+    --band-ink:#152d27; --band-muted:#536760; --band-line:#dbe4d9; --band-soft:#edf3e7;
+    color-scheme:light;
+  }
+  body.mpkm-legacy {
+    margin:0; padding:0; width:100%; max-width:none; background:var(--paper); color:var(--ink);
+    font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:16px; line-height:1.65;
+  }
+  .mpkm-legacy *, .mpkm-site-header * {box-sizing:border-box}
+  .mpkm-legacy .wrap, .mpkm-legacy .container {
+    width:min(1200px,calc(100% - 64px)); max-width:1200px;
+    margin-inline:auto; padding-inline:0!important;
+  }
+  .mpkm-legacy header.wrap {padding-block:32px 20px!important}
+  .mpkm-legacy main.wrap, .mpkm-legacy main.container {padding-block:12px 40px}
+  .mpkm-legacy .wrap .wrap, .mpkm-legacy .container .container {width:100%}
+  .mpkm-legacy h1,.mpkm-legacy h2,.mpkm-legacy h3 {
+    color:var(--ink);letter-spacing:-.035em;line-height:1.18;
+  }
+  .mpkm-legacy h1 {font-size:clamp(2rem,4.3vw,3.4rem);margin:16px 0;max-width:1000px}
+  .mpkm-legacy h2 {font-size:clamp(1.4rem,2.4vw,1.9rem);margin-block:0 16px}
+  .mpkm-legacy h3 {font-size:1.15rem;margin-block:24px 12px}
+  .mpkm-legacy p {margin-block:12px;max-width:80ch}
+  .mpkm-legacy a {color:var(--green);text-underline-offset:4px;overflow-wrap:anywhere}
+  .mpkm-legacy a:hover {text-decoration-thickness:2px}
+  .mpkm-legacy .muted,.mpkm-legacy .muted2,.mpkm-legacy .sub,.mpkm-legacy .meta,
+  .mpkm-legacy .post-meta,.mpkm-legacy .lede {color:var(--muted)}
+  .mpkm-legacy .card,.mpkm-legacy .panel,.mpkm-legacy .mini-card,.mpkm-legacy .tool-card {
+    min-width:0;background:#fff;border:1px solid var(--line);border-radius:20px;
+    padding:24px;box-shadow:none;
+  }
+  .mpkm-legacy section.card+section.card {margin-top:22px}
+  .mpkm-legacy .callout,.mpkm-legacy .note,.mpkm-legacy .toc,
+  .mpkm-legacy .eeat-box,.mpkm-legacy .bottom-line,.mpkm-legacy .table-of-contents {
+    background:#edf3e7;border-color:#c7d9cb;border-radius:14px;color:var(--ink);
+  }
+  .mpkm-legacy .warn,.mpkm-legacy .warning {background:#fff5df;border-color:#c79837}
+  .mpkm-legacy .error,[aria-invalid="true"] {border-color:#a62b1f}
+  .mpkm-legacy button,.mpkm-legacy input,.mpkm-legacy select,.mpkm-legacy textarea {font:inherit;max-width:100%}
+  .mpkm-legacy input,.mpkm-legacy select,.mpkm-legacy textarea {
+    color:var(--ink);background:#fff;border:1px solid #b8c8b8;border-radius:9px;
+  }
+  .mpkm-legacy input:not([type="checkbox"]):not([type="radio"]),.mpkm-legacy select {min-height:44px}
+  .mpkm-legacy input[type="checkbox"],.mpkm-legacy input[type="radio"] {accent-color:var(--green)}
+  .mpkm-legacy button,.mpkm-legacy .btn,.mpkm-legacy .button {
+    background:var(--green)!important;color:#fff!important;border:1px solid var(--green)!important;
+    border-radius:10px;font-size:.9rem;font-weight:650;line-height:1.3;
+    padding:11px 17px;min-height:44px;text-decoration:none;cursor:pointer;
+  }
+  .mpkm-legacy button:hover,.mpkm-legacy .btn:hover,.mpkm-legacy .button:hover {background:var(--deep)!important}
+  .mpkm-legacy .btn.secondary,.mpkm-legacy .btn.ghost,.mpkm-legacy .button-secondary,
+  .mpkm-legacy button.secondary,.mpkm-legacy #resetBtn,.mpkm-legacy #btnReset {
+    background:#fff!important;color:var(--green)!important;border-color:#b8c8b8!important;
+  }
+  .mpkm-legacy .chip {background:#fff!important;color:var(--green)!important;border-color:#b8c8b8!important}
+  .mpkm-legacy .chip[aria-pressed="true"],.mpkm-legacy .tab[aria-selected="true"] {background:var(--green)!important;color:#fff!important}
+  .mpkm-legacy button:disabled {opacity:.55;cursor:not-allowed}
+  .mpkm-legacy :focus-visible {outline:3px solid #ad7300;outline-offset:3px}
+  .mpkm-legacy table {color:var(--ink);font-variant-numeric:tabular-nums}
+  .mpkm-legacy th {background:#edf3e7;color:var(--green);border-color:var(--line)}
+  .mpkm-legacy td {border-color:var(--line)}
+  .mpkm-legacy .splitBox,.mpkm-legacy .split-item,.mpkm-legacy .fact,.mpkm-legacy .stat {
+    background:#f3f6ef;color:var(--ink);border-color:var(--line);border-radius:12px;
+  }
+  .mpkm-legacy .pill,.mpkm-legacy .badge,.mpkm-legacy .tag {
+    background:#edf3e7;color:var(--green);border-color:#c7d9cb;
+  }
+  .mpkm-legacy .split-table tr:last-child td {background:#edf3e7;color:var(--green)}
+  .mpkm-legacy .table-scroll,.mpkm-legacy .table-wrap {overflow-x:auto;max-width:100%;min-width:0}
+  .mpkm-legacy footer {color:var(--muted);border-color:var(--line)}
+  .mpkm-legacy footer.wrap {padding-block:28px 40px!important}
+  .mpkm-legacy .site-info {padding-block:24px;border-top:1px solid var(--line)}
+  /* The shared masthead is independent of each legacy page's content layout. */
+  body .mpkm-site-header {
+    display:block;width:100%;max-width:none;margin:0;padding:0;
+    border:0;border-bottom:1px solid #dbe4d9;background:#f6f8f3;color:#152d27;
+    position:relative;box-shadow:none;
+  }
+  .mpkm-site-header .mpkm-header-inner {
+    width:min(1200px,calc(100% - 64px));margin:0 auto;min-height:86px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 0;
+  }
+  .mpkm-site-header .mpkm-brand {
+    display:flex;align-items:center;gap:12px;text-decoration:none;color:#152d27;
+    font-size:1.04rem;font-weight:760;letter-spacing:-.035em;line-height:1.15;flex-shrink:0;
+  }
+  .mpkm-brand .mpkm-brand-mark {display:grid;place-items:center;width:42px;height:42px;background:#174f40;border-radius:50%;color:#dbf397;flex:none}
+  .mpkm-brand-mark svg {display:block;width:25px;height:25px}
+  .mpkm-brand small {display:block;font-size:.64rem;font-weight:600;letter-spacing:.12em;margin-top:5px;text-transform:uppercase;color:#536760}
+  .mpkm-site-header .mpkm-main-nav {display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding:0;margin:0;background:none;border:0}
+  .mpkm-main-nav a {font-size:.87rem;font-weight:600;color:#174f40;text-decoration:none;padding:10px 0}
+  .mpkm-main-nav .mpkm-nav-cta {border:1px solid #bacbbb;border-radius:99px;padding:10px 17px}
+  .mpkm-main-nav a[aria-current="page"] {text-decoration:underline;text-decoration-thickness:2px}
+  .mpkm-legacy .mpkm-old-brand {display:none}
+  @media(max-width:760px) {
+    .mpkm-legacy .wrap,.mpkm-legacy .container,.mpkm-site-header .mpkm-header-inner {width:calc(100% - 32px)}
+    .mpkm-site-header .mpkm-header-inner {flex-wrap:wrap;gap:14px}
+    .mpkm-site-header .mpkm-main-nav {gap:8px 20px;width:100%}
+    .mpkm-main-nav a {min-height:44px;display:inline-flex;align-items:center}
+    .mpkm-legacy .card,.mpkm-legacy .panel {padding:20px}
+    .mpkm-legacy h1 {font-size:2rem}
+    .mpkm-legacy .grid,.mpkm-legacy .twoCol {grid-template-columns:minmax(0,1fr)}
+  }
+  @media(prefers-reduced-motion:reduce) {html {scroll-behavior:auto!important}}
+}
+@media print {.mpkm-site-header {display:none!important}}

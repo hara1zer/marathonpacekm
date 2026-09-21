@@ -44,6 +44,12 @@ try{
           const width=document.documentElement.clientWidth;
           return {
             overflow:document.documentElement.scrollWidth>width+2,
+            branded:!!document.querySelector('.brand-mark svg,.mpkm-brand-mark svg'),
+            themeLoaded:!![...document.styleSheets].find(s=>s.href?.includes('/assets/theme.css')),
+            blueSurfaces:[...document.querySelectorAll('section,button,.card,.callout,header')].filter(el=>{
+              const c=getComputedStyle(el).backgroundColor.match(/[\d.]+/g)?.map(Number)||[];
+              return el.getBoundingClientRect().width>20&&c.length>=3&&c[2]>c[0]+20&&c[2]>c[1]+15;
+            }).map(el=>({tag:el.tagName,cls:el.className,color:getComputedStyle(el).backgroundColor})),
             wide:[...document.querySelectorAll('body *')].filter(el=>{const r=el.getBoundingClientRect();return r.width&&r.right>width+3&&getComputedStyle(el).position!=='absolute'&&!el.closest('.table-scroll,.split-table-wrap,textarea,svg')}).slice(0,6).map(el=>({tag:el.tagName,id:el.id,cls:el.className,width:el.getBoundingClientRect().width})),
             inputs:[...document.querySelectorAll('input,select,button,textarea')].map(el=>({id:el.id,type:el.type,value:el.value,text:(el.textContent||'').trim().slice(0,80)})),
             h1:document.querySelector('h1')?.textContent
@@ -59,6 +65,6 @@ try{
     await context.close();
   }
   fs.writeFileSync(output+'/browser-diagnostics.json',JSON.stringify(results,null,2));
-  console.log(JSON.stringify({browser:browser.version(),checked:results.length,issues:results.filter(x=>x.errors?.length||x.missing?.length||x.overflow).map(({route,width,errors,missing,overflow,wide})=>({route,width,errors,missing,overflow,wide}))},null,2));
-  if(results.some(x=>x.errors?.length||x.missing?.length||x.overflow))process.exitCode=1;
+  console.log(JSON.stringify({browser:browser.version(),checked:results.length,issues:results.filter(x=>x.errors?.length||x.missing?.length||x.overflow||!x.branded||!x.themeLoaded).map(({route,width,errors,missing,overflow,wide})=>({route,width,errors,missing,overflow,wide}))},null,2));
+  if(results.some(x=>x.errors?.length||x.missing?.length||x.overflow||!x.branded||!x.themeLoaded))process.exitCode=1;
 }finally{await browser.close();server.close();}
