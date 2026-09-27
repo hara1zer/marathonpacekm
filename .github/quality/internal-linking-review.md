@@ -2,7 +2,22 @@
 
 Branch: `improve-internal-linking`.
 Baseline: `main` at `4b4bc52e595e5f8a865c213916cf265f46202145`, which includes merged PRs #1–4.
-The implementation commit is the head of this branch. Work from that commit when resuming; do not reapply the changes below.
+Recovered implementation commit: `39ce54a88beee9cc2cfeb0c68defb3bedd56b4b2`. The branch now also incorporates the subsequent GA4 update, as recorded below. Work from the current branch head when resuming; do not reapply the changes below.
+
+## Recovery and combined verification — 28 September 2026 (Manila)
+
+Recovered the complete previously tested tree `1ffa47b4ef420f0a9bf694d8bac0c491c4612357` after temporary workspace maintenance. Anchored it in the implementation commit above, then merged `main` at `98ec505aff9828be8b95433536c74294bc410823` (GA4 PR #5) without conflicts. No duplicate content implementation was needed.
+
+Validation of this combined version:
+
+- GA4 measurement ID `G-04CFG6TG7N` remains present exactly once as a loader on all 101 HTML pages. All executable inline scripts and external script references match current `main`, including GA4's query/fragment exclusion logic.
+- The GA4 Privacy update, redirects, HTTP headers, robots.txt and XML sitemap match current `main` byte for byte.
+- All 4,483 internal anchors pass destination, fragment and label checks. The blog links all 36 articles; all normal pages are reachable without traversing the HTML sitemap. The graph retains the 62 new page-to-page connections from the original work.
+- Re-ran all 12 existing functional regressions successfully, including calculations, input handling, downloads and printing.
+- Re-ran all 101 pages at 1280 px and 390 px: 202 checks passed, with no script errors, missing local resources, missing shared branding or horizontal overflow.
+- `git diff --check` passed. Calculator code, page URLs, canonicals and indexability remain unchanged relative to current `main`. The only structured-data change remains the mismatched FAQ removal documented below.
+
+The tests use local pages with third-party network requests blocked; GA4 preservation is verified, but live event delivery and production deployment are not claimed. Production merge remains the owner's final step.
 
 ## Assessment
 
