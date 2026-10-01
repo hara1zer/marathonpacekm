@@ -71,41 +71,63 @@
     }
   </style>
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
-          {"@type":"ListItem","position":2,"name":"Pace Band Templates","item":"https://marathonpacekm.com/printable-pace-band/"},
-          {"@type":"ListItem","position":3,"name":"Sub-4 Pace Band","item":"https://marathonpacekm.com/pace-band/sub-4/"}
-        ]
-      },
-      {
-        "@type":"FAQPage",
-        "mainEntity":[
-          {
-            "@type":"Question",
-            "name":"What pace is a Sub-4 marathon?",
-            "acceptedAnswer":{"@type":"Answer","text":"A Sub-4 marathon (3:59:59) averages about 5:41 per km (9:09 per mile)."}
-          },
-          {
-            "@type":"Question",
-            "name":"What’s included on this Sub-4 pace band?",
-            "acceptedAnswer":{"@type":"Answer","text":"Key checkpoints: 5K, 10K, half, 30K, 40K, and finish. You can print a wrist band or an A4 pacing sheet."}
-          },
-          {
-            "@type":"Question",
-            "name":"How do I print or save as PDF?",
-            "acceptedAnswer":{"@type":"Answer","text":"Click Wrist Band (PDF) or A4 Sheet (PDF) and your browser print dialog will open. Choose Save as PDF or print normally."}
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Marathon Pace Chart (KM)",
+          "item": "https://marathonpacekm.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Pace Band Templates",
+          "item": "https://marathonpacekm.com/printable-pace-band/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Sub-4 Pace Band",
+          "item": "https://marathonpacekm.com/pace-band/sub-4/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What pace is a Sub-4 marathon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Sub-4 marathon (3:59:59) averages about 5:41 per km (9:09 per mile)."
           }
-        ]
-      }
-    ]
-  }
-  </script>
+        },
+        {
+          "@type": "Question",
+          "name": "What’s included on this Sub-4 pace band?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Key checkpoints: 5K, 10K, half, 30K, 40K, and finish. You can print a wrist band or an A4 pacing sheet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I print or save as PDF?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Click Wrist Band (PDF) or A4 Sheet (PDF) and your browser print dialog will open. Choose Save as PDF or print normally."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
 
   <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml" />
   <link rel="alternate icon" href="/favicon.ico?v=20260922" />
@@ -113,6 +135,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
      crossorigin="anonymous"></script>     <meta name="theme-color" content="#174f40">
 <link rel="stylesheet" href="/assets/theme.css?v=20260922">
+<link rel="stylesheet" href="/assets/content.css?v=20261001">
 </head>
 
 <body id="top" class="mpkm-legacy">
@@ -143,6 +166,7 @@
   </header>
 
   <main class="wrap" id="content">
+<p class="byline">Published by <a href="/about/#author" rel="author">Davin Pinto</a> · Reviewed <time datetime="2026-10-01">1 October 2026</time> · <a href="/editorial-policy/">Editorial policy</a> · <a href="/contact/">Corrections</a></p>
 
     <section id="downloads" class="card">
       <h2>Download / Print</h2>
@@ -185,23 +209,9 @@
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
 
-    <section id="tips" class="card">
-      <h2>Tips for running Sub-4</h2>
-      <ul class="muted">
-        <li><strong>Start controlled:</strong> avoid early surges and let the pace come to you in the first 5–10K.</li>
-        <li><strong>Use checkpoints:</strong> focus on 10K, half, 30K, and 40K — not moment-to-moment GPS noise.</li>
-        <li><strong>Fuel early:</strong> small, regular carbs from early in the race helps prevent the late collapse.</li>
-        <li><strong>Don’t “bank time”:</strong> read <a href="/blog/time-in-the-bank-math/">why starting too fast costs minutes</a>.</li>
-      </ul>
+    <section class="card" id="checkpoint-card"><h2>3:59:59 checkpoint card to save</h2><p>This card gives the six elapsed checkpoints most useful for checking an even plan. Save the SVG to your phone, or use the existing print buttons for the fitted wrist band and A4 sheet.</p><figure class="checkpoint-preview"><img src="/assets/original/checkpoint-sub-4.svg" alt="Even checkpoints for 3:59:59: 5 km 0:28:26, 10 km 0:56:52, halfway 2:00:00, 30 km 2:50:37, 40 km 3:47:30, finish 3:59:59." width="480" height="574" loading="lazy"><figcaption>All checkpoints use the full-precision average over 42.195 km. Elapsed time includes pauses. This is a reference card, not a wrist-size print layout.</figcaption></figure><p><a class="btn secondary" href="/assets/original/checkpoint-sub-4.svg" download="marathon-sub-4-checkpoints.svg">Save the 3:59:59 checkpoint card</a></p></section>
+<section class="card" id="tips"><h2>Read the one-second margin honestly</h2><p>This preset targets 3:59:59. Its exact halfway time is 1:59:59.5, displayed as 2:00:00 after rounding. That one-second finish margin does not account for a longer GPS trace, an unplanned pause or a late slowdown. Choose a sustainable target with deliberate allowance rather than treating the rounded pace label as insurance.</p><p>For wind, hills or heat, use this as a time reference alongside the <a href="/race-conditions-pace-adjuster/">conditions tool</a>. Accept a revised finish target when the effort no longer fits.</p></section>
 
-      <div class="row actions" style="margin-top:10px; gap:10px">
-        <a class="btn" href="/marathon-pace-calculator/">Build full checkpoint splits</a>
-        <a class="btn secondary" href="/blog/marathon-splits/">Marathon splits explained</a>
-        <a class="btn secondary" href="/blog/negative-split-pacing/">Negative split pacing</a>
-      </div>
-
-      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-    </section>
 
     <section id="faq" class="card">
       <h2>Sub-4 pace band FAQ</h2>
@@ -219,6 +229,7 @@
     </section>
 
   <section class="card"><h2>Check this band before race day</h2><p>This preset targets 3:59:59 over 42.195 km. The halfway checkpoint displays as 2:00:00. Times include stationary stops; the printable band does not add an allowance for them.</p><p>Use the wrist option for a wearable strip and the A4 checkpoint sheet for a larger reference. Print at actual size and check the scale on wrist bands. Both links open the same goal in the generator; you can change units or pacing strategy there.</p><p>A controlled start or negative split changes later checkpoints while preserving the finish target. Read the required later pace before choosing it. <a href="/methodology/#pace-band">How the strategies are calculated</a> · <a href="/marathon-fueling-calculator/">Plan a separate fueling schedule</a>.</p></section>
+<section class="card" id="more-guidance"><h2>More guidance</h2><ul><li><a href="/blog/time-in-the-bank-math/">why starting too fast costs minutes</a></li><li><a href="/marathon-pace-calculator/">Build full checkpoint splits</a></li><li><a href="/blog/marathon-splits/">Marathon splits explained</a></li><li><a href="/blog/negative-split-pacing/">Negative split pacing</a></li></ul></section>
 </main>
 
   <script>

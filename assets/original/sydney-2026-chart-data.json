@@ -1,0 +1,84 @@
+{
+  "source": "/blog/sydney-marathon-2026-personal-review/",
+  "weekly_km": [
+    64.5,
+    40.8,
+    64.8,
+    72.4,
+    75.3,
+    80.8,
+    27.3,
+    44.2,
+    83.9,
+    74.2,
+    54.3,
+    46.4
+  ],
+  "week_start_2026": [
+    "1 Jun",
+    "8 Jun",
+    "15 Jun",
+    "22 Jun",
+    "29 Jun",
+    "6 Jul",
+    "13 Jul",
+    "20 Jul",
+    "27 Jul",
+    "3 Aug",
+    "10 Aug",
+    "17 Aug"
+  ],
+  "runs": [
+    5,
+    4,
+    5,
+    5,
+    5,
+    5,
+    2,
+    3,
+    5,
+    4,
+    5,
+    5
+  ],
+  "race_km": [
+    25,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33
+  ],
+  "race_pace_seconds_per_km": [
+    332,
+    351,
+    355,
+    362,
+    353,
+    380,
+    392,
+    410
+  ],
+  "race_heart_rate_bpm": [
+    160,
+    162,
+    164,
+    164,
+    162,
+    161,
+    162,
+    160
+  ],
+  "long_run_early_lap_range_seconds_per_km": [
+    316,
+    331
+  ],
+  "long_run_final_full_laps_seconds_per_km": [
+    388,
+    407
+  ],
+  "limits": "Rounded figures already published in the personal review. No kilometre 26 observation, full long-run lap series or official timing comparison is reconstructed."
+}

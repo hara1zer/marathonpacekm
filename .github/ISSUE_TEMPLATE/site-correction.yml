@@ -1,0 +1,32 @@
+name: Site correction or calculator problem
+description: Report a factual, calculation, link or print issue on Marathon Pace KM.
+title: "[Correction] "
+body:
+  - type: markdown
+    attributes:
+      value: "Reports are public. Include reproducible inputs and sources, and leave out private or medical details."
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+      placeholder: https://marathonpacekm.com/...
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What needs correcting?
+      description: Include the current text or the inputs and result shown.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result or supporting source
+      description: Explain the correction and link a primary source when available.
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device (for calculator or print issues)

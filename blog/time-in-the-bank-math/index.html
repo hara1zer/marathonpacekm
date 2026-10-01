@@ -28,60 +28,84 @@
   <meta property="og:description" content="Break-even pacing math + a calculator: how a small slowdown late wipes out early 'banked time'." />
   <meta property="og:url" content="https://marathonpacekm.com/blog/time-in-the-bank-math/" />
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Home","item":"https://marathonpacekm.com/"},
-          {"@type":"ListItem","position":2,"name":"Blog","item":"https://marathonpacekm.com/blog/"},
-          {"@type":"ListItem","position":3,"name":"The Math of Time in the Bank","item":"https://marathonpacekm.com/blog/time-in-the-bank-math/"}
-        ]
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://marathonpacekm.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://marathonpacekm.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The Math of Time in the Bank",
+          "item": "https://marathonpacekm.com/blog/time-in-the-bank-math/"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Math of “Time in the Bank”: Why Starting 10 sec/km Too Fast Usually Costs You Minutes",
+      "description": "A simple break-even equation shows how tiny late-race slowdowns erase early 'banked time'—plus a calculator, table, and pacing rules to avoid the 30–35K blow-up.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://marathonpacekm.com/blog/time-in-the-bank-math/"
       },
-      {
-        "@type":"BlogPosting",
-        "headline":"The Math of “Time in the Bank”: Why Starting 10 sec/km Too Fast Usually Costs You Minutes",
-        "description":"A simple break-even equation shows how tiny late-race slowdowns erase early 'banked time'—plus a calculator, table, and pacing rules to avoid the 30–35K blow-up.",
-        "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/time-in-the-bank-math/"},
-        "datePublished":"2026-01-28",
-        "dateModified":"2026-03-20",
-        "author":{"@type":"Organization","name":"Marathon Pace KM","url":"https://marathonpacekm.com/about/"},
-        "publisher":{"@type":"Organization","name":"Marathon Pace KM","url":"https://marathonpacekm.com/"}
+      "datePublished": "2026-01-28",
+      "dateModified": "2026-03-20",
+      "author": {
+        "@type": "Person",
+        "name": "Davin Pinto",
+        "url": "https://marathonpacekm.com/about/#author"
       },
-      {
-        "@type":"FAQPage",
-        "mainEntity":[
-          {
-            "@type":"Question",
-            "name":"Does banking time early in a marathon usually work?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"Usually not. Small early time gains are often erased by even modest late-race slowdowns, especially when runners start above sustainable marathon effort."
-            }
-          },
-          {
-            "@type":"Question",
-            "name":"How much late slowdown wipes out early banked time?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"It depends on how fast you start and how long you hold it. This page uses a simple break-even equation to show how little late slowdown is needed to erase an early gain."
-            }
-          },
-          {
-            "@type":"Question",
-            "name":"What is the safer alternative to banking time?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"A controlled start, steady middle, and only squeezing pace after 30–32K if effort is still stable is usually the safer way to run your best marathon."
-            }
-          }
-        ]
+      "publisher": {
+        "@type": "Organization",
+        "name": "Marathon Pace KM",
+        "url": "https://marathonpacekm.com/"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does banking time early in a marathon usually work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually not. Small early time gains are often erased by even modest late-race slowdowns, especially when runners start above sustainable marathon effort."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much late slowdown wipes out early banked time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on how fast you start and how long you hold it. This page uses a simple break-even equation to show how little late slowdown is needed to erase an early gain."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the safer alternative to banking time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A controlled start, steady middle, and only squeezing pace after 30–32K if effort is still stable is usually the safer way to run your best marathon."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
 
   <style>
     :root { color-scheme: light; }
@@ -126,6 +150,7 @@
      crossorigin="anonymous"></script>     <meta name="theme-color" content="#174f40">
 <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/theme.css?v=20260922">
+<link rel="stylesheet" href="/assets/content.css?v=20261001">
 </head>
 
 <body class="mpkm-legacy">
@@ -149,6 +174,7 @@
   </header>
 
   <main class="wrap">
+<p class="byline">Published by <a href="/about/#author" rel="author">Davin Pinto</a> · <a href="/editorial-policy/">Editorial policy</a> · <a href="/contact/">Corrections</a></p>
     <h1>The Math of “Time in the Bank”</h1>
     <p class="lede">
       Lots of runners try to bank time early, for example by running <strong>10 sec/km faster than goal pace</strong> and hoping to hang on.

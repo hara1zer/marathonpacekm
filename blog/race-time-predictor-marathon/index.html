@@ -238,85 +238,102 @@
     }
   </style>
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Home","item":"https://marathonpacekm.com/"},
-          {"@type":"ListItem","position":2,"name":"Blog","item":"https://marathonpacekm.com/blog/"},
-          {"@type":"ListItem","position":3,"name":"Race Predictor Marathon Time","item":"https://marathonpacekm.com/blog/race-time-predictor-marathon/"}
-        ]
-      },
-      {
-        "@type":"BlogPosting",
-        "headline":"Race Predictor Marathon Time | Combine 5K, 10K & Half Marathon Results",
-        "description":"A practical marathon race predictor that combines multiple race results, shows realistic ranges, and explains why single-race marathon predictors often fail.",
-        "mainEntityOfPage":{"@type":"WebPage","@id":"https://marathonpacekm.com/blog/race-time-predictor-marathon/"},
-        "datePublished":"2026-01-29",
-        "dateModified":"2026-03-21",
-        "author":{
-          "@type":"Organization",
-          "name":"Marathon Pace KM",
-          "url":"https://marathonpacekm.com/about/"
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://marathonpacekm.com/"
         },
-        "publisher":{
-          "@type":"Organization",
-          "name":"Marathon Pace KM",
-          "url":"https://marathonpacekm.com/",
-          "logo":{
-            "@type":"ImageObject",
-            "url":"https://marathonpacekm.com/assets/logo.png"
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://marathonpacekm.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Race Predictor Marathon Time",
+          "item": "https://marathonpacekm.com/blog/race-time-predictor-marathon/"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Race Predictor Marathon Time | Combine 5K, 10K & Half Marathon Results",
+      "description": "A practical marathon race predictor that combines multiple race results, shows realistic ranges, and explains why single-race marathon predictors often fail.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://marathonpacekm.com/blog/race-time-predictor-marathon/"
+      },
+      "datePublished": "2026-01-29",
+      "dateModified": "2026-10-01",
+      "author": {
+        "@type": "Person",
+        "name": "Davin Pinto",
+        "url": "https://marathonpacekm.com/about/#author"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Marathon Pace KM",
+        "url": "https://marathonpacekm.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://marathonpacekm.com/assets/logo.png"
+        }
+      },
+      "image": "https://marathonpacekm.com/assets/og/blog-race-time-predictor-marathon.png"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is a half marathon better than a 5K for predicting marathon time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A half marathon usually predicts marathon time better than a 5K because it reflects endurance more directly. Shorter races can overestimate marathon ability if your durability and fueling are not yet developed."
           }
         },
-        "image":"https://marathonpacekm.com/assets/og/blog-race-time-predictor-marathon.png"
-      },
-      {
-        "@type":"FAQPage",
-        "mainEntity":[
-          {
-            "@type":"Question",
-            "name":"Is a half marathon better than a 5K for predicting marathon time?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"Yes. A half marathon usually predicts marathon time better than a 5K because it reflects endurance more directly. Shorter races can overestimate marathon ability if your durability and fueling are not yet developed."
-            }
-          },
-          {
-            "@type":"Question",
-            "name":"Why should I combine multiple races instead of using just one?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"Different races reveal different strengths. A 5K shows speed, a 10K adds more endurance, and a half marathon gives the strongest race-based marathon signal for most runners. Combining them can reduce the chance of choosing an unrealistic goal."
-            }
-          },
-          {
-            "@type":"Question",
-            "name":"Should I use the aggressive or conservative marathon prediction?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"Use the conservative end if your long runs, fueling practice, durability, or race-day conditions are uncertain. Use the aggressive end only if your training supports it and your recent longer races are strong."
-            }
-          },
-          {
-            "@type":"Question",
-            "name":"What should I do after I get my predicted marathon time?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"Convert the time into pace and checkpoints, then build a race plan and training plan around it. Marathon execution matters as much as the prediction."
-            }
+        {
+          "@type": "Question",
+          "name": "Why should I combine multiple races instead of using just one?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Different races reveal different strengths. A 5K shows speed, a 10K adds more endurance, and a half marathon gives the strongest race-based marathon signal for most runners. Combining them can reduce the chance of choosing an unrealistic goal."
           }
-        ]
-      }
-    ]
-  }
-  </script>
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use the aggressive or conservative marathon prediction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the conservative end if your long runs, fueling practice, durability, or race-day conditions are uncertain. Use the aggressive end only if your training supports it and your recent longer races are strong."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What should I do after I get my predicted marathon time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Convert the time into pace and checkpoints, then build a race plan and training plan around it. Marathon execution matters as much as the prediction."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
      crossorigin="anonymous"></script>     <meta name="theme-color" content="#174f40">
 <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/theme.css?v=20260922">
+<link rel="stylesheet" href="/assets/content.css?v=20261001">
 </head>
 
 <body class="mpkm-legacy">
@@ -341,6 +358,7 @@
 </header>
 
 <main class="wrap">
+<p class="byline">Published by <a href="/about/#author" rel="author">Davin Pinto</a> · Reviewed <time datetime="2026-10-01">1 October 2026</time> · <a href="/editorial-policy/">Editorial policy</a> · <a href="/contact/">Corrections</a></p>
   <p class="breadcrumb">
     <a href="/">Home</a> › <a href="/blog/">Blog</a> › Race Predictor Marathon Time
   </p>
@@ -554,6 +572,7 @@
     <strong>Next step</strong>
     Convert your chosen marathon target into exact pace checkpoints in the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>, then tighten your race decision with <a href="/blog/choose-marathon-goal-time/">How to Choose a Realistic Marathon Goal Time</a>.
   </div>
+<section class="card" id="recorded-example"><h2>What a prediction missed in my own build</h2><p>The scenarios from my 1:50:57 half marathon all suggested sub-four, which I did not achieve at Sydney. <a href="/blog/sydney-marathon-2026-personal-review/#prediction">The personal review</a> records that comparison; its <a href="/blog/sydney-marathon-2026-personal-review/#slowdown">selected race-split chart</a> shows the later execution problem. Neither the formula nor this single race measures another runner’s probability of hitting a target.</p></section>
 </main>
 
 <footer>

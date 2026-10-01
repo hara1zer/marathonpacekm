@@ -1,0 +1,23 @@
+/* Article figures and reference tables; keep the site's shared palette. */
+.byline { color: #496258; font-size: .9rem; line-height: 1.7; }
+main figure { margin: 1.5rem 0; }
+main figure img { display: block; width: 100%; height: auto; border-radius: 12px; }
+main figcaption { color: #496258; font-size: .9rem; line-height: 1.6; margin-top: .7rem; }
+main .table-scroll { overflow-x: auto; max-width: 100%; min-width: 0; }
+main .table-scroll table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+main .table-scroll th, main .table-scroll td { text-align: left; padding: .7rem .8rem; border-bottom: 1px solid #d5e1d9; vertical-align: top; }
+main .table-scroll caption { text-align: left; color: #496258; font-size: .9rem; padding: .5rem 0; }
+main .table-scroll thead th { background: #edf3e7; color: #174f40; }
+main .table-scroll tbody th { font-weight: 600; }
+main .table-wide:focus-visible { outline: 2px solid #174f40; outline-offset: 4px; }
+main .table-hint { display: none; }
+main .checkpoint-preview { max-width: 580px; }
+main .source-note { padding: 1rem; border-left: 4px solid #174f40; background: #edf3e7; border-radius: 4px; }
+@media screen and (max-width: 600px) {
+  main .table-hint { display: block; color: #496258; font-size: .85rem; margin: .5rem 0; }
+  main .table-wide caption { max-width: calc(100vw - 84px); white-space: normal; }
+}
+@media print {
+  main .table-scroll { overflow: visible; }
+  main figure { break-inside: avoid; }
+}
