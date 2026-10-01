@@ -71,21 +71,34 @@
     }
   </style>
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
-          {"@type":"ListItem","position":2,"name":"Printable Pace Band","item":"https://marathonpacekm.com/printable-pace-band/"},
-          {"@type":"ListItem","position":3,"name":"3:00 Pace Band","item":"https://marathonpacekm.com/pace-band/3-00/"}
-        ]
-      }
-    ]
-  }
-  </script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Marathon Pace Chart (KM)",
+          "item": "https://marathonpacekm.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Printable Pace Band",
+          "item": "https://marathonpacekm.com/printable-pace-band/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "3:00 Pace Band",
+          "item": "https://marathonpacekm.com/pace-band/3-00/"
+        }
+      ]
+    }
+  ]
+}</script>
 
   <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml" />
   <link rel="alternate icon" href="/favicon.ico?v=20260922" />
@@ -93,6 +106,7 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
      crossorigin="anonymous"></script>     <meta name="theme-color" content="#174f40">
 <link rel="stylesheet" href="/assets/theme.css?v=20260922">
+<link rel="stylesheet" href="/assets/content.css?v=20261001">
 </head>
 
 <body id="top" class="mpkm-legacy">
@@ -123,6 +137,7 @@
   </header>
 
   <main class="wrap" id="content">
+<p class="byline">Published by <a href="/about/#author" rel="author">Davin Pinto</a> · Reviewed <time datetime="2026-10-01">1 October 2026</time> · <a href="/editorial-policy/">Editorial policy</a> · <a href="/contact/">Corrections</a></p>
 
     <section id="downloads" class="card">
       <h2>Download / Print</h2>
@@ -163,23 +178,9 @@
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
 
-    <section id="tips" class="card">
-      <h2>Tips for a 3:00 marathon</h2>
-      <ul class="muted">
-        <li><strong>Precision early:</strong> avoid surges and settle into rhythm.</li>
-        <li><strong>Checkpoint focus:</strong> 10K, half, 30K, 40K.</li>
-        <li><strong>Fuel early:</strong> start early and stay consistent.</li>
-        <li><strong>Avoid “banking time”:</strong> <a href="/blog/time-in-the-bank-math/">why it costs minutes</a>.</li>
-      </ul>
+    <section class="card" id="checkpoint-card"><h2>3:00 checkpoint card to save</h2><p>This card gives the six elapsed checkpoints most useful for checking an even plan. Save the SVG to your phone, or use the existing print buttons for the fitted wrist band and A4 sheet.</p><figure class="checkpoint-preview"><img src="/assets/original/checkpoint-3-00.svg" alt="Even checkpoints for 3:00: 5 km 0:21:20, 10 km 0:42:40, halfway 1:30:00, 30 km 2:07:59, 40 km 2:50:38, finish 3:00:00." width="480" height="574" loading="lazy"><figcaption>All checkpoints use the full-precision average over 42.195 km. Elapsed time includes pauses. This is a reference card, not a wrist-size print layout.</figcaption></figure><p><a class="btn secondary" href="/assets/original/checkpoint-3-00.svg" download="marathon-3-00-checkpoints.svg">Save the 3:00 checkpoint card</a></p></section>
+<section class="card" id="tips"><h2>Use a precise sub-three target</h2><p>Exactly 3:00:00 is three hours, not below it. If you want a 2:59:30 finish, set that value in the generator before printing; halfway becomes 1:29:45. A rounded 4:16/km label alone cannot guarantee the finish.</p><p>For wind, hills or heat, use this as a time reference alongside the <a href="/race-conditions-pace-adjuster/">conditions tool</a>. Accept a revised finish target when the effort no longer fits.</p></section>
 
-      <div class="row actions" style="margin-top:10px; gap:10px">
-        <a class="btn" href="/marathon-pace-calculator/">Build full checkpoint splits</a>
-        <a class="btn secondary" href="/blog/marathon-splits/">Splits explained</a>
-        <a class="btn secondary" href="/blog/negative-split-pacing/">Negative split pacing</a>
-      </div>
-
-      <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
-    </section>
 
     <section id="faq" class="card">
       <h2>3:00 pace band FAQ</h2>
@@ -194,6 +195,7 @@
     </section>
 
   <section class="card"><h2>Check this band before race day</h2><p>This preset targets 3:00:00 over 42.195 km. The halfway checkpoint displays as 1:30:00. Times include stationary stops; the printable band does not add an allowance for them.</p><p>Use the wrist option for a wearable strip and the A4 checkpoint sheet for a larger reference. Print at actual size and check the scale on wrist bands. Both links open the same goal in the generator; you can change units or pacing strategy there.</p><p>A controlled start or negative split changes later checkpoints while preserving the finish target. Read the required later pace before choosing it. <a href="/methodology/#pace-band">How the strategies are calculated</a> · <a href="/marathon-fueling-calculator/">Plan a separate fueling schedule</a>.</p></section>
+<section class="card" id="more-guidance"><h2>More guidance</h2><ul><li><a href="/blog/time-in-the-bank-math/">why it costs minutes</a></li><li><a href="/marathon-pace-calculator/">Build full checkpoint splits</a></li><li><a href="/blog/marathon-splits/">Splits explained</a></li><li><a href="/blog/negative-split-pacing/">Negative split pacing</a></li></ul></section>
 </main>
 
   <script>

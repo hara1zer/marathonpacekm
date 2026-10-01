@@ -45,83 +45,100 @@
     }
   </style>
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Home","item":"https://marathonpacekm.com/"},
-          {"@type":"ListItem","position":2,"name":"Blog","item":"https://marathonpacekm.com/blog/"},
-          {"@type":"ListItem","position":3,"name":"Signal vs Noise in Marathon Training Pace","item":"https://marathonpacekm.com/blog/signal-vs-noise-marathon-training-pace/"}
-        ]
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://marathonpacekm.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://marathonpacekm.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Signal vs Noise in Marathon Training Pace",
+          "item": "https://marathonpacekm.com/blog/signal-vs-noise-marathon-training-pace/"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Signal vs Noise in Marathon Training Pace (When to Adjust vs Stay the Course)",
+      "description": "Your pace fluctuates day to day. Learn what's signal vs noise in marathon training: sleep, HRV, glycogen, stress, heat, wind, hills, fatigue and HR drift—plus a practical framework for when to adjust training and when to stay the course.",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://marathonpacekm.com/blog/signal-vs-noise-marathon-training-pace/"
       },
-      {
-        "@type":"Article",
-        "headline":"Signal vs Noise in Marathon Training Pace (When to Adjust vs Stay the Course)",
-        "description":"Your pace fluctuates day to day. Learn what's signal vs noise in marathon training: sleep, HRV, glycogen, stress, heat, wind, hills, fatigue and HR drift—plus a practical framework for when to adjust training and when to stay the course.",
-        "mainEntityOfPage":{
-          "@type":"WebPage",
-          "@id":"https://marathonpacekm.com/blog/signal-vs-noise-marathon-training-pace/"
-        },
-        "author":{
-          "@type":"Organization",
-          "name":"Marathon Pace KM",
-          "url":"https://marathonpacekm.com/about/"
-        },
-        "publisher":{
-          "@type":"Organization",
-          "name":"Marathon Pace KM",
-          "logo":{"@type":"ImageObject","url":"https://marathonpacekm.com/assets/logo.png"},
-          "url":"https://marathonpacekm.com/"
-        },
-        "dateModified":"2026-03-20"
+      "author": {
+        "@type": "Person",
+        "name": "Davin Pinto",
+        "url": "https://marathonpacekm.com/about/#author"
       },
-      {
-        "@type":"FAQPage",
-        "mainEntity":[
-          {
-            "@type":"Question",
-            "name":"Why does my running pace fluctuate so much day to day?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"Day-to-day pace changes are often normal noise from sleep, stress, fueling (glycogen), heat and humidity, wind, hills, and cumulative fatigue. The key is looking for trends over several runs rather than reacting to one bad day."
-            }
-          },
-          {
-            "@type":"Question",
-            "name":"How do I know if I should adjust my training paces?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"Use a simple framework: check conditions first, then recovery, then performance trend across multiple sessions. If the change persists across several runs, it is more likely a signal; if it disappears after rest or better fueling, it was likely noise."
-            }
-          },
-          {
-            "@type":"Question",
-            "name":"Is HRV a reliable signal for adjusting training?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"HRV can be useful as a trend, especially weekly averages, but should not be used alone. Combine HRV with how you feel, sleep, resting heart rate, and warm-up quality."
-            }
-          },
-          {
-            "@type":"Question",
-            "name":"When should I NOT adjust training even if I feel slow?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"Do not change your whole plan based on one run. If only one session was off and the next day is normal, it was likely noise. Also avoid overreacting to GPS fluctuations, short-term heart-rate spikes on hills, or a single low HRV reading."
-            }
+      "publisher": {
+        "@type": "Organization",
+        "name": "Marathon Pace KM",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://marathonpacekm.com/assets/logo.png"
+        },
+        "url": "https://marathonpacekm.com/"
+      },
+      "dateModified": "2026-03-20"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does my running pace fluctuate so much day to day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Day-to-day pace changes are often normal noise from sleep, stress, fueling (glycogen), heat and humidity, wind, hills, and cumulative fatigue. The key is looking for trends over several runs rather than reacting to one bad day."
           }
-        ]
-      }
-    ]
-  }
-  </script>
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if I should adjust my training paces?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use a simple framework: check conditions first, then recovery, then performance trend across multiple sessions. If the change persists across several runs, it is more likely a signal; if it disappears after rest or better fueling, it was likely noise."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is HRV a reliable signal for adjusting training?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HRV can be useful as a trend, especially weekly averages, but should not be used alone. Combine HRV with how you feel, sleep, resting heart rate, and warm-up quality."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I NOT adjust training even if I feel slow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Do not change your whole plan based on one run. If only one session was off and the next day is normal, it was likely noise. Also avoid overreacting to GPS fluctuations, short-term heart-rate spikes on hills, or a single low HRV reading."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
      crossorigin="anonymous"></script>     <meta name="theme-color" content="#174f40">
 <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/theme.css?v=20260922">
+<link rel="stylesheet" href="/assets/content.css?v=20261001">
 </head>
 
 <body class="mpkm-legacy">
@@ -143,6 +160,7 @@
   </header>
 
   <main class="container">
+<p class="byline">Published by <a href="/about/#author" rel="author">Davin Pinto</a> · <a href="/editorial-policy/">Editorial policy</a> · <a href="/contact/">Corrections</a></p>
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <a href="/">Home</a> <span aria-hidden="true">›</span>
       <a href="/blog/">Blog</a> <span aria-hidden="true">›</span>
