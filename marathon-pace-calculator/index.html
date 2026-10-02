@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-04CFG6TG7N"></script>
-  <script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-04CFG6TG7N"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -95,63 +95,83 @@
     }
   </style>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
-          {"@type":"ListItem","position":2,"name":"Marathon Pace Calculator","item":"https://marathonpacekm.com/marathon-pace-calculator/"}
-        ]
-      },
-      {
-        "@type": "WebApplication",
-        "name": "Marathon Pace Calculator",
-        "url": "https://marathonpacekm.com/marathon-pace-calculator/",
-        "applicationCategory": "SportsApplication",
-        "operatingSystem": "Web",
-        "description": "Interactive marathon pace calculator that converts goal finish time into pace per kilometre, pace per mile, key checkpoints, and pace-band links.",
-        "creator": {
-          "@type": "Organization",
-          "name": "Marathon Pace KM",
-          "url": "https://marathonpacekm.com/about/"
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Marathon Pace Chart (KM)",
+          "item": "https://marathonpacekm.com/"
         },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Marathon Pace KM",
-          "url": "https://marathonpacekm.com/"
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Marathon Pace Calculator",
+          "item": "https://marathonpacekm.com/marathon-pace-calculator/"
         }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Marathon Pace Calculator",
+      "url": "https://marathonpacekm.com/marathon-pace-calculator/",
+      "applicationCategory": "SportsApplication",
+      "operatingSystem": "Web",
+      "description": "Interactive marathon pace calculator that converts goal finish time into pace per kilometre, pace per mile, key checkpoints, and pace-band links.",
+      "creator": {
+        "@type": "Organization",
+        "name": "Marathon Pace KM",
+        "url": "https://marathonpacekm.com/about/"
       },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How do I calculate marathon pace per km?",
-            "acceptedAnswer": {"@type":"Answer","text":"Divide your goal finish time by 42.195 km. This calculator does it instantly and shows checkpoints and splits."}
-          },
-          {
-            "@type": "Question",
-            "name": "What pace do I need for a sub-4 marathon?",
-            "acceptedAnswer": {"@type":"Answer","text":"Sub-4 marathon pace is about 5:41 per km (9:09 per mile). Enter 3:59:59 to generate your full checkpoint splits."}
-          },
-          {
-            "@type": "Question",
-            "name": "Why does my watch pace not match the chart?",
-            "acceptedAnswer": {"@type":"Answer","text":"Instant GPS pace can fluctuate due to signal noise, corners, crowds, elevation, and aid stations. Lap pace and effort are usually more reliable than staring at instant pace."}
-          },
-          {
-            "@type": "Question",
-            "name": "Is calculator pace the same as the best race-day pace?",
-            "acceptedAnswer": {"@type":"Answer","text":"Not always. Calculator pace is a planning starting point. Heat, hills, wind, fueling, fitness, and pacing discipline can all change what is realistic on race day."}
-          }
-        ]
+      "publisher": {
+        "@type": "Organization",
+        "name": "Marathon Pace KM",
+        "url": "https://marathonpacekm.com/"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate marathon pace per km?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide your goal finish time by 42.195 km. This calculator does it instantly and shows checkpoints and splits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What pace do I need for a sub-4 marathon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sub-4 marathon pace is about 5:41 per km (9:09 per mile). Enter 3:59:59 to generate your full checkpoint splits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does my watch pace not match the chart?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Instant GPS pace can fluctuate due to signal noise, corners, crowds, elevation, and aid stations. Lap pace and effort are usually more reliable than staring at instant pace."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is calculator pace the same as the best race-day pace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not always. Calculator pace is a planning starting point. Heat, hills, wind, fueling, fitness, and pacing discipline can all change what is realistic on race day."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
 
   <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml" />
   <link rel="alternate icon" href="/favicon.ico?v=20260922" />

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-04CFG6TG7N"></script>
-  <script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-04CFG6TG7N"></script>
+<script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -224,67 +224,75 @@
     .method-list li{ margin:6px 0; }
   </style>
 
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"BreadcrumbList",
-        "itemListElement":[
-          {"@type":"ListItem","position":1,"name":"Marathon Pace Chart (KM)","item":"https://marathonpacekm.com/"},
-          {"@type":"ListItem","position":2,"name":"Monthly training plan","item":"https://marathonpacekm.com/monthly-training-plan/"}
-        ]
-      },
-      {
-        "@type":"WebApplication",
-        "name":"Marathon Training Planner",
-        "url":"https://marathonpacekm.com/monthly-training-plan/",
-        "applicationCategory":"HealthApplication",
-        "operatingSystem":"Web",
-        "description":"Interactive 4-week marathon training planner that uses recent training, goal date, pace anchors, availability, and injury status to generate a structured running plan.",
-        "creator":{
-          "@type":"Organization",
-          "name":"Marathon Pace KM",
-          "url":"https://marathonpacekm.com/about/"
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Marathon Pace Chart (KM)",
+          "item": "https://marathonpacekm.com/"
         },
-        "publisher":{
-          "@type":"Organization",
-          "name":"Marathon Pace KM",
-          "url":"https://marathonpacekm.com/"
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Monthly training plan",
+          "item": "https://marathonpacekm.com/monthly-training-plan/"
         }
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Marathon Training Planner",
+      "url": "https://marathonpacekm.com/monthly-training-plan/",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web",
+      "description": "Interactive 4-week marathon training planner that uses recent training, goal date, pace anchors, availability, and injury status to generate a structured running plan.",
+      "creator": {
+        "@type": "Organization",
+        "name": "Marathon Pace KM",
+        "url": "https://marathonpacekm.com/about/"
       },
-      {
-        "@type":"FAQPage",
-        "mainEntity":[
-          {
-            "@type":"Question",
-            "name":"What training methods does this planner use?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"The planner blends principles from several established marathon-training approaches rather than copying a single plan. Depending on the runner and phase, it may use Daniels-style pace guidance, Pfitz-style medium-long runs, Hansons-style distribution, and controlled Norwegian-style threshold singles."
-            }
-          },
-          {
-            "@type":"Question",
-            "name":"Does this planner create the same plan for everyone?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"No. The planner changes phase, workload, workout type, and progression based on recent mileage, frequency, long-run history, injury status, pace anchor, available training days, and time caps."
-            }
-          },
-          {
-            "@type":"Question",
-            "name":"Who is this planner best for?",
-            "acceptedAnswer":{
-              "@type":"Answer",
-              "text":"It is designed for runners who want a practical 4-week marathon training structure based on current fitness and availability. It works best as an educational planning tool, not as medical or individualized clinical advice."
-            }
-          }
-        ]
+      "publisher": {
+        "@type": "Organization",
+        "name": "Marathon Pace KM",
+        "url": "https://marathonpacekm.com/"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What training methods does this planner use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The planner blends principles from several established marathon-training approaches rather than copying a single plan. Depending on the runner and phase, it may use Daniels-style pace guidance, Pfitz-style medium-long runs, Hansons-style distribution, and controlled Norwegian-style threshold singles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this planner create the same plan for everyone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The planner changes phase, workload, workout type, and progression based on recent mileage, frequency, long-run history, injury status, pace anchor, available training days, and time caps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is this planner best for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is designed for runners who want a practical 4-week marathon training structure based on current fitness and availability. It works best as an educational planning tool, not as medical or individualized clinical advice."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
 
   <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml" />
   <link rel="alternate icon" href="/favicon.ico?v=20260922" />
@@ -753,7 +761,7 @@
     </div>
   </div>
 
-  <script>
+<script>
     const $ = (id) => document.getElementById(id);
     const dayOrder = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 

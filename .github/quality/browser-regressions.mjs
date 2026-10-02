@@ -101,6 +101,18 @@ await test('Planner calendar export preserves local dates',async()=>{
  const d=page.waitForEvent('download');await page.click('#btnIcs');const download=await d;assert.match(download.suggestedFilename(),/\.ics$/);
  const stream=await download.createReadStream();let ics='';for await(const b of stream)ics+=b;assert.match(ics,/BEGIN:VCALENDAR/);assert.match(ics,/DTSTART;VALUE=DATE:\d{8}/);
 });
+await test('Article predictor scenarios and ordered range',async()=>{
+ for(const [slug,inputs,expected] of [
+  ['marathon-pace-from-5k',{t5:'25:00',exp:'1.06'},'3:59:47'],
+  ['marathon-pace-from-10k',{t10:'50:00',exp:'1.05'},'3:46:43'],
+  ['half-marathon-to-marathon-pace',{thm:'1:45:00',mode:'bal'},'3:38:55'],
+  ['race-time-predictor-marathon',{thm:'1:45:00'},'3:38:10']
+ ]) {
+  await go('/blog/'+slug+'/');await values(inputs);await page.click('#calc');
+  const out=await text('out');assert.ok(out.includes(expected),out);
+  if(slug==='marathon-pace-from-5k')assert.match(out,/3:59:47 – 4:10:14/);
+ }
+});
 assert.equal(errors.length,0,errors.join('\n'));
 }finally{fs.writeFileSync(output+'/functional-results.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results,null,2));await browser.close();server.close();}
 
