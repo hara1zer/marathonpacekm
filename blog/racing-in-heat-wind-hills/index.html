@@ -117,12 +117,15 @@
 <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/theme.css?v=20260922">
 <link rel="stylesheet" href="/assets/content.css?v=20261001">
+<link rel="stylesheet" href="/assets/layout.css?v=20261002">
 </head>
 
-<body class="mpkm-legacy">
+<body class="mpkm-legacy mpkm-reading">
 <header class="mpkm-site-header"><div class="mpkm-header-inner">
 <a class="mpkm-brand" href="/"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a>
 <nav class="mpkm-main-nav" aria-label="Main navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/blog/">Guides</a><a class="mpkm-nav-cta" href="/printable-pace-band/">Pace band ↗</a></nav>
+
+<details class="mpkm-mobile-menu"><summary aria-label="Site menu">Menu <span aria-hidden="true">☰</span></summary><nav aria-label="Mobile site navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/marathon-fueling-calculator/">Fueling</a><a href="/blog/">Guides</a><a href="/printable-pace-band/">Pace band</a></nav></details>
 </div></header>
 <main class="content-wrap">
 <article class="post">
@@ -286,42 +289,42 @@
     These are shopping examples, not products tested for this article or evidence that extra sodium is needed. Choose equipment for a specific practical need and follow product instructions.
   </p>
 
-  <div class="table-wrap" role="region" aria-label="Optional equipment examples" tabindex="0">
-    <table class="table">
-      <thead>
-        <tr>
+  <div class="table-wrap mpkm-summary-scroll" role="region" aria-label="Optional equipment examples" tabindex="0">
+    <table class="table mpkm-summary-table" role="table">
+      <thead role="rowgroup">
+        <tr role="row">
           <th>Product</th>
           <th>Possible use</th>
           <th>Typical use</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>
+      <tbody role="rowgroup">
+        <tr role="row">
+          <td data-label="Product" role="cell">
             <strong>
               <a href="https://amzn.to/4s9HZQI" target="_blank" rel="sponsored noopener noreferrer">SaltStick Capsules</a>
             </strong>
           </td>
-          <td>Runners who want an easy sodium option in hot conditions</td>
-          <td>Used alongside a practiced hydration plan during long or hot races</td>
+          <td data-label="Possible use" role="cell">Runners who want an easy sodium option in hot conditions</td>
+          <td data-label="Typical use" role="cell">Used alongside a practiced hydration plan during long or hot races</td>
         </tr>
-        <tr>
-          <td>
+        <tr role="row">
+          <td data-label="Product" role="cell">
             <strong>
               <a href="https://amzn.to/4uoVZrd" target="_blank" rel="sponsored noopener noreferrer">Hydrapak Soft Flask</a>
             </strong>
           </td>
-          <td>Runners who want to carry fluid without a hard bottle</td>
-          <td>Useful when aid stations are crowded or spaced out</td>
+          <td data-label="Possible use" role="cell">Runners who want to carry fluid without a hard bottle</td>
+          <td data-label="Typical use" role="cell">Useful when aid stations are crowded or spaced out</td>
         </tr>
-        <tr>
-          <td>
+        <tr role="row">
+          <td data-label="Product" role="cell">
             <strong>
               <a href="https://amzn.to/4ddiqtg" target="_blank" rel="sponsored noopener noreferrer">Salomon Soft Flask</a>
             </strong>
           </td>
-          <td>Runners who prefer a compact soft-flask setup</td>
-          <td>Makes it easier to sip consistently in hot, windy, or chaotic race conditions</td>
+          <td data-label="Possible use" role="cell">Runners who prefer a compact soft-flask setup</td>
+          <td data-label="Typical use" role="cell">Makes it easier to sip consistently in hot, windy, or chaotic race conditions</td>
         </tr>
       </tbody>
     </table>
@@ -376,18 +379,10 @@
   </p>
 </section>
 
-<footer class="post-footer">
-  <p>
-    Build your plan in order:
-    use the <a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a> to account for conditions,
-    the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a> to set your baseline splits,
-    the <a href="/marathon-fueling-calculator/">Marathon Fueling Calculator</a> to plan your gel timing,
-    and the <a href="/printable-pace-band/">Printable Pace Band</a> to carry your checkpoints on race day.
-  </p>
-</footer>
+<footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information"><a href="/about/">About Davin</a><a href="/methodology/">Calculator methods</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact &amp; corrections</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap/">All pages</a></nav><p>© 2026 Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>
 
 </article>
 </main>
-<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
+
 </body>
 </html>

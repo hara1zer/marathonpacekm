@@ -133,12 +133,15 @@
 <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/theme.css?v=20260922">
 <link rel="stylesheet" href="/assets/content.css?v=20261001">
+<link rel="stylesheet" href="/assets/layout.css?v=20261002">
 </head>
 
-<body class="mpkm-legacy">
+<body class="mpkm-legacy mpkm-reading">
 <header class="mpkm-site-header"><div class="mpkm-header-inner">
 <a class="mpkm-brand" href="/"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a>
 <nav class="mpkm-main-nav" aria-label="Main navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/blog/">Guides</a><a class="mpkm-nav-cta" href="/printable-pace-band/">Pace band ↗</a></nav>
+
+<details class="mpkm-mobile-menu"><summary aria-label="Site menu">Menu <span aria-hidden="true">☰</span></summary><nav aria-label="Mobile site navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/marathon-fueling-calculator/">Fueling</a><a href="/blog/">Guides</a><a href="/printable-pace-band/">Pace band</a></nav></details>
 </div></header>
 
 
@@ -281,7 +284,7 @@
       that marathon pace still feels like marathon pace—not like an extension of threshold fatigue.
     </p>
 
-    <h2 id="decision">Respond to context and symptoms</h2><p class="table-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Choose today’s response"><table><caption>Choose today’s response</caption><thead><tr><th scope="col">Situation</th><th scope="col">Response</th></tr></thead><tbody><tr><th scope="row">Pain, illness or concerning symptoms</th><td>Stop or seek assessment as appropriate; do not wait for a trend</td></tr><tr><th scope="row">Unusually hard effort without concerning symptoms</th><td>Reduce or stop the session; reassess recovery and conditions</td></tr><tr><th scope="row">One slow split explained by a hill or signal loss</th><td>Use the route and subsequent reliable observations</td></tr><tr><th scope="row">Repeated difficulty in comparable sessions</th><td>Review workload, recovery and the target with your plan or coach</td></tr></tbody></table></div><p>There is no fixed number of difficult runs that you must complete before changing the plan.</p>
+    <h2 id="decision">Respond to context and symptoms</h2><p class="table-hint mpkm-stack-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll mpkm-summary-scroll" tabindex="0" role="region" aria-label="Choose today’s response"><table class="mpkm-summary-table" role="table"><caption>Choose today’s response</caption><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Situation</th><th scope="col" role="columnheader">Response</th></tr></thead><tbody role="rowgroup"><tr role="row"><th scope="row" data-label="Situation" role="rowheader">Pain, illness or concerning symptoms</th><td data-label="Response" role="cell">Stop or seek assessment as appropriate; do not wait for a trend</td></tr><tr role="row"><th scope="row" data-label="Situation" role="rowheader">Unusually hard effort without concerning symptoms</th><td data-label="Response" role="cell">Reduce or stop the session; reassess recovery and conditions</td></tr><tr role="row"><th scope="row" data-label="Situation" role="rowheader">One slow split explained by a hill or signal loss</th><td data-label="Response" role="cell">Use the route and subsequent reliable observations</td></tr><tr role="row"><th scope="row" data-label="Situation" role="rowheader">Repeated difficulty in comparable sessions</th><td data-label="Response" role="cell">Review workload, recovery and the target with your plan or coach</td></tr></tbody></table></div><p>There is no fixed number of difficult runs that you must complete before changing the plan.</p>
 <h2 id="workouts">What to do in marathon-pace workouts</h2>
 
     <h3>Rule 1: Protect the aerobic goal</h3>
@@ -377,16 +380,12 @@
   </article>
 </main>
 
-<footer class="site-footer">
-  <div class="container">
-    <p>&copy; <span id="year"></span> Marathon Pace KM</p>
-  </div>
-</footer>
+<footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information"><a href="/about/">About Davin</a><a href="/methodology/">Calculator methods</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact &amp; corrections</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap/">All pages</a></nav><p>© <span id="year">2026</span> Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>
 
 <script>
   document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
-<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
+
 </body>
 </html>

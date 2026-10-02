@@ -112,12 +112,15 @@
 <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/theme.css?v=20260922">
 <link rel="stylesheet" href="/assets/content.css?v=20261001">
+<link rel="stylesheet" href="/assets/layout.css?v=20261002">
 </head>
 
-<body class="mpkm-legacy">
+<body class="mpkm-legacy mpkm-reading">
 <header class="mpkm-site-header"><div class="mpkm-header-inner">
 <a class="mpkm-brand" href="/"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a>
 <nav class="mpkm-main-nav" aria-label="Main navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/blog/">Guides</a><a class="mpkm-nav-cta" href="/printable-pace-band/">Pace band ↗</a></nav>
+
+<details class="mpkm-mobile-menu"><summary aria-label="Site menu">Menu <span aria-hidden="true">☰</span></summary><nav aria-label="Mobile site navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/marathon-fueling-calculator/">Fueling</a><a href="/blog/">Guides</a><a href="/printable-pace-band/">Pace band</a></nav></details>
 </div></header>
   <main class="content-wrap">
     <article class="post">
@@ -258,40 +261,40 @@
       <section id="rules">
         <h2>The 5 hill pacing rules (copy/paste)</h2>
 
-        <div class="table-wrap" role="region" aria-label="Hill pacing rules table" tabindex="0">
-          <table class="table">
-            <thead>
-              <tr>
+        <div class="table-wrap mpkm-summary-scroll" role="region" aria-label="Hill pacing rules table" tabindex="0">
+          <table class="table mpkm-summary-table" role="table">
+            <thead role="rowgroup">
+              <tr role="row">
                 <th>Rule</th>
                 <th>What to do</th>
                 <th>Why it works</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td><strong>1) Cap the climb</strong></td>
-                <td>Use HR/RPE as a ceiling on climbs; let pace slow.</td>
-                <td>Uphill cost rises fast; defending pace often pushes you above sustainable effort.</td>
+            <tbody role="rowgroup">
+              <tr role="row">
+                <td data-label="Rule" role="cell"><strong>1) Cap the climb</strong></td>
+                <td data-label="What to do" role="cell">Use HR/RPE as a ceiling on climbs; let pace slow.</td>
+                <td data-label="Why it works" role="cell">Uphill cost rises fast; defending pace often pushes you above sustainable effort.</td>
               </tr>
-              <tr>
-                <td><strong>2) Flow the crest</strong></td>
-                <td>Don’t sprint over the top. Transition smoothly back to rhythm.</td>
-                <td>Crests trigger surges; surges are expensive and create variability.</td>
+              <tr role="row">
+                <td data-label="Rule" role="cell"><strong>2) Flow the crest</strong></td>
+                <td data-label="What to do" role="cell">Don’t sprint over the top. Transition smoothly back to rhythm.</td>
+                <td data-label="Why it works" role="cell">Crests trigger surges; surges are expensive and create variability.</td>
               </tr>
-              <tr>
-                <td><strong>3) Control the descent</strong></td>
-                <td>Let speed come naturally; avoid braking and overstriding.</td>
-                <td>Downhills increase eccentric load and muscle damage risk if you “bomb” them.</td>
+              <tr role="row">
+                <td data-label="Rule" role="cell"><strong>3) Control the descent</strong></td>
+                <td data-label="What to do" role="cell">Let speed come naturally; avoid braking and overstriding.</td>
+                <td data-label="Why it works" role="cell">Downhills increase eccentric load and muscle damage risk if you “bomb” them.</td>
               </tr>
-              <tr>
-                <td><strong>4) Downhills are recovery first</strong></td>
-                <td>Use downhills to relax, reset breathing, and fuel.</td>
-                <td>Lower perceived effort is a chance to stabilize your system without extra cost.</td>
+              <tr role="row">
+                <td data-label="Rule" role="cell"><strong>4) Downhills are recovery first</strong></td>
+                <td data-label="What to do" role="cell">Use downhills to relax, reset breathing, and fuel.</td>
+                <td data-label="Why it works" role="cell">Lower perceived effort is a chance to stabilize your system without extra cost.</td>
               </tr>
-              <tr>
-                <td><strong>5) Save the ‘push’ for late</strong></td>
-                <td>If you feel great, push after 30–32K—not on early hills.</td>
-                <td>Hilly marathons punish early aggression; durability matters late.</td>
+              <tr role="row">
+                <td data-label="Rule" role="cell"><strong>5) Save the ‘push’ for late</strong></td>
+                <td data-label="What to do" role="cell">If you feel great, push after 30–32K—not on early hills.</td>
+                <td data-label="Why it works" role="cell">Hilly marathons punish early aggression; durability matters late.</td>
               </tr>
             </tbody>
           </table>
@@ -306,7 +309,7 @@
         </aside>
       </section>
 
-      <section id="script"><h2>A hill sequence you can rehearse</h2><p class="table-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Decisions around a hill"><table><caption>Decisions around a hill</caption><thead><tr><th scope="col">Section</th><th scope="col">Useful focus</th></tr></thead><tbody><tr><th scope="row">Approach</th><td>Notice the grade, crowd and footing before changing effort</td></tr><tr><th scope="row">Climb</th><td>Allow pace to slow if holding it requires excessive effort</td></tr><tr><th scope="row">Crest</th><td>Settle without an automatic surge</td></tr><tr><th scope="row">Descent</th><td>Control speed and footing; do not chase every second</td></tr><tr><th scope="row">Next level section</th><td>Review effort before returning toward the original plan</td></tr></tbody></table></div><p>Plan fuel around familiar timing and practical access to water. A crest is not universally the best place to take a gel.</p></section>
+      <section id="script"><h2>A hill sequence you can rehearse</h2><p class="table-hint mpkm-stack-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll mpkm-summary-scroll" tabindex="0" role="region" aria-label="Decisions around a hill"><table class="mpkm-summary-table" role="table"><caption>Decisions around a hill</caption><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Section</th><th scope="col" role="columnheader">Useful focus</th></tr></thead><tbody role="rowgroup"><tr role="row"><th scope="row" data-label="Section" role="rowheader">Approach</th><td data-label="Useful focus" role="cell">Notice the grade, crowd and footing before changing effort</td></tr><tr role="row"><th scope="row" data-label="Section" role="rowheader">Climb</th><td data-label="Useful focus" role="cell">Allow pace to slow if holding it requires excessive effort</td></tr><tr role="row"><th scope="row" data-label="Section" role="rowheader">Crest</th><td data-label="Useful focus" role="cell">Settle without an automatic surge</td></tr><tr role="row"><th scope="row" data-label="Section" role="rowheader">Descent</th><td data-label="Useful focus" role="cell">Control speed and footing; do not chase every second</td></tr><tr role="row"><th scope="row" data-label="Section" role="rowheader">Next level section</th><td data-label="Useful focus" role="cell">Review effort before returning toward the original plan</td></tr></tbody></table></div><p>Plan fuel around familiar timing and practical access to water. A crest is not universally the best place to take a gel.</p></section>
 
       <section id="technique"><h2>Keep the descent controlled</h2><p>Look ahead and choose a stable line. Keep speed within what the surface, visibility and crowd allow. Avoid reaching far ahead with your feet to chase a split, but do not interpret “avoid braking” as permission to let speed become uncontrolled.</p><p>There is no single cadence or lean angle required for every slope. Do not force an unfamiliar technique late in a race. On a steep or crowded descent, control and safety matter more than gaining time.</p></section>
 
@@ -440,9 +443,7 @@
         </p>
       </section>
 
-      <footer class="post-footer">
-        <p>Mark the main climbs and descents on your course map, then use the <a href="/printable-pace-band/">pace-band generator</a> for reference checkpoints. Expect individual kilometre pace to vary with the terrain. For a course example, see the <a href="/blog/sydney-marathon-pacing-strategy-2026/">2026 Sydney Marathon pacing guide</a>.</p>
-      </footer>
+      <footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information"><a href="/about/">About Davin</a><a href="/methodology/">Calculator methods</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact &amp; corrections</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap/">All pages</a></nav><p>© 2026 Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>
 
     </article>
   </main>
@@ -476,6 +477,6 @@
     .related ul { padding-left: 18px; }
     .note { opacity: 0.85; }
   </style>
-<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/about/">About Davin</a> <a href="/contact/">Contact &amp; corrections</a> <a href="/privacy/">Privacy</a> <a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
+
 </body>
 </html>

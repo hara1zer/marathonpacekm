@@ -131,12 +131,15 @@
 <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/theme.css?v=20260922">
 <link rel="stylesheet" href="/assets/content.css?v=20261001">
+<link rel="stylesheet" href="/assets/layout.css?v=20261002">
 </head>
 
-<body class="mpkm-legacy">
+<body class="mpkm-legacy mpkm-reading">
 <header class="mpkm-site-header"><div class="mpkm-header-inner">
 <a class="mpkm-brand" href="/"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a>
 <nav class="mpkm-main-nav" aria-label="Main navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/blog/">Guides</a><a class="mpkm-nav-cta" href="/printable-pace-band/">Pace band ↗</a></nav>
+
+<details class="mpkm-mobile-menu"><summary aria-label="Site menu">Menu <span aria-hidden="true">☰</span></summary><nav aria-label="Mobile site navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/marathon-fueling-calculator/">Fueling</a><a href="/blog/">Guides</a><a href="/printable-pace-band/">Pace band</a></nav></details>
 </div></header>
 
 
@@ -249,47 +252,47 @@
         <li>Different routes, surfaces, shoes, and stop-start traffic</li>
       </ul>
 
-      <h2 id="decision-framework">Make today’s decision first</h2><p>Separate the decision about today’s run from the decision about your longer-term goal. A hot day may tell you little about lost fitness while still requiring a substantial change today.</p><p class="table-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Two decisions, different evidence"><table><caption>Two decisions, different evidence</caption><thead><tr><th scope="col">Question</th><th scope="col">Useful evidence</th><th scope="col">Action</th></tr></thead><tbody><tr><th scope="row">Should I continue this session?</th><td>Symptoms, effort, weather and route safety now</td><td>Reduce, stop or seek help when needed</td></tr><tr><th scope="row">Should I revise the training load or goal?</th><td>Comparable sessions, recovery and the wider block</td><td>Review persistent patterns and their context</td></tr></tbody></table></div><p>There is no validated rule requiring three difficult runs in 7–10 days. Pain, illness or a marked change can justify action immediately.</p>
+      <h2 id="decision-framework">Make today’s decision first</h2><p>Separate the decision about today’s run from the decision about your longer-term goal. A hot day may tell you little about lost fitness while still requiring a substantial change today.</p><p class="table-hint mpkm-stack-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll mpkm-summary-scroll" tabindex="0" role="region" aria-label="Two decisions, different evidence"><table class="mpkm-summary-table" role="table"><caption>Two decisions, different evidence</caption><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Question</th><th scope="col" role="columnheader">Useful evidence</th><th scope="col" role="columnheader">Action</th></tr></thead><tbody role="rowgroup"><tr role="row"><th scope="row" data-label="Question" role="rowheader">Should I continue this session?</th><td data-label="Useful evidence" role="cell">Symptoms, effort, weather and route safety now</td><td data-label="Action" role="cell">Reduce, stop or seek help when needed</td></tr><tr role="row"><th scope="row" data-label="Question" role="rowheader">Should I revise the training load or goal?</th><td data-label="Useful evidence" role="cell">Comparable sessions, recovery and the wider block</td><td data-label="Action" role="cell">Review persistent patterns and their context</td></tr></tbody></table></div><p>There is no validated rule requiring three difficult runs in 7–10 days. Pain, illness or a marked change can justify action immediately.</p>
 <h2 id="metrics">What to track (without becoming a slave to data)</h2>
       <p>
         Sports monitoring literature generally supports combining subjective and objective markers—because no single metric is perfect.
         The most useful approach is usually trend-based: effort, heart-rate behaviour, sleep, and simple recovery context.
       </p>
 
-      <div class="table-wrap" role="region" aria-label="Signal vs noise metrics">
-        <table>
-          <thead>
-            <tr>
+      <div class="table-wrap mpkm-summary-scroll" role="region" aria-label="Signal vs noise metrics">
+        <table class="mpkm-summary-table" role="table">
+          <thead role="rowgroup">
+            <tr role="row">
               <th>Metric</th>
               <th>Best use</th>
               <th>Big mistake</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>RPE (effort)</td>
-              <td>Fastest early warning; track trends</td>
-              <td>Ignoring it because pace is fine</td>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <td data-label="Metric" role="cell">RPE (effort)</td>
+              <td data-label="Best use" role="cell">Fastest early warning; track trends</td>
+              <td data-label="Big mistake" role="cell">Ignoring it because pace is fine</td>
             </tr>
-            <tr>
-              <td>HR trend at easy pace</td>
-              <td>Detects rising strain or drift</td>
-              <td>Reacting to one spike instead of a multi-km trend</td>
+            <tr role="row">
+              <td data-label="Metric" role="cell">HR trend at easy pace</td>
+              <td data-label="Best use" role="cell">Detects rising strain or drift</td>
+              <td data-label="Big mistake" role="cell">Reacting to one spike instead of a multi-km trend</td>
             </tr>
-            <tr>
-              <td>HRV (trend)</td>
-              <td>Helpful as weekly average or trend</td>
-              <td>Using one low value as a go/no-go decision</td>
+            <tr role="row">
+              <td data-label="Metric" role="cell">HRV (trend)</td>
+              <td data-label="Best use" role="cell">Helpful as weekly average or trend</td>
+              <td data-label="Big mistake" role="cell">Using one low value as a go/no-go decision</td>
             </tr>
-            <tr>
-              <td>Sleep (hours + quality)</td>
-              <td>Often explains mystery bad sessions</td>
-              <td>Underestimating its impact on RPE</td>
+            <tr role="row">
+              <td data-label="Metric" role="cell">Sleep (hours + quality)</td>
+              <td data-label="Best use" role="cell">Often explains mystery bad sessions</td>
+              <td data-label="Big mistake" role="cell">Underestimating its impact on RPE</td>
             </tr>
-            <tr>
-              <td>Fueling consistency</td>
-              <td>Explains performance swings in quality sessions</td>
-              <td>Only fueling when you already feel bad</td>
+            <tr role="row">
+              <td data-label="Metric" role="cell">Fueling consistency</td>
+              <td data-label="Best use" role="cell">Explains performance swings in quality sessions</td>
+              <td data-label="Big mistake" role="cell">Only fueling when you already feel bad</td>
             </tr>
           </tbody>
         </table>
@@ -307,7 +310,7 @@
 
       <h2 id="when-not-adjust">When a pace change says little about fitness</h2><p>One slow split on a climb or in strong wind is a poor reason to lower your estimate of fitness. It can still be a good reason to adjust effort during that run. A better-than-usual split also needs context before you make a goal faster.</p><p>Avoid dismissing pain, illness or a marked unexplained change as “noise”. The label is only a way to discuss uncertain performance data, not a reason to ignore symptoms.</p>
 <h2 id="when-adjust">When to make a broader change</h2><p>Review load or the goal when comparable sessions repeatedly feel harder than intended, recovery worsens or circumstances change materially. Do not wait for a preset number of sessions if pain or illness appears.</p><p>A broad review may lead to reducing duration as well as intensity, resting or seeking assessment. It does not always mean retaining the mileage and trying the workout again a few days later.</p>
-<h2 id="examples">Four examples of interpretation</h2><p class="table-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll" tabindex="0" role="region" aria-label="How context changes the interpretation"><table><caption>How context changes the interpretation</caption><thead><tr><th scope="col">Observation</th><th scope="col">Reasonable next step</th></tr></thead><tbody><tr><th scope="row">One slow exposed run in strong wind</th><td>Adjust today; do not infer lost fitness from pace alone</td></tr><tr><th scope="row">Several comparable runs with unusual effort</th><td>Review training, recovery and health</td></tr><tr><th scope="row">A normal watch score but painful walking</th><td>Prioritise symptoms and seek assessment</td></tr><tr><th scope="row">One unusually fast session</th><td>Record it without automatically making the goal faster</td></tr></tbody></table></div>
+<h2 id="examples">Four examples of interpretation</h2><p class="table-hint mpkm-stack-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll mpkm-summary-scroll" tabindex="0" role="region" aria-label="How context changes the interpretation"><table class="mpkm-summary-table" role="table"><caption>How context changes the interpretation</caption><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Observation</th><th scope="col" role="columnheader">Reasonable next step</th></tr></thead><tbody role="rowgroup"><tr role="row"><th scope="row" data-label="Observation" role="rowheader">One slow exposed run in strong wind</th><td data-label="Reasonable next step" role="cell">Adjust today; do not infer lost fitness from pace alone</td></tr><tr role="row"><th scope="row" data-label="Observation" role="rowheader">Several comparable runs with unusual effort</th><td data-label="Reasonable next step" role="cell">Review training, recovery and health</td></tr><tr role="row"><th scope="row" data-label="Observation" role="rowheader">A normal watch score but painful walking</th><td data-label="Reasonable next step" role="cell">Prioritise symptoms and seek assessment</td></tr><tr role="row"><th scope="row" data-label="Observation" role="rowheader">One unusually fast session</th><td data-label="Reasonable next step" role="cell">Record it without automatically making the goal faster</td></tr></tbody></table></div>
 <h2 id="templates">A short training-note template</h2><p>A useful note can be brief: “Planned 8 km easy; completed 6 km because effort was unusually high. Warmer than usual, poor sleep, no pain. Next action: rest and reassess.” A separate race-goal note might say: “Several comparable pace sessions have been harder than intended; review the target before adding more work.”</p><p>Use the <a href="/blog/marathon-pace-readiness-test/">training review questions</a> for the broader decision. The note is a record of your reasoning, not a diagnosis.</p>
 <h2 id="faq">FAQ</h2><h3>Should I ignore one poor run?</h3><p>Review it in context. One run may say little about fitness, but symptoms or unsafe conditions still require action.</p><h3>How many runs establish a trend?</h3><p>There is no universal count. Comparability, the size of the change and recovery matter.</p><h3>Can a watch recovery score decide the session?</h3><p>Use it as one observation alongside symptoms, sleep, workload and how you feel; it is not a clearance test.</p>
 <h2 id="references">References</h2>
@@ -354,15 +357,11 @@
     </article>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Marathon Pace KM</p>
-    </div>
-  </footer>
+  <footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information"><a href="/about/">About Davin</a><a href="/methodology/">Calculator methods</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact &amp; corrections</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap/">All pages</a></nav><p>© <span id="year">2026</span> Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>
 
 <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
+
 </body>
 </html>
