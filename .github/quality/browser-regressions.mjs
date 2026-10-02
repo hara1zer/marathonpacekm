@@ -113,6 +113,56 @@ await test('Article predictor scenarios and ordered range',async()=>{
   if(slug==='marathon-pace-from-5k')assert.match(out,/3:59:47 – 4:10:14/);
  }
 });
+await test('Personal articles preserve identity, dates and discovery links',async()=>{
+ const articles=[
+  ['/blog/rebuilding-after-sydney-marathon/','Personal training intentions'],
+  ['/blog/marathon-fueling-experiments/','Personal experience, not a product ranking'],
+  ['/blog/sydney-marathon-2026-personal-review/','Personal race review']
+ ];
+ const titles=[];
+ for(const [route,byline] of articles){
+  await go(route);
+  const data=await page.evaluate(()=>{
+   const schemas=[...document.querySelectorAll('script[type="application/ld+json"]')].flatMap(s=>{const d=JSON.parse(s.textContent);return d['@graph']||[d];});
+   return {
+    h1:document.querySelector('h1').textContent.trim(),
+    title:document.title,
+    description:document.querySelector('meta[name="description"]').content,
+    ogTitle:document.querySelector('meta[property="og:title"]').content,
+    twitterTitle:document.querySelector('meta[name="twitter:title"]').content,
+    canonical:document.querySelector('link[rel="canonical"]').href,
+    article:schemas.find(s=>s['@type']==='Article')
+   };
+  });
+  assert.equal(data.title,data.h1+' | Marathon Pace KM');
+  assert.equal(data.ogTitle,data.h1);assert.equal(data.twitterTitle,data.h1);
+  assert.equal(data.canonical,'https://marathonpacekm.com'+route);
+  assert.equal(data.article.headline,data.h1);assert.equal(data.article.description,data.description);
+  assert.equal(data.article.author.name,'Davin Pinto');assert.equal(data.article.dateModified,'2026-10-02');
+  assert.match(await page.locator('.byline').innerText(),new RegExp(byline));
+  titles.push([route,data.h1,data.description]);
+ }
+ await go('/blog/');
+ for(const [route,title,description] of titles){
+  const link=page.locator('#personal-experience a[href="'+route+'"]');
+  assert.equal(await link.innerText(),title);
+  assert.ok((await page.locator('#personal-experience').innerText()).includes(description));
+ }
+ const list=await page.locator('script[type="application/ld+json"]').evaluate(s=>JSON.parse(s.textContent).itemListElement);
+ assert.equal(list.length,39);assert.equal(new Set(list.map(x=>x.url)).size,39);
+ for(const [route] of articles)assert.ok(list.some(x=>x.url==='https://marathonpacekm.com'+route));
+ const sitemap=await (await page.request.get(base+'/sitemap.xml')).text();
+ for(const [route] of articles)assert.ok(sitemap.includes('<loc>https://marathonpacekm.com'+route+'</loc><lastmod>2026-10-02</lastmod>'));
+});
+await test('Fueling article worked example agrees with the calculator',async()=>{
+ await go('/blog/marathon-fueling-experiments/');
+ const example=await text('arithmetic');assert.ok(example.includes('68.75 g/h'));assert.ok(example.includes('62.5 g/h'));
+ const times=[];for(let t=20;t<240;t+=20)times.push(t);
+ assert.equal(times.length,11);assert.equal(times.length*25/4,68.75);assert.equal((times.length-1)*25/4,62.5);
+ await go('/marathon-fueling-calculator/');
+ await values({finishHours:4,finishMinutes:0,gelCarbs:25,firstGel:20,interval:20});await page.click('#calculateBtn');
+ assert.equal((await text('outPlannedGels')).trim(),'11');assert.match(await text('actualIntake'),/68\.8/);
+});
 assert.equal(errors.length,0,errors.join('\n'));
 }finally{fs.writeFileSync(output+'/functional-results.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results,null,2));await browser.close();server.close();}
 
