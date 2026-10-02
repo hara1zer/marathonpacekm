@@ -38,8 +38,7 @@ try{
       page.on('pageerror',e=>errors.push(e.message));
       page.on('response',r=>{if(r.status()>=400&&r.url().startsWith(base))missing.push(r.url().replace(base,''));});
       try{
-        await page.goto(base+item.route,{waitUntil:'domcontentloaded',timeout:15000});
-        await page.waitForTimeout(60);
+        await page.goto(base+item.route,{waitUntil:'load',timeout:15000});
         const details=await page.evaluate(()=>{
           const width=document.documentElement.clientWidth;
           return {

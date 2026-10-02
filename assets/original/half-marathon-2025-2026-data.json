@@ -1,0 +1,31 @@
+{
+  "source": "Davin Pinto's supplied Strava activity screenshots and personal account, supplied 1 October 2026",
+  "article": "/blog/run-melbourne-half-marathon-2025-vs-2026/",
+  "2025": {
+    "date": "2025-07-13",
+    "recorded_distance_km": 20.79,
+    "displayed_activity_time": "2:05:17",
+    "displayed_average_pace": "6:02/km",
+    "displayed_average_hr_bpm": 171,
+    "recorded_elevation_gain_m": 152,
+    "activity_note": "Lost 300m in Docklands..",
+    "pace_seconds_per_km": [324,317,342,338,346,346,350,358,358,353,358,376,370,389,386,402,395,345,394,385],
+    "lap_elevation_change_m": [3,0,13,-15,-2,3,-3,0,-2,2,2,7,3,14,-14,12,8,-27,-3,2],
+    "lap_average_hr_bpm": [162,166,169,167,170,171,170,170,171,172,173,171,174,173,171,172,174,173,173,176],
+    "partial_lap_display": {"distance_km_label": "0.7", "pace_seconds_per_km": 358, "average_hr_bpm": 178}
+  },
+  "2026": {
+    "date": "2026-07-19",
+    "recorded_distance_km": 21.27,
+    "displayed_activity_time": "1:50:57",
+    "displayed_average_pace": "5:13/km",
+    "displayed_average_hr_bpm": 164,
+    "recorded_elevation_gain_m": 155,
+    "pace_seconds_per_km": [319,333,299,313,313,329,303,321,313,315,309,313,314,326,321,319,309,305,317,293,291],
+    "lap_elevation_change_m": [7,25,-21,-6,-2,14,-15,-1,-1,-1,-1,2,2,8,7,1,-1,-12,2,-5,2],
+    "lap_average_hr_bpm": [158,162,162,161,161,162,164,163,164,164,165,164,164,164,163,165,166,166,166,167,174],
+    "partial_lap_display": {"distance_km_label": "0.2", "pace_seconds_per_km": 288, "average_hr_bpm": 174}
+  },
+  "method": "Transcribed full-kilometre lap paces and heart rates. Five-kilometre block averages are arithmetic means of five rounded 1 km lap paces. Only the first 20 complete recorded kilometres are used in between-year block comparisons. Partial-lap distances are displayed rounded labels, not exact distances.",
+  "limits": "The 2025 activity notes a GPS distance loss. Recorded kilometres are not exactly matched course locations across years. The screenshots do not establish weather, sensor type, training differences, fueling differences or an exact race-half split. No missing distance or lap is reconstructed; no cause of improvement is inferred. Badge best-effort improvements are not used as between-race comparisons."
+}
