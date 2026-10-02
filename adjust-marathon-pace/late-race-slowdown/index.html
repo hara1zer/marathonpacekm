@@ -116,12 +116,15 @@
 <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/theme.css?v=20260922">
 <link rel="stylesheet" href="/assets/content.css?v=20261001">
+<link rel="stylesheet" href="/assets/layout.css?v=20261002">
 </head>
 
-<body class="mpkm-legacy">
+<body class="mpkm-legacy mpkm-reading">
 <header class="mpkm-site-header"><div class="mpkm-header-inner">
 <a class="mpkm-brand" href="/"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a>
 <nav class="mpkm-main-nav" aria-label="Main navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/blog/">Guides</a><a class="mpkm-nav-cta" href="/printable-pace-band/">Pace band ↗</a></nav>
+
+<details class="mpkm-mobile-menu"><summary aria-label="Site menu">Menu <span aria-hidden="true">☰</span></summary><nav aria-label="Mobile site navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/marathon-fueling-calculator/">Fueling</a><a href="/blog/">Guides</a><a href="/printable-pace-band/">Pace band</a></nav></details>
 </div></header>
 
 
@@ -247,34 +250,34 @@
       </p>
 
       <div class="table-wrap" role="region" aria-label="Late-race slowdown metrics">
-        <div class="table-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table>
-          <thead>
-            <tr>
+        <div class="table-scroll mpkm-summary-scroll" role="region" aria-label="Scrollable data table" tabindex="0"><table class="mpkm-summary-table" role="table">
+          <thead role="rowgroup">
+            <tr role="row">
               <th>Metric</th>
               <th>How to compute</th>
               <th>What it tells you</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Second-half slowdown</td>
-              <td>(Second half time) − (First half time)</td>
-              <td>Classic positive vs negative split outcome</td>
+          <tbody role="rowgroup">
+            <tr role="row">
+              <td data-label="Metric" role="cell">Second-half slowdown</td>
+              <td data-label="How to compute" role="cell">(Second half time) − (First half time)</td>
+              <td data-label="What it tells you" role="cell">Classic positive vs negative split outcome</td>
             </tr>
-            <tr>
-              <td>Final 12K fade</td>
-              <td>Avg pace (30–42.2K) vs avg pace (0–30K)</td>
-              <td>Targets the most common “wall” window</td>
+            <tr role="row">
+              <td data-label="Metric" role="cell">Final 12K fade</td>
+              <td data-label="How to compute" role="cell">Avg pace (30–42.2K) vs avg pace (0–30K)</td>
+              <td data-label="What it tells you" role="cell">Targets the most common “wall” window</td>
             </tr>
-            <tr>
-              <td>“Wall” event</td>
-              <td>Any sustained pace drop (multi-km) beyond normal variability</td>
-              <td>Matches large-scale research framing of late-race slowing</td>
+            <tr role="row">
+              <td data-label="Metric" role="cell">“Wall” event</td>
+              <td data-label="How to compute" role="cell">Any sustained pace drop (multi-km) beyond normal variability</td>
+              <td data-label="What it tells you" role="cell">Matches large-scale research framing of late-race slowing</td>
             </tr>
-            <tr>
-              <td>Cardiac cost</td>
-              <td>HR trend rises while pace falls</td>
-              <td>Suggests heat/dehydration or excessive early intensity</td>
+            <tr role="row">
+              <td data-label="Metric" role="cell">Cardiac cost</td>
+              <td data-label="How to compute" role="cell">HR trend rises while pace falls</td>
+              <td data-label="What it tells you" role="cell">Suggests heat/dehydration or excessive early intensity</td>
             </tr>
           </tbody>
         </table></div>
@@ -285,7 +288,7 @@
         (<a href="https://onlinelibrary.wiley.com/doi/10.1080/17461391.2019.1688396" target="_blank" rel="noopener noreferrer">Hanley 2019</a>)
       </p>
 
-      <h2 id="model">Calculate scenarios without inventing a risk score</h2><p>Use scenario arithmetic to understand the consequences of slowing; do not assign a probability from a homemade risk score. The final distance after 30 km is 12.195 km.</p><p class="table-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Illustrative pace change after 30 km"><table><caption>Illustrative pace change after 30 km</caption><thead><tr><th scope="col">Added time per km</th><th scope="col">Added finish time</th></tr></thead><tbody><tr><th scope="row">10 seconds</th><td>About 2:02</td></tr><tr><th scope="row">20 seconds</th><td>About 4:04</td></tr><tr><th scope="row">30 seconds</th><td>About 6:06</td></tr></tbody></table></div><p>These are arithmetic scenarios relative to an unchanged pace over the remaining distance. They do not predict your fade. Review conditions, early splits, fuel actually taken and training context separately. No 0–8 score on this site can quantify your late-race risk.</p>
+      <h2 id="model">Calculate scenarios without inventing a risk score</h2><p>Use scenario arithmetic to understand the consequences of slowing; do not assign a probability from a homemade risk score. The final distance after 30 km is 12.195 km.</p><p class="table-hint mpkm-stack-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll mpkm-summary-scroll" tabindex="0" role="region" aria-label="Illustrative pace change after 30 km"><table class="mpkm-summary-table" role="table"><caption>Illustrative pace change after 30 km</caption><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Added time per km</th><th scope="col" role="columnheader">Added finish time</th></tr></thead><tbody role="rowgroup"><tr role="row"><th scope="row" data-label="Added time per km" role="rowheader">10 seconds</th><td data-label="Added finish time" role="cell">About 2:02</td></tr><tr role="row"><th scope="row" data-label="Added time per km" role="rowheader">20 seconds</th><td data-label="Added finish time" role="cell">About 4:04</td></tr><tr role="row"><th scope="row" data-label="Added time per km" role="rowheader">30 seconds</th><td data-label="Added finish time" role="cell">About 6:06</td></tr></tbody></table></div><p>These are arithmetic scenarios relative to an unchanged pace over the remaining distance. They do not predict your fade. Review conditions, early splits, fuel actually taken and training context separately. No 0–8 score on this site can quantify your late-race risk.</p>
 <h2 id="prevent">Ways to reduce avoidable late-race slowing</h2>
 
       <h3>1) Protect the first 10–15K</h3>
@@ -432,15 +435,11 @@
     </article>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Marathon Pace KM</p>
-    </div>
-  </footer>
+  <footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information"><a href="/about/">About Davin</a><a href="/methodology/">Calculator methods</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact &amp; corrections</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap/">All pages</a></nav><p>© <span id="year">2026</span> Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>
 
 <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/about/">About Davin</a> <a href="/contact/">Contact &amp; corrections</a> <a href="/privacy/">Privacy</a> <a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
+
 </body>
 </html>

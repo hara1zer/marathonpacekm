@@ -45,6 +45,12 @@ try{
             overflow:document.documentElement.scrollWidth>width+2,
             branded:!!document.querySelector('.brand-mark svg,.mpkm-brand-mark svg'),
             themeLoaded:!![...document.styleSheets].find(s=>s.href?.includes('/assets/theme.css')),
+            layoutLoaded:!![...document.styleSheets].find(s=>s.href?.includes('/assets/layout.css')),
+            footerCount:document.querySelectorAll('.mpkm-footer').length,
+            mobileMenuCount:document.querySelectorAll('.mpkm-mobile-menu').length,
+            headerHeight:document.querySelector('.mpkm-site-header,.site-header')?.getBoundingClientRect().height,
+            readingWidth:document.body.classList.contains('mpkm-reading')?document.querySelector('main')?.getBoundingClientRect().width:null,
+            readingH1Size:document.body.classList.contains('mpkm-reading')?parseFloat(getComputedStyle(document.querySelector('h1')).fontSize):null,
             blueSurfaces:[...document.querySelectorAll('section,button,.card,.callout,header')].filter(el=>{
               const c=getComputedStyle(el).backgroundColor.match(/[\d.]+/g)?.map(Number)||[];
               return el.getBoundingClientRect().width>20&&c.length>=3&&c[2]>c[0]+20&&c[2]>c[1]+15;
@@ -55,8 +61,9 @@ try{
           };
         });
         results.push({route:item.route,width,errors,missing,...details});
-        if(['/','/3-00-marathon-pace-km/','/4-15-marathon-pace-km/','/marathon-fueling-calculator/','/blog/sydney-marathon-2026-personal-review/','/blog/rebuilding-after-sydney-marathon/','/blog/marathon-fueling-experiments/','/privacy/'].includes(item.route)){
+        if(['/','/blog/','/blog/run-melbourne-half-marathon-2025-vs-2026/','/blog/tempo-vs-threshold-vs-marathon-pace/','/norwegian-singles/','/3-00-marathon-pace-km/','/4-15-marathon-pace-km/','/marathon-fueling-calculator/','/blog/sydney-marathon-2026-personal-review/','/blog/rebuilding-after-sydney-marathon/','/blog/marathon-fueling-experiments/','/privacy/'].includes(item.route)){
           await page.screenshot({path:output+'/'+(item.route.replaceAll('/','_')||'home')+'-'+width+'.png',fullPage:true});
+          await page.screenshot({path:output+'/'+(item.route.replaceAll('/','_')||'home')+'-'+width+'-opening.png',fullPage:false});
         }
         if(['/blog/rebuilding-after-sydney-marathon/','/blog/marathon-fueling-experiments/'].includes(item.route)){
           const name=item.route.replaceAll('/','_')+'-'+width;
@@ -70,6 +77,7 @@ try{
     await context.close();
   }
   fs.writeFileSync(output+'/browser-diagnostics.json',JSON.stringify(results,null,2));
-  console.log(JSON.stringify({browser:browser.version(),checked:results.length,issues:results.filter(x=>x.errors?.length||x.missing?.length||x.overflow||!x.branded||!x.themeLoaded).map(({route,width,errors,missing,overflow,wide})=>({route,width,errors,missing,overflow,wide}))},null,2));
-  if(results.some(x=>x.errors?.length||x.missing?.length||x.overflow||!x.branded||!x.themeLoaded))process.exitCode=1;
+  const hasIssue=x=>x.errors?.length||x.missing?.length||x.overflow||!x.branded||!x.themeLoaded||!x.layoutLoaded||x.footerCount!==1||x.mobileMenuCount!==1||(x.width===390&&x.headerHeight>90)||(x.readingWidth>821)||(x.readingH1Size>42);
+  console.log(JSON.stringify({browser:browser.version(),checked:results.length,issues:results.filter(hasIssue).map(({route,width,errors,missing,overflow,wide,layoutLoaded,footerCount,mobileMenuCount,headerHeight,readingWidth,readingH1Size})=>({route,width,errors,missing,overflow,wide,layoutLoaded,footerCount,mobileMenuCount,headerHeight,readingWidth,readingH1Size}))},null,2));
+  if(results.some(hasIssue))process.exitCode=1;
 }finally{await browser.close();server.close();}
