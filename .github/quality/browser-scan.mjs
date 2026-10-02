@@ -33,7 +33,7 @@ try{
       return u.hostname==='127.0.0.1' ? route.continue() : route.abort();
     });
     for(const item of data.pages){
-      if(process.argv.includes('--focused')&&!['/','/3-00-marathon-pace-km/','/3-30-marathon-pace-km/','/4-15-marathon-pace-km/','/marathon-fueling-calculator/','/marathon-time-predictor/','/monthly-training-plan/','/printable-pace-band/','/blog/sydney-marathon-2026-personal-review/','/privacy/'].includes(item.route))continue;
+      if(process.argv.includes('--focused')&&!['/','/3-00-marathon-pace-km/','/3-30-marathon-pace-km/','/4-15-marathon-pace-km/','/marathon-fueling-calculator/','/marathon-time-predictor/','/monthly-training-plan/','/printable-pace-band/','/blog/sydney-marathon-2026-personal-review/','/blog/rebuilding-after-sydney-marathon/','/blog/marathon-fueling-experiments/','/privacy/'].includes(item.route))continue;
       const page=await context.newPage();const errors=[];const missing=[];
       page.on('pageerror',e=>errors.push(e.message));
       page.on('response',r=>{if(r.status()>=400&&r.url().startsWith(base))missing.push(r.url().replace(base,''));});
@@ -55,8 +55,14 @@ try{
           };
         });
         results.push({route:item.route,width,errors,missing,...details});
-        if(['/','/3-00-marathon-pace-km/','/4-15-marathon-pace-km/','/marathon-fueling-calculator/','/blog/sydney-marathon-2026-personal-review/','/privacy/'].includes(item.route)){
+        if(['/','/3-00-marathon-pace-km/','/4-15-marathon-pace-km/','/marathon-fueling-calculator/','/blog/sydney-marathon-2026-personal-review/','/blog/rebuilding-after-sydney-marathon/','/blog/marathon-fueling-experiments/','/privacy/'].includes(item.route)){
           await page.screenshot({path:output+'/'+(item.route.replaceAll('/','_')||'home')+'-'+width+'.png',fullPage:true});
+        }
+        if(['/blog/rebuilding-after-sydney-marathon/','/blog/marathon-fueling-experiments/'].includes(item.route)){
+          const name=item.route.replaceAll('/','_')+'-'+width;
+          await page.screenshot({path:output+'/'+name+'-opening.png',fullPage:false});
+          const section=item.route.includes('rebuilding-')?'#phases':'#arithmetic';
+          await page.locator(section).screenshot({path:output+'/'+name+'-table.png'});
         }
       }catch(e){results.push({route:item.route,width,errors:[e.message]});}
       await page.close();
