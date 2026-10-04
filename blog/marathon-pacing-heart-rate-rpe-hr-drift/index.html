@@ -1,24 +1,13 @@
 <!doctype html>
 <html lang="en-AU">
 <head>
-  <!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-04CFG6TG7N"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    var analyticsPage = location.origin + location.pathname;
-    var analyticsReferrer = document.referrer ? new URL(document.referrer) : null;
-    gtag('set', {
-      page_location: analyticsPage,
-      page_referrer: analyticsReferrer ? analyticsReferrer.origin + analyticsReferrer.pathname : undefined
-    });
-    gtag('config', 'G-04CFG6TG7N');
-  </script>
+
+
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Marathon Pacing by Heart Rate &amp; RPE (and Why HR Drifts Upward) | Marathon Pace KM</title>
+  <title>Marathon Pacing by Heart Rate and RPE</title>
   <meta name="description" content="Use pace, heart rate and perceived effort together, understand drift and recognise the limits of universal heart-rate caps.">
   <meta name="robots" content="index,follow,max-image-preview:large" />
 
@@ -128,17 +117,19 @@
     }
   ]
 }</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
-     crossorigin="anonymous"></script>     <meta name="theme-color" content="#174f40">
+     <meta name="theme-color" content="#174f40">
 <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/theme.css?v=20260922">
-<link rel="stylesheet" href="/assets/content.css?v=20261001">
+<link rel="stylesheet" href="/assets/site.css?v=20261004">
+<meta name="google-adsense-account" content="ca-pub-5455873308344668">
+<script defer src="/assets/site-telemetry.js?v=20261004"></script>
 </head>
 
-<body class="mpkm-legacy">
+<body class="mpkm-legacy mpkm-reading">
 <header class="mpkm-site-header"><div class="mpkm-header-inner">
 <a class="mpkm-brand" href="/"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a>
 <nav class="mpkm-main-nav" aria-label="Main navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/blog/">Guides</a><a class="mpkm-nav-cta" href="/printable-pace-band/">Pace band ↗</a></nav>
+
+<details class="mpkm-mobile-menu"><summary aria-label="Site menu">Menu <span aria-hidden="true">☰</span></summary><nav aria-label="Mobile site navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/marathon-fueling-calculator/">Fueling</a><a href="/blog/">Guides</a><a href="/printable-pace-band/">Pace band</a></nav></details>
 </div></header>
   <main class="content-wrap">
     <article class="post">
@@ -271,7 +262,7 @@
 
       <section id="hybrid-method"><h2>Combine three imperfect observations</h2><ul><li><strong>Pace:</strong> compare reliable splits with a goal supported by recent training.</li><li><strong>Effort:</strong> ask whether the work feels appropriate for this stage, including the terrain and conditions.</li><li><strong>Heart rate:</strong> consider the trend, your own comparable sessions and possible sensor error.</li></ul><p>When these disagree, investigate rather than automatically treating one as the truth. For example, a hill can explain a slow split with high effort. An abrupt heart-rate jump without a matching change may be a measurement problem, but symptoms take priority over that assumption.</p></section>
 
-      <section id="race-script"><h2>Checkpoint questions, not universal heart-rate caps</h2><p class="table-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Questions at race checkpoints"><table><caption>Questions at race checkpoints</caption><thead><tr><th scope="col">Stage</th><th scope="col">Review</th><th scope="col">Possible response</th></tr></thead><tbody><tr><th scope="row">Opening kilometres</th><td>Pace relative to plan; crowd and terrain; unexpectedly high effort</td><td>Settle or reduce effort; do not accelerate just because it feels easy</td></tr><tr><th scope="row">Middle of the race</th><td>Effort trend, fuel actually taken, weather changes</td><td>Reassess the goal if the same pace becomes unsustainable</td></tr><tr><th scope="row">Late race</th><td>Ability to continue safely and maintain control</td><td>Choose a sustainable effort; a faster finish is optional</td></tr></tbody></table></div><p>Chest pain, fainting, severe unusual breathlessness or confusion require stopping and urgent medical help, not another pacing check. See <a href="https://www.healthdirect.gov.au/heart-palpitations">Healthdirect Australia: heart palpitations</a> and <a href="https://www.healthdirect.gov.au/heatstroke">Healthdirect Australia: heatstroke and heat illness</a>.</p></section>
+      <section id="race-script"><h2>Checkpoint questions, not universal heart-rate caps</h2><p class="table-hint mpkm-stack-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll mpkm-summary-scroll" tabindex="0" role="region" aria-label="Questions at race checkpoints"><table class="mpkm-summary-table" role="table"><caption>Questions at race checkpoints</caption><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader">Stage</th><th scope="col" role="columnheader">Review</th><th scope="col" role="columnheader">Possible response</th></tr></thead><tbody role="rowgroup"><tr role="row"><th scope="row" data-label="Stage" role="rowheader">Opening kilometres</th><td data-label="Review" role="cell">Pace relative to plan; crowd and terrain; unexpectedly high effort</td><td data-label="Possible response" role="cell">Settle or reduce effort; do not accelerate just because it feels easy</td></tr><tr role="row"><th scope="row" data-label="Stage" role="rowheader">Middle of the race</th><td data-label="Review" role="cell">Effort trend, fuel actually taken, weather changes</td><td data-label="Possible response" role="cell">Reassess the goal if the same pace becomes unsustainable</td></tr><tr role="row"><th scope="row" data-label="Stage" role="rowheader">Late race</th><td data-label="Review" role="cell">Ability to continue safely and maintain control</td><td data-label="Possible response" role="cell">Choose a sustainable effort; a faster finish is optional</td></tr></tbody></table></div><p>Chest pain, fainting, severe unusual breathlessness or confusion require stopping and urgent medical help, not another pacing check. See <a href="https://www.healthdirect.gov.au/heart-palpitations">Healthdirect Australia: heart palpitations</a> and <a href="https://www.healthdirect.gov.au/heatstroke">Healthdirect Australia: heatstroke and heat illness</a>.</p></section>
 
       <section id="set-targets"><h2>Set personal references carefully</h2><p>Review representative sessions in similar conditions rather than borrowing another runner’s heart-rate number. Training and race heart rate can differ, and medication or health conditions can change the response. Discuss individual restrictions with your clinician where relevant.</p><p>A heart-rate ceiling may be a personal coaching choice, but this page cannot calculate a safe cap from age or a previous race. Do not assume that staying below a number makes continued running safe.</p></section>
 
@@ -413,15 +404,7 @@
         </p>
       </section>
 
-      <footer class="post-footer">
-        <p>
-          Build your race plan from here:
-          use the <a href="/marathon-time-predictor/">Marathon Time Predictor</a> to set a realistic goal,
-          the <a href="/">Marathon Pace Calculator</a> to map your splits,
-          the <a href="/race-conditions-pace-adjuster/">Race-Day Pace Adjuster</a> to adjust for the day,
-          and the <a href="/printable-pace-band/">Printable Pace Band</a> to carry your checkpoints on race day.
-        </p>
-      </footer>
+      <footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information"><a href="/about/">About Davin</a><a href="/methodology/">Calculator methods</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact &amp; corrections</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap/">All pages</a></nav><p>© 2026 Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>
 
     </article>
   </main>
@@ -455,6 +438,6 @@
     .related ul { padding-left: 18px; }
     .note { opacity: 0.85; }
   </style>
-<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
+
 </body>
 </html>

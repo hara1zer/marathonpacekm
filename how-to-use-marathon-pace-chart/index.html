@@ -2,20 +2,9 @@
 
 <html lang="en">
 <head>
-  <!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-04CFG6TG7N"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    var analyticsPage = location.origin + location.pathname;
-    var analyticsReferrer = document.referrer ? new URL(document.referrer) : null;
-    gtag('set', {
-      page_location: analyticsPage,
-      page_referrer: analyticsReferrer ? analyticsReferrer.origin + analyticsReferrer.pathname : undefined
-    });
-    gtag('config', 'G-04CFG6TG7N');
-  </script>
+
+
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>How to use a marathon pace chart | Marathon Pace KM</title>
@@ -83,15 +72,17 @@
 <link href="/favicon.svg?v=20260922" rel="icon" type="image/svg+xml"/>
 <link href="/favicon.ico?v=20260922" rel="alternate icon"/>
 <link href="/apple-touch-icon.png?v=20260922" rel="apple-touch-icon"/>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
-     crossorigin="anonymous"></script>     <meta name="theme-color" content="#174f40">
-<link rel="stylesheet" href="/assets/theme.css?v=20260922">
-<link rel="stylesheet" href="/assets/content.css?v=20261001">
+     <meta name="theme-color" content="#174f40">
+<link rel="stylesheet" href="/assets/site.css?v=20261004">
+<meta name="google-adsense-account" content="ca-pub-5455873308344668">
+<script defer src="/assets/site-telemetry.js?v=20261004"></script>
 </head>
-<body class="mpkm-legacy">
+<body class="mpkm-legacy mpkm-reading">
 <header class="mpkm-site-header"><div class="mpkm-header-inner">
 <a class="mpkm-brand" href="/"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a>
 <nav class="mpkm-main-nav" aria-label="Main navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/blog/">Guides</a><a class="mpkm-nav-cta" href="/printable-pace-band/">Pace band ↗</a></nav>
+
+<details class="mpkm-mobile-menu"><summary aria-label="Site menu">Menu <span aria-hidden="true">☰</span></summary><nav aria-label="Mobile site navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/marathon-fueling-calculator/">Fueling</a><a href="/blog/">Guides</a><a href="/printable-pace-band/">Pace band</a></nav></details>
 </div></header>
 <header class="wrap" style="padding-top:28px">
 <a class="btn secondary" href="/">← Back to pace chart</a>
@@ -101,24 +92,7 @@
 <article class="post"><header class="post-header"><p class="eyebrow">Pacing decisions</p><p class="lede">A pace chart converts a finish target into cumulative checkpoints. Use it to understand the plan and the consequences of changing it, while keeping effort and conditions in view.</p></header><p class="byline">By <a href="/about/#author" rel="author">Davin Pinto</a> · Updated <time datetime="2026-10-01">1 October 2026</time> · <a href="/editorial-policy/">Editorial policy</a> · <a href="/contact/">Corrections</a></p><nav id="toc" class="card" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#target">Choose a supported target</a></li><li><a href="#math">Read an even four-hour example</a></li><li><a href="#segments">Distinguish segment and cumulative time</a></li><li><a href="#checkpoints">Use the difference as information</a></li><li><a href="#conditions">Allow for the actual course</a></li><li><a href="#band">Make a readable reference</a></li><li><a href="#practice">Practise interpretation in ordinary training</a></li><li><a href="#faq">Questions about charts</a></li></ul></nav><section id="target" class="card"><h2>Choose a supported target</h2><p>Start with representative recent races, the training you normally sustain and the course. A predictor gives a scenario, not a safe or likely time. <a href="/blog/choose-marathon-goal-time/">Choose the goal</a> before using the <a href="/marathon-pace-calculator/">pace calculator</a> to create precise checkpoints.</p></section><section id="math" class="card"><h2>Read an even four-hour example</h2><p class="table-hint">On a small screen, swipe the table to see all columns.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Calculated checkpoints over 42.195 km"><table><caption>Calculated checkpoints over 42.195 km</caption><thead><tr><th scope="col">Distance</th><th scope="col">Cumulative time</th></tr></thead><tbody><tr><th scope="row">5 km</th><td>28:26</td></tr><tr><th scope="row">10 km</th><td>56:53</td></tr><tr><th scope="row">Half marathon</th><td>2:00:00</td></tr><tr><th scope="row">30 km</th><td>2:50:38</td></tr><tr><th scope="row">40 km</th><td>3:47:31</td></tr><tr><th scope="row">Finish</th><td>4:00:00</td></tr></tbody></table></div><p>Cumulative times use the full-precision pace before rounding. The quick label 5:41/km is rounded and does not reconstruct exactly four hours. A sub-four goal must be below four hours; set that exact target in the calculator.</p></section><section id="segments" class="card"><h2>Distinguish segment and cumulative time</h2><p>The value beside 30 km is the total to that point. To find a segment, subtract two cumulative values. In this example, 30–40 km takes 3:47:31 minus 2:50:38 = 56:53. Do not mistake a ten-kilometre segment for a kilometre pace.</p></section><section id="checkpoints" class="card"><h2>Use the difference as information</h2><p>If crowding or a climb puts you behind, first understand the cause. Returning to the original effort does not automatically recover lost time. For a four-hour target, reaching 30 km in 2:55 requires about 5:20/km for the remaining 12.195 km. <a href="/blog/when-to-adjust-marathon-pace-mid-race/">Review whether retaining the target makes sense.</a></p></section><section id="conditions" class="card"><h2>Allow for the actual course</h2><p>Even pace is a useful reference on a stable course, but hills, wind and heat can change sustainable effort. Read the <a href="/adjust-marathon-pace/">adjustment guides</a> and follow event advice. A chart cannot determine whether continuing through symptoms is safe.</p></section><section id="band" class="card"><h2>Make a readable reference</h2><p>Use the <a href="/printable-pace-band/">pace-band generator</a> for even, controlled-start or negative-split plans. Confirm units and the finish time. A slower opening keeps the same requested total only by changing later checkpoints. Fuel reminders belong in the separate <a href="/marathon-fueling-calculator/">fuel schedule</a>.</p></section><section id="practice" class="card"><h2>Practise interpretation in ordinary training</h2><p>Use a familiar watch screen and notice the difference between instant pace, lap pace and cumulative time. GPS lap distance can be inaccurate around obstructions. Check the <a href="/blog/gps-watch-pacing-mistakes-run-tangents/">GPS guide</a> rather than accelerating to correct a single implausible reading.</p></section><section id="faq" class="card"><h2>Questions about charts</h2><h3>Must I hit every split exactly?</h3><p>No. The chart is a reference. Terrain, crowds, conditions and your response can justify changes.</p><h3>Does choosing a slower opening preserve the finish automatically?</h3><p>Only in the calculation. The later pace required may not be sustainable in the race.</p><h3>Which units should I choose?</h3><p>Use kilometres or miles according to the course and the reference you find easiest to read. Neither unit is more accurate.</p></section></article>
 </main>
 <script defer="" src="/assets/app.js?v=20260921"></script>
-<footer class="wrap" style="padding:24px 16px 40px">
-<div class="card" style="padding:16px">
-<div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
-<a href="/">Pace chart hub</a>
-<a href="/marathon-pace-calculator/">Calculator</a>
-<a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
-<a href="/monthly-training-plan/">Monthly plan</a>
-<a href="/how-to-use-marathon-pace-chart/">How to use</a>
-<a href="/even-vs-negative-splits/">Even vs negative splits</a>
-<a href="/sitemap/">HTML sitemap</a>
-<a href="/about/">About</a>
-<a href="/contact/">Contact</a>
-<a href="/privacy/">Privacy</a>
-<a href="/disclaimer/">Disclaimer</a>
-</div>
-<p class="tiny muted" style="margin-top:12px">Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.</p>
-</div>
-</footer>
-<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
+<footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information"><a href="/about/">About Davin</a><a href="/methodology/">Calculator methods</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact &amp; corrections</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap/">All pages</a></nav><p>© 2026 Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>
+
 </body>
 </html>

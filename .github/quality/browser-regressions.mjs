@@ -134,13 +134,14 @@ await test('Personal articles preserve identity, dates and discovery links',asyn
     article:schemas.find(s=>s['@type']==='Article')
    };
   });
-  assert.equal(data.title,data.h1+' | Marathon Pace KM');
+  assert.ok(data.title.trim().length > 15 && data.title.length <= 64, 'Search title must identify the article concisely');
+  assert.ok(!titles.some(([, , , title]) => title === data.title), 'Articles need distinct search titles');
   assert.equal(data.ogTitle,data.h1);assert.equal(data.twitterTitle,data.h1);
   assert.equal(data.canonical,'https://marathonpacekm.com'+route);
   assert.equal(data.article.headline,data.h1);assert.equal(data.article.description,data.description);
   assert.equal(data.article.author.name,'Davin Pinto');assert.equal(data.article.dateModified,'2026-10-02');
   assert.match(await page.locator('.byline').innerText(),new RegExp(byline));
-  titles.push([route,data.h1,data.description]);
+  titles.push([route,data.h1,data.description,data.title]);
  }
  await go('/blog/');
  for(const [route,title,description] of titles){
@@ -162,6 +163,37 @@ await test('Fueling article worked example agrees with the calculator',async()=>
  await go('/marathon-fueling-calculator/');
  await values({finishHours:4,finishMinutes:0,gelCarbs:25,firstGel:20,interval:20});await page.click('#calculateBtn');
  assert.equal((await text('outPlannedGels')).trim(),'11');assert.match(await text('actualIntake'),/68\.8/);
+});
+await test('Mobile menu works with keyboard and navigation at small widths',async()=>{
+ for(const width of [320,390,760]){
+  await page.setViewportSize({width,height:900});await go('/blog/');
+  const menu=page.locator('.mpkm-mobile-menu');const summary=menu.locator('summary');
+  assert.ok(await summary.isVisible());assert.equal(await menu.getAttribute('open'),null);
+  await summary.focus();await page.keyboard.press('Enter');assert.notEqual(await menu.getAttribute('open'),null);
+  assert.equal(await menu.locator('nav a').count(),6);
+  assert.ok(await menu.locator('a[href="/monthly-training-plan/"]').isVisible());
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
+  await page.keyboard.press('Enter');assert.equal(await menu.getAttribute('open'),null);
+  await summary.click();await menu.locator('a[href="/marathon-fueling-calculator/"]').click();
+  assert.ok(page.url().endsWith('/marathon-fueling-calculator/'));
+ }
+ await page.setViewportSize({width:1280,height:900});await go('/blog/');
+ assert.ok(await page.locator('.mpkm-mobile-menu').isHidden());assert.ok(await page.locator('.mpkm-main-nav').isVisible());
+});
+await test('Reading layout and stacked comparisons preserve values and labels',async()=>{
+ await page.setViewportSize({width:390,height:900});await go('/blog/marathon-fueling-experiments/');
+ const table=page.locator('#arithmetic table');assert.equal(await table.getAttribute('role'),'table');
+ assert.equal(await table.locator('tbody tr').count(),3);
+ assert.ok((await table.innerText()).includes('68.75 g/h'));assert.ok((await table.innerText()).includes('62.5 g/h'));
+ const cells=await table.locator('tbody td').evaluateAll(cells=>cells.map(c=>({label:c.dataset.label,width:c.getBoundingClientRect().width,right:c.getBoundingClientRect().right})));
+ assert.ok(cells.every(c=>c.label&&c.right<=390&&c.width>250));
+ const caption=await table.locator('caption').boundingBox();assert.ok(caption.x+caption.width<=390);
+ await page.setViewportSize({width:1280,height:900});await go('/blog/rebuilding-after-sydney-marathon/');
+ assert.ok((await page.locator('main').boundingBox()).width<=820);
+ await go('/monthly-training-plan/');assert.ok((await page.locator('.wrap').first().boundingBox()).width>900);
+ await go('/');assert.equal(await page.locator('#runner-story .mpkm-story-card').count(),4);
+ assert.ok(await page.evaluate(()=>document.getElementById('runner-story').compareDocumentPosition(document.getElementById('guides'))&Node.DOCUMENT_POSITION_FOLLOWING));
+ await go('/blog/');assert.equal(await page.locator('#personal-experience .mpkm-story-card').count(),4);
 });
 assert.equal(errors.length,0,errors.join('\n'));
 }finally{fs.writeFileSync(output+'/functional-results.json',JSON.stringify(results,null,2));console.log(JSON.stringify(results,null,2));await browser.close();server.close();}

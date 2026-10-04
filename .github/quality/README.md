@@ -5,6 +5,7 @@ These developer-only scripts need Node 20+ and Playwright installed in your loca
 
 ```
 node .github/quality/browser-regressions.mjs
+node .github/quality/seo-regressions.mjs
 node .github/quality/browser-scan.mjs
 ```
 
@@ -16,10 +17,22 @@ The regression script checks normal/invalid calculator inputs, precise time tota
 
 The site-wide palette and legacy-page styling live in `assets/theme.css`. Homepage-style pages retain their existing layout; other pages use the same logo and a common static masthead. Run `python3 .github/quality/sync-branding.py` after adding a page to attach the shared CSS, logo/navigation and current favicon references. The script is idempotent and uses only the Python standard library. Update the version in that script and asset references when changing cached branding assets. Screen styles are scoped away from print layouts.
 
+## Shared page layout
+
+`assets/layout.css` supplies narrower reading columns, the native mobile menu, common footers and story cards. After syncing branding or adding a page, run `python3 .github/quality/apply-layout-polish.py` (requires Python's `lxml` package). It classifies pages as reading, index or tool layouts and preserves existing footer year IDs and scripts. Calculators keep their wide layout. Bump the stylesheet version in the helper and page references when changing this cached asset.
+
+Only short, regular comparison tables on reading pages receive the `mpkm-summary-table` class and phone layouts with column labels. Detailed splits retain horizontal scrolling. The browser scan checks layout loading, one menu/footer per page, compact phone headers and reading-column widths. Regression checks cover keyboard menu operation, preserved table values, story discovery and calculator widths.
+
 ## Original article figures and checkpoint cards
 
 Run `python3 .github/quality/build-content-assets.py` to regenerate the three Sydney figures, eight checkpoint cards and public chart-data JSON in `assets/original/`. The script uses only the Python standard library and data already published in the personal review. It does not reconstruct missing race kilometres or long-run laps. Checkpoint calculations retain full precision over 42.195 km before rounding displayed elapsed times.
 
 Article tables and figures use `assets/content.css`. Wide tables have a phone-width swipe cue and keyboard focus; keep their captions, column headers and scroll region when editing. Neither the static checkpoint cards nor the printable pace-band tool includes a gel schedule: link the separate fueling calculator when both references are needed.
+
+## Shared CSS bundle and SEO checks
+
+Pages load the committed `assets/site.css` bundle. After editing `theme.css`, `content.css`, `layout.css` or `performance.css`, run `python3 .github/quality/build-shared-css.py` and commit the regenerated bundle. The source stylesheets remain the authoring files; Cloudflare needs no build dependency. Legacy pages may also load their existing `assets/style.css` base styles.
+
+`seo-regressions.mjs` checks the five-hour run/walk calculator, partial final intervals, stopped-time arithmetic, invalid values, 3:25 KM/mile exports, matching pace-band links and static splits without JavaScript. It mocks external scripts to check that Google Analytics starts after load, AdSense waits another 2.5 seconds, and the embedded pace-band tool loads neither. These checks do not measure deployed Core Web Vitals or real ad behavior.
 
 Run `python3 .github/quality/build-half-marathon-assets.py` to regenerate the two Run Melbourne comparison figures from `assets/original/half-marathon-2025-2026-data.json`. Full recorded kilometre laps are compared descriptively; partial laps and missing GPS distance are not reconstructed.

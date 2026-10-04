@@ -1,0 +1,25 @@
+/* Stable initial controls and outputs; optional networks do not size the UI. */
+.pace-band-handoff { margin-top: 18px; padding: 18px; border: 1px solid #c7d6bc; border-radius: 12px; background: #edf4e2; color: #152d27; }
+.pace-band-handoff h3 { margin: 0 0 9px; }
+.pace-band-handoff p { margin: 10px 0; }
+.pace-band-handoff a[aria-disabled="true"] { opacity: .55; cursor: default; }
+.run-walk-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin: 18px 0; }
+.run-walk-fields label { display: block; font-weight: 650; font-size: .86rem; margin-bottom: 7px; }
+.run-walk-fields input { width: 100%; min-height: 48px; padding: 10px; font-variant-numeric: tabular-nums; }
+.run-walk-fields small { display: block; color: #536760; font-size: .75rem; margin-top: 5px; }
+.run-walk-fields .walk-pace-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.run-walk-output { padding: 20px; margin-top: 20px; background: #edf3e7; border: 1px solid #c7d9cb; border-radius: 14px; }
+.run-walk-output h3 { margin: 0 0 12px; }
+.run-walk-output .running-pace { font-size: 1.7rem; font-weight: 750; color: #174f40; font-variant-numeric: tabular-nums; }
+.run-walk-output dl { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+.run-walk-output dt { font-size: .78rem; color: #536760; }
+.run-walk-output dd { margin: 4px 0 0; font-weight: 650; font-variant-numeric: tabular-nums; }
+.run-walk-output p { font-size: .85rem; }
+#rw-error { min-height: 1.3em; }
+@media screen and (max-width: 450px) {
+  .run-walk-fields { grid-template-columns: 1fr; }
+}
+@media print {
+  .pace-band-handoff, #run-walk-form { display: none !important; }
+  .run-walk-output { break-inside: avoid; }
+}

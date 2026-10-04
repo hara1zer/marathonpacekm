@@ -10,7 +10,7 @@ for p in R.rglob('*.html'):
  if any(part.startswith('.') for part in p.relative_to(R).parts):continue
  s=p.read_text();modern='class="brand-mark"' in s
  # Shared CSS follows page styles; its namespaced selectors also cover body-end styles.
- if '/assets/theme.css' not in s:s=s.replace('</head>','<link rel="stylesheet" href="/assets/theme.css?v=20260922">\n</head>')
+ if '/assets/theme.css' not in s and '/assets/site.css' not in s:s=s.replace('</head>','<link rel="stylesheet" href="/assets/theme.css?v=20260922">\n</head>')
  if not modern and 'class="mpkm-site-header"' not in s:
   def body(m):
    tag=m[0]

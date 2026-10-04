@@ -2,23 +2,12 @@
 
 <html lang="en">
 <head>
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-04CFG6TG7N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    var analyticsPage = location.origin + location.pathname;
-    var analyticsReferrer = document.referrer ? new URL(document.referrer) : null;
-    gtag('set', {
-      page_location: analyticsPage,
-      page_referrer: analyticsReferrer ? analyticsReferrer.origin + analyticsReferrer.pathname : undefined
-    });
-    gtag('config', 'G-04CFG6TG7N');
-  </script>
+
+
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>4:35 Marathon Pace Chart (6:31/km, 10:29/mi) | Splits, Pace Band, Calculator</title>
+<title>4:35 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>
 <meta content="4:35 marathon pace is 6:31 per km (≈10:29/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band." name="description"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://marathonpacekm.com/4-35-marathon-pace-km/" rel="canonical"/>
@@ -295,14 +284,16 @@
   <link rel="alternate icon" href="/favicon.ico?v=20260922" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260922" />
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
-     crossorigin="anonymous"></script>     <link rel="stylesheet" href="/assets/theme.css?v=20260922">
-<link rel="stylesheet" href="/assets/content.css?v=20261001">
+     <link rel="stylesheet" href="/assets/site.css?v=20261004">
+<meta name="google-adsense-account" content="ca-pub-5455873308344668">
+<script defer src="/assets/site-telemetry.js?v=20261004"></script>
 </head>
-<body id="top" class="mpkm-legacy">
+<body id="top" class="mpkm-legacy mpkm-tool">
 <header class="mpkm-site-header"><div class="mpkm-header-inner">
 <a class="mpkm-brand" href="/"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a>
 <nav class="mpkm-main-nav" aria-label="Main navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/blog/">Guides</a><a class="mpkm-nav-cta" href="/printable-pace-band/">Pace band ↗</a></nav>
+
+<details class="mpkm-mobile-menu"><summary aria-label="Site menu">Menu <span aria-hidden="true">☰</span></summary><nav aria-label="Mobile site navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/marathon-fueling-calculator/">Fueling</a><a href="/blog/">Guides</a><a href="/printable-pace-band/">Pace band</a></nav></details>
 </div></header>
 <header class="wrap">
 <nav aria-label="Breadcrumb" class="crumbs tiny muted">
@@ -536,10 +527,10 @@
 <h2>Related goal times</h2>
 <p class="muted">These internal links help you compare nearby targets quickly.</p>
 <div class="toc" id="relatedLinks">
-<a class="btn secondary" data-check="" href="/4-30-marathon-pace-km/">4:30</a>
-<a class="btn secondary" data-check="" href="/4-40-marathon-pace-km/">4:40</a>
-<a class="btn secondary" data-check="" href="/4-50-marathon-pace-km/">4:50</a>
-<a class="btn secondary" data-check="" href="/sub-4-marathon-pace-km/">Sub-4</a>
+<a class="btn secondary"  href="/4-30-marathon-pace-km/">4:30</a>
+<a class="btn secondary"  href="/4-40-marathon-pace-km/">4:40</a>
+<a class="btn secondary"  href="/4-50-marathon-pace-km/">4:50</a>
+<a class="btn secondary"  href="/sub-4-marathon-pace-km/">Sub-4</a>
 </div>
 
 <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
@@ -719,76 +710,12 @@
         details.open = wasOpen;
       });
     })();
-
-    // -------- Hide missing internal links (with caching) --------
-    (async function () {
-      const candidates = document.querySelectorAll('#relatedLinks a[data-check]');
-      const CACHE_KEY = 'mpkm_linkcheck_v1';
-      const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
-
-      function loadCache(){
-        try { return JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); }
-        catch { return {}; }
-      }
-      function saveCache(cache){
-        try { localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); } catch {}
-      }
-
-      const cache = loadCache();
-      const now = Date.now();
-
-      for (const a of candidates) {
-        const href = a.getAttribute('href');
-        if (!href || !href.startsWith('/')) continue; // only internal
-
-        const cached = cache[href];
-        if (cached && (now - cached.t) < CACHE_TTL_MS) {
-          if (!cached.ok) a.style.display = 'none';
-          continue;
-        }
-
-        try {
-          // HEAD first (lighter). If a server blocks it, fallback to GET.
-          let res = await fetch(href, { method: 'HEAD', cache: 'no-store' });
-          if (res.status === 405 || res.status === 403) {
-            res = await fetch(href, { method: 'GET', cache: 'no-store' });
-          }
-          const ok = res.ok;
-
-          cache[href] = { ok, t: now };
-          if (!ok) a.style.display = 'none';
-        } catch (e) {
-          // On any network error, hide it (prevents dead links showing).
-          cache[href] = { ok: false, t: now };
-          a.style.display = 'none';
-        }
-      }
-
-      saveCache(cache);
-    })();
   </script>
-<!-- Cloudflare Insights beacon removed for copy/paste safety. Add it back if you use it site-wide. -->
-
-<footer class="wrap" style="padding:24px 16px 40px">
-  <div class="card" style="padding:16px">
-    <div class="footer-links" style="display:flex;flex-wrap:wrap;gap:12px">
-      <a href="/">Pace chart hub</a>
-      <a href="/marathon-pace-calculator/">Calculator</a>
-      <a href="/marathon-pace-chart-min-per-mile/">Min/mile chart</a>
-      <a href="/monthly-training-plan/">Monthly plan</a>
-      <a href="/how-to-use-marathon-pace-chart/">How to use</a>
-      <a href="/even-vs-negative-splits/">Even vs negative splits</a>
-      <a href="/sitemap/">HTML sitemap</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="/disclaimer/">Disclaimer</a>
-    </div>
-    <p class="tiny muted" style="margin-top:12px">Training content is general information, not medical advice. Always listen to your body and consider professional guidance for injuries or health concerns.</p>
-  </div>
-</footer>
 
 
-<nav class="wrap" aria-label="More site information" style="display:flex;flex-wrap:wrap;gap:16px;padding-bottom:28px"><a href="/methodology/">Calculator methods</a> <a href="/editorial-policy/">Editorial policy</a></nav>
+<footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information"><a href="/about/">About Davin</a><a href="/methodology/">Calculator methods</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact &amp; corrections</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap/">All pages</a></nav><p>© 2026 Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>
+
+
+
 </body>
 </html>
