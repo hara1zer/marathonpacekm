@@ -2,23 +2,12 @@
 
 <html lang="en">
 <head>
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-04CFG6TG7N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    var analyticsPage = location.origin + location.pathname;
-    var analyticsReferrer = document.referrer ? new URL(document.referrer) : null;
-    gtag('set', {
-      page_location: analyticsPage,
-      page_referrer: analyticsReferrer ? analyticsReferrer.origin + analyticsReferrer.pathname : undefined
-    });
-    gtag('config', 'G-04CFG6TG7N');
-  </script>
+
+
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>5:05 Marathon Pace Chart (7:14/km, 11:38/mi) | Splits, Pace Band, Calculator</title>
+<title>5:05 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>
 <meta content="5:05 marathon pace is 7:14 per km (≈11:38/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band." name="description"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://marathonpacekm.com/5-05-marathon-pace-km/" rel="canonical"/>
@@ -295,10 +284,9 @@
   <link rel="alternate icon" href="/favicon.ico?v=20260922" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260922" />
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
-     crossorigin="anonymous"></script>     <link rel="stylesheet" href="/assets/theme.css?v=20260922">
-<link rel="stylesheet" href="/assets/content.css?v=20261001">
-<link rel="stylesheet" href="/assets/layout.css?v=20261002">
+     <link rel="stylesheet" href="/assets/site.css?v=20261004">
+<meta name="google-adsense-account" content="ca-pub-5455873308344668">
+<script defer src="/assets/site-telemetry.js?v=20261004"></script>
 </head>
 <body id="top" class="mpkm-legacy mpkm-tool">
 <header class="mpkm-site-header"><div class="mpkm-header-inner">
@@ -539,10 +527,10 @@
 <h2>Related goal times</h2>
 <p class="muted">These internal links help you compare nearby targets quickly.</p>
 <div class="toc" id="relatedLinks">
-<a class="btn secondary" data-check="" href="/5-00-marathon-pace-km/">5:00</a>
-<a class="btn secondary" data-check="" href="/4-50-marathon-pace-km/">4:50</a>
-<a class="btn secondary" data-check="" href="/4-55-marathon-pace-km/">4:55</a>
-<a class="btn secondary" data-check="" href="/sub-4-marathon-pace-km/">Sub-4</a>
+<a class="btn secondary"  href="/5-00-marathon-pace-km/">5:00</a>
+<a class="btn secondary"  href="/4-50-marathon-pace-km/">4:50</a>
+<a class="btn secondary"  href="/4-55-marathon-pace-km/">4:55</a>
+<a class="btn secondary"  href="/sub-4-marathon-pace-km/">Sub-4</a>
 </div>
 
 <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
@@ -722,55 +710,8 @@
         details.open = wasOpen;
       });
     })();
-
-    // -------- Hide missing internal links (with caching) --------
-    (async function () {
-      const candidates = document.querySelectorAll('#relatedLinks a[data-check]');
-      const CACHE_KEY = 'mpkm_linkcheck_v1';
-      const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
-
-      function loadCache(){
-        try { return JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); }
-        catch { return {}; }
-      }
-      function saveCache(cache){
-        try { localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); } catch {}
-      }
-
-      const cache = loadCache();
-      const now = Date.now();
-
-      for (const a of candidates) {
-        const href = a.getAttribute('href');
-        if (!href || !href.startsWith('/')) continue; // only internal
-
-        const cached = cache[href];
-        if (cached && (now - cached.t) < CACHE_TTL_MS) {
-          if (!cached.ok) a.style.display = 'none';
-          continue;
-        }
-
-        try {
-          // HEAD first (lighter). If a server blocks it, fallback to GET.
-          let res = await fetch(href, { method: 'HEAD', cache: 'no-store' });
-          if (res.status === 405 || res.status === 403) {
-            res = await fetch(href, { method: 'GET', cache: 'no-store' });
-          }
-          const ok = res.ok;
-
-          cache[href] = { ok, t: now };
-          if (!ok) a.style.display = 'none';
-        } catch (e) {
-          // On any network error, hide it (prevents dead links showing).
-          cache[href] = { ok: false, t: now };
-          a.style.display = 'none';
-        }
-      }
-
-      saveCache(cache);
-    })();
   </script>
-<!-- Cloudflare Insights beacon removed for copy/paste safety. Add it back if you use it site-wide. -->
+
 
 <footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information"><a href="/about/">About Davin</a><a href="/methodology/">Calculator methods</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact &amp; corrections</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap/">All pages</a></nav><p>© 2026 Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>
 

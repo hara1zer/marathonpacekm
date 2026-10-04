@@ -111,7 +111,7 @@ for path in sorted(ROOT.rglob('*.html')):
         source, hits = re.subn(r'(<section\b[^>]*id="guides"[^>]*>)', lambda m: hub + m[1], source, count=1)
         if hits != 1:
             raise ValueError('Cannot locate homepage guides')
-    if '/assets/layout.css' not in source:
+    if '/assets/layout.css' not in source and '/assets/site.css' not in source:
         source = source.replace('</head>', f'<link rel="stylesheet" href="/assets/layout.css?v={VERSION}">\n</head>', 1)
     if 'class="mpkm-mobile-menu"' not in source:
         pattern = r'(<header\b[^>]*class="(?:mpkm-site-header|site-header)"[^>]*>.*?)(</div>\s*</header>)'

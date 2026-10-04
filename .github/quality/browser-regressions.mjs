@@ -134,13 +134,14 @@ await test('Personal articles preserve identity, dates and discovery links',asyn
     article:schemas.find(s=>s['@type']==='Article')
    };
   });
-  assert.equal(data.title,data.h1+' | Marathon Pace KM');
+  assert.ok(data.title.trim().length > 15 && data.title.length <= 64, 'Search title must identify the article concisely');
+  assert.ok(!titles.some(([, , , title]) => title === data.title), 'Articles need distinct search titles');
   assert.equal(data.ogTitle,data.h1);assert.equal(data.twitterTitle,data.h1);
   assert.equal(data.canonical,'https://marathonpacekm.com'+route);
   assert.equal(data.article.headline,data.h1);assert.equal(data.article.description,data.description);
   assert.equal(data.article.author.name,'Davin Pinto');assert.equal(data.article.dateModified,'2026-10-02');
   assert.match(await page.locator('.byline').innerText(),new RegExp(byline));
-  titles.push([route,data.h1,data.description]);
+  titles.push([route,data.h1,data.description,data.title]);
  }
  await go('/blog/');
  for(const [route,title,description] of titles){

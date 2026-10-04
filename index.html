@@ -1,20 +1,9 @@
 <!doctype html>
 <html lang="en-AU">
 <head>
-  <!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-04CFG6TG7N"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    var analyticsPage = location.origin + location.pathname;
-    var analyticsReferrer = document.referrer ? new URL(document.referrer) : null;
-    gtag('set', {
-      page_location: analyticsPage,
-      page_referrer: analyticsReferrer ? analyticsReferrer.origin + analyticsReferrer.pathname : undefined
-    });
-    gtag('config', 'G-04CFG6TG7N');
-  </script>
+
+
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Marathon pace chart (KM) &amp; calculator | Marathon Pace KM</title>
@@ -92,10 +81,11 @@
   ]
 }</script>
   <!-- Existing AdSense publisher preserved. Placement and exclusions are managed in AdSense. -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/assets/theme.css?v=20260922">
-<link rel="stylesheet" href="/assets/content.css?v=20261001">
-<link rel="stylesheet" href="/assets/layout.css?v=20261002">
+
+<link rel="stylesheet" href="/assets/site.css?v=20261004">
+<meta name="google-adsense-account" content="ca-pub-5455873308344668">
+<script defer src="/assets/site-telemetry.js?v=20261004"></script>
+<noscript><style>[data-js]{display:none!important}</style></noscript>
 </head>
 <body id="top" class="mpkm-tool mpkm-tool">
 <a class="skip" href="#content">Skip to calculator and pace chart</a>
@@ -129,7 +119,7 @@
       <div class="panel-pad">
         <div class="panel-heading"><div><h2 id="calculator-title">Find your race pace</h2></div><span class="tag">FREE TOOL</span></div>
         <noscript><p class="noscript-note">The calculator needs JavaScript. You can still use both pace charts below and visit the goal-time guides. The example shown is a 4-hour marathon.</p></noscript>
-        <form id="pace-form" novalidate data-js hidden>
+        <form id="pace-form" novalidate data-js>
           <fieldset class="mode-switch"><legend class="sr-only">Calculate from</legend>
             <label><input type="radio" name="mode" value="time" checked><span>Finish time → pace</span></label>
             <label><input type="radio" name="mode" value="pace"><span>Pace → finish time</span></label>
@@ -164,7 +154,7 @@
         <p class="result-note">Paces shown to 0.1 second. Checkpoints use unrounded pace and show elapsed time, including stops.</p>
         <div class="result-stale" id="result-stale" hidden>Finish entering a valid time or pace to update your splits.</div>
       </div>
-      <div class="export-area" data-js hidden>
+      <div class="export-area" data-js>
         <div class="export-actions"><button type="button" id="share-btn">Copy plan link</button><button type="button" id="copy-btn">Copy checkpoints</button><button type="button" id="download-btn">Download splits (CSV)</button></div>
         <p class="status" id="action-status" role="status" aria-live="polite"></p>
         <div class="manual-copy" id="manual-copy" hidden><label for="copy-text">Select and copy this text:</label><textarea id="copy-text" readonly></textarea></div>
@@ -188,7 +178,7 @@
 <tr><td><a href="/5-00-marathon-pace-km/" data-goal-seconds="18000">5:00:00</a></td><td>7:07</td><td>2:30:00</td></tr>
 <tr><td>5:30:00</td><td>7:49</td><td>2:45:00</td></tr>
 <tr><td>6:00:00</td><td>8:32</td><td>3:00:00</td></tr></tbody></table>
-      <div class="chart-footer"><p class="small muted">Select a linked finish time for its pacing guide.</p><a class="btn btn-outline" href="#pace-chart">Full chart: every 5 minutes <span aria-hidden="true">↓</span></a><div class="sub-four"><strong>Aiming to break four hours?</strong><a href="/sub-4-marathon-pace-km/" data-goal-seconds="14399">See the sub-4 marathon pace guide →</a></div></div>
+      <div class="chart-footer"><p class="small muted">Select a linked finish time for its pacing guide. Planning around five hours? <a href="/5-00-marathon-pace-km/#run-walk">Compare run/walk intervals and stops in the five-hour guide.</a></p><a class="btn btn-outline" href="#pace-chart">Full chart: every 5 minutes <span aria-hidden="true">↓</span></a><div class="sub-four"><strong>Aiming to break four hours?</strong><a href="/sub-4-marathon-pace-km/" data-goal-seconds="14399">See the sub-4 marathon pace guide →</a></div></div>
       <p class="chart-note">Chart paces are rounded to the nearest second. Use the calculator for precise paces and checkpoints. <a href="/marathon-pace-chart-min-per-mile/">Prefer a min/mile chart?</a></p>
     </section>
   </div>
@@ -217,7 +207,7 @@
 <tr><td><a href="/3-10-marathon-pace-km/" data-goal-seconds="11400">3:10:00</a></td><td>4:30</td><td>7:15</td></tr>
 <tr><td><a href="/3-15-marathon-pace-km/" data-goal-seconds="11700">3:15:00</a></td><td>4:37</td><td>7:26</td></tr>
 <tr><td>3:20:00</td><td>4:44</td><td>7:38</td></tr>
-<tr><td>3:25:00</td><td>4:52</td><td>7:49</td></tr>
+<tr><td><a href="/3-25-marathon-pace-km/" data-goal-seconds="12300">3:25:00</a></td><td>4:52</td><td>7:49</td></tr>
 <tr><td><a href="/3-30-marathon-pace-km/" data-goal-seconds="12600">3:30:00</a></td><td>4:59</td><td>8:01</td></tr>
 <tr><td>3:35:00</td><td>5:06</td><td>8:12</td></tr>
 <tr><td>3:40:00</td><td>5:13</td><td>8:23</td></tr>

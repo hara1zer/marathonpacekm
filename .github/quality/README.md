@@ -5,6 +5,7 @@ These developer-only scripts need Node 20+ and Playwright installed in your loca
 
 ```
 node .github/quality/browser-regressions.mjs
+node .github/quality/seo-regressions.mjs
 node .github/quality/browser-scan.mjs
 ```
 
@@ -27,5 +28,11 @@ Only short, regular comparison tables on reading pages receive the `mpkm-summary
 Run `python3 .github/quality/build-content-assets.py` to regenerate the three Sydney figures, eight checkpoint cards and public chart-data JSON in `assets/original/`. The script uses only the Python standard library and data already published in the personal review. It does not reconstruct missing race kilometres or long-run laps. Checkpoint calculations retain full precision over 42.195 km before rounding displayed elapsed times.
 
 Article tables and figures use `assets/content.css`. Wide tables have a phone-width swipe cue and keyboard focus; keep their captions, column headers and scroll region when editing. Neither the static checkpoint cards nor the printable pace-band tool includes a gel schedule: link the separate fueling calculator when both references are needed.
+
+## Shared CSS bundle and SEO checks
+
+Pages load the committed `assets/site.css` bundle. After editing `theme.css`, `content.css`, `layout.css` or `performance.css`, run `python3 .github/quality/build-shared-css.py` and commit the regenerated bundle. The source stylesheets remain the authoring files; Cloudflare needs no build dependency. Legacy pages may also load their existing `assets/style.css` base styles.
+
+`seo-regressions.mjs` checks the five-hour run/walk calculator, partial final intervals, stopped-time arithmetic, invalid values, 3:25 KM/mile exports, matching pace-band links and static splits without JavaScript. It mocks external scripts to check that Google Analytics starts after load, AdSense waits another 2.5 seconds, and the embedded pace-band tool loads neither. These checks do not measure deployed Core Web Vitals or real ad behavior.
 
 Run `python3 .github/quality/build-half-marathon-assets.py` to regenerate the two Run Melbourne comparison figures from `assets/original/half-marathon-2025-2026-data.json`. Full recorded kilometre laps are compared descriptively; partial laps and missing GPS distance are not reconstructed.

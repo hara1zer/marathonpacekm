@@ -33,7 +33,7 @@ try{
       return u.hostname==='127.0.0.1' ? route.continue() : route.abort();
     });
     for(const item of data.pages){
-      if(process.argv.includes('--focused')&&!['/','/3-00-marathon-pace-km/','/3-30-marathon-pace-km/','/4-15-marathon-pace-km/','/marathon-fueling-calculator/','/marathon-time-predictor/','/monthly-training-plan/','/printable-pace-band/','/blog/sydney-marathon-2026-personal-review/','/blog/rebuilding-after-sydney-marathon/','/blog/marathon-fueling-experiments/','/privacy/'].includes(item.route))continue;
+      if(process.argv.includes('--focused')&&!['/','/3-25-marathon-pace-km/','/5-00-marathon-pace-km/','/3-00-marathon-pace-km/','/3-30-marathon-pace-km/','/4-15-marathon-pace-km/','/marathon-fueling-calculator/','/marathon-time-predictor/','/monthly-training-plan/','/printable-pace-band/','/blog/sydney-marathon-2026-personal-review/','/blog/rebuilding-after-sydney-marathon/','/blog/marathon-fueling-experiments/','/privacy/'].includes(item.route))continue;
       const page=await context.newPage();const errors=[];const missing=[];
       page.on('pageerror',e=>errors.push(e.message));
       page.on('response',r=>{if(r.status()>=400&&r.url().startsWith(base))missing.push(r.url().replace(base,''));});
@@ -44,8 +44,8 @@ try{
           return {
             overflow:document.documentElement.scrollWidth>width+2,
             branded:!!document.querySelector('.brand-mark svg,.mpkm-brand-mark svg'),
-            themeLoaded:!![...document.styleSheets].find(s=>s.href?.includes('/assets/theme.css')),
-            layoutLoaded:!![...document.styleSheets].find(s=>s.href?.includes('/assets/layout.css')),
+            themeLoaded:!![...document.styleSheets].find(s=>s.href?.includes('/assets/theme.css')||s.href?.includes('/assets/site.css')),
+            layoutLoaded:!![...document.styleSheets].find(s=>s.href?.includes('/assets/layout.css')||s.href?.includes('/assets/site.css')),
             footerCount:document.querySelectorAll('.mpkm-footer').length,
             mobileMenuCount:document.querySelectorAll('.mpkm-mobile-menu').length,
             headerHeight:document.querySelector('.mpkm-site-header,.site-header')?.getBoundingClientRect().height,
@@ -61,7 +61,7 @@ try{
           };
         });
         results.push({route:item.route,width,errors,missing,...details});
-        if(['/','/blog/','/blog/run-melbourne-half-marathon-2025-vs-2026/','/blog/tempo-vs-threshold-vs-marathon-pace/','/norwegian-singles/','/3-00-marathon-pace-km/','/4-15-marathon-pace-km/','/marathon-fueling-calculator/','/blog/sydney-marathon-2026-personal-review/','/blog/rebuilding-after-sydney-marathon/','/blog/marathon-fueling-experiments/','/privacy/'].includes(item.route)){
+        if(['/','/3-25-marathon-pace-km/','/5-00-marathon-pace-km/','/blog/','/blog/run-melbourne-half-marathon-2025-vs-2026/','/blog/tempo-vs-threshold-vs-marathon-pace/','/norwegian-singles/','/3-00-marathon-pace-km/','/4-15-marathon-pace-km/','/marathon-fueling-calculator/','/blog/sydney-marathon-2026-personal-review/','/blog/rebuilding-after-sydney-marathon/','/blog/marathon-fueling-experiments/','/privacy/'].includes(item.route)){
           await page.screenshot({path:output+'/'+(item.route.replaceAll('/','_')||'home')+'-'+width+'.png',fullPage:true});
           await page.screenshot({path:output+'/'+(item.route.replaceAll('/','_')||'home')+'-'+width+'-opening.png',fullPage:false});
         }
@@ -74,7 +74,7 @@ try{
       }catch(e){results.push({route:item.route,width,errors:[e.message]});}
       await page.close();
     }
-    await context.close();
+    // Keep contexts until browser.close(); single-process Chromium exits when a context closes.
   }
   fs.writeFileSync(output+'/browser-diagnostics.json',JSON.stringify(results,null,2));
   const hasIssue=x=>x.errors?.length||x.missing?.length||x.overflow||!x.branded||!x.themeLoaded||!x.layoutLoaded||x.footerCount!==1||x.mobileMenuCount!==1||(x.width===390&&x.headerHeight>90)||(x.readingWidth>821)||(x.readingH1Size>42);

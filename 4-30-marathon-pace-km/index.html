@@ -1,19 +1,8 @@
 <!doctype html>
 <html lang="en-AU"><head>
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-04CFG6TG7N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    var analyticsPage = location.origin + location.pathname;
-    var analyticsReferrer = document.referrer ? new URL(document.referrer) : null;
-    gtag('set', {
-      page_location: analyticsPage,
-      page_referrer: analyticsReferrer ? analyticsReferrer.origin + analyticsReferrer.pathname : undefined
-    });
-    gtag('config', 'G-04CFG6TG7N');
-  </script>
+
+
+
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>4:30 Marathon Pace (6:24/km) | Splits &amp; Free Pace Band</title><meta name="description" content="4:30 marathon pace is 6:24/km (10:18/mile). See precise checkpoints, full KM and mile splits, and create a free printable pace band or phone card.">
 <meta name="robots" content="index, follow, max-image-preview:large"><link rel="canonical" href="https://marathonpacekm.com/4-30-marathon-pace-km/">
@@ -82,10 +71,11 @@
     }
   ]
 }</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/assets/theme.css?v=20260922">
-<link rel="stylesheet" href="/assets/content.css?v=20261001">
-<link rel="stylesheet" href="/assets/layout.css?v=20261002">
+
+<link rel="stylesheet" href="/assets/site.css?v=20261004">
+<meta name="google-adsense-account" content="ca-pub-5455873308344668">
+<script defer src="/assets/site-telemetry.js?v=20261004"></script>
+<noscript><style>[data-js]{display:none!important}</style></noscript>
 </head><body id="top" class="mpkm-tool mpkm-tool">
 <a class="skip" href="#content">Skip to marathon splits</a>
 <header class="site-header"><div class="wrap header-inner"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a><nav class="main-nav" aria-label="Main navigation"><a href="/">Pace chart</a><a class="desktop-nav" href="/marathon-time-predictor/">Predictor</a><a class="nav-cta" href="/printable-pace-band/">Pace band ↗</a></nav>
@@ -103,7 +93,7 @@
 <p class="stale-note" id="stale-note" hidden>Complete a valid finish time to see your splits and create a matching pace band.</p>
 <div id="split-tables"><table class="pace-table"><caption class="sr-only" id="key-caption">Even-pace checkpoints for a 4:30:00 marathon</caption><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody id="key-splits-body"><tr><th scope="row">5 km</th><td>0:32:00</td></tr><tr><th scope="row">10 km</th><td>1:03:59</td></tr><tr><th scope="row">Half · 21.0975 km</th><td>2:15:00</td></tr><tr><th scope="row">30 km</th><td>3:11:58</td></tr><tr><th scope="row">40 km</th><td>4:15:57</td></tr><tr><th scope="row">Finish · 42.195 km</th><td>4:30:00</td></tr></tbody></table>
 <div class="mobile-band-action"><a class="btn" data-current-band href="/printable-pace-band/?h=4&amp;m=30&amp;s=0&amp;unit=km&amp;strategy=even">Create my pace band →</a></div><p class="table-explanation">Elapsed time includes stops. Calculations use 42.195 km and unrounded pace; checkpoint times are rounded to the nearest second.</p>
-<div id="pace-chart"><details class="full-splits" id="full-splits"><summary id="full-splits-label">Every kilometre · 4:30:00 marathon</summary><div class="split-controls" data-js hidden><label class="field-label" for="split-unit">Split interval</label><select id="split-unit"><option value="km">Every kilometre</option><option value="mi">Every mile</option><option value="5km">Every 5 kilometres</option></select></div>
+<div id="pace-chart"><details class="full-splits" id="full-splits"><summary id="full-splits-label">Every kilometre · 4:30:00 marathon</summary><div class="split-controls" data-js><label class="field-label" for="split-unit">Split interval</label><select id="split-unit"><option value="km">Every kilometre</option><option value="mi">Every mile</option><option value="5km">Every 5 kilometres</option></select></div>
 <div class="table-scroll" id="chartTable" tabindex="0" role="region" aria-label="Full marathon split table"><table class="pace-table"><caption class="sr-only" id="splits-caption">Cumulative and segment times for a 4:30:00 marathon</caption><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed</th><th scope="col">Segment</th></tr></thead><tbody id="splits-body"><tr><th scope="row">1 km</th><td>0:06:24</td><td>0:06:24</td></tr>
 <tr><th scope="row">2 km</th><td>0:12:48</td><td>0:06:24</td></tr>
 <tr><th scope="row">3 km</th><td>0:19:12</td><td>0:06:24</td></tr>
@@ -147,11 +137,11 @@
 <tr><th scope="row">41 km</th><td>4:22:21</td><td>0:06:24</td></tr>
 <tr><th scope="row">42 km</th><td>4:28:45</td><td>0:06:24</td></tr>
 <tr><th scope="row">Finish (42.195 km)</th><td>4:30:00</td><td>0:01:15</td></tr></tbody></table></div></details></div></div>
-<div class="export-area" data-js hidden><div class="export-actions"><button type="button" id="share-btn">Copy plan link</button><button type="button" id="copy-btn">Copy checkpoints</button><button type="button" id="download-btn">Download CSV</button></div><p class="status" id="action-status" role="status" aria-live="polite"></p><div class="manual-copy" id="manual-copy" hidden><label for="copy-text">Select and copy:</label><textarea id="copy-text" readonly></textarea></div></div>
+<div class="export-area" data-js><div class="export-actions"><button type="button" id="share-btn">Copy plan link</button><button type="button" id="copy-btn">Copy checkpoints</button><button type="button" id="download-btn">Download CSV</button></div><p class="status" id="action-status" role="status" aria-live="polite"></p><div class="manual-copy" id="manual-copy" hidden><label for="copy-text">Select and copy:</label><textarea id="copy-text" readonly></textarea></div></div>
 <p class="sr-only" id="result-announcement" role="status" aria-live="polite"></p></section>
 <aside class="panel goal-side" aria-label="Customise and save your plan"><section class="panel-pad" id="calculator" aria-labelledby="calculator-title"><h2 id="calculator-title">Adjust your finish time</h2><p class="helper">Try another target. The checkpoints, full splits and pace-band link update together.</p>
 <noscript><p class="noscript-note">The 4:30 splits on this page work without JavaScript. Enable JavaScript to change your goal or customise a pace band.</p></noscript>
-<form id="goal-form" novalidate data-js hidden><fieldset class="time-group"><legend>Goal finish time</legend><div class="time-fields"><div class="time-field"><label for="h">Hours</label><input id="h" data-label="hours" type="number" min="0" max="23" step="1" inputmode="numeric" value="4" required aria-describedby="input-error"></div><div class="time-field"><label for="m">Minutes</label><input id="m" data-label="minutes" type="number" min="0" max="59" step="1" inputmode="numeric" value="30" required aria-describedby="input-error"></div><div class="time-field"><label for="s">Seconds</label><input id="s" data-label="seconds" type="number" min="0" max="59" step="1" inputmode="numeric" value="0" required aria-describedby="input-error"></div></div></fieldset><div class="form-actions"><button type="submit" id="calcBtn" class="btn">Update my splits</button><button type="button" id="resetBtn" class="text-button">Reset to 4:30</button></div><p class="error" id="input-error" role="alert" hidden></p></form></section>
+<form id="goal-form" novalidate data-js><fieldset class="time-group"><legend>Goal finish time</legend><div class="time-fields"><div class="time-field"><label for="h">Hours</label><input id="h" data-label="hours" type="number" min="0" max="23" step="1" inputmode="numeric" value="4" required aria-describedby="input-error"></div><div class="time-field"><label for="m">Minutes</label><input id="m" data-label="minutes" type="number" min="0" max="59" step="1" inputmode="numeric" value="30" required aria-describedby="input-error"></div><div class="time-field"><label for="s">Seconds</label><input id="s" data-label="seconds" type="number" min="0" max="59" step="1" inputmode="numeric" value="0" required aria-describedby="input-error"></div></div></fieldset><div class="form-actions"><button type="submit" id="calcBtn" class="btn">Update my splits</button><button type="button" id="resetBtn" class="text-button">Reset to 4:30</button></div><p class="error" id="input-error" role="alert" hidden></p></form></section>
 <section class="band-card" id="pace-band" aria-labelledby="band-title"><span id="printBand" class="anchor-target"></span><span class="eyebrow">Keep your plan close</span><h2 id="band-title">Your race-day pace band</h2><p>Print a wrist band, save a PDF through your browser, or download a phone card. No sign-up.</p><div class="band-target-line">Finish target: <strong id="band-target">4:30:00</strong></div><dl class="band-preview" aria-label="Pace-band checkpoint preview"><div><dt>5K</dt><dd data-band-km="5">0:32:00</dd></div><div><dt>HALFWAY</dt><dd data-band-km="21.0975">2:15:00</dd></div><div><dt>FINISH</dt><dd data-band-km="42.195">4:30:00</dd></div></dl><a class="btn" id="band-link" data-current-band href="/printable-pace-band/?h=4&amp;m=30&amp;s=0&amp;unit=km&amp;strategy=even">Create my pace band <span aria-hidden="true">→</span></a><p class="small">Opens with this finish time and even pacing selected. You can then choose KM or miles, a controlled start or a gradual negative split.</p></section>
 <div class="side-links"><a href="/marathon-time-predictor/">Is this a realistic target? Try the predictor →</a><p>Estimate a starting point from a recent race, then check it against your training.</p><a href="/marathon-pace-calculator/">Open the standalone pace calculator →</a></div></aside></div>
 <div class="guide-content"><section class="card" id="who-this-suits"><h2>Use this target when the evidence supports it</h2><p>Use the checkpoint table to compare this target with the case above. Choose the finish goal from your current preparation; a calculator cannot supply the endurance or recovery evidence.</p></section>

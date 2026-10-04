@@ -2,23 +2,12 @@
 
 <html lang="en">
 <head>
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-04CFG6TG7N"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    var analyticsPage = location.origin + location.pathname;
-    var analyticsReferrer = document.referrer ? new URL(document.referrer) : null;
-    gtag('set', {
-      page_location: analyticsPage,
-      page_referrer: analyticsReferrer ? analyticsReferrer.origin + analyticsReferrer.pathname : undefined
-    });
-    gtag('config', 'G-04CFG6TG7N');
-  </script>
+
+
+
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>3:05 Marathon Pace Chart (4:23/km, 7:03/mi) | Splits, Pace Band, Calculator</title>
+<title>3:05 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>
 <meta content="3:05 marathon pace is 4:23 per km (≈7:03/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band." name="description"/>
 <meta content="index, follow" name="robots"/>
 <link href="https://marathonpacekm.com/3-05-marathon-pace-km/" rel="canonical"/>
@@ -295,10 +284,10 @@
   <link rel="alternate icon" href="/favicon.ico?v=20260922" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260922" />
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668"
-     crossorigin="anonymous"></script>     <link rel="stylesheet" href="/assets/theme.css?v=20260922">
-<link rel="stylesheet" href="/assets/content.css?v=20261001">
-<link rel="stylesheet" href="/assets/layout.css?v=20261002">
+     <link rel="stylesheet" href="/assets/site.css?v=20261004">
+<meta name="google-adsense-account" content="ca-pub-5455873308344668">
+<script defer src="/assets/site-telemetry.js?v=20261004"></script>
+<script defer src="/assets/goal-band-links.js?v=20261004"></script>
 </head>
 <body id="top" class="mpkm-legacy mpkm-tool">
 <header class="mpkm-site-header"><div class="mpkm-header-inner">
@@ -384,7 +373,7 @@
 </div>
 <div aria-live="polite" class="results" id="results">
 <div class="tiny muted2">Tip: Click <strong>Calculate</strong> to generate your pace + key splits.</div>
-</div>
+</div><div class="pace-band-handoff"><h3>Save this goal as a wrist band or phone card</h3><p>Open the generator with the finish time entered above. Choose kilometre or mile checkpoints, then print a band, save a PDF or download a phone card.</p><a class="btn" data-goal-band href="/printable-pace-band/?h=3&amp;m=5&amp;s=0&amp;unit=km&amp;strategy=even">Create my matching pace band →</a><p class="tiny muted">For a different distance or an incomplete time, enter a valid marathon target before opening the generator.</p></div>
 <div class="callout">
 <strong>Practical pacing tip:</strong> At 3:05 pace, ‘a little too fast’ early is expensive. If you’re forcing it at 10–15 km, you’re already borrowing from 35–42 km. Keep effort controlled and fuel on schedule.
       </div>
@@ -539,10 +528,10 @@
 <h2>Related goal times</h2>
 <p class="muted">These internal links help you compare nearby targets quickly.</p>
 <div class="toc" id="relatedLinks">
-<a class="btn secondary" data-check="" href="/3-00-marathon-pace-km/">3:00</a>
-<a class="btn secondary" data-check="" href="/3-10-marathon-pace-km/">3:10</a>
-<a class="btn secondary" data-check="" href="/3-15-marathon-pace-km/">3:15</a>
-<a class="btn secondary" data-check="" href="/3-30-marathon-pace-km/">3:30</a>
+<a class="btn secondary"  href="/3-00-marathon-pace-km/">3:00</a>
+<a class="btn secondary"  href="/3-10-marathon-pace-km/">3:10</a>
+<a class="btn secondary"  href="/3-15-marathon-pace-km/">3:15</a>
+<a class="btn secondary"  href="/3-30-marathon-pace-km/">3:30</a>
 </div>
 
 <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
@@ -722,55 +711,8 @@
         details.open = wasOpen;
       });
     })();
-
-    // -------- Hide missing internal links (with caching) --------
-    (async function () {
-      const candidates = document.querySelectorAll('#relatedLinks a[data-check]');
-      const CACHE_KEY = 'mpkm_linkcheck_v1';
-      const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
-
-      function loadCache(){
-        try { return JSON.parse(localStorage.getItem(CACHE_KEY) || '{}'); }
-        catch { return {}; }
-      }
-      function saveCache(cache){
-        try { localStorage.setItem(CACHE_KEY, JSON.stringify(cache)); } catch {}
-      }
-
-      const cache = loadCache();
-      const now = Date.now();
-
-      for (const a of candidates) {
-        const href = a.getAttribute('href');
-        if (!href || !href.startsWith('/')) continue; // only internal
-
-        const cached = cache[href];
-        if (cached && (now - cached.t) < CACHE_TTL_MS) {
-          if (!cached.ok) a.style.display = 'none';
-          continue;
-        }
-
-        try {
-          // HEAD first (lighter). If a server blocks it, fallback to GET.
-          let res = await fetch(href, { method: 'HEAD', cache: 'no-store' });
-          if (res.status === 405 || res.status === 403) {
-            res = await fetch(href, { method: 'GET', cache: 'no-store' });
-          }
-          const ok = res.ok;
-
-          cache[href] = { ok, t: now };
-          if (!ok) a.style.display = 'none';
-        } catch (e) {
-          // On any network error, hide it (prevents dead links showing).
-          cache[href] = { ok: false, t: now };
-          a.style.display = 'none';
-        }
-      }
-
-      saveCache(cache);
-    })();
   </script>
-<!-- Cloudflare Insights beacon removed for copy/paste safety. Add it back if you use it site-wide. -->
+
 
 <footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information"><a href="/about/">About Davin</a><a href="/methodology/">Calculator methods</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact &amp; corrections</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap/">All pages</a></nav><p>© 2026 Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>
 
