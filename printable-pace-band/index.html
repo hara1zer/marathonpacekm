@@ -7,20 +7,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Free Marathon Pace Band Generator | Printable KM &amp; Miles</title>
-  <meta name="description" content="Create a free printable marathon pace band in KM or miles. Set your goal time, choose your pacing plan, then print, save as PDF or download a phone card." />
+  <title>Printable Pace Band Generator | Marathon &amp; Half Marathon</title>
+  <meta name="description" content="Make a marathon or half-marathon pace band in kilometres or miles. Set an exact goal time, preview elapsed checkpoints, and print at actual size on A4 or Letter." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://marathonpacekm.com/printable-pace-band/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Free Marathon Pace Band Generator | Printable KM &amp; Miles" />
-  <meta property="og:description" content="Build a custom marathon pace band in kilometres or miles. Print your wrist bands, save as PDF from the print dialog, or download a phone card." />
+  <meta property="og:title" content="Printable Pace Band Generator | Marathon &amp; Half Marathon" />
+  <meta property="og:description" content="Build a marathon or half-marathon pace band in kilometres or miles. Print at actual size or download a phone card." />
   <meta property="og:url" content="https://marathonpacekm.com/printable-pace-band/" />
   <meta property="og:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Free Marathon Pace Band Generator | Printable KM &amp; Miles" />
-  <meta name="twitter:description" content="Generate a free marathon pace band for your goal time. Print in kilometres or miles and download a race-day phone card." />
+  <meta name="twitter:title" content="Printable Pace Band Generator | Marathon &amp; Half Marathon" />
+  <meta name="twitter:description" content="Generate a marathon or half-marathon pace band for your goal time. Print in kilometres or miles and download a phone card." />
   <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
 
   <link rel="preload" href="/assets/style.css?v=20260921" as="style" />
@@ -100,6 +100,10 @@
     }
 
     .control-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 18px; }
+    .race-choice { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .race-choice label { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding: 8px 14px; border: 1px solid var(--band-line); border-radius: 10px; background: #fff; font-weight: 800; cursor: pointer; }
+    .race-choice label:has(input:checked) { border-color: var(--band-red); background: #fff4f5; color: var(--band-red-dark); }
+    .race-choice input { margin-right: 7px; }
     .control-group { min-width: 0; }
     .control-group > label, .control-label { display: block; margin-bottom: 7px; font-size: 14px; font-weight: 800; color: var(--band-ink); }
     .time-inputs, .pace-inputs { display: flex; align-items: center; gap: 7px; flex-wrap: nowrap; }
@@ -124,6 +128,8 @@
     .btn-primary-strong { background: var(--band-red) !important; border-color: var(--band-red) !important; color: #fff !important; }
     .btn-primary-strong:hover { background: var(--band-red-dark) !important; border-color: var(--band-red-dark) !important; }
     .status-line { min-height: 22px; margin-top: 10px; color: var(--band-muted); font-size: 13px; }
+    .field-error { min-height: 20px; margin: 4px 0 0; color: #a1111b; font-size: 13px; font-weight: 700; }
+    input[aria-invalid="true"] { border-color: #a1111b !important; }
 
     .advanced-options { margin-top: 16px; border: 1px solid var(--band-line); border-radius: 14px; background: rgba(255, 255, 255, .55); }
     .advanced-options > summary { padding: 13px 14px; cursor: pointer; font-weight: 800; }
@@ -172,10 +178,10 @@
     .wrist-preview-note { margin: 10px 0 0; color: var(--band-muted); font-size: 12px; }
 
     .pace-band {
-      width: 225mm;
+      width: var(--band-length, 194mm);
       height: 38mm;
       display: grid;
-      grid-template-columns: 35mm minmax(0, 1fr) 24mm;
+      grid-template-columns: 28mm minmax(0, 1fr) 24mm;
       overflow: hidden;
       box-sizing: border-box;
       border: .35mm dashed #111;
@@ -187,7 +193,7 @@
       -webkit-print-color-adjust: exact;
     }
 
-    .band-brand { display: flex; flex-direction: column; justify-content: center; padding: 2mm; background: #111; color: #fff; text-align: left; box-sizing: border-box; }
+    .band-brand { display: flex; flex-direction: column; justify-content: center; padding: 2mm; background: #fff; color: #111; border-right: .2mm solid #666; text-align: left; box-sizing: border-box; }
     .band-brand-name { font-size: 5.2pt; font-weight: 800; letter-spacing: .08em; line-height: 1.1; text-transform: uppercase; }
     .band-goal { margin-top: 1.2mm; font-size: 13pt; font-weight: 900; line-height: 1; }
     .band-pace { margin-top: 1mm; font-size: 6.5pt; font-weight: 700; line-height: 1.15; }
@@ -197,9 +203,13 @@
     .band-cell:nth-child(5n) { border-right: 0; }
     .band-cell:nth-child(n+6) { border-bottom: 0; }
     .band-cell:nth-child(odd) { background: #f1f3f5; }
-    .band-distance { font-size: 6pt; font-weight: 900; letter-spacing: .035em; line-height: 1; text-transform: uppercase; }
+    .band-distance { font-size: 8pt; font-weight: 900; line-height: 1; text-transform: uppercase; }
     .band-time { margin-top: 1mm; font-size: 10pt; font-variant-numeric: tabular-nums; font-weight: 900; line-height: 1; white-space: nowrap; }
     .band-tape { display: flex; align-items: center; justify-content: center; border-left: .35mm dashed #111; color: #4b5563; font-size: 5.5pt; font-weight: 800; letter-spacing: .1em; text-align: center; text-transform: uppercase; writing-mode: vertical-rl; transform: rotate(180deg); }
+    .band-checkpoints[data-count="6"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .band-checkpoints[data-count="6"] .band-cell:nth-child(3n) { border-right: 0; }
+    .band-checkpoints[data-count="6"] .band-cell:nth-child(n+4) { border-bottom: 0; }
+    .band-checkpoints[data-count="6"] .band-cell:nth-child(5) { border-right: .2mm solid #9ca3af; }
 
     .phone-stage { display: flex; justify-content: center; padding: 12px; border-radius: 16px; background: var(--band-soft); }
 
@@ -228,7 +238,7 @@
     .phone-stat-label { color: rgba(255, 255, 255, .62); font-size: 8px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
     .phone-stat-value { margin-top: 3px; font-size: 17px; font-weight: 900; }
     .phone-checkpoints { flex: 1; min-height: 0; margin: 0 14px; overflow: hidden; border: 1px solid rgba(255, 255, 255, .12); border-radius: 15px; background: rgba(255, 255, 255, .96); color: var(--band-ink); }
-    .phone-row { height: 10%; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #e7e9ee; box-sizing: border-box; }
+    .phone-row { height: calc(100% / var(--checkpoint-count, 10)); display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border-bottom: 1px solid #e7e9ee; box-sizing: border-box; }
     .phone-row:last-child { border-bottom: 0; }
     .phone-row:nth-child(even) { background: #f5f6f8; }
     .phone-distance { color: #4b5563; font-size: 11px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
@@ -265,7 +275,7 @@
     }
 
     @media print {
-      @page { size: A4 landscape; margin: 10mm; }
+      @page { size: landscape; margin: 10mm; }
 
       html, body {
         width: auto !important;
@@ -278,8 +288,7 @@
       body > * { display: none !important; }
 
       body > #printSheet {
-        width: 277mm;
-        min-height: 190mm;
+        width: 100%;
         display: flex !important;
         flex-direction: column;
         align-items: center;
@@ -293,19 +302,19 @@
         -webkit-print-color-adjust: exact;
       }
 
-      .print-heading { width: 225mm; margin: 0; padding: 0; }
+      .print-heading { width: var(--band-length, 194mm); margin: 0; padding: 0; }
       .print-title { margin: 0; font-size: 13pt; font-weight: 900; }
       .print-instructions { margin: 1.5mm 0 0; color: #444; font-size: 8pt; }
       .print-scale { display: flex; align-items: flex-end; gap: 3mm; margin-top: 2mm; color: #444; font-size: 7pt; }
       .print-scale-line { width: 50mm; border-top: .4mm solid #111; }
-      .print-band-row { width: 225mm; height: 38mm; flex: 0 0 38mm; break-inside: avoid; page-break-inside: avoid; }
+      .print-band-row { width: var(--band-length, 194mm); height: 38mm; flex: 0 0 38mm; break-inside: avoid; page-break-inside: avoid; }
       .pace-band { box-shadow: none !important; }
     }
 
     #checkpointPrint { display: none; }
     @media print {
-      body[data-print-layout="a4"] > #printSheet { display: none !important; }
-      body[data-print-layout="a4"] > #checkpointPrint { display: block !important; width: 240mm; margin: 0 auto; }
+      body[data-print-layout="checkpoints"] > #printSheet { display: none !important; }
+      body[data-print-layout="checkpoints"] > #checkpointPrint { display: block !important; max-width: 100%; margin: 0 auto; }
       #checkpointPrint h1 { font-size: 18pt; margin: 0 0 4mm; }
       #checkpointPrint p { font-size: 10pt; margin: 3mm 0; }
       #checkpointPrint table { width: 100%; border-collapse: collapse; }
@@ -313,6 +322,7 @@
     }
 
 </style>
+<style id="paperPageStyle">@page { size: A4 landscape; margin: 10mm; }</style>
 
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -329,14 +339,14 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Marathon Pace Band Generator",
+          "name": "Printable Pace Band Generator",
           "item": "https://marathonpacekm.com/printable-pace-band/"
         }
       ]
     },
     {
       "@type": "WebApplication",
-      "name": "Marathon Pace Band Generator",
+      "name": "Printable Marathon and Half-Marathon Pace Band Generator",
       "url": "https://marathonpacekm.com/printable-pace-band/",
       "applicationCategory": "SportsApplication",
       "operatingSystem": "Any",
@@ -345,17 +355,17 @@
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "Generate a free printable marathon pace band in kilometres or miles with custom goal times, three pacing plans, browser printing, PDF saving through the print dialog and a downloadable phone card."
+      "description": "Generate a free printable marathon or half-marathon pace band in kilometres or miles with exact goal times, three pacing plans, A4 or Letter browser printing and a downloadable phone card."
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is a marathon pace band?",
+          "name": "What is a pace band?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A marathon pace band, also called a pace bracelet, is a wrist-sized list of target elapsed times at race checkpoints. It helps you compare your progress with your finish-time goal without doing calculations during the race."
+            "text": "A pace band, also called a pace bracelet, is a wrist-sized list of target elapsed times at race checkpoints. It helps you compare your progress with your finish-time goal without doing calculations during the race."
           }
         },
         {
@@ -363,7 +373,7 @@
           "name": "Can I save my marathon pace band as a PDF?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Select Print bands / Save PDF, then choose Save as PDF if it is available in your browser or operating system. Use A4 landscape and 100% or Actual size. The phone card downloads separately as a PNG image."
+            "text": "Yes. Select Print bands / Save PDF, then choose Save as PDF if available. Match the selected A4 or US Letter landscape paper and use 100% or Actual size. The phone card downloads separately as a PNG image."
           }
         },
         {
@@ -371,15 +381,15 @@
           "name": "Can I make a pace band in kilometres or miles?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Choose Kilometres or Miles in the generator. The wrist band and phone card use your selected units, and the summary shows average pace in both. The full marathon distance used for every calculation is 42.195 km."
+            "text": "Yes. Choose Kilometres or Miles. Calculations use 42.195 km for a marathon or 21.0975 km for a half marathon, including the final partial split."
           }
         },
         {
           "@type": "Question",
-          "name": "What checkpoints should be on a marathon pace band?",
+          "name": "What checkpoints should be on a pace band?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "This generator uses ten checkpoints. In kilometres, these are 5K, 10K, 15K, 20K, halfway, 25K, 30K, 35K, 40K and the finish. In miles, they are 3, 6, 9, 12, halfway, 15, 18, 21, 24 and the finish. The expandable split table also shows every kilometre or mile."
+            "text": "The marathon band uses ten major checkpoints and the half-marathon band uses six. Both include halfway and finish. The expandable table shows every kilometre or mile and the final partial split."
           }
         },
         {
@@ -403,7 +413,7 @@
           "name": "How do I know the band printed at the right size?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Print on A4 landscape at 100% or Actual size, then measure the supplied 50 mm line. If it does not measure exactly 50 mm, turn off Fit to page or other scaling and print again. Each wrist band is 225 mm long and 38 mm high, including the tape-overlap area."
+            "text": "Print on the selected A4 or US Letter landscape paper at 100% or Actual size, then measure the 50 mm line. Each band is the selected wrist circumference plus 24 mm of blank overlap, and 38 mm high."
           }
         },
         {
@@ -440,10 +450,10 @@
   <header class="wrap" style="padding-top:28px">
     <a class="btn secondary" href="/">← Back to pace chart hub</a>
 
-    <h1 style="margin-top:14px">Marathon Pace Band Generator</h1>
+    <h1 style="margin-top:14px">Printable Pace Band Generator: Marathon &amp; Half Marathon</h1>
 
     <p class="sub generator-intro">
-      Create a <strong>free printable marathon pace band</strong> in kilometres or miles.
+      Create a <strong>free printable marathon or half-marathon pace band</strong> in kilometres or miles.
       Enter your goal finish time to build a custom wrist band with cumulative checkpoint times,
       using even pacing, a controlled start or a gradual negative split.
     </p>
@@ -472,21 +482,27 @@
     <section id="generator" class="card">
       <h2>Create your printable pace band</h2>
 
-      <p class="muted generator-intro">
-        Goal time and average pace stay synchronised. Both race-day formats update instantly.
-      </p>
+      <p class="muted generator-intro">Choose your race and exact finish goal. The band and phone card update instantly.</p>
+
+      <div class="control-group">
+        <span class="control-label" id="distanceLabel">Race distance</span>
+        <div class="race-choice" role="group" aria-labelledby="distanceLabel">
+          <label><input type="radio" name="distance" value="marathon" checked /> Marathon · 42.195 km</label>
+          <label><input type="radio" name="distance" value="half" /> Half marathon · 21.0975 km</label>
+        </div>
+      </div>
 
       <p class="control-label" id="presetLabel" style="margin-top:16px">
         Choose a goal time to get started
       </p>
 
       <nav class="goal-presets" aria-labelledby="presetLabel">
-        <a class="goal-preset" data-goal-seconds="10800" href="?h=3&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 3:00 marathon pace band">3:00 band</a>
-        <a class="goal-preset" data-goal-seconds="12600" href="?h=3&amp;m=30&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 3:30 marathon pace band">3:30 band</a>
-        <a class="goal-preset" data-goal-seconds="14400" href="?h=4&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 4:00 marathon pace band" aria-current="true">4:00 band</a>
-        <a class="goal-preset" data-goal-seconds="16200" href="?h=4&amp;m=30&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 4:30 marathon pace band">4:30 band</a>
-        <a class="goal-preset" data-goal-seconds="18000" href="?h=5&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 5:00 marathon pace band">5:00 band</a>
-        <a class="goal-preset" data-goal-seconds="19800" href="?h=5&amp;m=30&amp;s=0&amp;unit=km&amp;strategy=controlled&amp;cushion=15#generator" aria-label="Create a 5:30 marathon pace band">5:30 band</a>
+        <a class="goal-preset" data-goal-seconds="10800" href="?h=3&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=even#generator" aria-label="Set a 3:00 goal">3:00 band</a>
+        <a class="goal-preset" data-goal-seconds="12600" href="?h=3&amp;m=30&amp;s=0&amp;unit=km&amp;strategy=even#generator" aria-label="Set a 3:30 goal">3:30 band</a>
+        <a class="goal-preset" data-goal-seconds="14400" href="?h=4&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=even#generator" aria-label="Set a 4:00 goal" aria-current="true">4:00 band</a>
+        <a class="goal-preset" data-goal-seconds="16200" href="?h=4&amp;m=30&amp;s=0&amp;unit=km&amp;strategy=even#generator" aria-label="Set a 4:30 goal">4:30 band</a>
+        <a class="goal-preset" data-goal-seconds="18000" href="?h=5&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=even#generator" aria-label="Set a 5:00 goal">5:00 band</a>
+        <a class="goal-preset" data-goal-seconds="19800" href="?h=5&amp;m=30&amp;s=0&amp;unit=km&amp;strategy=even#generator" aria-label="Set a 5:30 goal">5:30 band</a>
       </nav>
 
       <p class="field-help">
@@ -506,33 +522,35 @@
 
           <div class="time-inputs" role="group" aria-labelledby="goalTimeLabel">
             <label class="visually-hidden" for="h">Goal hours</label>
-            <input id="h" type="number" min="0" max="24" inputmode="numeric" value="4" />
+            <input id="h" type="number" min="0" max="24" inputmode="numeric" value="4" aria-describedby="goalError" />
             <span class="input-suffix">h</span>
 
             <label class="visually-hidden" for="m">Goal minutes</label>
-            <input id="m" type="number" min="0" max="59" inputmode="numeric" value="0" />
+            <input id="m" type="number" min="0" max="59" inputmode="numeric" value="0" aria-describedby="goalError" />
             <span class="input-suffix">m</span>
 
             <label class="visually-hidden" for="s">Goal seconds</label>
-            <input id="s" type="number" min="0" max="59" inputmode="numeric" value="0" />
+            <input id="s" type="number" min="0" max="59" inputmode="numeric" value="0" aria-describedby="goalError" />
             <span class="input-suffix">s</span>
           </div>
+          <p class="field-error" id="goalError" aria-live="polite"></p>
         </div>
 
         <div class="control-group">
-          <span class="control-label" id="paceLabel">Average pace per kilometre</span>
+          <span class="control-label" id="paceLabel">Calculate a goal from pace per kilometre</span>
 
           <div class="pace-inputs" role="group" aria-labelledby="paceLabel">
             <label class="visually-hidden" for="paceM">Pace minutes</label>
-            <input id="paceM" type="number" min="0" max="59" inputmode="numeric" value="5" />
+            <input id="paceM" type="number" min="0" max="99" inputmode="numeric" value="5" aria-describedby="paceError" />
             <span class="input-suffix">m</span>
 
             <label class="visually-hidden" for="paceS">Pace seconds</label>
-            <input id="paceS" type="number" min="0" max="59" inputmode="numeric" value="41" />
+            <input id="paceS" type="number" min="0" max="59" inputmode="numeric" value="41" aria-describedby="paceError" />
             <span class="input-suffix">s</span>
           </div>
 
-          <p class="field-help">Editing either the goal time or pace updates the other.</p>
+          <p class="field-help">The pace shown for a goal is rounded. Editing it calculates a new finish goal from that pace.</p>
+          <p class="field-error" id="paceError" aria-live="polite"></p>
         </div>
 
         <div class="control-group">
@@ -548,19 +566,19 @@
           <label for="strategy">Pacing plan</label>
 
           <select id="strategy">
-            <option value="controlled" selected>Controlled start (recommended)</option>
-            <option value="even">Even pace</option>
+            <option value="even" selected>Even pace</option>
+            <option value="controlled">Controlled start</option>
             <option value="negative">Gradual negative split</option>
           </select>
 
           <p class="field-help" id="strategyHelp">
-            Reach 5K slightly behind an even-pace schedule, then settle.
+            Hold the same planned average pace from start to finish.
           </p>
         </div>
       </div>
 
       <div class="strategy-settings">
-        <div class="strategy-option" id="controlledSettings">
+        <div class="strategy-option" id="controlledSettings" hidden>
           <div class="inline-setting">
             <label for="startCushion" style="margin:0;font-weight:800">
               First 5K cushion
@@ -608,12 +626,28 @@
           </p>
         </div>
 
-        <div class="strategy-option" id="evenSettings" hidden>
+        <div class="strategy-option" id="evenSettings">
           <strong>Even pace keeps the planned average constant from start to finish.</strong>
 
           <p class="field-help">
             On hills, in wind, or in heat, treat this as an elapsed-time guide and run by even effort.
           </p>
+        </div>
+        <p class="field-error" id="strategyError" aria-live="polite"></p>
+      </div>
+
+      <div class="control-grid">
+        <div class="control-group">
+          <label for="paper">Print paper</label>
+          <select id="paper"><option value="a4" selected>A4 landscape</option><option value="letter">US Letter landscape</option></select>
+        </div>
+        <div class="control-group">
+          <label for="wristSize">Wrist circumference</label>
+          <select id="wristSize">
+            <option value="150">15 cm</option><option value="170" selected>17 cm</option>
+            <option value="190">19 cm</option><option value="200">20 cm</option>
+          </select>
+          <p class="field-help">Adds a 24 mm blank tape overlap. Measure around your wrist and check the printed band before race day.</p>
         </div>
       </div>
 
@@ -659,10 +693,10 @@
     </section>
 
     <section id="outputs" class="card">
-      <h2>Your marathon pace band and phone card</h2>
+      <h2>Your pace band and phone card</h2>
 
       <p class="muted" id="outputDescription">
-        Example: a 4:00:00 marathon pace band in kilometres using a controlled start.
+        Example: a 4:00:00 marathon pace band in kilometres using even pacing.
         Both formats show cumulative elapsed times, including halfway and the finish.
       </p>
 
@@ -681,7 +715,7 @@
         </div>
         <div class="summary-card">
           <div class="summary-label">Race plan</div>
-          <div class="summary-value">Controlled start</div>
+          <div class="summary-value">Even pace</div>
         </div>
       </div>
 
@@ -689,8 +723,8 @@
         <article class="output-card">
           <div class="output-head">
             <div>
-              <h3>Printable marathon pace band</h3>
-              <p>Ten readable checkpoints, a cut line, and a tape-overlap section.</p>
+              <h3 id="bandHeading">Printable marathon pace band</h3>
+              <p id="bandSummary">Ten readable checkpoints, a cut line, and a blank tape-overlap section.</p>
             </div>
 
             <button class="btn btn-primary-strong" id="printBtnInline" type="button">
@@ -709,15 +743,15 @@
                   </div>
 
                   <div class="band-checkpoints">
-                    <div class="band-cell"><span class="band-distance">5K</span><span class="band-time">28:41</span></div>
-                    <div class="band-cell"><span class="band-distance">10K</span><span class="band-time">57:06</span></div>
-                    <div class="band-cell"><span class="band-distance">15K</span><span class="band-time">1:25:30</span></div>
-                    <div class="band-cell"><span class="band-distance">20K</span><span class="band-time">1:53:54</span></div>
-                    <div class="band-cell"><span class="band-distance">HALF</span><span class="band-time">2:00:09</span></div>
-                    <div class="band-cell"><span class="band-distance">25K</span><span class="band-time">2:22:19</span></div>
-                    <div class="band-cell"><span class="band-distance">30K</span><span class="band-time">2:50:43</span></div>
-                    <div class="band-cell"><span class="band-distance">35K</span><span class="band-time">3:19:07</span></div>
-                    <div class="band-cell"><span class="band-distance">40K</span><span class="band-time">3:47:32</span></div>
+                    <div class="band-cell"><span class="band-distance">5K</span><span class="band-time">28:26</span></div>
+                    <div class="band-cell"><span class="band-distance">10K</span><span class="band-time">56:53</span></div>
+                    <div class="band-cell"><span class="band-distance">15K</span><span class="band-time">1:25:19</span></div>
+                    <div class="band-cell"><span class="band-distance">20K</span><span class="band-time">1:53:45</span></div>
+                    <div class="band-cell"><span class="band-distance">HALF</span><span class="band-time">2:00:00</span></div>
+                    <div class="band-cell"><span class="band-distance">25K</span><span class="band-time">2:22:11</span></div>
+                    <div class="band-cell"><span class="band-distance">30K</span><span class="band-time">2:50:38</span></div>
+                    <div class="band-cell"><span class="band-distance">35K</span><span class="band-time">3:19:04</span></div>
+                    <div class="band-cell"><span class="band-distance">40K</span><span class="band-time">3:47:31</span></div>
                     <div class="band-cell"><span class="band-distance">FINISH</span><span class="band-time">4:00:00</span></div>
                   </div>
 
@@ -727,7 +761,7 @@
             </div>
 
             <p class="wrist-preview-note">
-              The preview may scroll on smaller screens. The printed band is exactly 225 × 38 mm.
+              <span id="bandDimension">The preview may scroll on smaller screens. The printed band is 194 × 38 mm, including a blank 24 mm tape overlap.</span>
             </p>
 
             <div class="scale-demo">
@@ -766,12 +800,12 @@
     </section>
 
     <section id="howto" class="card">
-      <h2>How to print your marathon pace band</h2>
+      <h2>How to print and wear your pace band</h2>
 
       <ol class="muted">
         <li>Set your goal time, units and pacing plan, then select <strong>Print bands / Save PDF</strong>.</li>
         <li>Choose your printer, or <strong>Save as PDF</strong> if your browser offers it.</li>
-        <li>Use <strong>A4 landscape</strong> and choose <strong>100% or Actual size</strong>. Turn off “Fit to page”.</li>
+        <li>Choose the same <strong>A4 or US Letter landscape</strong> paper in the print dialog as you selected above. Use <strong>100% or Actual size</strong>, with headers and footers off. Turn off “Fit to page”.</li>
         <li>Confirm the printed scale line measures exactly <strong>50 mm</strong>.</li>
         <li>Cut around the dashed border, wrap the band around your wrist, and tape the marked overlap.</li>
         <li>Cover the front with clear tape before the race if you want extra sweat and rain protection.</li>
@@ -779,7 +813,7 @@
 
       <p class="tiny muted2">
         The print layout contains three wrist bands and a 50 mm scale guide.
-        If you save a PDF, use the same A4 landscape and actual-size settings when you print it later.
+        If you save a PDF, use the same paper size and actual-size setting when you print it later. The overlap is blank so tape does not cover checkpoint times.
       </p>
 
       <p class="muted">
@@ -793,19 +827,19 @@
     </section>
 
     <section id="faq" class="card">
-      <h2>Marathon pace band FAQ</h2>
+      <h2>Pace band FAQ</h2>
 
-      <h3>What is a marathon pace band?</h3>
-      <p>A marathon pace band, also called a pace bracelet, is a wrist-sized list of target elapsed times at race checkpoints. It helps you compare your progress with your finish-time goal without doing calculations during the race.</p>
+      <h3>What is a pace band?</h3>
+      <p>A pace band, also called a pace bracelet, is a wrist-sized list of target elapsed times at race checkpoints. It helps you compare your progress with your finish-time goal without doing calculations during the race.</p>
 
       <h3>Can I save my marathon pace band as a PDF?</h3>
-      <p>Yes. Select Print bands / Save PDF, then choose Save as PDF if it is available in your browser or operating system. Use A4 landscape and 100% or Actual size. The phone card downloads separately as a PNG image.</p>
+      <p>Yes. Select Print bands / Save PDF, then choose Save as PDF if it is available in your browser or operating system. Match the selected A4 or US Letter paper and use 100% or Actual size. The phone card downloads separately as a PNG image.</p>
 
       <h3>Can I make a pace band in kilometres or miles?</h3>
-      <p>Yes. Choose Kilometres or Miles in the generator. The wrist band and phone card use your selected units, and the summary shows average pace in both. The full marathon distance used for every calculation is 42.195 km.</p>
+      <p>Yes. Choose Kilometres or Miles in the generator. The wrist band and phone card use your selected units, and the summary shows average pace in both. Calculations use 42.195 km for a marathon or 21.0975 km for a half marathon.</p>
 
       <h3>What checkpoints should be on a marathon pace band?</h3>
-      <p>This generator uses ten checkpoints. In kilometres, these are 5K, 10K, 15K, 20K, halfway, 25K, 30K, 35K, 40K and the finish. In miles, they are 3, 6, 9, 12, halfway, 15, 18, 21, 24 and the finish. The expandable split table also shows every kilometre or mile.</p>
+      <p>The marathon band uses ten major checkpoints; the half-marathon band uses six. They include halfway and the finish. The expandable table shows every kilometre or mile, including the final partial segment. A sparse wrist band keeps the elapsed times readable while you run.</p>
 
       <h3>Should I use even pace, a controlled start, or a negative split?</h3>
       <p>Even pace keeps the planned pace constant. A controlled start reaches 5K slightly behind an even-pace schedule, then adjusts the remaining pace to preserve the same finish-time goal. A gradual negative split starts slower and gets faster across the race. On hills or in difficult conditions, use the times as a guide and allow for changes in effort.</p>
@@ -814,7 +848,7 @@
       <p>The calculated finish time stays the same. With the default 15-second cushion, your 5K target is 15 seconds slower than an even-pace schedule. The remaining 37.195 km is about 0.4 seconds per kilometre faster than your overall average. These are planned splits; they do not guarantee a race result.</p>
 
       <h3>How do I know the band printed at the right size?</h3>
-      <p>Print on A4 landscape at 100% or Actual size, then measure the supplied 50 mm line. If it does not measure exactly 50 mm, turn off Fit to page or other scaling and print again. Each wrist band is 225 mm long and 38 mm high, including the tape-overlap area.</p>
+      <p>Print on the selected A4 or Letter landscape paper at 100% or Actual size, then measure the supplied 50 mm line. If it does not measure exactly 50 mm, turn off Fit to page or other scaling and print again. Each band is your selected wrist circumference plus 24 mm of blank overlap, and 38 mm high.</p>
 
       <h3>Can I share my pace plan?</h3>
       <p>Yes. Copy share link preserves your goal time, units, pacing strategy and any optional runner or race name you enter. The phone card can also be downloaded as a PNG. Advanced and sharing options includes an iframe snippet for embedding the generator.</p>
@@ -848,8 +882,14 @@
     "use strict";
 
     var MARATHON_KM = 42.195;
-    var HALF_KM = MARATHON_KM / 2;
+    var HALF_MARATHON_KM = 21.0975;
     var KM_PER_MILE = 1.609344;
+    var distanceInputs = document.querySelectorAll('input[name="distance"]');
+    var elPaper = document.getElementById("paper");
+    var elWristSize = document.getElementById("wristSize");
+      var goalError = document.getElementById("goalError");
+      var paceError = document.getElementById("paceError");
+      var strategyError = document.getElementById("strategyError");
 
     var elH = document.getElementById("h");
     var elM = document.getElementById("m");
@@ -895,6 +935,59 @@
 
     var syncingInputs = false;
     var statusTimer = null;
+    var paceConversionError = false;
+    var savedGoals = { marathon: 14400, half: 7200 };
+
+    function raceKm(){
+      return document.querySelector('input[name="distance"]:checked').value === "half" ?
+        HALF_MARATHON_KM : MARATHON_KM;
+    }
+
+    function raceLabel(){
+      return raceKm() === HALF_MARATHON_KM ? "Half marathon" : "Marathon";
+    }
+
+    function validInteger(input, min, max){
+      return input.value.trim() !== "" && input.checkValidity() &&
+        Number.isInteger(Number(input.value)) &&
+        Number(input.value) >= min && Number(input.value) <= max;
+    }
+
+    function validPace(){
+      return validInteger(elPaceM, 0, 99) && validInteger(elPaceS, 0, 59) &&
+        (Number(elPaceM.value) * 60 + Number(elPaceS.value)) > 0;
+    }
+
+    function validateInputs(){
+      var goalValid = validInteger(elH, 0, 24) &&
+        validInteger(elM, 0, 59) && validInteger(elS, 0, 59) &&
+        goalSeconds() > 0;
+      var paceValid = validPace();
+      var strategyValid = elStrategy.value === "controlled" ?
+        validInteger(elStartCushion, 0, 120) :
+        elStrategy.value === "negative" ?
+          elNegativeMargin.value.trim() !== "" &&
+          elNegativeMargin.checkValidity() &&
+          Number(elNegativeMargin.value) >= 0 &&
+          Number(elNegativeMargin.value) <= 10 : true;
+      if(strategyValid && goalValid && elStrategy.value === "controlled"){
+        strategyValid = goalSeconds() > Number(elStartCushion.value) *
+          raceKm() / (raceKm() - 5);
+      }
+      if(strategyValid && goalValid && elStrategy.value === "negative"){
+        strategyValid = goalSeconds() > 2 * Number(elNegativeMargin.value) * 60;
+      }
+      goalError.textContent = goalValid ? "" : "Enter a valid finish time (hours 0–24; minutes and seconds 0–59).";
+      paceError.textContent = paceValid ? "" : "Enter a valid pace (minutes 0–99; seconds 0–59).";
+      if(paceConversionError) paceError.textContent = "This pace gives a finish beyond the supported 24:59:59 limit.";
+      strategyError.textContent = strategyValid ? "" :
+        "This adjustment is too large for the goal time. Choose a smaller amount or a longer goal.";
+      [elH, elM, elS].forEach(function(el){ el.setAttribute("aria-invalid", String(!goalValid)); });
+      [elPaceM, elPaceS].forEach(function(el){ el.setAttribute("aria-invalid", String(!paceValid)); });
+      elStartCushion.setAttribute("aria-invalid", String(elStrategy.value === "controlled" && !strategyValid));
+      elNegativeMargin.setAttribute("aria-invalid", String(elStrategy.value === "negative" && !strategyValid));
+      return goalValid && paceValid && strategyValid && !paceConversionError;
+    }
 
     function clamp(value, min, max){
       var number = Number(value);
@@ -927,11 +1020,9 @@
     }
 
     function goalSeconds(){
-      if([elH,elM,elS].some(function(el){return el.value.trim()==='' || !el.checkValidity() || !Number.isInteger(Number(el.value));})) return 0;
-      var hours = clamp(elH.value, 0, 24);
-      var minutes = clamp(elM.value, 0, 59);
-      var seconds = clamp(elS.value, 0, 59);
-      return Math.round(hours * 3600 + minutes * 60 + seconds);
+      if(!validInteger(elH, 0, 24) || !validInteger(elM, 0, 59) ||
+         !validInteger(elS, 0, 59)) return 0;
+      return Number(elH.value) * 3600 + Number(elM.value) * 60 + Number(elS.value);
     }
 
     function setGoalSeconds(total){
@@ -978,13 +1069,14 @@
     }
 
     function paceSecondsForUnit(total, unit){
-      var secondsPerKm = total / MARATHON_KM;
+      var secondsPerKm = total / raceKm();
       return unit === "mi" ? secondsPerKm * KM_PER_MILE : secondsPerKm;
     }
 
     function syncPaceFromGoal(){
       var total = goalSeconds();
       if(total <= 0) return;
+      paceConversionError = false;
 
       var pace = Math.round(paceSecondsForUnit(total, elUnit.value));
       elPaceM.value = Math.floor(pace / 60);
@@ -992,13 +1084,17 @@
     }
 
     function syncGoalFromPace(){
-      var pace = clamp(elPaceM.value, 0, 59) * 60 +
-        clamp(elPaceS.value, 0, 59);
-
-      if(pace <= 0) return;
+      paceConversionError = false;
+      if(!validPace()) return;
+      var pace = Number(elPaceM.value) * 60 + Number(elPaceS.value);
 
       var secondsPerKm = elUnit.value === "mi" ? pace / KM_PER_MILE : pace;
-      setGoalSeconds(secondsPerKm * MARATHON_KM);
+      var target = Math.round(secondsPerKm * raceKm());
+      if(target > 24 * 3600 + 59 * 60 + 59){
+        paceConversionError = true;
+        return;
+      }
+      setGoalSeconds(target);
     }
 
     function strategyLabel(){
@@ -1027,17 +1123,18 @@
     }
 
     function elapsedAtKm(distanceKm, total){
-      var distance = Math.max(0, Math.min(MARATHON_KM, distanceKm));
-      if(distance >= MARATHON_KM) return total;
+      var lengthKm = raceKm();
+      var distance = Math.max(0, Math.min(lengthKm, distanceKm));
+      if(distance >= lengthKm) return total;
 
-      var averagePace = total / MARATHON_KM;
+      var averagePace = total / lengthKm;
       var strategy = elStrategy.value;
 
       if(strategy === "controlled"){
         var settleDistance = 5;
         var totalOpeningExtra = controlledCushionSeconds();
         var startingAllowancePerKm = (2 * totalOpeningExtra) / settleDistance;
-        var correction = totalOpeningExtra / (MARATHON_KM - settleDistance);
+        var correction = totalOpeningExtra / (lengthKm - settleDistance);
 
         if(distance <= settleDistance){
           var taperedExtra = startingAllowancePerKm *
@@ -1053,23 +1150,41 @@
 
       if(strategy === "negative"){
         var marginSeconds = clamp(elNegativeMargin.value, 0, 10) * 60;
-        var gradient = (2 * marginSeconds) / MARATHON_KM;
+        var gradient = (2 * marginSeconds) / lengthKm;
 
         return averagePace * distance +
-          gradient * (distance - (distance * distance) / MARATHON_KM);
+          gradient * (distance - (distance * distance) / lengthKm);
       }
 
       return averagePace * distance;
     }
 
     function checkpointDefinitions(){
+      if(raceKm() === HALF_MARATHON_KM){
+        if(elUnit.value === "mi"){
+          return [
+            { label: "3 MI", km: 3 * KM_PER_MILE },
+            { label: "6 MI", km: 6 * KM_PER_MILE },
+            { label: "HALF", km: HALF_MARATHON_KM / 2 },
+            { label: "9 MI", km: 9 * KM_PER_MILE },
+            { label: "12 MI", km: 12 * KM_PER_MILE },
+            { label: "FINISH", km: HALF_MARATHON_KM }
+          ];
+        }
+        return [
+          { label: "5K", km: 5 }, { label: "10K", km: 10 },
+          { label: "HALF", km: HALF_MARATHON_KM / 2 },
+          { label: "15K", km: 15 }, { label: "20K", km: 20 },
+          { label: "FINISH", km: HALF_MARATHON_KM }
+        ];
+      }
       if(elUnit.value === "mi"){
         return [
           { label: "3 MI", km: 3 * KM_PER_MILE },
           { label: "6 MI", km: 6 * KM_PER_MILE },
           { label: "9 MI", km: 9 * KM_PER_MILE },
           { label: "12 MI", km: 12 * KM_PER_MILE },
-          { label: "HALF", km: HALF_KM },
+          { label: "HALF", km: MARATHON_KM / 2 },
           { label: "15 MI", km: 15 * KM_PER_MILE },
           { label: "18 MI", km: 18 * KM_PER_MILE },
           { label: "21 MI", km: 21 * KM_PER_MILE },
@@ -1083,7 +1198,7 @@
         { label: "10K", km: 10 },
         { label: "15K", km: 15 },
         { label: "20K", km: 20 },
-        { label: "HALF", km: HALF_KM },
+        { label: "HALF", km: MARATHON_KM / 2 },
         { label: "25K", km: 25 },
         { label: "30K", km: 30 },
         { label: "35K", km: 35 },
@@ -1105,7 +1220,7 @@
     function fullSplitRows(total){
       var unit = elUnit.value;
       var stepKm = unit === "mi" ? KM_PER_MILE : 1;
-      var fullSteps = Math.floor(MARATHON_KM / stepKm);
+      var fullSteps = Math.floor(raceKm() / stepKm);
       var rows = [];
       var previousDistance = 0;
       var previousElapsed = 0;
@@ -1124,8 +1239,8 @@
         previousElapsed = elapsed;
       }
 
-      if(previousDistance < MARATHON_KM){
-        var finishElapsed = Math.round(elapsedAtKm(MARATHON_KM, total));
+      if(previousDistance < raceKm()){
+        var finishElapsed = Math.round(elapsedAtKm(raceKm(), total));
 
         rows.push({
           label: "Finish",
@@ -1138,7 +1253,7 @@
     }
 
     function bandHTML(total, rows){
-      var race = shorten(cleanText(elRaceName.value, "Marathon"), 24);
+      var race = shorten(cleanText(elRaceName.value, raceLabel()), 24);
       var runner = shorten(cleanText(elRunnerName.value, ""), 20);
       var unit = elUnit.value;
       var primaryPace = formatPace(paceSecondsForUnit(total, unit));
@@ -1160,14 +1275,14 @@
             '<div class="band-pace">' + escapeHTML(primaryPace) + ' / ' + escapeHTML(unit) + '</div>' +
             (runner ? '<div class="band-runner">' + escapeHTML(runner) + '</div>' : '') +
           '</div>' +
-          '<div class="band-checkpoints">' + cells + '</div>' +
+          '<div class="band-checkpoints" data-count="' + rows.length + '">' + cells + '</div>' +
           '<div class="band-tape">Tape overlap</div>' +
         '</div>'
       );
     }
 
     function phoneHTML(total, rows){
-      var race = shorten(cleanText(elRaceName.value, "Marathon race plan"), 34);
+      var race = shorten(cleanText(elRaceName.value, raceLabel() + " race plan"), 34);
       var runner = shorten(cleanText(elRunnerName.value, ""), 34);
       var primaryUnit = elUnit.value;
       var primaryPace = formatPace(paceSecondsForUnit(total, primaryUnit));
@@ -1199,7 +1314,7 @@
               '<div class="phone-stat-value">' + escapeHTML(strategyLabel()) + '</div>' +
             '</div>' +
           '</div>' +
-          '<div class="phone-checkpoints">' + rowHTML + '</div>' +
+          '<div class="phone-checkpoints" style="--checkpoint-count:' + rows.length + '">' + rowHTML + '</div>' +
           '<div class="phone-cue">' + escapeHTML(strategyCue()) + '</div>' +
           '<div class="phone-footer">marathonpacekm.com</div>' +
         '</div>'
@@ -1270,11 +1385,30 @@
       splitSummary.textContent = "View every " + unitName + " split";
     }
 
+    function updatePresets(){
+      var isHalf = raceKm() === HALF_MARATHON_KM;
+      var goals = isHalf ? [5400, 6300, 7200, 8100, 9000, 9900] :
+        [10800, 12600, 14400, 16200, 18000, 19800];
+      goalPresets.forEach(function(link, index){
+        var total = goals[index];
+        var shortTime = Math.floor(total / 3600) + ":" +
+          String(Math.floor(total % 3600 / 60)).padStart(2, "0");
+        link.dataset.goalSeconds = total;
+        link.textContent = shortTime + " band";
+        link.setAttribute("aria-label", "Set a " + shortTime + " " +
+          raceLabel().toLowerCase() + " goal");
+        link.href = "?distance=" + (isHalf ? "half" : "marathon") +
+          "&h=" + Math.floor(total / 3600) +
+          "&m=" + Math.floor(total % 3600 / 60) +
+          "&s=0&unit=km&strategy=even#generator";
+      });
+    }
+
     function updateControlledExample(total){
       var cushion = controlledCushionSeconds();
-      var evenFiveKTime = (total / MARATHON_KM) * 5;
+      var evenFiveKTime = (total / raceKm()) * 5;
       var controlledFiveKTime = evenFiveKTime + cushion;
-      var correctionPerKm = cushion / (MARATHON_KM - 5);
+      var correctionPerKm = cushion / (raceKm() - 5);
       var correctionForUnit = elUnit.value === "mi" ?
         correctionPerKm * KM_PER_MILE : correctionPerKm;
       var unitLabel = elUnit.value === "mi" ? "mile" : "km";
@@ -1299,11 +1433,14 @@
       var url = new URL(window.location.href);
       url.search = "";
       url.hash = "";
-      url.searchParams.set("h", String(Math.floor(clamp(elH.value, 0, 24))));
-      url.searchParams.set("m", String(Math.floor(clamp(elM.value, 0, 59))));
-      url.searchParams.set("s", String(Math.floor(clamp(elS.value, 0, 59))));
+      url.searchParams.set("h", elH.value);
+      url.searchParams.set("m", elM.value);
+      url.searchParams.set("s", elS.value);
+      url.searchParams.set("distance", raceKm() === HALF_MARATHON_KM ? "half" : "marathon");
       url.searchParams.set("unit", elUnit.value);
       url.searchParams.set("strategy", elStrategy.value);
+      url.searchParams.set("paper", elPaper.value);
+      url.searchParams.set("wrist", elWristSize.value);
 
       if(elStrategy.value === "controlled"){
         url.searchParams.set("cushion", String(clamp(elStartCushion.value, 0, 120)));
@@ -1325,7 +1462,7 @@
       return [
         '<iframe',
         '  src="' + url.toString().replace(/"/g, '&quot;') + '"',
-        '  title="Marathon pace band generator"',
+        '  title="Marathon and half-marathon pace band generator"',
         '  width="100%"',
         '  height="1000"',
         '  style="border:1px solid #e5e7eb;border-radius:16px;"',
@@ -1346,18 +1483,20 @@
 
     function render(){
       var total = goalSeconds();
-
-      document.getElementById('outputs').hidden = total <= 0;
-      if(total <= 0){
-        showStatus("Enter a valid marathon goal time.");
+      setStrategyUI();
+      setUnitUI();
+      var valid = validateInputs();
+      document.getElementById('outputs').hidden = !valid;
+      [printBtn, printBtnInline, downloadBtn, downloadBtnInline, copyBtn, copyEmbedBtn,
+        document.getElementById('printA4Btn')].forEach(function(button){
+        button.disabled = !valid;
+      });
+      if(!valid){
         return false;
       }
 
-      setStrategyUI();
-      setUnitUI();
-
       outputDescription.textContent =
-        "Preview: a " + formatGoal(total) + " marathon pace band in " +
+        "Preview: a " + formatGoal(total) + " " + raceLabel().toLowerCase() + " pace band in " +
         (elUnit.value === "mi" ? "miles" : "kilometres") + " using " +
         (elStrategy.value === "controlled" ?
           "a controlled start" :
@@ -1377,6 +1516,25 @@
 
       var rows = checkpointRows(total);
       var band = bandHTML(total, rows);
+      document.documentElement.style.setProperty("--band-length", (Number(elWristSize.value) + 24) + "mm");
+      document.getElementById("paperPageStyle").textContent =
+        "@page { size: " + (elPaper.value === "letter" ? "letter" : "A4") + " landscape; margin: 10mm; }";
+      document.getElementById("bandDimension").textContent =
+        "The preview may scroll on smaller screens. The printed band is " +
+        (Number(elWristSize.value) + 24) + " × 38 mm, including a blank 24 mm tape overlap.";
+      document.getElementById("bandHeading").textContent =
+        "Printable " + raceLabel().toLowerCase() + " pace band";
+      document.getElementById("bandSummary").textContent =
+        (rows.length === 6 ? "Six" : "Ten") +
+        " readable checkpoints, a cut line, and a blank tape-overlap section.";
+      document.querySelector("#outputs > h2").textContent =
+        "Your " + raceLabel().toLowerCase() + " pace band and phone card";
+      document.querySelector(".print-title").textContent =
+        raceLabel() + " pace bands";
+      document.querySelector(".print-instructions").textContent =
+        "Print at 100% / Actual size on " +
+        (elPaper.value === "letter" ? "US Letter" : "A4") +
+        " landscape. Cut around each dashed border and tape the blank overlap.";
 
       summaryCards.innerHTML = summaryHTML(total);
       wristPreview.innerHTML = band;
@@ -1439,7 +1597,7 @@
     }
 
     function buildPhoneSVG(total, rows){
-      var race = shorten(cleanText(elRaceName.value, "Marathon race plan"), 36);
+      var race = shorten(cleanText(elRaceName.value, raceLabel() + " race plan"), 36);
       var runner = shorten(cleanText(elRunnerName.value, ""), 36);
       var unit = elUnit.value;
       var pace = formatPace(paceSecondsForUnit(total, unit)) + " / " + unit;
@@ -1497,22 +1655,23 @@
 
       svg.push('<rect x="72" y="624" width="936" height="850" rx="30" fill="#ffffff"/>');
 
+      var rowHeight = 850 / rows.length;
       rows.forEach(function(row, index){
-        var rowTop = 624 + index * 85;
+        var rowTop = 624 + index * rowHeight;
 
         if(index % 2 === 1){
-          svg.push('<rect x="72" y="' + rowTop + '" width="936" height="85" fill="#f3f4f6"/>');
+          svg.push('<rect x="72" y="' + rowTop + '" width="936" height="' + rowHeight + '" fill="#f3f4f6"/>');
         }
 
         if(index > 0){
           svg.push('<line x1="92" y1="' + rowTop + '" x2="988" y2="' + rowTop + '" stroke="#e5e7eb" stroke-width="2"/>');
         }
 
-        svg.push(svgText(112, rowTop + 56, row.label, {
+        svg.push(svgText(112, rowTop + rowHeight / 2 + 13, row.label, {
           fill: "#5b6472", size: 26, weight: 900, spacing: 2
         }));
 
-        svg.push(svgText(958, rowTop + 58, row.time, {
+        svg.push(svgText(958, rowTop + rowHeight / 2 + 14, row.time, {
           fill: "#111827", size: 39, weight: 900, anchor: "end"
         }));
       });
@@ -1576,7 +1735,7 @@
         context.drawImage(image, 0, 0, 1080, 1920);
         URL.revokeObjectURL(svgURL);
 
-        var filename = "marathon-pace-card-" +
+        var filename = (raceKm() === HALF_MARATHON_KM ? "half-marathon" : "marathon") + "-pace-card-" +
           formatGoal(total).replace(/:/g, "-") + ".png";
 
         if(canvas.toBlob){
@@ -1618,11 +1777,11 @@
       var rows = checkpointRows(total).map(function(row){
         return '<tr><th scope="row">' + escapeHTML(row.label) + '</th><td>' + escapeHTML(row.time) + '</td></tr>';
       }).join('');
-      document.getElementById('checkpointPrint').innerHTML = '<h1>Marathon checkpoints: ' + escapeHTML(formatGoal(total)) + '</h1>' +
+      document.getElementById('checkpointPrint').innerHTML = '<h1>' + escapeHTML(raceLabel()) + ' checkpoints: ' + escapeHTML(formatGoal(total)) + '</h1>' +
         '<p>' + escapeHTML(strategyLabel()) + ' · All times are cumulative elapsed times, including stops.</p>' +
         '<table><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody>' + rows + '</tbody></table>' +
-        '<p>Marathon distance: 42.195 km · marathonpacekm.com</p>';
-      document.body.dataset.printLayout = 'a4';
+        '<p>' + escapeHTML(raceLabel()) + ' distance: ' + raceKm() + ' km · marathonpacekm.com</p>';
+      document.body.dataset.printLayout = 'checkpoints';
       window.setTimeout(function(){ window.print(); }, 80);
     }
     document.getElementById('printA4Btn').addEventListener('click', printCheckpointSheet);
@@ -1630,6 +1789,10 @@
     function applyFromQuery(){
       var query = new URLSearchParams(window.location.search);
       syncingInputs = true;
+      if(query.get("distance") === "half"){
+        document.querySelector('input[name="distance"][value="half"]').checked = true;
+        setGoalSeconds(savedGoals.half);
+      }
 
       if(query.has("h")) elH.value = clamp(query.get("h"), 0, 24);
       if(query.has("m")) elM.value = clamp(query.get("m"), 0, 59);
@@ -1637,6 +1800,10 @@
 
       if(query.get("unit") === "mi" || query.get("unit") === "km"){
         elUnit.value = query.get("unit");
+      }
+      if(query.get("paper") === "letter") elPaper.value = "letter";
+      if(["150", "170", "190", "200"].indexOf(query.get("wrist")) !== -1){
+        elWristSize.value = query.get("wrist");
       }
 
       var strategy = query.get("strategy");
@@ -1681,6 +1848,8 @@
       }
 
       syncPaceFromGoal();
+      savedGoals[raceKm() === HALF_MARATHON_KM ? "half" : "marathon"] = goalSeconds();
+      updatePresets();
       syncingInputs = false;
       render();
 
@@ -1703,6 +1872,7 @@
 
         event.preventDefault();
         setGoalSeconds(Number(link.dataset.goalSeconds));
+        savedGoals[raceKm() === HALF_MARATHON_KM ? "half" : "marathon"] = goalSeconds();
         syncPaceFromGoal();
         render();
 
@@ -1719,6 +1889,7 @@
 
         syncingInputs = true;
         syncPaceFromGoal();
+        if(goalSeconds() > 0) savedGoals[raceKm() === HALF_MARATHON_KM ? "half" : "marathon"] = goalSeconds();
         syncingInputs = false;
         render();
       });
@@ -1730,6 +1901,7 @@
 
         syncingInputs = true;
         syncGoalFromPace();
+        if(!paceConversionError && goalSeconds() > 0) savedGoals[raceKm() === HALF_MARATHON_KM ? "half" : "marathon"] = goalSeconds();
         syncingInputs = false;
         render();
       });
@@ -1740,6 +1912,21 @@
       syncPaceFromGoal();
       syncingInputs = false;
       render();
+    });
+
+    distanceInputs.forEach(function(input){
+      input.addEventListener("change", function(){
+        var previous = input.value === "half" ? "marathon" : "half";
+        if(goalSeconds() > 0) savedGoals[previous] = goalSeconds();
+        setGoalSeconds(savedGoals[input.value]);
+        syncPaceFromGoal();
+        updatePresets();
+        render();
+      });
+    });
+
+    [elPaper, elWristSize].forEach(function(input){
+      input.addEventListener("change", render);
     });
 
     [
