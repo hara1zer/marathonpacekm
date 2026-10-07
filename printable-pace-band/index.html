@@ -7,19 +7,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Printable Pace Band Generator | Marathon &amp; Half Marathon</title>
-  <meta name="description" content="Make a marathon or half-marathon pace band in kilometres or miles. Set an exact goal time, preview elapsed checkpoints, and print at actual size on A4 or Letter." />
+  <title>Free Pace Band Generator | Marathon &amp; Half Marathon</title>
+  <meta name="description" content="Make a free marathon or half-marathon pace band in kilometres or miles. Set an exact goal time, preview elapsed checkpoints, and print at actual size on A4 or Letter." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://marathonpacekm.com/printable-pace-band/" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Printable Pace Band Generator | Marathon &amp; Half Marathon" />
+  <meta property="og:title" content="Free Pace Band Generator | Marathon &amp; Half Marathon" />
   <meta property="og:description" content="Build a marathon or half-marathon pace band in kilometres or miles. Print at actual size or download a phone card." />
   <meta property="og:url" content="https://marathonpacekm.com/printable-pace-band/" />
   <meta property="og:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Printable Pace Band Generator | Marathon &amp; Half Marathon" />
+  <meta name="twitter:title" content="Free Pace Band Generator | Marathon &amp; Half Marathon" />
   <meta name="twitter:description" content="Generate a marathon or half-marathon pace band for your goal time. Print in kilometres or miles and download a phone card." />
   <meta name="twitter:image" content="https://marathonpacekm.com/assets/og/pace-chart.png" />
 
@@ -105,6 +105,8 @@
     .race-choice label:has(input:checked) { border-color: var(--band-red); background: #fff4f5; color: var(--band-red-dark); }
     .race-choice input { margin-right: 7px; }
     .control-group { min-width: 0; }
+    .pace-conversion summary { cursor: pointer; font-weight: 700; padding: 10px 0; }
+    .secondary-exports { margin-top: 16px; }
     .control-group > label, .control-label { display: block; margin-bottom: 7px; font-size: 14px; font-weight: 800; color: var(--band-ink); }
     .time-inputs, .pace-inputs { display: flex; align-items: center; gap: 7px; flex-wrap: nowrap; }
     .time-inputs input, .pace-inputs input { width: 76px; min-width: 0; }
@@ -421,7 +423,7 @@
           "name": "Can I share my pace plan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Copy share link preserves your goal time, units, pacing strategy and any optional runner or race name you enter. The phone card can also be downloaded as a PNG. Advanced and sharing options includes an iframe snippet for embedding the generator."
+            "text": "Yes. Copy share link preserves your goal time, units, pacing strategy and any optional runner or race name you enter. The phone card can also be downloaded as a PNG. Share, checkpoint sheet and optional details includes an iframe snippet for embedding the generator."
           }
         }
       ]
@@ -536,7 +538,8 @@
           <p class="field-error" id="goalError" aria-live="polite"></p>
         </div>
 
-        <div class="control-group">
+        <details class="control-group pace-conversion">
+          <summary>Calculate a goal from pace (optional)</summary>
           <span class="control-label" id="paceLabel">Calculate a goal from pace per kilometre</span>
 
           <div class="pace-inputs" role="group" aria-labelledby="paceLabel">
@@ -551,7 +554,7 @@
 
           <p class="field-help">The pace shown for a goal is rounded. Editing it calculates a new finish goal from that pace.</p>
           <p class="field-error" id="paceError" aria-live="polite"></p>
-        </div>
+        </details>
 
         <div class="control-group">
           <label for="unit">Primary unit</label>
@@ -652,9 +655,13 @@
       </div>
 
       <details class="advanced-options">
-        <summary>Advanced and sharing options</summary>
+        <summary>Share, checkpoint sheet and optional details</summary>
 
         <div class="advanced-inner">
+          <div class="action-row secondary-exports">
+            <button class="btn secondary" id="copyBtn" type="button">Copy share link</button>
+            <button class="btn secondary" id="printA4Btn" type="button">Print checkpoint sheet</button>
+          </div>
           <div class="optional-grid">
             <div class="control-group">
               <label for="runnerName">
@@ -684,9 +691,7 @@
 
       <div class="action-row">
         <button class="btn btn-primary-strong" id="printBtn" type="button">Print bands / Save PDF</button>
-        <button class="btn secondary" id="printA4Btn" type="button">Print checkpoint sheet</button>
         <button class="btn secondary" id="downloadBtn" type="button">Download phone card (PNG)</button>
-        <button class="btn secondary" id="copyBtn" type="button">Copy share link</button>
       </div>
 
       <div class="status-line" id="status" role="status" aria-live="polite"></div>
@@ -801,6 +806,7 @@
 
     <section id="howto" class="card">
       <h2>How to print and wear your pace band</h2>
+      <p><strong>Example: a two-hour half marathon.</strong> At even pace, aim for 28:26 at 5 km, 56:53 at 10 km, 1:53:45 at 20 km and 2:00:00 at the 21.0975 km finish. These are total elapsed times from your start, including stops. <a href="?distance=half&amp;h=2&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=even#generator">Create this half-marathon band</a>.</p>
 
       <ol class="muted">
         <li>Set your goal time, units and pacing plan, then select <strong>Print bands / Save PDF</strong>.</li>
@@ -851,7 +857,7 @@
       <p>Print on the selected A4 or Letter landscape paper at 100% or Actual size, then measure the supplied 50 mm line. If it does not measure exactly 50 mm, turn off Fit to page or other scaling and print again. Each band is your selected wrist circumference plus 24 mm of blank overlap, and 38 mm high.</p>
 
       <h3>Can I share my pace plan?</h3>
-      <p>Yes. Copy share link preserves your goal time, units, pacing strategy and any optional runner or race name you enter. The phone card can also be downloaded as a PNG. Advanced and sharing options includes an iframe snippet for embedding the generator.</p>
+      <p>Yes. Copy share link preserves your goal time, units, pacing strategy and any optional runner or race name you enter. The phone card can also be downloaded as a PNG. Share, checkpoint sheet and optional details includes an iframe snippet for embedding the generator.</p>
 
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
@@ -936,7 +942,34 @@
     var syncingInputs = false;
     var statusTimer = null;
     var paceConversionError = false;
+    // Loaded plans may contain historical fractional adjustments. Preserve them exactly.
+    var loadedStrategyValues = {};
+    var customisedPlanRecorded = false;
+    var reportedErrors = new Set();
     var savedGoals = { marathon: 14400, half: 7200 };
+
+    // No names, goal values, query strings or free text enter these event parameters.
+    // Reuse the existing tag; do not initialise analytics in embedded tools.
+    function trackBand(eventName, parameters){
+      if(window.self !== window.top || typeof window.gtag !== "function") return false;
+      window.gtag("event", eventName, Object.assign({
+        race_distance: raceKm() === HALF_MARATHON_KM ? "half_marathon" : "marathon",
+        page_location: window.location.origin + window.location.pathname
+      }, parameters || {}));
+      return true;
+    }
+    function recordCustomisedPlan(){
+      if(customisedPlanRecorded || !validateInputs()) return;
+      customisedPlanRecorded = trackBand("pace_band_plan_ready", {output_type: "preview"});
+    }
+    function recordValidationError(input){
+      if(validateInputs()) return;
+      if(input.getAttribute("aria-invalid") !== "true") return;
+      var category = input === elStartCushion || input === elNegativeMargin ? "strategy" : "time_or_pace";
+      var key = input.id + ":" + category;
+      if(reportedErrors.has(key)) return;
+      if(trackBand("pace_band_validation_error", {field: input.id, error_category: category})) reportedErrors.add(key);
+    }
 
     function raceKm(){
       return document.querySelector('input[name="distance"]:checked').value === "half" ?
@@ -963,13 +996,16 @@
         validInteger(elM, 0, 59) && validInteger(elS, 0, 59) &&
         goalSeconds() > 0;
       var paceValid = validPace();
-      var strategyValid = elStrategy.value === "controlled" ?
-        validInteger(elStartCushion, 0, 120) :
-        elStrategy.value === "negative" ?
-          elNegativeMargin.value.trim() !== "" &&
-          elNegativeMargin.checkValidity() &&
-          Number(elNegativeMargin.value) >= 0 &&
-          Number(elNegativeMargin.value) <= 10 : true;
+      var strategyInput = elStrategy.value === "controlled" ? elStartCushion : elNegativeMargin;
+      var strategyValue = Number(strategyInput.value);
+      var strategyMaximum = elStrategy.value === "controlled" ? 120 : 10;
+      var strategyValid = elStrategy.value === "even" || (
+        strategyInput.value.trim() !== "" && Number.isFinite(strategyValue) &&
+        strategyValue >= 0 && strategyValue <= strategyMaximum &&
+        (loadedStrategyValues[strategyInput.id] === strategyInput.value ||
+          (strategyInput.checkValidity() && (elStrategy.value !== "controlled" || Number.isInteger(strategyValue))))
+      );
+      var strategyIncrementValid = strategyValid;
       if(strategyValid && goalValid && elStrategy.value === "controlled"){
         strategyValid = goalSeconds() > Number(elStartCushion.value) *
           raceKm() / (raceKm() - 5);
@@ -981,7 +1017,9 @@
       paceError.textContent = paceValid ? "" : "Enter a valid pace (minutes 0–99; seconds 0–59).";
       if(paceConversionError) paceError.textContent = "This pace gives a finish beyond the supported 24:59:59 limit.";
       strategyError.textContent = strategyValid ? "" :
-        "This adjustment is too large for the goal time. Choose a smaller amount or a longer goal.";
+        (strategyIncrementValid ? "This adjustment is too large for the goal time. Choose a smaller amount or a longer goal." :
+          (elStrategy.value === "controlled" ? "Enter a cushion from 0 to 120 seconds in whole seconds." :
+            "Enter a margin from 0 to 10 minutes in steps of 0.5."));
       [elH, elM, elS].forEach(function(el){ el.setAttribute("aria-invalid", String(!goalValid)); });
       [elPaceM, elPaceS].forEach(function(el){ el.setAttribute("aria-invalid", String(!paceValid)); });
       elStartCushion.setAttribute("aria-invalid", String(elStrategy.value === "controlled" && !strategyValid));
@@ -1114,7 +1152,7 @@
         return "Settle early · hold an even race effort";
       }
 
-      var cushion = Math.round(clamp(elStartCushion.value, 0, 120));
+      var cushion = controlledCushionSeconds();
       return "First 5K: " + cushion + " sec behind even pace · then settle";
     }
 
@@ -1381,7 +1419,7 @@
 
     function setUnitUI(){
       var unitName = elUnit.value === "mi" ? "mile" : "kilometre";
-      paceLabel.textContent = "Average pace per " + unitName;
+      paceLabel.textContent = "Calculate a goal from pace per " + unitName;
       splitSummary.textContent = "View every " + unitName + " split";
     }
 
@@ -1721,6 +1759,7 @@
 
       var total = goalSeconds();
       var rows = checkpointRows(total);
+      trackBand("pace_band_phone_generation", {output_type: "phone_png"});
       var svg = buildPhoneSVG(total, rows);
       var svgBlob = new Blob([svg], { type: "image/svg+xml;charset=utf-8" });
       var svgURL = URL.createObjectURL(svgBlob);
@@ -1746,14 +1785,16 @@
             }
 
             triggerBlobDownload(blob, filename);
-            showStatus("Phone card downloaded.");
+            trackBand("pace_band_download_intent", {output_type: "phone_png"});
+            showStatus("Phone card download started.");
           }, "image/png");
         } else {
           var link = document.createElement("a");
           link.href = canvas.toDataURL("image/png");
           link.download = filename;
           link.click();
-          showStatus("Phone card downloaded.");
+          trackBand("pace_band_download_intent", {output_type: "phone_png"});
+          showStatus("Phone card download started.");
         }
       };
 
@@ -1767,6 +1808,7 @@
 
     function printBands(){
       if(!render()) return;
+      trackBand("pace_band_print_intent", {output_type: "wrist"});
       document.body.dataset.printLayout = 'wrist';
       window.setTimeout(function(){ window.print(); }, 80);
     }
@@ -1781,6 +1823,7 @@
         '<p>' + escapeHTML(strategyLabel()) + ' · All times are cumulative elapsed times, including stops.</p>' +
         '<table><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody>' + rows + '</tbody></table>' +
         '<p>' + escapeHTML(raceLabel()) + ' distance: ' + raceKm() + ' km · marathonpacekm.com</p>';
+      trackBand('pace_band_print_intent', {output_type: 'checkpoints'});
       document.body.dataset.printLayout = 'checkpoints';
       window.setTimeout(function(){ window.print(); }, 80);
     }
@@ -1847,6 +1890,8 @@
         elRaceName.value = shorten(query.get("race"), 50);
       }
 
+      loadedStrategyValues.startCushion = elStartCushion.value;
+      loadedStrategyValues.negativeMargin = elNegativeMargin.value;
       syncPaceFromGoal();
       savedGoals[raceKm() === HALF_MARATHON_KM ? "half" : "marathon"] = goalSeconds();
       updatePresets();
@@ -1876,6 +1921,7 @@
         syncPaceFromGoal();
         render();
 
+        recordCustomisedPlan();
         showStatus(
           formatGoal(goalSeconds()) +
           " goal loaded. Your units and pacing plan are unchanged."
@@ -1936,12 +1982,21 @@
       elRunnerName,
       elRaceName
     ].forEach(function(input){
-      input.addEventListener("input", render);
-      input.addEventListener("change", render);
+      function updateOptionalInput(){
+        delete loadedStrategyValues[input.id];
+        render();
+      }
+      input.addEventListener("input", updateOptionalInput);
+      input.addEventListener("change", updateOptionalInput);
     });
 
     downloadBtn.addEventListener("click", downloadPhoneCard);
     downloadBtnInline.addEventListener("click", downloadPhoneCard);
+    [elH, elM, elS, elPaceM, elPaceS, elUnit, elStrategy, elStartCushion,
+      elNegativeMargin, elPaper, elWristSize].concat(Array.from(distanceInputs)).forEach(function(input){
+      input.addEventListener("change", recordCustomisedPlan);
+      input.addEventListener("blur", function(){ recordValidationError(input); });
+    });
     printBtn.addEventListener("click", printBands);
     printBtnInline.addEventListener("click", printBands);
 
@@ -1951,6 +2006,7 @@
       var url = buildShareURL().toString();
 
       copyText(url).then(function(){
+        trackBand("pace_band_share_copied", {output_type: "share_link"});
         showStatus("Share link copied.");
       }).catch(function(){
         showStatus("Could not copy automatically. Copy this URL: " + url);
