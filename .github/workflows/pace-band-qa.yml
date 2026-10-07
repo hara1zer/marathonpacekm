@@ -1,0 +1,40 @@
+name: Pace band QA
+on:
+  pull_request:
+    paths:
+      - 'printable-pace-band/**'
+      - 'assets/*.css'
+      - 'assets/site-telemetry.js'
+      - '.github/quality/pace-band-*'
+      - '.github/workflows/pace-band-qa.yml'
+permissions:
+  contents: read
+jobs:
+  browser-and-print:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install development-only test dependencies
+        run: |
+          npm install --prefix "$RUNNER_TEMP/pace-band-deps" playwright@1.62.1
+          "$RUNNER_TEMP/pace-band-deps/node_modules/.bin/playwright" install --with-deps chromium
+          python3 -m pip install PyMuPDF==1.26.7
+      - name: Calculation and state regressions
+        run: node .github/quality/pace-band-regressions.mjs
+      - name: Browser, mobile and actual PDF output
+        env:
+          PLAYWRIGHT_MODULE: ${{ runner.temp }}/pace-band-deps/node_modules/playwright
+          QA_OUTPUT: ${{ runner.temp }}/pace-band-qa
+        run: |
+          node .github/quality/pace-band-browser.mjs
+          python3 .github/quality/pace-band-pdf.py "$QA_OUTPUT"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pace-band-qa
+          path: ${{ runner.temp }}/pace-band-qa
+          retention-days: 7
