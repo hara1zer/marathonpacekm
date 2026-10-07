@@ -35,7 +35,17 @@ Use marathon 3:30/km, marathon 4:00/miles and half marathon 2:00/km. For each, c
 - Scale line 50 mm. Bands 174 × 38 mm or 224 × 38 mm for the smallest/largest sizes; separate 24 mm overlap.
 - All checkpoint text stays within each band, including halfway/finish. Times remain 10 pt and distance labels 8 pt; smaller wrists do not reduce font size.
 
-Do not mark PDF geometry or mobile checks passed merely because the CSS specifies these values. This environment's cloud browser has not exposed native print-preview/PDF export or viewport resizing; those checks require a browser with those capabilities.
+## Executed software acceptance (2026-10-07)
+
+The scoped `Pace band QA` GitHub Actions workflow runs the calculation harness, `.github/quality/pace-band-browser.mjs` in real headless Chromium, and `.github/quality/pace-band-pdf.py` against the generated PDFs. Test dependencies are installed only on the CI runner; the website has no new dependency. Artifacts retain screenshots, PDFs, the generated PNG phone card and JSON results for seven days.
+
+- Chromium: all three representative plans at 1280, 390 and 320 px, with both wrist extremes; no unintended page overflow or overflowing checkpoint labels/times. Legacy links and clipboard re-sharing, immediate half-marathon restoration, invalid input/recovery, keyboard Tab interaction, phone PNG download and analytics assertions passed.
+- Generated 12 actual PDFs: three plans × two papers × two wrist extremes. All are one landscape page with three bands; PDF media boxes, text margins, finish/halfway presence, 10 pt finish times, 8 pt finish labels and the actual 50 mm calibration path passed. Print-media DOM measurements separately confirm 174/224 × 38 mm bands and all checkpoint font sizes. Representative A4/Letter PDF renderings and mobile screenshots were visually inspected.
+- The supported long-goal case (half marathon 24:59:59 in miles) remains valid when switching units; a pace conversion beyond the supported goal range exposes an accessible error.
+
+The print-button test observes print intent; PDF output is generated separately by Chromium's real print renderer. These checks do not exercise an OS print dialog, printer driver, physical output, Safari or Firefox. They do not establish physical fit or waterproofness. The 10 mm CSS page margin is a minimum content boundary; narrower bands are centred and therefore have larger actual side whitespace.
+
+Local Chromium installation failed because its download was invalid; CI successfully installed Chromium and performed the browser/PDF checks instead. The initial PDF assertion incorrectly expected a stroked line: Chromium emits the calibration border as a thin filled rectangle. The checker now verifies its actual width in either representation.
 
 ## Physical acceptance before claiming tested fit
 

@@ -19,8 +19,11 @@ for case in manifest:
  for s in spans:
   x0,y0,x1,y1=s['bbox']; assert x0>=27 and y0>=27 and x1<=page.rect.width-27 and y1<=page.rect.height-27, (case['file'],s)
  # Calibration rule appears as a 50mm horizontal path in the real PDF.
- lines=[item for d in page.get_drawings() for item in d['items'] if item[0]=='l']
- assert any(abs(abs(item[2].x-item[1].x)*25.4/72-50)<0.25 and abs(item[2].y-item[1].y)<0.2 for item in lines), (case['file'],'calibration rule missing')
+ paths=[item for d in page.get_drawings() for item in d['items']]
+ # Chromium represents a CSS border as a thin filled rectangle. Accept either encoding.
+ rules=[(abs(i[2].x-i[1].x),abs(i[2].y-i[1].y)) for i in paths if i[0]=='l']
+ rules += [(i[1].width,i[1].height) for i in paths if i[0]=='re']
+ assert any(abs(width*25.4/72-50)<0.25 and height<=1 for width,height in rules), (case['file'],'calibration rule missing')
  page.get_pixmap(matrix=fitz.Matrix(1.3,1.3)).save(root/(case['file']+'.png'))
  results.append({'file':case['file'],'pages':1,'width_mm':w,'height_mm':h,'verified':True})
 (root/'pdf-results.json').write_text(json.dumps(results,indent=2))
