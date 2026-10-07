@@ -544,7 +544,7 @@
 
           <div class="pace-inputs" role="group" aria-labelledby="paceLabel">
             <label class="visually-hidden" for="paceM">Pace minutes</label>
-            <input id="paceM" type="number" min="0" max="99" inputmode="numeric" value="5" aria-describedby="paceError" />
+            <input id="paceM" type="number" min="0" max="199" inputmode="numeric" value="5" aria-describedby="paceError" />
             <span class="input-suffix">m</span>
 
             <label class="visually-hidden" for="paceS">Pace seconds</label>
@@ -987,7 +987,7 @@
     }
 
     function validPace(){
-      return validInteger(elPaceM, 0, 99) && validInteger(elPaceS, 0, 59) &&
+      return validInteger(elPaceM, 0, 199) && validInteger(elPaceS, 0, 59) &&
         (Number(elPaceM.value) * 60 + Number(elPaceS.value)) > 0;
     }
 
@@ -1014,14 +1014,14 @@
         strategyValid = goalSeconds() > 2 * Number(elNegativeMargin.value) * 60;
       }
       goalError.textContent = goalValid ? "" : "Enter a valid finish time (hours 0–24; minutes and seconds 0–59).";
-      paceError.textContent = paceValid ? "" : "Enter a valid pace (minutes 0–99; seconds 0–59).";
+      paceError.textContent = paceValid ? "" : "Enter a valid pace (minutes 0–199; seconds 0–59).";
       if(paceConversionError) paceError.textContent = "This pace gives a finish beyond the supported 24:59:59 limit.";
       strategyError.textContent = strategyValid ? "" :
         (strategyIncrementValid ? "This adjustment is too large for the goal time. Choose a smaller amount or a longer goal." :
           (elStrategy.value === "controlled" ? "Enter a cushion from 0 to 120 seconds in whole seconds." :
             "Enter a margin from 0 to 10 minutes in steps of 0.5."));
       [elH, elM, elS].forEach(function(el){ el.setAttribute("aria-invalid", String(!goalValid)); });
-      [elPaceM, elPaceS].forEach(function(el){ el.setAttribute("aria-invalid", String(!paceValid)); });
+      [elPaceM, elPaceS].forEach(function(el){ el.setAttribute("aria-invalid", String(!paceValid || paceConversionError)); });
       elStartCushion.setAttribute("aria-invalid", String(elStrategy.value === "controlled" && !strategyValid));
       elNegativeMargin.setAttribute("aria-invalid", String(elStrategy.value === "negative" && !strategyValid));
       return goalValid && paceValid && strategyValid && !paceConversionError;

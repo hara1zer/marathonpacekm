@@ -21,7 +21,7 @@ function load(search = '') {
       checkValidity() {
         const n = Number(this.value);
         const max = ['m', 's', 'paceS'].includes(id) ? 59 :
-          id === 'h' ? 24 : id === 'paceM' ? 99 :
+          id === 'h' ? 24 : id === 'paceM' ? 199 :
           id === 'startCushion' ? 120 : id === 'negativeMargin' ? 10 : Infinity;
         return this.value !== '' && Number.isFinite(n) && n >= 0 && n <= max &&
           (id === 'negativeMargin' ? n * 2 === Math.round(n * 2) : true);
@@ -249,3 +249,12 @@ app.set('m',''); assert.equal(app.get('outputs').hidden,true);
 app.set('m','30'); assert.equal(app.get('outputs').hidden,false);
 app.set('unit','mi','change'); schedule(app,'3:30:00');
 console.log('Legacy schedules, half-marathon restoration, radio semantics and privacy-safe events passed');
+
+app = load('?distance=half&h=24&m=59&s=59&unit=mi');
+assert.equal(app.get('printBtn').disabled, false);
+schedule(app,'24:59:59');
+app.set('unit','km','change'); schedule(app,'24:59:59');
+app = load(); app.set('paceM','199'); app.set('paceS','59');
+assert.equal(app.get('printBtn').disabled,true);
+assert.equal(app.get('paceM').getAttribute('aria-invalid'),'true');
+console.log('Long-goal unit conversion and conversion-limit accessibility passed');
