@@ -7,6 +7,7 @@ on:
       - 'assets/*.css'
       - 'assets/site-telemetry.js'
       - '.github/quality/pace-band-*'
+      - '.github/quality/goal-*'
       - '.github/quality/browser-regressions.mjs'
       - '.github/quality/seo-regressions.mjs'
       - '.github/quality/browser-scan.mjs'
@@ -28,7 +29,9 @@ jobs:
           "$RUNNER_TEMP/pace-band-deps/node_modules/.bin/playwright" install --with-deps chromium
           python3 -m pip install PyMuPDF==1.26.7
       - name: Calculation and state regressions
-        run: node .github/quality/pace-band-regressions.mjs
+        run: |
+          node .github/quality/pace-band-regressions.mjs
+          python3 .github/quality/goal-content-regressions.py
       - name: Browser, mobile and actual PDF output
         env:
           PLAYWRIGHT_MODULE: ${{ runner.temp }}/pace-band-deps/node_modules/playwright

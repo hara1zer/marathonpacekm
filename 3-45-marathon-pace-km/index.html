@@ -43,14 +43,6 @@
     },
     {
       "@type": "Question",
-      "name": "How should I use the scenario on this page?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It shows the arithmetic consequence of a specific planning choice. Check the required effort against your current training and conditions before choosing to preserve the target."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "How many gels does this goal require?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -137,7 +129,7 @@
         <button class="btn secondary" id="resetBtn">Reset</button>
       </div>
 
-      <div id="results" class="results" aria-live="polite"></div>
+      <p class="pace-band-handoff"><a class="btn" data-goal-band href="/printable-pace-band/?h=3&amp;m=45&amp;s=0&amp;unit=km&amp;strategy=even">Create a pace band for this goal →</a></p><p class="tiny muted">This link follows your edited marathon target. The generator offers wrist bands, A4/Letter PDF printing and phone-card downloads.</p><div id="results" class="results" aria-live="polite"></div>
     </section>
     <section class="card" id="related-goal-times">
   <h2>Related Marathon Goal Times</h2>
@@ -151,9 +143,11 @@
   </div>
 </section>
     <!-- Training tie-in -->
-    <section class="card" id="training"><h2>Check the evidence for 3:45</h2><p>The scenario above is arithmetic, not proof that 5:19.9/km is sustainable for you. Compare a recent race with repeatable training and controlled long-run execution: <a href="/marathon-time-predictor/">prediction scenarios</a>, <a href="/blog/marathon-pace-readiness-test/">readiness questions</a> and the <a href="/monthly-training-plan/">monthly planner</a> support that review. <a href="/blog/sydney-marathon-2026-personal-review/#workouts">My Sydney workouts</a> show why a fast session alone did not establish marathon readiness.</p></section>
+    <section class="card editorial-example" id="worked-plan"><h2>Work through a 3:45 race plan</h2><h3>How easily a banked minute disappears</h3><p>At 3:45, the average is 5:19.9/km. Running the opening 10 km ten seconds per kilometre faster would put you 100 seconds ahead of the even plan. A slowdown of just over eight seconds per kilometre across the final 12.195 km would erase that entire gain.</p><p>This is a break-even calculation, not a claim that a particular start will cause a particular slowdown. Its value is showing how little late-race deterioration is needed to undo an early gain. The <a href="/blog/time-in-the-bank-math/">time-in-the-bank calculator</a> lets you change those assumptions.</p><p>For a controlled opening, the pace-band generator shows the later adjustment needed to preserve 3:45. Read that adjustment before selecting it: a slower start only keeps the same finish time if later running makes up the difference. If the remaining pace no longer matches your effort, revise the goal rather than forcing a late rescue.</p>
 
-
+</section>
+<section class="card" id="decision-to-rehearse"><h2>Check the full distance remaining after 40 km</h2><p>The measured course still has 2.195 km remaining at the 40 km marker. Compare that requirement with a watch estimate based on only two kilometres.</p><p>At an even 3:45 pace, 40 km is <strong>3:33:18</strong>. The final 2.195 km take <strong>0:11:42</strong>. Two kilometres at the same average take 0:10:40, leaving about 62 seconds unaccounted for if you omit the extra 195 metres.</p></section>
+<section class="card editorial-example" id="training"><h2>Check the goal, then plan the supplies</h2><p>The pace calculation is a reference, not a fitness test. Compare a recent race using the <a href="/marathon-time-predictor/">marathon predictor</a>, then review its assumptions against your training and the <a href="/adjust-marathon-pace/">expected conditions</a>.</p><span id="fueling" class="anchor-target"></span><p>For a goal you have chosen, the <a href="/marathon-fueling-calculator/">fueling calculator</a> separates a practised hourly intake from the grams actually scheduled. Count drink carbohydrate and product labels; finish time alone does not specify a gel count. See the <a href="/blog/marathon-fueling-by-finish-time-gel-schedule/">worked menus</a> if you need an example.</p></section>
 
     <section id="pace-chart" class="card">
       <h2>Pace Chart (Per KM)</h2>
@@ -161,14 +155,8 @@
       <div id="chartTable"></div>
     </section>
 
-    <section class="card" id="faq"><h2>3:45 planning FAQ</h2><h3>What pace per km is a 3:45 marathon?</h3><p>The exact average over 42.195 km is 5:19.9/km. The calculator uses full precision before displaying rounded checkpoints.</p><h3>What is the even halfway checkpoint?</h3><p>The halfway reference is 1:52:30 elapsed, including any pauses. A rounded display is not an additional time allowance.</p><h3>How should I use the scenario on this page?</h3><p>It shows the arithmetic consequence of a specific planning choice. Check the required effort against your current training and conditions before choosing to preserve the target.</p><h3>How many gels does this goal require?</h3><p>The finish time does not determine a universal gel count. Choose a practiced hourly intake, check grams per packet, include drink carbohydrate and verify the actual scheduled average in the fueling calculator.</p></section>
+    <section class="card" id="faq"><h2>3:45 planning FAQ</h2><h3>What pace per km is a 3:45 marathon?</h3><p>The exact average over 42.195 km is 5:19.9/km. The calculator uses full precision before displaying rounded checkpoints.</p><h3>What is the even halfway checkpoint?</h3><p>The halfway reference is 1:52:30 elapsed, including any pauses. A rounded display is not an additional time allowance.</p><h3>How many gels does this goal require?</h3><p>The finish time does not determine a universal gel count. Choose a practiced hourly intake, check grams per packet, include drink carbohydrate and verify the actual scheduled average in the fueling calculator.</p></section>
 
-  <section class="card" id="fueling"><h2>Account for the full 3:45 duration</h2><p>If you have rehearsed 60 g/h, the arithmetic total for 3:45 is <strong>225.0 g</strong>. That chosen intake is an example, not a recommendation based on your speed. Count actual product grams and planned drinks; a spare carried but not consumed does not contribute.</p><p>Use the <a href="/marathon-fueling-calculator/">fueling calculator</a> for timestamps and supplied average, and the <a href="/blog/marathon-fueling-by-finish-time-gel-schedule/">complete worked menus</a> for a checked example. <a href="https://pubmed.ncbi.nlm.nih.gov/30747558/">Nutrition research</a> supplies context; duration supplies the multiplication.</p></section>
-
-<section class="card editorial-example" id="worked-plan"><h2>Work through a 3:45 race plan</h2><p class="byline">Calculations and examples reviewed 21 September 2026 · <a href="/methodology/">Methods</a></p><p>The exact average is <strong>5:19.9/km</strong> or <strong>8:34.9/mile</strong>, shown here to a tenth of a second. Exactly 5:20/km over the marathon distance gives 3:45:02 when rounded to a second. Displayed pace and elapsed checkpoints answer different questions.</p><div class="table-scroll"><table><caption>Fixed even-pace reference for 3:45; includes any stops</caption><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody><tr><th scope="row">5 km</th><td>0:26:40</td></tr><tr><th scope="row">10 km</th><td>0:53:19</td></tr><tr><th scope="row">Halfway</th><td>1:52:30</td></tr><tr><th scope="row">30 km</th><td>2:39:58</td></tr><tr><th scope="row">40 km</th><td>3:33:18</td></tr><tr><th scope="row">Finish</th><td>3:45:00</td></tr></tbody></table></div><h3>How easily a banked minute disappears</h3><p>At 3:45, the average is 5:19.9/km. Running the opening 10 km ten seconds per kilometre faster would put you 100 seconds ahead of the even plan. A slowdown of just over eight seconds per kilometre across the final 12.195 km would erase that entire gain.</p><p>This is a break-even calculation, not a claim that a particular start will cause a particular slowdown. Its value is showing how little late-race deterioration is needed to undo an early gain. The <a href="/blog/time-in-the-bank-math/">time-in-the-bank calculator</a> lets you change those assumptions.</p><h3>Remember the distance after 40 km</h3><p>The even 40 km checkpoint is 3:33:18, leaving about 11:42 for the last 2.195 km. Being near the finish is not the same as being finished. Use the full-distance endpoint when judging whether your current elapsed time still matches the goal.</p><p>For a controlled opening, the pace-band generator shows the later adjustment needed to preserve 3:45. Read that adjustment before selecting it: a slower start only keeps the same finish time if later running makes up the difference. If the remaining pace no longer matches your effort, revise the goal rather than forcing a late rescue.</p><h3>Include a stop without confusing it with walking</h3><p>If you stand still for one minute in total, keeping 3:45:00 would require covering the distance in 3:44:00, averaging 5:18.5/km while moving. This example assumes no distance is covered during the stop. Walking is different because it still contributes distance.</p><p>Make a plan using <a href="/printable-pace-band/?h=3&amp;m=45&amp;s=0&amp;strategy=even">a pace band for this exact target</a>. For a controlled start or negative split, the tool recalculates the later pace needed to preserve the finish time. Neither option guarantees that the required effort is sustainable.</p>
-<p>For the preset wrist-band and A4 print options, open the <a href="/pace-band/3-45/">3:45 marathon pace band</a>.</p>
-</section>
-<section class="card" id="decision-to-rehearse"><h2>Check the full distance remaining after 40 km</h2><p>The measured course still has 2.195 km remaining at the 40 km marker. Compare that requirement with a watch estimate based on only two kilometres.</p><p>At an even 3:45 pace, 40 km is <strong>3:33:18</strong>. The final 2.195 km take <strong>0:11:42</strong>. Two kilometres at the same average take 0:10:40, leaving about 62 seconds unaccounted for if you omit the extra 195 metres.</p></section>
 </main>
 <script>
   window.GOAL_PAGE = { goalSeconds: 13500, lockDistanceKm: 42.195 }; // 3:45:00
@@ -182,5 +170,6 @@
 
 
 
+<script defer src="/assets/goal-band-links.js?v=20261004"></script>
 </body>
 </html>
