@@ -1,0 +1,774 @@
+{
+  "checkedAt": "2026-10-08",
+  "window": {
+    "start": "2026-09-08",
+    "end": "2026-10-05"
+  },
+  "source": "Connected Search Console via GSC Wizard; page report and page/query searchAnalytics report",
+  "accessLimits": [
+    "No authenticated AdSense dashboard; public sign-in page only",
+    "GA4 scope unavailable; ingestion and Enhanced Measurement account settings unverified"
+  ],
+  "pages": [
+    {
+      "page": "https://marathonpacekm.com/3-50-marathon-pace-km/",
+      "clicks": 36,
+      "impressions": 6985,
+      "ctr": 0.5153901216893343,
+      "position": 5.0287759484609875,
+      "topQueries": [
+        {
+          "query": "3:50 marathon pace",
+          "clicks": 2,
+          "impressions": 829,
+          "position": 4.411338962605549
+        },
+        {
+          "query": "3:50 marathon",
+          "clicks": 1,
+          "impressions": 121,
+          "position": 5.652892561983471
+        },
+        {
+          "query": "what pace is a 3:50 marathon",
+          "clicks": 0,
+          "impressions": 88,
+          "position": 3.909090909090909
+        },
+        {
+          "query": "350 marathon pace",
+          "clicks": 0,
+          "impressions": 82,
+          "position": 4.439024390243903
+        },
+        {
+          "query": "pace for 3:50 marathon",
+          "clicks": 1,
+          "impressions": 77,
+          "position": 3.961038961038961
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/sub-4-marathon-pace-km/",
+      "clicks": 26,
+      "impressions": 3961,
+      "ctr": 0.6563998990154002,
+      "position": 7.853824791719263,
+      "topQueries": [
+        {
+          "query": "sub 4 marathon pace",
+          "clicks": 1,
+          "impressions": 435,
+          "position": 8.282758620689656
+        },
+        {
+          "query": "sub 4 marathon pace km",
+          "clicks": 1,
+          "impressions": 205,
+          "position": 6.263414634146342
+        },
+        {
+          "query": "3:59 marathon pace",
+          "clicks": 1,
+          "impressions": 126,
+          "position": 7.873015873015873
+        },
+        {
+          "query": "sub 4 hour marathon pace km",
+          "clicks": 0,
+          "impressions": 80,
+          "position": 9.775
+        },
+        {
+          "query": "4 hour marathon pace km",
+          "clicks": 0,
+          "impressions": 68,
+          "position": 24.926470588235293
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/3-30-marathon-pace-km/",
+      "clicks": 21,
+      "impressions": 10389,
+      "ctr": 0.20213687554143808,
+      "position": 7.793531619982674,
+      "topQueries": [
+        {
+          "query": "3:30 marathon pace",
+          "clicks": 0,
+          "impressions": 2055,
+          "position": 8.559610705596107
+        },
+        {
+          "query": "what pace is a 3:30 marathon",
+          "clicks": 0,
+          "impressions": 303,
+          "position": 8.752475247524753
+        },
+        {
+          "query": "3.30 marathon pace km",
+          "clicks": 0,
+          "impressions": 137,
+          "position": 7.036496350364963
+        },
+        {
+          "query": "3 30 marathon pace",
+          "clicks": 0,
+          "impressions": 136,
+          "position": 8.661764705882353
+        },
+        {
+          "query": "3.30 marathon pace",
+          "clicks": 0,
+          "impressions": 113,
+          "position": 9.238938053097344
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/3-55-marathon-pace-km/",
+      "clicks": 14,
+      "impressions": 3191,
+      "ctr": 0.43873393920401127,
+      "position": 5.128486367909746,
+      "topQueries": [
+        {
+          "query": "3:55 marathon pace",
+          "clicks": 1,
+          "impressions": 327,
+          "position": 4.862385321100918
+        },
+        {
+          "query": "3:55 marathon",
+          "clicks": 0,
+          "impressions": 62,
+          "position": 5.435483870967742
+        },
+        {
+          "query": "what pace is a 3:55 marathon",
+          "clicks": 0,
+          "impressions": 42,
+          "position": 3.642857142857143
+        },
+        {
+          "query": "355 marathon pace",
+          "clicks": 0,
+          "impressions": 38,
+          "position": 4.868421052631579
+        },
+        {
+          "query": "pace for 3:55 marathon",
+          "clicks": 0,
+          "impressions": 31,
+          "position": 5.096774193548387
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/3-05-marathon-pace-km/",
+      "clicks": 12,
+      "impressions": 1954,
+      "ctr": 0.6141248720573182,
+      "position": 5.636131013306039,
+      "topQueries": [
+        {
+          "query": "3:05 marathon pace",
+          "clicks": 3,
+          "impressions": 419,
+          "position": 5.949880668257757
+        },
+        {
+          "query": "305 marathon pace",
+          "clicks": 0,
+          "impressions": 65,
+          "position": 7.061538461538461
+        },
+        {
+          "query": "3:05 marathon",
+          "clicks": 0,
+          "impressions": 62,
+          "position": 7.403225806451613
+        },
+        {
+          "query": "what pace is a 3:05 marathon",
+          "clicks": 1,
+          "impressions": 36,
+          "position": 5.583333333333333
+        },
+        {
+          "query": "3 05 marathon pace",
+          "clicks": 0,
+          "impressions": 18,
+          "position": 6.333333333333333
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/3-45-marathon-pace-km/",
+      "clicks": 9,
+      "impressions": 4387,
+      "ctr": 0.20515158422612262,
+      "position": 8.565762480054708,
+      "topQueries": [
+        {
+          "query": "3:45 marathon pace",
+          "clicks": 1,
+          "impressions": 586,
+          "position": 9.498293515358363
+        },
+        {
+          "query": "345 marathon pace",
+          "clicks": 0,
+          "impressions": 134,
+          "position": 9.059701492537313
+        },
+        {
+          "query": "3.45 marathon pace km",
+          "clicks": 0,
+          "impressions": 100,
+          "position": 7.09
+        },
+        {
+          "query": "3.45 marathon pace",
+          "clicks": 0,
+          "impressions": 72,
+          "position": 9.444444444444445
+        },
+        {
+          "query": "3h45 marathon pace",
+          "clicks": 0,
+          "impressions": 58,
+          "position": 8.775862068965516
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/4-30-marathon-pace-km/",
+      "clicks": 9,
+      "impressions": 7350,
+      "ctr": 0.12244897959183673,
+      "position": 7.138231292517006,
+      "topQueries": [
+        {
+          "query": "4:30 marathon pace",
+          "clicks": 0,
+          "impressions": 645,
+          "position": 8.237209302325581
+        },
+        {
+          "query": "430 marathon pace",
+          "clicks": 0,
+          "impressions": 186,
+          "position": 7.365591397849462
+        },
+        {
+          "query": "4.30 marathon pace",
+          "clicks": 0,
+          "impressions": 111,
+          "position": 7.225225225225225
+        },
+        {
+          "query": "what pace is a 4:30 marathon",
+          "clicks": 0,
+          "impressions": 93,
+          "position": 8.204301075268816
+        },
+        {
+          "query": "4:30 pace marathon",
+          "clicks": 0,
+          "impressions": 77,
+          "position": 8.207792207792208
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/3-10-marathon-pace-km/",
+      "clicks": 8,
+      "impressions": 3965,
+      "ctr": 0.201765447667087,
+      "position": 6.7997477931904164,
+      "topQueries": [
+        {
+          "query": "3:10 marathon pace",
+          "clicks": 3,
+          "impressions": 779,
+          "position": 7.607188703465982
+        },
+        {
+          "query": "3:10 marathon",
+          "clicks": 0,
+          "impressions": 120,
+          "position": 9.508333333333333
+        },
+        {
+          "query": "310 marathon pace",
+          "clicks": 0,
+          "impressions": 68,
+          "position": 7.676470588235294
+        },
+        {
+          "query": "what pace is a 3:10 marathon",
+          "clicks": 0,
+          "impressions": 66,
+          "position": 6.787878787878788
+        },
+        {
+          "query": "3.10 marathon pace",
+          "clicks": 0,
+          "impressions": 58,
+          "position": 6.862068965517241
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/3-15-marathon-pace-km/",
+      "clicks": 8,
+      "impressions": 5814,
+      "ctr": 0.13759889920880633,
+      "position": 7.434812521499828,
+      "topQueries": [
+        {
+          "query": "3:15 marathon pace",
+          "clicks": 0,
+          "impressions": 1305,
+          "position": 8.066666666666666
+        },
+        {
+          "query": "what pace is a 3:15 marathon",
+          "clicks": 0,
+          "impressions": 144,
+          "position": 7.791666666666667
+        },
+        {
+          "query": "315 marathon pace",
+          "clicks": 0,
+          "impressions": 133,
+          "position": 8.68421052631579
+        },
+        {
+          "query": "3.15 marathon pace km",
+          "clicks": 0,
+          "impressions": 122,
+          "position": 4.975409836065573
+        },
+        {
+          "query": "3.15 marathon pace",
+          "clicks": 0,
+          "impressions": 83,
+          "position": 7.891566265060241
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/3-00-marathon-pace-km/",
+      "clicks": 7,
+      "impressions": 3655,
+      "ctr": 0.19151846785225718,
+      "position": 9.059097127222982,
+      "topQueries": [
+        {
+          "query": "3:00 marathon pace",
+          "clicks": 0,
+          "impressions": 325,
+          "position": 7.578461538461538
+        },
+        {
+          "query": "3 hour marathon pace km",
+          "clicks": 0,
+          "impressions": 178,
+          "position": 14.865168539325843
+        },
+        {
+          "query": "3 hour marathon pace per km",
+          "clicks": 0,
+          "impressions": 73,
+          "position": 9.178082191780822
+        },
+        {
+          "query": "3 hour marathon pace chart",
+          "clicks": 0,
+          "impressions": 55,
+          "position": 22.181818181818183
+        },
+        {
+          "query": "sub 3 hour marathon pace per km",
+          "clicks": 0,
+          "impressions": 52,
+          "position": 7.211538461538462
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/4-05-marathon-pace-km/",
+      "clicks": 4,
+      "impressions": 675,
+      "ctr": 0.5925925925925926,
+      "position": 6.014814814814815,
+      "topQueries": [
+        {
+          "query": "4:05 marathon pace",
+          "clicks": 0,
+          "impressions": 108,
+          "position": 4.4907407407407405
+        },
+        {
+          "query": "4:05 marathon",
+          "clicks": 0,
+          "impressions": 28,
+          "position": 4.214285714285714
+        },
+        {
+          "query": "what pace is a 4:05 marathon",
+          "clicks": 0,
+          "impressions": 18,
+          "position": 5.055555555555555
+        },
+        {
+          "query": "marathon pace chart",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 24.2
+        },
+        {
+          "query": "4 hour 05 marathon pace",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 18.428571428571427
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/4-35-marathon-pace-km/",
+      "clicks": 4,
+      "impressions": 816,
+      "ctr": 0.49019607843137253,
+      "position": 5.85171568627451,
+      "topQueries": [
+        {
+          "query": "4:35 marathon pace",
+          "clicks": 0,
+          "impressions": 89,
+          "position": 5.977528089887641
+        },
+        {
+          "query": "what pace is a 4:35 marathon",
+          "clicks": 0,
+          "impressions": 8,
+          "position": 4.625
+        },
+        {
+          "query": "pace 4:35",
+          "clicks": 0,
+          "impressions": 5,
+          "position": 8.2
+        },
+        {
+          "query": "4:35 marathon",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 7
+        },
+        {
+          "query": "4:35 marathon pace chart",
+          "clicks": 0,
+          "impressions": 4,
+          "position": 16
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/4-40-marathon-pace-km/",
+      "clicks": 3,
+      "impressions": 1908,
+      "ctr": 0.15723270440251574,
+      "position": 5.621593291404612,
+      "topQueries": [
+        {
+          "query": "4:40 marathon pace",
+          "clicks": 1,
+          "impressions": 229,
+          "position": 5.427947598253275
+        },
+        {
+          "query": "4:40 marathon",
+          "clicks": 0,
+          "impressions": 43,
+          "position": 5.046511627906977
+        },
+        {
+          "query": "4.40 marathon pace",
+          "clicks": 0,
+          "impressions": 37,
+          "position": 4.702702702702703
+        },
+        {
+          "query": "4:40 pace marathon",
+          "clicks": 0,
+          "impressions": 28,
+          "position": 6.178571428571429
+        },
+        {
+          "query": "what pace is a 4:40 marathon",
+          "clicks": 0,
+          "impressions": 26,
+          "position": 4.769230769230769
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/5-00-marathon-pace-km/",
+      "clicks": 3,
+      "impressions": 1438,
+      "ctr": 0.2086230876216968,
+      "position": 8.57510431154381,
+      "topQueries": [
+        {
+          "query": "5 hour marathon pace per km",
+          "clicks": 0,
+          "impressions": 48,
+          "position": 8.375
+        },
+        {
+          "query": "5:00 marathon pace",
+          "clicks": 0,
+          "impressions": 48,
+          "position": 6.479166666666667
+        },
+        {
+          "query": "5 hour marathon pace",
+          "clicks": 0,
+          "impressions": 41,
+          "position": 16.804878048780488
+        },
+        {
+          "query": "5:00 pace marathon",
+          "clicks": 0,
+          "impressions": 32,
+          "position": 5.4375
+        },
+        {
+          "query": "5 hour marathon pace km",
+          "clicks": 0,
+          "impressions": 24,
+          "position": 10.291666666666666
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/4-15-marathon-pace-km/",
+      "clicks": 2,
+      "impressions": 152,
+      "ctr": 1.3157894736842104,
+      "position": 6.467105263157895,
+      "topQueries": [
+        {
+          "query": "4 hour 15 minute marathon pace",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 17
+        },
+        {
+          "query": "415 marathon pace",
+          "clicks": 0,
+          "impressions": 3,
+          "position": 9.666666666666666
+        },
+        {
+          "query": "4:15 marathon pace",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 9
+        },
+        {
+          "query": "2 15 marathon pace",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 21
+        },
+        {
+          "query": "4 15 marathon pace",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 10
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/4-50-marathon-pace-km/",
+      "clicks": 2,
+      "impressions": 1580,
+      "ctr": 0.12658227848101267,
+      "position": 6.464556962025316,
+      "topQueries": [
+        {
+          "query": "4:50 marathon pace",
+          "clicks": 0,
+          "impressions": 154,
+          "position": 6.759740259740259
+        },
+        {
+          "query": "4:50 marathon",
+          "clicks": 0,
+          "impressions": 41,
+          "position": 6.390243902439025
+        },
+        {
+          "query": "4 hour 50 min marathon pace",
+          "clicks": 0,
+          "impressions": 20,
+          "position": 7.85
+        },
+        {
+          "query": "4 50 marathon pace",
+          "clicks": 0,
+          "impressions": 18,
+          "position": 5
+        },
+        {
+          "query": "4:50 pace marathon",
+          "clicks": 0,
+          "impressions": 18,
+          "position": 8.055555555555555
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/4-55-marathon-pace-km/",
+      "clicks": 2,
+      "impressions": 888,
+      "ctr": 0.22522522522522523,
+      "position": 6.173423423423423,
+      "topQueries": [
+        {
+          "query": "4:55 marathon pace",
+          "clicks": 0,
+          "impressions": 79,
+          "position": 5.7974683544303796
+        },
+        {
+          "query": "4 hour 55 marathon pace chart",
+          "clicks": 0,
+          "impressions": 15,
+          "position": 13.866666666666667
+        },
+        {
+          "query": "4 hour 55 marathon pace",
+          "clicks": 0,
+          "impressions": 13,
+          "position": 9.076923076923077
+        },
+        {
+          "query": "4:55 marathon pace chart",
+          "clicks": 0,
+          "impressions": 11,
+          "position": 9
+        },
+        {
+          "query": "4:55 marathon",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 5.9
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/4-00-marathon-pace-km/",
+      "clicks": 1,
+      "impressions": 1093,
+      "ctr": 0.09149130832570906,
+      "position": 8.40256175663312,
+      "topQueries": [
+        {
+          "query": "4:00 marathon pace",
+          "clicks": 0,
+          "impressions": 247,
+          "position": 7.805668016194332
+        },
+        {
+          "query": "what pace is a 4:00 marathon",
+          "clicks": 0,
+          "impressions": 32,
+          "position": 7.125
+        },
+        {
+          "query": "4 hour marathon pace chart",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 43.8
+        },
+        {
+          "query": "4:00 marathon time",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 6.3
+        },
+        {
+          "query": "4 hour marathon pace km",
+          "clicks": 0,
+          "impressions": 9,
+          "position": 57.666666666666664
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/5-05-marathon-pace-km/",
+      "clicks": 1,
+      "impressions": 278,
+      "ctr": 0.3597122302158274,
+      "position": 8.25179856115108,
+      "topQueries": [
+        {
+          "query": "5:05 marathon pace",
+          "clicks": 0,
+          "impressions": 25,
+          "position": 7.64
+        },
+        {
+          "query": "5:05 marathon pace chart",
+          "clicks": 0,
+          "impressions": 10,
+          "position": 13.7
+        },
+        {
+          "query": "5 hour 05 marathon pace",
+          "clicks": 0,
+          "impressions": 7,
+          "position": 19.142857142857142
+        },
+        {
+          "query": "5 hour 05 marathon pace chart",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 19.5
+        },
+        {
+          "query": "5 hour marathon pace per km",
+          "clicks": 0,
+          "impressions": 2,
+          "position": 53.5
+        }
+      ]
+    },
+    {
+      "page": "https://marathonpacekm.com/3-25-marathon-pace-km/",
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": 0,
+      "position": 77,
+      "topQueries": [
+        {
+          "query": "3.25 marathon pace",
+          "clicks": 0,
+          "impressions": 1,
+          "position": 77
+        }
+      ]
+    }
+  ],
+  "settledThrough": "2026-10-05",
+  "firstIncompleteDate": "2026-10-06",
+  "dateBasis": "America/Los_Angeles",
+  "maturitySource": "GSC API metadata from direct page/query report"
+}

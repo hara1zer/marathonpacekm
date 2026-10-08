@@ -133,14 +133,6 @@
     },
     {
       "@type": "Question",
-      "name": "How should I use the scenario on this page?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It shows the arithmetic consequence of a specific planning choice. Check the required effort against your current training and conditions before choosing to preserve the target."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "How many gels does this goal require?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -248,11 +240,11 @@
         <button class="btn secondary" id="printBandBtn" type="button">Print fixed 3:50 sheet</button>
       </div>
 
-      <div class="pace-band-handoff" id="pace-band-generator"><h3>Create a wrist band or phone card</h3><p>Use the goal time above to open the generator with matching splits, then print a wrist band, save a PDF or download a phone card.</p><a class="btn" id="generator-link" href="/printable-pace-band/?h=3&amp;m=50&amp;s=0&amp;unit=km&amp;strategy=even">Create my pace band →</a><p class="tiny muted" id="generator-status" role="status">Goal: 3:50:00 · Even pacing · KM</p><p class="tiny muted">The separate “Print fixed 3:50 sheet” button prints the original 3:50 reference regardless of calculator changes.</p></div>
+      <span id="pacing-plan" class="anchor-target"></span><div class="pace-band-handoff" id="pace-band-generator"><h3>Create a wrist band or phone card</h3><p>Use the goal time above to open the generator with matching splits, then print a wrist band, save a PDF or download a phone card.</p><a class="btn" id="generator-link" href="/printable-pace-band/?h=3&amp;m=50&amp;s=0&amp;unit=km&amp;strategy=even">Create my pace band →</a><p class="tiny muted" id="generator-status" role="status">Goal: 3:50:00 · Even pacing · KM</p><p class="tiny muted">The separate “Print fixed 3:50 sheet” button prints the original 3:50 reference regardless of calculator changes.</p></div>
 <div id="results" class="results" aria-live="polite"></div>
 
       <p class="tiny muted">
-        Tip: aim to stay within <strong>±5–10 sec/km</strong>. If you drift, correct gently over the next 1–2 km (avoid surging).
+        Compare elapsed time at official markers. If a split is late, assess effort and conditions before deciding whether to preserve the target.
       </p>
     </section>
 
@@ -281,7 +273,7 @@
         </table>
 
         <p class="tiny muted" style="margin-top:10px;">
-          Cue: calm early → steady through 30k → protect pace 30–40k → push after 40k.
+          Reference: compare elapsed time at course markers; adjust effort and the goal when conditions change.
         </p>
       </div>
     </section>
@@ -302,14 +294,7 @@
     <p><a href="/printable-pace-band/?h=3&amp;m=50&amp;s=0&amp;unit=km&amp;strategy=even">Create a printable 3:50 pace band or phone card →</a></p>
 </section>
 
-    <section class="card" id="who-this-suits"><h2>Use this target when the evidence supports it</h2><p>Use the checkpoint table to compare this target with the case above. Choose the finish goal from your current preparation; a calculator cannot supply the endurance or recovery evidence.</p></section>
-
-
-    <section class="card" id="common-mistakes"><h2>Keep the rounded pace label in perspective</h2><p>The exact average is 5:27.1/km. A whole-second watch label and cumulative course checkpoints can disagree through rounding and GPS distance. <a href="/blog/gps-watch-pacing-mistakes-run-tangents/">Use measured markers and elapsed time</a> before deciding you need to catch up.</p></section>
-
-
-
-    <section class="card" id="pace-conversions">
+    <span id="common-mistakes" class="anchor-target"></span><section class="card" id="pace-conversions">
       <h2>Pace conversions for 3:50</h2>
       <p class="muted">Quick reference for track sessions and race-day math.</p>
       <div class="splits-grid" aria-label="Pace conversions">
@@ -323,30 +308,12 @@
       <p class="tiny muted">Note: GPS and course factors can add noise. Use this as a guide, not a guarantee.</p>
     </section>
 
-
-    <section class="card" id="race-strategy">
-      <h2>3:50 readiness checklist</h2>
-      <p class="muted">A fast way to sanity-check whether 3:50 is realistic on the day.</p>
-      <ul class="muted">
-        <li><strong>Long run durability:</strong> you can run 28–32 km comfortably (ideally with the last 6–10 km steady).</li>
-        <li><strong>Weekly consistency:</strong> you’ve stacked consistent weeks (volume matters more than one big session).</li>
-        <li><strong>Fuel plan practiced:</strong> your gut tolerates carbs every ~30 minutes.</li>
-        <li><strong>Pacing discipline:</strong> you can hold goal effort without frequent surges.</li>
-      </ul>
-      <p class="tiny muted">If you miss one box, keep the early pacing conservative and make the “push” decision after 30 km.</p>
-    <p><a href="/marathon-time-predictor/">Check your target with the marathon time predictor</a> or <a href="/blog/half-marathon-to-marathon-pace/">compare a recent half-marathon result</a>.</p>
-</section>
-
-
-
+    <span id="decision-to-rehearse" class="anchor-target"></span>
+<section class="card editorial-example" id="race-strategy"><h2>Choose a start strategy with the later requirement visible</h2><p>Illustrative calculations checked 8 October 2026 · <a href="/methodology/">Distance, rounding and assumptions</a></p><p>The even plan reaches 10 km in 54:31 and halfway in 1:55:00. A controlled opening still has to fit inside 3:50. Compare these hypothetical ten-kilometre checkpoints before choosing a finish goal; the remaining distance is 32.195 km in each row.</p><p class="table-hint">On small screens, scroll the table to see all columns.</p><div class="table-scroll" tabindex="0" role="region" aria-label="Alternative starts and finish goals"><table><caption>Alternative starts and finish goals</caption><thead><tr><th scope="col">10 km elapsed</th><th scope="col">Finish target</th><th scope="col">Time left</th><th scope="col">Required remaining pace</th></tr></thead><tbody><tr><th scope="row">0:55:00</th><td>3:50:00</td><td>2:55:00</td><td>5:26.1/km</td></tr><tr><th scope="row">0:56:00</th><td>3:50:00</td><td>2:54:00</td><td>5:24.3/km</td></tr><tr><th scope="row">0:56:00</th><td>3:55:00</td><td>2:59:00</td><td>5:33.6/km</td></tr></tbody></table></div><p>Taking an extra minute at the start while preserving 3:50 asks for faster running afterwards. If congestion clears and effort stays controlled, the calculation may be useful; if wind or effort remains high, it cannot justify a surge. A 3:55 goal changes the later requirement rather than simply changing a watch label.</p><p>Use the <a href="/printable-pace-band/?h=3&amp;m=50&amp;s=0&amp;strategy=controlled">controlled-start band</a> to model a chosen first-5K delay, or the gradual negative-split option to compare the full trajectory. These differ from the two-segment illustrations here. Recheck the later checkpoints before printing; no long-run distance or checkbox proves you are ready for 3:50.</p></section>
 
     <!-- Pacing Plan -->
-    <section class="card" id="pacing-plan"><h2>Print the plan you have chosen</h2><p>The even reference targets 1:55:00 halfway and 3:50:00 at the finish. For a controlled start or negative split, the <a href="/printable-pace-band/">generator</a> recalculates the later requirement. Read it before printing and keep effort responsive to terrain and weather. <a href="#top">Back to the calculator</a>.</p></section>
-
 
     <!-- Fueling -->
-    <section class="card" id="fueling"><h2>Account for the full 3:50 duration</h2><p>If you have rehearsed 60 g/h, the arithmetic total for 3:50 is <strong>230.0 g</strong>. That chosen intake is an example, not a recommendation based on your speed. Count actual product grams and planned drinks; a spare carried but not consumed does not contribute.</p><p>Use the <a href="/marathon-fueling-calculator/">fueling calculator</a> for timestamps and supplied average, and the <a href="/blog/marathon-fueling-by-finish-time-gel-schedule/">complete worked menus</a> for a checked example. <a href="https://pubmed.ncbi.nlm.nih.gov/30747558/">Nutrition research</a> supplies context; duration supplies the multiplication.</p></section>
-
 
     <!-- Related -->
     <section class="card" id="related-goal-times">
@@ -360,13 +327,11 @@
         <a href="/4-00-marathon-pace-km/" data-check>4:00</a>
       </div>
 
-
     </section>
 
     <!-- Pace chart -->
     <!-- Training tie-in -->
-    <section class="card" id="training"><h2>Check the evidence for 3:50</h2><p>The scenario above is arithmetic, not proof that 5:27.1/km is sustainable for you. Compare a recent race with repeatable training and controlled long-run execution: <a href="/marathon-time-predictor/">prediction scenarios</a>, <a href="/blog/marathon-pace-readiness-test/">readiness questions</a> and the <a href="/monthly-training-plan/">monthly planner</a> support that review. <a href="/blog/sydney-marathon-2026-personal-review/#workouts">My Sydney workouts</a> show why a fast session alone did not establish marathon readiness.</p></section>
-
+    <span id="who-this-suits" class="anchor-target"></span><section class="card editorial-example" id="training"><h2>Check the goal, then plan the supplies</h2><p>The pace calculation is a reference, not a fitness test. Compare a recent race using the <a href="/marathon-time-predictor/">marathon predictor</a>, then review its assumptions against your training and the <a href="/adjust-marathon-pace/">expected conditions</a>.</p><span id="fueling" class="anchor-target"></span><p>For a goal you have chosen, the <a href="/marathon-fueling-calculator/">fueling calculator</a> separates a practised hourly intake from the grams actually scheduled. Count drink carbohydrate and product labels; finish time alone does not specify a gel count. See the <a href="/blog/marathon-fueling-by-finish-time-gel-schedule/">worked menus</a> if you need an example.</p></section>
 
     <section id="pace-chart" class="card">
       <h2>Pace Chart (Per KM)</h2>
@@ -375,10 +340,9 @@
     </section>
 
     <!-- FAQ -->
-        <section class="card" id="faq"><h2>3:50 planning FAQ</h2><h3>What pace per km is a 3:50 marathon?</h3><p>The exact average over 42.195 km is 5:27.1/km. The calculator uses full precision before displaying rounded checkpoints.</p><h3>What is the even halfway checkpoint?</h3><p>The halfway reference is 1:55:00 elapsed, including any pauses. A rounded display is not an additional time allowance.</p><h3>How should I use the scenario on this page?</h3><p>It shows the arithmetic consequence of a specific planning choice. Check the required effort against your current training and conditions before choosing to preserve the target.</p><h3>How many gels does this goal require?</h3><p>The finish time does not determine a universal gel count. Choose a practiced hourly intake, check grams per packet, include drink carbohydrate and verify the actual scheduled average in the fueling calculator.</p></section>
+        <section class="card" id="faq"><h2>3:50 planning FAQ</h2><h3>What pace per km is a 3:50 marathon?</h3><p>The exact average over 42.195 km is 5:27.1/km. The calculator uses full precision before displaying rounded checkpoints.</p><h3>What is the even halfway checkpoint?</h3><p>The halfway reference is 1:55:00 elapsed, including any pauses. A rounded display is not an additional time allowance.</p><h3>How many gels does this goal require?</h3><p>The finish time does not determine a universal gel count. Choose a practiced hourly intake, check grams per packet, include drink carbohydrate and verify the actual scheduled average in the fueling calculator.</p></section>
 
-  <section class="card editorial-example" id="worked-plan"><h2>Work through a 3:50 race plan</h2><p class="byline">Calculations and examples reviewed 21 September 2026 · <a href="/methodology/">Methods</a></p><p>The exact average is <strong>5:27.1/km</strong> or <strong>8:46.3/mile</strong>, shown here to a tenth of a second. Exactly 5:27/km over the marathon distance gives 3:49:58 when rounded to a second. Displayed pace and elapsed checkpoints answer different questions.</p><div class="table-scroll"><table><caption>Fixed even-pace reference for 3:50; includes any stops</caption><thead><tr><th scope="col">Checkpoint</th><th scope="col">Elapsed time</th></tr></thead><tbody><tr><th scope="row">5 km</th><td>0:27:15</td></tr><tr><th scope="row">10 km</th><td>0:54:31</td></tr><tr><th scope="row">Halfway</th><td>1:55:00</td></tr><tr><th scope="row">30 km</th><td>2:43:32</td></tr><tr><th scope="row">40 km</th><td>3:38:02</td></tr><tr><th scope="row">Finish</th><td>3:50:00</td></tr></tbody></table></div><h3>What changes if you adjust the goal by five minutes?</h3><p>A 3:55:00 goal averages 5:34.2/km, about 7.1 seconds/km slower than this plan. The calculator can show the revised checkpoints before you commit to a pace band. Five minutes may sound small as a finish-time choice, but keeping that difference for more than forty kilometres still requires evidence from your training.</p><h3>Include a stop without confusing it with walking</h3><p>If you stand still for one minute in total, keeping 3:50:00 would require covering the distance in 3:49:00, averaging 5:25.6/km while moving. This example assumes no distance is covered during the stop. Walking is different because it still contributes distance.</p><p>Make a plan using <a href="/printable-pace-band/?h=3&amp;m=50&amp;s=0&amp;strategy=even">a pace band for this exact target</a>. For a controlled start or negative split, the tool recalculates the later pace needed to preserve the finish time. Neither option guarantees that the required effort is sustainable.</p></section>
-<section class="card" id="decision-to-rehearse"><h2>Review a wind-affected 10 km without forcing a surge</h2><p>Suppose the first 10 km take 55:00. The elapsed checkpoint gives you the time still available; wind and effort decide whether chasing the old goal is sensible.</p><p class="table-hint">Swipe horizontally to view all columns.</p><div class="table-scroll table-wide" tabindex="0" role="region" aria-label="Conditional arithmetic if this checkpoint occurs"><table><caption>Conditional arithmetic if this checkpoint occurs</caption><thead><tr><th scope="col">Checkpoint reached</th><th scope="col">Elapsed</th><th scope="col">Distance left</th><th scope="col">Time left</th><th scope="col">Required remaining average</th></tr></thead><tbody><tr><th scope="row">10 km</th><td>0:55:00</td><td>32.195 km</td><td>2:55:00</td><td>5:26.1/km</td></tr></tbody></table></div><p>The remaining average assumes no more stationary pauses. It is a feasibility check, not a recommendation to accelerate. A later finish can be the better plan when the required effort is no longer controlled.</p></section>
+<span id="worked-plan" class="anchor-target"></span>
 </main>
 <!-- Print band only -->
   <script>

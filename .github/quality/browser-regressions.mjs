@@ -92,10 +92,58 @@ await test('Standalone calculator halfway for shorter races',async()=>{
  await go('/marathon-pace-calculator/');await values({dist:5,h:0,m:25,s:0});await page.click('#calcBtn');assert.match(await text('results'),/12:30/);
  await values({m:60});await page.click('#calcBtn');assert.match(await text('results'),/valid whole/);
 });
-await test('Priority goal pages render exact finish checkpoints',async()=>{
- for(const [route,time] of [['3-00','3:00:00'],['3-15','3:15:00'],['3-30','3:30:00'],['3-45','3:45:00'],['4-00','4:00:00'],['4-15','4:15:00'],['4-30','4:30:00'],['5-00','5:00:00'],['3-55','3:55:00'],['sub-4','3:59:59']]){
-  await go('/'+route+'-marathon-pace-km/');assert.ok((await page.locator('#worked-plan').innerText()).includes(time));
+await test('All 20 goal pages: defaults, KM/mile maths, edited bands and invalid input',async()=>{
+ const inventory=JSON.parse(fs.readFileSync(root+'/.github/quality/goal-page-baseline.json','utf8'));
+ const clock=total=>{const t=Math.round(total);return `${Math.floor(t/3600)}:${String(Math.floor(t/60)%60).padStart(2,'0')}:${String(t%60).padStart(2,'0')}`;};
+ const pace=(seconds,tenth=false)=>{const rounded=tenth?Math.round(seconds*10)/10:Math.round(seconds);return `${Math.floor(rounded/60)}:${(rounded%60).toFixed(tenth?1:0).padStart(tenth?4:2,'0')}`;};
+ for(const slug of Object.keys(inventory)){
+  try {
+  await go('/'+slug+'/');await page.click('#calcBtn');
+  const fields=await page.evaluate(()=>['h','m','s'].map(id=>Number(document.getElementById(id).value)));
+  const total=fields[0]*3600+fields[1]*60+fields[2];
+  const expected=slug.startsWith('sub-4')?14399:Number(slug[0])*3600+Number(slug.slice(2,4))*60;
+  assert.equal(total,expected,slug+' default target');
+  const modern=await page.locator('#result-km').count();
+  if(modern){
+   assert.equal(await text('result-km'),pace(total/42.195,true),slug+' KM');
+   assert.equal(await text('result-mi'),pace(total/42.195*1.609344,true),slug+' mile');
+   assert.ok((await text('key-splits-body')).includes(clock(total/2)),slug+' halfway');
+   assert.ok((await text('key-splits-body')).includes(clock(total)),slug+' finish');
+  }else{
+   const result=await text('results');
+   for(const expected of [pace(total/42.195),clock(total/2),clock(total)]) assert.ok(result.includes(expected),slug+' '+expected);
+   if(!await page.locator('script[src^="/assets/app.js"]').count()) assert.ok(result.includes(pace(total/42.195*1.609344)),slug+' mile');
+  }
+  const band=page.locator('[data-current-band],[data-goal-band],#generator-link').first();
+  assert.equal(new URL(await band.getAttribute('href'),base).pathname,'/printable-pace-band/',slug+' band');
+  await values({h:4,m:12,s:34});await page.click('#calcBtn');
+  const url=new URL(await band.getAttribute('href'),base);
+  assert.equal(url.searchParams.get('h'),'4',slug);assert.equal(url.searchParams.get('m'),'12',slug);assert.equal(url.searchParams.get('s'),'34',slug);
+  for(const invalid of [{m:60},{m:''},{m:30.5},{h:24},{s:-1}]){
+   await values({h:4,m:12,s:34,...invalid});await page.click('#calcBtn');
+   const id=Object.keys(invalid)[0];
+   assert.equal(await page.locator('#'+id).inputValue(),String(invalid[id]),slug+' must not silently change invalid '+id);
+   assert.equal(await band.getAttribute('href'),null,slug+' invalid goal cannot be exported');
+   assert.ok(await page.locator('#calculator [role=alert]').isVisible(),slug+' validation '+JSON.stringify(invalid));
+  }
+  } catch(error) {
+   const details=await page.locator('#calcBtn').evaluate(el=>({print:matchMedia('print').matches,ancestors:[el,el.parentElement,el.parentElement.parentElement].map(x=>({tag:x.tagName,id:x.id,classes:x.className,display:getComputedStyle(x).display,box:x.getBoundingClientRect().toJSON()}))}));
+   throw new Error(slug+': '+error.message+' '+JSON.stringify(details));
+  }
  }
+});
+await test('Five priority decisions and goal controls fit 320px phones',async()=>{
+ await page.setViewportSize({width:320,height:800});
+ for(const [goal,decision] of [['3-30','late-race-decision'],['4-30','worked-plan'],['3-50','race-strategy'],['sub-4','goal-fit'],['4-00','how-to-race']]){
+  await go('/'+goal+'-marathon-pace-km/');
+  if(await page.getByRole('button',{name:'Decline',exact:true}).isVisible()) await page.getByRole('button',{name:'Decline',exact:true}).click();
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),goal+' horizontal overflow');
+  assert.ok(await page.locator('#calculator').isVisible(),goal+' calculator');
+  assert.ok(await page.locator('#'+decision).isVisible(),goal+' practical decision');
+  await page.screenshot({path:output+'/'+goal+'-goal-320.png',fullPage:true});
+  await page.locator('#'+decision).screenshot({path:output+'/'+goal+'-decision-320.png'});
+ }
+ await page.setViewportSize({width:1280,height:900});
 });
 await test('Planner calendar export preserves local dates',async()=>{
  await go('/monthly-training-plan/');await page.click('#btnLoadDemo');await page.click('#btnGenerate');
