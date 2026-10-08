@@ -18,6 +18,48 @@
   window.gtag('set', {page_location: location.origin + location.pathname, page_referrer: referrer});
   window.gtag('config', measurement);
 
+
+  // Only predefined affiliate products are recorded; never transmit links,
+  // URL parameters, search terms, user inputs, or the clicked element's text.
+  const products = new Set([
+    'maurten-gel-100', 'gu-energy-gel', 'sis-beta-fuel-gel', 'tailwind-endurance-fuel'
+  ]);
+  const placements = new Set(['fueling-calculator', 'fueling-guide']);
+  document.addEventListener('click', event => {
+    if (event.defaultPrevented) return;
+    const link = event.target?.closest?.('a[data-affiliate-product]');
+    if (!link) return;
+    const product = link.dataset.affiliateProduct;
+    const placement = link.dataset.affiliatePlacement;
+    if (!products.has(product) || !placements.has(placement)) return;
+    if (!(link.rel || '').split(/\s+/).includes('sponsored')) return;
+    try {
+      if (new URL(link.href).hostname.toLowerCase() !== 'amzn.to') return;
+    } catch (_) { return; }
+    window.gtag('event', 'affiliate_click', {
+      affiliate_platform: 'amazon',
+      affiliate_product: product,
+      affiliate_placement: placement,
+      page_location: location.origin + location.pathname
+    });
+  });
+
+  // The homepage emits private local application events. Forward only
+  // recognised action names; discard all free-form or user-supplied detail.
+  const safeActions = new Map([
+    ['calculate', 'pace_calculator_calculate'],
+    ['share_plan', 'pace_plan_share'],
+    ['copy_checkpoints', 'pace_checkpoints_copy'],
+    ['download_splits', 'pace_splits_download'],
+    ['open_pace_band', 'pace_band_open'],
+    ['open_goal_guide', 'pace_goal_guide_open']
+  ]);
+  document.addEventListener('mpk:action', event => {
+    const name = safeActions.get(event.detail?.action);
+    if (!name) return;
+    window.gtag('event', name, {page_location: location.origin + location.pathname});
+  });
+
   function loadScript(source, ads = false) {
     if (Array.from(document.scripts).some(script => script.src === source)) return;
     const script = document.createElement('script');
