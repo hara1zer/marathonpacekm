@@ -16,8 +16,8 @@ const shopPages = [
 ];
 for (const path of shopPages) {
   const html = read(path);
-  assert.equal((html.match(/site-telemetry\\.js\\?v=20261008/g) || []).length, 1);
-  assert.doesNotMatch(html, /amzn\\.to|data-affiliate-product|rel="sponsored[^"]*"|As an Amazon Associate/i);
+  assert.equal(html.split('site-telemetry.js?v=20261008').length - 1, 1, 'shared GA4 script should remain');
+  assert.doesNotMatch(html, /amzn[.]to|data-affiliate-product|rel="sponsored[^"]*"|As an Amazon Associate/i);
 }
 assert.match(read('index.html'), /site-telemetry\.js\?v=20261008/);
 
