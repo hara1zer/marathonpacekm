@@ -3,9 +3,13 @@ on:
   pull_request:
     paths:
       - 'printable-pace-band/**'
+      - '**/*.html'
       - 'assets/*.css'
       - 'assets/site-telemetry.js'
       - '.github/quality/pace-band-*'
+      - '.github/quality/browser-regressions.mjs'
+      - '.github/quality/seo-regressions.mjs'
+      - '.github/quality/browser-scan.mjs'
       - '.github/workflows/pace-band-qa.yml'
 permissions:
   contents: read
@@ -32,6 +36,9 @@ jobs:
         run: |
           node .github/quality/pace-band-browser.mjs
           python3 .github/quality/pace-band-pdf.py "$QA_OUTPUT"
+          node .github/quality/browser-regressions.mjs
+          node .github/quality/seo-regressions.mjs
+          node .github/quality/browser-scan.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

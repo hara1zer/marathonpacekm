@@ -65,7 +65,8 @@ await test('Condition adjuster normal/hot and invalid fields',async()=>{
 await test('Pace band strategies preserve finish and A4 print/PNG work',async()=>{
  await go('/printable-pace-band/?h=4&m=0&s=0&strategy=even');
  for(const strategy of ['even','controlled','negative']){await page.selectOption('#strategy',strategy);assert.match(await page.locator('#outputs').innerText(),/4:00:00|4:00/);}
- await page.evaluate(()=>{window.print=()=>window.printed=true;});await page.click('#printA4Btn');await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>document.body.dataset.printLayout),'a4');assert.ok(await page.evaluate(()=>window.printed));assert.match(await text('checkpointPrint'),/4:00:00/);
+ await page.getByText('Share, checkpoint sheet and optional details',{exact:true}).click();
+ await page.evaluate(()=>{window.print=()=>window.printed=true;});await page.click('#printA4Btn');await page.waitForTimeout(100);assert.equal(await page.evaluate(()=>document.body.dataset.printLayout),'checkpoints');assert.ok(await page.evaluate(()=>window.printed));assert.match(await text('checkpointPrint'),/4:00:00/);
  await page.pdf({path:output+'/checkpoint-a4.pdf',format:'A4'});
  await page.click('#printBtn');assert.equal(await page.evaluate(()=>document.body.dataset.printLayout),'wrist');await page.pdf({path:output+'/wrist-band.pdf',format:'A4'});
  const d=page.waitForEvent('download');await page.click('#downloadBtn');assert.match((await d).suggestedFilename(),/\.png$/);
@@ -80,7 +81,7 @@ await test('Pace-band cumulative segments, units and invalid input',async()=>{
   assert.equal(seconds(cells.at(-1).at(-1)),14399);
   assert.equal(cells.reduce((a,r)=>a+seconds(r[1]),0),14399);
  }
- await values({m:60});assert.ok(await page.locator('#outputs').isHidden());assert.match(await text('status'),/valid/);
+ await values({m:60});assert.ok(await page.locator('#outputs').isHidden());assert.match(await text('goalError'),/valid/);assert.equal(await page.locator('#m').getAttribute('aria-invalid'),'true');
 });
 await test('Shared calculator exact 5 km and invalid minutes',async()=>{
  await go('/3-00-marathon-pace-km/');await values({dist:5,h:0,m:25,s:0});await page.click('#calcBtn');

@@ -89,7 +89,7 @@ function load(search = '') {
     document: doc,
     window: {
       location: {href: 'https://marathonpacekm.com/printable-pace-band/' + search, search, origin:'https://marathonpacekm.com', pathname:'/printable-pace-band/'},
-      gtag(...args) { context.events.push(args); },
+      mpkmTrackBand(name, params) { context.events.push(['event', name, params]); return true; },
       setTimeout() { return 1; }, clearTimeout() {}, print() { context.prints++; },
       isSecureContext: false
     },
