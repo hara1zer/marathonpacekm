@@ -1,6 +1,6 @@
-/* Consent-first, path-only site measurement. Does not initialise or request AdSense ads.
+/* Consent-first, filtered site-authored measurement. Does not request AdSense ads.
  * Keep the publisher meta tag/ads.txt for account ownership verification.
- * A certified TCF CMP is still required before enabling personalised EEA/UK/Swiss ads.
+ * Personalised EEA/UK/Swiss ads require Google's certified TCF CMP; review other ad modes too.
  */
 (() => {
   'use strict';
@@ -35,21 +35,27 @@
     // Basic consent mode: initialise the tag only *after* an affirmative choice.
     // Ads remain disabled; this preference controls GA4 analytics only.
     window.gtag('consent', 'default', {
-      analytics_storage: 'granted',
+      analytics_storage: 'denied',
       ad_storage: 'denied',
       ad_user_data: 'denied',
       ad_personalization: 'denied'
     });
-    let referrer;
+    window.gtag('consent', 'update', {analytics_storage: 'granted'});
+    let referrer = '';
     try {
       const url = new URL(document.referrer);
       referrer = url.origin + url.pathname;
     } catch (_) { /* Missing or invalid referrers are expected. */ }
     window.gtag('js', new Date());
     window.gtag('set', {page_location: page, page_referrer: referrer});
-    window.gtag('config', measurement);
+    window.gtag('config', measurement, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false
+    });
     function downloadTag() {
-      const load = () => tag('https://www.googletagmanager.com/gtag/js?id=' + measurement);
+      const load = () => {
+        if (choice === 'allow') tag('https://www.googletagmanager.com/gtag/js?id=' + measurement);
+      };
       if ('requestIdleCallback' in window) window.requestIdleCallback(load, {timeout: 1500});
       else window.setTimeout(load, 100);
     }
@@ -58,28 +64,30 @@
   }
 
   function track(name, params = {}) {
-    if (choice !== 'allow' || typeof window.gtag !== 'function') return;
+    if (choice !== 'allow' || typeof window.gtag !== 'function') return false;
     window.gtag('event', name, {page_location: page, ...params});
+    return true;
   }
 
-  // Keep the dormant, allowlisted affiliate hook for a future *approved* programme.
-  const products = new Set(['maurten-gel-100', 'gu-energy-gel', 'sis-beta-fuel-gel', 'tailwind-endurance-fuel']);
-  const placements = new Set(['fueling-calculator', 'fueling-guide']);
-  document.addEventListener('click', event => {
-    if (event.defaultPrevented || choice !== 'allow') return;
-    const link = event.target?.closest?.('a[data-affiliate-product]');
-    if (!link) return;
-    const product = link.dataset.affiliateProduct;
-    const placement = link.dataset.affiliatePlacement;
-    if (!products.has(product) || !placements.has(placement)) return;
-    if (!(link.rel || '').split(/\s+/).includes('sponsored')) return;
-    try {
-      if (new URL(link.href).hostname.toLowerCase() !== 'amzn.to') return;
-    } catch (_) { return; }
-    track('affiliate_click', {
-      affiliate_platform: 'amazon', affiliate_product: product, affiliate_placement: placement
-    });
-  });
+  // Every band event uses the same consent gate; never accept arbitrary form values.
+  const bandEvents = new Set([
+    'pace_band_plan_ready', 'pace_band_validation_error', 'pace_band_phone_generation',
+    'pace_band_download_intent', 'pace_band_print_intent', 'pace_band_share_copied'
+  ]);
+  const bandParameters = {
+    race_distance: new Set(['marathon', 'half_marathon']),
+    output_type: new Set(['preview', 'phone_png', 'wrist', 'checkpoints', 'share_link']),
+    field: new Set(['h', 'm', 's', 'paceM', 'paceS', 'startCushion', 'negativeMargin']),
+    error_category: new Set(['strategy', 'time_or_pace'])
+  };
+  window.mpkmTrackBand = (name, params = {}) => {
+    if (!bandEvents.has(name)) return false;
+    const safe = {};
+    for (const [key, values] of Object.entries(bandParameters)) {
+      if (values.has(params[key])) safe[key] = params[key];
+    }
+    return track(name, safe);
+  };
 
   const safeActions = new Map([
     ['calculate', 'pace_calculator_calculate'],
@@ -97,6 +105,7 @@
   const style = document.createElement('style');
   style.textContent = [
     '.mpkm-privacy-banner{position:fixed;z-index:9998;left:12px;bottom:12px;width:min(450px,calc(100vw - 24px));',
+    'box-sizing:border-box;max-height:calc(100dvh - 24px);overflow:auto;',
     'padding:16px 18px;border-radius:14px;background:#fff;color:#152d27;',
     'box-shadow:0 8px 30px rgba(0,0,0,.22);border:1px solid #c3d2c8;font:15px/1.5 system-ui,sans-serif}',
     '.mpkm-privacy-banner p{margin:6px 0 12px}',
@@ -104,10 +113,11 @@
     '.mpkm-privacy-actions{display:flex;gap:10px;flex-wrap:wrap}',
     '.mpkm-privacy-actions button{min-height:44px;border-radius:9px;padding:9px 12px;',
     'font:600 14px system-ui,sans-serif;cursor:pointer;border:1px solid #174f40;background:#fff;color:#174f40}',
-    '.mpkm-privacy-actions button:first-child{background:#174f40;color:#fff}',
+    '.mpkm-privacy-actions button,.mpkm-legacy .mpkm-privacy-actions button{background:#fff!important;color:#174f40!important}',
     '.mpkm-privacy-banner button:focus-visible,.mpkm-privacy-manage:focus-visible{outline:3px solid #ad7300;outline-offset:3px}',
     '.mpkm-privacy-manage{margin:8px 0;display:inline-block;border:1px solid currentColor;',
-    'border-radius:6px;padding:6px 10px;background:transparent;color:inherit;font:inherit;cursor:pointer}'
+    'border-radius:6px;padding:6px 10px;background:transparent;color:inherit;font:inherit;cursor:pointer}',
+    '@media print{.mpkm-privacy-banner,.mpkm-privacy-manage{display:none!important}}'
   ].join('');
   document.head.appendChild(style);
 
@@ -119,6 +129,7 @@
     if (next === 'allow') {
       startAnalytics();
     } else if (prior === 'allow' && tagStarted) {
+      window['ga-disable-' + measurement] = true;
       // Stop subsequent events and revoke consent for an already loaded tag.
       window.gtag?.('consent', 'update', {
         analytics_storage: 'denied', ad_storage: 'denied',
@@ -127,7 +138,15 @@
       // Reset the tag on the next navigation; it will not load with denied choice.
       window.location.reload();
     }
+    document.querySelector('.mpkm-privacy-manage')?.focus();
   }
+
+  // A withdrawal in another tab must stop this tab's events as well.
+  window.addEventListener('storage', event => {
+    if (event.key === key && event.newValue !== choice) {
+      choose(event.newValue === 'allow' ? 'allow' : 'decline');
+    }
+  });
 
   function showChoices() {
     if (banner) { banner.querySelector('button')?.focus(); return; }

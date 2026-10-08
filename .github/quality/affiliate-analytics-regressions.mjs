@@ -34,6 +34,7 @@ function fixture(initial = null, embed = false, storageFailure = false) {
     createElement:build,
     querySelector(selector){
       if(selector==='footer')return footer;
+      if(selector==='.mpkm-privacy-manage')return footerNodes[0];
       if(selector==='meta[name="google-adsense-account"]')return {content:'ca-pub-example'};
       return null;
     },
@@ -80,12 +81,21 @@ assert.doesNotMatch(JSON.stringify(first.layers()),/private-runner|raceTime=|run
 first.events.get('mpk:action')({detail:{action:'bad',private:'no'}});
 assert.equal(first.layers().filter(x=>x[0]==='event').length,1,'reject unknown actions');
 
+// Band events share the consent gate and reject every non-enumerated value.
+assert.equal(first.window.mpkmTrackBand('pace_band_print_intent', {race_distance:'half_marathon',output_type:'wrist',runner:'private-runner',page_location:'?private'}),true);
+const bandEvent=first.layers().at(-1);
+assert.deepEqual(Object.keys(bandEvent[2]),['page_location','race_distance','output_type']);
+assert.equal(bandEvent[2].page_location,'https://marathonpacekm.com/printable-pace-band/');
+assert.equal(first.window.mpkmTrackBand('unknown',{}),false);
+
 // Review and decline: revoke and refresh so the Google tag stops running.
 first.managed();first.choose(1);
 assert.equal(first.saved,'decline');
 assert.equal(first.reloads,1);
 assert.equal(first.layers().at(-1)[0],'consent');
 assert.equal(first.layers().at(-1)[2].analytics_storage,'denied');
+assert.equal(first.window['ga-disable-G-04CFG6TG7N'],true);
+assert.equal(first.window.mpkmTrackBand('pace_band_print_intent',{output_type:'wrist'}),false);
 
 // A saved denial must suppress all downloads even after load.
 const denied=fixture('decline');
@@ -114,3 +124,9 @@ blocked.ready();blocked.choose(1);
 assert.equal(blocked.window.gtag,undefined);
 
 console.log('Consent-first GA4: default-off, accept, decline, revocation, embedding and path-only events passed.');
+
+// Withdrawing before load must also cancel the pending tag download.
+const pending=fixture('allow');pending.ready();pending.managed();pending.choose(1);pending.events.get('load')?.();assert.equal(pending.scripts.length,0);
+const otherTab=fixture('allow');otherTab.ready();otherTab.events.get('storage')({key:'mpkm_analytics_choice_v1',newValue:'decline'});assert.equal(otherTab.saved,'decline');assert.equal(otherTab.window.mpkmTrackBand('pace_band_print_intent'),false);
+assert.equal(first.layers().find(x=>x[0]==='consent'&&x[1]==='default')[2].analytics_storage,'denied');
+assert.equal(first.layers().find(x=>x[0]==='config')[2].allow_google_signals,false);

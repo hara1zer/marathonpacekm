@@ -1,5 +1,7 @@
 # PR #16: independent AdSense and high-impression-page audit
 
+**Historical initial-PR assessment. Superseded by [the independent business and engineering audit](monetisation-strategy-2026-10-08.md).** Its five-page comparison, dormant affiliate tracking and blanket path-only measurement statements do not describe the revised implementation. The new audit covers all 19 numbered goal pages and explicitly separates site-authored events from account-side GA4 Enhanced Measurement.
+
 **Audited:** 8 October 2026. **Repo:** `hara1zer/marathonpacekm`, `main` at `ad13b0be6a234c4f8e74e6575669b3dde0c1cafa`.
 
 ## Evidence and limits

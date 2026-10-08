@@ -439,7 +439,7 @@
 <meta name="theme-color" content="#174f40">
 <link rel="stylesheet" href="/assets/site.css?v=20261004">
 <meta name="google-adsense-account" content="ca-pub-5455873308344668">
-<script defer src="/assets/site-telemetry.js?v=20261008-consent"></script>
+<script defer src="/assets/site-telemetry.js?v=20261008-audit"></script>
 </head>
 
 <body id="top" class="mpkm-legacy mpkm-tool">
@@ -949,14 +949,12 @@
     var savedGoals = { marathon: 14400, half: 7200 };
 
     // No names, goal values, query strings or free text enter these event parameters.
-    // Reuse the existing tag; do not initialise analytics in embedded tools.
+    // The shared loader owns consent and parameter filtering, including after withdrawal.
     function trackBand(eventName, parameters){
-      if(window.self !== window.top || typeof window.gtag !== "function") return false;
-      window.gtag("event", eventName, Object.assign({
-        race_distance: raceKm() === HALF_MARATHON_KM ? "half_marathon" : "marathon",
-        page_location: window.location.origin + window.location.pathname
+      if(window.self !== window.top || typeof window.mpkmTrackBand !== "function") return false;
+      return window.mpkmTrackBand(eventName, Object.assign({
+        race_distance: raceKm() === HALF_MARATHON_KM ? "half_marathon" : "marathon"
       }, parameters || {}));
-      return true;
     }
     function recordCustomisedPlan(){
       if(customisedPlanRecorded || !validateInputs()) return;

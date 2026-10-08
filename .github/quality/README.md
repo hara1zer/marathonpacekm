@@ -33,6 +33,14 @@ Article tables and figures use `assets/content.css`. Wide tables have a phone-wi
 
 Pages load the committed `assets/site.css` bundle. After editing `theme.css`, `content.css`, `layout.css` or `performance.css`, run `python3 .github/quality/build-shared-css.py` and commit the regenerated bundle. The source stylesheets remain the authoring files; Cloudflare needs no build dependency. Legacy pages may also load their existing `assets/style.css` base styles.
 
-`seo-regressions.mjs` checks the five-hour run/walk calculator, partial final intervals, stopped-time arithmetic, invalid values, 3:25 KM/mile exports, matching pace-band links and static splits without JavaScript. It mocks external scripts to check that Google Analytics starts after load, AdSense waits another 2.5 seconds, and the embedded pace-band tool loads neither. These checks do not measure deployed Core Web Vitals or real ad behavior.
+`seo-regressions.mjs` checks the five-hour run/walk calculator, partial final intervals, stopped-time arithmetic, invalid values, 3:25 KM/mile exports, matching pace-band links and static splits without JavaScript. It mocks the Google tag to test first-visit denial, saved choices, opt-in, consent-gated band/calculator events, withdrawal, a 320 px banner, hidden print controls and tag-free embedding. Advertising must never load. These checks do not measure deployed Core Web Vitals or real ad behavior.
 
 Run `python3 .github/quality/build-half-marathon-assets.py` to regenerate the two Run Melbourne comparison figures from `assets/original/half-marathon-2025-2026-data.json`. Full recorded kilometre laps are compared descriptively; partial laps and missing GPS distance are not reconstructed.
+
+## Consent and measurement
+
+Run `node .github/quality/affiliate-analytics-regressions.mjs` and `node .github/quality/site-readiness-regressions.mjs`. The existing measurement workflow runs these once, plus expired-affiliate checks; the redundant AdSense workflow was removed. The browser/print workflow now also runs calculator, SEO/consent and all-page mobile scans.
+
+The global analytics opt-in is a simple operational choice, not a claim that every country requires it. Do not add geo-detection or paid CMP dependencies solely to improve GA4 coverage. A certified publisher CMP is a separate future advertising task. Changing `site-telemetry.js` requires updating its query version in **all 105 HTML files** because `/assets/*` is immutable for a year. Changing cache headers alone does not evict already cached URLs.
+
+Site-authored events are gated and filtered, but GA4 Enhanced Measurement is account-controlled: disable browser-history page views, site search (the pace band uses `s` for seconds), form interactions, outbound clicks and automatic downloads until their parameters are audited. The connector presently cannot inspect or change these settings. Confirm actual receipt in GA4 and disclose automatic provider behavior before calling the entire setup path-only.

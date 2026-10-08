@@ -13,11 +13,20 @@ function htmlFiles(dir){
   });
 }
 const files=htmlFiles(root);
+const sitemapUrls=[...read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map(x=>x[1]);
+assert.equal(sitemapUrls.length,new Set(sitemapUrls).size,'sitemap URLs must be unique');
+for(const url of sitemapUrls){
+  assert.ok(url.startsWith('https://marathonpacekm.com/'),'production sitemap domain');
+  const page=read(new URL(url).pathname.replace(/^\//,'')+'index.html');
+  const canonical=[...page.matchAll(/<link\b[^>]*>/gi)].map(x=>x[0]).find(tag=>/\brel="canonical"/i.test(tag));
+  assert.equal(canonical?.match(/\bhref="([^"]+)"/i)?.[1],url,'sitemap and canonical agree: '+url);
+  assert.doesNotMatch(page,/<meta[^>]+name="robots"[^>]+content="[^"]*noindex/i,'sitemap page must remain indexable');
+}
 assert.ok(files.length>=105,'Scan all publicly served HTML, including nested pages');
 for(const file of files){
   const source=readFileSync(file,'utf8');
   const path=file.slice(root.length+1).replaceAll('\\','/');
-  assert.equal((source.match(/\/assets\/site-telemetry\.js\?v=20261008-consent/g)||[]).length,1,'one cache-busted consent loader: '+path);
+  assert.equal((source.match(/\/assets\/site-telemetry\.js\?v=20261008-audit/g)||[]).length,1,'one cache-busted consent loader: '+path);
   assert.doesNotMatch(source, /<script[^>]+(?:pagead2\.googlesyndication\.com|googletagmanager\.com\/gtag\/js)/i,'no hardcoded advertising or analytics code: '+path);
   assert.doesNotMatch(source, /As an Amazon Associate I earn|https:\/\/amzn\.to\//i,'no expired affiliate links: '+path);
 }
@@ -46,4 +55,4 @@ assert.ok(read('privacy/index.html').includes('The analytics choice above is <st
 assert.equal((read('robots.txt').match(/Sitemap:/g)||[]).length,1,'sitemap remains published');
 for (const rule of ['3:10-marathon-pace-km/ /3-10-marathon-pace-km/ 301','3:15-marathon-pace-km/ /3-15-marathon-pace-km/ 301']) assert.ok(read('_redirects').includes(rule),'historical search alias redirect exists: '+rule);
 assert.match(read('ads.txt'),/^google.com,\s*pub-5455873308344668,/);
-console.log('AdSense readiness: '+files.length+' HTML references, stable URLs/titles, new math, privacy and publisher metadata passed.');
+console.log('Site readiness: '+files.length+' HTML references, stable URLs/titles, new math, privacy and publisher metadata passed.');

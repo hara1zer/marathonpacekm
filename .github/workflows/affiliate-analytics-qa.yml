@@ -1,15 +1,19 @@
-name: Affiliate analytics QA
+name: Site measurement and readiness QA
 on:
   pull_request:
     paths:
       - 'assets/site-telemetry.js'
       - 'index.html'
       - '**/*.html'
-      - 'index.html'
       - 'marathon-fueling-calculator/index.html'
       - 'blog/marathon-fueling-by-finish-time-gel-schedule/index.html'
       - '.github/quality/affiliate-analytics-regressions.mjs'
       - '.github/quality/expired-affiliate-regressions.mjs'
+      - '.github/quality/site-readiness-regressions.mjs'
+      - '_redirects'
+      - '_headers'
+      - 'robots.txt'
+      - 'sitemap.xml'
       - '.github/workflows/affiliate-analytics-qa.yml'
 permissions:
   contents: read
@@ -26,3 +30,4 @@ jobs:
         run: |
           node .github/quality/affiliate-analytics-regressions.mjs
           node .github/quality/expired-affiliate-regressions.mjs
+          node .github/quality/site-readiness-regressions.mjs
