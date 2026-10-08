@@ -4,9 +4,12 @@ on:
     paths:
       - 'assets/site-telemetry.js'
       - 'index.html'
+      - '**/*.html'
+      - 'index.html'
       - 'marathon-fueling-calculator/index.html'
       - 'blog/marathon-fueling-by-finish-time-gel-schedule/index.html'
       - '.github/quality/affiliate-analytics-regressions.mjs'
+      - '.github/quality/expired-affiliate-regressions.mjs'
       - '.github/workflows/affiliate-analytics-qa.yml'
 permissions:
   contents: read
@@ -20,4 +23,6 @@ jobs:
         with:
           node-version: '22'
       - name: Check analytics and privacy-safe event attributes
-        run: node .github/quality/affiliate-analytics-regressions.mjs
+        run: |
+          node .github/quality/affiliate-analytics-regressions.mjs
+          node .github/quality/expired-affiliate-regressions.mjs
