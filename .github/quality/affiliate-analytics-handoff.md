@@ -1,3 +1,9 @@
+# Historical handoff — superseded by Amazon affiliate cleanup (8 October 2026)
+
+**Amazon Associates closed the store IDs in September 2026. The affiliate shortlinks described below were removed from every public page in PR #15; this older handoff is retained only as a record of the PR #14 implementation. The existing GA4 tag and event listener remain installed, but no current public Amazon links produce affiliate events. Do not follow the old verification steps about clicking the removed shopping links. New affiliate links must only be added after an account is approved, with updated disclosures and tests.**
+
+---
+
 # GA4 affiliate analytics handoff (8 October 2026)
 
 ## Current setup

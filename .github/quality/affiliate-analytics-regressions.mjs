@@ -8,26 +8,16 @@ assert.match(script, /G-04CFG6TG7N/, 'expected GA4 measurement ID');
 assert.equal((script.match(/window\.gtag\('config', measurement\)/g) || []).length, 1, 'configure GA4 only once');
 assert.match(script, /page_location: location\.origin \+ location\.pathname/, 'events must use path-only page location');
 
-const products = [
-  ['4svnr4M', 'maurten-gel-100'],
-  ['3OU2oux', 'gu-energy-gel'],
-  ['46UdGVL', 'sis-beta-fuel-gel'],
-  ['4bB2pvY', 'tailwind-endurance-fuel']
+// Affiliate storefront account closed: leave the comparison content in place,
+// but render no earning-linked shopping destinations until new approval.
+const shopPages = [
+  'marathon-fueling-calculator/index.html',
+  'blog/marathon-fueling-by-finish-time-gel-schedule/index.html'
 ];
-
-for (const [path, placement] of [
-  ['marathon-fueling-calculator/index.html', 'fueling-calculator'],
-  ['blog/marathon-fueling-by-finish-time-gel-schedule/index.html', 'fueling-guide']
-]) {
+for (const path of shopPages) {
   const html = read(path);
-  assert.equal((html.match(/site-telemetry\.js\?v=20261008/g) || []).length, 1, path + ' should use updated cache key');
-  for (const [shortcode, product] of products) {
-    const links = html.match(new RegExp('<a[^>]*href="https://amzn\\.to/' + shortcode + '"[^>]*>', 'g')) || [];
-    assert.equal(links.length, 1, path + ': product link not unique ' + product);
-    assert.ok(links[0].includes('data-affiliate-product="' + product + '"'));
-    assert.ok(links[0].includes('data-affiliate-placement="' + placement + '"'));
-    assert.match(links[0], /rel="[^"]*\bsponsored\b[^"]*"/);
-  }
+  assert.equal((html.match(/site-telemetry\\.js\\?v=20261008/g) || []).length, 1);
+  assert.doesNotMatch(html, /amzn\\.to|data-affiliate-product|rel="sponsored[^"]*"|As an Amazon Associate/i);
 }
 assert.match(read('index.html'), /site-telemetry\.js\?v=20261008/);
 
