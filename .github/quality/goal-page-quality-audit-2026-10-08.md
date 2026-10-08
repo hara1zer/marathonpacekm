@@ -24,7 +24,7 @@ Inventory comes from actual canonical goal directories, not the sitemap's total 
 
 On verified starting main, **18 of 27** qualifying paragraphs on 3:30 matched 4:30. After consolidation, **13 of 19** match. The old “79%” is not reproduced under this stated method; the historical sample used another scope/version. The remaining ratio is similar because shared FAQs and tool instructions still dominate this paragraph-only denominator. The absolute repeated material is smaller, and the practical sections now answer different questions. **Do not claim a percentage-uniqueness improvement or use that ratio as a release gate.** No text was paraphrased simply to evade matching.
 
-Shared definitions and controls remain where they help users. Removed material includes duplicate worked-plan checkpoint tables when an existing reference already serves that purpose, the universal five-minute-target and one-minute-stop filler, repeated print instructions, generic “case above” signposts, duplicated author promotion, and unsupported workouts/readiness checkboxes. Historical section IDs remain at relevant surviving content to avoid breaking deep links.
+Shared definitions and controls remain where they help users. Removed material includes duplicate worked-plan checkpoint tables when an existing reference already serves that purpose, the universal five-minute-target and one-minute-stop filler, repeated print instructions, generic “case above” signposts, duplicated author promotion, unsupported workouts/readiness checkboxes, and unmeasured motivational cues embedded in calculator/split cards. Historical section IDs remain at relevant surviving content to avoid breaking deep links.
 
 ## Complete goal-page inventory
 
@@ -153,3 +153,9 @@ Read 8 October 2026; Google pages may change. These support platform requirement
 - [Publisher CMP requirements for EEA, UK and Switzerland](https://support.google.com/adsense/answer/13554116?hl=en)
 - [Google consent mode implementation](https://developers.google.com/tag-platform/security/guides/consent?consentmode=basic)
 - [GA4 Enhanced Measurement account settings](https://support.google.com/analytics/answer/9216061?hl=en)
+
+## PR and external verification record
+
+Follow-up [PR #17](https://github.com/hara1zer/marathonpacekm/pull/17) is open. Initial implementation commit `9e43cd10f5640970f582626eba285bef8d44fcb0` passed GitHub `browser-and-print`, `tracking-regressions` and Cloudflare Pages checks. Final-head status is recorded in the PR description; a later editorial-only cleanup removes remaining calculator pep-talk and automatic late-push cues.
+
+At the initial commit's [Cloudflare preview](https://41133a40.marathonpacekm.pages.dev/4-30-marathon-pace-km/), manual cloud-browser checks confirmed the corrected 4:30 plan, edited 4:35 handoff and band, half-marathon two-hour mile outputs and Letter selection, restored/working 4:15 calculator and corrected example, exact 4:00 invalid-minute error with disabled export, and the new 3:30/3:50/sub-four decision tables. A further PNG-download wait timed out and reset the browser tooling; preview download completion was not verified. Actual PNG downloads pass locally and in CI. Cloud-browser console logs included extension metadata errors, which are not site JavaScript errors. Production remains the pre-follow-up implementation.
