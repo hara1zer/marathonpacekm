@@ -2,7 +2,7 @@
 
 ## Melbourne running pilot
 
-The pilot at `/melbourne-running/` contains all 18 venue summaries and two full sample guides. Its source summaries live in `melbourne-running/venues.json`, with individually written guide bodies alongside them. Run `python3 .github/quality/build-melbourne-running-pilot.py` after changing those sources. Do not generate the remaining 16 guides before the owner's sample review. Unknown data was removed from the approved research and must not be filled with assumptions. Source dates and older-access qualifications must remain visible.
+The Melbourne section at `/melbourne-running/` contains 18 full venue guides and a region-filtered hub. Sources live in `melbourne-running/venues.json`, page metadata in `additional-pages.json`, and individually written bodies alongside them. Run `python3 .github/quality/build-melbourne-running-pilot.py` to rebuild the pages, then `python3 .github/quality/export-melbourne-drafts.py` for the Markdown copies. Keep venue-specific access, facilities and route details central; do not add generic training padding or restore unsupported facts. Source dates and historical qualifications remain visible.
 
 Run `node .github/quality/melbourne-running-regressions.mjs` to check static card coverage, filter combinations, fragment navigation, metadata/schema correspondence and lap arithmetic. The existing all-page browser scan also covers these public pages in CI. Original-photo and first-hand-visit prompts live in HTML comments and the separate Markdown review copies; they must not become invented photos or personal claims. The pilot adds no ad-serving code or affiliate destination.
 

@@ -1,112 +1,428 @@
 [
   {
-    "id": "george-knott-reserve", "name": "George Knott Reserve", "kind": "track", "regions": ["inner", "north"], "location": "Clifton Hill · Yarra · inner north",
+    "id": "george-knott-reserve",
+    "name": "George Knott Reserve",
+    "kind": "track",
+    "regions": [
+      "inner",
+      "north"
+    ],
+    "location": "Clifton Hill · Yarra · inner north",
     "spec": "400 m · 6 circular lanes · synthetic",
     "summary": "A measured option for inner-north intervals. Yarra allows community use outside club activities and events; Collingwood Harriers handles track hire. The council lists toilets and water, and prohibits dogs inside the track fence.",
-    "sources": [["Council access and facilities", "https://www.yarracity.vic.gov.au/things-to-do/parks-reserves-and-playgrounds/george-knott-reserve"], ["Track specifications", "https://aths.au/track/george-knott-reserve/"]]
+    "sources": [
+      [
+        "Council access and facilities",
+        "https://www.yarracity.vic.gov.au/things-to-do/parks-reserves-and-playgrounds/george-knott-reserve"
+      ],
+      [
+        "Track specifications",
+        "https://aths.au/track/george-knott-reserve/"
+      ]
+    ],
+    "guide": "/melbourne-running/george-knott-reserve/"
   },
   {
-    "id": "lakeside-stadium", "name": "Lakeside Stadium", "kind": "track", "regions": ["inner"], "location": "Albert Park · Port Phillip · inner south",
+    "id": "lakeside-stadium",
+    "name": "Lakeside Stadium",
+    "kind": "track",
+    "regions": [
+      "inner"
+    ],
+    "location": "Albert Park · Port Phillip · inner south",
     "spec": "400 m · synthetic · booked public sessions",
     "summary": "Choose it when you can plan a track session around a published booking slot. State Sport Centres lists public sessions on Monday, Tuesday and Thursday afternoons and Saturday mornings, subject to events and booking availability. Check its current portal before travelling.",
-    "sources": [["Venue operator", "https://statesportcentres.com.au/venues/lakeside/"], ["Bookings and public sessions", "https://statesportcentres.com.au/facility-hire/lakeside/"]]
+    "sources": [
+      [
+        "Venue operator",
+        "https://statesportcentres.com.au/venues/lakeside/"
+      ],
+      [
+        "Bookings and public sessions",
+        "https://statesportcentres.com.au/facility-hire/lakeside/"
+      ]
+    ],
+    "guide": "/melbourne-running/lakeside-stadium/"
   },
   {
-    "id": "sprint-athletics-centre", "name": "Sprint Athletics Centre", "kind": "track", "regions": ["north"], "location": "Craigieburn · Hume · north",
+    "id": "sprint-athletics-centre",
+    "name": "Sprint Athletics Centre",
+    "kind": "track",
+    "regions": [
+      "north"
+    ],
+    "location": "Craigieburn · Hume · north",
     "spec": "400 m · 8 circular lanes · synthetic",
     "summary": "Hume publishes free dawn-to-dusk entry outside exclusive bookings. A useful northern choice for counting interval laps and controlling recovery distance. Public toilets are in adjacent Craigieburn Anzac Park.",
     "guide": "/melbourne-running/sprint-athletics-centre/",
-    "sources": [["Operator access and facilities", "https://humeleisure.vic.gov.au/sprint-athletics-centre"]]
+    "sources": [
+      [
+        "Operator access and facilities",
+        "https://humeleisure.vic.gov.au/sprint-athletics-centre"
+      ]
+    ]
   },
   {
-    "id": "edwardes-lake-park", "name": "Edwardes Lake Park Track", "kind": "track", "regions": ["north"], "location": "Reservoir · Darebin · north",
+    "id": "edwardes-lake-park",
+    "name": "Edwardes Lake Park Track",
+    "kind": "track",
+    "regions": [
+      "north"
+    ],
+    "location": "Reservoir · Darebin · north",
     "spec": "400 m · 6 circular lanes · synthetic",
     "summary": "Darebin's March 2026 council minutes describe free, round-the-clock access. That makes it a northern option for flexible session timing. The same record notes e-bike damage and antisocial behaviour; inspect the surface and current conditions before starting fast repetitions.",
-    "sources": [["Council access record, March 2026", "https://www.darebin.vic.gov.au/files/assets/public/v/2/about-council/documents/council-meetings/2026/24-march-2026/council-meeting-minutes-24-march-2026final.pdf"], ["Track specifications", "https://aths.au/track/edwardes-lake-park/"]]
+    "sources": [
+      [
+        "Council access record, March 2026",
+        "https://www.darebin.vic.gov.au/files/assets/public/v/2/about-council/documents/council-meetings/2026/24-march-2026/council-meeting-minutes-24-march-2026final.pdf"
+      ],
+      [
+        "Track specifications",
+        "https://aths.au/track/edwardes-lake-park/"
+      ]
+    ],
+    "guide": "/melbourne-running/edwardes-lake-park/"
   },
   {
-    "id": "willinda-park", "name": "Willinda Park", "kind": "track", "regions": ["north"], "location": "Greensborough · Banyule · north-east",
+    "id": "willinda-park",
+    "name": "Willinda Park",
+    "kind": "track",
+    "regions": [
+      "north"
+    ],
+    "location": "Greensborough · Banyule · north-east",
     "spec": "400 m · 8 circular lanes · polyurethane",
     "summary": "Adds a measured option in the north-east. A 2023 council comparison records public use outside bookings; use the current operator's contact details to plan a session. Its published daytime hire hours describe bookings, rather than unrestricted public running hours.",
-    "sources": [["Venue operator", "https://www.willindapark.org/"], ["Council access comparison, 2023", "https://manningham.vic.gov.au/sites/default/files/2023-11/Council%20Minutes%2031%20October%202023.pdf"], ["Track specifications", "https://aths.au/track/willinda-park/"]]
+    "sources": [
+      [
+        "Venue operator",
+        "https://www.willindapark.org/"
+      ],
+      [
+        "Council access comparison, 2023",
+        "https://manningham.vic.gov.au/sites/default/files/2023-11/Council%20Minutes%2031%20October%202023.pdf"
+      ],
+      [
+        "Track specifications",
+        "https://aths.au/track/willinda-park/"
+      ]
+    ],
+    "guide": "/melbourne-running/willinda-park/"
   },
   {
-    "id": "moonee-valley-athletics-centre", "name": "Moonee Valley Athletics Centre", "kind": "track", "regions": ["west"], "location": "Aberfeldie · Moonee Valley · north-west",
+    "id": "moonee-valley-athletics-centre",
+    "name": "Moonee Valley Athletics Centre",
+    "kind": "track",
+    "regions": [
+      "west"
+    ],
+    "location": "Aberfeldie · Moonee Valley · north-west",
     "spec": "400 m · 8 circular lanes · synthetic",
     "summary": "An option for north-western runners who want marked repetitions. The community facility guide reports public access around exclusive club and school hire. Moonee Valley manages reserve bookings, so organised group sessions need a separate booking check.",
-    "sources": [["Council bookings", "https://mvcc.vic.gov.au/play/request-a-booking/"], ["Community access guide", "https://www.melbourneplaygrounds.com.au/moonee-valley-athletics-centre-aberfeldie"], ["Track specifications", "https://aths.au/track/moonee-valley-athletics-centre/"]]
+    "sources": [
+      [
+        "Council bookings",
+        "https://mvcc.vic.gov.au/play/request-a-booking/"
+      ],
+      [
+        "Community access guide",
+        "https://www.melbourneplaygrounds.com.au/moonee-valley-athletics-centre-aberfeldie"
+      ],
+      [
+        "Track specifications",
+        "https://aths.au/track/moonee-valley-athletics-centre/"
+      ]
+    ],
+    "guide": "/melbourne-running/moonee-valley-athletics-centre/"
   },
   {
-    "id": "newport-park", "name": "Newport Park Athletics Track", "kind": "track", "regions": ["west"], "location": "Newport · Hobsons Bay · west",
+    "id": "newport-park",
+    "name": "Newport Park Athletics Track",
+    "kind": "track",
+    "regions": [
+      "west"
+    ],
+    "location": "Newport · Hobsons Bay · west",
     "spec": "400 m lane-one circuit · 8 circular lanes · synthetic",
     "summary": "The council permits public training but directs casual runners to the middle and outer lanes. Those laps are longer than 400 m, so use the correct marked start for a measured repetition. The 2026/27 rules allow 5 mm or 7 mm spikes and prohibit animals, bikes and ball games.",
-    "sources": [["Council public training and hire", "https://www.hobsonsbay.vic.gov.au/Community/Venues-and-facilities/Sporting-reserves-and-facilities-hire"], ["Council rules, 2026/27", "https://www.hobsonsbay.vic.gov.au/files/assets/public/v/1/documents/community/venues-and-facilites/hire-of-reserves-and-facilities/newport-park-athletics-track-booking-form-2026-2027.pdf"], ["Track specifications", "https://aths.au/track/newport-park-athletics-track/"]]
+    "sources": [
+      [
+        "Council public training and hire",
+        "https://www.hobsonsbay.vic.gov.au/Community/Venues-and-facilities/Sporting-reserves-and-facilities-hire"
+      ],
+      [
+        "Council rules, 2026/27",
+        "https://www.hobsonsbay.vic.gov.au/files/assets/public/v/1/documents/community/venues-and-facilites/hire-of-reserves-and-facilities/newport-park-athletics-track-booking-form-2026-2027.pdf"
+      ],
+      [
+        "Track specifications",
+        "https://aths.au/track/newport-park-athletics-track/"
+      ]
+    ],
+    "guide": "/melbourne-running/newport-park/"
   },
   {
-    "id": "fortitude-drive-reserve", "name": "Fortitude Drive Reserve", "kind": "track", "regions": ["west"], "location": "Truganina · Wyndham · west",
+    "id": "fortitude-drive-reserve",
+    "name": "Fortitude Drive Reserve",
+    "kind": "track",
+    "regions": [
+      "west"
+    ],
+    "location": "Truganina · Wyndham · west",
     "spec": "Synthetic athletics facility · public access around tenant use",
     "summary": "Included to cover the growing western suburbs. Wyndham allows public use around tenant activities. Tenant use can restrict access, especially in the evenings and on weekends. The pavilion is a later project stage; plan facilities and any group hire through the council's current updates.",
-    "sources": [["Council access", "https://www.wyndham.vic.gov.au/venues/fortitude-drive-reserve"], ["Council project updates", "https://www.wyndham.vic.gov.au/project/fortitude-drive-reserve"]]
+    "sources": [
+      [
+        "Council access",
+        "https://www.wyndham.vic.gov.au/venues/fortitude-drive-reserve"
+      ],
+      [
+        "Council project updates",
+        "https://www.wyndham.vic.gov.au/project/fortitude-drive-reserve"
+      ]
+    ],
+    "guide": "/melbourne-running/fortitude-drive-reserve/"
   },
   {
-    "id": "hagenauer-reserve", "name": "Hagenauer Reserve / Box Hill Track", "kind": "track", "regions": ["east"], "location": "Box Hill North · Whitehorse · east",
+    "id": "hagenauer-reserve",
+    "name": "Hagenauer Reserve / Box Hill Track",
+    "kind": "track",
+    "regions": [
+      "east"
+    ],
+    "location": "Box Hill North · Whitehorse · east",
     "spec": "400 m · 8 circular lanes · polyurethane",
     "summary": "An eastern alternative for measured efforts. Box Hill Athletic Club publishes facility and hire information; the public-access evidence is a 2023 council comparison. The club prohibits dogs on the track and infield, and lists floodlights and car parking.",
-    "sources": [["Club facility guide", "https://www.boxhillathleticclub.org/facilities/"], ["Council access comparison, 2023", "https://www.manningham.vic.gov.au/sites/default/files/2023-12/Final%20Report%20-%20Tom%20Kelly%20Athletics%20Track%20Usage%20Plan%20-%20November%202023.PDF"], ["Track specifications", "https://aths.au/track/hagenauer-reserve/"]]
+    "sources": [
+      [
+        "Club facility guide",
+        "https://www.boxhillathleticclub.org/facilities/"
+      ],
+      [
+        "Council access comparison, 2023",
+        "https://www.manningham.vic.gov.au/sites/default/files/2023-12/Final%20Report%20-%20Tom%20Kelly%20Athletics%20Track%20Usage%20Plan%20-%20November%202023.PDF"
+      ],
+      [
+        "Track specifications",
+        "https://aths.au/track/hagenauer-reserve/"
+      ]
+    ],
+    "guide": "/melbourne-running/hagenauer-reserve/"
   },
   {
-    "id": "tom-kelly-athletics-track", "name": "Tom Kelly Athletics Track", "kind": "track", "regions": ["east"], "location": "Doncaster East · Manningham · east",
+    "id": "tom-kelly-athletics-track",
+    "name": "Tom Kelly Athletics Track",
+    "kind": "track",
+    "regions": [
+      "east"
+    ],
+    "location": "Doncaster East · Manningham · east",
     "spec": "400 m · 8 circular lanes · synthetic",
     "summary": "Useful for eastern-suburb intervals when the availability calendar shows public access. Club sessions have exclusive periods, so consult the published calendar rather than assuming an open gate means the track is available for your workout.",
-    "sources": [["Council reserve guide", "https://www.manningham.vic.gov.au/parks/rieschiecks-reserve"], ["Track availability calendar", "https://www.doncasterlac.org.au/tom-kelly-athletics-track-availability/"], ["Track specifications", "https://aths.au/track/tom-kelly-athletics-track/"]]
+    "sources": [
+      [
+        "Council reserve guide",
+        "https://www.manningham.vic.gov.au/parks/rieschiecks-reserve"
+      ],
+      [
+        "Track availability calendar",
+        "https://www.doncasterlac.org.au/tom-kelly-athletics-track-availability/"
+      ],
+      [
+        "Track specifications",
+        "https://aths.au/track/tom-kelly-athletics-track/"
+      ]
+    ],
+    "guide": "/melbourne-running/tom-kelly-athletics-track/"
   },
   {
-    "id": "duncan-mackinnon-reserve", "name": "Duncan Mackinnon Reserve Track", "kind": "track", "regions": ["south-east"], "location": "Murrumbeena · Glen Eira · south-east",
+    "id": "duncan-mackinnon-reserve",
+    "name": "Duncan Mackinnon Reserve Track",
+    "kind": "track",
+    "regions": [
+      "south-east"
+    ],
+    "location": "Murrumbeena · Glen Eira · south-east",
     "spec": "400 m · 8 circular lanes · synthetic",
     "summary": "Glen Eira permits public running in daylight outside bookings. Its 6 am–10 pm facility hours do not grant unrestricted track access: floodlights operate for bookings, and summer club exclusions occupy several afternoons and weekend periods. Read the council's current timetable first.",
-    "sources": [["Council access and exclusions", "https://www.gleneira.vic.gov.au/our-city/sports-and-leisure/our-sports-and-fitness-facilities/athletics-track"], ["Track specifications", "https://aths.au/track/duncan-mackinnon-reserve/"]]
+    "sources": [
+      [
+        "Council access and exclusions",
+        "https://www.gleneira.vic.gov.au/our-city/sports-and-leisure/our-sports-and-fitness-facilities/athletics-track"
+      ],
+      [
+        "Track specifications",
+        "https://aths.au/track/duncan-mackinnon-reserve/"
+      ]
+    ],
+    "guide": "/melbourne-running/duncan-mackinnon-reserve/"
   },
   {
-    "id": "knox-park-athletics-centre", "name": "Knox Park Athletics Centre", "kind": "track", "regions": ["south-east"], "location": "Knoxfield · Knox · south-east",
+    "id": "knox-park-athletics-centre",
+    "name": "Knox Park Athletics Centre",
+    "kind": "track",
+    "regions": [
+      "south-east"
+    ],
+    "location": "Knoxfield · Knox · south-east",
     "spec": "400 m · 8 circular lanes · Conispur SW synthetic",
     "summary": "Knox publishes daily 5 am–9 pm turnstile access, with exclusions for bookings, maintenance and mowing. The council records a Conispur SW resurfacing in 2025. A south-eastern option for planned repetitions with a clear published access window.",
-    "sources": [["Council facility and access", "https://www.knox.vic.gov.au/our-services/sports-parks-playgrounds-and-reserves/recreation-and-leisure-facilities/knox-park-athletics-centre"], ["Community facility guide", "https://www.melbourneplaygrounds.com.au/knox-park-athletics-centre-knoxfield"]]
+    "sources": [
+      [
+        "Council facility and access",
+        "https://www.knox.vic.gov.au/our-services/sports-parks-playgrounds-and-reserves/recreation-and-leisure-facilities/knox-park-athletics-centre"
+      ],
+      [
+        "Community facility guide",
+        "https://www.melbourneplaygrounds.com.au/knox-park-athletics-centre-knoxfield"
+      ]
+    ],
+    "guide": "/melbourne-running/knox-park-athletics-centre/"
   },
   {
-    "id": "the-tan", "name": "The Tan", "kind": "path", "regions": ["inner"], "location": "Royal Botanic Gardens / Kings Domain · inner Melbourne",
+    "id": "the-tan",
+    "name": "The Tan",
+    "kind": "path",
+    "regions": [
+      "inner"
+    ],
+    "location": "Royal Botanic Gardens / Kings Domain · inner Melbourne",
     "spec": "3.827 km official lap · gravel and sealed hill",
     "summary": "Repeated loops suit controlled aerobic running and practising uphill effort. The published Saturday 8–10 am run club and the annual Run the Tan event provide evidence of established running use. Anderson Street changes the effort of every clockwise lap.",
     "guide": "/melbourne-running/the-tan/",
-    "sources": [["Event course distance", "https://runthetan.net/the-course/"], ["Council run-club listing", "https://whatson.melbourne.vic.gov.au/things-to-do/run-the-tan-run-club"]]
+    "sources": [
+      [
+        "Event course distance",
+        "https://runthetan.net/the-course/"
+      ],
+      [
+        "Council run-club listing",
+        "https://whatson.melbourne.vic.gov.au/things-to-do/run-the-tan-run-club"
+      ]
+    ]
   },
   {
-    "id": "main-yarra-trail", "name": "Main Yarra Trail", "kind": "path", "regions": ["inner", "east"], "location": "CBD towards Westerfolds Park · inner and east",
+    "id": "main-yarra-trail",
+    "name": "Main Yarra Trail",
+    "kind": "path",
+    "regions": [
+      "inner",
+      "east"
+    ],
+    "location": "CBD towards Westerfolds Park · inner and east",
     "spec": "33 km in Parks Victoria's trail listing · lower asphalt sections",
     "summary": "A longer corridor for building a run around a chosen turnaround. Visit Victoria includes it in Melbourne's running trails, while Sri Chinmoy stages running events around Burnley. The Gipps Street ramp opened in February 2026; check current works before committing to a continuous session.",
-    "sources": [["Parks Victoria trail listing", "https://www.parks.vic.gov.au/things-to-do/cycling"], ["Running-event evidence", "https://au.srichinmoyraces.org/event-abhinandan"], ["Gipps Street ramp update", "https://www.parks.vic.gov.au/projects/completed-projects/projects-completed-in-2026/gipps-street-ramp"]]
+    "sources": [
+      [
+        "Parks Victoria trail listing",
+        "https://www.parks.vic.gov.au/things-to-do/cycling"
+      ],
+      [
+        "Running-event evidence",
+        "https://au.srichinmoyraces.org/event-abhinandan"
+      ],
+      [
+        "Gipps Street ramp update",
+        "https://www.parks.vic.gov.au/projects/completed-projects/projects-completed-in-2026/gipps-street-ramp"
+      ]
+    ],
+    "guide": "/melbourne-running/main-yarra-trail/"
   },
   {
-    "id": "albert-park-lake", "name": "Albert Park Lake", "kind": "path", "regions": ["inner"], "location": "Albert Park · Port Phillip · inner south",
+    "id": "albert-park-lake",
+    "name": "Albert Park Lake",
+    "kind": "path",
+    "regions": [
+      "inner"
+    ],
+    "location": "Albert Park · Port Phillip · inner south",
     "spec": "Approximately 4.7 km lake circuit · sealed and unsealed paths",
     "summary": "A flat loop option for repeating a steady effort and returning to the same starting area. Parks Victoria recommends the park for running and documents its Saturday 8 am parkrun. Use the lake circuit distance as approximate; the event's 5 km course is a separate route.",
-    "sources": [["Parks Victoria running guide", "https://www.parks.vic.gov.au/things-to-do/trail-running-and-parkrun"], ["Park and visitor information", "https://www.parks.vic.gov.au/places-to-see/parks/albert-park"]]
+    "sources": [
+      [
+        "Parks Victoria running guide",
+        "https://www.parks.vic.gov.au/things-to-do/trail-running-and-parkrun"
+      ],
+      [
+        "Park and visitor information",
+        "https://www.parks.vic.gov.au/places-to-see/parks/albert-park"
+      ]
+    ],
+    "guide": "/melbourne-running/albert-park-lake/"
   },
   {
-    "id": "capital-city-trail", "name": "Capital City Trail", "kind": "path", "regions": ["inner", "north", "west"], "location": "Yarra, Merri Creek, Inner Circle, Royal Park and Docklands",
+    "id": "capital-city-trail",
+    "name": "Capital City Trail",
+    "kind": "path",
+    "regions": [
+      "inner",
+      "north",
+      "west"
+    ],
+    "location": "Yarra, Merri Creek, Inner Circle, Royal Park and Docklands",
     "spec": "Approximately 29 km circuit · shared trail and street sections",
     "summary": "A varied long-run circuit, with crossings that make uninterrupted tempo work harder to organise. Melbourne Water and Merri-bek describe the route, and local running guides include it. Council planning records heavy cyclist use; leave room to share the path.",
-    "sources": [["Melbourne Water trail guide", "https://www.melbournewater.com.au/learn-about/outdoor-activities/walking-tracks-and-bike-paths"], ["Local running guide", "https://www.runningcalendar.com.au/content/melbournes-best-runs/capital-city-trail/"], ["Council path-use evidence", "https://www.yarracity.vic.gov.au/sites/default/files/2025-06/Draft%20Linear%20Park%20Masterplan.pdf"]]
+    "sources": [
+      [
+        "Melbourne Water trail guide",
+        "https://www.melbournewater.com.au/learn-about/outdoor-activities/walking-tracks-and-bike-paths"
+      ],
+      [
+        "Local running guide",
+        "https://www.runningcalendar.com.au/content/melbournes-best-runs/capital-city-trail/"
+      ],
+      [
+        "Council path-use evidence",
+        "https://www.yarracity.vic.gov.au/sites/default/files/2025-06/Draft%20Linear%20Park%20Masterplan.pdf"
+      ]
+    ],
+    "guide": "/melbourne-running/capital-city-trail/"
   },
   {
-    "id": "bay-trail", "name": "Bay Trail", "kind": "path", "regions": ["inner", "south-east"], "location": "Port Melbourne to Seaford · bayside corridor",
+    "id": "bay-trail",
+    "name": "Bay Trail",
+    "kind": "path",
+    "regions": [
+      "inner",
+      "south-east"
+    ],
+    "location": "Port Melbourne to Seaford · bayside corridor",
     "spec": "Choose a section and turnaround · sealed northern sections, gravel farther south",
     "summary": "A coastal option for an out-and-back long run and practising effort into changing wind. Port Phillip's event notifications document organised running along the St Kilda and Elwood foreshore. Check the event and closure notices for your chosen section before a faster session.",
-    "sources": [["Council running events and closures", "https://www.portphillip.vic.gov.au/council-services/events-venues-and-performers/major-event-notifications-and-road-closures"], ["Community route and surface guide", "https://www.melbourneplaygrounds.com.au/bay-trail-melbourne"]]
+    "sources": [
+      [
+        "Council running events and closures",
+        "https://www.portphillip.vic.gov.au/council-services/events-venues-and-performers/major-event-notifications-and-road-closures"
+      ],
+      [
+        "Community route and surface guide",
+        "https://www.melbourneplaygrounds.com.au/bay-trail-melbourne"
+      ]
+    ],
+    "guide": "/melbourne-running/bay-trail/"
   },
   {
-    "id": "merri-creek-trail", "name": "Merri Creek Trail", "kind": "path", "regions": ["inner", "north"], "location": "Dights Falls to the Western Ring Road · inner north and north",
+    "id": "merri-creek-trail",
+    "name": "Merri Creek Trail",
+    "kind": "path",
+    "regions": [
+      "inner",
+      "north"
+    ],
+    "location": "Dights Falls to the Western Ring Road · inner north and north",
     "spec": "21 km in Merri-bek's trail description · shared creek corridor",
     "summary": "A northern option for an easy out-and-back or extending time on feet. Merri Creek Running Club's scheduled Monday 6 km sessions provide direct evidence of regular running use. Pick a turnaround for your session rather than treating the whole trail as a measured half-marathon course.",
-    "sources": [["Council trail description", "https://www.merri-bek.vic.gov.au/exploring-merri-bek/parks-and-gardens/park-amenities/"], ["Running-club use", "https://merricreekrunning.club/merri-monday/"]]
+    "sources": [
+      [
+        "Council trail description",
+        "https://www.merri-bek.vic.gov.au/exploring-merri-bek/parks-and-gardens/park-amenities/"
+      ],
+      [
+        "Running-club use",
+        "https://merricreekrunning.club/merri-monday/"
+      ]
+    ],
+    "guide": "/melbourne-running/merri-creek-trail/"
   }
 ]

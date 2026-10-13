@@ -35,7 +35,7 @@ const elements = {
   'venue-empty': element({hidden: true})
 };
 const groups = ['track', 'path'].map(kind => element({contains: card => card.dataset.kind === kind}));
-const links = data.filter(v => !v.guide).map(v => element({getAttribute: () => '#' + v.id}));
+const links = [];
 const win = element({location: {hash: ''}});
 const doc = {
   getElementById: id => elements[id],
@@ -68,9 +68,6 @@ win.location.hash = '#willinda-park';
 win.listeners.hashchange();
 assert.equal(visible().length, 18, 'fragment links reveal a filtered-out venue');
 assert.equal(cards.find(c => c.id === 'willinda-park').scrolled, true);
-filter('east', 'track');
-links.find(l => l.getAttribute() === '#willinda-park').listeners.click();
-assert.equal(visible().length, 18, 'same-fragment index link also reveals the venue');
 filter('west', 'track');
 elements['venue-filters'].listeners.reset({preventDefault() {}});
 assert.equal(visible().length, 18);
@@ -78,7 +75,8 @@ win.location.hash = '#%E0%A4%A';
 assert.doesNotThrow(() => win.listeners.hashchange(), 'malformed fragment must not break filtering');
 vm.runInNewContext(source, {document: {getElementById: () => null}}, {timeout: 1000});
 
-const pages = ['melbourne-running/index.html', 'melbourne-running/sprint-athletics-centre/index.html', 'melbourne-running/the-tan/index.html'];
+assert.ok(data.every(v => v.guide === '/melbourne-running/' + v.id + '/'), 'every venue has a full guide');
+const pages = ['melbourne-running/index.html', ...data.map(v => v.guide.slice(1) + 'index.html')];
 const titles = [];
 for (const file of pages) {
   const html = read(file);
@@ -103,8 +101,8 @@ for (const file of pages) {
   const canonical = html.match(/rel="canonical" href="([^"]+)"/)[1];
   assert.ok(read('sitemap.xml').includes('<loc>' + canonical + '</loc>'));
 }
-assert.equal(new Set(titles).size, 3);
-const track = read(pages[1]);
+assert.equal(new Set(titles).size, 19);
+const track = read('melbourne-running/sprint-athletics-centre/index.html');
 const time = s => s.split(':').reduce((n, v) => n * 60 + Number(v), 0);
 const trackRows = [...track.matchAll(/<tr><th scope="row">(\d+:\d+)\/km<\/th><td>([^<]+)<\/td><td>([^<]+)<\/td><td>([^<]+)<\/td><\/tr>/g)];
 assert.equal(trackRows.length, 5);
@@ -113,7 +111,7 @@ for (const [, pace, lap, twoLaps, kilometre] of trackRows) {
   assert.equal(time(twoLaps), time(pace) * 800 / 1000);
   assert.equal(time(kilometre), time(pace));
 }
-const tan = read(pages[2]);
+const tan = read('melbourne-running/the-tan/index.html');
 for (const [laps, targetMetres] of [[2, 10000], [5, 21100], [7, 30000]]) {
   const full = laps * 3827;
   assert.ok(tan.includes(`${laps} = ${(full / 1000).toFixed(3)} km`));
@@ -121,8 +119,36 @@ for (const [laps, targetMetres] of [[2, 10000], [5, 21100], [7, 30000]]) {
 }
 assert.ok(tan.includes('arithmetic remainders, not surveyed extensions'));
 assert.doesNotMatch(track, /"openingHours"|"aggregateRating"|"geo"/);
-for (const discovery of ['index.html', 'blog/index.html', 'sitemap/index.html']) {
+for (const discovery of ['index.html', 'blog/index.html']) {
   const html = read(discovery);
-  for (const file of pages) assert.ok(html.includes('href="/' + file.replace(/index.html$/, '') + '"'));
+  assert.ok(html.includes('href="/melbourne-running/"'));
 }
-console.log('Melbourne pilot: 18 static cards, region/type filters, fragment navigation, 3 SEO/schema contracts and exact lap arithmetic passed.');
+for (const file of pages) assert.ok(read('sitemap/index.html').includes('href="/' + file.replace(/index.html$/, '') + '"'));
+for (const venue of data) {
+  const page = read(venue.guide.slice(1) + 'index.html');
+  assert.ok(hub.includes('href="' + venue.guide + '"'));
+  const graph = JSON.parse(page.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+  assert.ok(graph.some(n => n['@type'] === (venue.kind === 'track' ? 'SportsActivityLocation' : 'Place')));
+  if (venue.id === 'fortitude-drive-reserve') {
+    assert.doesNotMatch(page, /<caption>Calculated times|"name": "Lane-one circuit length"/);
+  } else if (venue.kind === 'track') {
+    const rows = [...page.matchAll(/<tr><th scope="row">(\d+:\d+)\/km<\/th><td>([^<]+)<\/td><td>([^<]+)<\/td><td>([^<]+)<\/td><\/tr>/g)];
+    assert.equal(rows.length, 5, venue.id);
+    for (const [, pace, lap, two, km] of rows) {
+      assert.equal(time(lap), time(pace) * .4, venue.id);
+      assert.equal(time(two), time(pace) * .8, venue.id);
+      assert.equal(time(km), time(pace), venue.id);
+    }
+  }
+  if (['main-yarra-trail','capital-city-trail','bay-trail','merri-creek-trail'].includes(venue.id)) {
+    for (const [target, half] of [[10,5],[21.1,10.55],[30,15]]) {
+      assert.ok(page.includes(`<tr><th scope="row">${target} km</th><td>${half} km</td><td>${half} km</td></tr>`));
+      assert.equal(half * 2, target);
+    }
+  }
+}
+const newport = read('melbourne-running/newport-park/index.html');
+assert.ok(newport.includes('not an outer-lane full-lap target'));
+const albert = read('melbourne-running/albert-park-lake/index.html');
+for (const [laps,total] of [[2,9.4],[4,18.8],[6,28.2]]) assert.ok(albert.includes(`${laps} ≈ ${total} km`));
+console.log('Melbourne: 18 complete venue guides, filters, historic fragments, 19 SEO/FAQ/location contracts and all supported pace/distance tables passed.');

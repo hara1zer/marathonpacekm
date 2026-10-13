@@ -7,7 +7,7 @@ Inner Melbourne · running path
 
 # The Tan Running Route Guide
 
-Use Melbourne’s 3.827 km circuit for repeatable aerobic runs and hill-effort practice. Plan the distance before you start, then let Anderson Street set the effort.
+Plan distance from the official 3.827 km circuit, with Anderson Street’s climb, Saturday club sessions and precinct facilities in mind.
 
 Online sources checked 13 October 2026 · [Editorial policy](https://marathonpacekm.com/editorial-policy/)
 
@@ -46,19 +46,11 @@ If returning to your start matters more than a round number, three laps total 11
 
 GPS readings can differ from the published lap distance. Use the arithmetic to plan, then your watch or markers to manage a partial lap. Leave room for other users at the finish.
 
-## Best uses in marathon training
+## What the Anderson Street climb changes
 
-### Easy and recovery runs
+Each clockwise lap includes the Anderson Street climb. Use effort on that section rather than trying to hold the same flat-ground pace throughout. For a longer run, the repeated climb becomes part of the session's workload as well as its distance.
 
-Decide after each lap whether to finish or continue. Keep the hill easy enough that the run serves its planned purpose; defend the recovery effort rather than a fixed kilometre pace.
-
-### Long runs and fuel practice
-
-Repeated laps return you to the same starting area for an arranged bottle handover. Plan any stop as part of the session. For continuous fuel practice, carry your supplies. Record elapsed time and stops so you can interpret later laps at a comparable effort.
-
-### Tempo and race-specific blocks
-
-Practise allowing pace to change while controlling effort on the hill. That skill transfers to a rolling marathon course. For a flatter race, choose a measured track or flatter route when the session’s purpose is holding a narrow pace range.
+Choose the Tan when that rolling circuit fits the planned run. If the session needs a narrow pace range on flatter ground, compare [Albert Park Lake](https://marathonpacekm.com/melbourne-running/albert-park-lake/) or a measured track instead.
 
 ## Crowding, interruptions and practical planning
 

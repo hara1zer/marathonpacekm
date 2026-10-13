@@ -1,7 +1,7 @@
-"""Build the three reviewed pilot drafts; each guide has individually written copy.
+"""Build the complete Melbourne directory; each guide has individually written copy.
 
 No production build step. This helper uses only the Python standard library.
-Do not create the remaining venue pages before the owner's sample review.
+The owner approved completing all 18 venue guides on 13 October 2026.
 """
 from pathlib import Path
 from html import escape
@@ -44,7 +44,7 @@ PAGES = [
         'title': 'Sprint Athletics Centre Running Track, Craigieburn',
         'description': 'Plan a Sprint Athletics Centre session: 400 m lap times, free public access, booking exclusions, parking and practical tips for marathon training.',
         'h1': 'Sprint Athletics Centre Running Track, Craigieburn',
-        'lede': 'A measured northern option for intervals, with free public entry around exclusive bookings. Count laps to control both your repetitions and recoveries.',
+        'lede': 'Free public entry from dawn to dusk, with exclusive booking exclusions. Plan around the centre’s track access and neighbouring Anzac Park facilities.',
         'eyebrow': 'North Melbourne · running track',
         'body_file': 'sprint-athletics-centre.body.html',
         'facts': [('Length', '400 m lane-one circuit'), ('Surface', 'Synthetic'), ('Lanes', '8 circular; 10 on the front straight'), ('Public access', 'Daily dawn–dusk, outside exclusive bookings'), ('Fees', 'Casual entry free; group hire separate'), ('Lighting', 'Listed by Aths.au; public access ends at dusk')],
@@ -74,7 +74,7 @@ PAGES = [
         'title': 'The Tan Running Route Guide | Melbourne',
         'description': 'Plan a run on The Tan: the 3.827 km loop, 10 km to 30 km distance options, Anderson Street hill, toilets, lighting and marathon training tips.',
         'h1': 'The Tan Running Route Guide',
-        'lede': 'Use Melbourne’s 3.827 km circuit for repeatable aerobic runs and hill-effort practice. Plan the distance before you start, then let Anderson Street set the effort.',
+        'lede': 'Plan distance from the official 3.827 km circuit, with Anderson Street’s climb, Saturday club sessions and precinct facilities in mind.',
         'eyebrow': 'Inner Melbourne · running path',
         'body_file': 'the-tan.body.html',
         'facts': [('Distance', '3.827 km official event lap'), ('Surface', 'Fine gravel; sealed Anderson Street section'), ('Terrain', 'Anderson Street climb: about 30 m over 300 m'), ('Fountains', 'Council documents nearby Alexandra Gardens fountains'), ('Start / finish', 'Pillars of Wisdom for the official clockwise lap'), ('Lighting', 'Organiser reports 5 am–midnight')],
@@ -96,6 +96,44 @@ PAGES = [
         }
     }
 ]
+
+
+for extra in json.loads((CONTENT / 'additional-pages.json').read_text()):
+    venue = next(v for v in VENUES if v['id'] == extra['id'])
+    venue['guide'] = HUB + venue['id'] + '/'
+    sources = venue['sources'] + extra.get('extra_sources', [])
+    page = dict(extra, slug=venue['guide'], body_file=venue['id'] + '.body.html',
+                eyebrow=venue['location'], sources=sources, fact_source=sources[:2])
+    place = {'@type': 'SportsActivityLocation' if venue['kind'] == 'track' else 'Place',
+             '@id': DOMAIN + venue['guide'] + '#venue', 'name': venue['name'],
+             'sameAs': [url for label, url in venue['sources']]}
+    if extra.get('address'):
+        place['address'] = {'@type': 'PostalAddress', 'streetAddress': extra['address'],
+                            'addressLocality': extra['suburb'], 'addressRegion': 'VIC', 'addressCountry': 'AU'}
+    if extra.get('length'):
+        place['additionalProperty'] = [{'@type': 'PropertyValue', 'name': 'Lane-one circuit length',
+                                         'value': extra['length'], 'unitCode': 'MTR'}]
+    if extra.get('lanes'):
+        place.setdefault('additionalProperty', []).append({'@type': 'PropertyValue', 'name': 'Circular lanes', 'value': extra['lanes']})
+    page['place'] = place
+    PAGES.append(page)
+
+
+def pace_table(page):
+    caption = 'Calculated times for a measured 400 m repetition'
+    note = 'Use the lane-one measurement line or the appropriate marked start for the repetition. Full outer-lane circuits are longer.'
+    if page.get('id') == 'newport-park':
+        caption = 'Measured 400 m repetition reference — not an outer-lane full-lap target'
+        note = 'Follow Newport’s middle/outer-lane rule. These are measured repetition times, not casual outer-lane lap times.'
+    rows = ''
+    def clock(seconds):
+        return f'{int(seconds)//60}:{int(seconds)%60:02}'
+    for seconds in [240, 270, 300, 330, 360]:
+        rows += f'<tr><th scope="row">{clock(seconds)}/km</th><td>{clock(seconds * .4)}</td><td>{clock(seconds * .8)}</td><td>{clock(seconds)}</td></tr>'
+    return f'<h2>400 m pace reference</h2><p>Time = pace in seconds per kilometre × 400 / 1,000. {note}</p><div class="table-scroll"><table><caption>{caption}</caption><thead><tr><th scope="col">Pace per km</th><th scope="col">400 m</th><th scope="col">800 m</th><th scope="col">1,000 m</th></tr></thead><tbody>{rows}</tbody></table></div>'
+
+
+OUTBACK_TABLE = '<div class="table-scroll"><table><caption>Calculated out-and-back distances; actual route and turnaround chosen separately</caption><thead><tr><th scope="col">Target</th><th scope="col">Outward leg</th><th scope="col">Return leg</th></tr></thead><tbody>' + ''.join(f'<tr><th scope="row">{target} km</th><td>{out} km</td><td>{out} km</td></tr>' for target, out in [('10', '5'), ('21.1', '10.55'), ('30', '15')]) + '</tbody></table></div>'
 
 
 def link(url, text):
@@ -133,7 +171,7 @@ def directory_html():
         groups.append(f'<section class="venue-directory" data-venue-group aria-labelledby="{kind}s"><h2 id="{kind}s">{name}</h2><div class="venue-grid">{cards}</div></section>')
     return '''<ul class="venue-overview"><li>12 tracks</li><li>6 paths</li><li>Metric distances</li></ul>
 <section aria-labelledby="choose-session"><h2 id="choose-session">Start with the session you need</h2>
-<p>A marked track helps you practise a repeatable pace without road crossings. For a long run, consider how you will carry water, handle crossings and return to your start. A hillier route changes the effort even when the watch shows the same pace.</p>
+<p>Choose around the venue’s actual arrangements. <a href="/melbourne-running/lakeside-stadium/">Lakeside</a> uses booked public sessions; <a href="/melbourne-running/sprint-athletics-centre/">Sprint</a> publishes dawn-to-dusk entry; <a href="/melbourne-running/newport-park/">Newport</a> directs casual runners to middle and outer lanes. For a path run, compare <a href="/melbourne-running/albert-park-lake/">Albert Park’s approximate lake lap</a> with <a href="/melbourne-running/the-tan/">The Tan’s official 3.827 km circuit and Anderson Street climb</a>.</p>
 <p>These tracks give coverage across inner, northern, eastern, south-eastern and western Melbourne. Published public-access information informed the selection; the notes retain booking exclusions and dates where the evidence is older. The paths have documented running events, club use or recommendations in official and local running guides. This is a training shortlist rather than a numerical popularity ranking.</p></section>
 <form class="venue-filters" id="venue-filters" hidden aria-label="Filter Melbourne running venues">
 <div><label for="venue-region">Region</label><select id="venue-region" name="region"><option value="all">All Melbourne</option><option value="inner">Inner Melbourne</option><option value="north">North / north-east</option><option value="east">East</option><option value="south-east">South-east</option><option value="west">West / north-west</option></select></div>
@@ -174,6 +212,11 @@ def render(page):
     title, description = escape(page['title'], quote=True), escape(page['description'], quote=True)
     assert len(page['title']) < 60 and len(page['description']) < 155
     body = directory_html() if page['slug'] == HUB else (CONTENT / page['body_file']).read_text()
+    if '{{PACE_TABLE}}' in body:
+        assert page.get('length') == 400, 'A lap table requires supported measured length'
+        body = body.replace('{{PACE_TABLE}}', pace_table(page))
+    body = body.replace('{{OUTBACK_TABLE}}', OUTBACK_TABLE)
+    assert '{{' not in body, 'Unexpanded content token'
     breadcrumbs = link('/', 'Home') + '<span aria-hidden="true">/</span>'
     breadcrumbs += '<span aria-current="page">Melbourne running</span>' if page['slug'] == HUB else link(HUB, 'Melbourne running') + '<span aria-hidden="true">/</span><span aria-current="page">' + escape(page['h1']) + '</span>'
     related = '<section class="venue-related" aria-labelledby="related"><h2 id="related">Plan the next part of your session</h2><ul>' + ''.join(f'<li>{link(slug, name)}</li>' for slug, name in page['internal']) + '</ul></section>'
@@ -213,5 +256,6 @@ if __name__ == '__main__':
     assert len(VENUES) == 18
     assert sum(v['kind'] == 'track' for v in VENUES) == 12
     assert sum(v['kind'] == 'path' for v in VENUES) == 6
+    assert len(PAGES) == 19
     for page in PAGES:
         render(page)

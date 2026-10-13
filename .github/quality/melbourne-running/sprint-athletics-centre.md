@@ -7,7 +7,7 @@ North Melbourne · running track
 
 # Sprint Athletics Centre Running Track, Craigieburn
 
-A measured northern option for intervals, with free public entry around exclusive bookings. Count laps to control both your repetitions and recoveries.
+Free public entry from dawn to dusk, with exclusive booking exclusions. Plan around the centre’s track access and neighbouring Anzac Park facilities.
 
 Online sources checked 13 October 2026 · [Editorial policy](https://marathonpacekm.com/editorial-policy/)
 
@@ -24,21 +24,19 @@ Online sources checked 13 October 2026 · [Editorial policy](https://marathonpac
 
 Sources: [Operator access and track details](https://humeleisure.vic.gov.au/sprint-athletics-centre) · [Lighting listing](https://aths.au/track/sprint-athletics-centre/).
 
-## Who this track suits
-
-Sprint is useful when your marathon plan calls for measured repetitions rather than another run controlled by GPS pace. A 400 m circuit lets you compare each repetition at the same distance, then count recovery laps without adding road crossings. Its location gives Craigieburn runners a northern option for that work.
-
-Use the track for a session already in your plan. For example, an 800 m repetition is two lane-one laps, and a 2 km block is five. A continuous 8 km marathon-pace block is 20 laps: easy to measure, but repetitive enough that counting and sharing lanes matter.
-
 ## Access, fees and lighting
 
 [Hume Leisure](https://humeleisure.vic.gov.au/sprint-athletics-centre) publishes free public entry between dawn and dusk, seven days a week. Club, school and private bookings have exclusive use; public runners must cooperate with requests to move or leave. Build some flexibility into your session rather than counting on access at a particular time.
 
 The July 2026 rate for hiring the track and pavilion is $159.95 an hour. That is an organised hire charge, separate from free casual entry. Use the operator’s booking enquiry for a group session. [Aths.au lists lighting](https://aths.au/track/sprint-athletics-centre/), but public access still ends at dusk.
 
+## The Craigieburn circuit
+
+The operator lists a 400 m synthetic circuit with eight circular lanes and ten on the front straight. A 2 km lane-one block is five laps; at 5:00/km it takes 10:00. Choose a time when an exclusive booking will not interrupt the planned blocks and recoveries.
+
 ## 400 m pace-per-lap table
 
-Multiply pace in seconds per kilometre by 0.4. At 4:30/km, that is 270 × 0.4 = 108 seconds, or 1:48 per 400 m. Choose your session’s target pace first; the rows below are conversions, not suggested targets for every runner.
+Multiply pace in seconds per kilometre by 0.4. At 4:30/km, that is 270 × 0.4 = 108 seconds, or 1:48 per 400 m.
 
 Calculated times for a measured 400 m repetition
 
@@ -58,11 +56,9 @@ The entrance is at the corner of Aitken Boulevard and Marathon Boulevard, Craigi
 
 Public toilets are in the adjoining Anzac Park during public access times. Carry the water you need for the workout so a refill does not determine the recovery interval. Keep your bottle and bag clear of active lanes, and use the same start mark for each repetition.
 
-## Session habits and track rules
+## Centre restrictions
 
-Use a manual lap button at the finish mark and compare the elapsed time with the table. For longer repetitions, count laps as well as recording time. Write the intended number on a small session note: losing one lap in a five-lap block changes the distance by 400 m.
-
-During recovery, look before changing lanes and leave room for faster athletes. Hume prohibits animals, motorbikes, bicycles, scooters and skateboards at the centre. Public runners need council approval to use the other athletics equipment. A jump pit, hurdle or throwing area is not an extra part of a casual running session.
+Hume prohibits animals, motorbikes, bicycles, scooters and skateboards at Sprint. Public access covers the running track; other athletics equipment requires prior council approval. Keep those restrictions separate from what may be permitted in the surrounding Anzac Park precinct.
 
 ## Plan the next part of your session
 
