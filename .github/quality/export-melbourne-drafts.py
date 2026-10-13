@@ -1,5 +1,7 @@
 """Export one Markdown review copy per pilot page, including editorial prompts."""
 from pathlib import Path
+import sys
+sys.dont_write_bytecode = True
 from importlib.util import spec_from_file_location, module_from_spec
 import json
 import re
@@ -79,7 +81,7 @@ Last checked: {pilot.DISPLAY_DATE} (online sources)
     editor += '\n'.join('- [Your own photo] ' + photo for photo in page['photos'])
     editor += '\n\n[Personal visit note: add a dated observation after visiting. No visit is claimed in the present copy.]\n\n'
     if page['slug'] == pilot.HUB:
-        editor += 'The website implements region and venue-type filters. The two sample guides have full pages; the other 16 venues link to their current summaries and sources until the owner reviews the samples.\n\n'
+        editor += 'The website implements region and venue-type filters and links to all 18 complete venue guides.\n\n'
     editor += '## Suggested internal links\n\n' + '\n'.join(f'- [{name}]({pilot.DOMAIN + slug})' for slug, name in page['internal']) + '\n\n'
     editor += '## JSON-LD\n\n```json\n' + json.dumps(pilot.schema(page), ensure_ascii=False, indent=2) + '\n```\n'
     filename = 'hub.md' if page['slug'] == pilot.HUB else page['slug'].strip('/').split('/')[-1] + '.md'
