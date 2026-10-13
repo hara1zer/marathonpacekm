@@ -10,6 +10,9 @@ on:
       - '.github/quality/affiliate-analytics-regressions.mjs'
       - '.github/quality/expired-affiliate-regressions.mjs'
       - '.github/quality/site-readiness-regressions.mjs'
+      - 'assets/melbourne-running.js'
+      - '.github/quality/melbourne-running/**'
+      - '.github/quality/melbourne-running-regressions.mjs'
       - '_redirects'
       - '_headers'
       - 'robots.txt'
@@ -31,3 +34,4 @@ jobs:
           node .github/quality/affiliate-analytics-regressions.mjs
           node .github/quality/expired-affiliate-regressions.mjs
           node .github/quality/site-readiness-regressions.mjs
+          node .github/quality/melbourne-running-regressions.mjs
