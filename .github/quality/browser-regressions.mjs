@@ -31,6 +31,26 @@ const text=id=>page.locator('#'+id).innerText();
 const values=async obj=>page.evaluate(obj=>{for(const [id,v] of Object.entries(obj)){let el=document.getElementById(id);el.value=v;el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));}},obj);
 async function test(name,fn){try{await fn();results.push({name,pass:true});}catch(e){results.push({name,pass:false,error:e.message});}}
 try{
+await test('Retired pace-band presets redirect and restore all eight exact goals',async()=>{
+ const presets={'3-00':[3,0,0],'3-15':[3,15,0],'3-30':[3,30,0],'3-45':[3,45,0],'4-00':[4,0,0],'4-30':[4,30,0],'5-00':[5,0,0],'sub-4':[3,59,59]};
+ for(const [slug,goal] of Object.entries(presets)){
+  for(const suffix of ['','/','/index.html']){
+   const response=await context.request.get(base+'/pace-band/'+slug+suffix,{maxRedirects:0});
+   assert.equal(response.status(),301);
+  }
+  await go('/pace-band/'+slug+'/');
+  assert.equal(new URL(page.url()).pathname,'/printable-pace-band/');
+  assert.deepEqual(await page.locator('#h,#m,#s').evaluateAll(inputs=>inputs.map(input=>Number(input.value))),goal);
+  assert.equal(await page.locator('#unit').inputValue(),'km');
+  assert.equal(await page.locator('#strategy').inputValue(),'even');
+  const finish=goal[0]+':'+String(goal[1]).padStart(2,'0')+':'+String(goal[2]).padStart(2,'0');
+  assert.match(await text('wristPreview'),new RegExp(finish));
+  assert.equal(await page.locator('link[rel=canonical]').getAttribute('href'),'https://marathonpacekm.com/printable-pace-band/');
+  await go('/'+slug+'-marathon-pace-km/');
+  assert.ok(await page.locator('a[href="/assets/original/checkpoint-'+slug+'.svg"]').isVisible(),'retained reference card is visible on the goal guide');
+ }
+ await go('/pace-band/3:15/');assert.equal(await page.locator('#m').inputValue(),'15');
+});
 await test('Homepage full marathon, mile conversion and invalid input',async()=>{
  await go('/');assert.match(await text('result-km'),/5:41/);assert.match(await text('result-mi'),/9:09/);
  await page.locator('details').filter({has:page.locator('#split-unit')}).locator('summary').click();await page.selectOption('#split-unit','mi');assert.match(await text('splits-body'),/4:00:00/);

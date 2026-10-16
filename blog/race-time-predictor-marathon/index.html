@@ -262,7 +262,7 @@
         "@id": "https://marathonpacekm.com/blog/race-time-predictor-marathon/"
       },
       "datePublished": "2026-01-29",
-      "dateModified": "2026-10-01",
+      "dateModified": "2026-10-16",
       "author": {
         "@type": "Person",
         "name": "Davin Pinto",
@@ -326,7 +326,7 @@
 
 
 <main class="wrap">
-<p class="byline">Published by <a href="/about/#author" rel="author">Davin Pinto</a> · Reviewed <time datetime="2026-10-01">1 October 2026</time> · <a href="/editorial-policy/">Editorial policy</a> · <a href="/contact/">Corrections</a></p>
+<p class="byline">Published by <a href="/about/#author" rel="author">Davin Pinto</a> · Reviewed <time datetime="2026-10-16">16 October 2026</time> · <a href="/editorial-policy/">Editorial policy</a> · <a href="/contact/">Corrections</a></p>
   <p class="breadcrumb">
     <a href="/">Home</a> › <a href="/blog/">Blog</a> › Race Predictor Marathon Time
   </p>
@@ -334,20 +334,10 @@
   <h1>Race Predictor Marathon Time: Combine 5K, 10K &amp; Half Marathon Results</h1>
 
   <p class="lede">
-    Single-race marathon predictors can be misleading. A runner with strong 5K speed but limited long-run durability can get an over-optimistic marathon prediction, while a more endurance-oriented runner may look better over the half marathon. A smarter approach is to estimate your marathon from <strong>each distance</strong>, then combine those signals into a more realistic range.
+    Compare marathon scenarios from recent 5K, 10K and half-marathon results. This tool converts each supplied result and combines the estimates using fixed weights. The range shows selected model assumptions; combining results has not been validated as a more accurate forecast.
   </p>
 
-  <div class="meta">Published: 2026-01-29 · Updated: 1 October 2026</div>
-
-  <div class="eeat-box">
-    <strong>How to use this page</strong>
-    This page is designed to help you move from “interesting prediction” to “usable marathon goal.” At Marathon Pace KM, the aim is not just to generate a number. It is to help you compare the quality of your race inputs, spot when shorter races are flattering your marathon potential, and choose a time you can actually pace, fuel, and hold for 42.2 km.
-  </div>
-
-  <div class="callout">
-    <strong>Best way to use this page</strong>
-    First, build a realistic marathon time range below. Then convert that target into exact pace and checkpoints with the <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>, sanity-check your early pacing with <a href="/blog/time-in-the-bank-math/">The Math of “Time in the Bank”</a>, and turn it into a race-day decision with <a href="/blog/choose-marathon-goal-time/">How to Choose a Realistic Marathon Goal Time</a>.
-  </div>
+  <div class="meta">Published: 2026-01-29 · Updated: 16 October 2026</div>
 
   <div class="toc">
     <strong>On this page</strong>
@@ -364,7 +354,7 @@
 
   <h2 id="calculator">Combined marathon race predictor</h2>
   <p>
-    This calculator predicts your marathon from each race result using a Riegel-style endurance model, then weights the longer races more heavily. In plain English: <strong>the half marathon usually gets the strongest vote</strong>, the 10K still matters, and the 5K is useful but easier to overrate.
+    The calculator uses a Riegel-style power-law conversion for each result, with fixed weights of 1 for a 5K, 2 for a 10K and 5 for a half marathon. Review whether each race represents your current performance before including it.
   </p>
 
   <div class="grid">
@@ -389,7 +379,7 @@
       <div class="result" id="out" aria-live="polite"></div>
 
       <p class="small">
-        Tip: if you have a recent half marathon, it should usually dominate the prediction. If you only have a 5K, lean conservative and validate with longer training or races.
+        Leave out old or unrepresentative races. More inputs do not guarantee a better estimate.
       </p>
     </section>
 
@@ -419,7 +409,7 @@
 <h2 id="best-inputs">Input quality matters more than filling every field</h2><p>Prefer representative recent races with known distances. Note weather, elevation, pacing and whether the performance reflects current fitness. Do not include a result merely to fill every input.</p><p>This calculator gives a half marathon weight five and a 10K weight two by design. It cannot recognise that a particular half marathon was old, interrupted or unrepresentative. That judgment remains with you.</p>
 <h2 id="next-steps">What to do after you get your result</h2>
   <ol>
-    <li>Choose a realistic target time range with this page.</li>
+    <li>Compare the scenarios with your training and representative recent races before choosing a target.</li>
     <li>Convert it into exact pace per kilometre with <a href="/marathon-pace-calculator/">Marathon Pace Calculator</a>.</li>
     <li>Review your key checkpoints in <a href="/blog/marathon-splits/">Marathon Splits Explained</a>.</li>
     <li>Check whether your pacing plan is fragile with <a href="/blog/time-in-the-bank-math/">The Math of “Time in the Bank”</a>.</li>
