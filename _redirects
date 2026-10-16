@@ -67,3 +67,33 @@
 /melbourne-running/capital-city-trail/index.html /melbourne-running/capital-city-trail/ 301
 /melbourne-running/bay-trail/index.html /melbourne-running/bay-trail/ 301
 /melbourne-running/merri-creek-trail/index.html /melbourne-running/merri-creek-trail/ 301
+
+# Consolidated pace-band presets: preserve each finish target in the generator.
+/pace-band /printable-pace-band/ 301
+/pace-band/3-00 /printable-pace-band/?h=3&m=0&s=0&unit=km&strategy=even#generator 301
+/pace-band/3-00/ /printable-pace-band/?h=3&m=0&s=0&unit=km&strategy=even#generator 301
+/pace-band/3-00/index.html /printable-pace-band/?h=3&m=0&s=0&unit=km&strategy=even#generator 301
+/pace-band/3-15 /printable-pace-band/?h=3&m=15&s=0&unit=km&strategy=even#generator 301
+/pace-band/3-15/ /printable-pace-band/?h=3&m=15&s=0&unit=km&strategy=even#generator 301
+/pace-band/3-15/index.html /printable-pace-band/?h=3&m=15&s=0&unit=km&strategy=even#generator 301
+/pace-band/3-30 /printable-pace-band/?h=3&m=30&s=0&unit=km&strategy=even#generator 301
+/pace-band/3-30/ /printable-pace-band/?h=3&m=30&s=0&unit=km&strategy=even#generator 301
+/pace-band/3-30/index.html /printable-pace-band/?h=3&m=30&s=0&unit=km&strategy=even#generator 301
+/pace-band/3-45 /printable-pace-band/?h=3&m=45&s=0&unit=km&strategy=even#generator 301
+/pace-band/3-45/ /printable-pace-band/?h=3&m=45&s=0&unit=km&strategy=even#generator 301
+/pace-band/3-45/index.html /printable-pace-band/?h=3&m=45&s=0&unit=km&strategy=even#generator 301
+/pace-band/4-00 /printable-pace-band/?h=4&m=0&s=0&unit=km&strategy=even#generator 301
+/pace-band/4-00/ /printable-pace-band/?h=4&m=0&s=0&unit=km&strategy=even#generator 301
+/pace-band/4-00/index.html /printable-pace-band/?h=4&m=0&s=0&unit=km&strategy=even#generator 301
+/pace-band/4-30 /printable-pace-band/?h=4&m=30&s=0&unit=km&strategy=even#generator 301
+/pace-band/4-30/ /printable-pace-band/?h=4&m=30&s=0&unit=km&strategy=even#generator 301
+/pace-band/4-30/index.html /printable-pace-band/?h=4&m=30&s=0&unit=km&strategy=even#generator 301
+/pace-band/5-00 /printable-pace-band/?h=5&m=0&s=0&unit=km&strategy=even#generator 301
+/pace-band/5-00/ /printable-pace-band/?h=5&m=0&s=0&unit=km&strategy=even#generator 301
+/pace-band/5-00/index.html /printable-pace-band/?h=5&m=0&s=0&unit=km&strategy=even#generator 301
+/pace-band/sub-4 /printable-pace-band/?h=3&m=59&s=59&unit=km&strategy=even#generator 301
+/pace-band/sub-4/ /printable-pace-band/?h=3&m=59&s=59&unit=km&strategy=even#generator 301
+/pace-band/sub-4/index.html /printable-pace-band/?h=3&m=59&s=59&unit=km&strategy=even#generator 301
+/pace-band/3:15 /printable-pace-band/?h=3&m=15&s=0&unit=km&strategy=even#generator 301
+/pace-band/3:15/ /printable-pace-band/?h=3&m=15&s=0&unit=km&strategy=even#generator 301
+/pace-band/3:15/index.html /printable-pace-band/?h=3&m=15&s=0&unit=km&strategy=even#generator 301
