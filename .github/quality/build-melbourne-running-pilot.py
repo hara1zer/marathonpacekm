@@ -16,12 +16,7 @@ DISPLAY_DATE = '13 October 2026'
 HUB = '/melbourne-running/'
 VENUES = json.loads((CONTENT / 'venues.json').read_text())
 
-HEADER = '''<header class="mpkm-site-header"><div class="mpkm-header-inner">
-<a class="mpkm-brand" href="/"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a>
-<nav class="mpkm-main-nav" aria-label="Main navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/blog/">Guides</a><a class="mpkm-nav-cta" href="/printable-pace-band/">Pace band ↗</a></nav>
-<details class="mpkm-mobile-menu"><summary aria-label="Site menu">Menu <span aria-hidden="true">☰</span></summary><nav aria-label="Mobile site navigation"><a href="/">Pace chart</a><a href="/marathon-time-predictor/">Predictor</a><a href="/monthly-training-plan/">Training plan</a><a href="/marathon-fueling-calculator/">Fueling</a><a href="/blog/">Guides</a><a href="/melbourne-running/">Melbourne running</a><a href="/printable-pace-band/">Pace band</a></nav></details>
-</div></header>'''
-FOOTER = '''<footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information"><a href="/about/">About Davin</a><a href="/methodology/">Calculator methods</a><a href="/editorial-policy/">Editorial policy</a><a href="/contact/">Contact &amp; corrections</a><a href="/privacy/">Privacy</a><a href="/disclaimer/">Disclaimer</a><a href="/sitemap/">All pages</a></nav><p>© 2026 Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>'''
+from site_navigation import render_header, render_footer, apply_navigation, VERSION
 
 PAGES = [
     {
@@ -234,21 +229,21 @@ def render(page):
 <meta property="og:type" content="{'website' if page['slug'] == HUB else 'article'}"><meta property="og:title" content="{title}"><meta property="og:description" content="{description}"><meta property="og:url" content="{url}"><meta property="og:locale" content="en_AU"><meta property="og:site_name" content="MarathonPaceKM">
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{description}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260922"><meta name="theme-color" content="#174f40">
-<link rel="stylesheet" href="/assets/style.css"><link rel="stylesheet" href="/assets/site.css?v=20261004"><link rel="stylesheet" href="/assets/melbourne-running.css?v=20261013">
+<link rel="stylesheet" href="/assets/style.css"><link rel="stylesheet" href="/assets/site.css?v={VERSION}"><link rel="stylesheet" href="/assets/melbourne-running.css?v=20261013">
 <meta name="google-adsense-account" content="ca-pub-5455873308344668"><script defer src="/assets/site-telemetry.js?v=20261008-audit"></script>
 {f'<script defer src="/assets/melbourne-running.js?v=20261013"></script>' if page['slug'] == HUB else ''}
 <script type="application/ld+json">{json.dumps(schema(page), ensure_ascii=False, indent=2).replace('</', '<\\/')}</script>
 </head><body class="mpkm-legacy {pageclass} mpkm-venues">
-<a class="skip-link" href="#content">Skip to content</a>{HEADER}
+<a class="skip-link" href="#content">Skip to content</a>{render_header(page['slug'])}
 <main class="wrap" id="content" tabindex="-1"><nav class="venue-crumbs" aria-label="Breadcrumb">{breadcrumbs}</nav>
 <article><header class="venue-hero"><p class="eyebrow">{escape(page['eyebrow'])}</p><h1>{escape(page['h1'])}</h1><p class="lede">{escape(page['lede'])}</p><p class="byline">Online sources checked {DISPLAY_DATE} · {link('/editorial-policy/', 'Editorial policy')}</p></header>
 {photos}{facts_html(page)}<div class="venue-body">{body}{related}{faq_html(page)}
 <p class="venue-check"><strong>Last checked: <time datetime="{DATE}">{DISPLAY_DATE}</time></strong> (online sources). {link('/contact/', 'Report a change')} with the venue name, changed detail and date.</p>{sources}</div></article>
-</main>{FOOTER}</body></html>
+</main>{render_footer(page['slug'])}</body></html>
 '''
     dest = ROOT / page['slug'].strip('/') / 'index.html'
     dest.parent.mkdir(parents=True, exist_ok=True)
-    dest.write_text(html)
+    dest.write_text(apply_navigation(html, page['slug']))
     print(f'Wrote {dest.relative_to(ROOT)}; title {len(page["title"])} chars; description {len(page["description"])} chars.')
 
 

@@ -79,33 +79,9 @@
   .mpkm-legacy footer {color:var(--muted);border-color:var(--line)}
   .mpkm-legacy footer.wrap {padding-block:28px 40px!important}
   .mpkm-legacy .site-info {padding-block:24px;border-top:1px solid var(--line)}
-  /* The shared masthead is independent of each legacy page's content layout. */
-  body .mpkm-site-header {
-    display:block;width:100%;max-width:none;margin:0;padding:0;
-    border:0;border-bottom:1px solid #dbe4d9;background:#f6f8f3;color:#152d27;
-    position:relative;box-shadow:none;
-  }
-  .mpkm-site-header .mpkm-header-inner {
-    width:min(1200px,calc(100% - 64px));margin:0 auto;min-height:86px;
-    display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 0;
-  }
-  .mpkm-site-header .mpkm-brand {
-    display:flex;align-items:center;gap:12px;text-decoration:none;color:#152d27;
-    font-size:1.04rem;font-weight:760;letter-spacing:-.035em;line-height:1.15;flex-shrink:0;
-  }
-  .mpkm-brand .mpkm-brand-mark {display:grid;place-items:center;width:42px;height:42px;background:#174f40;border-radius:50%;color:#dbf397;flex:none}
-  .mpkm-brand-mark svg {display:block;width:25px;height:25px}
-  .mpkm-brand small {display:block;font-size:.64rem;font-weight:600;letter-spacing:.12em;margin-top:5px;text-transform:uppercase;color:#536760}
-  .mpkm-site-header .mpkm-main-nav {display:flex;flex-wrap:wrap;align-items:center;gap:24px;padding:0;margin:0;background:none;border:0}
-  .mpkm-main-nav a {font-size:.87rem;font-weight:600;color:#174f40;text-decoration:none;padding:10px 0}
-  .mpkm-main-nav .mpkm-nav-cta {border:1px solid #bacbbb;border-radius:99px;padding:10px 17px}
-  .mpkm-main-nav a[aria-current="page"] {text-decoration:underline;text-decoration-thickness:2px}
   .mpkm-legacy .mpkm-old-brand {display:none}
   @media(max-width:760px) {
     .mpkm-legacy .wrap,.mpkm-legacy .container,.mpkm-site-header .mpkm-header-inner {width:calc(100% - 32px)}
-    .mpkm-site-header .mpkm-header-inner {flex-wrap:wrap;gap:14px}
-    .mpkm-site-header .mpkm-main-nav {gap:8px 20px;width:100%}
-    .mpkm-main-nav a {min-height:44px;display:inline-flex;align-items:center}
     .mpkm-legacy .card,.mpkm-legacy .panel {padding:20px}
     .mpkm-legacy h1 {font-size:2rem}
     .mpkm-legacy .grid,.mpkm-legacy .twoCol {grid-template-columns:minmax(0,1fr)}
