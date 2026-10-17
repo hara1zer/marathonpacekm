@@ -218,7 +218,7 @@ await test('Personal articles preserve identity, dates and discovery links',asyn
   assert.equal(await link.innerText(),title);
   assert.ok((await page.locator('#personal-experience').innerText()).includes(description));
  }
- const list=await page.locator('script[type="application/ld+json"]').evaluate(s=>JSON.parse(s.textContent).itemListElement);
+ const list=await page.locator('script[type="application/ld+json"]').first().evaluate(s=>JSON.parse(s.textContent).itemListElement);
  assert.equal(list.length,39);assert.equal(new Set(list.map(x=>x.url)).size,39);
  for(const [route] of articles)assert.ok(list.some(x=>x.url==='https://marathonpacekm.com'+route));
  const sitemap=await (await page.request.get(base+'/sitemap.xml')).text();
@@ -236,14 +236,16 @@ await test('Fueling article worked example agrees with the calculator',async()=>
 await test('Mobile menu works with keyboard and navigation at small widths',async()=>{
  for(const width of [320,390,760]){
   await page.setViewportSize({width,height:900});await go('/blog/');
-  const menu=page.locator('.mpkm-mobile-menu');const summary=menu.locator('summary');
+  const menu=page.locator('.mpkm-mobile-menu');const summary=menu.locator(':scope > summary');
   assert.ok(await summary.isVisible());assert.equal(await menu.getAttribute('open'),null);
   await summary.focus();await page.keyboard.press('Enter');assert.notEqual(await menu.getAttribute('open'),null);
-  assert.equal(await menu.locator('nav a').count(),6);
+  assert.equal(await menu.locator('.mpkm-nav-list > li').count(),5);
+  await menu.locator('summary[aria-label="Training links"]').click();
   assert.ok(await menu.locator('a[href="/monthly-training-plan/"]').isVisible());
+  await summary.focus();
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
   await page.keyboard.press('Enter');assert.equal(await menu.getAttribute('open'),null);
-  await summary.click();await menu.locator('a[href="/marathon-fueling-calculator/"]').click();
+  await summary.click();await menu.locator('summary[aria-label="Calculators links"]').click();await menu.locator('a[href="/marathon-fueling-calculator/"]').click();
   assert.ok(page.url().endsWith('/marathon-fueling-calculator/'));
  }
  await page.setViewportSize({width:1280,height:900});await go('/blog/');
