@@ -28,7 +28,6 @@
   body.mpkm-legacy.mpkm-index main.wrap { max-width: 1120px; }
   body.mpkm-legacy > header.wrap > nav:not(.crumbs):not(.breadcrumbs) { display: none; }
   body.mpkm-legacy > header.wrap { border-bottom: 0; }
-  .mpkm-mobile-menu { display: none; padding: 0; margin: 0; border: 0; background: transparent; }
   .mpkm-story-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 22px; }
   .mpkm-story-card {
     display: flex; flex-direction: column; min-width: 0;
@@ -59,32 +58,6 @@
     body.mpkm-reading main { padding-top: 18px; }
     body.mpkm-reading h1 { font-size: 1.8rem; max-width: none; }
     body.mpkm-reading .card { padding: 20px; }
-    body .mpkm-site-header .mpkm-header-inner,
-    body .site-header .header-inner { min-height: 72px; padding-block: 12px; flex-wrap: nowrap; gap: 12px; position: relative; }
-    body .mpkm-site-header .mpkm-main-nav,
-    body .site-header .main-nav { display: none; }
-    body .mpkm-site-header .mpkm-brand,
-    body .site-header .brand { gap: 8px; font-size: .95rem; min-width: 0; }
-    body .mpkm-brand .mpkm-brand-mark,
-    body .brand .brand-mark { width: 36px; height: 36px; }
-    body .mpkm-brand small, body .brand small { display: none; }
-    .mpkm-mobile-menu { display: block; flex: none; }
-    .mpkm-mobile-menu > summary {
-      display: flex; align-items: center; justify-content: center; gap: 7px;
-      min-height: 44px; padding: 8px 12px; border: 1px solid #bacbbb;
-      border-radius: 10px; color: #174f40; background: #fff; font-size: .85rem;
-      font-weight: 650; cursor: pointer; list-style: none;
-    }
-    .mpkm-mobile-menu > summary::-webkit-details-marker { display: none; }
-    .mpkm-mobile-menu[open] > summary { background: #edf3e7; }
-    body .mpkm-mobile-menu nav {
-      display: grid; position: absolute; top: calc(100% - 2px); right: 0;
-      width: min(340px, calc(100vw - 32px)); padding: 10px;
-      border: 1px solid #dbe4d9; border-radius: 14px; background: #fff;
-      box-shadow: 0 12px 28px #103c3114; z-index: 50;
-    }
-    body .mpkm-mobile-menu nav a { display: flex; align-items: center; min-height: 46px; margin: 0; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: #174f40; font-size: .95rem; }
-    body .mpkm-mobile-menu nav a:hover { background: #edf3e7; }
     .mpkm-story-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
     .mpkm-story-card { padding: 20px; }
     .mpkm-footer-inner { width: calc(100% - 32px); }
