@@ -196,12 +196,14 @@
     }
 
     .band-brand { display: flex; flex-direction: column; justify-content: center; padding: 2mm; background: #fff; color: #111; border-right: .2mm solid #666; text-align: left; box-sizing: border-box; }
-    .band-brand-name { font-size: 5.2pt; font-weight: 800; letter-spacing: .08em; line-height: 1.1; text-transform: uppercase; }
+    .band-brand-content { min-width: 0; }
+    .band-brand-name { overflow: hidden; font-size: 5.2pt; font-weight: 800; letter-spacing: .08em; line-height: 1.1; text-transform: uppercase; text-overflow: ellipsis; white-space: nowrap; }
     .band-goal { margin-top: 1.2mm; font-size: 13pt; font-weight: 900; line-height: 1; }
     .band-pace { margin-top: 1mm; font-size: 6.5pt; font-weight: 700; line-height: 1.15; }
     .band-runner { margin-top: 1mm; overflow: hidden; font-size: 5.5pt; line-height: 1.1; text-overflow: ellipsis; white-space: nowrap; }
     .band-checkpoints { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(2, 1fr); min-width: 0; }
     .band-cell { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; border-right: .2mm solid #9ca3af; border-bottom: .2mm solid #9ca3af; text-align: center; box-sizing: border-box; }
+    .band-cell-content { display: flex; flex-direction: column; align-items: center; justify-content: center; max-width: 100%; }
     .band-cell:nth-child(5n) { border-right: 0; }
     .band-cell:nth-child(n+6) { border-bottom: 0; }
     .band-cell:nth-child(odd) { background: #f1f3f5; }
@@ -212,6 +214,11 @@
     .band-checkpoints[data-count="6"] .band-cell:nth-child(3n) { border-right: 0; }
     .band-checkpoints[data-count="6"] .band-cell:nth-child(n+4) { border-bottom: 0; }
     .band-checkpoints[data-count="6"] .band-cell:nth-child(5) { border-right: .2mm solid #9ca3af; }
+
+    /* Rotate the content, keeping the same cells, ink sizes and 38 mm strip. */
+    .pace-band[data-reading="across"] .band-cell-content { width: 17mm; max-width: none; flex: none; transform: rotate(-90deg); }
+    .pace-band[data-reading="across"] .band-brand { align-items: center; padding: 0; }
+    .pace-band[data-reading="across"] .band-brand-content { width: 34mm; max-width: none; flex: none; transform: rotate(-90deg); }
 
     .phone-stage { display: flex; justify-content: center; padding: 12px; border-radius: 16px; background: var(--band-soft); }
 
@@ -290,27 +297,27 @@
       body > * { display: none !important; }
 
       body > #printSheet {
-        width: 100%;
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        gap: 9mm;
-        margin: 0;
+        width: var(--band-length, 194mm);
+        display: block !important;
+        margin: 0 auto;
         padding: 0;
         background: #fff;
         color: #111;
         font-family: Arial, Helvetica, sans-serif;
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
+        line-height: 1.25;
       }
 
-      .print-heading { width: var(--band-length, 194mm); margin: 0; padding: 0; }
+      .print-heading { width: 100%; margin: 0 0 6mm; padding: 0; break-inside: avoid; page-break-inside: avoid; break-after: avoid; page-break-after: avoid; }
       .print-title { margin: 0; font-size: 13pt; font-weight: 900; }
       .print-instructions { margin: 1.5mm 0 0; color: #444; font-size: 8pt; }
       .print-scale { display: flex; align-items: flex-end; gap: 3mm; margin-top: 2mm; color: #444; font-size: 7pt; }
       .print-scale-line { width: 50mm; border-top: .4mm solid #111; }
-      .print-band-row { width: var(--band-length, 194mm); height: 38mm; flex: 0 0 38mm; break-inside: avoid; page-break-inside: avoid; }
-      .pace-band { box-shadow: none !important; }
+      /* Block flow avoids flex-item fragmentation in mobile print engines. */
+      .print-band-row { display: block; width: 100%; height: 38mm; margin: 0; padding: 0; break-inside: avoid; page-break-inside: avoid; }
+      .print-band-row + .print-band-row { margin-top: 6mm; }
+      .pace-band { box-shadow: none !important; break-inside: avoid; page-break-inside: avoid; }
     }
 
     #checkpointPrint { display: none; }
@@ -423,7 +430,7 @@
           "name": "Can I share my pace plan?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Copy share link preserves your goal time, units, pacing strategy and any optional runner or race name you enter. The phone card can also be downloaded as a PNG. Share, checkpoint sheet and optional details includes an iframe snippet for embedding the generator."
+            "text": "Yes. Copy share link preserves your goal time, units, pacing strategy, reading direction, paper and wrist size, and any optional runner or race name you enter. The phone card can also be downloaded as a PNG. Share, checkpoint sheet and optional details includes an iframe snippet for embedding the generator."
           }
         }
       ]
@@ -641,6 +648,14 @@
 
       <div class="control-grid">
         <div class="control-group">
+          <label for="readingDirection">Reading direction</label>
+          <select id="readingDirection" aria-describedby="readingHelp">
+            <option value="along" selected>Along the band (standard)</option>
+            <option value="across">Across the band (rotated 90°)</option>
+          </select>
+          <p class="field-help" id="readingHelp">Text follows the length of the strip around your wrist. Both options keep the band 38 mm wide.</p>
+        </div>
+        <div class="control-group">
           <label for="paper">Print paper</label>
           <select id="paper"><option value="a4" selected>A4 landscape</option><option value="letter">US Letter landscape</option></select>
         </div>
@@ -753,9 +768,9 @@
                     <div class="band-cell"><span class="band-distance">15K</span><span class="band-time">1:25:19</span></div>
                     <div class="band-cell"><span class="band-distance">20K</span><span class="band-time">1:53:45</span></div>
                     <div class="band-cell"><span class="band-distance">HALF</span><span class="band-time">2:00:00</span></div>
-                    <div class="band-cell"><span class="band-distance">25K</span><span class="band-time">2:22:11</span></div>
+                    <div class="band-cell"><span class="band-distance">25K</span><span class="band-time">2:22:12</span></div>
                     <div class="band-cell"><span class="band-distance">30K</span><span class="band-time">2:50:38</span></div>
-                    <div class="band-cell"><span class="band-distance">35K</span><span class="band-time">3:19:04</span></div>
+                    <div class="band-cell"><span class="band-distance">35K</span><span class="band-time">3:19:05</span></div>
                     <div class="band-cell"><span class="band-distance">40K</span><span class="band-time">3:47:31</span></div>
                     <div class="band-cell"><span class="band-distance">FINISH</span><span class="band-time">4:00:00</span></div>
                   </div>
@@ -806,6 +821,7 @@
 
     <section id="howto" class="card">
       <h2>How to print and wear your pace band</h2>
+      <p>Choose <strong>Along the band</strong> for the standard text direction, or <strong>Across the band</strong> to rotate the text 90° for a different wrist-reading position. The preview and printed bands use the same choice. Both keep the same 38 mm width, checkpoints and elapsed times.</p>
       <p><strong>Example: a two-hour half marathon.</strong> At even pace, aim for 28:26 at 5 km, 56:53 at 10 km, 1:53:45 at 20 km and 2:00:00 at the 21.0975 km finish. These are total elapsed times from your start, including stops. <a href="?distance=half&amp;h=2&amp;m=0&amp;s=0&amp;unit=km&amp;strategy=even#generator">Create this half-marathon band</a>.</p>
 
       <ol class="muted">
@@ -857,7 +873,7 @@
       <p>Print on the selected A4 or Letter landscape paper at 100% or Actual size, then measure the supplied 50 mm line. If it does not measure exactly 50 mm, turn off Fit to page or other scaling and print again. Each band is your selected wrist circumference plus 24 mm of blank overlap, and 38 mm high.</p>
 
       <h3>Can I share my pace plan?</h3>
-      <p>Yes. Copy share link preserves your goal time, units, pacing strategy and any optional runner or race name you enter. The phone card can also be downloaded as a PNG. Share, checkpoint sheet and optional details includes an iframe snippet for embedding the generator.</p>
+      <p>Yes. Copy share link preserves your goal time, units, pacing strategy, reading direction, paper and wrist size, and any optional runner or race name you enter. The phone card can also be downloaded as a PNG. Share, checkpoint sheet and optional details includes an iframe snippet for embedding the generator.</p>
 
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
@@ -893,6 +909,7 @@
     var distanceInputs = document.querySelectorAll('input[name="distance"]');
     var elPaper = document.getElementById("paper");
     var elWristSize = document.getElementById("wristSize");
+    var elReadingDirection = document.getElementById("readingDirection");
       var goalError = document.getElementById("goalError");
       var paceError = document.getElementById("paceError");
       var strategyError = document.getElementById("strategyError");
@@ -976,6 +993,14 @@
 
     function raceLabel(){
       return raceKm() === HALF_MARATHON_KM ? "Half marathon" : "Marathon";
+    }
+
+    function readingDirection(){
+      return elReadingDirection.value === "across" ? "across" : "along";
+    }
+
+    function readingLabel(){
+      return readingDirection() === "across" ? "Across the band (rotated 90°)" : "Along the band";
     }
 
     function validInteger(input, min, max){
@@ -1297,19 +1322,23 @@
       var cells = rows.map(function(row){
         return (
           '<div class="band-cell">' +
+            '<div class="band-cell-content">' +
             '<span class="band-distance">' + escapeHTML(row.label) + '</span>' +
             '<span class="band-time">' + escapeHTML(row.time) + '</span>' +
+            '</div>' +
           '</div>'
         );
       }).join("");
 
       return (
-        '<div class="pace-band">' +
+        '<div class="pace-band" data-reading="' + readingDirection() + '">' +
           '<div class="band-brand">' +
+            '<div class="band-brand-content">' +
             '<div class="band-brand-name">' + escapeHTML(race) + '</div>' +
             '<div class="band-goal">' + escapeHTML(formatGoal(total)) + '</div>' +
             '<div class="band-pace">' + escapeHTML(primaryPace) + ' / ' + escapeHTML(unit) + '</div>' +
             (runner ? '<div class="band-runner">' + escapeHTML(runner) + '</div>' : '') +
+            '</div>' +
           '</div>' +
           '<div class="band-checkpoints" data-count="' + rows.length + '">' + cells + '</div>' +
           '<div class="band-tape">Tape overlap</div>' +
@@ -1436,7 +1465,7 @@
         link.href = "?distance=" + (isHalf ? "half" : "marathon") +
           "&h=" + Math.floor(total / 3600) +
           "&m=" + Math.floor(total % 3600 / 60) +
-          "&s=0&unit=km&strategy=even#generator";
+          "&s=0&unit=km&strategy=even&reading=" + readingDirection() + "#generator";
       });
     }
 
@@ -1477,6 +1506,7 @@
       url.searchParams.set("strategy", elStrategy.value);
       url.searchParams.set("paper", elPaper.value);
       url.searchParams.set("wrist", elWristSize.value);
+      url.searchParams.set("reading", readingDirection());
 
       if(elStrategy.value === "controlled"){
         url.searchParams.set("cushion", String(clamp(elStartCushion.value, 0, 120)));
@@ -1521,6 +1551,9 @@
       var total = goalSeconds();
       setStrategyUI();
       setUnitUI();
+      document.getElementById("readingHelp").textContent = readingDirection() === "across" ?
+        "Text is rotated 90° across the strip. Try this position with your forearm held across your body. The band stays 38 mm wide." :
+        "Text follows the length of the strip around your wrist. Both options keep the band 38 mm wide.";
       var valid = validateInputs();
       document.getElementById('outputs').hidden = !valid;
       [printBtn, printBtnInline, downloadBtn, downloadBtnInline, copyBtn, copyEmbedBtn,
@@ -1562,11 +1595,11 @@
         "Printable " + raceLabel().toLowerCase() + " pace band";
       document.getElementById("bandSummary").textContent =
         (rows.length === 6 ? "Six" : "Ten") +
-        " readable checkpoints, a cut line, and a blank tape-overlap section.";
+        " readable checkpoints, a cut line, and a blank tape-overlap section. Reading direction: " + readingLabel() + ".";
       document.querySelector("#outputs > h2").textContent =
         "Your " + raceLabel().toLowerCase() + " pace band and phone card";
       document.querySelector(".print-title").textContent =
-        raceLabel() + " pace bands";
+        raceLabel() + " pace bands · " + readingLabel();
       document.querySelector(".print-instructions").textContent =
         "Print at 100% / Actual size on " +
         (elPaper.value === "letter" ? "US Letter" : "A4") +
@@ -1843,6 +1876,8 @@
         elUnit.value = query.get("unit");
       }
       if(query.get("paper") === "letter") elPaper.value = "letter";
+      // Old and unrecognised links keep the established standard direction.
+      elReadingDirection.value = query.get("reading") === "across" ? "across" : "along";
       if(["150", "170", "190", "200"].indexOf(query.get("wrist")) !== -1){
         elWristSize.value = query.get("wrist");
       }
@@ -1973,6 +2008,11 @@
       input.addEventListener("change", render);
     });
 
+    elReadingDirection.addEventListener("change", function(){
+      updatePresets();
+      render();
+    });
+
     [
       elStrategy,
       elStartCushion,
@@ -1991,7 +2031,7 @@
     downloadBtn.addEventListener("click", downloadPhoneCard);
     downloadBtnInline.addEventListener("click", downloadPhoneCard);
     [elH, elM, elS, elPaceM, elPaceS, elUnit, elStrategy, elStartCushion,
-      elNegativeMargin, elPaper, elWristSize].concat(Array.from(distanceInputs)).forEach(function(input){
+      elNegativeMargin, elPaper, elWristSize, elReadingDirection].concat(Array.from(distanceInputs)).forEach(function(input){
       input.addEventListener("change", recordCustomisedPlan);
       input.addEventListener("blur", function(){ recordValidationError(input); });
     });
