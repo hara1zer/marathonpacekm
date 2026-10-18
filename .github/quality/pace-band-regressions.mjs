@@ -50,14 +50,14 @@ function load(search = '') {
   for (const [id, value] of Object.entries({
     h: '4', m: '0', s: '0', paceM: '5', paceS: '41', unit: 'km',
     strategy: 'even', startCushion: '15', negativeMargin: '2',
-    runnerName: '', raceName: '', paper: 'a4', wristSize: '170'
+    runnerName: '', raceName: '', paper: 'a4', wristSize: '170', readingDirection: 'along'
   })) element(id, value);
   const ids = ['goalError','paceError','strategyError','paceLabel','strategyHelp','controlledSettings',
     'negativeSettings','evenSettings','evenFiveK','controlledFiveK','controlledRecovery',
     'summaryCards','wristPreview','phonePreview','splitTableWrap','splitSummary',
     'embedCode','status','outputDescription','printBand1','printBand2','printBand3',
     'downloadBtn','downloadBtnInline','printBtn','printBtnInline','copyBtn','copyEmbedBtn',
-    'printA4Btn','outputs','paperPageStyle','bandDimension','bandHeading','bandSummary'];
+    'printA4Btn','outputs','paperPageStyle','bandDimension','bandHeading','bandSummary','readingHelp'];
   ids.forEach(id => element(id));
   const races = [element('marathon'), element('half')];
   races[0].value = 'marathon'; races[0].checked = true;
@@ -131,6 +131,8 @@ function schedule(app, goal) {
 
 let app = load();
 assert.equal(app.get('strategy').value, 'even');
+assert.equal(app.get('readingDirection').value, 'along');
+assert.match(app.get('wristPreview').innerHTML, /data-reading="along"/);
 app.set('h', '3'); app.set('m', '30');
 let r = schedule(app, '3:30:00');
 assert.equal(r.find(x => x.label === '40').elapsed, '3:19:05');
@@ -189,6 +191,35 @@ assert.match(app.get('bandDimension').textContent, /174 × 38 mm/);
 assert.equal(app.ctx.document.documentElement.style['--band-length'], '174mm');
 assert.match(app.get('embedCode').value, /paper=letter/);
 assert.match(app.get('embedCode').value, /wrist=150/);
+
+const samePlan = rows(app);
+const samePhone = app.get('phonePreview').innerHTML;
+app.set('readingDirection', 'across', 'change');
+for (const id of ['wristPreview','printBand1','printBand2','printBand3']) {
+  assert.match(app.get(id).innerHTML, /data-reading="across"/);
+}
+assert.match(app.get('embedCode').value, /reading=across/);
+assert.match(app.get('readingHelp').textContent, /rotated 90°/);
+assert.match(app.get('bandSummary').textContent, /Across the band/);
+assert.match(app.ctx.document.querySelector('.print-title').textContent, /Across the band/);
+assert.deepEqual(rows(app), samePlan, 'reading direction must not change elapsed times');
+assert.equal(app.get('phonePreview').innerHTML, samePhone, 'reading direction is a wrist-band setting');
+assert.equal(app.ctx.document.documentElement.style['--band-length'], '174mm');
+app.presets[0].fire('click');
+assert.equal(app.get('readingDirection').value, 'across', 'goal shortcuts retain the reading direction');
+assert.match(app.presets[0].href, /reading=across/);
+
+for (const value of ['', 'reading=unknown', 'reading=%22%3E%3Cscript%3E']) {
+  const standard = load(value ? '?' + value : '');
+  assert.equal(standard.get('readingDirection').value, 'along');
+  assert.match(standard.get('wristPreview').innerHTML, /data-reading="along"/);
+}
+const rotated = load('?h=4&m=0&s=0&reading=across&paper=letter&wrist=200');
+assert.equal(rotated.get('readingDirection').value, 'across');
+assert.match(rotated.get('embedCode').value, /reading=across/);
+schedule(rotated, '4:00:00');
+assert.match(rotated.get('wristPreview').innerHTML, /25K.*2:22:12/);
+assert.match(rotated.get('wristPreview').innerHTML, /35K.*3:19:05/);
 
 app = load('?h=4&m=0&s=0&unit=km&strategy=controlled&cushion=15');
 assert.equal(app.get('strategy').value, 'controlled');

@@ -16,6 +16,10 @@ for case in manifest:
  labels=[s for s in spans if s['text']=='FINISH']
  assert len(times)>=3 and len(labels)==3
  assert all(abs(s['size']-8)<0.15 for s in labels)
+ # Verify actual PDF text orientation, not just a CSS attribute or preview.
+ finish_dirs=[l['dir'] for b in page.get_text('dict')['blocks'] if 'lines' in b for l in b['lines'] if any(s['text']=='FINISH' for s in l['spans'])]
+ expected_dir=(0,-1) if case.get('reading')=='across' else (1,0)
+ assert len(finish_dirs)==3 and all(abs(d[0]-expected_dir[0])<0.01 and abs(d[1]-expected_dir[1])<0.01 for d in finish_dirs), (case['file'],'reading direction',finish_dirs)
  for s in spans:
   x0,y0,x1,y1=s['bbox']; assert x0>=27 and y0>=27 and x1<=page.rect.width-27 and y1<=page.rect.height-27, (case['file'],s)
  # Calibration rule appears as a 50mm horizontal path in the real PDF.
@@ -25,6 +29,6 @@ for case in manifest:
  rules += [(i[1].width,i[1].height) for i in paths if i[0]=='re']
  assert any(abs(width*25.4/72-50)<0.25 and height<=1 for width,height in rules), (case['file'],'calibration rule missing')
  page.get_pixmap(matrix=fitz.Matrix(1.3,1.3)).save(root/(case['file']+'.png'))
- results.append({'file':case['file'],'pages':1,'width_mm':w,'height_mm':h,'verified':True})
+ results.append({'file':case['file'],'pages':1,'width_mm':w,'height_mm':h,'reading':case.get('reading','along'),'verified':True})
 (root/'pdf-results.json').write_text(json.dumps(results,indent=2))
 print(f'{len(results)} actual PDFs passed page count, paper dimensions, margins, copy count, fonts and calibration checks')
