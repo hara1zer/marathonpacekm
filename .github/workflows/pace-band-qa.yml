@@ -6,6 +6,8 @@ on:
       - '**/*.html'
       - 'assets/*.css'
       - 'assets/site-telemetry.js'
+      - 'assets/navigation.js'
+      - '.github/quality/*navigation*'
       - '.github/quality/pace-band-*'
       - '.github/quality/goal-*'
       - '.github/quality/browser-regressions.mjs'
@@ -25,16 +27,18 @@ jobs:
           node-version: '22'
       - name: Install development-only test dependencies
         run: |
-          npm install --prefix "$RUNNER_TEMP/pace-band-deps" playwright@1.62.1
+          npm install --prefix "$RUNNER_TEMP/pace-band-deps" playwright@1.62.1 axe-core@4.14.0
           "$RUNNER_TEMP/pace-band-deps/node_modules/.bin/playwright" install --with-deps chromium
-          python3 -m pip install PyMuPDF==1.26.7
+          python3 -m pip install PyMuPDF==1.26.7 lxml==6.1.1
       - name: Calculation and state regressions
         run: |
           node .github/quality/pace-band-regressions.mjs
           python3 .github/quality/goal-content-regressions.py
+          python3 .github/quality/navigation-regressions.py
       - name: Browser, mobile and actual PDF output
         env:
           PLAYWRIGHT_MODULE: ${{ runner.temp }}/pace-band-deps/node_modules/playwright
+          AXE_MODULE: ${{ runner.temp }}/pace-band-deps/node_modules/axe-core
           QA_OUTPUT: ${{ runner.temp }}/pace-band-qa
         run: |
           node .github/quality/pace-band-browser.mjs
@@ -42,6 +46,7 @@ jobs:
           node .github/quality/browser-regressions.mjs
           node .github/quality/seo-regressions.mjs
           node .github/quality/browser-scan.mjs
+          node .github/quality/navigation-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

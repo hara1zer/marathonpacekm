@@ -3,7 +3,7 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[2]
-sources = ['theme.css', 'content.css', 'layout.css', 'performance.css']
+sources = ['theme.css', 'content.css', 'layout.css', 'performance.css', 'navigation.css']
 css = '\n'.join((ROOT / 'assets' / name).read_text() for name in sources)
 css = re.sub(r'/\*.*?\*/', '', css, flags=re.S)
 css = re.sub(r'\s+', ' ', css).strip()

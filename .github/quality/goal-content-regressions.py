@@ -32,6 +32,10 @@ for slug, before in BASE.items():
     controls=re.findall(r'<(?:input|select|option|button)\b[^>]*>',source)
     assert digest('\n'.join(controls))==before['controls'], (slug, 'input/default/control contract changed')
     scripts=re.findall(r'<script\b(?![^>]*application/ld\+json)[^>]*>.*?</script>',source,re.S)
+    # Shared navigation is the sole reviewed addition; existing calculator scripts stay byte-identical.
+    navigation='<script defer src="/assets/navigation.js?v=20261017-nav"></script>'
+    assert scripts.count(navigation)==1, (slug, 'missing or duplicate navigation enhancement')
+    scripts.remove(navigation)
     if before['addedBandScript']:
         assert scripts.pop()=='<script defer src="/assets/goal-band-links.js?v=20261004"></script>', (slug, 'only existing goal-aware adapter may be added')
     assert len(scripts)==len(before['scripts']), (slug, 'script list changed')

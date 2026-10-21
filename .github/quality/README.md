@@ -19,13 +19,23 @@ Optional environment variables: `PLAYWRIGHT_MODULE` (absolute module path), `CHR
 
 The regression script checks normal/invalid calculator inputs, precise time totals, km/mile band segments, prediction scenarios, zero-mileage weeks, fueling schedules, CSV/PNG downloads and both print layouts. It also checks the personal articles' title/schema identity, discovery links, modified dates and worked gel example against the calculator. The scan visits every HTML page at 1280 and 390 px, recording script errors, missing resources and horizontal overflow; `--focused` includes the two new personal articles and selected priority pages. Nonzero exit means a failed check.
 
-## Shared branding
+## Shared navigation and branding
 
-The site-wide palette and legacy-page styling live in `assets/theme.css`. Homepage-style pages retain their existing layout; other pages use the same logo and a common static masthead. Run `python3 .github/quality/sync-branding.py` after adding a page to attach the shared CSS, logo/navigation and current favicon references. The script is idempotent and uses only the Python standard library. Update the version in that script and asset references when changing cached branding assets. Screen styles are scoped away from print layouts.
+The single navigation definition, header/footer renderers, active sections and breadcrumb hierarchy live in `site_navigation.py`. Edit `GROUPS` there, then run `python3 .github/quality/sync-navigation.py` and commit all regenerated HTML. The homepage, tools, articles, goal guides, Melbourne pages and 404 use the same destinations. Both desktop and mobile lists are generated from that one definition; links exist in delivered HTML with no client-side fetching or Cloudflare build step.
+
+Menus use native `details` and `summary`, with separate directly accessible category links. `assets/navigation.js` adds Escape, outside-click, keyboard focus dismissal and viewport reset. The native menus and links still work without it. Mobile uses expandable category sections at widths up to 1000 px; the desktop pace-band CTA becomes a highlighted mobile-menu entry to keep the small header compact.
+
+`assets/navigation.css` is the only navigation style source. It is included in the committed `site.css` bundle. Bump `VERSION` in `site_navigation.py` whenever changing shared CSS or navigation JavaScript, rebuild with `python3 .github/quality/build-shared-css.py`, then sync navigation to update **every** cache-busted reference. Assets are immutable for a year.
+
+`sync-branding.py`, `apply-layout-polish.py` and the Melbourne page generator reuse these definitions. New pages receive the common header/footer, a skip link and visible breadcrumbs with matching `BreadcrumbList` schema. Do not paste another menu into a template. Calculator, telemetry and print scripts must remain independent of navigation.
+
+Run `python3 .github/quality/navigation-regressions.py` (development-only `lxml`) for full page coverage, link/fragment checks, sitemap depth, identical desktop/mobile destinations, exact active states, schema parity and the retained metadata baseline. Run `node .github/quality/navigation-browser.mjs` with Playwright and `axe-core` for mouse, keyboard, touch, Escape/focus, no-JavaScript behavior, eight widths and scoped WCAG checks. `AXE_MODULE` can point to an external `axe-core` installation. The existing Pages QA workflow runs both alongside the existing calculator, print, consent and all-page checks.
+
+See `navigation-audit-2026-10-17.md` for the decisions, limitations and verified findings, and `navigation-baseline.json` for the complete 116-route inventory (115 published pages plus 404). A metadata baseline must only change when a separately reviewed content/URL change justifies it.
 
 ## Shared page layout
 
-`assets/layout.css` supplies narrower reading columns, the native mobile menu, common footers and story cards. After syncing branding or adding a page, run `python3 .github/quality/apply-layout-polish.py` (requires Python's `lxml` package). It classifies pages as reading, index or tool layouts and preserves existing footer year IDs and scripts. Calculators keep their wide layout. Bump the stylesheet version in the helper and page references when changing this cached asset.
+`assets/layout.css` supplies narrower reading columns, the common footer surface and story cards. `navigation.css` owns the navigation and footer link layout. After syncing branding or adding a page, run `python3 .github/quality/apply-layout-polish.py` (requires Python's `lxml` package). It classifies pages as reading, index or tool layouts and preserves existing footer year IDs and scripts. Calculators keep their wide layout. Bump the stylesheet version in the helper and page references when changing this cached asset.
 
 Only short, regular comparison tables on reading pages receive the `mpkm-summary-table` class and phone layouts with column labels. Detailed splits retain horizontal scrolling. The browser scan checks layout loading, one menu/footer per page, compact phone headers and reading-column widths. Regression checks cover keyboard menu operation, preserved table values, story discovery and calculator widths.
 
@@ -37,7 +47,7 @@ Article tables and figures use `assets/content.css`. Wide tables have a phone-wi
 
 ## Shared CSS bundle and SEO checks
 
-Pages load the committed `assets/site.css` bundle. After editing `theme.css`, `content.css`, `layout.css` or `performance.css`, run `python3 .github/quality/build-shared-css.py` and commit the regenerated bundle. The source stylesheets remain the authoring files; Cloudflare needs no build dependency. Legacy pages may also load their existing `assets/style.css` base styles.
+Pages load the committed `assets/site.css` bundle. After editing `theme.css`, `content.css`, `layout.css`, `performance.css` or `navigation.css`, run `python3 .github/quality/build-shared-css.py` and commit the regenerated bundle. The source stylesheets remain the authoring files; Cloudflare needs no build dependency. Legacy pages may also load their existing `assets/style.css` base styles.
 
 `seo-regressions.mjs` checks the five-hour run/walk calculator, partial final intervals, stopped-time arithmetic, invalid values, 3:25 KM/mile exports, matching pace-band links and static splits without JavaScript. It mocks the Google tag to test first-visit denial, saved choices, opt-in, consent-gated band/calculator events, withdrawal, a 320 px banner, hidden print controls and tag-free embedding. Advertising must never load. These checks do not measure deployed Core Web Vitals or real ad behavior.
 

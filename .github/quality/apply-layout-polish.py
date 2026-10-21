@@ -10,25 +10,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[2]
 VERSION = '20261002'
-LINKS = [('/', 'Pace chart'), ('/marathon-time-predictor/', 'Predictor'),
-         ('/monthly-training-plan/', 'Training plan'),
-         ('/marathon-fueling-calculator/', 'Fueling'), ('/blog/', 'Guides'),
-         ('/printable-pace-band/', 'Pace band')]
-MENU = '<details class="mpkm-mobile-menu"><summary aria-label="Site menu">Menu <span aria-hidden="true">☰</span></summary><nav aria-label="Mobile site navigation">' + ''.join(
-    f'<a href="{url}">{label}</a>' for url, label in LINKS) + '</nav></details>'
-INFO = [('/about/', 'About Davin'), ('/methodology/', 'Calculator methods'),
-        ('/editorial-policy/', 'Editorial policy'), ('/contact/', 'Contact & corrections'),
-        ('/privacy/', 'Privacy'), ('/disclaimer/', 'Disclaimer'), ('/sitemap/', 'All pages')]
-
-def footer(original=''):
-    ids = html.fromstring(original).xpath('.//@id') if original else []
-    year = '2026'
-    if ids:
-        year = ''.join(f'<span id="{escaping.escape(i, quote=True)}">2026</span>' for i in ids)
-    scripts = ''.join(re.findall(r'<script\b[^>]*>.*?</script>', original, re.S))
-    return '<footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><nav aria-label="Site information">' + ''.join(
-        f'<a href="{url}">{escaping.escape(label)}</a>' for url, label in INFO
-    ) + f'</nav><p>© {year} Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>' + scripts
+from site_navigation import sync_all
 
 def summary_table(match):
     source = match[0]
@@ -113,17 +95,6 @@ for path in sorted(ROOT.rglob('*.html')):
             raise ValueError('Cannot locate homepage guides')
     if '/assets/layout.css' not in source and '/assets/site.css' not in source:
         source = source.replace('</head>', f'<link rel="stylesheet" href="/assets/layout.css?v={VERSION}">\n</head>', 1)
-    if 'class="mpkm-mobile-menu"' not in source:
-        pattern = r'(<header\b[^>]*class="(?:mpkm-site-header|site-header)"[^>]*>.*?)(</div>\s*</header>)'
-        source, hits = re.subn(pattern, lambda m: m[1] + '\n' + MENU + '\n' + m[2], source, count=1, flags=re.S)
-        if hits != 1:
-            raise ValueError('Cannot locate site header: ' + rel)
-    if 'class="mpkm-footer"' not in source:
-        if re.search(r'<footer\b', source):
-            source = re.sub(r'<footer\b[^>]*>.*?</footer>', lambda m: footer(m[0]), source, count=1, flags=re.S)
-        else:
-            source = source.replace('</body>', footer() + '\n</body>', 1)
-        source = re.sub(r'<nav\b[^>]*aria-label="More site information"[^>]*>.*?</nav>', '', source, flags=re.S)
     if kind == 'reading':
         before = source.count('mpkm-summary-table')
         source = re.sub(r'<table\b[^>]*>.*?</table>', summary_table, source, flags=re.S)
@@ -135,3 +106,5 @@ for path in sorted(ROOT.rglob('*.html')):
     if source != path.read_text():
         path.write_text(source)
 print(counts)
+
+sync_all()
