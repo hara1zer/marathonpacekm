@@ -7,6 +7,10 @@ on:
       - 'assets/*.css'
       - 'assets/site-telemetry.js'
       - 'assets/navigation.js'
+      - 'assets/pace-calculator.js'
+      - '.github/quality/handoff-quality-browser.mjs'
+      - '.github/quality/handoff-quality-pdf.py'
+      - '.github/quality/content-consolidation-regressions.py'
       - '.github/quality/*navigation*'
       - '.github/quality/pace-band-*'
       - '.github/quality/goal-*'
@@ -35,6 +39,7 @@ jobs:
           node .github/quality/pace-band-regressions.mjs
           python3 .github/quality/goal-content-regressions.py
           python3 .github/quality/navigation-regressions.py
+          python3 .github/quality/content-consolidation-regressions.py
       - name: Browser, mobile and actual PDF output
         env:
           PLAYWRIGHT_MODULE: ${{ runner.temp }}/pace-band-deps/node_modules/playwright
@@ -47,6 +52,8 @@ jobs:
           node .github/quality/seo-regressions.mjs
           node .github/quality/browser-scan.mjs
           node .github/quality/navigation-browser.mjs
+          node .github/quality/handoff-quality-browser.mjs
+          python3 .github/quality/handoff-quality-pdf.py "$QA_OUTPUT"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -82,3 +82,14 @@ The generator's `reading=along|across` parameter selects the wrist-band reading 
 Keep the print sheet in normal block flow, with 6 mm gaps and break avoidance on each complete band. A flex print container split the third copy across pages in mobile print previews. The selected A4 or Letter landscape paper, 100% scale and 50 mm calibration rule still apply.
 
 The existing pace-band browser/PDF commands now cover 32 actual PDFs: both reading directions, marathon/half marathon, kilometres/miles, A4/Letter and 15/20 cm wrist sizes. They also check all four wrist sizes with long goals/names, exact four-hour checkpoints, static fallback, share-link restoration and unchanged phone-card output. PDF checks verify text rotation, fonts, single-page output and physical dimensions. Chromium automation does not reproduce the native iOS print dialog; retain a manual AirPrint preview check when changing pagination.
+
+
+## AdSense quality implementation — 23 October 2026
+
+PR #23 extends current main without rewriting merged history. Three overlapping guide URLs now redirect to the fuller articles; the navigation baseline deliberately removes only those three entries. All retained SEO metadata and all 20 goal-page calculator/control contracts remain protected.
+
+Run `python3 .github/quality/content-consolidation-regressions.py` and `node .github/quality/handoff-quality-browser.mjs` in addition to the existing suites. The new browser suite checks exact targets, distance, units, strategies, layout, reading direction, invalid/stale state, reload, clipboard, real iframe loading, both conditions CTAs, actual PDF output, consolidated fragments and whole-page WCAG A/AA checks on the changed tools and guides. Test dependencies and screenshots stay outside the published directory. Run `python3 .github/quality/handoff-quality-pdf.py "$QA_OUTPUT"` after the new browser suite to verify its four additional PDFs. The CI workflow includes these checks.
+
+`assets/pace-calculator.js` owns the standalone calculator's validated state and URL serialization. Band exports are explicitly disabled for 5 km and 10 km; their tables and quick-print remain available. Keep the generator and standalone strategy calculations in agreement; the browser suite compares both distances and all three strategy outputs. Bump the asset's query version when it changes after deployment.
+
+See `adsense-quality-implementation-2026-10-23.md` and `adsense-page-inventory-2026-10-23.md` for evidence, coverage, remaining editorial work and resubmission gates. Earlier audit/checkpoint documents describe historical commits.

@@ -1,5 +1,7 @@
 # AdSense readiness: current-main audit checkpoint (23 October 2026)
 
+This historical checkpoint is superseded by [the completed implementation and validation](adsense-quality-implementation-2026-10-23.md).
+
 This document records verified findings from the connected GitHub repository, without overwriting any existing implementation. It is a **checkpoint, not a completed sitewide AdSense audit**.
 
 ## Confirmed existing work to preserve

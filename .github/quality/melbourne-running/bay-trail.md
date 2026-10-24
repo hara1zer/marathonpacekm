@@ -76,7 +76,7 @@ Use it for a planned coastal out-and-back, with the start, turnaround, supplies 
 
 ## Plan the next part of your session
 
-- [Plan effort in changing wind](https://marathonpacekm.com/adjust-marathon-pace/wind/)
+- [Plan effort in changing wind](https://marathonpacekm.com/blog/wind-pacing-headwind-tailwind/)
 - [Calculate session time](https://marathonpacekm.com/marathon-pace-calculator/)
 - [Compare a lake-loop option](https://marathonpacekm.com/melbourne-running/albert-park-lake/)
 
@@ -120,7 +120,7 @@ Operator and council information takes priority. These are online source checks;
 
 ## Suggested internal links
 
-- [Plan effort in changing wind](https://marathonpacekm.com/adjust-marathon-pace/wind/)
+- [Plan effort in changing wind](https://marathonpacekm.com/blog/wind-pacing-headwind-tailwind/)
 - [Calculate session time](https://marathonpacekm.com/marathon-pace-calculator/)
 - [Compare a lake-loop option](https://marathonpacekm.com/melbourne-running/albert-park-lake/)
 

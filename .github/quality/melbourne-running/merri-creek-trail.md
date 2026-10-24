@@ -105,7 +105,7 @@ Operator and council information takes priority. These are online source checks;
 - [Council trail description](https://www.merri-bek.vic.gov.au/exploring-merri-bek/parks-and-gardens/park-amenities/)
 - [Running-club use](https://merricreekrunning.club/merri-monday/)
 - [Kirkdale Park amenities](https://www.merri-bek.vic.gov.au/exploring-merri-bek/parks-and-gardens/find-a-park/kirkdale-park/)
-- [Council concrete-surface evidence, 2023](https://www.merri-bek.vic.gov.au/globalassets/website-merri-bek/areas/my-council/council-and-committee-meetings/agendas/2023-agendas/council-agenda-2023-02-08-february---pdf-with-attachments.pdf)
+- [Council concrete-surface evidence, 2023](https://www.merri-bek.vic.gov.au/globalassets/website-merri-bek/areas/my-council/council-and-committee-meetings/council-and-parm-meetings/agendas/2023-agendas/council-agenda-2023-02-08-february---pdf-with-attachments.pdf)
 
 ## Editorial photo and visit prompts
 
@@ -175,7 +175,7 @@ Operator and council information takes priority. These are online source checks;
         "https://www.merri-bek.vic.gov.au/exploring-merri-bek/parks-and-gardens/park-amenities/",
         "https://merricreekrunning.club/merri-monday/",
         "https://www.merri-bek.vic.gov.au/exploring-merri-bek/parks-and-gardens/find-a-park/kirkdale-park/",
-        "https://www.merri-bek.vic.gov.au/globalassets/website-merri-bek/areas/my-council/council-and-committee-meetings/agendas/2023-agendas/council-agenda-2023-02-08-february---pdf-with-attachments.pdf"
+        "https://www.merri-bek.vic.gov.au/globalassets/website-merri-bek/areas/my-council/council-and-committee-meetings/council-and-parm-meetings/agendas/2023-agendas/council-agenda-2023-02-08-february---pdf-with-attachments.pdf"
       ]
     },
     {

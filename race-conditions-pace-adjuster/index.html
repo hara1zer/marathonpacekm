@@ -181,6 +181,8 @@
     #calculator, #resultsBlock, #how-to-use, #common-mistakes, #how-to-execute, #faq, #experience-note {
       scroll-margin-top:16px;
     }
+    .result-fact { background: #fff; border-color: #d4ddd7; }
+  .mpkm-legacy .result-fact .muted2 { color: #43564e !important; }
   </style>
 
 <script type="application/ld+json">{
@@ -341,19 +343,19 @@
         </div>
 
         <div>
-          <label>Temperature (°C)</label>
+          <label for="tempC">Temperature (°C)</label>
           <input id="tempC" type="number" min="-5" max="45" value="18" />
-          <p class="tiny muted2" style="margin-top:6px">Race-start temperature is usually the best starting point.</p>
+          <p class="tiny muted2" style="margin-top:6px">Compare forecasts across the hours you expect to be running, including warmer later sections.</p>
         </div>
 
         <div>
-          <label>Relative humidity (%)</label>
+          <label for="rhPct">Relative humidity (%)</label>
           <input id="rhPct" type="number" min="0" max="100" value="60" />
           <p class="tiny muted2" style="margin-top:6px">Used to estimate dew point if you do not know it.</p>
         </div>
 
         <div>
-          <label>Dew point (°C) (optional override)</label>
+          <label for="dewC">Dew point (°C) (optional override)</label>
           <input id="dewC" type="number" min="-10" max="35" placeholder="leave blank to estimate" />
           <p class="tiny muted2" style="margin-top:6px">If you know dew point, use it. It is often more useful than humidity alone.</p>
         </div>
@@ -361,13 +363,13 @@
 
       <div class="grid" style="margin-top:10px">
         <div>
-          <label>Wind (km/h)</label>
+          <label for="wind">Wind (km/h)</label>
           <input id="wind" type="number" min="0" max="80" value="10" />
           <p class="tiny muted2" style="margin-top:6px">A rough average is fine. You do not need perfect weather data.</p>
         </div>
 
         <div>
-          <label>Course hills</label>
+          <label for="hills">Course hills</label>
           <select id="hills">
             <option value="flat" selected>Flat / gentle</option>
             <option value="rolling">Rolling</option>
@@ -377,23 +379,23 @@
         </div>
 
         <div>
-          <label>Heat acclimated?</label>
+          <label for="accl">Heat acclimated?</label>
           <select id="accl">
             <option value="no" selected>No / unsure</option>
             <option value="some">Somewhat</option>
             <option value="yes">Yes (trained in heat)</option>
           </select>
-          <p class="tiny muted2" style="margin-top:6px">Acclimation reduces the expected heat penalty.</p>
+          <p class="tiny muted2" style="margin-top:6px">This model applies a smaller multiplier for reported acclimatisation; it does not measure your heat tolerance.</p>
         </div>
 
         <div>
-          <label>Goal style</label>
+          <label for="risk">Goal style</label>
           <select id="risk">
             <option value="safe" selected>Larger adjustment</option>
-            <option value="normal">Normal race effort</option>
-            <option value="aggr">Aggressive (higher risk)</option>
+            <option value="normal">Central adjustment</option>
+            <option value="aggr">Smaller adjustment</option>
           </select>
-          <p class="tiny muted2" style="margin-top:6px">Aggressive reduces the adjustment slightly, but increases risk.</p>
+          <p class="tiny muted2" style="margin-top:6px">These choices scale the model by 110%, 100% or 90%. None is a safety assessment.</p>
         </div>
       </div>
 
@@ -413,12 +415,11 @@
     <section id="resultsBlock" class="card">
       <h2>What to do with your adjusted pace</h2>
       <p class="muted">
-        Once you have an illustrative pace range, choose a target near the middle or conservative end if the day looks challenging.
-        Then build checkpoint splits and a printable pace band from that adjusted target.
+        The button carries the displayed central scenario, rounded once to the nearest second, into your checkpoint plan. You can edit that target in the destination calculator. The range is a sensitivity example, not a measured confidence interval or a recommendation that it is safe to race.
       </p>
 
       <div class="row actions" style="margin-top:10px; gap:10px">
-        <a class="btn" href="/marathon-pace-calculator/">Build checkpoint splits + pace band</a>
+        <a class="btn" data-adjusted-plan href="#calculator">Build checkpoint splits + pace band</a>
         <a class="btn secondary" href="/blog/racing-in-heat-wind-hills/">Heat / wind / hills guide</a>
         <a class="btn secondary" href="/blog/time-in-the-bank-math/">Why banking time fails</a>
       </div>
@@ -481,7 +482,7 @@
       <div class="section-note muted">
         In all three cases, <strong>even effort</strong> usually beats <strong>even pace</strong>. That is also why pages like
         <a href="/how-to-use-marathon-pace-chart/"><strong>how to use a marathon pace chart</strong></a> and
-        <a href="/even-vs-negative-splits/"><strong>even vs negative splits</strong></a> matter so much on tougher days.
+        <a href="/blog/negative-split-pacing/"><strong>even vs negative splits</strong></a> matter so much on tougher days.
       </div>
 
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
@@ -619,8 +620,24 @@
       return pct;
     }
 
+    function planURL(seconds){
+      var total = Math.round(seconds);
+      var q = new URLSearchParams({distance:'marathon', h:Math.floor(total/3600), m:Math.floor(total/60)%60, s:total%60});
+      var incoming = new URLSearchParams(window.location.search);
+      ['unit','strategy','cushion','negative','reading','paper','wrist','layout'].forEach(function(key){
+        if(incoming.has(key)) q.set(key,incoming.get(key));
+      });
+      return '/marathon-pace-calculator/?' + q.toString();
+    }
+    function updatePlanLinks(url){
+      document.querySelectorAll('[data-adjusted-plan]').forEach(function(link){
+        if(url){link.href=url;link.removeAttribute('aria-disabled');link.removeAttribute('tabindex');}
+        else {link.removeAttribute('href');link.setAttribute('aria-disabled','true');link.setAttribute('tabindex','-1');}
+      });
+    }
     function compute(){
-      var fields = [h,m,s,tempC,rhPct,wind];
+      updatePlanLinks(null);
+      var fields = [h,m,s,tempC,rhPct,wind,hills,accl,risk];
       if(fields.some(function(el){return el.value.trim()==='' || !el.checkValidity();}) || [h,m,s].some(function(el){return !Number.isInteger(Number(el.value));}) || (dewC.value.trim()!=='' && !dewC.checkValidity())){
         out.innerHTML = '<p>Enter valid values within the displayed input ranges; finish-time fields must be whole numbers.</p>';return;
       }
@@ -679,17 +696,27 @@
           '<div class="result-fact"><div class="tiny muted2">Adjusted range (illustrative)</div><strong>' + fmtHMS(timeLow) + ' – ' + fmtHMS(timeHi) + '</strong><div class="tiny muted2">' +
             fmtPace(paceLow) + '–' + fmtPace(paceHi) + '/km · ' +
             fmtPace(paceLowMi) + '–' + fmtPace(paceHiMi) + '/mi</div></div>' +
-          '<div class="result-fact"><div class="tiny muted2">Suggested target (mid)</div><strong>' + fmtHMS(timeMid) + '</strong><div class="tiny muted2">' +
+          '<div class="result-fact"><div class="tiny muted2">Central scenario (not a prediction)</div><strong>' + fmtHMS(timeMid) + '</strong><div class="tiny muted2">' +
             fmtPace(paceMid) + '/km · ' + fmtPace(paceMidMi) + '/mi</div></div>' +
           '<div class="result-fact"><div class="tiny muted2">Total adjustment</div><strong>+' + totalPct.toFixed(1) + '%</strong><div class="tiny muted2">Heat ' + heatPct.toFixed(1) + '% · Wind ' + windPct.toFixed(1) + '% · Hills ' + hillPct.toFixed(1) + '%</div></div>' +
         '</div>' +
         '<p class="tiny muted2" style="margin-top:10px">Dew point used: <strong>' + dp.toFixed(1) + '°C</strong> (temp ' + tC.toFixed(1) + '°C, RH ' + rH.toFixed(0) + '%).</p>' +
         '<div class="row actions" style="margin-top:10px; gap:10px">' +
-          '<a class="btn" href="/marathon-pace-calculator/">Build checkpoint splits + pace band</a>' +
+          '<a class="btn" data-adjusted-plan>Build checkpoint splits + pace band</a>' +
           '<a class="btn secondary" href="/blog/racing-in-heat-wind-hills/">Read conditions guide</a>' +
           '<a class="btn secondary" href="/monthly-training-plan/">Build a month plan</a>' +
         '</div>' +
         '<p class="tiny muted" style="margin-top:10px">Best practice: run the first 10–15 km by effort, not by watch pace. Do not try to “bank time” in tough conditions.</p>';
+      if(Math.round(timeMid) <= 24*3600+59*60+59){
+        updatePlanLinks(planURL(timeMid));
+      } else {
+        out.insertAdjacentHTML('beforeend', '<p role="status">The checkpoint and pace-band handoff supports targets up to 24:59:59. The scenario above exceeds that range.</p>');
+      }
+      var current = new URL(window.location.href);
+      [h,m,s,tempC,rhPct,dewC,wind,hills,accl,risk].forEach(function(el){
+        if(el.value !== '') current.searchParams.set(el.id,el.value); else current.searchParams.delete(el.id);
+      });
+      window.history.replaceState(null,'',current);
     }
 
     function reset(){
@@ -708,6 +735,11 @@
     calcBtn.addEventListener('click', compute);
     resetBtn.addEventListener('click', reset);
 
+    var query = new URLSearchParams(window.location.search);
+    [h,m,s,tempC,rhPct,dewC,wind,hills,accl,risk].forEach(function(el){
+      if(query.has(el.id)) el.value=query.get(el.id);
+      el.addEventListener('input',compute);
+    });
     compute();
   })();
   </script>

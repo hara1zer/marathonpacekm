@@ -102,21 +102,6 @@
       ]
     },
     {
-      "url": "/even-vs-negative-splits/",
-      "title": "Even vs Negative Splits: Plan a Strong Marathon Finish",
-      "h1": "Even splits, negative splits and a strong finish",
-      "canonical": [
-        "https://marathonpacekm.com/even-vs-negative-splits/"
-      ],
-      "navVariants": 1,
-      "description": [
-        "Compare even and negative split plans with exact four-hour arithmetic and an original example of finishing strongly."
-      ],
-      "robots": [
-        "index, follow"
-      ]
-    },
-    {
       "url": "/4-00-marathon-pace-km/",
       "title": "4:00 Marathon Pace: KM & Mile Splits + Pace Band",
       "h1": "4:00 Marathon Pace Chart (5:41/km)",
@@ -775,21 +760,6 @@
       ]
     },
     {
-      "url": "/adjust-marathon-pace/wind/",
-      "title": "Adjust Marathon Pace for Wind: Effort and Shelter",
-      "h1": "Adjust marathon pace for wind: effort, exposure and shelter",
-      "canonical": [
-        "https://marathonpacekm.com/adjust-marathon-pace/wind/"
-      ],
-      "navVariants": 1,
-      "description": [
-        "Plan marathon effort for headwinds, tailwinds and exposed sections, with practical checkpoint and group-running decisions."
-      ],
-      "robots": [
-        "index,follow"
-      ]
-    },
-    {
       "url": "/adjust-marathon-pace/cardiac-drift/",
       "title": "Cardiac Drift: Heart Rate and Marathon Pacing",
       "h1": "Cardiac drift: why heart rate rises and how to adjust pace",
@@ -814,21 +784,6 @@
       "navVariants": 1,
       "description": [
         "Review possible contributors to late-race slowing and calculate final-distance scenarios without treating a model as a diagnosis."
-      ],
-      "robots": [
-        "index,follow"
-      ]
-    },
-    {
-      "url": "/adjust-marathon-pace/hills/",
-      "title": "Adjust Marathon Pace for Hills: Climbs and Descents",
-      "h1": "Adjust marathon pace for hills: climbs, descents and effort",
-      "canonical": [
-        "https://marathonpacekm.com/adjust-marathon-pace/hills/"
-      ],
-      "navVariants": 1,
-      "description": [
-        "Plan marathon effort across climbs and descents, use checkpoints in context and avoid forcing even pace over uneven terrain."
       ],
       "robots": [
         "index,follow"
