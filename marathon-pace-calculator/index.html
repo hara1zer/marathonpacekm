@@ -55,6 +55,7 @@
     #printBand { display:none; }
     @media print{
       header, .toc, #calculator .actions, #fullSplitsDetails, footer, .backtop { display:none !important; }
+      main > section:not(#calculator):not(#checkpoints), #calculator > *:not(h2):not(#results) { display:none !important; }
       #printBand { display:block !important; }
       body { background:#fff !important; }
       .card { box-shadow:none !important; background:#fff !important; }
@@ -82,6 +83,9 @@
     .eeat-box h3{
       margin-top: 0;
     }
+    #results .kpi { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; }
+    #results .fact { padding:12px; }
+    #results .fact strong { display:block; font-size:1.25rem; margin-top:4px; }
   </style>
 
 <script type="application/ld+json">{
@@ -253,7 +257,7 @@
         <div>
           <label>Goal finish time</label>
           <div class="row">
-            <input id="h" aria-label="Hours" type="number" min="0" value="4" /> <span>h</span>
+            <input id="h" aria-label="Hours" type="number" min="0" max="24" value="4" /> <span>h</span>
             <input id="m" aria-label="Minutes" type="number" min="0" max="59" value="0" /> <span>m</span>
             <input id="s" aria-label="Seconds" type="number" min="0" max="59" value="0" /> <span>s</span>
           </div>
@@ -270,7 +274,7 @@
         </div>
 
         <div>
-          <label>Pace band PDF layout</label>
+          <label for="pdfLayout">Pace band PDF layout</label>
           <select id="pdfLayout">
             <option value="wrist" selected>Wrist band (cut & tape)</option>
             <option value="a4">A4 pacing sheet</option>
@@ -281,6 +285,20 @@
         </div>
       </div>
 
+      <details class="band-settings">
+        <summary>Units, pacing and print settings</summary>
+        <div class="grid">
+          <div><label for="unit">Checkpoint units</label><select id="unit"><option value="km">Kilometres</option><option value="mi">Miles</option></select></div>
+          <div><label for="strategy">Marathon / half-marathon strategy</label><select id="strategy"><option value="even">Even pace</option><option value="controlled">Controlled start</option><option value="negative">Negative split</option></select></div>
+          <div id="cushionSettings" hidden><label for="cushion">Time behind even pace at 5 km (whole seconds)</label><input id="cushion" type="number" min="0" max="120" step="1" value="15"></div>
+          <div id="negativeSettings" hidden><label for="negative">Second half faster than first (minutes)</label><input id="negative" type="number" min="0" max="10" step="0.5" value="2"></div>
+          <div><label for="reading">Band reading direction</label><select id="reading"><option value="along">Along the strip</option><option value="across">Across the strip</option></select></div>
+          <div><label for="paper">Paper</label><select id="paper"><option value="a4">A4</option><option value="letter">Letter</option></select></div>
+          <div><label for="wrist">Wrist size</label><select id="wrist"><option value="150">15 cm</option><option value="170" selected>17 cm</option><option value="190">19 cm</option><option value="200">20 cm</option></select></div>
+        </div>
+        <p class="tiny muted2">Each strategy keeps the exact finish target. A controlled start or negative split requires faster later running; it does not establish that the target is achievable. The 5 km and 10 km tables use even pace.</p>
+      </details>
+      <p id="exportStatus" role="status"></p>
       <div class="row actions" style="margin-top:10px;gap:10px;flex-wrap:wrap">
         <button class="btn" id="calcBtn">Calculate</button>
         <button class="btn secondary" id="resetBtn">Reset</button>
@@ -306,8 +324,8 @@
     </section>
 
     <section id="checkpoints" class="card">
-      <h2>Key checkpoints (marathon)</h2>
-      <p class="muted">When distance is set to marathon, we show common markers: 5k, 10k, half, 30k, 40k and finish.</p>
+      <h2>Key checkpoints</h2>
+      <p class="muted">Checkpoints match the selected race distance, units and pacing strategy. Every table ends at the exact finish target.</p>
       <div id="checkpointTable"></div>
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
     </section>
@@ -317,7 +335,7 @@
       <p class="muted">Best option: generate a wrist pace band or A4 pacing sheet, then print or save as PDF.</p>
 
       <div class="row actions" style="margin-top:12px;gap:10px;flex-wrap:wrap">
-        <a class="btn" href="/printable-pace-band/"><strong>Open printable pace band tool</strong></a>
+        <a class="btn" id="selectedBandLink" href="/printable-pace-band/"><strong>Open this plan in the pace band tool</strong></a>
         <a class="btn secondary" href="/blog/marathon-pace-bands/">How to use a pace band</a>
       </div>
 
@@ -363,19 +381,19 @@
 
       <div class="grid" style="margin-top:10px">
         <div>
-          <label>Share link (pre-filled)</label>
+          <label for="shareUrl">Share link (pre-filled)</label>
           <input id="shareUrl" class="mini-input" type="text" value="" readonly />
           <div class="row actions" style="margin-top:10px;gap:10px;flex-wrap:wrap">
             <button class="btn" id="copyShareBtn2" type="button">Copy link</button>
             <button class="btn secondary" id="openShareBtn" type="button">Open link</button>
           </div>
           <p class="tiny muted2" style="margin-top:10px">
-            This loads the same goal time + layout instantly.
+            This restores the race distance, exact goal, units, strategy and print settings.
           </p>
         </div>
 
         <div>
-          <label>Embed snippet (iframe)</label>
+          <label for="embedSnippet">Embed snippet (iframe)</label>
           <textarea id="embedSnippet" class="mini-input" readonly></textarea>
           <p class="tiny muted2" style="margin-top:10px">
             Paste into your club site. Tip: use the A4 layout for desktop printing.
@@ -388,10 +406,10 @@
     </section>
 
     <section id="full-splits" class="card">
-      <h2>Full 1 km splits (optional)</h2>
+      <h2>Full splits (optional)</h2>
       <p class="muted">If you want a detailed table, open this. It can be long for a marathon.</p>
       <details id="fullSplitsDetails">
-        <summary><strong>Show full 1 km table</strong></summary>
+        <summary><strong>Show every kilometre or mile</strong></summary>
         <div id="fullSplitsTable"></div>
       </details>
       <p class="backtop tiny muted"><a href="#top">Back to top ↑</a></p>
@@ -497,308 +515,7 @@
 
   </main>
 
-<script>
-(function(){
-  var elH=document.getElementById('h');
-  var elM=document.getElementById('m');
-  var elS=document.getElementById('s');
-  var elDist=document.getElementById('dist');
-  var elPdfLayout=document.getElementById('pdfLayout');
-
-  var elResults=document.getElementById('results');
-  var elCheckpoint=document.getElementById('checkpointTable');
-  var elPrintBand=document.getElementById('printBand');
-  var elFull=document.getElementById('fullSplitsTable');
-  var fullDetails=document.getElementById('fullSplitsDetails');
-
-  var calcBtn=document.getElementById('calcBtn');
-  var resetBtn=document.getElementById('resetBtn');
-  var pdfBtn=document.getElementById('pdfBtn');
-  var printThisBtn=document.getElementById('printThisBtn');
-
-  var copyShareBtn=document.getElementById('copyShareBtn');
-  var copyShareBtn2=document.getElementById('copyShareBtn2');
-  var openShareBtn=document.getElementById('openShareBtn');
-
-  var shareUrlInput=document.getElementById('shareUrl');
-  var embedSnippet=document.getElementById('embedSnippet');
-
-  var shareMsg=document.getElementById('shareMsg');
-  var calcShareMsg=document.getElementById('calcShareMsg');
-
-  var DEFAULT={h:4,m:0,s:0,dist:42.195};
-
-  var last = {
-    isMarathon: true,
-    secPerKm: 0,
-    goalSec: 0
-  };
-
-  function clampInt(v,min,max){
-    var n=parseInt(v,10);
-    if(isNaN(n)) return min;
-    if(n<min) return min;
-    if(n>max) return max;
-    return n;
-  }
-  function toSeconds(h,m,s){ return h*3600 + m*60 + s; }
-  function fmtTime(total){
-    var sec=Math.max(0, Math.round(total));
-    var h=Math.floor(sec/3600);
-    var m=Math.floor((sec%3600)/60);
-    var s=sec%60;
-    return h+":"+String(m).padStart(2,'0')+":"+String(s).padStart(2,'0');
-  }
-  function fmtPace(secPerUnit){
-    var sec=Math.max(0, Math.round(secPerUnit));
-    var m=Math.floor(sec/60);
-    var s=sec%60;
-    return m+":"+String(s).padStart(2,'0');
-  }
-
-  function buildCheckpointTable(rows){
-    var html='';
-    html += '<table class="splits-table"><thead><tr><th>Checkpoint</th><th>Time</th></tr></thead><tbody>';
-    for(var i=0;i<rows.length;i++){
-      html += '<tr><td>'+rows[i].label+'</td><td>'+rows[i].time+'</td></tr>';
-    }
-    html += '</tbody></table>';
-    return html;
-  }
-
-  function buildPaceBandURL(opts){
-    var h = clampInt(elH.value,0,99);
-    var m = clampInt(elM.value,0,59);
-    var s = clampInt(elS.value,0,59);
-
-    var layout = (opts && opts.layout) ? String(opts.layout) : 'wrist';
-    var autoPrint = (opts && opts.autoPrint) ? '1' : '0';
-
-    var q = new URLSearchParams({
-      h: String(h),
-      m: String(m),
-      s: String(s),
-      layout: layout,
-      style: 'even',
-      offset: '5'
-    });
-
-    if(autoPrint === '1') q.set('autoPrint','1');
-
-    return '/printable-pace-band/?' + q.toString();
-  }
-
-  function updateShareUI(){
-    var layout = elPdfLayout ? elPdfLayout.value : 'wrist';
-    var url = buildPaceBandURL({ layout: layout, autoPrint: false });
-
-    shareUrlInput.value = window.location.origin + url;
-
-    var iframe = ''
-      + '<iframe'
-      + ' src="' + (window.location.origin + url) + '"'
-      + ' width="100%"'
-      + ' height="720"'
-      + ' style="border:1px solid rgba(0,0,0,.12);border-radius:12px"'
-      + ' loading="lazy"'
-      + '></iframe>';
-
-    embedSnippet.value = iframe;
-
-    shareMsg.innerHTML = '';
-    calcShareMsg.innerHTML = '';
-  }
-
-  async function copyToClipboard(text){
-    try{
-      await navigator.clipboard.writeText(text);
-      return true;
-    }catch(e){
-      return false;
-    }
-  }
-
-  async function copyShareLink(where){
-    var txt = shareUrlInput.value || '';
-    if(!txt){
-      if(where) where.innerHTML = '<p class="tiny muted2">No share link yet — enter a goal time first.</p>';
-      return;
-    }
-    var ok = await copyToClipboard(txt);
-    if(where){
-      where.innerHTML = ok
-        ? '<p class="tiny muted2">Copied share link ✅</p>'
-        : '<p class="tiny muted2">Couldn’t auto-copy — copy manually from the box above.</p>';
-    }
-  }
-
-  function compute(){
-    if([elH,elM,elS].some(function(el){return el.value.trim()==='' || !el.checkValidity() || !Number.isInteger(Number(el.value));})){
-      elResults.innerHTML='<p role="alert">Enter valid whole hours, minutes (0–59) and seconds (0–59).</p>';
-      elCheckpoint.innerHTML='';elPrintBand.innerHTML='';elFull.innerHTML='';elFull.dataset.built='0';last.isMarathon=false;updateShareUI();return;
-    }
-    var h=clampInt(elH.value,0,99);
-    var m=clampInt(elM.value,0,59);
-    var s=clampInt(elS.value,0,59);
-    elH.value=h; elM.value=m; elS.value=s;
-
-    var dist=parseFloat(elDist.value);
-    var goalSec=toSeconds(h,m,s);
-
-    if(!dist || dist<=0 || goalSec<=0){
-      elResults.innerHTML='<div class="tiny muted2">Enter a valid time and distance.</div>';
-      elCheckpoint.innerHTML='';
-      elPrintBand.innerHTML='';
-      elFull.innerHTML='';
-      if(elFull) elFull.dataset.built='0';
-      last.isMarathon=false;
-      updateShareUI();
-      return;
-    }
-
-    var secPerKm = goalSec / dist;
-    var secPerMile = secPerKm * 1.609344;
-    var halfTime = fmtTime(goalSec / 2);
-
-    elResults.innerHTML = ''
-      + '<div class="kpi">'
-      +   '<div class="fact"><div class="tiny muted2">Pace per km</div><strong>'+fmtPace(secPerKm)+'</strong></div>'
-      +   '<div class="fact"><div class="tiny muted2">Pace per mile</div><strong>'+fmtPace(secPerMile)+'</strong></div>'
-      +   '<div class="fact"><div class="tiny muted2">Finish time</div><strong>'+fmtTime(goalSec)+'</strong></div>'
-      +   '<div class="fact"><div class="tiny muted2">Halfway time*</div><strong>'+halfTime+'</strong></div>'
-      + '</div>'
-      + '<p class="tiny muted2" style="margin-top:10px">*Halfway is half of the selected distance; splits use unrounded pace.</p>';
-
-    last.secPerKm = secPerKm;
-    last.goalSec = goalSec;
-
-    var isMarathon = Math.abs(dist-42.195) < 1e-6;
-    last.isMarathon = isMarathon;
-
-    if(isMarathon){
-      var cps=[
-        {label:'5 km', km:5},
-        {label:'10 km', km:10},
-        {label:'Half (21.0975)', km:21.0975},
-        {label:'30 km', km:30},
-        {label:'40 km', km:40},
-        {label:'Finish', km:42.195}
-      ];
-      var rows=[];
-      for(var i=0;i<cps.length;i++){
-        rows.push({label:cps[i].label, time:fmtTime(secPerKm*cps[i].km)});
-      }
-      elCheckpoint.innerHTML = buildCheckpointTable(rows);
-
-      elPrintBand.innerHTML = '<h3 style="margin:0 0 8px">Quick checkpoint band (fallback)</h3>'
-        + '<p class="tiny muted2" style="margin:0 0 8px">For best printing/export, use the PDF tool above.</p>'
-        + buildCheckpointTable(rows);
-
-      if(elFull){
-        elFull.dataset.built='0';
-        elFull.innerHTML='';
-      }
-    } else {
-      elCheckpoint.innerHTML = '<p class="tiny muted2">Set distance to Marathon to view marathon checkpoint splits.</p>';
-      elPrintBand.innerHTML = '<p class="tiny muted2">Set distance to Marathon to generate a marathon pace band.</p>';
-      if(elFull){
-        elFull.dataset.built='0';
-        elFull.innerHTML='';
-      }
-    }
-
-    updateShareUI();
-  }
-
-  function reset(){
-    elH.value=DEFAULT.h; elM.value=DEFAULT.m; elS.value=DEFAULT.s;
-    elDist.value=String(DEFAULT.dist);
-    if(elPdfLayout) elPdfLayout.value='wrist';
-
-    elResults.innerHTML='';
-    elCheckpoint.innerHTML='';
-    elPrintBand.innerHTML='';
-    if(elFull){
-      elFull.innerHTML='';
-      elFull.dataset.built='0';
-    }
-    if(fullDetails) fullDetails.open=false;
-
-    shareMsg.innerHTML='';
-    calcShareMsg.innerHTML='';
-    updateShareUI();
-  }
-
-  function buildFullSplitsIfNeeded(){
-    if(!fullDetails || !fullDetails.open) return;
-    if(!elFull) return;
-
-    if(!last.isMarathon){
-      elFull.innerHTML = '<p class="tiny muted2">Set distance to Marathon to generate a full 1 km marathon table.</p>';
-      elFull.dataset.built='1';
-      return;
-    }
-
-    if(elFull.dataset.built === '1') return;
-
-    var out='';
-    out += '<table class="splits-table"><thead><tr><th>KM</th><th>Cumulative</th></tr></thead><tbody>';
-    for(var km=1; km<=42; km++){
-      out += '<tr><td>'+km+'</td><td>'+fmtTime(last.secPerKm*km)+'</td></tr>';
-    }
-    out += '<tr><td>42.2</td><td>'+fmtTime(last.goalSec)+'</td></tr>';
-    out += '</tbody></table>';
-    elFull.innerHTML = out;
-    elFull.dataset.built='1';
-  }
-
-  calcBtn.addEventListener('click', compute);
-  resetBtn.addEventListener('click', reset);
-
-  if(fullDetails){
-    fullDetails.addEventListener('toggle', function(){
-      buildFullSplitsIfNeeded();
-    });
-  }
-
-  pdfBtn.addEventListener('click', function(){
-    compute();
-    var layout = elPdfLayout ? elPdfLayout.value : 'wrist';
-    var url = buildPaceBandURL({ layout: layout, autoPrint: true });
-    window.open(url, '_blank');
-  });
-
-  printThisBtn.addEventListener('click', function(){
-    compute();
-    window.print();
-  });
-
-  copyShareBtn.addEventListener('click', function(){
-    compute();
-    copyShareLink(calcShareMsg);
-  });
-
-  copyShareBtn2.addEventListener('click', function(){
-    compute();
-    copyShareLink(shareMsg);
-  });
-
-  openShareBtn.addEventListener('click', function(){
-    compute();
-    var url = shareUrlInput.value || '';
-    if(!url) return;
-    window.open(url, '_blank');
-  });
-
-  if(elPdfLayout){
-    elPdfLayout.addEventListener('change', function(){
-      updateShareUI();
-    });
-  }
-
-  compute();
-})();
-</script>
+<script defer src="/assets/pace-calculator.js?v=20261023"></script>
 
 <footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><div class="mpkm-footer-grid"><nav aria-label="Plan your run"><p class="mpkm-footer-heading">Plan your run</p><ul><li><a href="/">Pace chart</a></li><li><a href="/#start-here">All calculators</a></li><li><a href="/printable-pace-band/">Marathon &amp; half-marathon pace band</a></li></ul></nav><nav aria-label="Explore"><p class="mpkm-footer-heading">Explore</p><ul><li><a href="/blog/#training">Training resources</a></li><li><a href="/blog/">Pacing and race guides</a></li><li><a href="/melbourne-running/">Melbourne tracks and paths</a></li></ul></nav><nav aria-label="Site information"><p class="mpkm-footer-heading">Site information</p><ul><li><a href="/about/">About Davin</a></li><li><a href="/methodology/">Calculator methods</a></li><li><a href="/editorial-policy/">Editorial policy</a></li><li><a href="/contact/">Contact &amp; corrections</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/disclaimer/">Disclaimer</a></li><li><a href="/sitemap/">All pages</a></li></ul></nav></div><p>© 2026 Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>
 

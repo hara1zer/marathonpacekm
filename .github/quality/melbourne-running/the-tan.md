@@ -69,7 +69,7 @@ The council identifies Flinders Street Station and St Kilda Road tram stops as a
 ## Plan the next part of your session
 
 - [Choose a long-run structure](https://marathonpacekm.com/blog/long-run-structure-fast-finish-vs-blocks-vs-progression/)
-- [Pace hills by effort](https://marathonpacekm.com/adjust-marathon-pace/hills/)
+- [Pace hills by effort](https://marathonpacekm.com/blog/hills-pacing-give-away-seconds-avoid-quad-destruction/)
 - [Calculate pace and elapsed time](https://marathonpacekm.com/marathon-pace-calculator/)
 
 ## Frequently asked questions
@@ -114,7 +114,7 @@ Operator and council information takes priority. These are online source checks;
 ## Suggested internal links
 
 - [Choose a long-run structure](https://marathonpacekm.com/blog/long-run-structure-fast-finish-vs-blocks-vs-progression/)
-- [Pace hills by effort](https://marathonpacekm.com/adjust-marathon-pace/hills/)
+- [Pace hills by effort](https://marathonpacekm.com/blog/hills-pacing-give-away-seconds-avoid-quad-destruction/)
 - [Calculate pace and elapsed time](https://marathonpacekm.com/marathon-pace-calculator/)
 
 ## JSON-LD

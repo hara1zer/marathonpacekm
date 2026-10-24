@@ -1511,6 +1511,8 @@
       url.searchParams.set("paper", elPaper.value);
       url.searchParams.set("wrist", elWristSize.value);
       url.searchParams.set("reading", readingDirection());
+      var printLayout = document.body.dataset.printLayout;
+      url.searchParams.set("layout", printLayout === "checkpoints" || (!printLayout && new URLSearchParams(window.location.search).get("layout") === "a4") ? "a4" : "wrist");
 
       if(elStrategy.value === "controlled"){
         url.searchParams.set("cushion", String(clamp(elStartCushion.value, 0, 120)));
@@ -1845,6 +1847,7 @@
       if(!render()) return;
       trackBand("pace_band_print_intent", {output_type: "wrist"});
       document.body.dataset.printLayout = 'wrist';
+      embedCode.value = buildEmbedSnippet(buildShareURL());
       window.setTimeout(function(){ window.print(); }, 80);
     }
 
@@ -1860,6 +1863,7 @@
         '<p>' + escapeHTML(raceLabel()) + ' distance: ' + raceKm() + ' km · marathonpacekm.com</p>';
       trackBand('pace_band_print_intent', {output_type: 'checkpoints'});
       document.body.dataset.printLayout = 'checkpoints';
+      embedCode.value = buildEmbedSnippet(buildShareURL());
       window.setTimeout(function(){ window.print(); }, 80);
     }
     document.getElementById('printA4Btn').addEventListener('click', printCheckpointSheet);

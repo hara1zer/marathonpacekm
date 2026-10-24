@@ -19,7 +19,6 @@
 /about/index.html /about/ 301
 /contact/index.html /contact/ 301
 /disclaimer/index.html /disclaimer/ 301
-/even-vs-negative-splits/index.html /even-vs-negative-splits/ 301
 /how-to-use-marathon-pace-chart/index.html /how-to-use-marathon-pace-chart/ 301
 /marathon-pace-calculator/index.html /marathon-pace-calculator/ 301
 /marathon-pace-chart-min-per-mile/index.html /marathon-pace-chart-min-per-mile/ 301
@@ -97,3 +96,14 @@
 /pace-band/3:15 /printable-pace-band/?h=3&m=15&s=0&unit=km&strategy=even#generator 301
 /pace-band/3:15/ /printable-pace-band/?h=3&m=15&s=0&unit=km&strategy=even#generator 301
 /pace-band/3:15/index.html /printable-pace-band/?h=3&m=15&s=0&unit=km&strategy=even#generator 301
+
+# Consolidated overlapping guides: preserve historical links and fragments.
+/even-vs-negative-splits /blog/negative-split-pacing/ 301
+/even-vs-negative-splits/ /blog/negative-split-pacing/ 301
+/even-vs-negative-splits/index.html /blog/negative-split-pacing/ 301
+/adjust-marathon-pace/wind /blog/wind-pacing-headwind-tailwind/ 301
+/adjust-marathon-pace/wind/ /blog/wind-pacing-headwind-tailwind/ 301
+/adjust-marathon-pace/wind/index.html /blog/wind-pacing-headwind-tailwind/ 301
+/adjust-marathon-pace/hills /blog/hills-pacing-give-away-seconds-avoid-quad-destruction/ 301
+/adjust-marathon-pace/hills/ /blog/hills-pacing-give-away-seconds-avoid-quad-destruction/ 301
+/adjust-marathon-pace/hills/index.html /blog/hills-pacing-give-away-seconds-avoid-quad-destruction/ 301
