@@ -1686,6 +1686,81 @@
       "robots": [
         "index,follow,max-image-preview:large"
       ]
+    },
+    {
+      "url": "/blog/treadmill-pace-chart/",
+      "title": "Treadmill Pace Chart: km/h, mph, min/km & min/mile",
+      "h1": "Treadmill pace chart: km/h, mph, min/km and min/mile",
+      "canonical": [
+        "https://marathonpacekm.com/blog/treadmill-pace-chart/"
+      ],
+      "navVariants": 1,
+      "description": [
+        "Convert treadmill speed to pace in km/h, mph, min/km and min/mile. Use the interactive converter, printable chart and a checked whole-workout example."
+      ],
+      "robots": [
+        "index,follow,max-image-preview:large"
+      ]
+    },
+    {
+      "url": "/blog/how-long-to-train-for-a-marathon/",
+      "title": "How Long to Train for a Marathon? 12, 16 or 20 Weeks",
+      "h1": "How long does it take to train for a marathon?",
+      "canonical": [
+        "https://marathonpacekm.com/blog/how-long-to-train-for-a-marathon/"
+      ],
+      "navVariants": 1,
+      "description": [
+        "Compare 12-, 16- and 20-week marathon blocks, calculate start dates, check the opening workload and budget training time around the running you already do."
+      ],
+      "robots": [
+        "index,follow,max-image-preview:large"
+      ]
+    },
+    {
+      "url": "/blog/run-walk-marathon-pacing/",
+      "title": "Run-Walk Marathon Pacing: Ratios, Pace & Finish-Time Math",
+      "h1": "Run-walk marathon pacing: intervals, walking pace and finish time",
+      "canonical": [
+        "https://marathonpacekm.com/blog/run-walk-marathon-pacing/"
+      ],
+      "navVariants": 1,
+      "description": [
+        "Work out the running pace behind a run-walk marathon target. Compare intervals, walking speeds, stops and partial final intervals with checked examples."
+      ],
+      "robots": [
+        "index,follow,max-image-preview:large"
+      ]
+    },
+    {
+      "url": "/blog/marathon-taper/",
+      "title": "Marathon Taper: 2- and 3-Week Mileage Worksheet",
+      "h1": "Marathon taper: compare two- and three-week mileage",
+      "canonical": [
+        "https://marathonpacekm.com/blog/marathon-taper/"
+      ],
+      "navVariants": 1,
+      "description": [
+        "Compare two- and three-week marathon tapers with editable mileage percentages, a checked daily example and race distance shown separately from training."
+      ],
+      "robots": [
+        "index,follow,max-image-preview:large"
+      ]
+    },
+    {
+      "url": "/blog/strength-training-for-marathon-runners/",
+      "title": "Strength Training for Marathon Runners: Two 30-Min Sessions",
+      "h1": "Strength training for marathon runners: two short gym sessions",
+      "canonical": [
+        "https://marathonpacekm.com/blog/strength-training-for-marathon-runners/"
+      ],
+      "navVariants": 1,
+      "description": [
+        "Two printable 30-minute strength sessions for marathon runners, with exercise alternatives, sets, reps, progression and placement around your running week."
+      ],
+      "robots": [
+        "index,follow,max-image-preview:large"
+      ]
     }
   ],
   "issues": [],

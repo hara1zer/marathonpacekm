@@ -1,0 +1,52 @@
+<p class="lede">The treadmill says 10.0. Your training plan says 6:00/km. Those are the same speed—provided the treadmill is showing kilometres per hour. On a machine set to miles per hour, 10.0 is a very different run.</p>
+<p>This treadmill pace chart puts km/h, mph, minutes per kilometre and minutes per mile together. Use the converter for an exact setting, or print the table for your next indoor session.</p>
+<nav class="guide-toc" aria-label="In this article"><strong>Find your setting</strong><ul><li><a href="#converter">Convert a speed or pace</a></li><li><a href="#treadmill-chart">Treadmill pace conversion chart</a></li><li><a href="#workout">Translate a whole workout</a></li><li><a href="#incline">What incline changes</a></li><li><a href="#watch">When your watch disagrees</a></li></ul></nav>
+
+<section id="converter" class="guide-tool" aria-labelledby="converter-title">
+<h2 id="converter-title">Treadmill speed-to-pace converter</h2>
+<p><strong>10 km/h = 6:00/km = 9:39/mile.</strong> Choose the unit you have, then enter its value. The distance estimate assumes the belt holds that speed for the full duration.</p>
+<form id="treadmill-form" novalidate><div class="guide-fields">
+<label for="tm-unit">I am entering<select id="tm-unit"><option value="kph">Speed in km/h</option><option value="mph">Speed in mph</option><option value="min-km">Pace in min/km</option><option value="min-mile">Pace in min/mile</option></select></label>
+<label for="tm-value">Speed or pace<input id="tm-value" type="text" inputmode="text" value="10" maxlength="12" required aria-describedby="tm-format"><span id="tm-format" class="guide-help">Use a speed, for example 10 or 10.5.</span></label>
+<label for="tm-duration">Time at this setting (minutes)<input id="tm-duration" type="number" min="1" max="600" step="1" value="30" required inputmode="numeric"></label>
+</div><button type="submit">Convert speed and pace</button><p id="tm-error" class="guide-error" role="alert" hidden></p></form>
+<div id="tm-result" class="guide-result" aria-live="polite"><dl class="guide-metrics"><div><dt>Kilometres per hour</dt><dd id="tm-kph">10.00 km/h</dd></div><div><dt>Miles per hour</dt><dd id="tm-mph">6.21 mph</dd></div><div><dt>Pace per kilometre</dt><dd id="tm-km">6:00 /km</dd></div><div><dt>Pace per mile</dt><dd id="tm-mile">9:39 /mile</dd></div></dl><p id="tm-distance">30 minutes at this speed covers 5.00 km (3.11 miles), excluding acceleration and pauses.</p></div>
+<noscript><p>The interactive converter needs JavaScript. The complete chart, formulas and worked examples below remain available.</p></noscript>
+</section>
+
+<section id="treadmill-chart"><h2>Treadmill pace chart: km/h and mph</h2>
+<p>Read across from the machine's speed setting. Pace is rounded to the nearest second; mph is rounded to two decimal places. Calculations use the original speed throughout, so a rounded pace should not be multiplied back to reconstruct an exact finish time.</p>
+<div class="guide-actions"><button type="button" data-print-target="#treadmill-chart" hidden>Print this chart / save PDF</button></div>
+{{TREADMILL_TABLE}}
+<p class="guide-note">Source: Marathon Pace KM calculations using 1 mile = 1.609344 km. This is a unit conversion, with no adjustment for incline, heat or running economy. Reference: marathonpacekm.com/blog/treadmill-pace-chart/.</p>
+</section>
+
+<section id="formulas"><h2>How to convert treadmill speed to running pace</h2>
+<p>A speed describes distance per hour. A pace describes time per kilometre or mile. Increasing speed makes the pace number smaller.</p>
+<div class="guide-equation"><p><strong>Pace in seconds/km = 3,600 ÷ km/h</strong><br><strong>Pace in seconds/mile = 3,600 ÷ mph</strong><br><strong>km/h = mph × 1.609344</strong></p></div>
+<p>At 12 km/h, divide 3,600 by 12: 300 seconds, or <strong>5:00/km</strong>. At 6 mph, divide 3,600 by 6: 600 seconds, or <strong>10:00/mile</strong>. That second setting is about 9.66 km/h and 6:13/km.</p>
+<p>Be careful with decimal minutes. <strong>5.5 minutes means 5:30, not 5:50.</strong> Enter paces in minutes:seconds in the converter. A prescribed 5:30/km is 330 seconds per kilometre, giving 3,600 ÷ 330 = 10.909… km/h. A machine with 0.1 km/h steps would offer 10.9 km/h, approximately 5:30/km.</p>
+</section>
+
+<section id="workout"><h2>Translate the whole workout, including recovery</h2>
+<p>Suppose your existing programme calls for 10 minutes easy, three 5-minute blocks at 5:30/km with 2-minute easy recoveries between blocks, then 10 minutes easy. If you choose 9 km/h for the easy running and 10.9 km/h for the faster blocks, the session is:</p>
+<ol><li><strong>10 minutes at 9 km/h.</strong> Approximately 6:40/km.</li><li><strong>5 minutes at 10.9 km/h, then 2 minutes at 9 km/h.</strong> Repeat that pair twice.</li><li><strong>5 minutes at 10.9 km/h.</strong> There is no additional interval recovery after the last block.</li><li><strong>10 minutes at 9 km/h</strong> to finish.</li></ol>
+<p>That is <strong>39 minutes</strong>: 20 easy warm-up/cool-down minutes + 15 faster minutes + 4 recovery minutes. At constant stated speeds it covers <strong>6.325 km</strong>. Real distance differs slightly while the belt accelerates and slows. The example explains a conversion; it does not choose a workout or pace for you.</p>
+<p>Check what the session is intended to train before translating it. <a href="/blog/tempo-vs-threshold-vs-marathon-pace/">Tempo, threshold and marathon pace</a> are not interchangeable labels. Use the <a href="/monthly-training-plan/">monthly planner</a> to organise an appropriate block and the <a href="/marathon-pace-calculator/">race pace calculator</a> for target-time arithmetic.</p>
+</section>
+
+<section id="incline"><h2>Does 1% incline make treadmill pace equal outdoor pace?</h2>
+<p>Incline changes the work required. It does not change the conversion: 10 km/h still corresponds to 6:00/km at either 0% or 1% grade.</p>
+<p>The often-cited <a href="https://pubmed.ncbi.nlm.nih.gov/8887211/">Jones and Doust study</a> tested nine trained men in short bouts at specified speeds. A 1% grade gave a useful energetic comparison with outdoor running in that experiment. It did not establish an exact setting for every runner, treadmill, speed or session.</p>
+<p>Choose incline for the purpose of your run and how you tolerate it. A hill workout and a flat easy run have different demands. Avoid treating an incline chart as a precise race-time prediction, particularly when indoor temperature, airflow and belt calibration differ. If you deliberately add climbing, the <a href="/blog/hills-pacing-give-away-seconds-avoid-quad-destruction/">hill pacing guide</a> explains why effort and speed can move in different directions.</p>
+</section>
+
+<section id="watch"><h2>Why does my watch show a different treadmill pace?</h2>
+<p>The console reports the machine's speed or distance estimate. An indoor watch usually estimates distance from movement or a connected sensor. Neither display is automatically a measurement of the belt's true speed under your load.</p>
+<p>First check the units on both devices. Then compare a steady section rather than a few seconds after changing speed. Holding the handrails, changing arm movement, acceleration and different calibration settings can complicate the comparison. Follow your device's calibration instructions; a disagreement by itself does not identify which device is wrong.</p>
+<p>For your training record, note the <strong>machine setting, incline, elapsed duration and effort</strong>. That gives you a more repeatable comparison than editing every run until two estimates match. The <a href="/blog/signal-vs-noise-marathon-training-pace/">guide to training pace trends</a> explains how to compare sessions without overreading one number.</p>
+</section>
+
+<section id="faq"><h2>Quick treadmill conversions</h2><h3>What treadmill speed is a 6-minute kilometre?</h3><p>Exactly 10 km/h, or about 6.21 mph. At that constant speed, 30 minutes covers 5 km.</p><h3>What pace is 8 mph?</h3><p>7:30 per mile, or approximately 4:40/km. The equivalent speed is 12.874752 km/h.</p><h3>What treadmill setting matches a four-hour marathon?</h3><p>42.195 ÷ 4 = 10.54875 km/h, about 6.55 mph. This is the mathematical race average. It does not mean every training run should use that setting, or that holding it indoors establishes marathon readiness.</p></section>
+
+<section id="sources" class="guide-sources"><h2>Sources and calculation notes</h2><ul><li><a href="https://www.nist.gov/pml/special-publication-811/nist-guide-si-appendix-b-conversion-factors/nist-guide-si-appendix-b9">NIST, Guide to the SI, Appendix B.9.</a> Source for the international mile conversion.</li><li><a href="https://pubmed.ncbi.nlm.nih.gov/8887211/">Jones AM and Doust JH (1996), A 1% treadmill grade most accurately reflects the energetic cost of outdoor running.</a> The incline discussion describes the scope of this experiment.</li><li><a href="/methodology/#treadmill">Marathon Pace KM calculation methods.</a> Full-precision conversion, rounding and limitations.</li></ul><p>The chart and workout totals are original calculations. No treadmill model was field-tested for this article.</p></section>

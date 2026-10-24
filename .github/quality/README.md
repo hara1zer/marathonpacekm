@@ -1,5 +1,31 @@
 # Browser regressions
 
+## Practical guides — 25 October 2026
+
+The five articles in `.github/quality/practical-guides/*.body.html` are individually
+written sources. `python3 .github/quality/build-practical-guides.py` supplies the
+common navigation, metadata and treadmill conversion table. Commit both the
+source and generated public HTML. Keep these pages in the reading layout even
+though three contain small optional forms. Their separate, versioned CSS and
+JavaScript do not change existing calculators or the shared stylesheet bundle.
+
+`node .github/quality/practical-guides-browser.mjs` checks all four speed/pace
+units, invalid-state clearing, leap-year/DST date calculations, two/three-week
+taper accounting in both units, correspondence with the existing run-walk
+calculator, no-JavaScript fallbacks, four viewport widths, Article/Breadcrumb
+identity, axe accessibility and actual chart/session PDFs. The Pages QA workflow
+runs it with the existing suites. `QA_OUTPUT`, `PLAYWRIGHT_MODULE`,
+`CHROMIUM_PATH`, `CHROMIUM_ARGS` and `AXE_MODULE` work as documented below.
+
+`build-guide-social-cards.py` uses development-only Pillow and DejaVu Sans to
+create the five committed social images. They are original typographic cards,
+not field-test photographs. There is no production image-generation dependency.
+The navigation baseline deliberately adds only these five new URL/metadata
+contracts; every previous entry is retained unchanged.
+
+Use `practical-guides/editorial-notes-2026-10-25.md` for sources, coverage and the
+distinction between research, original arithmetic and illustrative schedules.
+
 ## Melbourne running pilot
 
 The Melbourne section at `/melbourne-running/` contains 18 full venue guides and a region-filtered hub. Sources live in `melbourne-running/venues.json`, page metadata in `additional-pages.json`, and individually written bodies alongside them. Run `python3 .github/quality/build-melbourne-running-pilot.py` to rebuild the pages, then `python3 .github/quality/export-melbourne-drafts.py` for the Markdown copies. Keep venue-specific access, facilities and route details central; do not add generic training padding or restore unsupported facts. Source dates and historical qualifications remain visible.

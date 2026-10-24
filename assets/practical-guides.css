@@ -1,0 +1,56 @@
+/* Reading pages with small, optional planning tools. */
+.practical-guide .guide-toc { padding: 18px 22px; margin: 24px 0 32px; border-block: 1px solid #dbe4d9; }
+.practical-guide .guide-toc ul { padding-left: 20px; margin: 8px 0; }
+.practical-guide article > section { margin-block: 38px; scroll-margin-top: 24px; }
+.practical-guide .guide-tool { background: #fff; border: 1px solid #c7d9cb; border-radius: 16px; padding: 24px; }
+.practical-guide .guide-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin-block: 20px; }
+.practical-guide label { display: block; font-size: .9rem; font-weight: 650; }
+.practical-guide input:not([type="checkbox"]), .practical-guide select { display: block; width: 100%; padding: 10px 12px; margin-top: 6px; }
+.practical-guide .guide-help { display: block; font-size: .85rem; font-weight: 400; color: #496258; margin-top: 5px; }
+.practical-guide .guide-error { color: #92271c; font-weight: 650; }
+.practical-guide .guide-result { border-top: 1px solid #dbe4d9; padding-top: 18px; margin-top: 20px; font-variant-numeric: tabular-nums; }
+.practical-guide .guide-metrics { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; padding: 0; }
+.practical-guide .guide-metrics div { background: #edf3e7; border-radius: 10px; padding: 14px; }
+.practical-guide .guide-metrics dt { font-size: .85rem; color: #496258; }
+.practical-guide .guide-metrics dd { margin: 4px 0 0; font-size: 1.4rem; font-weight: 700; }
+.practical-guide .guide-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-block: 18px; }
+.practical-guide .guide-equation { padding: 16px 20px; background: #edf3e7; border-left: 3px solid #174f40; overflow-wrap: anywhere; }
+.practical-guide .guide-note { color: #496258; font-size: .9rem; }
+.practical-guide .guide-sources li { margin-bottom: 14px; }
+.practical-guide .guide-checks { list-style: none; padding-left: 0; }
+.practical-guide .guide-checks li { margin: 12px 0; }
+.practical-guide .guide-checks label { font-weight: 400; display: flex; gap: 10px; align-items: baseline; }
+.practical-guide .guide-checks input { flex: 0 0 auto; width: 18px; height: 18px; }
+.practical-guide table { min-width: 500px; font-size: .94rem; }
+.practical-guide .short-table { min-width: 420px; }
+.practical-guide .session-sheet { padding: 24px; border: 1px solid #c7d9cb; border-radius: 12px; background: #fff; }
+.practical-guide .session-sheet ol { padding-left: 24px; }
+.practical-guide .session-sheet li { padding-block: 7px; }
+.practical-guide .session-log { display: block; color: #496258; font-size: .85rem; }
+.practical-guide .session-sheet p, .practical-guide .session-log { overflow-wrap: anywhere; }
+.practical-guide figure img { border: 1px solid #dbe4d9; }
+.practical-guide [hidden] { display: none !important; }
+@media (max-width: 520px) {
+  .practical-guide .guide-fields { grid-template-columns: minmax(0,1fr); }
+  .practical-guide .guide-tool, .practical-guide .session-sheet { padding: 18px; }
+  .practical-guide .guide-metrics dd { font-size: 1.2rem; }
+}
+@media print {
+  .practical-guide { background: #fff; color: #000; font: 10pt/1.45 sans-serif; }
+  .practical-guide main { width: 100%; margin: 0; padding: 0; }
+  .practical-guide .mpkm-site-header, .practical-guide .mpkm-breadcrumbs,
+  .practical-guide .skip-link, .practical-guide .guide-toc, .practical-guide .guide-actions,
+  .practical-guide form, .practical-guide button, .practical-guide .guide-footer { display: none !important; }
+  .practical-guide .table-scroll { overflow: visible; }
+  .practical-guide table { min-width: 0; font-size: 9pt; }
+  .practical-guide th, .practical-guide td { padding: 5pt !important; }
+  .practical-guide thead { display: table-header-group; }
+  .practical-guide tr, .practical-guide .session-sheet li { break-inside: avoid; }
+  .practical-guide h2, .practical-guide h3 { break-after: avoid; }
+  .practical-guide .guide-tool, .practical-guide .session-sheet { padding: 0; border: 0; }
+  .practical-guide .guide-metrics { display: block; }
+  .practical-guide .guide-metrics div { display: inline-block; width: 45%; }
+  .practical-guide.print-reference article > :not(.print-target) { display: none !important; }
+  .practical-guide.print-reference .print-target { margin: 0 0 20pt; }
+  .practical-guide.print-reference .session-sheet + .session-sheet { break-before: page; }
+}
