@@ -46,7 +46,9 @@ def treadmill_table():
 def build(guide):
     slug = guide['slug']
     route = '/blog/' + slug + '/'
-    body = (HERE/'practical-guides'/f'{slug}.body.html').read_text().replace('{{TREADMILL_TABLE}}', treadmill_table())
+    body = (HERE/guide.get('collection', 'practical-guides')/f'{slug}.body.html').read_text().replace('{{TREADMILL_TABLE}}', treadmill_table())
+    for token, value in guide.get('tables', {}).items():
+        body = body.replace('{{' + token + '}}', value)
     body = body.replace('<form ', '<form hidden ')
     doc = html.fragment_fromstring(body, create_parent='div')
     for script in doc.xpath('.//script|.//style'): script.drop_tree()
@@ -60,6 +62,8 @@ def build(guide):
         'mainEntityOfPage':{'@type':'WebPage','@id':DOMAIN+route},
         'datePublished':DATE, 'dateModified':DATE, 'inLanguage':'en-AU', 'wordCount':words, 'citation':sources}
     data = {'@context':'https://schema.org','@graph':[article]}
+    extra_css = ''.join(f'<link rel="stylesheet" href="{escape(url, quote=True)}">\n' for url in guide.get('extra_css', []))
+    tool_script = guide.get('tool_script', '/assets/practical-guides.js?v=20261025a')
     source = f'''<!doctype html>
 <html lang="en-AU">
 <head>
@@ -89,10 +93,10 @@ def build(guide):
 <link rel="icon" href="/favicon.svg?v=20260922" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/site.css?v=20261017-nav">
 <link rel="stylesheet" href="/assets/practical-guides.css?v=20261025a">
-<meta name="google-adsense-account" content="ca-pub-5455873308344668">
+{extra_css}<meta name="google-adsense-account" content="ca-pub-5455873308344668">
 <script type="application/ld+json">{json.dumps(data, ensure_ascii=False, indent=2)}</script>
 <script defer src="/assets/site-telemetry.js?v=20261008-audit"></script>
-<script defer src="/assets/practical-guides.js?v=20261025a"></script>
+<script defer src="{escape(tool_script, quote=True)}"></script>
 </head>
 <body class="mpkm-legacy mpkm-reading practical-guide">
 <main id="content" class="content-wrap"><article>

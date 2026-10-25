@@ -119,3 +119,12 @@ Run `python3 .github/quality/content-consolidation-regressions.py` and `node .gi
 `assets/pace-calculator.js` owns the standalone calculator's validated state and URL serialization. Band exports are explicitly disabled for 5 km and 10 km; their tables and quick-print remain available. Keep the generator and standalone strategy calculations in agreement; the browser suite compares both distances and all three strategy outputs. Bump the asset's query version when it changes after deployment.
 
 See `adsense-quality-implementation-2026-10-23.md` and `adsense-page-inventory-2026-10-23.md` for evidence, coverage, remaining editorial work and resubmission gates. Earlier audit/checkpoint documents describe historical commits.
+# Researched article series, October 2026
+
+The five bodies under `researched-guides/` are built by
+`python .github/quality/build-researched-guides.py`; social cards use
+`python .github/quality/build-researched-social-cards.py`. Run
+`node .github/quality/researched-guides-browser.mjs` with the same Playwright/axe
+environment as the existing article suites. Research, overlap decisions,
+source limitations and reproduction notes are recorded in
+`researched-guides/editorial-notes-2026-10-25.md`.

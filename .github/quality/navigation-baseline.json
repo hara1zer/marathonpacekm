@@ -1761,6 +1761,81 @@
       "robots": [
         "index,follow,max-image-preview:large"
       ]
+    },
+    {
+      "url": "/blog/marathon-pacers/",
+      "title": "Marathon Pacers: Choosing a Pace Group & Timing It Right",
+      "h1": "Marathon pacers: should you follow a pace group?",
+      "canonical": [
+        "https://marathonpacekm.com/blog/marathon-pacers/"
+      ],
+      "navVariants": 1,
+      "description": [
+        "Choose a marathon pace group, check chip-time assumptions and aid-station plans, and calculate what catching a pacer would cost. Includes a printable checklist."
+      ],
+      "robots": [
+        "index,follow,max-image-preview:large"
+      ]
+    },
+    {
+      "url": "/blog/half-marathon-pacing-strategy/",
+      "title": "Half-Marathon Pacing Strategy: Splits & Race-Plan Calculator",
+      "h1": "Half-marathon pacing: build your plan from start to finish",
+      "canonical": [
+        "https://marathonpacekm.com/blog/half-marathon-pacing-strategy/"
+      ],
+      "navVariants": 1,
+      "description": [
+        "Build a half-marathon pacing plan with 5K checkpoints, an editable controlled-start calculator and lessons from recorded Run Melbourne splits."
+      ],
+      "robots": [
+        "index,follow,max-image-preview:large"
+      ]
+    },
+    {
+      "url": "/blog/yasso-800s/",
+      "title": "Yasso 800s Calculator: Session Time & Prediction Limits",
+      "h1": "Yasso 800s: calculate the workout and question the prediction",
+      "canonical": [
+        "https://marathonpacekm.com/blog/yasso-800s/"
+      ],
+      "navVariants": 1,
+      "description": [
+        "Calculate Yasso 800 rep pace, recovery time and the full session. See why ten fast intervals cannot establish your marathon pace, with worked examples."
+      ],
+      "robots": [
+        "index,follow,max-image-preview:large"
+      ]
+    },
+    {
+      "url": "/blog/carb-loading-calculator/",
+      "title": "Carb-Loading Calculator & Editable Meal-Planning Worksheet",
+      "h1": "Carb-loading calculator: turn a daily target into a food plan",
+      "canonical": [
+        "https://marathonpacekm.com/blog/carb-loading-calculator/"
+      ],
+      "navVariants": 1,
+      "description": [
+        "Calculate a daily carb-loading target from kg or lb, build a food-label worksheet, and compare planned with recorded carbohydrate. Sources and serving examples included."
+      ],
+      "robots": [
+        "index,follow,max-image-preview:large"
+      ]
+    },
+    {
+      "url": "/blog/longest-run-before-marathon/",
+      "title": "Longest Run Before a Marathon: 20 Miles or Three Hours?",
+      "h1": "20 miles or three hours? Choosing your longest marathon run",
+      "canonical": [
+        "https://marathonpacekm.com/blog/longest-run-before-marathon/"
+      ],
+      "navVariants": 1,
+      "description": [
+        "Compare 24\u201332 km long runs by time on feet, share of weekly mileage and recent distance. Use the worksheet and research to choose a manageable rehearsal."
+      ],
+      "robots": [
+        "index,follow,max-image-preview:large"
+      ]
     }
   ],
   "issues": [],
@@ -1879,7 +1954,12 @@
     "/norwegian-singles-vs-double-threshold/": 2,
     "/norwegian-singles-vs-tempo-runs/": 2,
     "/what-is-the-norwegian-method-running/": 2,
-    "/who-should-not-do-norwegian-singles/": 2
+    "/who-should-not-do-norwegian-singles/": 2,
+    "/blog/marathon-pacers/": 2,
+    "/blog/half-marathon-pacing-strategy/": 2,
+    "/blog/yasso-800s/": 2,
+    "/blog/carb-loading-calculator/": 2,
+    "/blog/longest-run-before-marathon/": 2
   },
   "headerVariants": {
     "Pace chart | Predictor | Training plan | Guides | Pace band \u2197 | Pace chart | Predictor | Training plan | Fueling | Guides | Pace band": 91,

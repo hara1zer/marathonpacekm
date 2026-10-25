@@ -9,6 +9,10 @@ on:
       - 'assets/navigation.js'
       - 'assets/pace-calculator.js'
       - 'assets/practical-guides.js'
+      - 'assets/researched-guides.js'
+      - '.github/quality/build-researched-guides.py'
+      - '.github/quality/researched-guides-browser.mjs'
+      - '.github/quality/researched-guides/**'
       - '.github/quality/build-practical-guides.py'
       - '.github/quality/practical-guides-browser.mjs'
       - '.github/quality/practical-guides/**'
@@ -59,6 +63,7 @@ jobs:
           node .github/quality/handoff-quality-browser.mjs
           python3 .github/quality/handoff-quality-pdf.py "$QA_OUTPUT"
           node .github/quality/practical-guides-browser.mjs
+          node .github/quality/researched-guides-browser.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
