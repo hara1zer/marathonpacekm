@@ -40,7 +40,7 @@ TRAINING_ARTICLES = {'marathon-pace-workouts', 'tempo-vs-threshold-vs-marathon-p
     'how-to-know-if-zone-2-is-working', 'how-to-salvage-a-marathon-training-plan',
     'signal-vs-noise-marathon-training-pace', 'treadmill-pace-chart',
     'how-long-to-train-for-a-marathon', 'marathon-taper',
-    'strength-training-for-marathon-runners'}
+    'strength-training-for-marathon-runners', 'yasso-800s', 'longest-run-before-marathon'}
 BRAND = '<a class="mpkm-brand" href="/" aria-label="Marathon Pace KM home"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a>'
 
 def route_for(path):
