@@ -3,6 +3,10 @@ on:
   pull_request:
     paths:
       - 'printable-pace-band/**'
+      - 'running-lab/**'
+      - 'assets/running-lab*'
+      - '.github/quality/running-lab*'
+      - '.github/quality/build-running-lab.py'
       - '**/*.html'
       - 'assets/*.css'
       - 'assets/site-telemetry.js'
@@ -44,6 +48,8 @@ jobs:
           python3 -m pip install PyMuPDF==1.26.7 lxml==6.1.1
       - name: Calculation and state regressions
         run: |
+          python3 .github/quality/build-running-lab.py --check
+          node .github/quality/running-lab-explorer-regressions.mjs
           node .github/quality/pace-band-regressions.mjs
           python3 .github/quality/goal-content-regressions.py
           python3 .github/quality/navigation-regressions.py
@@ -54,6 +60,7 @@ jobs:
           AXE_MODULE: ${{ runner.temp }}/pace-band-deps/node_modules/axe-core
           QA_OUTPUT: ${{ runner.temp }}/pace-band-qa
         run: |
+          node .github/quality/running-lab-browser.mjs
           node .github/quality/pace-band-browser.mjs
           python3 .github/quality/pace-band-pdf.py "$QA_OUTPUT"
           node .github/quality/browser-regressions.mjs

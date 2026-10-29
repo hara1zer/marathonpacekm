@@ -208,7 +208,7 @@ await test('Personal articles preserve identity, dates and discovery links',asyn
   assert.equal(data.ogTitle,data.h1);assert.equal(data.twitterTitle,data.h1);
   assert.equal(data.canonical,'https://marathonpacekm.com'+route);
   assert.equal(data.article.headline,data.h1);assert.equal(data.article.description,data.description);
-  assert.equal(data.article.author.name,'Davin Pinto');assert.equal(data.article.dateModified,'2026-10-02');
+  assert.equal(data.article.author.name,'Davin Pinto');assert.equal(data.article.dateModified,'2026-10-29');
   assert.match(await page.locator('.byline').innerText(),new RegExp(byline));
   titles.push([route,data.h1,data.description,data.title]);
  }
@@ -222,7 +222,7 @@ await test('Personal articles preserve identity, dates and discovery links',asyn
  assert.equal(list.length,39);assert.equal(new Set(list.map(x=>x.url)).size,39);
  for(const [route] of articles)assert.ok(list.some(x=>x.url==='https://marathonpacekm.com'+route));
  const sitemap=await (await page.request.get(base+'/sitemap.xml')).text();
- for(const [route] of articles)assert.ok(sitemap.includes('<loc>https://marathonpacekm.com'+route+'</loc><lastmod>2026-10-02</lastmod>'));
+ for(const [route] of articles)assert.ok(sitemap.includes('<loc>https://marathonpacekm.com'+route+'</loc><lastmod>2026-10-29</lastmod>'));
 });
 await test('Fueling article worked example agrees with the calculator',async()=>{
  await go('/blog/marathon-fueling-experiments/');
@@ -239,7 +239,7 @@ await test('Mobile menu works with keyboard and navigation at small widths',asyn
   const menu=page.locator('.mpkm-mobile-menu');const summary=menu.locator(':scope > summary');
   assert.ok(await summary.isVisible());assert.equal(await menu.getAttribute('open'),null);
   await summary.focus();await page.keyboard.press('Enter');assert.notEqual(await menu.getAttribute('open'),null);
-  assert.equal(await menu.locator('.mpkm-nav-list > li').count(),5);
+  assert.equal(await menu.locator('.mpkm-nav-list > li').count(),6);
   await menu.locator('summary[aria-label="Training links"]').click();
   assert.ok(await menu.locator('a[href="/monthly-training-plan/"]').isVisible());
   await summary.focus();

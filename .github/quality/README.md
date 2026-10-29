@@ -1,5 +1,53 @@
 # Browser regressions
 
+## Running Lab — 29 October 2026
+
+`/running-lab/` is an editorial collection of four existing firsthand articles,
+not a second set of article URLs. Their original canonical URLs, publication
+dates, recorded data and first-person accounts remain authoritative. Rebuilding
+is classified as intentions; fueling recollections are not a controlled product
+comparison.
+
+`.github/quality/running-lab-studies.json` is the published-study registry. It
+supplies the hub, homepage/blog collection cards, article metadata and related
+studies/tools, and Lab sitemap listings. Add a real article at its final URL,
+then add its verified metadata, evidence boundaries and relationships here. Run:
+
+```sh
+python3 .github/quality/build-running-lab.py
+python3 .github/quality/sync-navigation.py
+python3 .github/quality/build-running-lab.py --check
+```
+
+Commit the generated static HTML and sitemap changes. `site_navigation.py`
+reads the same registry for active navigation and breadcrumbs. No CMS, client
+fetch for discovery, or Cloudflare build command is required. When intentionally
+adding a public route, append its reviewed SEO contract to
+`navigation-baseline.json`; preserve every pre-existing contract.
+
+Sydney's embedded selected-split explorer loads the existing public
+`assets/original/sydney-2026-chart-data.json`. It has eight recorded laps and no
+kilometre 26. Target paces are hypothetical; local sums restart at a missing lap
+and never represent elapsed time from the race start. The original chart/table
+and source download work without the interactive enhancement. Changing its
+JavaScript/CSS requires bumping the versioned references because assets are
+immutable in production.
+
+With the existing external Playwright/axe/Chromium environment, run:
+
+```sh
+node .github/quality/running-lab-explorer-regressions.mjs
+node .github/quality/running-lab-browser.mjs
+```
+
+The first verifies source-table transcription and contiguous-block arithmetic.
+The browser suite checks discovery, original identity, metadata, both sitemaps,
+keyboard input, invalid-state clearing, failed data loads, no-JavaScript
+fallbacks, responsive layout and scoped WCAG checks. The Pages QA workflow runs
+both alongside the existing calculator, consent, print and navigation suites.
+This static site has no package-manifest lint or production build command;
+source generation checks and the existing regression suites are its validation.
+
 ## Practical guides — 25 October 2026
 
 The five articles in `.github/quality/practical-guides/*.body.html` are individually
