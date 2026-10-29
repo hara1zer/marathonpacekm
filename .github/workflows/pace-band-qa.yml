@@ -7,6 +7,7 @@ on:
       - 'assets/running-lab*'
       - '.github/quality/running-lab*'
       - '.github/quality/build-running-lab.py'
+      - '.github/quality/running_lab_analysis.py'
       - '**/*.html'
       - 'assets/*.css'
       - 'assets/site-telemetry.js'
@@ -50,6 +51,7 @@ jobs:
         run: |
           python3 .github/quality/build-running-lab.py --check
           node .github/quality/running-lab-explorer-regressions.mjs
+          node .github/quality/running-lab-analysis-regressions.mjs
           node .github/quality/pace-band-regressions.mjs
           python3 .github/quality/goal-content-regressions.py
           python3 .github/quality/navigation-regressions.py

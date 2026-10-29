@@ -67,9 +67,11 @@
   "@context": "https://schema.org"
 }</script>
 <script defer src="/assets/navigation.js?v=20261029-lab"></script>
-<link rel="stylesheet" href="/assets/running-lab.css?v=20261029">
+<link rel="stylesheet" href="/assets/running-lab.css?v=20261029-investigations">
 <link rel="stylesheet" href="/assets/running-lab-explorer.css?v=20261029">
 <script defer src="/assets/running-lab-explorer.js?v=20261029"></script>
+<link rel="stylesheet" href="/assets/running-lab-analysis.css?v=20261029-investigations">
+<script defer src="/assets/running-lab-analysis.js?v=20261029-investigations"></script>
 </head>
 <body id="top" class="mpkm-legacy mpkm-reading">
 <a class="skip-link" href="#content">Skip to content</a>
@@ -78,11 +80,12 @@
 <header class="wrap">
 <h1>My Sydney Marathon: lessons from a sub-four attempt</h1></header>
 <main class="wrap" id="content">
-<p class="byline">By <a rel="author" href="/about/#author">Davin Pinto</a> · Written <time datetime="2026-09-21">21 September 2026</time> · Updated <time datetime="2026-10-29">29 October 2026</time> · Personal race review</p>
 <!-- running-lab:metadata:start -->
-<div class="lab-study-meta"><p><a href="/running-lab/">The Running Lab</a> <span aria-hidden="true">/</span> <strong>Personal race analysis</strong></p><p class="lab-study-dates">First published <time datetime="2026-09-21">21 September 2026</time> · Revised <time datetime="2026-10-29">29 October 2026</time></p></div>
+<p class="byline lab-study-meta">By <a rel="author" href="/about/#author">Davin Pinto</a> · Published <time datetime="2026-09-21">21 September 2026</time> · Updated <time datetime="2026-10-29">29 October 2026</time> · <a href="/running-lab/">Personal race analysis</a></p>
 <!-- running-lab:metadata:end -->
-<section class="lab-study-orientation" id="lab-study-notes" aria-labelledby="lab-study-notes-title"><h2 id="lab-study-notes-title">Read the Sydney investigation</h2><dl><div><dt>Question</dt><dd>What can my preparation and the recorded later kilometres tell me about the sub-four attempt I did not achieve?</dd></div><div><dt>Available evidence</dt><dd>Twelve published training weeks, eight selected watch laps with heart rate, selected long-run laps and my race recollections.</dd></div><div><dt>Reading boundary</dt><dd>The splits show a change in pace, not its cause. There is no complete race trace or measured record of everything I ate and drank.</dd></div></dl><nav aria-label="Study reading paths"><ul><li><a href="#split-explorer">Explore the selected watch splits</a></li><li><a href="#training">Inspect the training record</a></li><li><a href="#prediction">Compare prediction assumptions</a></li><li><a href="#interpretation">Read the interpretation and limits</a></li><li><a href="#sources">Check sources and methods</a></li></ul></nav></section>
+<!-- running-lab:orientation:start -->
+<section class="lab-study-orientation" id="lab-study-notes" aria-labelledby="lab-study-notes-title"><h2 id="lab-study-notes-title">At a glance</h2><p>Twelve training weeks and selected Sydney laps frame the missed sub-four goal. The Prediction Lab tests conversion assumptions and the training history the formula leaves out.</p><nav aria-label="Study reading paths"><ul><li><a href="#prediction-lab">Try the Prediction Lab</a></li><li><a href="#training">Inspect the training weeks</a></li><li><a href="#sources">Sources and limits</a></li></ul></nav></section>
+<!-- running-lab:orientation:end -->
 
 <p>I started running in late 2024 with the goal of finishing a half marathon. Less than two years later, I was preparing for Sydney.</p>
 <p>I went into Sydney Marathon with a 1:50:57 half marathon behind me and a sub-four goal. I missed that goal. Looking back, I wanted to understand how my preparation and race execution needed to improve.</p>
@@ -99,10 +102,41 @@
 <section class="card" id="timing"><h2>The part of the race I need to improve</h2>
 <p>The later kilometres became a cycle of running and walking. I had the speed for a strong half marathon, but I did not maintain the effort I wanted over the full marathon.</p>
 <p><strong>My practical change:</strong> put more weight on repeatable long-run effort and recovery when choosing a target. The <a href="/">pace calculator</a> can give me checkpoints; my training has to support the plan.</p></section>
-<section class="card" id="prediction"><h2>What my half marathon predicted—and what happened</h2>
-<p>The simple Riegel conversion multiplies the half-marathon time by two raised to an exponent. With 1:50:57 and exponent 1.06, the result is approximately 3:51:19. Changing the exponent to 1.08 or 1.10 produces roughly 3:54:33 or 3:57:50.</p>
-<p>All three scenarios suggested a sub-four marathon, which I did not achieve at Sydney. The projection gave me a possible target; my preparation and execution still had to support it.</p>
-<p>My shorter-race result supported considering sub-four. It did not establish the durability, pacing and fueling needed to achieve it. The <a href="/marathon-time-predictor/">predictor</a> now makes that distinction explicit: its exponents show different assumptions, not personal confidence limits.</p></section>
+<section class="card" id="prediction"><h2>What my half marathon predicted—and what happened</h2><p>My shorter-race result supported considering sub-four. I did not achieve it at Sydney. This investigation examines the assumptions behind that target and the preparation a time-only conversion cannot assess.</p>
+<!-- running-lab:prediction:start -->
+<div class="lab-analysis" id="prediction-lab" data-prediction-lab data-source="/assets/original/sydney-2026-chart-data.json" role="region" aria-labelledby="prediction-lab-title">
+<p class="analysis-kicker">Prediction Lab / a model-input audit</p>
+<h3 id="prediction-lab-title">How much confidence was hidden in one finishing time?</h3>
+<p>A 1:50:57 half gave me a plausible sub-four target. Here I test two separate assumptions: how much slowing the formula allows over twice the distance, and which weeks I use to describe my preparation.</p>
+<div class="analysis-table" tabindex="0" role="region" aria-label="Worked half-to-marathon prediction assumptions; scroll for all columns"><table><caption>Worked scenario: a 1:50:57 half over exactly twice the course distance</caption><thead><tr><th scope="col">Chosen exponent</th><th scope="col">Calculated marathon</th><th scope="col">Margin below 4:00:00</th><th scope="col">Half time for exactly four hours</th></tr></thead><tbody><tr><th scope="row">1.06</th><td>3:51:19</td><td>8:41</td><td>1:55:07</td></tr><tr><th scope="row">1.08</th><td>3:54:33</td><td>5:27</td><td>1:53:32</td></tr><tr><th scope="row">1.10</th><td>3:57:50</td><td>2:10</td><td>1:51:58</td></tr></tbody></table></div>
+<p><strong>The margin is sensitive:</strong> changing only the exponent from 1.06 to 1.10 moves the scenario from 3:51:19 to 3:57:50, leaving 2:10 beneath four hours instead of 8:41. At an exponent of approximately 1.1131, the same half time maps to exactly four hours. This is a mathematical boundary, not my measured endurance exponent.</p>
+<h4>The training record that the formula never sees</h4>
+<div class="analysis-table" tabindex="0" role="region" aria-label="Recorded training-window descriptions; scroll for all columns"><table><caption>The same build described four ways</caption><thead><tr><th scope="col">Included weeks</th><th scope="col">Week starting</th><th scope="col">km/week</th><th scope="col">runs/week</th></tr></thead><tbody><tr><th scope="row">All 12 complete weeks</th><td>1 Jun–17 Aug 2026</td><td>60.7</td><td>4.4</td></tr><tr><th scope="row">Highest consecutive four weeks</th><td>15 Jun–6 Jul 2026</td><td>73.3</td><td>5.0</td></tr><tr><th scope="row">Final four complete weeks</th><td>27 Jul–17 Aug 2026</td><td>64.7</td><td>4.8</td></tr><tr><th scope="row">Highest single week</th><td>27 Jul–27 Jul 2026</td><td>83.9</td><td>5.0</td></tr></tbody></table></div>
+<p>The published rounded weeks total 728.9 km. Across all twelve, that is 60.7 km/week. The peak week of 83.9 km is 38.1% higher than that whole-block average. Even the highest four-week window averages 73.3 km/week; the final four average 64.7. Choosing a flattering window changes the description substantially.</p>
+<p><strong>The model blind spot:</strong> every one of those training descriptions produces the same time when the half result and exponent stay fixed. This calculation receives no training history. The week selection is an audit of the evidence beside the prediction, not a validated way to adjust it.</p>
+<p class="analysis-status" data-analysis-status role="status">The worked predictions and training-window table remain readable without interactive controls.</p>
+<div data-analysis-controls hidden>
+  <div class="analysis-inputs">
+    <fieldset><legend>Your half-marathon time</legend><div class="analysis-time">
+      <label for="prediction-hours"><span>Hours</span><input id="prediction-hours" type="number" min="0" max="23" step="1" value="1" inputmode="numeric" aria-describedby="prediction-error"></label>
+      <label for="prediction-minutes"><span>Minutes</span><input id="prediction-minutes" type="number" min="0" max="59" step="1" value="50" inputmode="numeric" aria-describedby="prediction-error"></label>
+      <label for="prediction-seconds"><span>Seconds</span><input id="prediction-seconds" type="number" min="0" max="59" step="1" value="57" inputmode="numeric" aria-describedby="prediction-error"></label>
+    </div></fieldset>
+    <fieldset><legend>Assumptions to inspect</legend>
+      <label for="prediction-exponent"><span>Distance exponent (1.00–1.30)</span><input id="prediction-exponent" type="number" min="1" max="1.3" step="any" value="1.06" inputmode="decimal" aria-describedby="prediction-model-help prediction-error"></label>
+      <label for="prediction-window"><span>Describe the recorded Sydney build using</span></label><select id="prediction-window"><option value="0">All 12 complete weeks</option><option value="1">Highest consecutive four weeks</option><option value="2">Final four complete weeks</option><option value="3">Highest single week</option></select>
+    </fieldset>
+  </div>
+  <p class="analysis-error" id="prediction-error" data-analysis-error role="status"></p>
+  <div data-prediction-results aria-live="polite" aria-atomic="true"></div>
+</div>
+<h4>How I would use this before another race</h4>
+<p>I would record the half result, selected exponent and target before the marathon, then retain the whole build—including interrupted weeks—beside that prediction. After the race I would compare the chosen scenario with an official elapsed result and describe pacing, course and actual intake separately. This record does not contain an exact official Sydney finish time, so it cannot supply a numerical prediction error or calibrate a better exponent.</p>
+<p class="analysis-method" id="prediction-model-help"><strong>Reproduce the arithmetic:</strong> marathon seconds = half seconds × 2<sup>exponent</sup>; required half seconds = 14,400 ÷ 2<sup>exponent</sup>. The example treats a half as 21.0975 km and a marathon as 42.195 km; it does not treat a watch GPS distance as course distance. Outputs round once to whole seconds. The standalone predictor rounds to 30 seconds, so its displayed time can differ slightly. Exponents are illustrative assumptions, not a confidence interval. Weekly averages use the published rounded distances, with no outcome or readiness score attached.</p>
+<p class="analysis-method"><a href="/assets/original/sydney-2026-chart-data.json">Download the published training and selected-lap data (JSON)</a> · <a href="#training">Inspect all 12 training weeks</a> · <a href="/methodology/#prediction">Prediction method</a> · <a href="#sources">Original source notes</a>.</p>
+</div>
+<!-- running-lab:prediction:end -->
+</section>
 <section class="card" id="training"><h2>My training peak was not my normal week</h2>
 <p>My Strava history puts the final build in context. Across the 12 complete Monday-to-Sunday weeks from 1 June to 23 August 2026, I averaged <strong>60.7 km and 4.4 runs per week</strong>. My biggest week was 83.9 km, but that was a peak rather than a settled baseline.</p><figure><img src="/assets/original/sydney-training-weeks.svg" alt="All 12 published weekly distances from 1 June to 23 August 2026, with a peak of 83.9 km." width="640" height="682" loading="lazy"><figcaption>The full log averaged 60.7 km/week. The bars show the published rounded weekly figures and include the interrupted weeks and taper. <a href="/assets/original/sydney-training-weeks.svg">Open full-size chart</a>. <a href="/assets/original/sydney-2026-chart-data.json">Published chart data</a>.</figcaption></figure>
 <p class="table-hint">On a small screen, swipe the table if needed.</p><div class="table-scroll" tabindex="0" role="region" aria-label="My final 12 full training weeks before Sydney race week"><table><caption>My final 12 full training weeks before Sydney race week</caption><thead><tr><th scope="col">Week starting (2026)</th><th scope="col">Running distance</th><th scope="col">Runs</th></tr></thead><tbody><tr><th scope="row">1 June</th><td>64.5 km</td><td>5</td></tr><tr><th scope="row">8 June</th><td>40.8 km</td><td>4</td></tr><tr><th scope="row">15 June</th><td>64.8 km</td><td>5</td></tr><tr><th scope="row">22 June</th><td>72.4 km</td><td>5</td></tr><tr><th scope="row">29 June</th><td>75.3 km</td><td>5</td></tr><tr><th scope="row">6 July</th><td>80.8 km</td><td>5</td></tr><tr><th scope="row">13 July</th><td>27.3 km</td><td>2</td></tr><tr><th scope="row">20 July</th><td>44.2 km</td><td>3</td></tr><tr><th scope="row">27 July</th><td>83.9 km</td><td>5</td></tr><tr><th scope="row">3 August</th><td>74.2 km</td><td>4</td></tr><tr><th scope="row">10 August</th><td>54.3 km</td><td>5</td></tr><tr><th scope="row">17 August</th><td>46.4 km</td><td>5</td></tr></tbody></table></div>

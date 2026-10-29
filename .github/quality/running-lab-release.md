@@ -1,5 +1,33 @@
 # Running Lab implementation notes
 
+## Investigation expansion and review fixes — 29 October 2026
+
+The merge candidate includes the original Running Lab foundation plus the
+following review fixes:
+
+- One delivered HTML collection of four accounts, with optional topic filtering
+  and no repeated category lists. Existing topic fragments remain on controls.
+- One author/publication/revision line and a concise evidence summary for each
+  account. Detailed limitations stay beside the data and in source notes.
+- Race Replay embedded in the original Run Melbourne comparison: all 20 full
+  2025 laps and 21 full 2026 laps, per-lap pace/HR/elevation and sums against a
+  separate chosen-pace scenario. Partial-lap labels never enter those sums.
+- A new within-race ten-lap comparison: 2025's later segment took 6:08 longer;
+  2026's took 0:32 less. Different GPS coverage prevents interpreting those
+  recorded segments as matched official course positions.
+- Prediction Lab embedded in the Sydney review: scenario/inverse arithmetic,
+  a four-hour sensitivity boundary and four explicit windows over the complete
+  published 12-week record. Training-window selection changes the descriptive
+  baseline only. There is no fitted training adjustment or invented official
+  Sydney finish time.
+
+The public source JSON files, existing routes, titles, canonicals and original
+publication dates are unchanged. New sections are authored by
+`running_lab_analysis.py`; the collection generator checks their committed HTML.
+The existing browser/mobile/PDF workflow now includes the expanded Lab coverage
+and source-arithmetic regressions. The final PR reports observed validation;
+earlier verification notes below describe the original foundation commit.
+
 ## Architecture and original-content audit
 
 The production site is committed HTML, CSS and browser JavaScript. Directory

@@ -14,6 +14,7 @@ import re
 import xml.etree.ElementTree as ET
 
 from site_navigation import apply_navigation, VERSION
+from running_lab_analysis import render_replay, render_prediction
 
 ROOT = Path(__file__).resolve().parents[2]
 REGISTRY = Path(__file__).with_name("running-lab-studies.json")
@@ -21,7 +22,7 @@ DOMAIN = "https://marathonpacekm.com"
 HUB = "/running-lab/"
 TITLE = "The Running Lab | Real Race Data, Training Experiments & Pacing Analysis"
 DESCRIPTION = "Original race experiences, recorded splits and personal fueling experiments. Explore the evidence, its limits and practical tools in the MarathonPaceKM Running Lab."
-CSS_VERSION = "20261029"
+CSS_VERSION = "20261029-investigations"
 
 
 def load_collection():
@@ -67,7 +68,7 @@ def render_study_card(study, compact=False):
                   f'<p>{escape(study["question"])}</p>'
                   '<small>A practical question, not a claim of a controlled experiment</small></div>')
     evidence = "; ".join(study["available_data"][:2])
-    return (f'<article class="lab-study-card" data-study-id="{escape(study["id"])}">{visual}'
+    return (f'<article class="lab-study-card" data-study-id="{escape(study["id"])}" data-topics="{escape(" ".join(study["categories"]))}">{visual}'
             f'<div class="lab-card-body"><p class="lab-card-kind">{escape(study["content_type"])}</p>'
             f'<h3><a href="{escape(study["url"])}">{escape(study["title"])}</a></h3>'
             f'<p class="lab-card-insight">{escape(study["insight"])}</p>'
@@ -109,17 +110,17 @@ def render_sitemap_collection(studies=None):
 
 
 def render_study_metadata(study):
-    return ('<div class="lab-study-meta"><p><a href="/running-lab/">The Running Lab</a>'
-            f' <span aria-hidden="true">/</span> <strong>{escape(study["content_type"])}</strong></p>'
-            f'<p class="lab-study-dates">First published <time datetime="{study["published"]}">{display_date(study["published"])}</time>'
-            f' · Revised <time datetime="{study["modified"]}">{display_date(study["modified"])}</time></p></div>')
+    return ('<p class="byline lab-study-meta">By <a rel="author" href="/about/#author">Davin Pinto</a>'
+            f' · Published <time datetime="{study["published"]}">{display_date(study["published"])}</time>'
+            f' · Updated <time datetime="{study["modified"]}">{display_date(study["modified"])}</time>'
+            f' · <a href="/running-lab/">{escape(study["content_type"])}</a></p>')
 
 
-def render_evidence_summary(study):
-    return ('<dl class="lab-evidence-summary">' +
-            "".join(f'<div><dt>{label}</dt><dd>{escape(study[field])}</dd></div>' for label, field in
-                    [("Question", "question"), ("Observation", "observed"), ("Reading boundary", "limitations"), ("Practical takeaway", "takeaway")]) +
-            '</dl>')
+def render_orientation(study):
+    links = ''.join(f'<li><a href="{escape(url)}">{escape(label)}</a></li>' for url, label in study['reading_paths'])
+    return ('<section class="lab-study-orientation" id="lab-study-notes" aria-labelledby="lab-study-notes-title">'
+            '<h2 id="lab-study-notes-title">At a glance</h2>'
+            f'<p>{escape(study["brief"])}</p><nav aria-label="Study reading paths"><ul>{links}</ul></nav></section>')
 
 
 def render_related_tools(study):
@@ -141,19 +142,9 @@ def render_related_studies(study, studies=None):
             '<p class="lab-related-back"><a href="/running-lab/">Explore all Running Lab investigations</a></p></aside>')
 
 
-def render_category(category, studies):
-    selected = [study for study in studies if category["id"] in study["categories"]]
-    assert selected, "Do not publish empty categories"
-    items = "".join(
-        f'<li data-study-id="{escape(study["id"])}"><span>{escape(study["content_type"])}</span>'
-        f'<a href="{escape(study["url"])}">{escape(study["title"])}</a></li>' for study in selected)
-    return (f'<section class="lab-category" id="{escape(category["id"])}">'
-            f'<h3>{escape(category["title"])}</h3><p>{escape(category["description"])}</p><ul>{items}</ul></section>')
-
-
 def render_hub(collection):
     studies = collection["studies"]
-    featured = [study for study in studies if study["featured"]]
+    featured = studies
     schema = {
         "@context": "https://schema.org", "@type": "CollectionPage",
         "@id": DOMAIN + HUB + "#collection", "url": DOMAIN + HUB, "name": TITLE,
@@ -163,8 +154,10 @@ def render_hub(collection):
         "mainEntity": {"@type": "ItemList", "itemListElement": [
             {"@type": "ListItem", "position": i + 1, "name": study["title"], "url": DOMAIN + study["url"]}
             for i, study in enumerate(studies)]}}
-    categories = "".join(render_category(category, studies) for category in collection["categories"])
-    category_links = "".join(f'<a href="#{escape(item["id"])}">{escape(item["title"])}</a>' for item in collection["categories"])
+    category_filters = ''.join(
+        f'<button type="button" id="{escape(category["id"])}" data-lab-topic="{escape(category["id"])}" aria-pressed="false">'
+        f'{escape(category["title"])} ({sum(category["id"] in study["categories"] for study in studies)})</button>'
+        for category in collection['categories'])
     tools = [
         ("/marathon-time-predictor/", "Marathon time predictor", "Test the conversion assumptions discussed in the Sydney review. A projected time is a scenario, not proof of readiness."),
         ("/marathon-pace-calculator/", "Pace calculator", "Build your own elapsed checkpoints. Keep the planned schedule separate from the watch-lap observations."),
@@ -191,6 +184,7 @@ def render_hub(collection):
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=20260922">
 <link rel="stylesheet" href="/assets/site.css?v={VERSION}">
 <link rel="stylesheet" href="/assets/running-lab.css?v={CSS_VERSION}">
+<script defer src="/assets/running-lab-hub.js?v={CSS_VERSION}"></script>
 <script defer src="/assets/site-telemetry.js?v=20261008-audit"></script>
 <script defer src="/assets/navigation.js?v={VERSION}"></script>
 <script type="application/ld+json">{json.dumps(schema, ensure_ascii=False, indent=2)}</script>
@@ -208,20 +202,21 @@ def render_hub(collection):
   </div>
   <aside class="lab-hero-record" aria-labelledby="lab-start-title">
     <p class="lab-record-label">Start with a real question</p>
-    <h2 id="lab-start-title">A strong half.<br>A marathon that faded.</h2>
-    <p>A 1:50:57 half put sub-four in view. The selected Sydney laps help examine what happened next without pretending to explain every cause.</p>
-    <dl><div><dt>Recorded</dt><dd>8 selected watch laps</dd></div><div><dt>Missing</dt><dd>Km 26 and the full race trace</dd></div></dl>
-    <a href="/blog/sydney-marathon-2026-personal-review/#split-explorer">Open the selected-split explorer <span aria-hidden="true">→</span></a>
+    <h2 id="lab-start-title">What changed between<br>two half marathons?</h2>
+    <p>Replay the recorded laps, then test what a half-marathon prediction leaves out of a marathon build.</p>
+    <dl><div><dt>Race Replay</dt><dd>41 recorded full laps across two races</dd></div><div><dt>Prediction Lab</dt><dd>12 training weeks and explicit model assumptions</dd></div></dl>
+    <a href="/blog/run-melbourne-half-marathon-2025-vs-2026/#race-replay">Open the Race Replay <span aria-hidden="true">→</span></a>
   </aside>
 </section>
-<nav class="lab-category-jump" aria-label="Running Lab categories">{category_links}</nav>
-<section class="lab-section" id="featured-investigations" aria-labelledby="lab-featured-title">
-  <div class="lab-section-heading"><p class="lab-eyebrow">Experience, then examination</p><h2 id="lab-featured-title">Featured investigations</h2><p>Three accounts with different kinds of evidence. The distinction is part of the finding.</p></div>
+<section class="lab-section" id="featured-investigations" data-lab-collection aria-labelledby="lab-featured-title">
+  <div class="lab-section-heading"><p class="lab-eyebrow">Experience, then examination</p><h2 id="lab-featured-title">Explore the investigations</h2><p>Four original accounts, each listed once. Choose a question or filter the collection by topic.</p></div>
+  <div class="lab-topic-filters" data-lab-filters role="group" aria-label="Filter investigations by topic" hidden><button type="button" data-lab-topic="all" aria-pressed="true">All investigations ({len(studies)})</button>{category_filters}</div>
+  <p class="lab-filter-status" data-lab-filter-status role="status"></p>
   <div class="lab-feature-grid">{render_collection_cards(featured)}</div>
 </section>
 <section class="lab-section" id="explore-the-lab" aria-labelledby="lab-explore-title">
-  <div class="lab-section-heading"><p class="lab-eyebrow">Follow the question</p><h2 id="lab-explore-title">Explore the Lab</h2><p>Four ways into the same founding collection. Each link leads to a published article at its original address.</p></div>
-  <div class="lab-category-grid">{categories}</div>
+  <div class="lab-section-heading"><p class="lab-eyebrow">Work through the evidence</p><h2 id="lab-explore-title">Try the data tools</h2><p>Each tool lives beside its source account and calculation notes.</p></div>
+  <ul class="lab-tool-grid"><li><a href="/blog/run-melbourne-half-marathon-2025-vs-2026/#race-replay">Race Replay: every recorded full lap</a><p>Compare the first and later ten-lap segments, then select any of the 41 available laps and inspect a separate even-pace scenario.</p></li><li><a href="/blog/sydney-marathon-2026-personal-review/#prediction-lab">Prediction Lab: the assumptions behind sub-four</a><p>Change a half time or distance exponent. See how the same 12-week build looks under different training windows—and why the prediction stays unchanged.</p></li></ul>
 </section>
 <section class="lab-method" id="how-the-lab-works" aria-labelledby="lab-method-title">
   <div><p class="lab-eyebrow">A transparent process</p><h2 id="lab-method-title">How the Lab works</h2><p>A personal record can be useful without being a controlled experiment. What matters is being clear about what is known and what is still a question.</p></div>
@@ -247,7 +242,7 @@ def render_hub(collection):
 def replace_marker(source, name, content):
     pattern = re.compile(r"(<!-- running-lab:" + re.escape(name) + r":start -->).*?(<!-- running-lab:" + re.escape(name) + r":end -->)", re.S)
     updated, count = pattern.subn(lambda match: match[1] + "\n" + content + "\n" + match[2], source)
-    assert count <= 1, f"Duplicate Running Lab {name} marker"
+    assert count == 1, f"Expected one Running Lab {name} marker"
     return updated
 
 
@@ -285,7 +280,14 @@ def generate(check=False):
         path = ROOT / study["url"].lstrip("/") / "index.html"
         source = path.read_text()
         updated = replace_marker(source, "metadata", render_study_metadata(study))
+        updated = replace_marker(updated, "orientation", render_orientation(study))
         updated = replace_marker(updated, "related", render_related_studies(study, collection["studies"]))
+        updated = re.sub(r'/assets/running-lab\.css\?v=[^"\s]+', f'/assets/running-lab.css?v={CSS_VERSION}', updated)
+        if study['id'] in ('sydney', 'melbourne'):
+            source_file = 'sydney-2026-chart-data.json' if study['id'] == 'sydney' else 'half-marathon-2025-2026-data.json'
+            data = json.loads((ROOT / 'assets/original' / source_file).read_text())
+            renderer = render_prediction if study['id'] == 'sydney' else render_replay
+            updated = replace_marker(updated, 'prediction' if study['id'] == 'sydney' else 'replay', renderer(data))
         expected[path] = updated
     # Registry-owned index blocks allow a future study to appear in all listings.
     for relative, marker, renderer in [

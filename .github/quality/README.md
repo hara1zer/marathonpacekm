@@ -2,6 +2,25 @@
 
 ## Running Lab — 29 October 2026
 
+The collection lists each account once. `assets/running-lab-hub.js` progressively
+enhances those delivered HTML cards with accessible topic filters; without
+JavaScript all four remain visible. Article metadata has one author/date line
+and a registry-owned short orientation block.
+
+`running_lab_analysis.py` generates source-derived analysis beside the original
+accounts: all 41 available full Run Melbourne laps, and prediction assumptions
+beside all 12 published Sydney training weeks. `running-lab-analysis.js` supplies
+the optional replay and sensitivity controls. It never changes source data,
+reconstructs a partial lap or official result, or applies an unvalidated training
+score to the forecast. The embedded model rounds once to whole seconds; the
+standalone predictor's deliberate 30-second rounding remains separate.
+
+Run `node .github/quality/running-lab-analysis-regressions.mjs` for independently
+checked source sums, prediction inversion, training-window selection and input
+boundaries. `running-lab-browser.mjs` also exercises topic filters, all 41 laps,
+invalid-state clearing, source-request failures, static fallbacks, one byline per
+article, compact summaries, responsive layout and scoped WCAG checks.
+
 `/running-lab/` is an editorial collection of four existing firsthand articles,
 not a second set of article URLs. Their original canonical URLs, publication
 dates, recorded data and first-person accounts remain authoritative. Rebuilding

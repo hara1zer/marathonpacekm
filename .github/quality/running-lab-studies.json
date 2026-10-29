@@ -37,7 +37,7 @@
       ],
       "content_type": "Personal race analysis",
       "description": "Davin Pinto reflects on missing his sub-four Sydney Marathon goal and the lessons for training consistency, workout pacing and fueling.",
-      "insight": "A 1:50:57 half suggested a sub-four scenario. Sydney showed why that scenario still needed marathon durability and a workable race-day plan.",
+      "insight": "The peak training week was 38.1% above the full-block average. The Prediction Lab shows why choosing a training window changes the story while the time-only forecast stays fixed.",
       "question": "What can my preparation and selected late-race splits tell me about a missed sub-four goal?",
       "published": "2026-09-21",
       "modified": "2026-10-29",
@@ -75,7 +75,22 @@
       "image": {
         "src": "/assets/original/sydney-selected-race-splits.svg",
         "alt": "Selected Sydney watch laps: recorded pace and heart rate in separate panels; kilometre 26 is missing."
-      }
+      },
+      "brief": "Twelve training weeks and selected Sydney laps frame the missed sub-four goal. The Prediction Lab tests conversion assumptions and the training history the formula leaves out.",
+      "reading_paths": [
+        [
+          "#prediction-lab",
+          "Try the Prediction Lab"
+        ],
+        [
+          "#training",
+          "Inspect the training weeks"
+        ],
+        [
+          "#sources",
+          "Sources and limits"
+        ]
+      ]
     },
     {
       "id": "melbourne",
@@ -87,7 +102,7 @@
       ],
       "content_type": "Recorded race comparison",
       "description": "My 2025 and 2026 Run Melbourne half marathons, with recorded splits, original charts and what finishing stronger means for my next marathon.",
-      "insight": "The final full recorded kilometres tell two different stories: a late fade in 2025 and an acceleration in 2026. GPS distance differences limit a like-for-like comparison.",
+      "insight": "The later ten recorded laps took 6:08 longer in 2025 and 0:32 less in 2026. Replay all 41 full laps and inspect how the pace changed within each race.",
       "question": "How do the recorded lap patterns compare with my memory of finishing these two races?",
       "published": "2026-10-01",
       "modified": "2026-10-29",
@@ -119,7 +134,22 @@
       "image": {
         "src": "/assets/original/half-marathon-five-kilometre-blocks.svg",
         "alt": "Average pace within four blocks of five recorded laps, comparing the 2025 and 2026 Run Melbourne activities."
-      }
+      },
+      "brief": "All 41 available full laps support a closer look at the two finishes. The Race Replay compares recorded segments; the source notes explain the different GPS distance coverage.",
+      "reading_paths": [
+        [
+          "#race-replay",
+          "Open the Race Replay"
+        ],
+        [
+          "#full-splits",
+          "Read every full lap"
+        ],
+        [
+          "#sources",
+          "Sources and limits"
+        ]
+      ]
     },
     {
       "id": "fueling",
@@ -160,7 +190,22 @@
         "rebuilding"
       ],
       "featured": true,
-      "image": null
+      "image": null,
+      "brief": "A personal account of homemade and commercial gels, plus a worked schedule. The useful distinction is between what I planned to take and what I could actually keep consuming.",
+      "reading_paths": [
+        [
+          "#long-run",
+          "The rehearsal experience"
+        ],
+        [
+          "#arithmetic",
+          "Check the schedule"
+        ],
+        [
+          "#sources",
+          "Sources and limits"
+        ]
+      ]
     },
     {
       "id": "rebuilding",
@@ -200,8 +245,23 @@
         "fueling",
         "melbourne"
       ],
-      "featured": false,
-      "image": null
+      "featured": true,
+      "image": null,
+      "brief": "The next-build intentions documented on 2 October 2026: repeatable weeks, controlled rehearsals and a record of recovery. This remains a proposed approach; completed training outcomes have not been added.",
+      "reading_paths": [
+        [
+          "#phases",
+          "The proposed sequence"
+        ],
+        [
+          "#record",
+          "What I intend to record"
+        ],
+        [
+          "#sources",
+          "Sources and status"
+        ]
+      ]
     }
   ]
 }

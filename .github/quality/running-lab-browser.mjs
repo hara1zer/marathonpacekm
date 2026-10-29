@@ -115,7 +115,7 @@ try {
     assert.equal(await p.title(), hubTitle);
     assert.equal(await p.locator('link[rel="canonical"]').getAttribute('href'), domain + '/running-lab/');
     assert.match(await p.locator('main').innerText(), /Real running data\. Real race experiences\. Practical lessons you can test yourself\./);
-    const featured = registry.studies.filter(study => study.featured);
+    const featured = registry.studies;
     assert.equal(await p.locator('#featured-investigations .lab-study-card').count(), featured.length);
     for (const study of featured) {
       const card = p.locator('#featured-investigations [data-study-id="' + study.id + '"]');
@@ -125,10 +125,13 @@ try {
       assert.ok((await card.locator('.lab-card-evidence').innerText()).length > 30);
     }
     for (const category of registry.categories) {
-      const section = p.locator('#' + category.id);
-      assert.equal(await section.count(), 1);
-      for (const study of registry.studies.filter(study => study.categories.includes(category.id))) assert.ok(await section.locator('a[href="' + study.url + '"]').count());
+      assert.equal(await p.locator('#' + category.id).count(), 1, 'historical topic fragment remains');
+      const cards = p.locator('.lab-study-card[data-topics~="' + category.id + '"]');
+      assert.equal(await cards.count(), registry.studies.filter(study => study.categories.includes(category.id)).length);
     }
+    assert.equal(await p.locator('.lab-category').count(), 0, 'topics do not duplicate the article listings');
+    assert.equal(await p.locator('.lab-study-card').count(), 4);
+    assert.equal(await p.locator('[data-lab-filters]').isVisible(), false, 'all four readable cards work without scripts');
     for (const route of ['/marathon-time-predictor/', '/marathon-pace-calculator/', '/marathon-fueling-calculator/', '/race-conditions-pace-adjuster/', '/monthly-training-plan/']) assert.equal(await p.locator('#lab-tools a[href="' + route + '"]').count(), 1);
     assert.equal(await p.locator('#how-the-lab-works ol > li').count(), 5);
     const schemas = await schema(p);
@@ -154,6 +157,10 @@ try {
       const notes = p.locator('#lab-study-notes');
       assert.equal(await notes.count(), 1);
       assert.ok((await notes.innerText()).length > 200);
+      assert.ok((await notes.innerText()).split(/\s+/).length <= 85, 'opening evidence summary stays concise');
+      assert.equal(await p.locator('.byline').count(), 1, 'one author/date line per article');
+      assert.equal(await p.locator('.byline time').count(), 2, 'publication and revision are each shown once in the byline');
+      assert.equal(await p.locator('.lab-study-dates').count(), 0, 'no second dates block');
       assert.match(await p.locator('.lab-study-meta').innerText(), new RegExp(study.content_type.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'));
       for (const related of study.related_studies) {
         const target = registry.studies.find(item => item.id === related);
@@ -186,12 +193,97 @@ try {
         if ([390,1280].includes(width)) {
           await p.addScriptTag({content:axe.source});
           const violations = await p.evaluate(async isHub => {
-            const include = isHub ? ['html'] : ['#lab-study-notes', ...[...document.querySelectorAll('[data-lab-explorer], .lab-study-meta, .lab-related')].map(element => element.id ? '#' + element.id : '.' + element.classList[0])];
+            const include = isHub ? ['html'] : ['#lab-study-notes', ...[...document.querySelectorAll('[data-lab-explorer], .lab-analysis, .lab-study-meta, .lab-related')].map(element => element.id ? '#' + element.id : '.' + element.classList[0])];
             return (await window.axe.run({include}, {runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa','wcag22aa']}})).violations.map(violation => ({id:violation.id, impact:violation.impact, targets:violation.nodes.map(node => node.target)}));
           }, route === '/running-lab/');
           assert.deepEqual(violations, [], route + ' at ' + width);
         }
         if (route === '/running-lab/' || route === sydney) await p.screenshot({path:path.join(output, (route === sydney ? 'lab-sydney' : 'lab-hub') + '-' + width + '.png'), fullPage:true});
+      }
+    }
+  });
+
+  await test('Topic filters show one collection and restore all studies with keyboard controls', async () => {
+    const {p} = await page();
+    await p.goto(base + '/running-lab/');
+    await p.locator('[data-lab-filters]').waitFor({state:'visible'});
+    for (const category of registry.categories) {
+      await p.locator('[data-lab-topic="' + category.id + '"]').click();
+      const expected = registry.studies.filter(study => study.categories.includes(category.id));
+      assert.equal(await p.locator('.lab-study-card:visible').count(), expected.length);
+      assert.equal(await p.locator('[aria-pressed="true"]').count(), 1);
+      assert.match(await p.locator('[data-lab-filter-status]').innerText(), new RegExp('^' + expected.length + ' of 4'));
+    }
+    await p.locator('[data-lab-topic="all"]').focus();
+    await p.locator('[data-lab-topic="all"]').press('Enter');
+    assert.equal(await p.locator('.lab-study-card:visible').count(), 4);
+  });
+
+  await test('Race Replay exposes all 41 source laps and excludes rounded partial laps', async () => {
+    const {p} = await page();
+    const data = JSON.parse(fs.readFileSync(path.join(root, 'assets/original/half-marathon-2025-2026-data.json')));
+    await p.goto(base + '/blog/run-melbourne-half-marathon-2025-vs-2026/');
+    const replay = p.locator('[data-race-replay]');
+    await p.waitForFunction(() => document.querySelector('[data-race-replay]')?.dataset.ready === 'true');
+    for (const year of ['2025','2026']) {
+      await p.locator('#replay-year').selectOption(year);
+      const laps = data[year].pace_seconds_per_km;
+      assert.equal(await p.locator('#replay-lap option').count(), laps.length);
+      for (let i = 0; i < laps.length; i++) {
+        await p.locator('#replay-lap').selectOption(String(i + 1));
+        const pace = `${Math.floor(laps[i]/60)}:${String(laps[i]%60).padStart(2,'0')}`;
+        assert.ok((await p.locator('[data-replay-observed]').innerText()).includes(pace + '/km'));
+        assert.equal(await replay.locator('circle').count(), laps.length);
+      }
+    }
+    assert.match(await p.locator('[data-replay-results]').innerText(), /1:49:35/);
+    assert.equal(await p.locator('[data-replay-next]').isDisabled(), true);
+    await p.locator('[data-replay-previous]').click();
+    assert.match(await p.locator('[data-replay-results]').innerText(), /1:44:44/);
+    await p.locator('#replay-seconds').fill('60');
+    assert.equal(await p.locator('[data-replay-results]').innerText(), '');
+    assert.equal(await replay.locator('svg').count(), 0);
+    assert.match(await p.locator('[data-replay-observed]').innerText(), /2026.*20/);
+    await p.locator('#replay-seconds').fill('40');
+    assert.match(await p.locator('[data-replay-results]').innerText(), /1:44:44/);
+  });
+
+  await test('Prediction Lab separates model sensitivity from the recorded training window', async () => {
+    const {p} = await page();
+    await p.goto(base + sydney);
+    await p.waitForFunction(() => document.querySelector('[data-prediction-lab]')?.dataset.ready === 'true');
+    const results = p.locator('[data-prediction-results]');
+    assert.match(await results.innerText(), /3:51:19/);
+    await p.locator('#prediction-window').selectOption('3');
+    assert.match(await results.innerText(), /83\.9 km\/week/);
+    assert.match(await results.innerText(), /3:51:19/, 'training-window selection never pretends to calibrate the model');
+    await p.locator('#prediction-exponent').fill('1.10');
+    assert.match(await results.innerText(), /3:57:50/);
+    assert.match(await results.innerText(), /2:10 under/);
+    assert.match(await results.innerText(), /1:51:58/);
+    for (const [selector, invalid, valid] of [['#prediction-minutes','60','50'],['#prediction-seconds','','57'],['#prediction-exponent','1.31','1.10']]) {
+      await p.locator(selector).fill(invalid);
+      assert.equal(await results.innerText(), '', 'invalid input clears stale scenarios');
+      assert.equal(await p.locator(selector).getAttribute('aria-invalid'), 'true');
+      await p.locator(selector).fill(valid);
+      assert.match(await results.innerText(), /3:57:50/);
+    }
+  });
+
+  await test('New investigations retain real analysis without JavaScript or a successful data fetch', async () => {
+    const routes = [[sydney, 'prediction-lab', 'sydney-2026-chart-data.json'], ['/blog/run-melbourne-half-marathon-2025-vs-2026/', 'race-replay', 'half-marathon-2025-2026-data.json']];
+    for (const [route, id, file] of routes) {
+      const plain = await page({javaScriptEnabled:false});
+      await plain.p.goto(base + route);
+      assert.equal(await plain.p.locator('#' + id + ' [data-analysis-controls]').isVisible(), false);
+      assert.ok(await plain.p.locator('#' + id + ' table tbody tr').count() >= 2);
+      for (const kind of ['network','malformed']) {
+        const {p,context} = await page();
+        await context.route('**/assets/original/' + file, request => kind === 'network' ? request.abort() : request.fulfill({status:200,contentType:'application/json',body:'{}'}));
+        await p.goto(base + route);
+        await p.waitForFunction(id => document.getElementById(id)?.dataset.ready === 'error', id);
+        assert.equal(await p.locator('#' + id + ' [data-analysis-controls]').isVisible(), false);
+        assert.ok(await p.locator('#' + id + ' table tbody tr').count() >= 2);
       }
     }
   });
