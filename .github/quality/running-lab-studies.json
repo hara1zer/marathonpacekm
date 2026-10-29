@@ -90,7 +90,8 @@
           "#sources",
           "Sources and limits"
         ]
-      ]
+      ],
+      "byline_label": "Personal race review"
     },
     {
       "id": "melbourne",
@@ -205,7 +206,8 @@
           "#sources",
           "Sources and limits"
         ]
-      ]
+      ],
+      "byline_label": "Personal experience, not a product ranking"
     },
     {
       "id": "rebuilding",
@@ -261,7 +263,8 @@
           "#sources",
           "Sources and status"
         ]
-      ]
+      ],
+      "byline_label": "Personal training intentions"
     }
   ]
 }

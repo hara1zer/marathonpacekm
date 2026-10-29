@@ -161,7 +161,7 @@ try {
       assert.equal(await p.locator('.byline').count(), 1, 'one author/date line per article');
       assert.equal(await p.locator('.byline time').count(), 2, 'publication and revision are each shown once in the byline');
       assert.equal(await p.locator('.lab-study-dates').count(), 0, 'no second dates block');
-      assert.match(await p.locator('.lab-study-meta').innerText(), new RegExp(study.content_type.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'));
+      assert.match(await p.locator('.lab-study-meta').innerText(), new RegExp((study.byline_label || study.content_type).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i'));
       for (const related of study.related_studies) {
         const target = registry.studies.find(item => item.id === related);
         assert.equal(await p.locator('.lab-related a[href="' + target.url + '"]').count(), 1);

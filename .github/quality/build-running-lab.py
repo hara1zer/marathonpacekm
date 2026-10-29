@@ -113,7 +113,7 @@ def render_study_metadata(study):
     return ('<p class="byline lab-study-meta">By <a rel="author" href="/about/#author">Davin Pinto</a>'
             f' · Published <time datetime="{study["published"]}">{display_date(study["published"])}</time>'
             f' · Updated <time datetime="{study["modified"]}">{display_date(study["modified"])}</time>'
-            f' · <a href="/running-lab/">{escape(study["content_type"])}</a></p>')
+            f' · <a href="/running-lab/">{escape(study.get("byline_label", study["content_type"]))}</a></p>')
 
 
 def render_orientation(study):
@@ -209,7 +209,7 @@ def render_hub(collection):
   </aside>
 </section>
 <section class="lab-section" id="featured-investigations" data-lab-collection aria-labelledby="lab-featured-title">
-  <div class="lab-section-heading"><p class="lab-eyebrow">Experience, then examination</p><h2 id="lab-featured-title">Explore the investigations</h2><p>Four original accounts, each listed once. Choose a question or filter the collection by topic.</p></div>
+  <div class="lab-section-heading"><p class="lab-eyebrow">Experience, then examination</p><h2 id="lab-featured-title">Explore the investigations</h2><p>Race records, fueling experiences and a plan for the next build. Filter by the question you want to explore.</p></div>
   <div class="lab-topic-filters" data-lab-filters role="group" aria-label="Filter investigations by topic" hidden><button type="button" data-lab-topic="all" aria-pressed="true">All investigations ({len(studies)})</button>{category_filters}</div>
   <p class="lab-filter-status" data-lab-filter-status role="status"></p>
   <div class="lab-feature-grid">{render_collection_cards(featured)}</div>
