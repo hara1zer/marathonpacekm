@@ -1,0 +1,270 @@
+{
+  "hub": {
+    "published": "2026-10-29",
+    "modified": "2026-10-29"
+  },
+  "categories": [
+    {
+      "id": "race-analysis",
+      "title": "Race Analysis",
+      "description": "Put the experience of a race beside its recorded laps. Compare patterns without filling gaps or assigning a cause the data cannot establish."
+    },
+    {
+      "id": "training-durability",
+      "title": "Training & Durability",
+      "description": "Look beyond the biggest training week: repeatability, late-run control and the difference between a proposed rebuild and completed training."
+    },
+    {
+      "id": "fueling-experiments",
+      "title": "Fueling Experiments",
+      "description": "Follow personal gel trials and the practical gap between a schedule on paper and what can actually be consumed while tired."
+    },
+    {
+      "id": "prediction-pacing",
+      "title": "Prediction & Pacing",
+      "description": "Compare a shorter-race prediction with the demands of the next distance. Keep mathematical scenarios separate from recorded performance."
+    }
+  ],
+  "studies": [
+    {
+      "id": "sydney",
+      "title": "My Sydney Marathon: lessons from a sub-four attempt",
+      "url": "/blog/sydney-marathon-2026-personal-review/",
+      "categories": [
+        "race-analysis",
+        "training-durability",
+        "prediction-pacing"
+      ],
+      "content_type": "Personal race analysis",
+      "description": "Davin Pinto reflects on missing his sub-four Sydney Marathon goal and the lessons for training consistency, workout pacing and fueling.",
+      "insight": "The peak training week was 38.1% above the full-block average. The Prediction Lab shows why choosing a training window changes the story while the time-only forecast stays fixed.",
+      "question": "What can my preparation and selected late-race splits tell me about a missed sub-four goal?",
+      "published": "2026-09-21",
+      "modified": "2026-10-29",
+      "available_data": [
+        "12 complete training weeks",
+        "8 selected watch kilometre splits",
+        "Recorded rehearsal laps and personal recollections"
+      ],
+      "observed": "Selected recorded pace slowed from 5:32/km at km 25 to 6:50/km at km 33; recorded heart rate stayed within 160–164 bpm.",
+      "limitations": "Kilometre 26, the full race trace and official checkpoint comparisons are not available. These observations do not diagnose the cause of the slowdown.",
+      "takeaway": "Choose a target from repeatable preparation and practise a plan that still works late.",
+      "related_tools": [
+        {
+          "url": "/marathon-time-predictor/",
+          "title": "Marathon time predictor",
+          "description": "Compare conversion assumptions with the separate question of marathon readiness."
+        },
+        {
+          "url": "/marathon-pace-calculator/",
+          "title": "Pace calculator",
+          "description": "Turn your own target into checkpoints; a schedule remains a scenario."
+        },
+        {
+          "url": "/race-conditions-pace-adjuster/",
+          "title": "Race conditions pace adjuster",
+          "description": "Explore a conditions scenario without attributing Sydney's result to unrecorded weather."
+        }
+      ],
+      "related_studies": [
+        "melbourne",
+        "rebuilding",
+        "fueling"
+      ],
+      "featured": true,
+      "image": {
+        "src": "/assets/original/sydney-selected-race-splits.svg",
+        "alt": "Selected Sydney watch laps: recorded pace and heart rate in separate panels; kilometre 26 is missing."
+      },
+      "brief": "Twelve training weeks and selected Sydney laps frame the missed sub-four goal. The Prediction Lab tests conversion assumptions and the training history the formula leaves out.",
+      "reading_paths": [
+        [
+          "#prediction-lab",
+          "Try the Prediction Lab"
+        ],
+        [
+          "#training",
+          "Inspect the training weeks"
+        ],
+        [
+          "#sources",
+          "Sources and limits"
+        ]
+      ],
+      "byline_label": "Personal race review"
+    },
+    {
+      "id": "melbourne",
+      "title": "My two Run Melbourne half marathons: from fading late to finishing strong",
+      "url": "/blog/run-melbourne-half-marathon-2025-vs-2026/",
+      "categories": [
+        "race-analysis",
+        "prediction-pacing"
+      ],
+      "content_type": "Recorded race comparison",
+      "description": "My 2025 and 2026 Run Melbourne half marathons, with recorded splits, original charts and what finishing stronger means for my next marathon.",
+      "insight": "The later ten recorded laps took 6:08 longer in 2025 and 0:32 less in 2026. Replay all 41 full laps and inspect how the pace changed within each race.",
+      "question": "How do the recorded lap patterns compare with my memory of finishing these two races?",
+      "published": "2026-10-01",
+      "modified": "2026-10-29",
+      "available_data": [
+        "20 full recorded laps from 2025",
+        "21 full recorded laps from 2026",
+        "Displayed heart rate, elevation and activity summaries"
+      ],
+      "observed": "The first-to-fourth 5 km block pace changed by +50.8 seconds/km in 2025 and −6.8 seconds/km in 2026.",
+      "limitations": "The 2025 activity notes GPS distance loss. Recorded kilometres are not matched course positions, and the records do not isolate training, conditions or fueling.",
+      "takeaway": "Read the broader lap pattern alongside effort and context, rather than treating one fast finish as a marathon guarantee.",
+      "related_tools": [
+        {
+          "url": "/marathon-time-predictor/",
+          "title": "Marathon time predictor",
+          "description": "See what a half-marathon result projects under different assumptions."
+        },
+        {
+          "url": "/marathon-pace-calculator/",
+          "title": "Pace calculator",
+          "description": "Create a separate target schedule for a half or full marathon."
+        }
+      ],
+      "related_studies": [
+        "sydney",
+        "rebuilding"
+      ],
+      "featured": true,
+      "image": {
+        "src": "/assets/original/half-marathon-five-kilometre-blocks.svg",
+        "alt": "Average pace within four blocks of five recorded laps, comparing the 2025 and 2026 Run Melbourne activities."
+      },
+      "brief": "All 41 available full laps support a closer look at the two finishes. The Race Replay compares recorded segments; the source notes explain the different GPS distance coverage.",
+      "reading_paths": [
+        [
+          "#race-replay",
+          "Open the Race Replay"
+        ],
+        [
+          "#full-splits",
+          "Read every full lap"
+        ],
+        [
+          "#sources",
+          "Sources and limits"
+        ]
+      ]
+    },
+    {
+      "id": "fueling",
+      "title": "My marathon fueling experiments: what I learned from homemade and commercial gels",
+      "url": "/blog/marathon-fueling-experiments/",
+      "categories": [
+        "fueling-experiments",
+        "training-durability"
+      ],
+      "content_type": "Personal fueling experiment",
+      "description": "My homemade gel trials, dry-mouth experience and difficulty taking Winners gels late at Sydney, plus the difference between planned and consumed carbohydrate.",
+      "insight": "“Every 20 minutes” describes an intended interval, not a measured race intake. Mouth feel and late-run willingness to eat made execution part of the problem.",
+      "question": "What can I keep consuming when I am tired?",
+      "published": "2026-10-02",
+      "modified": "2026-10-29",
+      "available_data": [
+        "Personal homemade and commercial gel experiences",
+        "Selected 9 August rehearsal laps",
+        "Explicitly hypothetical schedule arithmetic"
+      ],
+      "observed": "The homemade mix felt thick and drying; familiar gels also became unappealing late at Sydney. These are personal observations.",
+      "limitations": "There is no verified recipe, consistent product-variant record or complete measured race intake. The account is not a controlled product comparison.",
+      "takeaway": "Record exact servings, planned versus actual consumption, drinks, effort and symptoms before drawing a conclusion.",
+      "related_tools": [
+        {
+          "url": "/marathon-fueling-calculator/",
+          "title": "Fueling calculator",
+          "description": "Compare a chosen schedule with an hourly target; it cannot reconstruct an unrecorded intake."
+        },
+        {
+          "url": "/monthly-training-plan/",
+          "title": "Monthly training planner",
+          "description": "Place a manageable rehearsal in the context of your recent training."
+        }
+      ],
+      "related_studies": [
+        "sydney",
+        "rebuilding"
+      ],
+      "featured": true,
+      "image": null,
+      "brief": "A personal account of homemade and commercial gels, plus a worked schedule. The useful distinction is between what I planned to take and what I could actually keep consuming.",
+      "reading_paths": [
+        [
+          "#long-run",
+          "The rehearsal experience"
+        ],
+        [
+          "#arithmetic",
+          "Check the schedule"
+        ],
+        [
+          "#sources",
+          "Sources and limits"
+        ]
+      ],
+      "byline_label": "Personal experience, not a product ranking"
+    },
+    {
+      "id": "rebuilding",
+      "title": "Rebuilding after Sydney: my plan to finish the next marathon stronger",
+      "url": "/blog/rebuilding-after-sydney-marathon/",
+      "categories": [
+        "training-durability"
+      ],
+      "content_type": "Training intentions",
+      "description": "My plan after missing sub-four at Sydney: repeatable training, controlled workouts and rehearsals that prepare me to finish my next marathon stronger.",
+      "insight": "The next build is a set of intentions: use the whole training block as the baseline, rehearse controlled effort and record recovery. Outcomes are still to be tested.",
+      "question": "What do I want to change in the next build, and how will I know whether the plan is manageable?",
+      "published": "2026-10-02",
+      "modified": "2026-10-29",
+      "available_data": [
+        "Published Sydney training review",
+        "Proposed sequence and session-record checklist",
+        "No completed rebuild outcomes"
+      ],
+      "observed": "The previous 12 complete weeks averaged 60.7 km/week; 83.9 km was the peak rather than the normal week.",
+      "limitations": "The proposed sequence is not a current log, dated programme, rehabilitation schedule or evidence that the rebuild has worked.",
+      "takeaway": "Plan from routine and response, then judge actual training before escalating the next target.",
+      "related_tools": [
+        {
+          "url": "/monthly-training-plan/",
+          "title": "Monthly training planner",
+          "description": "Include low and interrupted weeks when organising a proposed block."
+        },
+        {
+          "url": "/marathon-time-predictor/",
+          "title": "Marathon time predictor",
+          "description": "Keep a future scenario separate from evidence of completed preparation."
+        }
+      ],
+      "related_studies": [
+        "sydney",
+        "fueling",
+        "melbourne"
+      ],
+      "featured": true,
+      "image": null,
+      "brief": "The next-build intentions documented on 2 October 2026: repeatable weeks, controlled rehearsals and a record of recovery. This remains a proposed approach; completed training outcomes have not been added.",
+      "reading_paths": [
+        [
+          "#phases",
+          "The proposed sequence"
+        ],
+        [
+          "#record",
+          "What I intend to record"
+        ],
+        [
+          "#sources",
+          "Sources and status"
+        ]
+      ],
+      "byline_label": "Personal training intentions"
+    }
+  ]
+}

@@ -23,10 +23,17 @@ await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const base='http://127.0.0.1:'+server.address().port;
 const browser=await pw.launch({headless:true,executablePath:process.env.CHROMIUM_PATH || undefined,args:process.env.CHROMIUM_ARGS ? JSON.parse(process.env.CHROMIUM_ARGS) : []});
 import assert from 'node:assert/strict';
-const context=await browser.newContext({viewport:{width:1280,height:900},timezoneId:'Australia/Melbourne',acceptDownloads:true});
+// Use the site's supported reduced-motion layout to avoid smooth-scroll races in automation.
+const context=await browser.newContext({viewport:{width:1280,height:900},reducedMotion:'reduce',timezoneId:'Australia/Melbourne',acceptDownloads:true});
 await context.route('**/*',r=>new URL(r.request().url()).hostname==='127.0.0.1'?r.continue():r.abort());
 const page=await context.newPage();page.setDefaultTimeout(5000);const results=[];const errors=[];page.on('pageerror',e=>errors.push(e.message));
-const go=route=>page.goto(base+route,{waitUntil:'domcontentloaded'});
+const go=async route=>{
+ const response=await page.goto(base+route,{waitUntil:'load'});
+ // Exercise the real privacy choice before testing unrelated calculator controls.
+ const decline=page.getByRole('button',{name:'Decline',exact:true});
+ if(await decline.isVisible())await decline.click();
+ return response;
+};
 const text=id=>page.locator('#'+id).innerText();
 const values=async obj=>page.evaluate(obj=>{for(const [id,v] of Object.entries(obj)){let el=document.getElementById(id);el.value=v;el.dispatchEvent(new Event('input',{bubbles:true}));el.dispatchEvent(new Event('change',{bubbles:true}));}},obj);
 async function test(name,fn){try{await fn();results.push({name,pass:true});}catch(e){results.push({name,pass:false,error:e.message});}}

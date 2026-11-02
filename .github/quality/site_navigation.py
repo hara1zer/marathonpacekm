@@ -2,11 +2,12 @@
 from pathlib import Path
 from html import escape, unescape
 from urllib.parse import urlsplit
+from functools import lru_cache
 import json
 import re
 
 ROOT = Path(__file__).resolve().parents[2]
-VERSION = '20261017-nav'
+VERSION = '20261029-lab'
 DOMAIN = 'https://marathonpacekm.com'
 GROUPS = [
     ('calculators', 'Calculators', '/#start-here', [
@@ -46,7 +47,15 @@ BRAND = '<a class="mpkm-brand" href="/" aria-label="Marathon Pace KM home"><span
 def route_for(path):
     return '/' + path.relative_to(ROOT).as_posix().removesuffix('index.html')
 
+@lru_cache(maxsize=1)
+def lab_routes():
+    """Published study membership comes from the Lab registry, not URL aliases."""
+    manifest = ROOT / '.github/quality/running-lab-studies.json'
+    return {study['url'] for study in json.loads(manifest.read_text())['studies']}
+
 def section_for(route):
+    if route == '/running-lab/' or route in lab_routes():
+        return 'lab'
     if route in ('/', '/marathon-pace-chart-min-per-mile/') or re.fullmatch(r'/(?:\d-\d\d|sub-4)-marathon-pace-km/', route):
         return 'chart'
     if route == '/printable-pace-band/':
@@ -73,6 +82,7 @@ def menu_items(route, mode):
             link(parent, label, route, 'mpkm-nav-parent') +
             f'<details class="mpkm-nav-disclosure" data-nav-disclosure><summary aria-label="{label} links" aria-controls="{panel}"><span class="mpkm-nav-chevron" aria-hidden="true"></span></summary>' +
             f'<ul class="mpkm-nav-panel" id="{panel}">' + ''.join('<li>' + link(url, text, route) + '</li>' for url, text in children) + '</ul></details></li>')
+    items.append('<li' + (' class="is-section"' if active == 'lab' else '') + '>' + link('/running-lab/', 'Running Lab', route, 'mpkm-nav-link') + '</li>')
     items.append('<li>' + link('/printable-pace-band/', 'Pace band', route, 'mpkm-nav-cta') + '</li>')
     return '<ul class="mpkm-nav-list">' + ''.join(items) + '</ul>'
 
@@ -89,7 +99,7 @@ def render_footer(route, original=''):
     scripts = ''.join(re.findall(r'<script\b[^>]*>.*?</script>', original, re.S))
     columns = [('Plan your run', [('/', 'Pace chart'), ('/#start-here', 'All calculators'),
         ('/printable-pace-band/', 'Marathon & half-marathon pace band')]),
-        ('Explore', [('/blog/#training', 'Training resources'), ('/blog/', 'Pacing and race guides'),
+        ('Explore', [('/running-lab/', 'Running Lab: original investigations'), ('/blog/#training', 'Training resources'), ('/blog/', 'Pacing and race guides'),
                      ('/melbourne-running/', 'Melbourne tracks and paths')]), ('Site information', INFO)]
     return ('<footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><div class="mpkm-footer-grid">' +
         ''.join(f'<nav aria-label="{title}"><p class="mpkm-footer-heading">{title}</p><ul>' +
@@ -98,7 +108,9 @@ def render_footer(route, original=''):
 
 def crumb_items(route, title):
     crumbs = [('/', 'Home')]
-    if route.startswith('/melbourne-running/'):
+    if route in lab_routes():
+        crumbs += [('/running-lab/', 'Running Lab')]
+    elif route.startswith('/melbourne-running/'):
         crumbs += [('/blog/#training', 'Training')]
         if route != '/melbourne-running/': crumbs += [('/melbourne-running/', 'Melbourne running')]
     elif route.startswith('/adjust-marathon-pace/'):

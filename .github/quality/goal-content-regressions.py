@@ -4,6 +4,7 @@ from html.parser import HTMLParser
 from urllib.parse import urljoin, urlsplit, unquote
 from fractions import Fraction as F
 import re, json, hashlib
+from site_navigation import VERSION as NAV_VERSION
 
 ROOT = Path(__file__).resolve().parents[2]
 BASE = json.loads((ROOT / '.github/quality/goal-page-baseline.json').read_text())
@@ -33,7 +34,7 @@ for slug, before in BASE.items():
     assert digest('\n'.join(controls))==before['controls'], (slug, 'input/default/control contract changed')
     scripts=re.findall(r'<script\b(?![^>]*application/ld\+json)[^>]*>.*?</script>',source,re.S)
     # Shared navigation is the sole reviewed addition; existing calculator scripts stay byte-identical.
-    navigation='<script defer src="/assets/navigation.js?v=20261017-nav"></script>'
+    navigation=f'<script defer src="/assets/navigation.js?v={NAV_VERSION}"></script>'
     assert scripts.count(navigation)==1, (slug, 'missing or duplicate navigation enhancement')
     scripts.remove(navigation)
     if before['addedBandScript']:

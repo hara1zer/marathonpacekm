@@ -37,7 +37,7 @@ for route, doc in docs.items():
     destinations = [[a.get('href') for a in mode.xpath('.//a')] for mode in modes]
     assert destinations[0] == destinations[1], (route, 'desktop/mobile destination mismatch')
     headers.append(destinations[0])
-    assert len(modes[0].xpath('./ul/li')) == 5, route
+    assert len(modes[0].xpath('./ul/li')) == 6, route
     for disclosure in header.xpath('.//details'):
         controls = disclosure.xpath('./summary/@aria-controls')
         assert len(controls) == 1 and doc.xpath('//*[@id=$id]', id=controls[0]), route

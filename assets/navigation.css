@@ -60,6 +60,15 @@
   .mpkm-footer-grid ul { list-style:none; margin:0; padding:0; }
   .mpkm-footer-grid li { margin:0; padding:0; }
   .mpkm-footer a[aria-current] { font-weight:700; }
+  @media (min-width:1001px) and (max-width:1199px) {
+    .mpkm-site-header .mpkm-header-inner { gap:8px; }
+    .mpkm-site-header .mpkm-brand { gap:8px; font-size:.95rem; }
+    .mpkm-site-header .mpkm-brand small { display:none; }
+    .mpkm-site-header .mpkm-nav-list { gap:2px; }
+    body .mpkm-site-header a:not(.mpkm-brand) { font-size:.8rem; padding-inline:8px; }
+    body .mpkm-site-header .mpkm-nav-parent { padding-right:0; }
+    body .mpkm-site-header a.mpkm-nav-cta { padding-inline:12px; }
+  }
   @media (max-width:1000px) {
     .mpkm-site-header .mpkm-header-inner { width:calc(100% - 32px); min-height:72px; padding:12px 0; gap:8px; flex-wrap:nowrap; }
     body .mpkm-site-header .mpkm-main-nav { display:none; }

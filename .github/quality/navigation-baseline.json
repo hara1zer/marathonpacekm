@@ -1836,6 +1836,19 @@
       "robots": [
         "index,follow,max-image-preview:large"
       ]
+    },
+    {
+      "url": "/running-lab/",
+      "title": "The Running Lab | Real Race Data, Training Experiments & Pacing Analysis",
+      "h1": "The Running Lab",
+      "canonical": [
+        "https://marathonpacekm.com/running-lab/"
+      ],
+      "navVariants": 1,
+      "description": [
+        "Original race experiences, recorded splits and personal fueling experiments. Explore the evidence, its limits and practical tools in the MarathonPaceKM Running Lab."
+      ],
+      "robots": []
     }
   ],
   "issues": [],
@@ -1959,7 +1972,8 @@
     "/blog/half-marathon-pacing-strategy/": 2,
     "/blog/yasso-800s/": 2,
     "/blog/carb-loading-calculator/": 2,
-    "/blog/longest-run-before-marathon/": 2
+    "/blog/longest-run-before-marathon/": 2,
+    "/running-lab/": 1
   },
   "headerVariants": {
     "Pace chart | Predictor | Training plan | Guides | Pace band \u2197 | Pace chart | Predictor | Training plan | Fueling | Guides | Pace band": 91,
