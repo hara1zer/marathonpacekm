@@ -1,4 +1,5 @@
-/* Optional article worksheets. No tracking, persistence or external requests. */
+/* Optional worksheets. Action-only events use the site's existing consent filter;
+ * no field values, food records, persistence or direct external requests. */
 (() => {
   'use strict';
   const $ = id => document.getElementById(id);
@@ -36,7 +37,10 @@
         return false;
       }
     };
-    form.addEventListener('submit', e => { e.preventDefault(); update(); });
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      if (update()) document.dispatchEvent(new CustomEvent('mpk:action', {detail:{action:'calculate'}}));
+    });
     form.addEventListener('input', update); form.addEventListener('change', update);
     form.hidden = false; update(); return update;
   }
@@ -170,7 +174,9 @@
     $('lr-equivalent').textContent = `Three hours at the entered moving pace covers ${(10800 / p).toFixed(2)} ${unit}, excluding stops. Candidate distance in the other unit: ${(miles ? d * MILE : d / MILE).toFixed(2)} ${miles ? 'km' : 'miles'}. Terrain, fatigue and pace changes are not modelled.`;
   });
   for (const button of document.querySelectorAll('[data-research-print]')) button.addEventListener('click', () => {
-    document.body.classList.add('print-reference'); window.print();
+    document.body.classList.add('print-reference');
+    document.dispatchEvent(new CustomEvent('mpk:action', {detail:{action:'print_reference'}}));
+    window.print();
   });
   window.addEventListener('afterprint', () => document.body.classList.remove('print-reference'));
 })();

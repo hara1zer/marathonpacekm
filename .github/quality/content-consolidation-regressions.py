@@ -10,6 +10,8 @@ PAIRS = {
     '/even-vs-negative-splits/': ('/blog/negative-split-pacing/', ['definitions','arithmetic','choose','experience','checkpoints','tools','faq','references']),
     '/adjust-marathon-pace/wind/': ('/blog/wind-pacing-headwind-tailwind/', ['why-wind-changes-pace','rules','drafting','checkpoints','practical','mistakes','faq']),
     '/adjust-marathon-pace/hills/': ('/blog/hills-pacing-give-away-seconds-avoid-quad-destruction/', ['why-hills-change-pace','core-rules','uphill','downhill','rolling','checkpoints','training','mistakes','faq','references']),
+    '/adjust-marathon-pace/fatigue-drift/': ('/blog/why-marathon-pace-feels-harder-some-days/', ['toc','definition','causes','signals','decision','training-adjustments','race-day','checkpoints','mistakes','when-to-stop','faq','references']),
+    '/adjust-marathon-pace/late-race-slowdown/': ('/blog/why-do-i-slow-down-after-30k/', ['toc','what-is','why','measure','model','prevent','checkpoints','mistakes','faq','references']),
 }
 redirects = {}
 for line in (ROOT/'_redirects').read_text().splitlines():
@@ -56,5 +58,5 @@ assert tenth(F(14400-10320)/(D-30)) in wind
 assert tenth(F(14400-10380)/(D-30)) in hills
 for sec in [7320,7080]:assert tenth(F(sec)/(D/2)) in negative
 assert 'Most effective fix:' not in docs['/blog/why-do-i-slow-down-after-30k/'].text_content()
-assert 'the #1 multiplier' not in docs['/adjust-marathon-pace/late-race-slowdown/'].text_content()
-print('Consolidation: 9 direct 301s, retained anchors, 112 sitemap URLs, FAQ visibility and independent worked arithmetic passed.')
+assert 'the #1 multiplier' not in docs['/blog/why-do-i-slow-down-after-30k/'].text_content()
+print(f'Consolidation: {len(PAIRS)*3} direct 301s, retained anchors, {len(listed)} sitemap URLs, FAQ visibility and independent worked arithmetic passed.')

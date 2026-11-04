@@ -22,7 +22,10 @@
     const form = $(id);
     if (!form) return;
     form.hidden = false;
-    form.addEventListener('submit', e => { e.preventDefault(); update(form); });
+    form.addEventListener('submit', e => {
+      e.preventDefault(); update(form);
+      if (!form.querySelector('[role="alert"]:not([hidden])')) document.dispatchEvent(new CustomEvent('mpk:action', {detail:{action:'calculate'}}));
+    });
     form.addEventListener('input', () => update(form));
     form.addEventListener('change', () => update(form));
     update(form);
@@ -84,6 +87,7 @@
       document.querySelectorAll('.print-target').forEach(el => el.classList.remove('print-target'));
       document.querySelectorAll(button.dataset.printTarget).forEach(el => el.classList.add('print-target'));
       document.body.classList.add('print-reference');
+      document.dispatchEvent(new CustomEvent('mpk:action', {detail:{action:'print_reference'}}));
       window.print();
     });
   });

@@ -94,6 +94,7 @@
     ['share_plan', 'pace_plan_share'],
     ['copy_checkpoints', 'pace_checkpoints_copy'],
     ['download_splits', 'pace_splits_download'],
+    ['print_reference', 'pace_reference_print'],
     ['open_pace_band', 'pace_band_open'],
     ['open_goal_guide', 'pace_goal_guide_open']
   ]);

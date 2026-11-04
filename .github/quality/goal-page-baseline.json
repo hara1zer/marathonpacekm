@@ -1,13 +1,13 @@
 {
   "3-00-marathon-pace-km": {
     "seo": {
-      "title": "<title>3:00 Marathon Pace Chart (min/km) | Splits for 1\u201342.2km</title>",
+      "title": "<title>3:00 Marathon Pace Chart (min/km) | Splits for 1–42.2km</title>",
       "h1": "<h1>3:00 Marathon Pace Chart (min/km)</h1>",
       "canonical": "<link rel=\"canonical\" href=\"https://marathonpacekm.com/3-00-marathon-pace-km/\" />",
-      "description": "<meta name=\"description\" content=\"3:00 marathon pace is 4:16 per km. Get full 1\u201342.2km splits, 5k/10k/half markers, and pacing tips.\" />"
+      "description": "<meta name=\"description\" content=\"3:00 marathon pace is 4:16 per km. Get full 1–42.2km splits, 5k/10k/half markers, and pacing tips.\" />"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "36dd9a35dbe6b1c0e42d921f59d3b97ba511cd65f109b424711ddaed0785c8d1",
       "4aa6e706e472b885bc8441ef964f88913f8ee27997d3bfa50c5c5c48e73a9b86"
     ],
@@ -41,10 +41,10 @@
       "title": "<title>3:05 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>",
       "h1": "<h1>3:05 Marathon Pace Chart (4:23/km)</h1>",
       "canonical": "<link href=\"https://marathonpacekm.com/3-05-marathon-pace-km/\" rel=\"canonical\"/>",
-      "description": "<meta content=\"3:05 marathon pace is 4:23 per km (\u22487:03/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
+      "description": "<meta content=\"3:05 marathon pace is 4:23 per km (≈7:03/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "ffaa9eea1aeb11679b140ab3acfc967c46ae25173720359461248df98d3b8991",
       "49d66438b69fabbd8ad440c3f9b21aaaf5cbea24c9a4600e2274b18ca962b654"
     ],
@@ -93,10 +93,10 @@
       "title": "<title>3:10 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>",
       "h1": "<h1>3:10 Marathon Pace Chart (4:30/km)</h1>",
       "canonical": "<link href=\"https://marathonpacekm.com/3-10-marathon-pace-km/\" rel=\"canonical\"/>",
-      "description": "<meta content=\"3:10 marathon pace is 4:30 per km (\u22487:15/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
+      "description": "<meta content=\"3:10 marathon pace is 4:30 per km (≈7:15/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "2b8a9ff30efa19ceff1e77f2a5834fb74d55a510efde85ffcb7f93f6cddd32b5"
     ],
     "controls": "306f798d68ba6b4d0698e0ee67dd6afd75e3044258402dea6b615604d97595a8",
@@ -147,7 +147,7 @@
       "description": "<meta name=\"description\" content=\"3:15 marathon pace is 4:37/km (7:26/mile). See precise checkpoints, full KM and mile splits, and create a free printable pace band or phone card.\">"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "1fe2f43d0c0dc5146a27a0b2b3e178b9dd53d047da3fa2fd7c8191d3fa54269c",
       "1c279ca7ce2c23103d180a25f5478b2582c76a896967126d8e47f0a6d1ce4405"
     ],
@@ -220,7 +220,7 @@
       "description": "<meta name=\"description\" content=\"3:25 marathon pace is 4:51.5/km or 7:49.1/mile. Get accurate KM and mile splits, CSV downloads, a printable pace band and worked pacing examples.\">"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "018189c3b63a0b0083df9894e7ff48178b9599510b6f200d2600f861f3aea4e7",
       "3d663a8c38f214bc9dd57f819e5346e3b7096b8a29280faa4333fa32f6e4507d"
     ],
@@ -289,7 +289,7 @@
       "description": "<meta name=\"description\" content=\"3:30 marathon pace is 4:59/km (8:01/mile). See precise checkpoints, full KM and mile splits, and create a free printable pace band or phone card.\">"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "fcaa451a5140d1cf3e98046cb3b7bc705c9a0c3c92826692ae5bd0950a06bc9e",
       "1c279ca7ce2c23103d180a25f5478b2582c76a896967126d8e47f0a6d1ce4405"
     ],
@@ -354,13 +354,13 @@
   },
   "3-45-marathon-pace-km": {
     "seo": {
-      "title": "<title>3:45 Marathon Pace Chart (min/km) | Splits for 1\u201342.2km</title>",
+      "title": "<title>3:45 Marathon Pace Chart (min/km) | Splits for 1–42.2km</title>",
       "h1": "<h1>3:45 Marathon Pace Chart (min/km)</h1>",
       "canonical": "<link rel=\"canonical\" href=\"https://marathonpacekm.com/3-45-marathon-pace-km/\" />",
-      "description": "<meta name=\"description\" content=\"3:45 marathon pace is 5:20 per km. Get full 1\u201342.2km splits, 5k/10k/half markers, and pacing tips.\" />"
+      "description": "<meta name=\"description\" content=\"3:45 marathon pace is 5:20 per km. Get full 1–42.2km splits, 5k/10k/half markers, and pacing tips.\" />"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "415be3ca938a0105b84fe452f10fd57d54434a57b7fadb2be8c83717694596f7",
       "4aa6e706e472b885bc8441ef964f88913f8ee27997d3bfa50c5c5c48e73a9b86"
     ],
@@ -394,10 +394,10 @@
       "title": "<title>3:50 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>",
       "h1": "<h1>3:50 Marathon Pace Chart (5:27/km)</h1>",
       "canonical": "<link rel=\"canonical\" href=\"https://marathonpacekm.com/3-50-marathon-pace-km/\" />",
-      "description": "<meta name=\"description\" content=\"3:50 marathon pace is 5:27 per km (\u22488:46/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" />"
+      "description": "<meta name=\"description\" content=\"3:50 marathon pace is 5:27 per km (≈8:46/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" />"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "6756ed4072366840d4c070ec16cc19b207ed612ce72fe58c406cb20650f247f5",
       "90a9b5bd847146e037b91816ca236b7d0f7f5b72733590f8b7b427fb82fac09f",
       "4aa6e706e472b885bc8441ef964f88913f8ee27997d3bfa50c5c5c48e73a9b86",
@@ -449,7 +449,7 @@
       "description": "<meta name=\"description\" content=\"3:55 marathon pace is 5:34 per km (8:58/mi). Get key split times, a full 1km pace chart, printable pace band, fueling guide, and practical pacing advice for race day.\" />"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "4b1ea7d20945b95ddf68466672187ca39dbb64fa14f7b9e78c3063b60cd9a680"
     ],
     "controls": "37c0c86cc9275f28aa75e5448a4f85878ec96e103dd3246d895fea1895de9392",
@@ -504,7 +504,7 @@
       "description": "<meta name=\"description\" content=\"4:00 marathon pace is 5:41 per km (9:09/mi). Get key split times, a full 1km pace chart, printable pace band, fueling guide, and practical pacing advice for race day.\" />"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "4e282ea13b3b062c86821cda978123ec6bdcb65ea3d83ee8d89fa024f16bf6e7"
     ],
     "controls": "925bb7fae5bd58cbf1ec64a2c200baa5af670970e619e234d58969c9958e98b1",
@@ -556,10 +556,10 @@
       "title": "<title>4:05 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>",
       "h1": "<h1>4:05 Marathon Pace Chart (5:48/km)</h1>",
       "canonical": "<link href=\"https://marathonpacekm.com/4-05-marathon-pace-km/\" rel=\"canonical\"/>",
-      "description": "<meta content=\"4:05 marathon pace is 5:48 per km (\u22489:21/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
+      "description": "<meta content=\"4:05 marathon pace is 5:48 per km (≈9:21/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "1f2319fb4cb41278a33f45978e3aebbac72e85c806499037a05276602b948eb0"
     ],
     "controls": "b801e29d3909a6b6c8f5eee0559be440985aa56b641252996e02eb99f450c0b8",
@@ -610,7 +610,7 @@
       "description": "<meta name=\"description\" content=\"A 4:15 marathon averages 6:02.6/km or 9:43.6/mile. Check precise splits, compare 6:00/km and plan elapsed time including stops.\">"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "3d33a6ed6c96e91a4ba6c6dc92ec1e132f6632342948edc7b4c17efe7236d87e",
       "4aa6e706e472b885bc8441ef964f88913f8ee27997d3bfa50c5c5c48e73a9b86"
     ],
@@ -643,7 +643,7 @@
       "description": "<meta name=\"description\" content=\"4:30 marathon pace is 6:24/km (10:18/mile). See precise checkpoints, full KM and mile splits, and create a free printable pace band or phone card.\">"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "9c6837e557923fac07588d7c216854457d2b1cfd0bcde69e62cf8fb221b15945",
       "1c279ca7ce2c23103d180a25f5478b2582c76a896967126d8e47f0a6d1ce4405"
     ],
@@ -714,10 +714,10 @@
       "title": "<title>4:35 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>",
       "h1": "<h1>4:35 Marathon Pace Chart (6:31/km)</h1>",
       "canonical": "<link href=\"https://marathonpacekm.com/4-35-marathon-pace-km/\" rel=\"canonical\"/>",
-      "description": "<meta content=\"4:35 marathon pace is 6:31 per km (\u224810:29/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
+      "description": "<meta content=\"4:35 marathon pace is 6:31 per km (≈10:29/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "1d9709878cbe40dabadd00d90b9ddcd2edd98becc1cccd149d048c09072d1f00"
     ],
     "controls": "54b9cc04a3cf293570e4fa4927bb7831b112b587b2fd754f28be57c316b787ba",
@@ -765,10 +765,10 @@
       "title": "<title>4:40 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>",
       "h1": "<h1>4:40 Marathon Pace Chart (6:38/km)</h1>",
       "canonical": "<link href=\"https://marathonpacekm.com/4-40-marathon-pace-km/\" rel=\"canonical\"/>",
-      "description": "<meta content=\"4:40 marathon pace is 6:38 per km (\u224810:41/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
+      "description": "<meta content=\"4:40 marathon pace is 6:38 per km (≈10:41/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "0d39f2cf0f211ba9f2a1addf19727b5cd056e9b141e085159731853d72c5e751"
     ],
     "controls": "5a641f0cb64693e548ef21e2bf39724063a7f76d4bdc71a8035c24e7cbcc9954",
@@ -816,10 +816,10 @@
       "title": "<title>4:50 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>",
       "h1": "<h1>4:50 Marathon Pace Chart (6:52/km)</h1>",
       "canonical": "<link rel=\"canonical\" href=\"https://marathonpacekm.com/4-50-marathon-pace-km/\" />",
-      "description": "<meta name=\"description\" content=\"4:50 marathon pace is 6:52 per km (\u224811:04/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" />"
+      "description": "<meta name=\"description\" content=\"4:50 marathon pace is 6:52 per km (≈11:04/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" />"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "4885d33342f6d69788681fd690e708554bf9305d1c728ca20aaf89c5fef314de"
     ],
     "controls": "facc045af43b6790ffef1a236865f31465739a010a37484eda62bb153d593294",
@@ -867,10 +867,10 @@
       "title": "<title>4:55 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>",
       "h1": "<h1>4:55 Marathon Pace Chart (6:59/km)</h1>",
       "canonical": "<link href=\"https://marathonpacekm.com/4-55-marathon-pace-km/\" rel=\"canonical\"/>",
-      "description": "<meta content=\"4:55 marathon pace is 6:59 per km (\u224811:15/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
+      "description": "<meta content=\"4:55 marathon pace is 6:59 per km (≈11:15/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "416539bfeb84fb0c290b67d3f15f0a9e43a42a147655352184386c59eb8ebc57"
     ],
     "controls": "bc6742064b1f0a3343e266b3257f944a9c696b0a1182cf8107b07099c311bb95",
@@ -921,10 +921,10 @@
       "description": "<meta name=\"description\" content=\"5 hour marathon pace is 7:06.6/km or 11:26.5/mile. Get KM and mile splits, a printable pace band, and a run/walk calculator that includes stops.\">"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "db56522eb1dacdd4c1677d71030713ebbe7aa5b1472240082c61ee989181dc0a",
       "3d663a8c38f214bc9dd57f819e5346e3b7096b8a29280faa4333fa32f6e4507d",
-      "4c6d415a6ebe898fac98d17b1f6f5ef588097db4eb43212877f902fad0cb9e8c"
+      "cbe79206e2476fb0e586d94de568c11a0a52a1b6a5e5eb93d798acd027620281"
     ],
     "controls": "f00b1659f8639d35382a637cc6c1167d68220f14bd2d6fb56e577c2283c18639",
     "ids": [
@@ -1007,10 +1007,10 @@
       "title": "<title>5:05 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>",
       "h1": "<h1>5:05 Marathon Pace Chart (7:14/km)</h1>",
       "canonical": "<link href=\"https://marathonpacekm.com/5-05-marathon-pace-km/\" rel=\"canonical\"/>",
-      "description": "<meta content=\"5:05 marathon pace is 7:14 per km (\u224811:38/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
+      "description": "<meta content=\"5:05 marathon pace is 7:14 per km (≈11:38/mi). Get key split times (5k/10k/half/30k/40k), a splits calculator, pace chart, and a printable pace band.\" name=\"description\"/>"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "c1d0e970d1af897975f3d46c9bce64a098e16946b3269a2cb695fe3cec2a6175"
     ],
     "controls": "73a72050bf4cbe8ddac04aac64d04a9b1542f584f19caa9b389b747cf8619a31",
@@ -1061,7 +1061,7 @@
       "description": "<meta name=\"description\" content=\"Sub-4 marathon pace is 5:41 per km (9:09/mi) for 3:59:59. Get key split times, a full 1km pace chart, printable pace band, fueling guide, and practical sub-4 race-day pacing advice.\" />"
     },
     "scripts": [
-      "21bc60a26e7509b5e0688aa2ec7b9f9add8e77af7952365afb515fa92d77034c",
+      "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
       "6756ed4072366840d4c070ec16cc19b207ed612ce72fe58c406cb20650f247f5",
       "73f97950ab15426dbc27c7cd7d427b6fc12129c8b81c78eabbdf8a5dfae44e3d",
       "c8d1419f518975ed8fd739152f3975d6a2ddb2c880d513fb4e8b4080e7f09c40",

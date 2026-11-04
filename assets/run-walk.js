@@ -67,10 +67,14 @@
       'At these settings the walking pace is faster than the required running pace. Check that the walking pace is realistic for your plan.' :
       'This is the running-interval pace needed by the arithmetic. It is faster than the overall race average when slower walking or stops are included.';
   }
-  form.addEventListener('submit', event => { event.preventDefault(); update(true); });
+  form.addEventListener('submit', event => {
+    event.preventDefault(); update(true);
+    if (!$('rw-output').hidden) document.dispatchEvent(new CustomEvent('mpk:action', {detail:{action:'calculate'}}));
+  });
   form.addEventListener('input', () => update());
-  document.getElementById('goal-form').addEventListener('input', () => update());
+  document.getElementById('goal-form')?.addEventListener('input', () => update());
   document.addEventListener('mpk:action', event => { if (event.detail?.action === 'calculate') update(); });
   window.addEventListener('hashchange', () => queueMicrotask(() => update()));
+  form.hidden = false;
   update();
 })();

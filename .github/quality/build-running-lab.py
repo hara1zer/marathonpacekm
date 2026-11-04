@@ -185,7 +185,7 @@ def render_hub(collection):
 <link rel="stylesheet" href="/assets/site.css?v={VERSION}">
 <link rel="stylesheet" href="/assets/running-lab.css?v={CSS_VERSION}">
 <script defer src="/assets/running-lab-hub.js?v={CSS_VERSION}"></script>
-<script defer src="/assets/site-telemetry.js?v=20261008-audit"></script>
+<script defer src="/assets/site-telemetry.js?v=20261104-reference"></script>
 <script defer src="/assets/navigation.js?v={VERSION}"></script>
 <script type="application/ld+json">{json.dumps(schema, ensure_ascii=False, indent=2)}</script>
 </head>

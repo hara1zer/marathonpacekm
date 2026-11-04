@@ -15,6 +15,13 @@ on:
       - 'assets/pace-calculator.js'
       - 'assets/practical-guides.js'
       - 'assets/researched-guides.js'
+      - 'assets/pace-math.js'
+      - 'assets/pace-guides.js'
+      - 'assets/run-walk.js'
+      - '.github/quality/pace-*'
+      - '.github/quality/pace-guides/**'
+      - '.github/quality/build-pace-*.py'
+      - '.github/quality/build-content-refresh.py'
       - '.github/quality/build-researched-guides.py'
       - '.github/quality/researched-guides-browser.mjs'
       - '.github/quality/researched-guides/**'
@@ -50,6 +57,8 @@ jobs:
       - name: Calculation and state regressions
         run: |
           python3 .github/quality/build-running-lab.py --check
+          node .github/quality/pace-math-regressions.cjs
+          python3 .github/quality/pace-content-regressions.py
           node .github/quality/running-lab-explorer-regressions.mjs
           node .github/quality/running-lab-analysis-regressions.mjs
           node .github/quality/pace-band-regressions.mjs
@@ -73,6 +82,8 @@ jobs:
           python3 .github/quality/handoff-quality-pdf.py "$QA_OUTPUT"
           node .github/quality/practical-guides-browser.mjs
           node .github/quality/researched-guides-browser.mjs
+          node .github/quality/pace-guides-browser.mjs
+          python3 .github/quality/pace-guides-pdf.py "$QA_OUTPUT"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

@@ -9,6 +9,7 @@ from html import escape
 from lxml import html
 import json
 import re
+from datetime import date
 from site_navigation import apply_navigation
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -16,16 +17,18 @@ HERE = Path(__file__).resolve().parent
 DOMAIN = 'https://marathonpacekm.com'
 DATE = '2026-10-25'
 GUIDES = [
-    dict(slug='treadmill-pace-chart', title='Treadmill Pace Chart: km/h, mph, min/km & min/mile',
+    dict(slug='treadmill-pace-chart', modified='2026-11-04', title='Treadmill Pace Chart: km/h, mph, min/km & min/mile',
          h1='Treadmill pace chart: km/h, mph, min/km and min/mile', eyebrow='Indoor running',
          description='Convert treadmill speed to pace in km/h, mph, min/km and min/mile. Use the interactive converter, printable chart and a checked whole-workout example.'),
     dict(slug='how-long-to-train-for-a-marathon', title='How Long to Train for a Marathon? 12, 16 or 20 Weeks',
          h1='How long does it take to train for a marathon?', eyebrow='Planning the build',
          description='Compare 12-, 16- and 20-week marathon blocks, calculate start dates, check the opening workload and budget training time around the running you already do.'),
-    dict(slug='run-walk-marathon-pacing', title='Run-Walk Marathon Pacing: Ratios, Pace & Finish-Time Math',
-         h1='Run-walk marathon pacing: intervals, walking pace and finish time', eyebrow='Race execution',
-         description='Work out the running pace behind a run-walk marathon target. Compare intervals, walking speeds, stops and partial final intervals with checked examples.'),
-    dict(slug='marathon-taper', title='Marathon Taper: 2- and 3-Week Mileage Worksheet',
+    dict(slug='run-walk-marathon-pacing', title='Run-Walk Pace Calculator: Marathon Intervals & Stops',
+         h1='Run-walk pace calculator and marathon pacing guide', eyebrow='Race execution',
+         description='Calculate the running pace for your marathon run-walk intervals, walking pace and stops. Compare ratios and partial final intervals with worked examples.',
+         modified='2026-11-04', extra_css=['/assets/pace-guides.css?v=20261104a'],
+         extra_scripts=['/assets/run-walk.js?v=20261104a']),
+    dict(slug='marathon-taper', modified='2026-11-04', title='Marathon Taper: 2- and 3-Week Mileage Worksheet',
          h1='Marathon taper: compare two- and three-week mileage', eyebrow='The final weeks',
          description='Compare two- and three-week marathon tapers with editable mileage percentages, a checked daily example and race distance shown separately from training.'),
     dict(slug='strength-training-for-marathon-runners', title='Strength Training for Marathon Runners: Two 30-Min Sessions',
@@ -45,7 +48,15 @@ def treadmill_table():
 
 def build(guide):
     slug = guide['slug']
-    route = '/blog/' + slug + '/'
+    route = guide.get('route', '/blog/' + slug + '/')
+    published = guide.get('published', DATE)
+    modified = guide.get('modified', published)
+    published_date = date.fromisoformat(published)
+    published_label = f'{published_date.day} {published_date:%B %Y}'
+    update_label = ''
+    if modified != published:
+        updated = date.fromisoformat(modified)
+        update_label = f' · Updated <time datetime="{modified}">{updated.day} {updated:%B %Y}</time>'
     body = (HERE/guide.get('collection', 'practical-guides')/f'{slug}.body.html').read_text().replace('{{TREADMILL_TABLE}}', treadmill_table())
     for token, value in guide.get('tables', {}).items():
         body = body.replace('{{' + token + '}}', value)
@@ -60,10 +71,11 @@ def build(guide):
         'author':{'@type':'Person','name':'Davin Pinto','url':DOMAIN+'/about/#author'},
         'publisher':{'@type':'Organization','name':'Marathon Pace KM','url':DOMAIN+'/'},
         'mainEntityOfPage':{'@type':'WebPage','@id':DOMAIN+route},
-        'datePublished':DATE, 'dateModified':DATE, 'inLanguage':'en-AU', 'wordCount':words, 'citation':sources}
+        'datePublished':published, 'dateModified':modified, 'inLanguage':'en-AU', 'wordCount':words, 'citation':sources}
     data = {'@context':'https://schema.org','@graph':[article]}
     extra_css = ''.join(f'<link rel="stylesheet" href="{escape(url, quote=True)}">\n' for url in guide.get('extra_css', []))
-    tool_script = guide.get('tool_script', '/assets/practical-guides.js?v=20261025a')
+    tool_script = guide.get('tool_script', '/assets/practical-guides.js?v=20261104a')
+    extra_scripts = ''.join(f'<script defer src="{escape(url, quote=True)}"></script>\n' for url in guide.get('extra_scripts', []))
     source = f'''<!doctype html>
 <html lang="en-AU">
 <head>
@@ -83,8 +95,8 @@ def build(guide):
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{escape(guide['h1'], quote=True)} — Marathon Pace KM reference guide">
 <meta property="og:locale" content="en_AU">
-<meta property="article:published_time" content="{DATE}">
-<meta property="article:modified_time" content="{DATE}">
+<meta property="article:published_time" content="{published}">
+<meta property="article:modified_time" content="{modified}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{escape(guide['title'], quote=True)}">
 <meta name="twitter:description" content="{escape(guide['description'], quote=True)}">
@@ -95,21 +107,22 @@ def build(guide):
 <link rel="stylesheet" href="/assets/practical-guides.css?v=20261025a">
 {extra_css}<meta name="google-adsense-account" content="ca-pub-5455873308344668">
 <script type="application/ld+json">{json.dumps(data, ensure_ascii=False, indent=2)}</script>
-<script defer src="/assets/site-telemetry.js?v=20261008-audit"></script>
+<script defer src="/assets/site-telemetry.js?v=20261104-reference"></script>
 <script defer src="{escape(tool_script, quote=True)}"></script>
+{extra_scripts}
 </head>
 <body class="mpkm-legacy mpkm-reading practical-guide">
 <main id="content" class="content-wrap"><article>
 <header class="post-header"><p class="eyebrow">{escape(guide['eyebrow'])}</p><h1>{escape(guide['h1'])}</h1></header>
-<p class="byline">By <a href="/about/#author" rel="author">Davin Pinto</a> · Published <time datetime="{DATE}">25 October 2026</time> · Research and worked examples</p>
+<p class="byline">By <a href="/about/#author" rel="author">Davin Pinto</a> · Published <time datetime="{published}">{published_label}</time>{update_label} · Research and worked examples</p>
 {body}
 <aside class="guide-footer"><p><a href="/about/#author">About the author</a> · <a href="/editorial-policy/">How we use research and software</a> · <a href="/contact/">Report a correction</a></p></aside>
 </article></main>
 </body></html>
 '''
     source = apply_navigation(source, route)
-    folder = ROOT/'blog'/slug
-    folder.mkdir(exist_ok=True)
+    folder = ROOT/route.strip('/')
+    folder.mkdir(parents=True, exist_ok=True)
     (folder/'index.html').write_text(source)
     print(f'{route}: {words} words; {len(sources)} primary sources')
 
