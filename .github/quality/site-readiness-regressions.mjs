@@ -26,7 +26,7 @@ assert.ok(files.length>=105,'Scan all publicly served HTML, including nested pag
 for(const file of files){
   const source=readFileSync(file,'utf8');
   const path=file.slice(root.length+1).replaceAll('\\','/');
-  assert.equal((source.match(/\/assets\/site-telemetry\.js\?v=20261008-audit/g)||[]).length,1,'one cache-busted consent loader: '+path);
+  assert.equal((source.match(/\/assets\/site-telemetry\.js\?v=20261104-reference/g)||[]).length,1,'one cache-busted consent loader: '+path);
   assert.doesNotMatch(source, /<script[^>]+(?:pagead2\.googlesyndication\.com|googletagmanager\.com\/gtag\/js)/i,'no hardcoded advertising or analytics code: '+path);
   assert.doesNotMatch(source, /As an Amazon Associate I earn|https:\/\/amzn\.to\//i,'no expired affiliate links: '+path);
 }

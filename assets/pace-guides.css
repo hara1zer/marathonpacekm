@@ -1,0 +1,36 @@
+/* Scoped practical references; the common reading layout and navigation stay shared. */
+.pace-reference { margin-block: 30px; padding: 24px; border: 1px solid #c7d9cb; border-radius: 16px; background: #fff; }
+.pace-reference .guide-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-block: 18px; }
+.pace-reference label { display: block; font-weight: 650; }
+.pace-reference input,.pace-reference select { display: block; width: 100%; min-height: 44px; margin-top: 6px; padding: 10px 12px; box-sizing: border-box; font: inherit; }
+.pace-reference [hidden], .practical-guide [hidden] { display: none !important; }
+.pace-reference .guide-error { color: #92271c; font-weight: 650; }
+.pace-reference .guide-result { border-top: 1px solid #c7d9cb; padding-top: 18px; margin-top: 18px; }
+.pace-reference .guide-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-block: 18px; }
+.practical-guide .run-walk-fields { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; margin-block: 20px; }
+.practical-guide .walk-pace-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.practical-guide .run-walk-output dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.practical-guide .run-walk-output dt { font-size: .88rem; }
+.practical-guide .run-walk-output dd { margin: 4px 0 0; font-weight: 650; }
+.practical-guide .running-pace { font-size: 1.8rem; font-weight: 750; }
+.pace-chart-table { font-variant-numeric: tabular-nums; }
+.pace-reference .table-scroll { max-width: 100%; overflow: auto; }
+.practical-guide .taper-days { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.practical-guide .taper-days label { font-size: .85rem; }
+.practical-guide .taper-days input { width: 100%; }
+.pace-print-note { font-size: .88rem; color: #496258; }
+@media (max-width: 560px) {
+  .pace-reference { padding: 18px; }
+  .pace-reference .guide-fields,.practical-guide .run-walk-fields { grid-template-columns: minmax(0,1fr); }
+  .practical-guide .taper-days { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media print {
+  .pace-reference { padding: 0; border: 0; }
+  .pace-reference form,.pace-reference button,.pace-reference .guide-actions { display: none !important; }
+  .pace-reference .table-scroll { overflow: visible; }
+  .pace-chart-table { min-width: 0 !important; width: 100%; font-size: 8pt !important; line-height: 1.2; }
+  .pace-chart-table th,.pace-chart-table td { padding: 3pt !important; }
+  .pace-chart-table tr { break-inside: avoid; }
+  .pace-chart-table thead { display: table-header-group; }
+  .pace-print-note { color: #000; }
+}

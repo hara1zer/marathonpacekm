@@ -207,6 +207,8 @@ def render(page):
     title, description = escape(page['title'], quote=True), escape(page['description'], quote=True)
     assert len(page['title']) < 60 and len(page['description']) < 155
     body = directory_html() if page['slug'] == HUB else (CONTENT / page['body_file']).read_text()
+    if page['slug'] == HUB:
+        body += '<section id="track-pace-reference" class="card"><h2>Take a measured split plan to the track</h2><p>Use the <a href="/blog/400m-pace-chart/">400 m pace chart and track split calculator</a> to convert your planned pace into 200, 400, 800, 1,000 and 1,600 m times. Venue access, lane instructions and opening details stay in the guides below.</p></section>'
     if '{{PACE_TABLE}}' in body:
         assert page.get('length') == 400, 'A lap table requires supported measured length'
         body = body.replace('{{PACE_TABLE}}', pace_table(page))
@@ -230,7 +232,7 @@ def render(page):
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{description}">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20260922"><meta name="theme-color" content="#174f40">
 <link rel="stylesheet" href="/assets/style.css"><link rel="stylesheet" href="/assets/site.css?v={VERSION}"><link rel="stylesheet" href="/assets/melbourne-running.css?v=20261013">
-<meta name="google-adsense-account" content="ca-pub-5455873308344668"><script defer src="/assets/site-telemetry.js?v=20261008-audit"></script>
+<meta name="google-adsense-account" content="ca-pub-5455873308344668"><script defer src="/assets/site-telemetry.js?v=20261104-reference"></script>
 {f'<script defer src="/assets/melbourne-running.js?v=20261013"></script>' if page['slug'] == HUB else ''}
 <script type="application/ld+json">{json.dumps(schema(page), ensure_ascii=False, indent=2).replace('</', '<\\/')}</script>
 </head><body class="mpkm-legacy {pageclass} mpkm-venues">

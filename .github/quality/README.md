@@ -1,5 +1,49 @@
 # Browser regressions
 
+## Pace references and consolidation — 4 November 2026
+
+`content-strategy-2026-11-04.md` is the researched guide;
+`content-strategy-review-2026-11-04.md` checks every recommendation against the
+implemented draft, consolidation and evidence limits.
+
+The four new individually written bodies and two consolidated guide bodies live
+under `pace-guides/`. Regenerate their static HTML with:
+
+```sh
+python3 .github/quality/build-pace-guides.py
+python3 .github/quality/build-content-refresh.py
+python3 .github/quality/build-practical-guides.py
+python3 .github/quality/build-researched-guides.py
+python3 .github/quality/sync-navigation.py
+```
+
+`build-pace-guide-social-cards.py` creates the four typographic PNG cards.
+There is no production build or new runtime dependency. `assets/pace-math.js`
+contains only arithmetic; `pace-guides.js` enhances the delivered static tables.
+The run-walk guide and five-hour goal use the same `run-walk.js` component.
+
+Run the existing goal, navigation, consolidation and consent suites plus:
+
+```sh
+node .github/quality/pace-math-regressions.cjs
+python3 .github/quality/pace-content-regressions.py
+node .github/quality/pace-guides-browser.mjs
+python3 .github/quality/pace-guides-pdf.py "$QA_OUTPUT"
+```
+
+The last two use the existing external Playwright/axe/Chromium and PDF environment.
+They cover units, inputs, invalid-state clearing, band handoff, rounded daily
+budgets, shared run-walk behaviour, responsive layout, accessibility, static
+fallbacks, consent-filtered action events and actual PDF scope/bounds. The Pages
+QA workflow runs them alongside all prior suites. Test output stays outside the
+public source.
+
+The two retired fatigue/slowdown module URLs redirect directly to the fuller
+guides and retain all historical section anchors. Do not recreate them from an
+old snapshot. The unchanged goal pages retain their existing SEO and input
+contracts. Script references are versioned for the existing immutable cache;
+the consent gate and form-value filter remain authoritative.
+
 ## Running Lab — 29 October 2026
 
 The collection lists each account once. `assets/running-lab-hub.js` progressively

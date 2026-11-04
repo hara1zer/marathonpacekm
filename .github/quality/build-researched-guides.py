@@ -38,13 +38,13 @@ GUIDES = [
  dict(slug='marathon-pacers', title='Marathon Pacers: Choosing a Pace Group & Timing It Right',
       h1='Marathon pacers: should you follow a pace group?',eyebrow='Running with a pace group',
       description='Choose a marathon pace group, check chip-time assumptions and aid-station plans, and calculate what catching a pacer would cost. Includes a printable checklist.'),
- dict(slug='half-marathon-pacing-strategy',title='Half-Marathon Pacing Strategy: Splits & Race-Plan Calculator',
+ dict(slug='half-marathon-pacing-strategy',modified='2026-11-04',title='Half-Marathon Pacing Strategy: Splits & Race-Plan Calculator',
       h1='Half-marathon pacing: build your plan from start to finish',eyebrow='Plan the 21.1 km',
       description='Build a half-marathon pacing plan with 5K checkpoints, an editable controlled-start calculator and lessons from recorded Run Melbourne splits.', tables={'HALF_TABLE':half_table()}),
- dict(slug='yasso-800s',title='Yasso 800s Calculator: Session Time & Prediction Limits',
+ dict(slug='yasso-800s',modified='2026-11-04',title='Yasso 800s Calculator: Session Time & Prediction Limits',
       h1='Yasso 800s: calculate the workout and question the prediction',eyebrow='Track-session arithmetic',
       description='Calculate Yasso 800 rep pace, recovery time and the full session. See why ten fast intervals cannot establish your marathon pace, with worked examples.',tables={'YASSO_TABLE':yasso_table()}),
- dict(slug='carb-loading-calculator',title='Carb-Loading Calculator & Editable Meal-Planning Worksheet',
+ dict(slug='carb-loading-calculator',modified='2026-11-04',title='Carb-Loading Calculator & Editable Meal-Planning Worksheet',
       h1='Carb-loading calculator: turn a daily target into a food plan',eyebrow='Before the starting line',
       description='Calculate a daily carb-loading target from kg or lb, build a food-label worksheet, and compare planned with recorded carbohydrate. Sources and serving examples included.'),
  dict(slug='longest-run-before-marathon',title='Longest Run Before a Marathon: 20 Miles or Three Hours?',
@@ -52,7 +52,7 @@ GUIDES = [
       description='Compare 24–32 km long runs by time on feet, share of weekly mileage and recent distance. Use the worksheet and research to choose a manageable rehearsal.',tables={'LONG_TABLE':long_table()}),
 ]
 for guide in GUIDES:
-    guide.update(collection='researched-guides',extra_css=['/assets/researched-guides.css?v=20261025a'],tool_script='/assets/researched-guides.js?v=20261025a')
+    guide.update(collection='researched-guides',extra_css=['/assets/researched-guides.css?v=20261025a'],tool_script='/assets/researched-guides.js?v=20261104a')
 
 if __name__ == '__main__':
     for guide in GUIDES: build(guide)
