@@ -114,7 +114,7 @@ try {
     await p.goto(base + '/running-lab/');
     assert.equal(await p.title(), hubTitle);
     assert.equal(await p.locator('link[rel="canonical"]').getAttribute('href'), domain + '/running-lab/');
-    assert.match(await p.locator('main').innerText(), /Real running data\. Real race experiences\. Practical lessons you can test yourself\./);
+    assert.match(await p.locator('main').innerText(), /My race reports, training notes and experiments with pacing and fuel\./);
     const featured = registry.studies;
     assert.equal(await p.locator('#featured-investigations .lab-study-card').count(), featured.length);
     for (const study of featured) {
@@ -133,7 +133,7 @@ try {
     assert.equal(await p.locator('.lab-study-card').count(), 4);
     assert.equal(await p.locator('[data-lab-filters]').isVisible(), false, 'all four readable cards work without scripts');
     for (const route of ['/marathon-time-predictor/', '/marathon-pace-calculator/', '/marathon-fueling-calculator/', '/race-conditions-pace-adjuster/', '/monthly-training-plan/']) assert.equal(await p.locator('#lab-tools a[href="' + route + '"]').count(), 1);
-    assert.equal(await p.locator('#how-the-lab-works ol > li').count(), 5);
+    assert.match(await p.locator('#how-the-lab-works').innerText(), /Recorded laps, calculations and recollections/);
     const schemas = await schema(p);
     assert.equal(schemas.filter(node => node['@type'] === 'CollectionPage').length, 1);
     assert.equal(schemas.filter(node => node['@type'] === 'BreadcrumbList').length, 1);

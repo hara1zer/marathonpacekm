@@ -7,7 +7,7 @@ import json
 import re
 
 ROOT = Path(__file__).resolve().parents[2]
-VERSION = '20261029-lab'
+VERSION = '20261110-editorial'
 DOMAIN = 'https://marathonpacekm.com'
 GROUPS = [
     ('calculators', 'Calculators', '/#start-here', [
@@ -22,6 +22,7 @@ GROUPS = [
         ('/sub-threshold-pace-calculator/', 'Sub-threshold pace calculator'),
     ]),
     ('training', 'Training', '/blog/#training', [
+        ('/blog/how-long-to-train-for-a-marathon/', 'How long to train for a marathon'),
         ('/monthly-training-plan/', 'Monthly training plan'),
         ('/blog/#training', 'Marathon training resources'),
         ('/blog/marathon-pace-workouts/', 'Marathon pace workouts'),
@@ -48,7 +49,7 @@ TRAINING_ARTICLES = {'marathon-pace-workouts', 'tempo-vs-threshold-vs-marathon-p
     'how-long-to-train-for-a-marathon', 'marathon-taper',
     'strength-training-for-marathon-runners', 'yasso-800s', 'longest-run-before-marathon',
     '400m-pace-chart', 'easy-run-pace', 'half-marathon-taper'}
-BRAND = '<a class="mpkm-brand" href="/" aria-label="Marathon Pace KM home"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM<small>A plan for every kilometre</small></span></a>'
+BRAND = '<a class="mpkm-brand" href="/" aria-label="Marathon Pace KM home"><span class="mpkm-brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 25 25" fill="none"><path d="M5 18V9a6 6 0 0 1 12 0v9M9 18V9a2 2 0 0 1 4 0v9M3 18h18M20 5v9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Marathon Pace KM</span></a>'
 
 def route_for(path):
     return '/' + path.relative_to(ROOT).as_posix().removesuffix('index.html')
@@ -104,13 +105,13 @@ def render_footer(route, original=''):
     year = ''.join(f'<span id="{escape(i, quote=True)}">2026</span>' for i in ids) or '2026'
     scripts = ''.join(re.findall(r'<script\b[^>]*>.*?</script>', original, re.S))
     columns = [('Plan your run', [('/', 'Pace chart'), ('/#start-here', 'All calculators'),
-        ('/printable-pace-band/', 'Marathon & half-marathon pace band')]),
-        ('Explore', [('/running-lab/', 'Running Lab: original investigations'), ('/blog/#training', 'Training resources'), ('/blog/', 'Pacing and race guides'),
+        ('/printable-pace-band/', 'Printable pace band')]),
+        ('Explore', [('/running-lab/', 'Running Lab'), ('/blog/#training', 'Training resources'), ('/blog/', 'Pacing and race guides'),
                      ('/melbourne-running/', 'Melbourne tracks and paths')]), ('Site information', INFO)]
     return ('<footer class="mpkm-footer"><div class="mpkm-footer-inner"><div class="mpkm-footer-title">Marathon Pace KM</div><div class="mpkm-footer-grid">' +
         ''.join(f'<nav aria-label="{title}"><p class="mpkm-footer-heading">{title}</p><ul>' +
             ''.join('<li>' + link(url, text, route) + '</li>' for url, text in links) + '</ul></nav>' for title, links in columns) +
-        f'</div><p>© {year} Marathon Pace KM · Practical running tools and personal race lessons.</p></div></footer>' + scripts)
+        f'</div><p>© {year} Marathon Pace KM</p></div></footer>' + scripts)
 
 def crumb_items(route, title):
     crumbs = [('/', 'Home')]

@@ -5,6 +5,9 @@
   if (!header) return;
   const disclosures = [...header.querySelectorAll('[data-nav-disclosure]')];
   const mobile = header.querySelector('.mpkm-mobile-menu');
+  const compactLayout = window.matchMedia('(max-width: 1000px)');
+  let wasCompact = compactLayout.matches;
+  let focusLostOnResize = false;
   const close = (details, restoreFocus = false) => {
     details.removeAttribute('open');
     details.querySelectorAll('[data-nav-disclosure][open]').forEach(child => child.removeAttribute('open'));
@@ -31,14 +34,20 @@
     disclosures.filter(details => details.open && !details.contains(event.target)).forEach(details => close(details));
   });
   header.addEventListener('focusout', event => {
+    // Hiding a focused menu on resize can blur it before the media query event.
+    if (!event.relatedTarget && compactLayout.matches !== wasCompact) focusLostOnResize = true;
     // relatedTarget is available before activeElement updates during keyboard focus transfer.
     disclosures.filter(details => details.open && !details.contains(event.relatedTarget))
       .forEach(details => close(details));
   });
-  window.matchMedia('(max-width: 1000px)').addEventListener('change', () => {
+  compactLayout.addEventListener('change', () => {
+    const active = document.activeElement;
+    const restoreFocus = header.contains(active) || (focusLostOnResize && active === document.body);
+    wasCompact = compactLayout.matches;
+    focusLostOnResize = false;
     disclosures.filter(details => details.open).forEach(details => close(details));
-    if (header.contains(document.activeElement)) {
-      (window.matchMedia('(max-width: 1000px)').matches ? mobile.querySelector(':scope > summary') : header.querySelector('.mpkm-brand')).focus();
+    if (restoreFocus) {
+      (wasCompact ? mobile.querySelector(':scope > summary') : header.querySelector('.mpkm-brand')).focus();
     }
   });
 })();

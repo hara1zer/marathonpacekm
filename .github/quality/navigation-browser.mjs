@@ -110,8 +110,9 @@ await test('No JavaScript: native desktop/mobile disclosures and crawlable links
 await test('Viewport switch closes hidden menus and preserves usable focus',async()=>{
   const {p}=await context({viewport:{width:390,height:800}});await p.goto(base+'/blog/');
   await p.locator('.mpkm-mobile-menu > summary').click();await p.locator('#mpkm-mobile-links summary[aria-label="Training links"]').click();
-  await p.setViewportSize({width:1280,height:900});await p.waitForFunction(()=>document.querySelectorAll('.mpkm-site-header details[open]').length===0);
-  assert.ok(await p.locator('.mpkm-brand').evaluate(el=>el===document.activeElement));
+  await p.setViewportSize({width:1280,height:900});
+  await p.waitForFunction(()=>document.querySelectorAll('.mpkm-site-header details[open]').length===0 &&
+    document.activeElement===document.querySelector('.mpkm-brand'));
 });
 assert.deepEqual(errors,[],'Console script errors');
 }finally{

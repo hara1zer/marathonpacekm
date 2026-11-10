@@ -1,0 +1,155 @@
+/* Reading and reference pages: quiet surfaces, clear headings, compact navigation.
+   Screen-only rules deliberately leave the pace-band and worksheet print layouts alone. */
+@media screen {
+  :root { --paper: #fafbf8; --radius: 6px; }
+  body.mpkm-legacy, body.mpkm-tool { background: #fafbf8; }
+  body .mpkm-site-header { background: #fff; }
+  body .mpkm-site-header .mpkm-header-inner { min-height: 72px; padding-block: 12px; }
+  body .mpkm-brand .mpkm-brand-mark { border-radius: 4px; width: 36px; height: 36px; color: #fff; }
+  body .mpkm-site-header a.mpkm-nav-cta { border-radius: 5px; }
+  body .mpkm-site-header .mpkm-nav-panel { border-radius: 5px; box-shadow: 0 4px 12px #103c3110; }
+  body .mpkm-breadcrumbs { font-size: .76rem; }
+  body.mpkm-reading .mpkm-breadcrumbs { max-width: 760px; }
+  body.mpkm-legacy.mpkm-reading main,
+  body.mpkm-legacy.mpkm-reading > header.wrap {
+    width: min(760px, calc(100% - 64px)); max-width: 760px;
+  }
+  body.mpkm-reading h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 500;
+    letter-spacing: -.025em; line-height: 1.16; max-width: 28ch;
+    text-wrap: pretty;
+  }
+  body.mpkm-reading h2 { letter-spacing: -.02em; font-size: 1.45rem; line-height: 1.3; }
+  body.mpkm-reading h3 { letter-spacing: -.01em; line-height: 1.4; }
+  body.mpkm-reading main p, body.mpkm-reading main li { line-height: 1.72; }
+  body.mpkm-reading .byline { margin-block: 12px 24px; font-size: .8rem; }
+  body.mpkm-reading .eyebrow { text-transform: none; letter-spacing: 0; font-weight: 500; }
+  body.mpkm-reading .lede { font-size: 1.12rem; line-height: 1.6; }
+  body.mpkm-reading main section.card,
+  body.mpkm-reading main article.card,
+  body.mpkm-reading main .post-header {
+    background: transparent; border: 0; border-radius: 0; box-shadow: none;
+    padding: 0; margin-block: 34px;
+  }
+  body.mpkm-reading main section.card + section.card { margin-top: 34px; }
+  body.mpkm-reading nav.card,
+  body.mpkm-reading .guide-toc,
+  body.mpkm-reading .toc {
+    background: transparent; border: 0; border-block: 1px solid #dbe4d9;
+    border-radius: 0; padding: 16px 0; margin-block: 24px 32px;
+  }
+  body.mpkm-reading nav.card h2, body.mpkm-reading .guide-toc h2 { font-size: 1rem; }
+  body.mpkm-reading .callout, body.mpkm-reading .note, body.mpkm-reading .eeat-box,
+  body.mpkm-reading .bottom-line, body.mpkm-reading .source-note {
+    border-radius: 0; box-shadow: none; border: 0; border-left: 3px solid #9aafa2;
+    background: #f0f4ed; padding: 14px 18px;
+  }
+  body.mpkm-legacy .card, body.mpkm-legacy .panel,
+  body.mpkm-legacy .guide-tool, body.mpkm-legacy .session-sheet,
+  body.mpkm-legacy .pace-band-handoff, body.mpkm-legacy .run-walk-output,
+  body.mpkm-legacy .lab-study-orientation { border-radius: 6px; box-shadow: none; }
+  body.mpkm-legacy input, body.mpkm-legacy select, body.mpkm-legacy textarea,
+  body.mpkm-legacy button, body.mpkm-legacy .btn { border-radius: 5px; }
+  body.mpkm-legacy .table-scroll table caption { font-size: .8rem; }
+  body.mpkm-legacy main figure img { border-radius: 2px; }
+  body.mpkm-reading main figcaption { font-size: .82rem; }
+  body.mpkm-tool main > section.card:not(:has(form, input, canvas, table, iframe, button)) {
+    border: 0; border-top: 1px solid #dbe4d9; border-radius: 0;
+    padding: 24px 0; background: transparent;
+  }
+  /* The guide directory reads as an index, rather than a wall of cards. */
+  body.mpkm-index .pillbar { gap: 4px 18px; margin-block: 14px 18px; }
+  body.mpkm-index .pillbar a.pill {
+    background: transparent; border: 0; border-radius: 0; margin: 0; padding: 6px 0;
+    font-size: .88rem; text-decoration: underline; text-underline-offset: 4px;
+  }
+  body.mpkm-index:not(.mpkm-lab):not(.mpkm-venues) main > .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 36px; }
+  body.mpkm-index:not(.mpkm-lab):not(.mpkm-venues) main > .grid > .card {
+    grid-column: auto; min-width: 0;
+    background: transparent; border: 0; border-top: 1px solid #dbe4d9;
+    border-radius: 0; padding: 22px 0; box-shadow: none;
+  }
+  body.mpkm-index:not(.mpkm-lab):not(.mpkm-venues) main > .grid h2 { font-size: 1.15rem; line-height: 1.4; }
+  body.mpkm-index:not(.mpkm-lab):not(.mpkm-venues) main > section.card {
+    background: transparent; border: 0; border-top: 2px solid #174f40;
+    border-radius: 0; padding: 24px 0; margin-block: 36px;
+  }
+  body .mpkm-story-grid { gap: 0 32px; }
+  body .mpkm-story-card {
+    background: transparent; border: 0; border-top: 1px solid #dbe4d9;
+    border-radius: 0; padding: 20px 0;
+  }
+  body .mpkm-story-card h3 { margin: 0 0 8px; font-size: 1.15rem; }
+  body .mpkm-story-card p { font-size: .9rem; }
+  body .mpkm-story-kind { font-size: .75rem; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
+  body .mpkm-footer { background: #f0f3ed; margin-top: 56px; }
+  /* Homepage: calculator first; supporting material uses ordinary linked rows. */
+  body.mpkm-home .intro { padding: 30px 0 24px; }
+  body.mpkm-home .intro h1 { font-size: clamp(2rem, 4vw, 3rem); max-width: 1050px; margin-top: 0; }
+  body.mpkm-home .panel { border-radius: 6px; }
+  body.mpkm-home .panel-pad { padding: 24px; }
+  body.mpkm-home .result .metric strong { color: #fff; }
+  body.mpkm-home .btn-light { background: #fff; color: #174f40; }
+  body.mpkm-home .btn, body.mpkm-home input, body.mpkm-home select,
+  body.mpkm-home .mode-switch, body.mpkm-home .mode-switch span,
+  body.mpkm-home .preset { border-radius: 5px; }
+  body.mpkm-home .section { margin-top: 48px; }
+  body.mpkm-home .tool-grid { gap: 24px; }
+  body.mpkm-home .tool-card, body.mpkm-home .tool-card-feature {
+    background: transparent; color: #152d27; border: 0;
+    border-top: 2px solid #174f40; border-radius: 0; padding: 20px 0;
+    box-shadow: none; transform: none;
+  }
+  body.mpkm-home .tool-card h3 { color: #174f40; }
+  body.mpkm-home .tool-card p { color: #536760; }
+  body.mpkm-home .tool-link { color: #174f40; }
+  body.mpkm-home .secondary-tools { border-radius: 0; background: transparent; }
+  body.mpkm-home .guide-grid { gap: 24px; }
+  body.mpkm-home .guide {
+    border: 0; border-top: 1px solid #dbe4d9; background: transparent;
+    padding: 20px 0; border-radius: 0; box-shadow: none;
+  }
+  body.mpkm-home .guide h3 { font-size: 1.08rem; line-height: 1.4; }
+  body.mpkm-home .formula, body.mpkm-home .full-chart,
+  body.mpkm-home .about-strip { border-radius: 5px; }
+  body.mpkm-home .about-strip { background: transparent; border: 0; border-top: 1px solid #dbe4d9; padding: 24px 0; }
+  body.mpkm-home .full-chart > summary { border-radius: 5px; }
+  body.mpkm-home .section-title { margin-bottom: 18px; }
+  /* Running Lab: real charts and personal accounts provide the visual interest. */
+  body.mpkm-lab .lab-hero {
+    background: transparent; color: #152d27; border-radius: 0;
+    border-bottom: 2px solid #174f40; padding: 22px 0 30px;
+  }
+  body.mpkm-lab .lab-hero h1 { color: #152d27; font-family: Georgia, serif; font-weight: 500; }
+  body.mpkm-lab .lab-positioning { font-weight: 400; font-size: 1.16rem; }
+  body.mpkm-lab .lab-text-link, body.mpkm-lab .lab-hero-byline a { color: #174f40; }
+  body.mpkm-lab .lab-hero-byline { color: #536760; }
+  body.mpkm-lab a.lab-button { background: #174f40; color: #fff; border-radius: 5px; }
+  body.mpkm-lab .lab-hero-record {
+    background: #f0f4ed; border: 0; border-left: 3px solid #174f40;
+    border-radius: 0; padding: 22px;
+  }
+  body.mpkm-lab .lab-study-card { border: 0; border-top: 1px solid #dbe4d9; border-radius: 0; background: transparent; }
+  body.mpkm-lab .lab-card-body { padding: 22px 0; }
+  body.mpkm-lab .lab-card-figure { background: #f0f4ed; border-radius: 0; }
+  body.mpkm-lab .lab-card-kind { text-transform: none; letter-spacing: 0; font-weight: 500; font-size: .8rem; }
+  body.mpkm-lab .lab-card-question { align-items: flex-start; text-align: left; padding: 26px; }
+  body.mpkm-lab .lab-method { display: block; background: transparent; border-radius: 0; border-block: 1px solid #dbe4d9; padding: 24px 0; }
+  body.mpkm-lab .lab-tool-grid li { background: transparent; border-radius: 0; border: 0; border-top: 1px solid #dbe4d9; padding: 18px 0; }
+  body.mpkm-lab .lab-editorial { border-radius: 0; }
+  body.mpkm-lab .lab-hero-copy :focus-visible { outline-color: #ad7300; }
+  body.mpkm-venues .venue-card { border-radius: 4px; box-shadow: none; }
+  body.mpkm-venues .venue-facts { border-radius: 4px; }
+  @media (max-width: 760px) {
+    body.mpkm-index:not(.mpkm-lab):not(.mpkm-venues) main > .grid { grid-template-columns: minmax(0, 1fr); }
+    body.mpkm-legacy.mpkm-reading main, body.mpkm-legacy.mpkm-reading > header.wrap { width: calc(100% - 32px); }
+    body.mpkm-home .intro { padding-top: 24px; }
+    body.mpkm-home .intro h1 { font-size: 2rem; }
+    body.mpkm-home .panel-pad { padding: 20px; }
+    body.mpkm-home .section { margin-top: 36px; }
+    body.mpkm-lab .lab-hero { padding-inline: 0; }
+    body.mpkm-lab .lab-card-body { padding-inline: 0; }
+    body.mpkm-reading h1 { font-size: 2rem; }
+  }
+}
