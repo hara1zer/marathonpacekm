@@ -216,10 +216,10 @@ def render(page):
     assert '{{' not in body, 'Unexpanded content token'
     breadcrumbs = link('/', 'Home') + '<span aria-hidden="true">/</span>'
     breadcrumbs += '<span aria-current="page">Melbourne running</span>' if page['slug'] == HUB else link(HUB, 'Melbourne running') + '<span aria-hidden="true">/</span><span aria-current="page">' + escape(page['h1']) + '</span>'
-    related = '<section class="venue-related" aria-labelledby="related"><h2 id="related">Plan the next part of your session</h2><ul>' + ''.join(f'<li>{link(slug, name)}</li>' for slug, name in page['internal']) + '</ul></section>'
+    related = '<section class="venue-related" aria-labelledby="related"><h2 id="related">Nearby routes and tools</h2><ul>' + ''.join(f'<li>{link(slug, name)}</li>' for slug, name in page['internal']) + '</ul></section>'
     sources = ''
     if page.get('sources'):
-        sources = '<section class="venue-sources" aria-labelledby="sources"><h2 id="sources">Sources and checking method</h2><p>Operator and council information takes priority. These are online source checks; no personal visit is claimed.</p><ul>' + ''.join(f'<li>{link(url, label)}</li>' for label, url in page['sources']) + '</ul></section>'
+        sources = '<section class="venue-sources" aria-labelledby="sources"><h2 id="sources">Sources</h2><p>Based on the linked operator and council information; this is not a first-hand venue review.</p><ul>' + ''.join(f'<li>{link(url, label)}</li>' for label, url in page['sources']) + '</ul></section>'
     photos = '\n'.join('<!-- OWNER PHOTO: ' + escape(photo) + ' -->' for photo in page['photos'])
     photos += '\n<!-- OWNER VISIT NOTE: Add a dated, first-hand observation after visiting. Do not imply a visit before it occurs. -->'
     pageclass = 'mpkm-index' if page['slug'] == HUB else 'mpkm-reading'

@@ -32,7 +32,9 @@ for route in NEW:
  a=articles[0]
  assert a['headline']==d.xpath('string(//h1)')
  assert a['description']==d.xpath('//meta[@name="description"]/@content')[0]
- assert a['datePublished']==a['dateModified']=='2026-11-04'
+ assert a['datePublished']=='2026-11-04'
+ assert a['dateModified']=='2026-11-10'
+ assert d.xpath('//meta[@property="article:modified_time"]/@content')==[a['dateModified']]
  assert d.xpath('//meta[@property="article:published_time"]/@content')==['2026-11-04']
  assert len(d.xpath('//p[@class="byline"]'))==1
  assert '{{' not in d.xpath('string(//main)')

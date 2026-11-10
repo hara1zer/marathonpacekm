@@ -13,7 +13,7 @@
       if (matches) count++;
     }
     for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.labTopic === topic));
-    root.querySelector('[data-lab-filter-status]').textContent = `${count} of ${cards.length} investigations shown.`;
+    root.querySelector('[data-lab-filter-status]').textContent = `${count} of ${cards.length} articles shown.`;
   }
   for (const button of buttons) button.addEventListener('click', () => select(button.dataset.labTopic));
   filters.hidden = false;

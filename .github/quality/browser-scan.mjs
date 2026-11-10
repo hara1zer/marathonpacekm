@@ -77,7 +77,7 @@ try{
     // Keep contexts until browser.close(); single-process Chromium exits when a context closes.
   }
   fs.writeFileSync(output+'/browser-diagnostics.json',JSON.stringify(results,null,2));
-  const hasIssue=x=>x.errors?.length||x.missing?.length||x.overflow||!x.branded||!x.themeLoaded||!x.layoutLoaded||x.footerCount!==1||x.mobileMenuCount!==1||(x.width===390&&x.headerHeight>90)||(x.readingWidth>821)||(x.readingH1Size>42);
+  const hasIssue=x=>x.errors?.length||x.missing?.length||x.overflow||!x.branded||!x.themeLoaded||!x.layoutLoaded||x.footerCount!==1||x.mobileMenuCount!==1||(x.width===390&&x.headerHeight>90)||(x.readingWidth>761)||(x.readingH1Size>(x.width===390?32:48));
   console.log(JSON.stringify({browser:browser.version(),checked:results.length,issues:results.filter(hasIssue).map(({route,width,errors,missing,overflow,wide,layoutLoaded,footerCount,mobileMenuCount,headerHeight,readingWidth,readingH1Size})=>({route,width,errors,missing,overflow,wide,layoutLoaded,footerCount,mobileMenuCount,headerHeight,readingWidth,readingH1Size}))},null,2));
   if(results.some(hasIssue))process.exitCode=1;
 }finally{await browser.close();server.close();}

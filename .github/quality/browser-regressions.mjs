@@ -183,6 +183,7 @@ await test('Article predictor scenarios and ordered range',async()=>{
  }
 });
 await test('Personal articles preserve identity, dates and discovery links',async()=>{
+ const studies=JSON.parse(fs.readFileSync(root+'/.github/quality/running-lab-studies.json','utf8')).studies;
  const articles=[
   ['/blog/rebuilding-after-sydney-marathon/','Personal training intentions'],
   ['/blog/marathon-fueling-experiments/','Personal experience, not a product ranking'],
@@ -190,6 +191,7 @@ await test('Personal articles preserve identity, dates and discovery links',asyn
  ];
  const titles=[];
  for(const [route,byline] of articles){
+  const study=studies.find(item=>item.url===route);
   await go(route);
   const data=await page.evaluate(()=>{
    const schemas=[...document.querySelectorAll('script[type="application/ld+json"]')].flatMap(s=>{const d=JSON.parse(s.textContent);return d['@graph']||[d];});
@@ -208,7 +210,9 @@ await test('Personal articles preserve identity, dates and discovery links',asyn
   assert.equal(data.ogTitle,data.h1);assert.equal(data.twitterTitle,data.h1);
   assert.equal(data.canonical,'https://marathonpacekm.com'+route);
   assert.equal(data.article.headline,data.h1);assert.equal(data.article.description,data.description);
-  assert.equal(data.article.author.name,'Davin Pinto');assert.equal(data.article.dateModified,'2026-10-29');
+  assert.equal(data.article.author.name,'Davin Pinto');
+  assert.equal(data.article.datePublished,study.published);
+  assert.equal(data.article.dateModified,study.modified);
   assert.match(await page.locator('.byline').innerText(),new RegExp(byline));
   titles.push([route,data.h1,data.description,data.title]);
  }
@@ -222,7 +226,10 @@ await test('Personal articles preserve identity, dates and discovery links',asyn
  assert.equal(list.length,39);assert.equal(new Set(list.map(x=>x.url)).size,39);
  for(const [route] of articles)assert.ok(list.some(x=>x.url==='https://marathonpacekm.com'+route));
  const sitemap=await (await page.request.get(base+'/sitemap.xml')).text();
- for(const [route] of articles)assert.ok(sitemap.includes('<loc>https://marathonpacekm.com'+route+'</loc><lastmod>2026-10-29</lastmod>'));
+ for(const [route] of articles){
+  const {modified}=studies.find(item=>item.url===route);
+  assert.ok(sitemap.includes('<loc>https://marathonpacekm.com'+route+'</loc><lastmod>'+modified+'</lastmod>'));
+ }
 });
 await test('Fueling article worked example agrees with the calculator',async()=>{
  await go('/blog/marathon-fueling-experiments/');

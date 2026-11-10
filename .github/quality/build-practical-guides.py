@@ -17,22 +17,21 @@ HERE = Path(__file__).resolve().parent
 DOMAIN = 'https://marathonpacekm.com'
 DATE = '2026-10-25'
 GUIDES = [
-    dict(slug='treadmill-pace-chart', modified='2026-11-04', title='Treadmill Pace Chart: km/h, mph, min/km & min/mile',
-         h1='Treadmill pace chart: km/h, mph, min/km and min/mile', eyebrow='Indoor running',
+    dict(slug='treadmill-pace-chart', modified='2026-11-10', title='Treadmill Pace Chart: km/h, mph, min/km & min/mile',
+         h1='Treadmill pace chart: km/h, mph, min/km and min/mile',
          description='Convert treadmill speed to pace in km/h, mph, min/km and min/mile. Use the interactive converter, printable chart and a checked whole-workout example.'),
-    dict(slug='how-long-to-train-for-a-marathon', title='How Long to Train for a Marathon? 12, 16 or 20 Weeks',
-         h1='How long does it take to train for a marathon?', eyebrow='Planning the build',
+    dict(slug='how-long-to-train-for-a-marathon', modified='2026-11-10', title='How Long to Train for a Marathon? 12, 16 or 20 Weeks',
+         h1='How long does it take to train for a marathon?',
          description='Compare 12-, 16- and 20-week marathon blocks, calculate start dates, check the opening workload and budget training time around the running you already do.'),
-    dict(slug='run-walk-marathon-pacing', title='Run-Walk Pace Calculator: Marathon Intervals & Stops',
-         h1='Run-walk pace calculator and marathon pacing guide', eyebrow='Race execution',
-         description='Calculate the running pace for your marathon run-walk intervals, walking pace and stops. Compare ratios and partial final intervals with worked examples.',
-         modified='2026-11-04', extra_css=['/assets/pace-guides.css?v=20261104a'],
+    dict(slug='run-walk-marathon-pacing', modified='2026-11-10', title='Run-Walk Pace Calculator: Marathon Intervals & Stops',
+         h1='Run-walk pace calculator and marathon pacing guide',
+         description='Calculate the running pace for your marathon run-walk intervals, walking pace and stops. Compare ratios and partial final intervals with worked examples.', extra_css=['/assets/pace-guides.css?v=20261104a'],
          extra_scripts=['/assets/run-walk.js?v=20261104a']),
-    dict(slug='marathon-taper', modified='2026-11-04', title='Marathon Taper: 2- and 3-Week Mileage Worksheet',
-         h1='Marathon taper: compare two- and three-week mileage', eyebrow='The final weeks',
+    dict(slug='marathon-taper', modified='2026-11-10', title='Marathon Taper: 2- and 3-Week Mileage Worksheet',
+         h1='Marathon taper: compare two- and three-week mileage',
          description='Compare two- and three-week marathon tapers with editable mileage percentages, a checked daily example and race distance shown separately from training.'),
-    dict(slug='strength-training-for-marathon-runners', title='Strength Training for Marathon Runners: Two 30-Min Sessions',
-         h1='Strength training for marathon runners: two short gym sessions', eyebrow='Running and the gym',
+    dict(slug='strength-training-for-marathon-runners', modified='2026-11-10', title='Strength Training for Marathon Runners: Two 30-Min Sessions',
+         h1='Strength training for marathon runners: two short gym sessions',
          description='Two printable 30-minute strength sessions for marathon runners, with exercise alternatives, sets, reps, progression and placement around your running week.'),
 ]
 
@@ -113,8 +112,8 @@ def build(guide):
 </head>
 <body class="mpkm-legacy mpkm-reading practical-guide">
 <main id="content" class="content-wrap"><article>
-<header class="post-header"><p class="eyebrow">{escape(guide['eyebrow'])}</p><h1>{escape(guide['h1'])}</h1></header>
-<p class="byline">By <a href="/about/#author" rel="author">Davin Pinto</a> · Published <time datetime="{published}">{published_label}</time>{update_label} · Research and worked examples</p>
+<header class="post-header"><h1>{escape(guide['h1'])}</h1></header>
+<p class="byline">By <a href="/about/#author" rel="author">Davin Pinto</a> · Published <time datetime="{published}">{published_label}</time>{update_label}</p>
 {body}
 <aside class="guide-footer"><p><a href="/about/#author">About the author</a> · <a href="/editorial-policy/">How we use research and software</a> · <a href="/contact/">Report a correction</a></p></aside>
 </article></main>

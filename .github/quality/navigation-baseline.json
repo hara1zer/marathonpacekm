@@ -89,7 +89,7 @@
     {
       "url": "/norwegian-singles-plan/",
       "title": "Norwegian Singles Plans: Three to Six Running Days",
-      "h1": "Norwegian Singles plans: compare three to six running days",
+      "h1": "Norwegian Singles plans: three to six running days",
       "canonical": [
         "https://marathonpacekm.com/norwegian-singles-plan/"
       ],
@@ -134,7 +134,7 @@
     {
       "url": "/norwegian-singles-vs-double-threshold/",
       "title": "Norwegian Singles vs Double Threshold: Compare the Day",
-      "h1": "Norwegian Singles vs double threshold: compare the whole day",
+      "h1": "Norwegian Singles vs double threshold",
       "canonical": [
         "https://marathonpacekm.com/norwegian-singles-vs-double-threshold/"
       ],
@@ -179,7 +179,7 @@
     {
       "url": "/norwegian-singles/",
       "title": "Norwegian Singles: Method, Evidence and Practical Limits",
-      "h1": "Norwegian Singles: what the term means and what the evidence supports",
+      "h1": "Norwegian Singles training",
       "canonical": [
         "https://marathonpacekm.com/norwegian-singles/"
       ],
@@ -254,7 +254,7 @@
     {
       "url": "/norwegian-singles-marathon-training/",
       "title": "Norwegian Singles for Marathon Training: Long-Run Balance",
-      "h1": "Norwegian Singles in marathon training: protect the long-run purpose",
+      "h1": "Norwegian Singles in marathon training",
       "canonical": [
         "https://marathonpacekm.com/norwegian-singles-marathon-training/"
       ],
@@ -299,7 +299,7 @@
     {
       "url": "/norwegian-singles-vs-tempo-runs/",
       "title": "Norwegian Singles vs Tempo Runs: Structure and Pace",
-      "h1": "Norwegian Singles vs tempo runs: compare structure before pace",
+      "h1": "Norwegian Singles vs tempo runs",
       "canonical": [
         "https://marathonpacekm.com/norwegian-singles-vs-tempo-runs/"
       ],
@@ -477,7 +477,7 @@
     {
       "url": "/norwegian-singles-workouts/",
       "title": "Norwegian Singles Workouts: Work, Recovery and Total Time",
-      "h1": "Norwegian Singles workouts: count the work, recovery and total time",
+      "h1": "Norwegian Singles workouts",
       "canonical": [
         "https://marathonpacekm.com/norwegian-singles-workouts/"
       ],
@@ -507,7 +507,7 @@
     {
       "url": "/what-is-the-norwegian-method-running/",
       "title": "What Is the Norwegian Method in Running?",
-      "h1": "What is the Norwegian Method in running? Read the evidence in context",
+      "h1": "What is the Norwegian Method in running?",
       "canonical": [
         "https://marathonpacekm.com/what-is-the-norwegian-method-running/"
       ],
@@ -522,7 +522,7 @@
     {
       "url": "/norwegian-singles-faq/",
       "title": "Norwegian Singles FAQ: Training Questions Answered",
-      "h1": "Norwegian Singles FAQ: specific answers and next steps",
+      "h1": "Norwegian Singles FAQ",
       "canonical": [
         "https://marathonpacekm.com/norwegian-singles-faq/"
       ],
@@ -582,7 +582,7 @@
     {
       "url": "/sub-threshold-pace-calculator/",
       "title": "Sub-Threshold Pace Calculator for Norwegian Singles",
-      "h1": "Sub-Threshold Pace Calculator for Norwegian Singles & Threshold Workouts",
+      "h1": "Sub-threshold pace calculator",
       "canonical": [
         "https://marathonpacekm.com/sub-threshold-pace-calculator/"
       ],
@@ -1077,7 +1077,7 @@
     {
       "url": "/blog/how-to-pace-first-10k-marathon/",
       "title": "How to Pace the First 10K of a Marathon",
-      "h1": "How to Pace the First 10K of a Marathon: A Practical Guide (and What “Too Fast” Looks Like)",
+      "h1": "How to pace the first 10K of a marathon",
       "canonical": [
         "https://marathonpacekm.com/blog/how-to-pace-first-10k-marathon/"
       ],
@@ -1182,7 +1182,7 @@
     {
       "url": "/blog/how-to-know-if-zone-2-is-working/",
       "title": "How to Know If Zone 2 Training Is Working",
-      "h1": "How to Know If Zone 2 Is Working (And When It Isn’t)",
+      "h1": "How to tell whether easy running is working",
       "canonical": [
         "https://marathonpacekm.com/blog/how-to-know-if-zone-2-is-working/"
       ],
@@ -1242,7 +1242,7 @@
     {
       "url": "/blog/long-run-structure-fast-finish-vs-blocks-vs-progression/",
       "title": "Marathon Long Runs: Fast Finish, Blocks or Progression?",
-      "h1": "Long Run Structure for Marathoners: Fast-Finish vs Mid-Run Blocks vs Progression",
+      "h1": "Long runs: fast finish, pace blocks or progression?",
       "canonical": [
         "https://marathonpacekm.com/blog/long-run-structure-fast-finish-vs-blocks-vs-progression/"
       ],
@@ -1256,8 +1256,8 @@
     },
     {
       "url": "/blog/time-in-the-bank-math/",
-      "title": "The Math of “Time in the Bank” | Marathon Pace KM",
-      "h1": "The Math of “Time in the Bank”",
+      "title": "The cost of starting too fast | Marathon Pace KM",
+      "h1": "The cost of starting too fast",
       "canonical": [
         "https://marathonpacekm.com/blog/time-in-the-bank-math/"
       ],
@@ -1287,7 +1287,7 @@
     {
       "url": "/blog/marathon-pace-readiness-test/",
       "title": "Marathon Pace Readiness: Review Your Training",
-      "h1": "Marathon pace readiness: how to review your training",
+      "h1": "Is your marathon pace realistic?",
       "canonical": [
         "https://marathonpacekm.com/blog/marathon-pace-readiness-test/"
       ],
@@ -1411,7 +1411,7 @@
       ],
       "navVariants": 1,
       "description": [
-        "My 2025 and 2026 Run Melbourne half marathons, with recorded splits, original charts and what finishing stronger means for my next marathon."
+        "I faded in 2025 and finished strongly in 2026. Compare the recorded laps from both Run Melbourne halves."
       ],
       "robots": [
         "index,follow,max-image-preview:large"
@@ -1456,7 +1456,7 @@
       ],
       "navVariants": 1,
       "description": [
-        "My homemade gel trials, dry-mouth experience and difficulty taking Winners gels late at Sydney, plus the difference between planned and consumed carbohydrate."
+        "Homemade gels felt thick and drying. At Sydney, familiar commercial gels became hard to take too."
       ],
       "robots": [
         "index,follow,max-image-preview:large"
@@ -1465,7 +1465,7 @@
     {
       "url": "/blog/why-marathon-pace-feels-harder-some-days/",
       "title": "Why Marathon Pace Feels Harder Some Days",
-      "h1": "Why marathon pace feels harder some days: a decision guide",
+      "h1": "Why marathon pace feels harder some days",
       "canonical": [
         "https://marathonpacekm.com/blog/why-marathon-pace-feels-harder-some-days/"
       ],
@@ -1494,8 +1494,8 @@
     },
     {
       "url": "/blog/signal-vs-noise-marathon-training-pace/",
-      "title": "Signal vs Noise in Marathon Training Pace | Marathon Pace KM",
-      "h1": "Signal vs Noise in Marathon Training Pace",
+      "title": "Why one training run can be misleading | Marathon Pace KM",
+      "h1": "Why one training run can be misleading",
       "canonical": [
         "https://marathonpacekm.com/blog/signal-vs-noise-marathon-training-pace/"
       ],
@@ -1516,7 +1516,7 @@
       ],
       "navVariants": 1,
       "description": [
-        "My plan after missing sub-four at Sydney: repeatable training, controlled workouts and rehearsals that prepare me to finish my next marathon stronger."
+        "The changes I want to make after Sydney: steadier training, controlled workouts and more useful fueling practice."
       ],
       "robots": [
         "index,follow,max-image-preview:large"
@@ -1576,7 +1576,7 @@
       ],
       "navVariants": 2,
       "description": [
-        "Davin Pinto reflects on missing his sub-four Sydney Marathon goal and the lessons for training consistency, workout pacing and fueling."
+        "I aimed for sub-four at Sydney. Here are my training weeks, late-race splits and the lessons I took home."
       ],
       "robots": [
         "index, follow, max-image-preview:large"
@@ -1585,7 +1585,7 @@
     {
       "url": "/blog/tempo-vs-threshold-vs-marathon-pace/",
       "title": "Tempo vs Threshold vs Marathon Pace: Which Session?",
-      "h1": "Tempo vs Threshold vs Marathon Pace: What Each Does (and How to Pick)",
+      "h1": "Tempo, threshold and marathon pace",
       "canonical": [
         "https://marathonpacekm.com/blog/tempo-vs-threshold-vs-marathon-pace/"
       ],
@@ -1750,7 +1750,7 @@
     {
       "url": "/blog/half-marathon-pacing-strategy/",
       "title": "Half-Marathon Pacing Strategy: Splits & Race-Plan Calculator",
-      "h1": "Half-marathon pacing: build your plan from start to finish",
+      "h1": "Half-marathon pacing strategy",
       "canonical": [
         "https://marathonpacekm.com/blog/half-marathon-pacing-strategy/"
       ],
@@ -1765,7 +1765,7 @@
     {
       "url": "/blog/yasso-800s/",
       "title": "Yasso 800s Calculator: Session Time & Prediction Limits",
-      "h1": "Yasso 800s: calculate the workout and question the prediction",
+      "h1": "Yasso 800s: workout calculator and marathon estimate",
       "canonical": [
         "https://marathonpacekm.com/blog/yasso-800s/"
       ],
@@ -1780,7 +1780,7 @@
     {
       "url": "/blog/carb-loading-calculator/",
       "title": "Carb-Loading Calculator & Editable Meal-Planning Worksheet",
-      "h1": "Carb-loading calculator: turn a daily target into a food plan",
+      "h1": "Carb-loading calculator and meal planner",
       "canonical": [
         "https://marathonpacekm.com/blog/carb-loading-calculator/"
       ],
@@ -1853,7 +1853,7 @@
     {
       "url": "/blog/half-marathon-taper/",
       "title": "Half Marathon Taper: Editable Final-Week Planner",
-      "h1": "Half-marathon taper: plan the final training days",
+      "h1": "Half-marathon taper",
       "canonical": [
         "https://marathonpacekm.com/blog/half-marathon-taper/"
       ],
