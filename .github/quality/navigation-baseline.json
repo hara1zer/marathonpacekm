@@ -13,14 +13,14 @@
     },
     {
       "url": "/",
-      "title": "Marathon pace chart (KM) & calculator | Marathon Pace KM",
+      "title": "Marathon Pace Chart per KM: Finish Times & Splits",
       "h1": "Marathon pace chart (KM) & calculator",
       "canonical": [
         "https://marathonpacekm.com/"
       ],
       "navVariants": 1,
       "description": [
-        "Find your marathon pace per km with a free pace chart and calculator. Get accurate race splits, convert pace to finish time, and create a printable pace band."
+        "Compare marathon finish times with a pace chart per km and mile. Check cumulative splits, calculate your goal pace and print a free race pace band."
       ],
       "robots": [
         "index, follow, max-image-preview:large"
@@ -103,14 +103,14 @@
     },
     {
       "url": "/4-00-marathon-pace-km/",
-      "title": "4:00 Marathon Pace: KM & Mile Splits + Pace Band",
+      "title": "4-Hour Marathon Pace: 5:41/km & Full Split Chart",
       "h1": "4:00 Marathon Pace Chart (5:41/km)",
       "canonical": [
         "https://marathonpacekm.com/4-00-marathon-pace-km/"
       ],
       "navVariants": 1,
       "description": [
-        "4:00 marathon pace is 5:41 per km (9:09/mi). Get key split times, a full 1km pace chart, printable pace band, fueling guide, and practical pacing advice for race day."
+        "Run a 4-hour marathon at 5:41/km (9:09/mile). Check exact 5K, 10K, halfway and kilometre splits, then print a free pace band."
       ],
       "robots": [
         "index, follow"
@@ -313,14 +313,14 @@
     },
     {
       "url": "/sub-4-marathon-pace-km/",
-      "title": "Sub-4 Marathon Pace: KM & Mile Splits + Pace Band",
+      "title": "Sub-4 Marathon Pace: Splits, Strategy & Pace Band",
       "h1": "Sub-4 Marathon Pace Chart (3:59:59, 5:41/km)",
       "canonical": [
         "https://marathonpacekm.com/sub-4-marathon-pace-km/"
       ],
       "navVariants": 1,
       "description": [
-        "Sub-4 marathon pace is 5:41 per km (9:09/mi) for 3:59:59. Get key split times, a full 1km pace chart, printable pace band, fueling guide, and practical sub-4 race-day pacing advice."
+        "Plan to break four hours: compare a 3:59:59 boundary with a realistic buffer, check key splits and elapsed time, and print a marathon pace band."
       ],
       "robots": [
         "index, follow"
