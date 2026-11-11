@@ -498,10 +498,10 @@
   },
   "4-00-marathon-pace-km": {
     "seo": {
-      "title": "<title>4:00 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>",
+      "title": "<title>4-Hour Marathon Pace: 5:41/km &amp; Full Split Chart</title>",
       "h1": "<h1>4:00 Marathon Pace Chart (5:41/km)</h1>",
       "canonical": "<link rel=\"canonical\" href=\"https://marathonpacekm.com/4-00-marathon-pace-km/\" />",
-      "description": "<meta name=\"description\" content=\"4:00 marathon pace is 5:41 per km (9:09/mi). Get key split times, a full 1km pace chart, printable pace band, fueling guide, and practical pacing advice for race day.\" />"
+      "description": "<meta name=\"description\" content=\"Run a 4-hour marathon at 5:41/km (9:09/mile). Check exact 5K, 10K, halfway and kilometre splits, then print a free pace band.\" />"
     },
     "scripts": [
       "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
@@ -1055,10 +1055,10 @@
   },
   "sub-4-marathon-pace-km": {
     "seo": {
-      "title": "<title>Sub-4 Marathon Pace: KM &amp; Mile Splits + Pace Band</title>",
+      "title": "<title>Sub-4 Marathon Pace: Splits, Strategy &amp; Pace Band</title>",
       "h1": "<h1>Sub-4 Marathon Pace Chart (3:59:59, 5:41/km)</h1>",
       "canonical": "<link rel=\"canonical\" href=\"https://marathonpacekm.com/sub-4-marathon-pace-km/\" />",
-      "description": "<meta name=\"description\" content=\"Sub-4 marathon pace is 5:41 per km (9:09/mi) for 3:59:59. Get key split times, a full 1km pace chart, printable pace band, fueling guide, and practical sub-4 race-day pacing advice.\" />"
+      "description": "<meta name=\"description\" content=\"Plan to break four hours: compare a 3:59:59 boundary with a realistic buffer, check key splits and elapsed time, and print a marathon pace band.\" />"
     },
     "scripts": [
       "91060dd63e643172f89d9bb6d38aa089c31b10e4991a186540f5081c47b48747",
