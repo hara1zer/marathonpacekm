@@ -63,6 +63,7 @@ jobs:
           node .github/quality/running-lab-analysis-regressions.mjs
           node .github/quality/pace-band-regressions.mjs
           python3 .github/quality/goal-content-regressions.py
+          python3 .github/quality/goal-seo-split-regressions.py
           python3 .github/quality/navigation-regressions.py
           python3 .github/quality/content-consolidation-regressions.py
       - name: Browser, mobile and actual PDF output
