@@ -21,13 +21,13 @@ def clock(value):
 
 
 def section(page, identifier, tag="section"):
-    match = re.search(rf'<{tag}\\b[^>]*id="{re.escape(identifier)}"[^>]*>.*?</{tag}>', page, re.S)
+    match = re.search(rf'<{tag}\b[^>]*id="{re.escape(identifier)}"[^>]*>.*?</{tag}>', page, re.S)
     assert match, ("section missing", identifier)
     return match.group(0)
 
 
 detail = section(FOUR, "splits1kDetails", "details")
-rows = re.findall(r'<tr><td>(\\d+) km</td><td>(\\d+:\\d\\d:\\d\\d)</td></tr>', detail)
+rows = re.findall(r'<tr><td>(\d+) km</td><td>(\d+:\d\d:\d\d)</td></tr>', detail)
 assert [int(km) for km, _ in rows] == list(range(1, 43)), ("complete 1–42 km table", rows)
 for km, shown in rows:
     expected = clock(Fraction(4 * 60 * 60 * int(km), 1) / DISTANCE)
