@@ -37,6 +37,10 @@ for slug, before in BASE.items():
     navigation=f'<script defer src="/assets/navigation.js?v={NAV_VERSION}"></script>'
     assert scripts.count(navigation)==1, (slug, 'missing or duplicate navigation enhancement')
     scripts.remove(navigation)
+    # The approved AdSense Auto ads loader is an intentional, sitewide addition.
+    adsense='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668" crossorigin="anonymous"></script>'
+    assert scripts.count(adsense)==1, (slug, 'AdSense loader must appear exactly once')
+    scripts.remove(adsense)
     if before['addedBandScript']:
         assert scripts.pop()=='<script defer src="/assets/goal-band-links.js?v=20261004"></script>', (slug, 'only existing goal-aware adapter may be added')
     assert len(scripts)==len(before['scripts']), (slug, 'script list changed')
