@@ -188,6 +188,8 @@ def render_hub(collection):
 <script defer src="/assets/site-telemetry.js?v=20261104-reference"></script>
 <script defer src="/assets/navigation.js?v={VERSION}"></script>
 <script type="application/ld+json">{json.dumps(schema, ensure_ascii=False, indent=2)}</script>
+<meta name="google-adsense-account" content="ca-pub-5455873308344668">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668" crossorigin="anonymous"></script>
 </head>
 <body class="mpkm-legacy mpkm-index mpkm-lab">
 <main class="wrap" id="content">

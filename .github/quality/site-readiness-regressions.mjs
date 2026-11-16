@@ -27,7 +27,10 @@ for(const file of files){
   const source=readFileSync(file,'utf8');
   const path=file.slice(root.length+1).replaceAll('\\','/');
   assert.equal((source.match(/\/assets\/site-telemetry\.js\?v=20261104-reference/g)||[]).length,1,'one cache-busted consent loader: '+path);
-  assert.doesNotMatch(source, /<script[^>]+(?:pagead2\.googlesyndication\.com|googletagmanager\.com\/gtag\/js)/i,'no hardcoded advertising or analytics code: '+path);
+  const adsenseLoader = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668" crossorigin="anonymous"></script>';
+  assert.equal(source.split(adsenseLoader).length - 1, path === '404.html' ? 0 : 1, 'approved AdSense loader must appear once on published pages: '+path);
+  if(path !== '404.html') assert.equal(source.split('<meta name="google-adsense-account" content="ca-pub-5455873308344668">').length - 1,1,'publisher identification must appear once: '+path);
+  assert.doesNotMatch(source, /<script[^>]+googletagmanager\\.com\\/gtag\\/js/i,'analytics remains consent-gated: '+path);
   assert.doesNotMatch(source, /As an Amazon Associate I earn|https:\/\/amzn\.to\//i,'no expired affiliate links: '+path);
 }
 for(const [path,title,example] of [
@@ -48,7 +51,7 @@ const delayedAt30=Math.round(12600*30/finishKm)+90;
 assert.ok(Math.abs((12600-delayedAt30)/(finishKm-30)-291.3)<0.1,'3:30 late-race example is correctly calculated');
 assert.ok(Math.abs((1000/10-1000/12)*27-450)<0.01,'4:30 walk-pacing example is correctly calculated');
 const script=read('assets/site-telemetry.js');
-assert.doesNotMatch(script,/pagead2\.googlesyndication|adsbygoogle\.js/i,'ads must be disabled pending approval');
+assert.doesNotMatch(script,/pagead2\.googlesyndication|adsbygoogle\.js/i,'AdSense is loaded separately from optional analytics');
 assert.match(script, /analytics_storage: 'granted'/,'analytics consent must be explicit');
 assert.match(script, /analytics_storage: 'denied'/,'withdrawal must be supported');
 assert.ok(read('privacy/index.html').includes('The analytics choice above is <strong>not advertising consent</strong>'));

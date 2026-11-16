@@ -201,6 +201,14 @@ def apply_navigation(source, route):
         source = source.replace(header, header+'\n'+render_breadcrumbs(crumbs), 1)
         if route != '/404.html': source = replace_breadcrumb_schema(source, crumbs)
     source = re.sub(r'(/assets/site\.css)(?:\?[^"\s>]*)?', r'\1?v='+VERSION, source)
+    # Preserve the approved AdSense Auto ads loader for regenerated pages.
+    if route != '/404.html':
+        publisher = '<meta name="google-adsense-account" content="ca-pub-5455873308344668">'
+        ad_loader = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668" crossorigin="anonymous"></script>'
+        if publisher not in source:
+            source = source.replace('</head>', publisher + '\n</head>', 1)
+        if ad_loader not in source:
+            source = source.replace(publisher, publisher + '\n' + ad_loader, 1)
     if '/assets/navigation.js' not in source:
         source = source.replace('</head>', f'<script defer src="/assets/navigation.js?v={VERSION}"></script>\n</head>', 1)
     else:

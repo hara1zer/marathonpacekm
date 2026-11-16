@@ -5,7 +5,7 @@ import {runInNewContext} from 'node:vm';
 const read = path => readFileSync(new URL('../../' + path, import.meta.url), 'utf8');
 const source = read('assets/site-telemetry.js');
 assert.match(source, /G-04CFG6TG7N/, 'reuse the existing GA4 ID');
-assert.doesNotMatch(source, /pagead2\.googlesyndication|adsbygoogle\.js/, 'unapproved ads must not load');
+assert.doesNotMatch(source, /pagead2\.googlesyndication|adsbygoogle\.js/, 'AdSense is loaded separately from optional analytics');
 assert.match(source, /location\.origin \+ location\.pathname/, 'share inputs must not become page URLs');
 
 function fixture(initial = null, embed = false, storageFailure = false) {
