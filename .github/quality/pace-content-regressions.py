@@ -41,7 +41,12 @@ for route in NEW:
  for url in d.xpath('//meta[@property="og:image"]/@content'):
   assert (ROOT/urlsplit(url).path.lstrip('/')).is_file(),url
  for value in d.xpath('//script[@src]/@src|//link[@rel="stylesheet"]/@href'):
-  assert (ROOT/urlsplit(value).path.lstrip('/')).is_file(),value
+  parsed=urlsplit(value)
+  if parsed.scheme or parsed.netloc:
+   assert parsed.scheme=='https' and parsed.netloc=='pagead2.googlesyndication.com',value
+   assert parsed.path=='/pagead/js/adsbygoogle.js' and parsed.query=='client=ca-pub-5455873308344668',value
+  else:
+   assert (ROOT/parsed.path.lstrip('/')).is_file(),value
 
 half=doc(NEW[0]);rows=half.xpath('//*[@id="chart"]//tbody/tr')
 assert len(rows)==28

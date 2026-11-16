@@ -1,5 +1,5 @@
 /* Consent-first, filtered site-authored measurement. Does not request AdSense ads.
- * Keep the publisher meta tag/ads.txt for account ownership verification.
+ * AdSense Auto ads load separately from these optional analytics controls.
  * Personalised EEA/UK/Swiss ads require Google's certified TCF CMP; review other ad modes too.
  */
 (() => {

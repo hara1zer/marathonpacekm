@@ -123,7 +123,8 @@ try {
     assert.ok(bannerBox.x>=0 && bannerBox.x+bannerBox.width<=320,'banner must fit on 320px phones');
     await p.screenshot({path:output+'/consent-320.png'});
     await p.fill('#m','31');
-    assert.equal(requests.length,0,'zero third-party downloads before choice');
+    assert.equal(requests.filter(url=>url.includes('gtag/js')).length,0,'optional analytics must not load before choice');
+    assert.equal(requests.filter(url=>url.includes('adsbygoogle.js')).length,1,'approved AdSense loader must load independently');
     await p.emulateMedia({media:'print'});
     assert.equal(await p.locator('.mpkm-privacy-banner').isVisible(),false,'privacy controls must not appear in printed output');
     await p.emulateMedia({media:'screen'});
@@ -138,7 +139,7 @@ try {
     assert.equal(layer.filter(x=>x[1]==='pace_band_plan_ready').length,1);
     assert.ok(!JSON.stringify(layer).match(/PrivateName|PrivateRace|\?h=/));
     assert.ok(layer.some(x=>x[0]==='set'&&x[1].page_location===locationSafe(base)));
-    assert.ok(!requests.some(url=>url.includes('adsbygoogle')));
+    assert.ok(requests.some(url=>url.includes('adsbygoogle.js')),'AdSense is separate from analytics choice');
     await p.getByRole('button',{name:'Analytics privacy choices',exact:true}).click();
     await p.getByRole('button',{name:'Decline',exact:true}).click();
     await p.waitForFunction(()=>typeof window.gtag==='undefined');
@@ -152,7 +153,7 @@ try {
     await p.setContent(`<iframe src="${base}/printable-pace-band/"></iframe>`);
     await p.locator('iframe').contentFrame().locator('body').waitFor();
     assert.equal(await p.locator('iframe').contentFrame().locator('.mpkm-privacy-banner').count(),0);
-    assert.equal(requests.length,0,'embedding must never load Google tags');
+    assert.equal(requests.filter(url=>url.includes('gtag/js')).length,0,'embedding must not load optional analytics tags');
     await p.close();
     function locationSafe(origin){return origin+'/printable-pace-band/';}
   });
