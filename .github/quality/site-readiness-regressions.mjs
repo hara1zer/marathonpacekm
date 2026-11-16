@@ -30,7 +30,7 @@ for(const file of files){
   const adsenseLoader = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5455873308344668" crossorigin="anonymous"></script>';
   assert.equal(source.split(adsenseLoader).length - 1, path === '404.html' ? 0 : 1, 'approved AdSense loader must appear once on published pages: '+path);
   if(path !== '404.html') assert.equal(source.split('<meta name="google-adsense-account" content="ca-pub-5455873308344668">').length - 1,1,'publisher identification must appear once: '+path);
-  assert.doesNotMatch(source, /<script[^>]+googletagmanager\\.com\\/gtag\\/js/i,'analytics remains consent-gated: '+path);
+  assert.equal((source.match(/googletagmanager[.]com[/]gtag[/]js/gi)||[]).length,0,'analytics remains consent-gated: '+path);
   assert.doesNotMatch(source, /As an Amazon Associate I earn|https:\/\/amzn\.to\//i,'no expired affiliate links: '+path);
 }
 for(const [path,title,example] of [
